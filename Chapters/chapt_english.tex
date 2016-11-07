@@ -1,0 +1,21 @@
+\graphicspath{{chapt_dutch/}{chapt2/}{chapt3/}{chapt4/}}
+\renewcommand{\thesection}{\arabic{section}}    % chapter without number, so don't use chapterno.sectionno
+
+\renewcommand{\bibname}{References}
+% Header
+\renewcommand\evenpagerightmark{{\scshape\small English summary}}
+\renewcommand\oddpageleftmark{{\scshape\small English summary}}
+
+\chapter[English summary]%
+{English summary}
+
+\hyphenation{}
+%\def\hyph{-\penalty0\hskip0pt\relax}
+
+Le meme résume mais en Anglais (on commencera par la hein!).
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\renewcommand*{\thesection}{\thechapter.\arabic{section}}       % reset again to chaptnum.sectnum
+
+

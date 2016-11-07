@@ -1,0 +1,119 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% document: page_layout_definition.tex
+%
+% last modified: $Id: page_layout_definition.tex,v 1.1 2005/11/18 11:49:23 bvolckae Exp $
+%UPDATED ON 05/02/2014 BY SEVENOIS RUBEN TO KEEP COMPATIBILITY WITH NEWER PACKAGE VERSIONS
+%
+% author: Filip De Turck, Stefaan Vanhastel, Bart Duysburgh, Brecht Vermeulen, Bruno Volckaert, Steven Van den Berghe
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% basic dimensions when printing the small page %
+% and by using the geometry package             %
+
+% settings Filip en Stefaan
+%\geometry{bottom=4.0cm,rmargin=4.25cm,body={12.5cm,19.5cm}} % 10pt op a4
+%\geometry{marginpar=0.0cm,marginparsep=0.0cm,twosideshift=0.0cm}
+
+% new settings (according book pim which was approved by the promotors) by Bart Duysburgh
+%\geometry{bottom=5.34cm,rmargin=4.5cm,body={11.5cm,18.92cm}} % 10pt op a4
+%\geometry{marginpar=0.0cm,marginparsep=0.0cm,twosideshift=0.0cm}
+
+\geometry{body={11.5cm,18.92cm}} % 10pt op a4
+%\geometry{bottom=5.34cm,rmargin=4.5cm,body={11.5cm,18.92cm}} % 10pt op a4
+\geometry{twoside,marginpar=0.0cm,marginparsep=0.0cm}%,twosideshift=0.0cm}
+
+%\geometry{bottom=2.15cm,rmargin=2.5cm,body={14.14125cm,23.6cm}} % 12pt op a4
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\textwidth}{11.5cm}
+%\setlength{\textheight}{19.5cm}
+%\setlength{\topmargin}{0.0cm}
+%\setlength{\oddsidemargin}{0.7cm}
+%\setlength{\evensidemargin}{0.7cm}
+%\setlength{\marginparwidth}{0pt}
+%\setlength{\marginparsep}{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\topfraction}{0.8}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% headings %
+
+\fancypagestyle{plain}{
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+
+\pagestyle{fancy}
+\fancyhf{} %clear all header and footer fields
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter. \ #1}{}}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+%\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+%\newcommand\fdtsvrightmarktmp{{\scshape\small Chapter }}
+%\newcommand\fdtsvrightmark{{\scshape\small{Acknowledgment}}}
+%\newcommand\fdtsvleftmark{{\scshape\small{Dankwoord}}}
+
+\newcommand\oddpageleftmark{}
+\newcommand\evenpagerightmark{}
+
+%\fancyhead[LE,RO]{\itshape\bfseries\small\thepage}
+%\fancyhead[LO]{\itshape\bfseries\small\leftmark}
+%\fancyhead[RE]{\itshape\bfseries\small\rightmark}
+\fancyhead[LE,RO]{\small\thepage}
+\fancyhead[LO]{\oddpageleftmark}
+\fancyhead[RE]{\evenpagerightmark}
+%\fancyfoot[C]{\itshape\bfseries\footnotesize \chaptername\ \thechapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% depth of numbering and depth of table of contents %
+
+\setcounter{tocdepth}{3} % titels tot en met niveau subsubsection worden in table of contents opgenomen
+\setcounter{secnumdepth}{3} % tot en met niveau subsubsection wordt er genummerd
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Definition for Big letter at the beginning of a paragraph %%
+\def\PARstart#1#2{\begingroup\def\par{\endgraf\endgroup\lineskiplimit=0pt}
+    \setbox2=\hbox{\uppercase{#2} }\newdimen\tmpht \tmpht \ht2
+    \advance\tmpht by \baselineskip\font\hhuge=cmr10 at \tmpht
+    \setbox1=\hbox{{\hhuge #1}}
+    \count7=\tmpht \count8=\ht1\divide\count8 by 1000 \divide\count7 by\count8
+    \tmpht=.001\tmpht\multiply\tmpht by \count7\font\hhuge=cmr10 at \tmpht
+    \setbox1=\hbox{{\hhuge #1}} \noindent \hangindent1.05\wd1
+    \hangafter=-2 {\hskip-\hangindent \lower1\ht1\hbox{\raise1.0\ht2\copy1}%
+    \kern-0\wd1}\copy2\lineskiplimit=-1000pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Nog een paar andere zaken  %%%%
+%% om een cross-ref naar een voetnoot te kunnen maken definier ik \usefn %%
+\newcommand{\usefn}[1]{\mbox{\textsuperscript{\normalfont#1}}}
+
+%\setlength{\captionindent}{1cm}
+\renewcommand{\captionfont}{\small \itshape \mdseries \rmfamily}
+
+\AtBeginDocument{%
+%   \renewcommand{\figurename}{Fig.}%
+%   \renewcommand{\tablename}{TABLE}%
+   \renewcommand{\tablename}{Table}
+   \renewcommand{\bibname}{References}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

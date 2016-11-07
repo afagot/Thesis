@@ -1,0 +1,319 @@
+\documentclass[10pt,a4paper,twoside,dutch,english]{book}                % options used for 'Hoofdstuk' or 'Chapter'
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PACKAGE LOADING TIME %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage{lscape}
+\usepackage{pseudocode}
+\usepackage{times}      % use Times New Roman Type 1 fonts  (redefines sfdefault,rmdefault,ttdefault)
+%\usepackage[T1]{fontenc}
+%\usepackage{pslatex}
+\usepackage[times]{quotchap}   % fancy chapter beginning
+\usepackage{fancyhdr}
+%\usepackage[sectionbib]{chapterbib2} % bibliography per chapter
+%\usepackage[sectionbib]{chapterbib2} % bibliography per chapter
+% (sectionbib -> bibliography is \section* instead of \chapter*), should come before babel chapterbib2 
+%because local version is 1.9 and solves bug that header was 'References' instead of Chaptername
+\usepackage[dutch,english,greek]{babel}
+\usepackage{cmap}
+\usepackage[utf8]{inputenc}
+%\usepackage[sectionbib,numbers,sort&compress]{natbib}  %for citations a la 'Vermeulen et al.' instead of [1]
+%\usepackage{tocbibind} % automatically add bibliography, list of figures, ... to table of contents
+\usepackage[a4paper,verbose, asymmetric, centering]{geometry}  % better control over margins
+%\usepackage[hang]{caption}     %better control over captions (sideways, font, ...)  hang -> 2nd line of caption is indented (caption2 is deprecated and beta)
+\usepackage[justification=centering]{caption}     %better control over captions (sideways, font, ...)  
+\usepackage[subrefformat=parens]{subcaption}
+%\usepackage{cite}
+
+\usepackage{enumerate}  % to make it possible to define the numbers (A,a, ...)
+\usepackage{verbatim}   % extra support for verbatim environments
+\usepackage{float}      % you can define 'H' so that floats are forced to be putted 'here'
+\usepackage{multirow}   % multirow{nrows}[bigstruts]{width}[fixup]{text} multirow cells
+\ifx\pdftexversion\undefined
+\usepackage[dvips]{graphicx}
+\else
+\usepackage[pdftex]{graphicx}
+\fi
+%\usepackage{psfrag}
+\usepackage{chappg}     % page numbering (chapno-pageno), for ToC
+\usepackage{url}        % for better url typesetting
+\usepackage{expdlist}   % Expanded description (e.g. better alignement) -> needed for acronym_expdlist package
+\usepackage{acronym_expdlist}   % for list of acronyms
+\usepackage{hhline}     % generates nicer table lines (without missing pixels) + more flexible
+%\usepackage{colortbl}  % for coloured columns
+%\usepackage{threeparttable}     % adds the possibility to add footnotes in tables
+\usepackage{afterpage}  % adds \afterpage command, which makes it possible to issue \afterpage{\clearpage} which flushes all floats after this page
+%\usepackage{amsmath}    % adds extra commands, ao. \text within math environment
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage{marvosym}   % for Euro symbol
+\usepackage{ifthen}     % ifthenelse command
+%\usepackage{mathenv}	% better eqnarray
+\usepackage{listings}
+\usepackage{multicol} % To write documents using multiple columns
+\usepackage{siunitx}
+\usepackage[ % For citing references; more options than standard BibTeX or natbib
+   backend=bibtex
+  ,style=numeric-comp
+  ,sorting=none
+  ,firstinits=false
+  ,maxcitenames=2
+  ,sortcites=true
+  ,maxbibnames=2
+  ,url=false
+  ,doi=true
+  ,isbn=false
+]{biblatex}
+\bibliography{bib/PhD}
+
+
+%%%%%%%%%%%%%%%%%
+%% PAGE LAYOUT %%
+%%%%%%%%%%%%%%%%%
+
+\input{page_layout_definition.tex}
+
+%%%%%%%%%%%%%%%%%
+%% HYPHENATION %%
+%%%%%%%%%%%%%%%%%
+
+\input{hyphenation.tex} % to have a separate file with hyphenations
+
+%%%%%%%%%%%%%%%%%%%%
+%%  START BOOK    %%
+%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\latintext
+\graphicspath{{fig/}}
+\restylefloat{figure}
+\restylefloat{table}
+\newfloat{algorithm}{ht}{alg}
+
+%%   FRONT PAGE       %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+ \thispagestyle{empty}   % no headings for this page
+% 
+% % Header
+ \noindent
+ \begin{minipage}{3cm}%
+   \includegraphics*[width=2cm]{UGentlogo}% logo ugent
+ \end{minipage}\hfill
+ \begin{minipage}{8cm}
+ \raggedleft
+ \textsf{Universiteit Gent\\
+ Faculteit Wetenschappen\\
+ Vakgroep Fysica en Sterrenkunde}
+ \end{minipage}
+% 
+% % Title
+\bigskip
+   \begin{flushleft}
+     \Large \textsf{No title yet}\\
+     \vspace{0.1in}\large{\textsf{No sub-title neither, obviously...}}%\noindent
+   \end{flushleft}
+ \hrule
+% 
+ \bigskip
+   \LARGE\noindent \textsf{Alexis Fagot} \hfill
+ \bigskip
+% 
+% % Front Figure
+% %\bigskip
+% %\begin{figure}[htb]%
+% %  \centering%
+% %  \includegraphics*[width=\textwidth]{figFront}%
+% %\end{figure}%
+% %\normalsize
+% 
+% \bigskip
+% \begin{figure}[h!]%
+%   \centering%
+%   \includegraphics*[height=10cm, keepaspectratio, clip]{figFront}%
+% \end{figure}%
+ \normalsize
+% 
+% % Footer
+ \vfill
+ \begin{minipage}{2.0cm}%
+     \includegraphics*[width=2.0cm]{CMS}%       % CMS logo
+ \end{minipage}\hfill
+ \begin{minipage}{6cm}
+ \centering
+ \textsf{Thesis to obtain the degree of\\
+ Doctor of Philosophy in Physics\\
+ Academic years 2012-2017}
+ \end{minipage}\hfill
+ \begin{minipage}{2.0cm}%
+     \includegraphics*[width=2.0cm]{CERN}%       % CERN logo
+ \end{minipage}\hfill
+
+
+%% INFORMATION PAGE     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\thispagestyle{empty}
+
+\normalsize
+
+% Header
+\noindent
+\begin{minipage}{3cm}%
+   \includegraphics*[width=2cm]{UGentlogo}% logo ugent
+ \end{minipage}\hfill
+ \begin{minipage}{8cm}
+ \raggedleft
+ \textsf{Universiteit Gent\\
+ Faculteit Wetenschappen\\
+ Vakgroep Fysica en Sterrenkunde}
+ \end{minipage}
+\\[2cm]
+
+\noindent \begin{tabular}{ @{} l l}
+Promotoren: & Dr.\ Michael Tytgat\\
+ & Prof.\ Dr.\ Dirk Ryckbosch\\
+\end{tabular}
+\\[2cm]
+
+\noindent Universiteit Gent \\
+\noindent Faculteit Wetenschappen\\
+\\[0.3cm]
+\noindent Vakgroep Fysica en Sterrenkunde \\
+\noindent Proeftuinstraat 86,
+\noindent B-9000 Gent, Belgi\"e 
+\\[0.3cm]
+\noindent Tel.: +32 9 264.65.28\\
+\noindent Fax.: +32 9 264.66.97
+
+\vfill
+
+ \begin{minipage}{2.0cm}%
+     \includegraphics*[width=2.0cm]{CMS}%       % CMS logo
+ \end{minipage}\hfill
+ \begin{minipage}{6cm}
+ \centering
+ \textsf{Thesis to obtain the degree of\\
+ Doctor of Philosophy in Physics\\
+ Academic years 2012-2017}
+ \end{minipage}\hfill
+ \begin{minipage}{2.0cm}%
+     \includegraphics*[width=2.0cm]{CERN}%       % CERN logo
+ \end{minipage}\hfill
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+
+%% ACKNOWLEDGMENT   %%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\selectlanguage{english}
+\hyphenation{bu-reau-ge-no-ten}
+\frontmatter
+\chapter{Acknowledgements}
+\vspace{0.35in}
+
+Ici on remerciera tous les gens que j'ai pu croiser durant cette aventure et qui m'ont permis de passer un bon moment
+
+\begin{flushright}{\emph{Gent, ici la super date de la mort qui tue de la fin d'écriture\\
+Alexis Fagot}}
+\end{flushright}
+\selectlanguage{english}
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+%%   TOC, LIST OF FIGURES, LIST OF TABLES, ACRONYMS     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\contentsname}{Table of Contents} % original name = Contents
+
+\tableofcontents
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\listoffigures
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\listoftables
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\include{phdacronyms}
+
+\clearpage      % clear the current page
+\thispagestyle{empty}   % prevent header on this (empty -> next line) page
+\mbox{}         % to insert a not empty page, so that there is min. 1 blank page before next chapter
+\clearpage{\pagestyle{empty}\cleardoublepage}   % clear the current page and start on the right side
+
+%\renewcommand{\tablename}{Table}
+
+\renewcommand{\bibname}{References}     % instead of Bibliography
+%\renewcommand\citeform{\thechapter.}
+%\addcontentsline{toc}{section}{\listfigurename}   % not really sure
+
+	%% SUMMARY IN DUTCH       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\selectlanguage{dutch}
+\include{Chapters/chapt_dutch}
+
+	%% SUMMARY IN ENGLISH       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\selectlanguage{english}
+\include{Chapters/chapt_english}
+
+%% THE BOOK ITSELF   %%
+%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter     % related to chappg numbering
+\selectlanguage{english}
+\renewcommand*{\thesection}{\thechapter.\arabic{section}}
+
+\newcommand\fdtsvrightmarktmp{{\scshape\small Chapter }}
+\renewcommand\evenpagerightmark{{\scshape\small\chaptername\ \thechapter}}
+\renewcommand\oddpageleftmark{{\scshape\small\leftmark}}
+
+%\addtolength{\headwidth}{\marginparsep}
+%\addtolength{\headwidth}{\marginparwidth}
+
+%\newcommand{\tm}[1]{$\mbox{#1}^{\mbox{\emph{\scriptsize TM}}}$}
+
+\newlength{\plotwidth} % To get my plot widths consistent
+\setlength{\plotwidth}{.8\textwidth}
+
+% Macros for extra units
+% doesn't use siunitx macros for extra cross-compatiblity
+\newcommand{\hPa}{\hecto\pascal}
+\newcommand{\Ohmcm}{\ohm\cm}
+\newcommand{\GBq}{\giga\becquerel}
+
+% My own implementation of errors to provide compatibility between
+% siunitx v1 and v2
+\newcommand{\numerror}[2]{\ensuremath{(\num{#1}\pm\num{#2}})} % e.g. 1000 ± 10
+\newcommand{\SIerror}[3]{\numerror{#1}{#2}\,\si{#3}} % e.g. (100 ± 5) nA
+\newcommand{\SIsurface}[3]{\mbox{\num{#1 x #2}\,\si{\square #3}}}
+\newcommand{\SIflux}[1]{\num{#1}\,\si{\second^{-1}\cm^{-2}}}
+\newcommand{\SIrate}[1]{\num{#1}\,\si{\hertz\cm^{-2}}}
+
+\baselineskip 13.0pt
+
+\include{Chapters/intro}
+\include{Chapters/chapt2}
+\include{Chapters/chapt3}
+\include{Chapters/chapt4}
+\include{Chapters/chapt5}
+\include{Chapters/chapt6}
+\include{Chapters/chapt7}
+\include{Chapters/chapt8}
+
+\newpage
+\printbibliography
+
+%\addcontentsline{toc}{section}{}
+
+\appendix
+\include{Chapters/app1}
+\include{Chapters/app2}
+\include{Chapters/app3}
+
+%\renewcommand\fdtsvrightmarktmp{{\scshape\small Appendix }}
+\renewcommand\evenpagerightmark{{\scshape\small Appendix \thechapter}}
+\renewcommand\oddpageleftmark{{\scshape\small\leftmark}}
+
+\end{document}
