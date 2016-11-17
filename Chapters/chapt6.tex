@@ -34,7 +34,7 @@
 				\end{center}
 			\end{figure}
 			
-			As described on Figure~\ref{fig:CsSource}, the $^{137}$Cs source with a half-life of 30 years, the activity of which has been measured on the 5$^{th}$ March 1997 to be \SI{740}{\GBq} (implying e.g. \SI{695}{\GBq} in December 1999), emits a \SI{662}{\keV} photon in 85\% of the decays. The principal collimator hole provides a pyramidal aperture of \SI{74}{\degree}$\times$ \SI{74}{\degree} solid angle. This provides a photon flux in a pyramidal volume of \SI{5}{\meter} maximum length along the beam axis.
+			As described on Figure~\ref{fig:CsSource}, the $^{137}$Cs source with a half-life of 30 years and an activity of \SI{740}{\GBq}, as measured on the 5$^{th}$ March 1997, emits a \SI{662}{\keV} photon in 85\% of the decays. The principal collimator hole provides a pyramidal aperture of \SI{74}{\degree}$\times$ \SI{74}{\degree} solid angle. This provides a photon flux in a pyramidal volume of \SI{5}{\meter} maximum length along the beam axis.
 
 				\begin{figure}[!h]
 				\begin{center}
@@ -160,7 +160,7 @@
 		\end{figure}
 
 	%****************************************** GIF GEOMETRICAL ACCEPTANCE **********************************************************
-	\subsection{Geometrical acceptance of the setup layout}
+	\subsection{Geometrical acceptance of the setup layout to cosmic muons}
 	\label{ssec:GeoAcc}
 				
 		In order to profit from a constant gamma irradiation, the detectors inside of the GIF bunker need to be placed in a plane orthogonal to the beam line. The muon beam that used to be available was meant to test the performance of detectors under test. This beam not being active anymore, another solution to test detector performance had to be used. Thus, it has been decided to use cosmic muons detected through a telescope composed of two scintillators. Lead blocks were used as shielding to protect the photomultipliers from gammas as can be seen from Figure~\ref{fig:RPCSetup}.
@@ -195,7 +195,7 @@
 				\caption{\label{fig:SimGIFLay} Representation of the layout used for the simulations of the test setup. The RPC is represented as a yellow trapezoid while the two scintillators as blue cuboids looking at the sky. A green plane corresponds to the muon generation plane within the simulation. Figure~\ref{fig:GIFSetup:A} shows a global view of the simulated setup. Figure~\ref{fig:GIFSetup:B} shows a zommed view that allows to see the 2 scintillators as well as the full RPC plane.}
 			\end{figure}
 			
-			In order to further refine the quality of the simulation and understand deeper the results the dependance of the distribution has been studied for a range of telescope inclinations. Moreover, the threshold applied on the PMT signals have been included into the simulation in the form of a cut. In the approximation of uniform scintillators, it has been considered that the threshold can be understood as the minimum distance particles need to travel through the scintillating material to give a strong enough signal. Particles that travel a distance smaller than the set "threshold" are thus not detected by the telescope and cannot trigger the data taking. This also restrain the overall geometrical acceptance of the system.
+			In order to further refine the quality of the simulation and understand deeper the results the dependance of the distribution has been studied for a range of telescope inclinations. Moreover, the threshold applied on the PMT signals has been included into the simulation in the form of a cut. In the approximation of uniform scintillators, it has been considered that the threshold can be understood as the minimum distance particles need to travel through the scintillating material to give a strong enough signal. Particles that travel a distance smaller than the set "threshold" are thus not detected by the telescope and cannot trigger the data taking. Finally, the front-end electronics threshold also has been considered. The mean momentum of horizontal cosmic rays is higher than those of vertical ones but the stopping power of matter for momenta ranging from \SI{1}{GeV} to \SI{1}{TeV} stays comparable. It is then possible to assume that the mean number of primary $e^-$/ion pairs per unit length will will stay similar and thus, depending on the applied discriminator threshold, muons with the shortest path through the gas volume will deposit less charge and induce a smaller signal on the pick-up strips that could eventually not be detected. These two thresholds also restrain the overall geometrical acceptance of the system.
 			
 		\subsubsection{Simulation procedure}
 		\label{sssec:SimProc}
@@ -247,21 +247,12 @@
 	%****************************************** PHOTON FLUX AT GIF ******************************************************************
 	\subsection{Photon flux at GIF}
 	\label{ssec:gFlux}
-
-		%****************************************** DOSE MEASUREMENTS ********************************************************
-		\subsubsection{Dose measurements}
-		\label{sssec:Dose}
-			
-			\begin{figure}[!h]
-				\begin{center}
-					\includegraphics[width = \plotwidth]{fig/GIF-fluxes.pdf}\\
-					\caption{\label{fig:Dose} Dose measurements has been done in a plane corresponding to the tents front side. This plan is \SI{1900}{\mm} away from the source. As explained in the first chapter, a lens-shaped lead filter provides a uniform photon flux in the vertical plan orthogonal to the beam direction. If the second line of measured fluxes is not taken into account because of lower values due to experimental equipments in the way between the source and the tent, the uniformity of the flux is well showed by the results.}
-				\end{center}
-			\end{figure}
 			
 		%****************************************** EXPECTATIONS FROM SIMULATIONS ********************************************
 		\subsubsection{Expectations from simulations}
 		\label{sssec:Simulations}
+		
+			In order to understand and evaluate the $\gamma$ flux in the GIF area, simulations had been conducted in 1999 and published by S. Agosteo et al ~\cite{AGOSTEO1999}. Table~\ref{tab:Sim1997} presented in this article gives us the $\gamma$ flux for different distances $D$ to the source. This simulation was done using GEANT and MCNP, a Monte Carlo N-particle transport code, and the flux $F$ is given in number of $\gamma$ per unit area and unit time along with the estimated error from these packages expressed in \%.
 			
 			\begin{table}[!h]
 				\begin{center}
@@ -278,7 +269,7 @@
 						5 & $0.31 \cdot 10^7 \pm 0.4\%$ & $0.36 \cdot 10^6 \pm 1.2\%$ & $0.11 \cdot 10^6 \pm 1.2\%$ & $0.70 \cdot 10^5 \pm 0.9\%$ \\
 						\hline
 					\end{tabular}
-					\caption{\label{tab:Sim1997} Total photon flux ($E\gamma \leq$ \SI{662}{\keV}) with statistical error predicted considering a $^{137}$Cs activity of \SI{740}{\GBq} at different values of the distance $D$ from the source along the x-axis of irradiation field~\cite{GIFacility}.}
+					\caption{\label{tab:Sim1997} Total photon flux ($E\gamma \leq$ \SI{662}{\keV}) with statistical error predicted considering a $^{137}$Cs activity of \SI{740}{\GBq} at different values of the distance $D$ to the source along the x-axis of irradiation field~\cite{AGOSTEO1999}.}
 				\end{center}
 			\end{table}
 			
@@ -289,22 +280,21 @@
 				\end{center}
 			\end{figure}
 			
+			The simulation doesn't directly provides us with an estimated flux at the level of our RPC. It will be needed to track back the value of the flux and extract it from the available data contained in the original paper. First of all, looking at Figure~\ref{fig:Sim1997} that contains the data from Table~\ref{tab:Sim1997}, it is possible to assume that the flux decreases as $1/D^2$ for the range of value that is avaible to us. Let's then consider that Formula~\ref{eq:Flux} will be used to described the behaviour of the flux where $D_0$ and $F^{ABS}_0$ are respectively the distance from a reference point to the source and flux at the level of this reference point and $c$ is a fitting factor.
+			
 			\begin{equation}
 				F^{ABS} = F_0^{ABS} \times \left( \frac{c D_0}{D} \right)^2
 				\label{eq:Flux}
 			\end{equation}
 			
+			By rewriting Equation~\ref{eq:Flux}, it comes that :
+					
 			\begin{equation}
 				c = \frac{D}{D_0}\sqrt{\frac{F^{ABS}}{F_0^{ABS}}}
 				\label{eq:Factor}
 			\end{equation}
 			
-			that can be approximated by the following linear function :\\
-			
-			\begin{equation}
-				c\left(\frac{D}{D_0}\right) = a\frac{D}{D_0} + b
-				\label{eq:LinearApprox}
-			\end{equation}
+			Using Equation~\ref{eq:Factor} to fill Table~\ref{tab:CorrFactor}
 			
 			\begin{table}[!h]
 				\begin{center}
@@ -325,6 +315,13 @@
 				\end{center}
 			\end{table}
 			
+			that can be approximated by the following linear function :\\
+			
+			\begin{equation}
+				c\left(\frac{D}{D_0}\right) = a\frac{D}{D_0} + b
+				\label{eq:LinearApprox}
+			\end{equation}
+			
 			\begin{figure}[!h]
 				\begin{subfigure}{\linewidth}
 					\begin{center}
@@ -339,6 +336,17 @@
 					\end{center}
 				\end{subfigure}
 				\caption{\label{fig:CorrFactor} Figure~\ref{fig:CorrFactor:A} shows the linear approximation fit done via formulae~\ref{eq:LinearApprox} on data from table~\ref{tab:CorrFactor}. Figure~\ref{fig:CorrFactor:B} shows a comparison of this model with the simulated flux using a and b given in figure~\ref{fig:CorrFactor:A} in formulae ~\ref{eq:Flux} and the reference value $D_0 = 50 cm$ and the associated flux for each absorption factor $F_0^{ABS}$ from table~\ref{tab:Sim1997}}
+			\end{figure}
+
+		%****************************************** DOSE MEASUREMENTS ********************************************************
+		\subsubsection{Dose measurements}
+		\label{sssec:Dose}
+			
+			\begin{figure}[!h]
+				\begin{center}
+					\includegraphics[width = \plotwidth]{fig/GIF-fluxes.pdf}\\
+					\caption{\label{fig:Dose} Dose measurements has been done in a plane corresponding to the tents front side. This plan is \SI{1900}{\mm} away from the source. As explained in the first chapter, a lens-shaped lead filter provides a uniform photon flux in the vertical plan orthogonal to the beam direction. If the second line of measured fluxes is not taken into account because of lower values due to experimental equipments in the way between the source and the tent, the uniformity of the flux is well showed by the results.}
+				\end{center}
 			\end{figure}
 
 %****************************************** CONSOLIDATION TESTS AT GIF++ *******************************************************************
