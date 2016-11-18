@@ -280,7 +280,7 @@
 				\end{center}
 			\end{figure}
 			
-			The simulation doesn't directly provides us with an estimated flux at the level of our RPC. It will be needed to track back the value of the flux and extract it from the available data contained in the original paper. First of all, looking at Figure~\ref{fig:Sim1997} that contains the data from Table~\ref{tab:Sim1997}, it is possible to assume that the flux decreases as $1/D^2$ for the range of value that is avaible to us. Let's then consider that Formula~\ref{eq:Flux} will be used to described the behaviour of the flux where $D_0$ and $F^{ABS}_0$ are respectively the distance from a reference point to the source and flux at the level of this reference point and $c$ is a fitting factor.
+			The simulation doesn't directly provides us with an estimated flux at the level of our RPC. First of all, it is needed to extract the value of the flux from the available data contained in the original paper and then to estimate the flux in 2014 at the time the experimentation took place. Figure~\ref{fig:Sim1997} that contains the data from Table~\ref{tab:Sim1997}. In the case of a pointlike source emiting isotrope and homogeneous gamma radiations, the gamma flux $F$ at a distance $D$ to the source with respect to a reference point situated at $D_0$ where a known flux $F_0$ is measured will be expressed like in Equation~\ref{eq:Flux}, assuming that the flux decreases as $1/D^2$, where $c$ is a fitting factor.
 			
 			\begin{equation}
 				F^{ABS} = F_0^{ABS} \times \left( \frac{c D_0}{D} \right)^2
@@ -288,13 +288,15 @@
 			\end{equation}
 			
 			By rewriting Equation~\ref{eq:Flux}, it comes that :
-					
+			
+			\begin{eqnarray}
+				c & = & \frac{D}{D_0}\sqrt{\frac{F^{ABS}}{F_0^{ABS}}}\label{eq:Factor}\\
+				\Delta c & = & \frac{c}{2}\left(\frac{\Delta F^{ABS}}{F^{ABS}}+\frac{\Delta F^{ABS}_0}{F^{ABS}_0}\right)\label{eq:FactorErr}
+			\end{eqnarray}
 			\begin{equation}
-				c = \frac{D}{D_0}\sqrt{\frac{F^{ABS}}{F_0^{ABS}}}
-				\label{eq:Factor}
 			\end{equation}
 			
-			Using Equation~\ref{eq:Factor} to fill Table~\ref{tab:CorrFactor}
+			Finally, using Equation~\ref{eq:Factor} and the data in Table~\ref{tab:Sim1997} with $D_0=$ \SI{50}{cm} as reference point, we can build Table~\ref{tab:CorrFactor}. It is interesting to note that $c$ for each value of $D$ doesn't depend on the absorption factor.
 			
 			\begin{table}[!h]
 				\begin{center}
@@ -311,16 +313,17 @@
 						5 & $1.056 \pm 1.60\%$ & $1.130 \pm 1.60\%$ & $1.202 \pm 1.30\%$ \\
 						\hline
 					\end{tabular}
-					\caption{\label{tab:CorrFactor} Correction factor c is computed thanks to formulae~\ref{eq:Factor} taking as reference $D_0 = 50 cm$ and the associated flux $F_0^{ABS}$ for each absorption factor available in table~\ref{tab:Sim1997}.}
+					\caption{\label{tab:CorrFactor} Correction factor c is computed thanks to formulae~\ref{eq:Factor} taking as reference $D_0 =$ \SI{50}{cm} and the associated flux $F_0^{ABS}$ for each absorption factor available in table~\ref{tab:Sim1997}.}
 				\end{center}
 			\end{table}
 			
-			that can be approximated by the following linear function :\\
+			For the range of $D/D_0$ values available, it is possible to use a simple linear fit to get the evolution of $c$. The linear fit will then use only 2 free parameters, $a$ and $b$, as written in Equation~\ref{eq:LinearApprox}. This gives us the results showed in Figure~\ref{fig:CorrFactor}. Figure~\ref{fig:CorrFactor:B} confirms that using only a linear fit to extract $c$ is enough as the evolution of the rate that can be obtained superimposes well on the simulation points.
 			
-			\begin{equation}
-				c\left(\frac{D}{D_0}\right) = a\frac{D}{D_0} + b
-				\label{eq:LinearApprox}
-			\end{equation}
+			\begin{eqnarray}
+				c\left(\frac{D}{D_0}\right) & = & a\frac{D}{D_0} + b\label{eq:LinearApprox}\\
+				F^{ABS} & = & F^{ABS}_0 \left( a + \frac{bD_0}{D} \right)^2\label{eq:FluxLinearAp}\\
+				\Delta F^{ABS} & = & F^{ABS} \left[\frac{\Delta F^{ABS}_0}{F^{ABS}_0} + 2\frac{\Delta a + \Delta b\frac{D_0}{D}}{a + \frac{bD_0}{D}}\right]\label{eq:FluxLinearApErr}\\
+			\end{eqnarray}
 			
 			\begin{figure}[!h]
 				\begin{subfigure}{\linewidth}
@@ -337,6 +340,8 @@
 				\end{subfigure}
 				\caption{\label{fig:CorrFactor} Figure~\ref{fig:CorrFactor:A} shows the linear approximation fit done via formulae~\ref{eq:LinearApprox} on data from table~\ref{tab:CorrFactor}. Figure~\ref{fig:CorrFactor:B} shows a comparison of this model with the simulated flux using a and b given in figure~\ref{fig:CorrFactor:A} in formulae ~\ref{eq:Flux} and the reference value $D_0 = 50 cm$ and the associated flux for each absorption factor $F_0^{ABS}$ from table~\ref{tab:Sim1997}}
 			\end{figure}
+			
+			The RPC plane is located at a distance $D=$\SI{206}{cm} to the source.
 
 		%****************************************** DOSE MEASUREMENTS ********************************************************
 		\subsubsection{Dose measurements}
