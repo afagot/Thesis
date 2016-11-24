@@ -255,22 +255,21 @@
 			In order to understand and evaluate the $\gamma$ flux in the GIF area, simulations had been conducted in 1999 and published by S. Agosteo et al ~\cite{AGOSTEO1999}. Table~\ref{tab:Sim1997} presented in this article gives us the $\gamma$ flux for different distances $D$ to the source. This simulation was done using GEANT and MCNP, a Monte Carlo N-particle transport code, and the flux $F$ is given in number of $\gamma$ per unit area and unit time along with the estimated error from these packages expressed in \%.
 			
 			\begin{table}[!h]
-				\begin{center}
-					\begin{tabular}{|*{5}{c|}}
-						\hline
-						Nominal & \multicolumn{4}{c|}{Photon flux $F$ [\si{\second^{-1}\cm^{-2}}]} \\
-						\cline{2-5}
-						ABS & at D = \SI{50}{\cm} & at D = \SI{155}{\cm} & at D = \SI{300}{\cm} & at D = \SI{400}{\cm} \\
-						\hline
-						1 & $0.12 \cdot 10^8 \pm 0.2\%$ & $0.14 \cdot 10^7 \pm 0.5\%$ & $0.45 \cdot 10^6 \pm 0.5\%$ & $0.28 \cdot 10^6 \pm 0.5\%$ \\
-						\hline
-						2 & $0.68 \cdot 10^7 \pm 0.3\%$ & $0.80 \cdot 10^6 \pm 0.8\%$ & $0.25 \cdot 10^6 \pm 0.8\%$ & $0.16 \cdot 10^6 \pm 0.6\%$ \\
-						\hline
-						5 & $0.31 \cdot 10^7 \pm 0.4\%$ & $0.36 \cdot 10^6 \pm 1.2\%$ & $0.11 \cdot 10^6 \pm 1.2\%$ & $0.70 \cdot 10^5 \pm 0.9\%$ \\
-						\hline
-					\end{tabular}
-					\caption{\label{tab:Sim1997} Total photon flux ($E\gamma \leq$ \SI{662}{\keV}) with statistical error predicted considering a $^{137}$Cs activity of \SI{740}{\GBq} at different values of the distance $D$ to the source along the x-axis of irradiation field~\cite{AGOSTEO1999}.}
-				\end{center}
+				\hspace*{-1.1cm}
+				\begin{tabular}{|*{5}{c|}}
+					\hline
+					Nominal & \multicolumn{4}{c|}{Photon flux $F$ [\si{\second^{-1}\cm^{-2}}]} \\
+					\cline{2-5}
+					ABS & at $D$ = \SI{50}{\cm} & at $D$ = \SI{155}{\cm} & at $D$ = \SI{300}{\cm} & at $D$ = \SI{400}{\cm} \\
+					\hline
+					1 & $0.12 \cdot 10^8 \pm 0.2\%$ & $0.14 \cdot 10^7 \pm 0.5\%$ & $0.45 \cdot 10^6 \pm 0.5\%$ & $0.28 \cdot 10^6 \pm 0.5\%$ \\
+					\hline
+					2 & $0.68 \cdot 10^7 \pm 0.3\%$ & $0.80 \cdot 10^6 \pm 0.8\%$ & $0.25 \cdot 10^6 \pm 0.8\%$ & $0.16 \cdot 10^6 \pm 0.6\%$ \\
+					\hline
+					5 & $0.31 \cdot 10^7 \pm 0.4\%$ & $0.36 \cdot 10^6 \pm 1.2\%$ & $0.11 \cdot 10^6 \pm 1.2\%$ & $0.70 \cdot 10^5 \pm 0.9\%$ \\
+					\hline
+				\end{tabular}
+				\caption{\label{tab:Sim1997} Total photon flux ($E\gamma \leq$ \SI{662}{\keV}) with statistical error predicted considering a $^{137}$Cs activity of \SI{740}{\GBq} at different values of the distance $D$ to the source along the x-axis of irradiation field~\cite{AGOSTEO1999}.}
 			\end{table}
 			
 			\begin{figure}[!h]
@@ -293,8 +292,6 @@
 				c & = & \frac{D}{D_0}\sqrt{\frac{F^{ABS}}{F_0^{ABS}}}\label{eq:Factor}\\
 				\Delta c & = & \frac{c}{2}\left(\frac{\Delta F^{ABS}}{F^{ABS}}+\frac{\Delta F^{ABS}_0}{F^{ABS}_0}\right)\label{eq:FactorErr}
 			\end{eqnarray}
-			\begin{equation}
-			\end{equation}
 			
 			Finally, using Equation~\ref{eq:Factor} and the data in Table~\ref{tab:Sim1997} with $D_0=$ \SI{50}{cm} as reference point, we can build Table~\ref{tab:CorrFactor}. It is interesting to note that $c$ for each value of $D$ doesn't depend on the absorption factor.
 			
@@ -303,8 +300,7 @@
 					\begin{tabular}{|*{4}{c|}}
 						\hline
 						Nominal & \multicolumn{3}{c|}{Correction factor $c$} \\
-						\cline{2-4}
-						ABS & at D = \SI{155}{\cm} & at D = \SI{300}{\cm} & at D = \SI{400}{\cm} \\
+						ABS & at $D$ = \SI{155}{\cm} & at $D$ = \SI{300}{\cm} & at $D$ = \SI{400}{\cm} \\
 						\hline
 						1 & $1.059 \pm 0.70\%$ & $1.162 \pm 0.70\%$ & $1.222 \pm 0.70\%$ \\
 						\hline
@@ -322,7 +318,7 @@
 			\begin{eqnarray}
 				c\left(\frac{D}{D_0}\right) & = & a\frac{D}{D_0} + b\label{eq:LinearApprox}\\
 				F^{ABS} & = & F^{ABS}_0 \left( a + \frac{bD_0}{D} \right)^2\label{eq:FluxLinearAp}\\
-				\Delta F^{ABS} & = & F^{ABS} \left[\frac{\Delta F^{ABS}_0}{F^{ABS}_0} + 2\frac{\Delta a + \Delta b\frac{D_0}{D}}{a + \frac{bD_0}{D}}\right]\label{eq:FluxLinearApErr}\\
+				\Delta F^{ABS} & = & F^{ABS} \left[\frac{\Delta F^{ABS}_0}{F^{ABS}_0} + 2\frac{\Delta a + \Delta b\frac{D_0}{D}}{a + \frac{bD_0}{D}}\right]\label{eq:FluxLinearApErr}
 			\end{eqnarray}
 			
 			\begin{figure}[!h]
@@ -341,7 +337,24 @@
 				\caption{\label{fig:CorrFactor} Figure~\ref{fig:CorrFactor:A} shows the linear approximation fit done via formulae~\ref{eq:LinearApprox} on data from table~\ref{tab:CorrFactor}. Figure~\ref{fig:CorrFactor:B} shows a comparison of this model with the simulated flux using a and b given in figure~\ref{fig:CorrFactor:A} in formulae ~\ref{eq:Flux} and the reference value $D_0 = 50 cm$ and the associated flux for each absorption factor $F_0^{ABS}$ from table~\ref{tab:Sim1997}}
 			\end{figure}
 			
-			The RPC plane is located at a distance $D=$\SI{206}{cm} to the source.
+			In the case of the 2014 GIF tests, the RPC plane is located at a distance $D=$\SI{206}{cm} to the source. Moreover, to estimate the strength of the flux in 2014, it is necessary to consider the nuclear decay through time assiciated to the Cesium source whose half-life is well known ($t_{1/2}=$ \SIerror{30.05}{0.08}{y}). The very first source activity measurement has been done on the $5^{th}$ of March 1997 while the GIF tests where done in between the $20^{th}$ and the $31^{st}$ of August 2014, i.e. at a time $t=$ \SIerror{17.47}{0.02}{y} resulting in an attenuation of the activity from \SI{740}{GBq} in 1997 to \SI{494}{GBq} in 2014. All the needed information to extrapolate the flux through our detector in 2014 has now been assembled, leading to the Table~\ref{tab:extra2014}. It isinteresting to note that for a common RPC sensitivity to $\gamma$ of $2 \cdot 10^{-3}$, the order of magnitude of the estimated hit rate per unit area is of the order of the \si{kHz} for the fully opened source.
+			
+			\begin{table}[!h]
+				\hspace*{-2cm}
+				\begin{tabular}{|*{5}{c|}}
+					\hline
+					Nominal & \multicolumn{3}{c|}{Photon flux $F$ [\si{\second^{-1}\cm^{-2}}]} & Hit rate/unit area [\si{Hz.cm^{-2}}] \\
+					ABS & at $D_0^{1997}$ = \SI{50}{\cm} & at $D^{1997}$ = \SI{206}{\cm} & at $D^{2014}$ = \SI{206}{\cm} & at $D^{2014}$ = \SI{206}{\cm} \\
+					\hline
+					1 & $0.12 \cdot 10^8 \pm 0.2\%$ & $0.84 \cdot 10^6 \pm 0.3\%$ & $0.56 \cdot 10^6 \pm 0.3\%$ & $1129 \pm 32$ \\
+					\hline
+					2 & $0.68 \cdot 10^7 \pm 0.3\%$ & $0.48 \cdot 10^6 \pm 0.3\%$ & $0.32 \cdot 10^6 \pm 0.3\%$ & $640 \pm 19$ \\
+					\hline
+					5 & $0.31 \cdot 10^7 \pm 0.4\%$ & $0.22 \cdot 10^6 \pm 0.3\%$ & $0.15 \cdot 10^6 \pm 0.3\%$ & $292 \pm 9$ \\
+					\hline
+				\end{tabular}
+				\caption{\label{tab:extra2014} The data at $D_0$ in 1997 is taken from~\cite{AGOSTEO1999}. In a second step, using Equations~\ref{eq:FluxLinearAp} and~\ref{eq:FluxLinearApErr}, the flux at $D$ can be estimated in 1997. Then, taking into account the attenuation of the source activity, the flux at $D$ can be estimated at the time of the tests in GIF in 2014. Finally, assuming a sensitivity of the RPC to $\gamma$ $s = 2 \cdot 10^{-3}$, an estimation of the hit rate per unit area is obtained.}
+			\end{table}
 
 		%****************************************** DOSE MEASUREMENTS ********************************************************
 		\subsubsection{Dose measurements}
