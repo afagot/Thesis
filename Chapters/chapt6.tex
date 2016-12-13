@@ -83,43 +83,10 @@
 		At the time of the tests, the beam not being operationnal anymore, a trigger composed of 2 plastic scintillators has been placed in front of the setup with an inclination of \SI{10}{\deg} \textit{\textbf{(this has to be first confirmed by the simulation - I will adjust in consequence cause it has never been precisely measured)}} with respect to the detector plane in order to look at cosmic muons. Using this particular trigger layout, shown on Figure~\ref{fig:RPCSetup}, leads to a cosmic muon hit distribution into the chamber similar to the one in Figure~\ref{fig:HitProf}. Measured without gamma irradiation, two peaks can be seen on the profil of partition B, centered on strips 52 and 59. Sub-section~\ref{ssec:GeoAcc} will help us undertand that these two peaks are due respectively to forward and backward coming cosmic particles where forward coming particles are first detected by the scintillators and then the RPC while the backward coming muons are first detected in the RPC.
 
 			\begin{figure}[!h]
-			\begin{subfigure}{0.5\linewidth}
 				\begin{center}
-					\includegraphics[width = 0.5\plotwidth]{fig/A1.pdf}
-					\caption{\label{fig:HitProf:A1}}
+					\includegraphics[width = 1.2\plotwidth]{fig/Data-21-profile.pdf}\\
+					\caption{\label{fig:HitProf} Hit distributions over all 3 parttions of RE-4-2-BARC-161 chamber is showed on these plots. The top, center and bottom figures respectively correspond to partitions A, B, and C. These plots show that some events still occur in other half-partitions than B2, which corresponds to strips 49 to 64, in front of which the trigger is placed, contributing to the inefficiency of detection of cosmic muons. In the case of partitions A and C, the very low amount of data can be interpreted as noise. On the other hand, it is clear that a little portion of muons reach the half-partition B1, corresponding to strips 33 to 48.}
 				\end{center}
-			\end{subfigure}
-			\begin{subfigure}{0.5\linewidth}
-				\begin{center}
-					\includegraphics[width = 0.5\plotwidth]{fig/A2.pdf}\\
-					\caption{\label{fig:HitProf:A2}}
-				\end{center}
-			\end{subfigure}
-			\begin{subfigure}{0.5\linewidth}
-				\begin{center}
-					\includegraphics[width = 0.5\plotwidth]{fig/B1.pdf}
-					\caption{\label{fig:HitProf:B1}}
-				\end{center}
-			\end{subfigure}
-			\begin{subfigure}{0.5\linewidth}
-				\begin{center}
-					\includegraphics[width = 0.5\plotwidth]{fig/B2.pdf}\\
-					\caption{\label{fig:HitProf:B2}}
-				\end{center}
-			\end{subfigure}
-			\begin{subfigure}{0.5\linewidth}
-				\begin{center}
-					\includegraphics[width = 0.5\plotwidth]{fig/C1.pdf}
-					\caption{\label{fig:HitProf:C1}}
-				\end{center}
-			\end{subfigure}
-			\begin{subfigure}{0.5\linewidth}
-				\begin{center}
-					\includegraphics[width = 0.5\plotwidth]{fig/C2.pdf}\\
-					\caption{\label{fig:HitProf:C2}}
-				\end{center}
-			\end{subfigure}
-			\caption{\label{fig:HitProf} Hit distributions over all 6 half-parttions of RE-4-2-BARC-161 chamber is showed on previous plots. Figures~\ref{fig:HitProf:A1},~\ref{fig:HitProf:A2}, ~\ref{fig:HitProf:B1},~\ref{fig:HitProf:B2},~\ref{fig:HitProf:C1} and~\ref{fig:HitProf:C2} respectively correspond to half-partitions A1, A2, B1, B2, C1 and C2. These plots show that some events still occur in other half-partitions than B2, in front of which the trigger is placed, contributing to the inefficiency of detection of cosmic muons.}
 		\end{figure}
 		
 	\subsection{Data acquisition}
@@ -165,19 +132,19 @@
 				
 		In order to profit from a constant gamma irradiation, the detectors inside of the GIF bunker need to be placed in a plane orthogonal to the beam line. The muon beam that used to be available was meant to test the performance of detectors under test. This beam not being active anymore, another solution to test detector performance had to be used. Thus, it has been decided to use cosmic muons detected through a telescope composed of two scintillators. Lead blocks were used as shielding to protect the photomultipliers from gammas as can be seen from Figure~\ref{fig:RPCSetup}.
 					
-		An inclination has been given to the cosmic telescope to maximize the muon flux. A good compromise had to be found between good enough muon flux and narrow enough hit distribution to be sure to contain all the events into only one half partitions as required from the limited available readout hardware. Nevertheless, a consequence of the misplaced trigger, that can be seen as a loss of events in half-partition B1 in Figure~\ref{fig:HitProf:B1}, is an inefficiency of approximately \SI{20}{\%} highlighted in Figure~\ref{fig:EffCompar} by comparing the performance of chamber BARC-161 in 904 and at GIF without irradiation \textit{\textbf{(here I should check if if corresponds to the loss of integrated events : check the ratio integrated(B2)/integrated(B1+B2) and see if there is a reduction of 20\%)}}. Simulations have been conducted to show how the setup brings inefficiency.
+		An inclination has been given to the cosmic telescope to maximize the muon flux. A good compromise had to be found between good enough muon flux and narrow enough hit distribution to be sure to contain all the events into only one half partitions as required from the limited available readout hardware. Nevertheless, a consequence of the misplaced trigger, that can be seen as a loss of events in half-partition B1 in Figure~\ref{fig:HitProf}, is an inefficiency. Nevertheless, the innefficiency of approximately \SI{20}{\%} highlighted in Figure~\ref{fig:EffCompar} by comparing the performance of chamber BARC-161 in 904 and at GIF without irradiation seems too important to be explained only by the geometrical acceptance of the setup itself. Simulations have been conducted to show how the setup brings inefficiency.
 	
 		\begin{figure}[!h]
 			\begin{center}
 				\includegraphics[width = \plotwidth]{fig/Comparison.pdf}
 			\end{center}
-			\caption{\label{fig:EffCompar} Results are derived from data taken on half-partition B2 only. At GIF, while the number of triggers doesn't depend on the half-partition used during runs, some related events are lost by happening in other half-partitions because of the setup configuration. On the 18$^{th}$ of June 2014, data has been taken on chamber RE-2-BARC-161 at building 904 (Prevessin Site) with cosmic muons providing us a reference efficiency plateau of \numerror{97.54}{0.15}\% represented by a black curve. A similar measurement has been done at GIF on the 21$^{st}$ of July with the same chamber giving a plateau of \numerror{78.52}{0.94}\% represented by a red curve.}
+			\caption{\label{fig:EffCompar} Results are derived from data taken on half-partition B2 only. On the 18$^{th}$ of June 2014, data has been taken on chamber RE-2-BARC-161 at building 904 (Prevessin Site) with cosmic muons providing us a reference efficiency plateau of \numerror{97.54}{0.15}\% represented by a black curve. A similar measurement has been done at GIF on the 21$^{st}$ of July with the same chamber giving a plateau of \numerror{78.52}{0.94}\% represented by a red curve.}
 		\end{figure}
 		
 		\subsubsection{Description of the simulation layout}
 		\label{sssec:SimLayout}
 		
-			The layout of GIF setup has been reproduced and incorporated into a Monte Carlo simulation to study the influence of the disposition of the telescope on the final distribution measured by the RPC. A 3D view of the simulated layout is given into Figure~\ref{fig:SimGIFLay}. Muons are generated randomly in a plane parallel to the floor located at a height corresponding to the lowest point of the PMTs. This way, the needed size of the plane in order to simulate events happening at very big azimutal angles (i.e. $\theta\approx\pi$) can be kept relatively small. The muon flux is designed to follow the usual $cos^2\theta$ distribution for cosmic particle. The goal of the simulation is to look at muons that pass through the muon telescope composed of the two scintilators and define their distribution onto the RPC plane. During the reconstruction, the RPC plane is then divided into its strips and each muon track is assigned to a strip.
+			The layout of GIF setup has been reproduced and incorporated into a Monte Carlo simulation to study the influence of the disposition of the telescope on the final distribution measured by the RPC. A 3D view of the simulated layout is given into Figure~\ref{fig:SimGIFLay}. Muons are generated randomly in a horizontal plane located at a height corresponding to the lowest point of the PMTs. This way, the needed size of the plane in order to simulate events happening at very big azimutal angles (i.e. $\theta\approx\pi$) can be kept relatively small. The muon flux is designed to follow the usual $cos^2\theta$ distribution for cosmic particle. The goal of the simulation is to look at muons that pass through the muon telescope composed of the two scintilators and define their distribution onto the RPC plane. During the reconstruction, the RPC plane is then divided into its strips and each muon track is assigned to a strip.
 		
 			\begin{figure}[!h]
 				\begin{subfigure}{\linewidth}
@@ -195,18 +162,18 @@
 				\caption{\label{fig:SimGIFLay} Representation of the layout used for the simulations of the test setup. The RPC is represented as a yellow trapezoid while the two scintillators as blue cuboids looking at the sky. A green plane corresponds to the muon generation plane within the simulation. Figure~\ref{fig:GIFSetup:A} shows a global view of the simulated setup. Figure~\ref{fig:GIFSetup:B} shows a zommed view that allows to see the 2 scintillators as well as the full RPC plane.}
 			\end{figure}
 			
-			In order to further refine the quality of the simulation and understand deeper the results the dependance of the distribution has been studied for a range of telescope inclinations. Moreover, the threshold applied on the PMT signals has been included into the simulation in the form of a cut. In the approximation of uniform scintillators, it has been considered that the threshold can be understood as the minimum distance particles need to travel through the scintillating material to give a strong enough signal. Particles that travel a distance smaller than the set "threshold" are thus not detected by the telescope and cannot trigger the data taking. Finally, the front-end electronics threshold also has been considered. The mean momentum of horizontal cosmic rays is higher than those of vertical ones but the stopping power of matter for momenta ranging from \SI{1}{GeV} to \SI{1}{TeV} stays comparable. It is then possible to assume that the mean number of primary $e^-$/ion pairs per unit length will will stay similar and thus, depending on the applied discriminator threshold, muons with the shortest path through the gas volume will deposit less charge and induce a smaller signal on the pick-up strips that could eventually not be detected. These two thresholds also restrain the overall geometrical acceptance of the system.
+			In order to further refine the quality of the simulation and understand deeper the results the dependance of the distribution has been studied for a range of telescope inclinations. Moreover, the threshold applied on the PMT signals has been included into the simulation in the form of a cut. In the approximation of uniform scintillators, it has been considered that the threshold can be understood as the minimum distance particles need to travel through the scintillating material to give a strong enough signal. Particles that travel a distance smaller than the set "threshold" are thus not detected by the telescope and cannot trigger the data taking. Finally, the front-end electronics threshold also has been considered in a similar way. The mean momentum of horizontal cosmic rays is higher than those of vertical ones but the stopping power of matter for momenta ranging from \SI{1}{GeV} to \SI{1}{TeV} stays comparable. It is then possible to assume that the mean number of primary $e^-$/ion pairs per unit length will stay similar and thus, depending on the applied discriminator threshold, muons with the shortest path through the gas volume will deposit less charge and induce a smaller signal on the pick-up strips that could eventually not be detected. These two thresholds also restrain the overall geometrical acceptance of the system.
 			
 		\subsubsection{Simulation procedure}
 		\label{sssec:SimProc}
 		
-			The simulation software has been designed using C++ and the output data is saved into ROOT histograms. A loop of simulations is started for a threshold $T$ varying in a range from \SI{0}{} to \SI{90}{mm}, where $T=$ \SI{0}{mm} corresponds to the case where there isn't any threshold apply on the input signal while $T=$ \SI{90}{mm} is a case where almost all muons are cut out. For each value of $T$, $N_{\mu}=10^7$ muons are randomly generated inside the muon plane described in the previous paragraph with an azimutal angle $\theta$ chosen to follow a $cos^2\theta$ distribution. Chosing such a large number for $N_{\mu}$ allows to get up to 7000 actual muons reconstructed into the RPC plane for $T=0$ \textit{\textbf{(now it needs to be decided if it make sense or if the statistic should be much bigger to get rid of the statistical errors and then normalized to the number of events reconstructed into the data)}}.
+			The simulation software has been designed using C++ and the output data is saved into ROOT histograms. Simulations start for a threshold $T_{scint}$ varying in a range from 0 to \SI{45}{mm} in steps of \SI{5}{mm}, where $T_{scint}=$ \SI{0}{mm} corresponds to the case where there isn't any threshold apply on the input signal while $T_{scint}=$ \SI{45}{mm}, which is the scintillator thickness, is the case where muons cannot arrive orthogonally onto the scintillator surface. For a given $T_{scint}$, a set of RPC thresholds are considered. The RPC threshold, $T_{RPC}$ varies from \SI{2}{mm}, the thickness of the gas volume, to \SI{3}{mm} in steps of \SI{0.25}{mm}. For each ($T_{scint}$;$T_{RPC}$) pair, $N_{\mu}=10^8$ muons are randomly generated inside the muon plane described in the previous paragraph with an azimutal angle $\theta$ chosen to follow a $cos^2\theta$ distribution. 
 			
-			In the next step, a plane in space is associated to each surface of the scintillators. Knowing muon position into the muon plane and its direction allows us, by assuming that muons travel in a straight line, to compute the intersection of the muon track with these planes. Applying conditions to the limits of the surfaces of the scintillator faces then gives us an answer to weither or not the muon passed through the scintillators. In the case the muon has indeed passed through the telescope, the path through each scintillator is computed and muons whose path was shorter than $T$ are rejected and are thus considered as having not interacted in the setup.
+			Planes are associated to each surface of the scintillators. Knowing muon position into the muon plane and its direction allows us, by assuming that muons travel in a straight line, to compute the intersection of the muon track with these planes. Applying conditions to the limits of the surfaces of the scintillator faces then gives us an answer to weither or not the muon passed through the scintillators. In the case the muon has indeed passed through the telescope, the path through each scintillator is computed and muons whose path was shorter than $T_{scint}$ are rejected and are thus considered as having not interacted with the setup.
 			
-			On the contrary, if the muon is labeled as good, its position within the RPC plane is computed and the corresponding strip, determined by geometrical tests, gets a hit and several histograms are filled in order to keep track of the generation point on the muon plane, the intersection points of the reconstructed muons within the telescope, or on the RPC plane, the path traveled through each individual scintillator, as well as other histograms. Moreover, muons fill different histograms weither they are forward or backward coming muons. They are discriminated according to their direction components. When a muon is generated, an $(x,y,z)$ position is assigned into the muon plane as well as a $(\theta,\phi)$ pair that gives us the direction it's coming from. This way, muons satisfying the condition $0\leq\phi<\pi$ are designated as backward coming muons while muons satisfying $\pi\leq\phi<2\pi$ as forward coming muons.
+			On the contrary, if the muon is labeled as good, its position within the RPC plane is computed and the corresponding strip, determined by geometrical tests in the case the distance through the gas volume was enough not to be rejected because of $T_{RPC}$, gets a hit and several histograms are filled in order to keep track of the generation point on the muon plane, the intersection points of the reconstructed muons within the telescope, or on the RPC plane, the path traveled through each individual scintillator or the gas volume, as well as other histograms. Moreover, muons fill different histograms weither they are forward or backward coming muons. They are discriminated according to their direction components. When a muon is generated, an $(x,y,z)$ position is assigned into the muon plane as well as a ($\theta$;$\phi$) pair that gives us the direction it's coming from. This way, muons satisfying the condition $0\leq\phi<\pi$ are designated as backward coming muons while muons satisfying $\pi\leq\phi<2\pi$ as forward coming muons.
 			
-			Due to the inclination of the telescope and the vertical position of the detector under test, the muon distribution reconstructed in the detector plane is asymmetrical. The choice as been made to chose a skew distribution formula to fit the data built as the multiplication of gaussian and sigmoidal curves together. A typical gaussian formula is given as \ref{for:gaus} and has three free parameters as $A_g$ its amplitude, $\bar{x}$ its mean value and $\sigma$ its root mean square. Sigmoidal curves as given by formula~\ref{for:sigm} are functions converging to $0$ and $A_s$ as $x$ diverges. The inflexion point is given as $x_i$ and $\lambda$ is proportional to the slope at $x = x_i$. In the limit where $\lambda\longrightarrow\infty$, the sigmoid becomes a step function.
+			This simulation is then repeated for different telescope inclinations ranging in between 4 and \SI{20}{\degree} and varying in steps of \SI{2}{\degree}. Due to this inclination and to the vertical position of the detector under test, the muon distribution reconstructed in the detector plane is asymmetrical. The choice as been made to chose a skew distribution formula to fit the data built as the multiplication of gaussian and sigmoidal curves together. A typical gaussian formula is given as ~\ref{for:gaus} and has three free parameters as $A_g$, its amplitude, $\bar{x}$, its mean value and $\sigma$, its root mean square. Sigmoidal curves as given by formula~\ref{for:sigm} are functions converging to $0$ and $A_s$ as $x$ diverges. The inflexion point is given as $x_i$ and $\lambda$ is proportional to the slope at $x = x_i$. In the limit where $\lambda\longrightarrow\infty$, the sigmoid becomes a step function.
 			
 			\begin{center}
 				\begin{equation}
@@ -233,14 +200,12 @@
 			
 		\subsubsection{Results}
 		\label{sssec:SimRes}
-		
-			Both the telescope inclination and the threshold have been studied through this Monte Carlo simulation. On one hand, the inclination has been varied in a range between \SI{5}{} and \SI{20}{\degree}. On another hand, the threshold has been chosen between \SI{0}{} and \SI{90}{mm} \textit{\textbf{(even though it might be useless to even consider going above 45mm, i.e. the scintillator thickness)}}.
+			
+			\paragraph{Influence of $\mathbf{T_{scint}}$ on the muon distribution}
+			
+			\paragraph{Influence of $\mathbf{T_{RPC}}$ on the muon distribution}
 		
 			\paragraph{Influence of the telescope inclination on the muon distribution}
-			
-				
-			
-			\paragraph{Influence of the threshold on the muon distribution}
 			
 			\paragraph{Comparison to data taken at GIF without irradiation}
 		
