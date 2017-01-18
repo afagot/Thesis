@@ -82,44 +82,11 @@
 		
 		At the time of the tests, the beam not being operationnal anymore, a trigger composed of 2 plastic scintillators has been placed in front of the setup with an inclination of \SI{10}{\deg} \textit{\textbf{(this has to be first confirmed by the simulation - I will adjust in consequence cause it has never been precisely measured)}} with respect to the detector plane in order to look at cosmic muons. Using this particular trigger layout, shown on Figure~\ref{fig:RPCSetup}, leads to a cosmic muon hit distribution into the chamber similar to the one in Figure~\ref{fig:HitProf}. Measured without gamma irradiation, two peaks can be seen on the profil of partition B, centered on strips 52 and 59. Sub-section~\ref{ssec:GeoAcc} will help us undertand that these two peaks are due respectively to forward and backward coming cosmic particles where forward coming particles are first detected by the scintillators and then the RPC while the backward coming muons are first detected in the RPC.
 
-			\begin{figure}[!h]
-			\begin{subfigure}{0.5\linewidth}
-				\begin{center}
-					\includegraphics[width = 0.5\plotwidth]{fig/A1.pdf}
-					\caption{\label{fig:HitProf:A1}}
-				\end{center}
-			\end{subfigure}
-			\begin{subfigure}{0.5\linewidth}
-				\begin{center}
-					\includegraphics[width = 0.5\plotwidth]{fig/A2.pdf}\\
-					\caption{\label{fig:HitProf:A2}}
-				\end{center}
-			\end{subfigure}
-			\begin{subfigure}{0.5\linewidth}
-				\begin{center}
-					\includegraphics[width = 0.5\plotwidth]{fig/B1.pdf}
-					\caption{\label{fig:HitProf:B1}}
-				\end{center}
-			\end{subfigure}
-			\begin{subfigure}{0.5\linewidth}
-				\begin{center}
-					\includegraphics[width = 0.5\plotwidth]{fig/B2.pdf}\\
-					\caption{\label{fig:HitProf:B2}}
-				\end{center}
-			\end{subfigure}
-			\begin{subfigure}{0.5\linewidth}
-				\begin{center}
-					\includegraphics[width = 0.5\plotwidth]{fig/C1.pdf}
-					\caption{\label{fig:HitProf:C1}}
-				\end{center}
-			\end{subfigure}
-			\begin{subfigure}{0.5\linewidth}
-				\begin{center}
-					\includegraphics[width = 0.5\plotwidth]{fig/C2.pdf}\\
-					\caption{\label{fig:HitProf:C2}}
-				\end{center}
-			\end{subfigure}
-			\caption{\label{fig:HitProf} Hit distributions over all 6 half-parttions of RE-4-2-BARC-161 chamber is showed on previous plots. Figures~\ref{fig:HitProf:A1},~\ref{fig:HitProf:A2}, ~\ref{fig:HitProf:B1},~\ref{fig:HitProf:B2},~\ref{fig:HitProf:C1} and~\ref{fig:HitProf:C2} respectively correspond to half-partitions A1, A2, B1, B2, C1 and C2. These plots show that some events still occur in other half-partitions than B2, in front of which the trigger is placed, contributing to the inefficiency of detection of cosmic muons.}
+		\begin{figure}[!h]
+			\begin{center}
+				\includegraphics[width = \plotwidth]{fig/Data-21-profile.pdf}
+				\caption{\label{fig:HitProf} Hit distributions over all 3 parttions of RE-4-2-BARC-161 chamber is shown in these histograms. Top, middle and bottom histograms respectively correspond to partitions A, B and C. These plots show that some events still occur in strips 33 to 48 while only strips 49 to 64 were recorded on later data taking, contributing to the inefficiency of detection of cosmic muons.}
+			\end{center}
 		\end{figure}
 		
 	\subsection{Data acquisition}
@@ -165,7 +132,7 @@
 				
 		In order to profit from a constant gamma irradiation, the detectors inside of the GIF bunker need to be placed in a plane orthogonal to the beam line. The muon beam that used to be available was meant to test the performance of detectors under test. This beam not being active anymore, another solution to test detector performance had to be used. Thus, it has been decided to use cosmic muons detected through a telescope composed of two scintillators. Lead blocks were used as shielding to protect the photomultipliers from gammas as can be seen from Figure~\ref{fig:RPCSetup}.
 					
-		An inclination has been given to the cosmic telescope to maximize the muon flux. A good compromise had to be found between good enough muon flux and narrow enough hit distribution to be sure to contain all the events into only one half partitions as required from the limited available readout hardware. Nevertheless, a consequence of the misplaced trigger, that can be seen as a loss of events in half-partition B1 in Figure~\ref{fig:HitProf:B1}, is an inefficiency of approximately \SI{20}{\%} highlighted in Figure~\ref{fig:EffCompar} by comparing the performance of chamber BARC-161 in 904 and at GIF without irradiation \textit{\textbf{(here I should check if if corresponds to the loss of integrated events : check the ratio integrated(B2)/integrated(B1+B2) and see if there is a reduction of 20\%)}}. Simulations have been conducted to show how the setup brings inefficiency.
+		An inclination has been given to the cosmic telescope to maximize the muon flux. A good compromise had to be found between good enough muon flux and narrow enough hit distribution to be sure to contain all the events into only one half partitions as required from the limited available readout hardware. Nevertheless, a consequence of the misplaced trigger, that can be seen as a loss of events in half-partition B1 in Figure~\ref{fig:HitProf}, is an inefficiency of approximately \SI{20}{\%} highlighted in Figure~\ref{fig:EffCompar} by comparing the performance of chamber BARC-161 in 904 and at GIF without irradiation \textit{\textbf{(here I should check if if corresponds to the loss of integrated events : check the ratio integrated(B2)/integrated(B1+B2) and see if there is a reduction of 20\%)}}. Simulations have been conducted to show how the setup brings inefficiency.
 	
 		\begin{figure}[!h]
 			\begin{center}
