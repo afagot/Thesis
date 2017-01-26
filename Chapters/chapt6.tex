@@ -25,7 +25,7 @@
 		\subsubsection{GIF}
 		\label{sssec:GIF}
 		
-			(GIF) was a test area located in the SPS West Area at the downstream end of the X5 test beam in which particle detectors were exposed to a particle beam in presence of an adjustable background flux of photons~\cite{GIFacility}. This facility's goal was to simulate background conditions these detectors would suffer in their operating environment at the LHC. A schematic layout of the GIF zone is shown in Figure ~\ref{fig:GIFLayout}. Photons are produced by a strong radioactive source of $^{137}$Cs installed in the upstream part of the zone inside a lead container, which includes a collimator, designed to irradiate a \SIsurface{6}{6}{\meter} area at \SI{5}{\meter} distance from the source. A thin lens-shaped lead filter renders the outcoming flux uniform in the vertical plane orthogonal to the beam direction. Control of the photon rate is achieved by further lead filters allowing the maximum rate to be limited and to vary within a range of four orders of magnitude. The Gamma source is located in a rectangular lead container.
+			GIF was a test area located in the SPS West Area at the downstream end of the X5 test beam in which particle detectors were exposed to a particle beam in presence of an adjustable background flux of photons~\cite{GIFacility}. This facility's goal was to simulate background conditions these detectors would suffer in their operating environment at the LHC. A schematic layout of the GIF zone is shown in Figure ~\ref{fig:GIFLayout}. Photons are produced by a strong radioactive source of $^{137}$Cs installed in the upstream part of the zone inside a lead container, which includes a collimator, designed to irradiate a \SIsurface{6}{6}{\meter} area at \SI{5}{\meter} distance from the source. A thin lens-shaped lead filter renders the outcoming flux uniform in the vertical plane orthogonal to the beam direction. Control of the photon rate is achieved by further lead filters allowing the maximum rate to be limited and to vary within a range of four orders of magnitude. The Gamma source is located in a rectangular lead container.
 	
 			\begin{figure}[!h]
 				\begin{center}
@@ -49,6 +49,8 @@
 		%****************************************** NEW GIF ******************************************************************
 		\subsubsection{GIF++}
 		\label{sssec:GIF++}
+		
+			GIF++ is a test area located in the SPS North Area at the downstream end of the H4 test beam. In this facility, particle detectors are tested using a particle beam in presence of an adjustable background flux of photons. The goal is to simulate background conditions these detectors would suffer in their operating environment at the HL-LHC \textbf{(here we should show the GIF++ layout)}. Gamma photons are produced by a strong radioactive $^{137}$Cs source installed in the center part of the zone, with an activity of \SI{13.1}{TBq}, emitting \SI{662}{\keV} photons. A thin lens-shaped lead filter renders the outcoming flux uniform in the vertical plane orthogonal to the beam direction. Control of the photon rate is achieved by using a set of filters allowing the maximum rate to be limited and to vary within a range of four orders of magnitude. The H4 beam, composed of muons with a momentum of about \SI{150}{GeV/c}, passes through the GIF++ zone and is used to study the performance of the detectors. Its flux is of \SI{104}{particles/s/\square\cm} focused in an area similar to \SIsurface{10}{10}{\cm}.
 		
 		
 
@@ -333,8 +335,42 @@
 			\end{figure}
 
 %****************************************** CONSOLIDATION TESTS AT GIF++ *******************************************************************
-\section{Consolidation tests at GIF++}
+\newpage
+
+\section{Longevity tests at GIF++}
 \label{sec:GIFtests}
+
+		\subsection{Description of the data acquisition}
+
+		For the longevity studies, four spare chambers of the present system are used. Two spare RPCs of the RE2,3 stations as well as two spare RPCs from the new RE4 stations have been mounted in a Trolley. Six RE4 gaps are also placed in the trolley. The trolley is placed inside the GIF++ facility in the upstream region of the bunker, taking the cesium source as a reference. The trolley is oriented for the detection surface of the chambers to be orthogonal to the beam line. The system can be moved along the orthogonal plane in order to have the beam in all eta-partitions. For the aging the trolley is moved outside the beam line and is placed in a distance of \SI{5.2}{m} to the source, which irradiates the bunker using an attenuation filter of 2.2 which corresponds to a fluence of $10^7$\si{gamma/cm\squared}. \textbf{(numbers from simulation needed $\rightarrow$ Cecilia? Dorothea?)}\textbf{(Alexis : Here do you want to talk about fluence, or current? I though fluence was to talk about a spherical particle emission whereas in our case at GIF, there is a lead lens to reshape the gamma emission)}
+
+		During GIF++ operation, the data collected can be divided into different categories as several parameters are monitored in addition to the usual RPC performance data. On one hand, to know the performance of a chamber, it is need to measure its efficiency and to know the background conditions in which it is operated. To do this, the hit signals from the chamber are recorded and stored in a ROOT file via a data acquisition software (DAQ). On the other hand, it is also very important to monitor parameters such as environmental pressure and temperature, gas temperature and humidity, RPC HV, LV, and currents, or even source and beam status. This is done through the GIF++ web Detector Control Software (DCS) that stores this information in a database.
+
+			\subsubsection{GIF++ RPC DAQ}
+            
+			Two different types of tests are conducted on RPCs via the DAQ. Indeed, the performance of the detectors is measured periodically during dedicated test beam periods using the H4 muon beam. In between these test beam periods, when the beam is not available, the chambers are irradiated by the $^{137}$Cs in order to accumulate deposited charge and the gamma background is measured.
+
+			RPCs under test are connected through LVDS cables to V1190A time-to-digital (TDC) modules manufactured by CAEN. These modules, located in the rack area outside of the bunker, get the logic signals sent by the chambers and save them into their buffers. Due to the limited size of the buffers, the collected data is regularly erased and replaced. A trigger signal is needed for the TDC modules to send the useful data to the DAQ computer via a V1718 CAEN USB communication module.
+
+			In the case of performance test, the trigger signal used for data acquisition is generated by the coincidence of three scintillators. A first one is placed upstream outside of the bunker, a second one is placed downstream outside of the bunker, while a third one is placed in front of the trolley, close by the chambers. Every time a trigger is sent to the TDCs, i.e. every time a muon is detected, knowing the time delay in between the trigger and the RPC signals, signals located in the right time window are extracted from the buffers and saved for later analysis. Signals are taken in a time window of \SI{400}{ns} centered on the muon peak (here we could show a time spectrum). On the other hand, in the case of background rate measurement, the trigger signal needs to be "random" not to measure muons but to look at gamma background. A trigger pulse is continuously generated at a rate of \SI{300}{Hz} using a dual timer. To integrate an as great as possible time, all signals contained within a time window of 10us prior to the random trigger signal are extracted form the buffers and saved for further analysis (here another time spectrum to illustrate could be useful, maybe even place both spectrum together as a single Figure).
+
+			The signals sent to the TDCs correspond to hit collections in the RPCs. When a particle hits an RPC, it induce a signal in the pickup strips of the RPC readout. If this signal is higher than the detection threshold, a LVDS signal is sent to the TDCs. The data is then organised into 4 branches keeping track of the event number, the hit multiplicity for the whole setup, and the time and channel profile of the hits in the TDCs.
+
+			\subsubsection{RPC current, environmental and operation parameter monitoring}
+            
+			In order to take into account the variation of pressure and temperature between different data taking periods the applied voltage is corrected following the relationship :
+
+\begin{equation}
+	HVeff = HVapp\times\left(0.2 + 0.8\cdot\frac{P_0}{P}\times\frac{T}{T_0}\right)
+\end{equation}
+
+where $T_0$ (=\SI{293}{K}) and $P_0$ (=\SI{990}{mbar}) are the reference values.
+
+	\subsection{Tools \& Measurements}
+
+	Insert a short description of the online tools (DAQ, DCS, DQM).\\
+	Insert a short description of the offline tools : tracking and efficiency algorithm.\\
+	Identify long term aging effects we are monitoring the rates per strip.
 
 %****************************************** RESULTS AND DISCUSSIONS ************************************************************************
 \section{Results and discussions}
@@ -373,7 +409,7 @@
 		\end{figure}
 	
 	%****************************************** RESULTS AT GIF++ ********************************************************************
-	\subsection{Consolidation studies results}
+	\subsection{Longevity studies results}
 	\label{ssec:GIF++Results}
 
 %\renewcommand*{\thesection}{\thechapter.\arabic{section}}       % reset again to chaptnum.sectnum
