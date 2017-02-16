@@ -17,6 +17,19 @@
 	%****************************************** HL LHC ******************************************************************************
 	\subsection{\acl{HL-LHC}}
 	\label{ssec:HL-LHC}
+	
+	The upgrade from \acs{LHC} to \acs{HL-LHC} will increase the peak luminosity from 10$^{34}$ \si{cm^{-2}.s^{-1}} to reach 7.5$\times$10$^{34}$ \si{cm^{-2}.s^{-1}}, increasing in the same way the total expected background to which the \acs{RPC} system will be subjected to. Composed of low energy gammas and neutrons from $p$-$p$ collisions, low momentum primary and secondary muons, puch-through hadrons from calorimeters, and particles produced in the interaction of the beams with collimators, the background will mostly affect the regions of CMS that are the closest to the beam line, i.e. the \acs{RPC} detectors located in the endcaps.\\
+		The information collected with 2016 data allowed us to understand that the hottest \acs{RPC} regions are located in the fourth endcap stations. Extrapolating from the data shown in Figure~\ref{Fig:Rates-2016}, the maximum rate per unit area under \acs{HL-LHC} conditions is therefore foreseen to increase to values of the order of \SI{400}{Hz/cm^2} in the chambers of the present muon system. To the \SI{4000}{fb^{-1}} of integrated luminosity, over the 10 years of HL-LHC lifetime, will correspond $\sim$\SI{0.4}{C/cm^2} of integrated charge inside the hottest regions of the detectors.\\
+    	During Run-I, the \acs{RPC} system provided stable operation and excellent performance and did not show any aging effects. In the past, extensive long-term tests were carried out at several gamma and neutron facilities certifying the detector performance up to values of dose, charge and fluence close to those expected after ten years of \acs{HL-LHC} operation. Both full size and small prototype RPCs have been irradiated with photons up to an integrated charge of $\sim$\SI{0.05}{C/cm^2} and $\sim$\SI{0.4}{C/cm^2}, respectively~\cite{GIF2004,AGING2009}.\\
+    
+	    \begin{figure}[!h]
+	    	\begin{center}
+	    		\includegraphics[width=0.8\linewidth]{fig/RE4-rates-2016-data.png}\\
+	    	\end{center}
+	        \caption{\label{Fig:Rates-2016} The plots represent the \acs{RPC} rate measured in 2016 in $p$-$p$ collision runs as function of the instantaneous luminosity. Every point corresponds to a particular run.}
+	    \end{figure}
+	    
+	    In this perspective, studying the performance of the present system up to an integrated charge of $\sim$\SI{1.2}{C/cm^2}, 3 times higher than what expected for 10 years of operation of \acs{HL-LHC}, and background hit rates of \SI{1200}{Hz/cm^2}, 3 times stronger than what expected from the designed peak luminosity, and identifying possible long-term aging effects are necessary steps to take to insure that the RPCs will be able to cope with the high radiation conditions.\\
 
 	%****************************************** GAMMA IRRADIATION FACILITIES ********************************************************
 	\subsection{The Gamma Irradiation Facilities}
@@ -339,6 +352,81 @@
 
 \section{Longevity tests at \acs{GIF++}}
 \label{sec:GIFtests}
+
+		
+	    This study implies a monitoring of the performance of the detectors probed using a high intensity muon beam in a irradiated environment by periodically measuring their rate capability, the dark current running through them and the bulk resistivity of the Bakelite composing their electrodes. GIF++, with its very intense $^{137}$Cs source, provides the perfect environment to perform such kind of tests. Assuming a maximum acceleration factor of 3, it is expected to accumulate the equivalent charge in 1.7 years.\\
+	    As the maximum background is found in the endcap, the choice naturally was made to focus the GIF++ longevity studies on endcap chambers. Most of the RPC system was installed in 2007. Nevertheless, the large chambers in the fourth endcap (RE4/2 and RE4/3) have been installed during LS1 in 2014. The Bakelite of these two different productions having different properties, four spare chambers of the present system were selected, two RE2,3/2 spares and two RE4/2 spares. Having two chambers of each type allows to always keep one of them non irradiated as reference, the performance evolution of the irradiated chamber being then compared through time to the performance of the non irradiated one.\\
+	    The performance of the detectors under different level of irradiation is measured periodically during dedicated test beam periods using the H4 muon beam. In between these test beam periods, the two RE2,3/2 and RE4/2 chambers selected for this study are irradiated by the $^{137}$Cs source in order to accumulate charge and the gamma background is monitored, as well as the currents. The two remaining chambers are kept non-irradiated as reference detectors. Due to the limited gas flow in GIF++, the RE4 chamber remained non-irradiated until end of November 2016 where a new mass flow controller has been installed allowing for bigger volumes of gas to flow in the system.\\
+	     Figures~\ref{Fig:Eff-vs-Rate} and \ref{Fig:WP-vs-Rate} give us for different test beam periods, and thus for increasing integrated charge through time, a comparison of the maximum efficiency, obtained using a sigmoid-like function, and of the working point of both irradiated and non irradiated chambers~\cite{SIGMOID2005}. No aging is yet to see from this data, the shifts in $\gamma$ rate per unit area  in between irradiated and non irradiated detectors and RE2 and RE4 types being easily explained by a difference of sensitivity due to the various Bakelite resistivities of the HPL electrodes used for the electrode production.\\
+	     Collecting performance data at each test beam period allows us to extrapolate the maximum efficiency for a background hit rate of \SI{300}{Hz/cm^2} corresponding to the expected HL-LHC conditions. Aging effects could emerge from a loss of efficiency with increasing integrated charge over time, thus Figure~\ref{Fig:Eff-vs-Qint} helps us understand such degradation of the performance of irradiated detectors in comparison with non irradiated ones. The final answer for an eventual loss of efficiency is given in Figure~\ref{Fig:Eff-Bef-Aft} by comparing for both irradiated and non irradiated detectors the efficiency sigmoids before and after the longevity study. Moreover, to complete the performance information, the Bakelite resistivity is regularly measured thanks to $Ag$ scans (Figure~\ref{Fig:Res-vs-Qint}) and the noise rate is monitored weekly during irradiation periods (Figure~\ref{Fig:Noise-vs-Qint}). At the end of 2016, no signs of aging were observed and further investigation is needed to get closer to the final integrated charge requirements proposed for the longevity study of the present CMS RPC sub-system.\\
+	    
+	    
+	    \begin{figure}[!h]
+	    	\begin{subfigure}{0.5\linewidth}
+	    		\includegraphics[width=\linewidth]{fig/Eff-vs-Rate-RE2.png}\\
+	        	\caption{\label{Fig:Eff-vs-Rate:RE2}}
+	    	\end{subfigure}
+	    	\begin{subfigure}{0.5\linewidth}
+	    		\includegraphics[width=\linewidth]{fig/Eff-vs-Rate-RE4.png}\\
+	        	\caption{\label{Fig:Eff-vs-Rate:RE4}}
+	    	\end{subfigure}
+	        \caption{\label{Fig:Eff-vs-Rate} Evolution of the maximum efficiency for RE2 (\ref{Fig:Eff-vs-Rate:RE2}) and RE4 (\ref{Fig:Eff-vs-Rate:RE4}) chambers with increasing extrapolated $\gamma$ rate per unit area at working point. Both irradiated (blue) and non irradiated (red) chambers are shown.}
+	    \end{figure}
+	    
+	    \begin{figure}[!h]
+	    	\begin{subfigure}{0.5\linewidth}
+	    		\includegraphics[width=\linewidth]{fig/WP-vs-Rate-RE2.png}\\
+	        	\caption{\label{Fig:WP-vs-Rate:RE2}}
+	    	\end{subfigure}
+	    	\begin{subfigure}{0.5\linewidth}
+	    		\includegraphics[width=\linewidth]{fig/WP-vs-Rate-RE4.png}\\
+	        	\caption{\label{Fig:WP-vs-Rate:RE4}}
+	    	\end{subfigure}
+	        \caption{\label{Fig:WP-vs-Rate} Evolution of the working point for RE2 (\ref{Fig:WP-vs-Rate:RE2}) and RE4 (\ref{Fig:WP-vs-Rate:RE4}) with increasing extrapolated $\gamma$ rate per unit area at working point. Both irradiated (blue) and non irradiated (red) chambers are shown.}
+	    \end{figure}
+	    
+	    \begin{figure}[!h]
+	    	\begin{subfigure}{0.5\linewidth}
+	    		\includegraphics[width=\linewidth]{fig/Eff-vs-Qint-RE2.png}\\
+	        	\caption{\label{Fig:Eff-vs-Qint:RE2}}
+	    	\end{subfigure}
+	    	\begin{subfigure}{0.5\linewidth}
+	    		\includegraphics[width=\linewidth]{fig/Eff-vs-Qint-RE4.png}\\
+	        	\caption{\label{Fig:Eff-vs-Qint:RE4}}
+	    	\end{subfigure}
+	        \caption{\label{Fig:Eff-vs-Qint} Evolution of the maximum efficiency at HL-LHC conditions, i.e. a background hit rate per unit area of \SI{300}{Hz/cm^2}, with increasing integrated charge for RE2 (\ref{Fig:Eff-vs-Qint:RE2}) and RE4 (\ref{Fig:Eff-vs-Qint:RE4}) detectors. Both irradiated (blue) and non irradiated (red) chambers are shown. The integrated charge for non irradiated detectors is recorded during test beam periods and stays small with respect to the charge accumulated in irradiated chambers.}
+	    \end{figure}
+	    
+	    \begin{figure}[!h]
+	    	\begin{subfigure}{0.5\linewidth}
+	    		\includegraphics[width=\linewidth]{fig/CMSlogo.png}\\
+	        	\caption{\label{Fig:Eff-Bef-Af:RE2}}
+	    	\end{subfigure}
+	    	\begin{subfigure}{0.5\linewidth}
+	    		\includegraphics[width=\linewidth]{fig/CMSlogo.png}\\
+	        	\caption{\label{Fig:Eff-Bef-Af:RE4}}
+	    	\end{subfigure}
+	        \caption{\label{Fig:Eff-Bef-Aft} Comparison of the efficiency sigmoid before (triangles) and after (circles) irradiation for RE2 (\ref{Fig:Eff-Bef-Af:RE2}) and RE4 (\ref{Fig:Eff-Bef-Af:RE4}) detectors. Both irradiated (blue) and non irradiated (red) chambers are shown.}
+	    \end{figure}
+	    
+	    \begin{figure}[!h]
+	    	\begin{subfigure}{0.5\linewidth}
+	    		\includegraphics[width=\linewidth]{fig/Res-vs-Qint-RE2.png}\\
+	        	\caption{\label{Fig:Res-vs-Qint:RE2}}
+	    	\end{subfigure}
+	    	\begin{subfigure}{0.5\linewidth}
+	    		\includegraphics[width=\linewidth]{fig/Res-vs-Qint-RE4.png}\\
+	        	\caption{\label{Fig:Res-vs-Qint:RE4}}
+	    	\end{subfigure}
+	        \caption{\label{Fig:Res-vs-Qint} Evolution of the Bakelite resistivity for RE2 (\ref{Fig:Res-vs-Qint:RE2}) and RE4 (\ref{Fig:Res-vs-Qint:RE4}) detectors. Both irradiated (blue) and non irradiated (red) chambers are shown.}
+	    \end{figure}
+	    
+	    \begin{figure}[!h]
+	    	\begin{center}
+	    		\includegraphics[width=0.5\linewidth]{fig/Noise-vs-Qint-RE2.png}\\
+	    	\end{center}
+	        \caption{\label{Fig:Noise-vs-Qint} Evolution of the noise rate per unit area for the irradiated chamber RE2-2-BARC-9 only.}
+	    \end{figure}
 
 		\subsection{Description of the \acl{DAQ}}
 
