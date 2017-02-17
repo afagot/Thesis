@@ -22,8 +22,8 @@
 %\usepackage{tocbibind} % automatically add bibliography, list of figures, ... to table of contents
 \usepackage[a4paper,verbose, asymmetric, centering]{geometry}  % better control over margins
 %\usepackage[hang]{caption}     %better control over captions (sideways, font, ...)  hang -> 2nd line of caption is indented (caption2 is deprecated and beta)
-\usepackage[justification=centering]{caption}     %better control over captions (sideways, font, ...)  
-\usepackage[subrefformat=parens]{subcaption}
+\usepackage{caption}     %better control over captions (sideways, font, ...)  
+\usepackage[subrefformat=parens,justification=centering]{subcaption}
 %\usepackage{cite}
 
 \usepackage{enumerate}  % to make it possible to define the numbers (A,a, ...)
@@ -302,7 +302,6 @@ Alexis Fagot}}
 \include{Chapters/chapt5}
 \include{Chapters/chapt6}
 \include{Chapters/chapt7}
-\include{Chapters/chapt8}
 
 \newpage
 \printbibliography
