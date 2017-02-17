@@ -9,36 +9,34 @@
 \chapter[Longevity studies and Consolidation of the present \acs{CMS} \acs{RPC} subsystem]%
 {Longevity studies and Consolidation of the present \acs{CMS} \acs{RPC} subsystem}
 \label{chapt:5}
+	
+	The upgrade from LHC to HL-LHC will increase the peak luminosity from 10$^{34}$ \si{cm^{-2}.s^{-1}} to reach 7.5$\times$10$^{34}$ \si{cm^{-2}.s^{-1}}, increasing in the same way the total expected background to which the RPC system will be subjected to. Composed of low energy gammas and neutrons from $p$-$p$ collisions, low momentum primary and secondary muons, puch-through hadrons from calorimeters, and particles produced in the interaction of the beams with collimators, the background will mostly affect the regions of CMS that are the closest to the beam line, i.e. the RPC detectors located in the endcaps.\\
+	
+    The information collected with 2016 data allowed us to understand that the hottest RPC regions are located in the fourth endcap stations. Extrapolating from the data shown in Figure~\ref{Fig:Data-2016}, the maximum rate per unit area under HL-LHC conditions is therefore foreseen to increase to values of the order of \SI{400}{Hz/cm^2} in the chambers of the present muon system. To the \SI{4000}{fb^{-1}} of integrated luminosity, over the 10 years of HL-LHC lifetime, will correspond $\sim$\SI{0.4}{C/cm^2} of integrated charge inside the hottest regions of the detectors, considering the current total delivered luminosity from $p$-$p$ collisions of about \SI{75}{fb^{-1}} and the total integrated charge estimated to be about \SI{5.8}{mC/cm^2} in the endcap.\\
+    
+    During Run-I, the RPC system provided stable operation and excellent performance and did not show any aging effects. In the past, extensive long-term tests were carried out at several gamma and neutron facilities certifying the detector performance up to values of dose, charge and fluence close to those expected after ten years of HL-LHC operation. Both full size and small prototype RPCs have been irradiated with photons up to an integrated charge of $\sim$\SI{0.05}{C/cm^2} and $\sim$\SI{0.4}{C/cm^2}, respectively~\cite{GIF2004,AGING2009}.\\
+    
+    \begin{figure}[!h]
+	    \begin{subfigure}{\plotwidth}
+    		\begin{center}
+	    		\includegraphics[height=6cm]{fig/RE4-rates-2016-data.png}\\
+	        	\caption{\label{Fig:Rates-2016}}
+    		\end{center}
+	    \end{subfigure}
+	    \begin{subfigure}{\plotwidth}
+    		\begin{center}
+	    		\includegraphics[height=6cm]{fig/Endcap-TOT-Qint-data.png}\\
+	        	\caption{\label{Fig:Qint-2016}}
+    		\end{center}
+	    \end{subfigure}
+        \caption{\label{Fig:Data-2016} Figure~\ref{Fig:Rates-2016} represent the RPC rate measured in 2016 in $p$-$p$ collision runs as function of the instantaneous luminosity. Every point corresponds to a particular run. Figure~\ref{Fig:Qint-2016} represent the integrated charge for Endcap. The integrated charge in years is shown in blue. The red curve shows the cumulative evolution of the integrated charge in time.}
+    \end{figure}
+    
+    In this perspective, studying the performance of the present system up to an integrated charge of $\sim$\SI{1.2}{C/cm^2}, 3 times higher than what expected for 10 years of operation of HL-LHC, and background hit rates of \SI{1200}{Hz/cm^2}, 3 times stronger than what expected from the designed peak luminosity, and identifying possible long-term aging effects are necessary steps to take to insure that the RPCs will be able to cope with the high radiation conditions.\\
 
 %****************************************** TESTING DETECTORS UNDER EXTREME CONDITIONS *****************************************************
 \section{Testing detectors under extreme conditions}
 \label{sec:extreme}
-
-	%****************************************** HL LHC ******************************************************************************
-	\subsection{\acl{HL-LHC}}
-	\label{ssec:HL-LHC}
-	
-		The upgrade from LHC to HL-LHC will increase the peak luminosity from 10$^{34}$ \si{cm^{-2}.s^{-1}} to reach 7.5$\times$10$^{34}$ \si{cm^{-2}.s^{-1}}, increasing in the same way the total expected background to which the RPC system will be subjected to. Composed of low energy gammas and neutrons from $p$-$p$ collisions, low momentum primary and secondary muons, puch-through hadrons from calorimeters, and particles produced in the interaction of the beams with collimators, the background will mostly affect the regions of CMS that are the closest to the beam line, i.e. the RPC detectors located in the endcaps.\\
-	    The information collected with 2016 data allowed us to understand that the hottest RPC regions are located in the fourth endcap stations. Extrapolating from the data shown in Figure~\ref{Fig:Data-2016}, the maximum rate per unit area under HL-LHC conditions is therefore foreseen to increase to values of the order of \SI{400}{Hz/cm^2} in the chambers of the present muon system. To the \SI{4000}{fb^{-1}} of integrated luminosity, over the 10 years of HL-LHC lifetime, will correspond $\sim$\SI{0.4}{C/cm^2} of integrated charge inside the hottest regions of the detectors, considering the current total delivered luminosity from $p$-$p$ collisions of about \SI{75}{fb^{-1}} and the total integrated charge estimated to be about \SI{5.8}{mC/cm^2} in the endcap.\\
-	    During Run-I, the RPC system provided stable operation and excellent performance and did not show any aging effects. In the past, extensive long-term tests were carried out at several gamma and neutron facilities certifying the detector performance up to values of dose, charge and fluence close to those expected after ten years of HL-LHC operation. Both full size and small prototype RPCs have been irradiated with photons up to an integrated charge of $\sim$\SI{0.05}{C/cm^2} and $\sim$\SI{0.4}{C/cm^2}, respectively~\cite{GIF2004,AGING2009}.\\
-	    
-	    \begin{figure}[!h]
-		    \begin{subfigure}{\plotwidth}
-	    		\begin{center}
-		    		\includegraphics[height=6cm]{fig/RE4-rates-2016-data.png}\\
-		        	\caption{\label{Fig:Rates-2016}}
-	    		\end{center}
-		    \end{subfigure}
-		    \begin{subfigure}{\plotwidth}
-	    		\begin{center}
-		    		\includegraphics[height=6cm]{fig/Endcap-TOT-Qint-data.png}\\
-		        	\caption{\label{Fig:Qint-2016}}
-	    		\end{center}
-		    \end{subfigure}
-	        \caption{\label{Fig:Data-2016} Figure~\ref{Fig:Rates-2016} represent the RPC rate measured in 2016 in $p$-$p$ collision runs as function of the instantaneous luminosity. Every point corresponds to a particular run. Figure~\ref{Fig:Qint-2016} represent the integrated charge for Endcap. The integrated charge in years is shown in blue. The red curve shows the cumulative evolution of the integrated charge in time.}
-	    \end{figure}
-	    
-	    In this perspective, studying the performance of the present system up to an integrated charge of $\sim$\SI{1.2}{C/cm^2}, 3 times higher than what expected for 10 years of operation of HL-LHC, and background hit rates of \SI{1200}{Hz/cm^2}, 3 times stronger than what expected from the designed peak luminosity, and identifying possible long-term aging effects are necessary steps to take to insure that the RPCs will be able to cope with the high radiation conditions.\\
 
 	%****************************************** GAMMA IRRADIATION FACILITIES ********************************************************
 	\subsection{The Gamma Irradiation Facilities}
@@ -47,7 +45,7 @@
 		\subsubsection{GIF}
 		\label{sssec:GIF}
 		
-			GIF was a test area located in the SPS West Area at the downstream end of the X5 test beam in which particle detectors were exposed to a particle beam in presence of an adjustable background flux of photons~\cite{GIFacility}. This facility's goal was to simulate background conditions these detectors would suffer in their operating environment at the LHC. A schematic layout of the GIF zone is shown in Figure ~\ref{fig:GIFLayout}. Photons are produced by a strong radioactive source of $^{137}$Cs installed in the upstream part of the zone inside a lead container, which includes a collimator, designed to irradiate a \SIsurface{6}{6}{\meter} area at \SI{5}{\meter} distance from the source. A thin lens-shaped lead filter renders the outcoming flux uniform in the vertical plane orthogonal to the beam direction. Control of the photon rate is achieved by further lead filters allowing the maximum rate to be limited and to vary within a range of four orders of magnitude. The $\gamma$ source is located in a rectangular lead container.
+			Located in the SPS West Area at the downstream end of the X5 test beam, GIF was a test area in which particle detectors were exposed to a particle beam in presence of an adjustable gamma background~\cite{AGOSTEO1999}. Its goal was to reproduce background conditions these detectors would suffer in their operating environment at LHC. GIF layout is shown in Figure ~\ref{fig:GIFLayout}. Gamma photons are produced by a strong $^{137}$Cs source installed in the upstream part of the zone inside a lead container. The source container includes a collimator, designed to irradiate a \SIsurface{6}{6}{\meter} area at \SI{5}{\meter} maximum to the source. A thin lens-shaped lead filter helps providing with a uniform outcoming flux in a vertical plane, orthogonal to the beam direction. The principal collimator hole provides a pyramidal aperture of \SI{74}{\degree}$\times$ \SI{74}{\degree} solid angle and provides a photon flux in a pyramidal volume along the beam axis. The photon rate is controled by further lead filters allowing the maximum rate to be limited and to vary within a range of four orders of magnitude. Particle detectors under test are then placed within the pyramidal volume in front of the source, perpendicularly to the beam line in order to profit from the homogeneous photon flux. Adjusting the background flux of photons can then be done by using the filters and choosing the position of the detectors with respect to the source.\\
 	
 			\begin{figure}[!h]
 				\begin{center}
@@ -56,16 +54,14 @@
 				\end{center}
 			\end{figure}
 			
-			As described on Figure~\ref{fig:CsSource}, the $^{137}$Cs source with a half-life of 30 years and an activity of \SI{740}{\GBq}, as measured on the 5$^{th}$ March 1997, emits a \SI{662}{\keV} photon in 85\% of the decays. The principal collimator hole provides a pyramidal aperture of \SI{74}{\degree}$\times$ \SI{74}{\degree} solid angle. This provides a photon flux in a pyramidal volume of \SI{5}{\meter} maximum length along the beam axis.
+			As described on Figure~\ref{fig:CsSource}, the $^{137}$Cs source emits a \SI{662}{\keV} photon in 85\% of the decays. An activity of \SI{740}{\GBq} was measured on the 5$^{th}$ March 1997. To estimate the strength of the flux in 2014, it is necessary to consider the nuclear decay through time assiciated to the Cesium source whose half-life is well known ($t_{1/2}=$ \SIerror{30.05}{0.08}{y}). The GIF tests where done in between the $20^{th}$ and the $31^{st}$ of August 2014, i.e. at a time $t=$ \SIerror{17.47}{0.02}{y} resulting in an attenuation of the activity from \SI{740}{GBq} in 1997 to \SI{494}{GBq} in 2014.\\
 
-				\begin{figure}[!h]
+			\begin{figure}[!h]
 				\begin{center}
 					\includegraphics[width = \plotwidth]{fig/Cs137.pdf}\\
 					\caption{\label{fig:CsSource} $^{137}$Cs decays by $\beta^-$ emission to the ground state of $^{137}$Ba (BR = 5.64\%) and via the \SI{662}{\keV} isomeric level of $^{137}$Ba (BR = 94.36\%) whose half-life is 2.55 min.}
 				\end{center}
 			\end{figure}
-			
-			Particle detectors under test are then placed within the pyramidal volume in front of the source, perpendicularly to the beam line in order to profit from the homogeneous photon flux. Adjusting the background flux of photons can then be done by using the filters and choosing the position of the detectors with respect to the source.
 			
 		
 		%****************************************** NEW GIF ******************************************************************
