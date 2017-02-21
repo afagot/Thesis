@@ -9,6 +9,10 @@
 \chapter[Longevity studies and Consolidation of the present \acs{CMS} \acs{RPC} subsystem]%
 {Longevity studies and Consolidation of the present \acs{CMS} \acs{RPC} subsystem}
 \label{chapt:5}
+
+%****************************************** TESTING DETECTORS UNDER EXTREME CONDITIONS *****************************************************
+\section{Testing detectors under extreme conditions}
+\label{sec:extreme}
 	
 	The upgrade from LHC to HL-LHC will increase the peak luminosity from 10$^{34}$ \si{cm^{-2}.s^{-1}} to reach 7.5$\times$10$^{34}$ \si{cm^{-2}.s^{-1}}, increasing in the same way the total expected background to which the RPC system will be subjected to. Composed of low energy gammas and neutrons from $p$-$p$ collisions, low momentum primary and secondary muons, puch-through hadrons from calorimeters, and particles produced in the interaction of the beams with collimators, the background will mostly affect the regions of CMS that are the closest to the beam line, i.e. the RPC detectors located in the endcaps.\\
 	
@@ -17,26 +21,20 @@
     During Run-I, the RPC system provided stable operation and excellent performance and did not show any aging effects. In the past, extensive long-term tests were carried out at several gamma and neutron facilities certifying the detector performance up to values of dose, charge and fluence close to those expected after ten years of HL-LHC operation. Both full size and small prototype RPCs have been irradiated with photons up to an integrated charge of $\sim$\SI{0.05}{C/cm^2} and $\sim$\SI{0.4}{C/cm^2}, respectively~\cite{GIF2004,AGING2009}.\\
     
     \begin{figure}[!h]
-	    \begin{subfigure}{\plotwidth}
-    		\begin{center}
-	    		\includegraphics[height=6cm]{fig/RE4-rates-2016-data.png}\\
-	        	\caption{\label{Fig:Rates-2016}}
-    		\end{center}
+	    \begin{subfigure}{\linewidth}
+	        \centering
+    		\includegraphics[height=5cm]{fig/RE4-rates-2016-data.png}\\
+        	\caption{\label{Fig:Rates-2016}}
 	    \end{subfigure}
-	    \begin{subfigure}{\plotwidth}
-    		\begin{center}
-	    		\includegraphics[height=6cm]{fig/Endcap-TOT-Qint-data.png}\\
-	        	\caption{\label{Fig:Qint-2016}}
-    		\end{center}
+	    \begin{subfigure}{\linewidth}
+    	    \centering
+    		\includegraphics[height=5cm]{fig/Endcap-TOT-Qint-data.png}\\
+        	\caption{\label{Fig:Qint-2016}}
 	    \end{subfigure}
         \caption{\label{Fig:Data-2016} Figure~\ref{Fig:Rates-2016} represent the RPC rate measured in 2016 in $p$-$p$ collision runs as function of the instantaneous luminosity. Every point corresponds to a particular run. Figure~\ref{Fig:Qint-2016} represent the integrated charge for Endcap. The integrated charge in years is shown in blue. The red curve shows the cumulative evolution of the integrated charge in time.}
     \end{figure}
     
     In this perspective, studying the performance of the present system up to an integrated charge of $\sim$\SI{1.2}{C/cm^2}, 3 times higher than what expected for 10 years of operation of HL-LHC, and background hit rates of \SI{1200}{Hz/cm^2}, 3 times stronger than what expected from the designed peak luminosity, and identifying possible long-term aging effects are necessary steps to take to insure that the RPCs will be able to cope with the high radiation conditions.\\
-
-%****************************************** TESTING DETECTORS UNDER EXTREME CONDITIONS *****************************************************
-\section{Testing detectors under extreme conditions}
-\label{sec:extreme}
 
 	%****************************************** GAMMA IRRADIATION FACILITIES ********************************************************
 	\subsection{The Gamma Irradiation Facilities}
@@ -45,7 +43,7 @@
 		\subsubsection{GIF}
 		\label{sssec:GIF}
 		
-			Located in the SPS West Area at the downstream end of the X5 test beam, GIF was a test area in which particle detectors were exposed to a particle beam in presence of an adjustable gamma background~\cite{AGOSTEO1999}. Its goal was to reproduce background conditions these detectors would suffer in their operating environment at LHC. GIF layout is shown in Figure ~\ref{fig:GIFLayout}. Gamma photons are produced by a strong $^{137}$Cs source installed in the upstream part of the zone inside a lead container. The source container includes a collimator, designed to irradiate a \SIsurface{6}{6}{\meter} area at \SI{5}{\meter} maximum to the source. A thin lens-shaped lead filter helps providing with a uniform outcoming flux in a vertical plane, orthogonal to the beam direction. The principal collimator hole provides a pyramidal aperture of \SI{74}{\degree}$\times$ \SI{74}{\degree} solid angle and provides a photon flux in a pyramidal volume along the beam axis. The photon rate is controled by further lead filters allowing the maximum rate to be limited and to vary within a range of four orders of magnitude. Particle detectors under test are then placed within the pyramidal volume in front of the source, perpendicularly to the beam line in order to profit from the homogeneous photon flux. Adjusting the background flux of photons can then be done by using the filters and choosing the position of the detectors with respect to the source.\\
+			Located in the SPS West Area at the downstream end of the X5 test beam, the \acf{GIF} was a test area in which particle detectors were exposed to a particle beam in presence of an adjustable gamma background~\cite{AGOSTEO1999}. Its goal was to reproduce background conditions these detectors would suffer in their operating environment at LHC. GIF layout is shown in Figure ~\ref{fig:GIFLayout}. Gamma photons are produced by a strong $^{137}$Cs source installed in the upstream part of the zone inside a lead container. The source container includes a collimator, designed to irradiate a \SIsurface{6}{6}{\meter} area at \SI{5}{\meter} maximum to the source. A thin lens-shaped lead filter helps providing with a uniform outcoming flux in a vertical plane, orthogonal to the beam direction. The principal collimator hole provides a pyramidal aperture of \SI{74}{\degree}$\times$ \SI{74}{\degree} solid angle and provides a photon flux in a pyramidal volume along the beam axis. The photon rate is controled by further lead filters allowing the maximum rate to be limited and to vary within a range of four orders of magnitude. Particle detectors under test are then placed within the pyramidal volume in front of the source, perpendicularly to the beam line in order to profit from the homogeneous photon flux. Adjusting the background flux of photons can then be done by using the filters and choosing the position of the detectors with respect to the source.\\
 	
 			\begin{figure}[!h]
 				\begin{center}
@@ -68,20 +66,43 @@
 		\subsubsection{GIF++}
 		\label{sssec:GIF++}
 		
-			GIF++ is a test area located in the SPS North Area at the downstream end of the H4 test beam. In this facility, particle detectors are tested using a particle beam in presence of an adjustable background flux of photons. The goal is to simulate background conditions these detectors would suffer in their operating environment at the HL-LHC. Gamma photons are produced by a strong radioactive $^{137}$Cs source installed in the center part of the zone, with an activity of \SI{13.1}{TBq}, emitting \SI{662}{\keV} photons. A thin lens-shaped lead filter renders the outcoming flux uniform in the vertical plane orthogonal to the beam direction. Control of the photon rate is achieved by using a set of filters allowing the maximum rate to be limited and to vary within a range of four orders of magnitude. The H4 beam, composed of muons with a momentum of about \SI{150}{GeV/c}, passes through the GIF++ zone and is used to study the performance of the detectors. Its flux is of \SI{104}{particles/s/\square\cm} focused in an area similar to \SIsurface{10}{10}{\cm}.
-		
-		
+			The \acf{GIF++}, located in the SPS North Area at the downstream end of the H4 test beam, has replaced its predecessor during LS1 and has been operational since spring 2015~\cite{JAKEL2014}. Like GIF, GIF++ features a $^{137}$Cs source of \SI{662}{\keV} gamma photons, their fluence being controlled with a set of filters of various attenuation factors. The source provides two separated large irradiation areas for testing several full-size muon detectors with continuous homogeneous irradiation, as presented in Figure~\ref{fig:GIFpp-Layout}.\\
+			
+			\begin{figure}[!h]
+				\begin{center}
+					\includegraphics[width = \plotwidth]{fig/GIFpp-Layout.png}\\
+					\caption{\label{fig:GIFpp-Layout} Floor plan of the GIF++ facility. When the facility downstream of the GIF++ takes electron beam, a beam pipe is installed along the beam line (z-axis). The irradiator can be displaced laterally (its center moves from $x=$\SI{0.65}{m} to \SI{2.15}{m}), to increase the distance to the beam pipe.}
+				\end{center}
+			\end{figure}
+			
+			 The source activity was measured to be about \SI{13.5}{TBq} in March 2016. The photon flux being far greater than HL-LHC expectations, GIF++ provides an excellent facility for accelerated aging tests of muon detectors.\\
+			 
+			\begin{figure}[!h]
+				\begin{subfigure}{\linewidth}
+				    \centering
+					\includegraphics[width = \plotwidth]{fig/GIFpp-gCurrent-XZ.png}\\
+					\caption{\label{fig:GIFpp-gCurrent:XZ}}
+				\end{subfigure}
+				\begin{subfigure}{\linewidth}
+				    \centering
+					\includegraphics[width = \plotwidth]{fig/GIFpp-gCurrent-YZ.png}
+					\caption{\label{fig:GIFpp-gCurrent:YZ}}
+				\end{subfigure}
+				\caption{\label{fig:GIFpp-gCurrent} Simulated unattenuated current of photons in the xz plane (Figure~\ref{fig:GIFpp-gCurrent:XZ}) and yz plane (Figure~\ref{fig:GIFpp-gCurrent:YZ}) through the source at $x=$\SI{0.65}{m} and $y=$\SI{0}{m}. With angular correction filters, the current of \SI{662}{keV} photons is made uniform in xy planes.}
+		    \end{figure}
+			
+			 The source is situated in the muon beam line with the muon beam being available a few times a year. The H4 beam, composed of muons with a momentum of about \SI{150}{GeV/c}, passes through the GIF++ zone and is used to study the performance of the detectors. Its flux is of \SI{104}{particles/s/\square\cm} focused in an area similar to \SIsurface{10}{10}{\cm}. Therefore, with properly adjusted filters, one can imitate the HL-LHC background and study the performance of muon detectors with their trigger/readout electronics in HL-LHC environment.\\
 
 %****************************************** PRIMARILY TESTS AT GIF *************************************************************************
 \section{Preliminary tests at GIF}
 \label{sec:GIFtests}
-				
+	%********************************************* GIF SETUP *************************************************************************
 	\subsection{\acl{RPC} test setup}
 	\label{ssec:RPCSetup}
 	
 		During summer 2014, preliminary tests have been conducted in the GIF area on a newly produced RE4/2 chamber labelled RE-4-2-BARC-161. This chamber has been placed into a trolley covered with a tent. The position of the RPC inside the tent and of the tent related to the source is described in Figure~\ref{fig:GIFSetup}. To test this CMS RPC, three different absorber settings were used. First of all, measurements were done with fully opened source. Then, to complete this preliminary study, the gamma flux has been attenuated by a factor 2 and a factor 5. The expected gamma flux at the level of our detector will be discussed in subsection~\ref{ssec:gFlux}.
 
-				\begin{figure}[!h]
+		\begin{figure}[!h]
 			\begin{subfigure}{0.5\linewidth}
 				\includegraphics[width = 0.5\plotwidth]{fig/position-side.pdf}
 				\caption{\label{fig:GIFSetup:A}}
@@ -109,6 +130,7 @@
 			\end{center}
 		\end{figure}
 		
+	%********************************************** GIF DAQ **************************************************************************
 	\subsection{\acl{DAQ}}
 	\label{ssec:GIFDAQ}
 	
@@ -161,6 +183,7 @@
 			\caption{\label{fig:EffCompar} Results are derived from data taken on half-partition B2 only. On the 18$^{th}$ of June 2014, data has been taken on chamber RE-2-BARC-161 at building 904 (Prevessin Site) with cosmic muons providing us a reference efficiency plateau of \numerror{97.54}{0.15}\% represented by a black curve. A similar measurement has been done at GIF on the 21$^{st}$ of July with the same chamber giving a plateau of \numerror{78.52}{0.94}\% represented by a red curve.}
 		\end{figure}
 		
+	    %****************************************** SIMULATION LAYOUT *******************************************************
 		\subsubsection{Description of the simulation layout}
 		\label{sssec:SimLayout}
 		
@@ -183,7 +206,8 @@
 			\end{figure}
 			
 			In order to further refine the quality of the simulation and understand deeper the results the dependance of the distribution has been studied for a range of telescope inclinations. Moreover, the threshold applied on the PMT signals has been included into the simulation in the form of a cut. In the approximation of uniform scintillators, it has been considered that the threshold can be understood as the minimum distance particles need to travel through the scintillating material to give a strong enough signal. Particles that travel a distance smaller than the set "threshold" are thus not detected by the telescope and cannot trigger the data taking. Finally, the FEE threshold also has been considered in a similar way. The mean momentum of horizontal cosmic rays is higher than those of vertical ones but the stopping power of matter for momenta ranging from \SI{1}{GeV} to \SI{1}{TeV} stays comparable. It is then possible to assume that the mean number of primary $e^-$/ion pairs per unit length will stay similar and thus, depending on the applied discriminator threshold, muons with the shortest path through the gas volume will deposit less charge and induce a smaller signal on the pick-up strips that could eventually not be detected. These two thresholds also restrain the overall geometrical acceptance of the system.
-			
+		
+	    %***************************************** SIMULATION PROCEDURE *****************************************************
 		\subsubsection{Simulation procedure}
 		\label{sssec:SimProc}
 		
@@ -217,7 +241,8 @@
 					sk(x) = g(x)\times s(x) = A_{sk}\frac{e^{\frac{-(x-\bar{x})^2}{2\sigma^2}}}{1+e^{-\lambda(x-x_i)}}
 				\end{equation}
 			\end{center}
-			
+		
+	    %***************************************** SIMULATION RESULTS *******************************************************
 		\subsubsection{Results}
 		\label{sssec:SimRes}
 			
@@ -352,127 +377,10 @@
 				\end{center}
 			\end{figure}
 
-%****************************************** CONSOLIDATION TESTS AT GIF++ *******************************************************************
-\newpage
-
-\section{Longevity tests at \acs{GIF++}}
-\label{sec:GIFtests}
-
+    %************************************* GIF PRELIMINARY RESULTS ******************************************************************
+	\subsection{Results and discussions}
+	\label{ssec:results6}
 		
-	    This study implies a monitoring of the performance of the detectors probed using a high intensity muon beam in a irradiated environment by periodically measuring their rate capability, the dark current running through them and the bulk resistivity of the Bakelite composing their electrodes. GIF++, with its very intense $^{137}$Cs source, provides the perfect environment to perform such kind of tests. Assuming a maximum acceleration factor of 3, it is expected to accumulate the equivalent charge in 1.7 years.\\
-	    As the maximum background is found in the endcap, the choice naturally was made to focus the GIF++ longevity studies on endcap chambers. Most of the RPC system was installed in 2007. Nevertheless, the large chambers in the fourth endcap (RE4/2 and RE4/3) have been installed during LS1 in 2014. The Bakelite of these two different productions having different properties, four spare chambers of the present system were selected, two RE2,3/2 spares and two RE4/2 spares. Having two chambers of each type allows to always keep one of them non irradiated as reference, the performance evolution of the irradiated chamber being then compared through time to the performance of the non irradiated one.\\
-	    The performance of the detectors under different level of irradiation is measured periodically during dedicated test beam periods using the H4 muon beam. In between these test beam periods, the two RE2,3/2 and RE4/2 chambers selected for this study are irradiated by the $^{137}$Cs source in order to accumulate charge and the gamma background is monitored, as well as the currents. The two remaining chambers are kept non-irradiated as reference detectors. Due to the limited gas flow in GIF++, the RE4 chamber remained non-irradiated until end of November 2016 where a new mass flow controller has been installed allowing for bigger volumes of gas to flow in the system.\\
-	     Figures~\ref{Fig:Eff-vs-Rate} and \ref{Fig:WP-vs-Rate} give us for different test beam periods, and thus for increasing integrated charge through time, a comparison of the maximum efficiency, obtained using a sigmoid-like function, and of the working point of both irradiated and non irradiated chambers~\cite{SIGMOID2005}. No aging is yet to see from this data, the shifts in $\gamma$ rate per unit area  in between irradiated and non irradiated detectors and RE2 and RE4 types being easily explained by a difference of sensitivity due to the various Bakelite resistivities of the HPL electrodes used for the electrode production.\\
-	     Collecting performance data at each test beam period allows us to extrapolate the maximum efficiency for a background hit rate of \SI{300}{Hz/cm^2} corresponding to the expected HL-LHC conditions. Aging effects could emerge from a loss of efficiency with increasing integrated charge over time, thus Figure~\ref{Fig:Eff-vs-Qint} helps us understand such degradation of the performance of irradiated detectors in comparison with non irradiated ones. The final answer for an eventual loss of efficiency is given in Figure~\ref{Fig:Eff-Bef-Aft} by comparing for both irradiated and non irradiated detectors the efficiency sigmoids before and after the longevity study. Moreover, to complete the performance information, the Bakelite resistivity is regularly measured thanks to $Ag$ scans (Figure~\ref{Fig:Res-vs-Qint}) and the noise rate is monitored weekly during irradiation periods (Figure~\ref{Fig:Noise-vs-Qint}). At the end of 2016, no signs of aging were observed and further investigation is needed to get closer to the final integrated charge requirements proposed for the longevity study of the present CMS RPC sub-system.\\
-	    
-	    
-	    \begin{figure}[!h]
-	    	\begin{subfigure}{0.5\linewidth}
-	    		\includegraphics[width=\linewidth]{fig/Eff-vs-Rate-RE2.png}\\
-	        	\caption{\label{Fig:Eff-vs-Rate:RE2}}
-	    	\end{subfigure}
-	    	\begin{subfigure}{0.5\linewidth}
-	    		\includegraphics[width=\linewidth]{fig/Eff-vs-Rate-RE4.png}\\
-	        	\caption{\label{Fig:Eff-vs-Rate:RE4}}
-	    	\end{subfigure}
-	        \caption{\label{Fig:Eff-vs-Rate} Evolution of the maximum efficiency for RE2 (\ref{Fig:Eff-vs-Rate:RE2}) and RE4 (\ref{Fig:Eff-vs-Rate:RE4}) chambers with increasing extrapolated $\gamma$ rate per unit area at working point. Both irradiated (blue) and non irradiated (red) chambers are shown.}
-	    \end{figure}
-	    
-	    \begin{figure}[!h]
-	    	\begin{subfigure}{0.5\linewidth}
-	    		\includegraphics[width=\linewidth]{fig/WP-vs-Rate-RE2.png}\\
-	        	\caption{\label{Fig:WP-vs-Rate:RE2}}
-	    	\end{subfigure}
-	    	\begin{subfigure}{0.5\linewidth}
-	    		\includegraphics[width=\linewidth]{fig/WP-vs-Rate-RE4.png}\\
-	        	\caption{\label{Fig:WP-vs-Rate:RE4}}
-	    	\end{subfigure}
-	        \caption{\label{Fig:WP-vs-Rate} Evolution of the working point for RE2 (\ref{Fig:WP-vs-Rate:RE2}) and RE4 (\ref{Fig:WP-vs-Rate:RE4}) with increasing extrapolated $\gamma$ rate per unit area at working point. Both irradiated (blue) and non irradiated (red) chambers are shown.}
-	    \end{figure}
-	    
-	    \begin{figure}[!h]
-	    	\begin{subfigure}{0.5\linewidth}
-	    		\includegraphics[width=\linewidth]{fig/Eff-vs-Qint-RE2.png}\\
-	        	\caption{\label{Fig:Eff-vs-Qint:RE2}}
-	    	\end{subfigure}
-	    	\begin{subfigure}{0.5\linewidth}
-	    		\includegraphics[width=\linewidth]{fig/Eff-vs-Qint-RE4.png}\\
-	        	\caption{\label{Fig:Eff-vs-Qint:RE4}}
-	    	\end{subfigure}
-	        \caption{\label{Fig:Eff-vs-Qint} Evolution of the maximum efficiency at HL-LHC conditions, i.e. a background hit rate per unit area of \SI{300}{Hz/cm^2}, with increasing integrated charge for RE2 (\ref{Fig:Eff-vs-Qint:RE2}) and RE4 (\ref{Fig:Eff-vs-Qint:RE4}) detectors. Both irradiated (blue) and non irradiated (red) chambers are shown. The integrated charge for non irradiated detectors is recorded during test beam periods and stays small with respect to the charge accumulated in irradiated chambers.}
-	    \end{figure}
-	    
-	    \begin{figure}[!h]
-	    	\begin{subfigure}{0.5\linewidth}
-	    		\includegraphics[width=\linewidth]{fig/CMSlogo.png}\\
-	        	\caption{\label{Fig:Eff-Bef-Af:RE2}}
-	    	\end{subfigure}
-	    	\begin{subfigure}{0.5\linewidth}
-	    		\includegraphics[width=\linewidth]{fig/CMSlogo.png}\\
-	        	\caption{\label{Fig:Eff-Bef-Af:RE4}}
-	    	\end{subfigure}
-	        \caption{\label{Fig:Eff-Bef-Aft} Comparison of the efficiency sigmoid before (triangles) and after (circles) irradiation for RE2 (\ref{Fig:Eff-Bef-Af:RE2}) and RE4 (\ref{Fig:Eff-Bef-Af:RE4}) detectors. Both irradiated (blue) and non irradiated (red) chambers are shown.}
-	    \end{figure}
-	    
-	    \begin{figure}[!h]
-	    	\begin{subfigure}{0.5\linewidth}
-	    		\includegraphics[width=\linewidth]{fig/Res-vs-Qint-RE2.png}\\
-	        	\caption{\label{Fig:Res-vs-Qint:RE2}}
-	    	\end{subfigure}
-	    	\begin{subfigure}{0.5\linewidth}
-	    		\includegraphics[width=\linewidth]{fig/Res-vs-Qint-RE4.png}\\
-	        	\caption{\label{Fig:Res-vs-Qint:RE4}}
-	    	\end{subfigure}
-	        \caption{\label{Fig:Res-vs-Qint} Evolution of the Bakelite resistivity for RE2 (\ref{Fig:Res-vs-Qint:RE2}) and RE4 (\ref{Fig:Res-vs-Qint:RE4}) detectors. Both irradiated (blue) and non irradiated (red) chambers are shown.}
-	    \end{figure}
-	    
-	    \begin{figure}[!h]
-	    	\begin{center}
-	    		\includegraphics[width=0.5\linewidth]{fig/Noise-vs-Qint-RE2.png}\\
-	    	\end{center}
-	        \caption{\label{Fig:Noise-vs-Qint} Evolution of the noise rate per unit area for the irradiated chamber RE2-2-BARC-9 only.}
-	    \end{figure}
-
-		\subsection{Description of the \acl{DAQ}}
-
-		For the longevity studies, four spare chambers of the present system are used. Two spare RPCs of the RE2,3 stations as well as two spare RPCs from the new RE4 stations have been mounted in a Trolley. Six RE4 gaps are also placed in the trolley. The trolley is placed inside the GIF++ in the upstream region of the bunker, taking the cesium source as a reference. The trolley is oriented for the detection surface of the chambers to be orthogonal to the beam line. The system can be moved along the orthogonal plane in order to have the beam in all $\eta$-partitions. For the aging the trolley is moved outside the beam line and is placed in a distance of \SI{5.2}{m} to the source, which irradiates the bunker using an attenuation filter of 2.2 which corresponds to a fluence of $10^7$\si{gamma/cm\squared}.
-
-		During GIF++ operation, the data collected can be divided into different categories as several parameters are monitored in addition to the usual RPC performance data. On one hand, to know the performance of a chamber, it is need to measure its efficiency and to know the background conditions in which it is operated. To do this, the hit signals from the chamber are recorded and stored in a ROOT file via a \acf{DAQ} software. On the other hand, it is also very important to monitor parameters such as environmental pressure and temperature, gas temperature and humidity, RPC HV, LV, and currents, or even source and beam status. This is done through the GIF++ web \acf{DCS} that stores this information in a database.
-
-			\subsubsection{\acs{GIF++} \acs{RPC} \acs{DAQ}}
-            
-			Two different types of tests are conducted on RPCs via the DAQ. Indeed, the performance of the detectors is measured periodically during dedicated test beam periods using the H4 muon beam. In between these test beam periods, when the beam is not available, the chambers are irradiated by the $^{137}$Cs in order to accumulate deposited charge and the gamma background is measured.
-
-			RPCs under test are connected through LVDS cables to V1190A \acf{TDC} modules manufactured by CAEN. These modules, located in the rack area outside of the bunker, get the logic signals sent by the chambers and save them into their buffers. Due to the limited size of the buffers, the collected data is regularly erased and replaced. A trigger signal is needed for the TDC modules to send the useful data to the DAQ computer via a V1718 CAEN USB communication module.
-
-			In the case of performance test, the trigger signal used for data acquisition is generated by the coincidence of three scintillators. A first one is placed upstream outside of the bunker, a second one is placed downstream outside of the bunker, while a third one is placed in front of the trolley, close by the chambers. Every time a trigger is sent to the TDCs, i.e. every time a muon is detected, knowing the time delay in between the trigger and the RPC signals, signals located in the right time window are extracted from the buffers and saved for later analysis. Signals are taken in a time window of \SI{400}{ns} centered on the muon peak (here we could show a time spectrum). On the other hand, in the case of background rate measurement, the trigger signal needs to be "random" not to measure muons but to look at gamma background. A trigger pulse is continuously generated at a rate of \SI{300}{Hz} using a dual timer. To integrate an as great as possible time, all signals contained within a time window of 10us prior to the random trigger signal are extracted form the buffers and saved for further analysis (here another time spectrum to illustrate could be useful, maybe even place both spectrum together as a single Figure).
-
-			The signals sent to the TDCs correspond to hit collections in the RPCs. When a particle hits a RPC, it induce a signal in the pickup strips of the RPC readout. If this signal is higher than the detection threshold, a LVDS signal is sent to the TDCs. The data is then organised into 4 branches keeping track of the event number, the hit multiplicity for the whole setup, and the time and channel profile of the hits in the TDCs.
-
-			\subsubsection{\acs{RPC} current, environmental and operation parameter monitoring}
-            
-			In order to take into account the variation of pressure and temperature between different data taking periods the applied voltage is corrected following the relationship :
-
-\begin{equation}
-	HVeff = HVapp\times\left(0.2 + 0.8\cdot\frac{P_0}{P}\times\frac{T}{T_0}\right)
-\end{equation}
-
-where $T_0$ (=\SI{293}{K}) and $P_0$ (=\SI{990}{mbar}) are the reference values.
-
-	\subsection{Tools \& Measurements}
-
-	Insert a short description of the online tools (DAQ, DCS, DQM).\\
-	Insert a short description of the offline tools : tracking and efficiency algorithm.\\
-	Identify long term aging effects we are monitoring the rates per strip.
-
-%****************************************** RESULTS AND DISCUSSIONS ************************************************************************
-\section{Results and discussions}
-\label{sec:results6}
-
-	%****************************************** RESULTS AT GIF **********************************************************************
-	\subsection{Preliminary studies results}
-	\label{ssec:GIFResults}
-	
 		\begin{figure}[!h]
 			\begin{subfigure}{0.5\linewidth}
 				\begin{center}
@@ -500,6 +408,121 @@ where $T_0$ (=\SI{293}{K}) and $P_0$ (=\SI{990}{mbar}) are the reference values.
 			\end{subfigure}
 			\caption{\label{fig:GIFResults} }
 		\end{figure}
+
+%****************************************** CONSOLIDATION TESTS AT GIF++ *******************************************************************
+\newpage
+
+\section{Longevity tests at \acs{GIF++}}
+\label{sec:GIFtests}
+
+    Longevity studies imply a monitoring of the performance of the detectors probed using a high intensity muon beam in a irradiated environment by periodically measuring their rate capability, the dark current running through them and the bulk resistivity of the Bakelite composing their electrodes. GIF++, with its very intense $^{137}$Cs source, provides the perfect environment to perform such kind of tests. Assuming a maximum acceleration factor of 3, it is expected to accumulate the equivalent charge in 1.7 years.\\
+    As the maximum background is found in the endcap, the choice naturally was made to focus the GIF++ longevity studies on endcap chambers. Most of the RPC system was installed in 2007. Nevertheless, the large chambers in the fourth endcap (RE4/2 and RE4/3) have been installed during LS1 in 2014. The Bakelite of these two different productions having different properties, four spare chambers of the present system were selected, two RE2,3/2 spares and two RE4/2 spares. Having two chambers of each type allows to always keep one of them non irradiated as reference, the performance evolution of the irradiated chamber being then compared through time to the performance of the non irradiated one.\\
+    The performance of the detectors under different level of irradiation is measured periodically during dedicated test beam periods using the H4 muon beam. In between these test beam periods, the two RE2,3/2 and RE4/2 chambers selected for this study are irradiated by the $^{137}$Cs source in order to accumulate charge and the gamma background is monitored, as well as the currents. The two remaining chambers are kept non-irradiated as reference detectors. Due to the limited gas flow in GIF++, the RE4 chamber remained non-irradiated until end of November 2016 where a new mass flow controller has been installed allowing for bigger volumes of gas to flow in the system.\\
+     Figures~\ref{Fig:Eff-vs-Rate} and \ref{Fig:WP-vs-Rate} give us for different test beam periods, and thus for increasing integrated charge through time, a comparison of the maximum efficiency, obtained using a sigmoid-like function, and of the working point of both irradiated and non irradiated chambers~\cite{SIGMOID2005}. No aging is yet to see from this data, the shifts in $\gamma$ rate per unit area  in between irradiated and non irradiated detectors and RE2 and RE4 types being easily explained by a difference of sensitivity due to the various Bakelite resistivities of the HPL electrodes used for the electrode production.\\
+     Collecting performance data at each test beam period allows us to extrapolate the maximum efficiency for a background hit rate of \SI{300}{Hz/cm^2} corresponding to the expected HL-LHC conditions. Aging effects could emerge from a loss of efficiency with increasing integrated charge over time, thus Figure~\ref{Fig:Eff-vs-Qint} helps us understand such degradation of the performance of irradiated detectors in comparison with non irradiated ones. The final answer for an eventual loss of efficiency is given in Figure~\ref{Fig:Eff-Bef-Aft} by comparing for both irradiated and non irradiated detectors the efficiency sigmoids before and after the longevity study. Moreover, to complete the performance information, the Bakelite resistivity is regularly measured thanks to $Ag$ scans (Figure~\ref{Fig:Res-vs-Qint}) and the noise rate is monitored weekly during irradiation periods (Figure~\ref{Fig:Noise-vs-Qint}). At the end of 2016, no signs of aging were observed and further investigation is needed to get closer to the final integrated charge requirements proposed for the longevity study of the present CMS RPC sub-system.\\
+    
+    
+    \begin{figure}[!h]
+    	\begin{subfigure}{0.5\linewidth}
+    		\includegraphics[width=\linewidth]{fig/Eff-vs-Rate-RE2.png}\\
+        	\caption{\label{Fig:Eff-vs-Rate:RE2}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+    		\includegraphics[width=\linewidth]{fig/Eff-vs-Rate-RE4.png}\\
+        	\caption{\label{Fig:Eff-vs-Rate:RE4}}
+    	\end{subfigure}
+        \caption{\label{Fig:Eff-vs-Rate} Evolution of the maximum efficiency for RE2 (\ref{Fig:Eff-vs-Rate:RE2}) and RE4 (\ref{Fig:Eff-vs-Rate:RE4}) chambers with increasing extrapolated $\gamma$ rate per unit area at working point. Both irradiated (blue) and non irradiated (red) chambers are shown.}
+    \end{figure}
+    
+    \begin{figure}[!h]
+    	\begin{subfigure}{0.5\linewidth}
+    		\includegraphics[width=\linewidth]{fig/WP-vs-Rate-RE2.png}\\
+        	\caption{\label{Fig:WP-vs-Rate:RE2}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+    		\includegraphics[width=\linewidth]{fig/WP-vs-Rate-RE4.png}\\
+        	\caption{\label{Fig:WP-vs-Rate:RE4}}
+    	\end{subfigure}
+        \caption{\label{Fig:WP-vs-Rate} Evolution of the working point for RE2 (\ref{Fig:WP-vs-Rate:RE2}) and RE4 (\ref{Fig:WP-vs-Rate:RE4}) with increasing extrapolated $\gamma$ rate per unit area at working point. Both irradiated (blue) and non irradiated (red) chambers are shown.}
+    \end{figure}
+    
+    \begin{figure}[!h]
+    	\begin{subfigure}{0.5\linewidth}
+    		\includegraphics[width=\linewidth]{fig/Eff-vs-Qint-RE2.png}\\
+        	\caption{\label{Fig:Eff-vs-Qint:RE2}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+    		\includegraphics[width=\linewidth]{fig/Eff-vs-Qint-RE4.png}\\
+        	\caption{\label{Fig:Eff-vs-Qint:RE4}}
+    	\end{subfigure}
+        \caption{\label{Fig:Eff-vs-Qint} Evolution of the maximum efficiency at HL-LHC conditions, i.e. a background hit rate per unit area of \SI{300}{Hz/cm^2}, with increasing integrated charge for RE2 (\ref{Fig:Eff-vs-Qint:RE2}) and RE4 (\ref{Fig:Eff-vs-Qint:RE4}) detectors. Both irradiated (blue) and non irradiated (red) chambers are shown. The integrated charge for non irradiated detectors is recorded during test beam periods and stays small with respect to the charge accumulated in irradiated chambers.}
+    \end{figure}
+    
+    \begin{figure}[!h]
+    	\begin{subfigure}{0.5\linewidth}
+    		\includegraphics[width=\linewidth]{fig/CMSlogo.png}\\
+        	\caption{\label{Fig:Eff-Bef-Af:RE2}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+    		\includegraphics[width=\linewidth]{fig/CMSlogo.png}\\
+        	\caption{\label{Fig:Eff-Bef-Af:RE4}}
+    	\end{subfigure}
+        \caption{\label{Fig:Eff-Bef-Aft} Comparison of the efficiency sigmoid before (triangles) and after (circles) irradiation for RE2 (\ref{Fig:Eff-Bef-Af:RE2}) and RE4 (\ref{Fig:Eff-Bef-Af:RE4}) detectors. Both irradiated (blue) and non irradiated (red) chambers are shown.}
+    \end{figure}
+    
+    \begin{figure}[!h]
+    	\begin{subfigure}{0.5\linewidth}
+    		\includegraphics[width=\linewidth]{fig/Res-vs-Qint-RE2.png}\\
+        	\caption{\label{Fig:Res-vs-Qint:RE2}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+    		\includegraphics[width=\linewidth]{fig/Res-vs-Qint-RE4.png}\\
+        	\caption{\label{Fig:Res-vs-Qint:RE4}}
+    	\end{subfigure}
+        \caption{\label{Fig:Res-vs-Qint} Evolution of the Bakelite resistivity for RE2 (\ref{Fig:Res-vs-Qint:RE2}) and RE4 (\ref{Fig:Res-vs-Qint:RE4}) detectors. Both irradiated (blue) and non irradiated (red) chambers are shown.}
+    \end{figure}
+    
+    \begin{figure}[!h]
+    	\begin{center}
+    		\includegraphics[width=0.5\linewidth]{fig/Noise-vs-Qint-RE2.png}\\
+    	\end{center}
+        \caption{\label{Fig:Noise-vs-Qint} Evolution of the noise rate per unit area for the irradiated chamber RE2-2-BARC-9 only.}
+    \end{figure}
+
+    %******************************************** GIF++ DAQ *************************************************************************
+	\subsection{Description of the \acl{DAQ}}
+	\label{ssec:GIF++DAQ}
+
+		For the longevity studies, four spare chambers of the present system are used. Two spare RPCs of the RE2,3 stations as well as two spare RPCs from the new RE4 stations have been mounted in a Trolley. Six RE4 gaps are also placed in the trolley. The trolley is placed inside the GIF++ in the upstream region of the bunker, taking the cesium source as a reference. The trolley is oriented for the detection surface of the chambers to be orthogonal to the beam line. The system can be moved along the orthogonal plane in order to have the beam in all $\eta$-partitions. For the aging the trolley is moved outside the beam line and is placed in a distance of \SI{5.2}{m} to the source, which irradiates the bunker using an attenuation filter of 2.2 which corresponds to a fluence of $10^7$\si{gamma/cm\squared}.
+
+		During GIF++ operation, the data collected can be divided into different categories as several parameters are monitored in addition to the usual RPC performance data. On one hand, to know the performance of a chamber, it is need to measure its efficiency and to know the background conditions in which it is operated. To do this, the hit signals from the chamber are recorded and stored in a ROOT file via a \acf{DAQ} software. On the other hand, it is also very important to monitor parameters such as environmental pressure and temperature, gas temperature and humidity, RPC HV, LV, and currents, or even source and beam status. This is done through the GIF++ web \acf{DCS} that stores this information in a database.
+            
+		Two different types of tests are conducted on RPCs via the DAQ. Indeed, the performance of the detectors is measured periodically during dedicated test beam periods using the H4 muon beam. In between these test beam periods, when the beam is not available, the chambers are irradiated by the $^{137}$Cs in order to accumulate deposited charge and the gamma background is measured.
+
+		RPCs under test are connected through LVDS cables to V1190A \acf{TDC} modules manufactured by CAEN. These modules, located in the rack area outside of the bunker, get the logic signals sent by the chambers and save them into their buffers. Due to the limited size of the buffers, the collected data is regularly erased and replaced. A trigger signal is needed for the TDC modules to send the useful data to the DAQ computer via a V1718 CAEN USB communication module.
+
+		In the case of performance test, the trigger signal used for data acquisition is generated by the coincidence of three scintillators. A first one is placed upstream outside of the bunker, a second one is placed downstream outside of the bunker, while a third one is placed in front of the trolley, close by the chambers. Every time a trigger is sent to the TDCs, i.e. every time a muon is detected, knowing the time delay in between the trigger and the RPC signals, signals located in the right time window are extracted from the buffers and saved for later analysis. Signals are taken in a time window of \SI{400}{ns} centered on the muon peak (here we could show a time spectrum). On the other hand, in the case of background rate measurement, the trigger signal needs to be "random" not to measure muons but to look at gamma background. A trigger pulse is continuously generated at a rate of \SI{300}{Hz} using a dual timer. To integrate an as great as possible time, all signals contained within a time window of 10us prior to the random trigger signal are extracted form the buffers and saved for further analysis (here another time spectrum to illustrate could be useful, maybe even place both spectrum together as a single Figure).
+
+		The signals sent to the TDCs correspond to hit collections in the RPCs. When a particle hits a RPC, it induce a signal in the pickup strips of the RPC readout. If this signal is higher than the detection threshold, a LVDS signal is sent to the TDCs. The data is then organised into 4 branches keeping track of the event number, the hit multiplicity for the whole setup, and the time and channel profile of the hits in the TDCs.
+
+    %******************************************** GIF++ DCS *************************************************************************
+	\subsection{RPC current, environmental and operation parameter monitoring}
+	\label{ssec:GIF++DCS}
+            
+		In order to take into account the variation of pressure and temperature between different data taking periods the applied voltage is corrected following the relationship :
+
+		\begin{equation}
+			HVeff = HVapp\times\left(0.2 + 0.8\cdot\frac{P_0}{P}\times\frac{T}{T_0}\right)
+		\end{equation}
+		
+		where $T_0$ (=\SI{293}{K}) and $P_0$ (=\SI{990}{mbar}) are the reference values.
+
+	\subsection{Measurement procedure}
+	\label{ssec:GIF++Proc}
+
+		Insert a short description of the online tools (DAQ, DCS, DQM).\\
+		Insert a short description of the offline tools : tracking and efficiency algorithm.\\
+		Identify long term aging effects we are monitoring the rates per strip.
 	
 	%****************************************** RESULTS AT GIF++ ********************************************************************
 	\subsection{Longevity studies results}
