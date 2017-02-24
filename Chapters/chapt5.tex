@@ -97,7 +97,7 @@
 	\subsection{\acl{RPC} test setup}
 	\label{ssec:RPCSetup}
 	
-		During summer 2014, preliminary tests have been conducted in the GIF area on a newly produced RE4/2 chamber labelled RE-4-2-BARC-161. This chamber has been placed into a trolley covered with a tent. The position of the RPC inside the tent and of the tent related to the source is described in Figure~\ref{fig:GIFSetup}. To test this CMS RPC, three different absorber settings were used. First of all, measurements were done with fully opened source. Then, to complete this preliminary study, the gamma flux has been attenuated by a factor 2 and a factor 5. The expected gamma flux at the level of our detector will be discussed in subsection~\ref{ssec:gFlux}.
+		During summer 2014, preliminary tests have been conducted in the GIF area on a newly produced RE4/2 chamber labelled RE-4-2-BARC-161. This chamber has been placed into a trolley covered with a tent. The position of the RPC inside the tent and of the tent related to the source is described in Figure~\ref{fig:GIFSetup}. To test this CMS RPC, three different absorber settings were used. First of all, measurements were done with fully opened source. Then, to complete this preliminary study, the gamma flux has been attenuated from a factor 2 and a factor 5. The expected gamma flux at the level of our detector will be discussed in subsection~\ref{ssec:gFlux}.
 
 		\begin{figure}[!h]
 			\begin{subfigure}{0.5\linewidth}
@@ -110,7 +110,7 @@
 				\includegraphics[width = 0.5\plotwidth]{fig/chapt5/GIF-Setup-B.pdf}
 				\caption{\label{fig:GIFSetup:B}}
 			\end{subfigure}
-			\caption{\label{fig:GIFSetup} Description of the RPC setup. Dimensions are given in \si{\mm}. Figure~\ref{fig:GIFSetup:A} provides a side view of the setup while Figure~\ref{fig:GIFSetup:B} shows a top view. A tent containing RPCs is placed at \SI{1720}{\mm} from the source container. The source is situated in the center of the container. RE-4-2-BARC-161 chamber is \SI{160}{\mm} inside the tent. This way, the distance between the source and the chambers plan is \SI{2060}{\mm}.}
+			\caption{\label{fig:GIFSetup} Description of the RPC setup. Dimensions are given in \si{\mm}. A tent containing RPCs is placed at \SI{1720}{\mm} from the source container. The source is situated in the center of the container. RE-4-2-BARC-161 chamber is \SI{160}{\mm} inside the tent. This way, the distance between the source and the chambers plan is \SI{2060}{\mm}. Figure~\ref{fig:GIFSetup:A} provides a side view of the setup in the $xz$ plane while Figure~\ref{fig:GIFSetup:B} shows a top view in the $yz$ plane.}
 		\end{figure}
 
 		\begin{figure}[!h]
@@ -119,7 +119,7 @@
 			\caption{\label{fig:GIF-RPCSetup} RE-4-2-BARC-161 chamber is inside the tent as described in Figure~\ref{fig:GIFSetup}. In the top right, the two scintillators used as trigger can be seen. This trigger system has an inclination of \SI{10}{\degree} relative to horizontal and is placed above half-partition B2 of the RPCs. PMT electronics are shielded thanks to lead blocks placed in order to protect them without stopping photons from going through the scintillators and the chamber.}
 		\end{figure}
 		
-		At the time of the tests, the beam not being operationnal anymore, a trigger composed of 2 plastic scintillators has been placed in front of the setup with an inclination of \SI{10}{\deg} \textit{\textbf{(this has to be first confirmed by the simulation - I will adjust in consequence cause it has never been precisely measured)}} with respect to the detector plane in order to look at cosmic muons. Using this particular trigger layout, shown on Figure~\ref{fig:GIF-RPCSetup}, leads to a cosmic muon hit distribution into the chamber similar to the one in Figure~\ref{fig:HitProf}. Measured without gamma irradiation, two peaks can be seen on the profil of partition B, centered on strips 52 and 59. Sub-section~\ref{ssec:GeoAcc} will help us undertand that these two peaks are due respectively to forward and backward coming cosmic particles where forward coming particles are first detected by the scintillators and then the RPC while the backward coming muons are first detected in the RPC.
+		At the time of the tests, the beam not being operationnal anymore, a trigger composed of 2 plastic scintillators has been placed in front of the setup with an inclination of \SI{10}{\deg} with respect to the detector plane in order to look at cosmic muons. Using this particular trigger layout, shown on Figure~\ref{fig:GIF-RPCSetup}, leads to a cosmic muon hit distribution into the chamber similar to the one in Figure~\ref{fig:HitProf}. Measured without gamma irradiation, two peaks can be seen on the profil of partition B, centered on strips 52 and 59. Section~\ref{ssec:GeoAcc} will help us undertand that these two peaks are due respectively to forward and backward coming cosmic particles where forward coming particles are first detected by the scintillators and then the RPC while the backward coming muons are first detected in the RPC.
 
 		\begin{figure}[!h]
 			\centering
@@ -130,42 +130,29 @@
 	%********************************************** GIF DAQ **************************************************************************
 	\subsection{\acl{DAQ}}
 	\label{ssec:GIFDAQ}
-	
-		Signals induced by cosmic particle in the RPC strips are shaped by standard CMS RPC \acf{FEE} following the scheme of Figure~\ref{fig:DAQ}. On a first stage, analogic signals are amplified and then sent to the \acf{CFD} described in Figure~\ref{fig:CFD}. At the end of the chain, \SI{100}{ns} long pulses are sent in the LVDS output. These output signal are sent on one side to a V1190A \acf{TDC} module from CAEN and on the other to an OR module to count the number of detected signals. Trigger and hit coïncidences are monitored using scalers. The TDC is used to store the data into ROOT files. These files are thus analysed to understand the detectors performance.
 
-			\begin{figure}[!h]
-			\begin{subfigure}{\linewidth}
-				\centering
-				\includegraphics[width = \plotwidth]{fig/chapt5/pulse-processing.pdf}\\
-				\caption{\label{fig:DAQ:A}}
-			\end{subfigure}
-			\begin{subfigure}{\linewidth}
-				\centering
-				\includegraphics[width = \plotwidth]{fig/chapt5/pulse-processing-2.pdf}
-				\caption{\label{fig:DAQ:B}}
-			\end{subfigure}
-			\caption{\label{fig:DAQ} Signals from the RPC strips are shaped by the FEE described on Figure ~\ref{fig:DAQ:A}. Output LVDS signals are then read-out by a TDC module connected to a computer or converted into NIM and sent to scalers. Figure~\ref{fig:DAQ:B} describes how these converted signals are put in coincidence with the trigger.}
+        As previously described in Section~\ref{ssec:PulseProc}, CMS RPC FEEs provide us with \SI{100}{ns} long LVDS output signals. These signals are then sent into V1190A \acf{TDC} modules manufactured by CAEN~\cite{V1190AMUT}. V1190A are VME units accepting 128 independent Multi-Hit/Multi-Event TDC channels whose signals are treated by 4 \SI{100}{ps} high performance TDC chips, developped by CERN/ECP-MIC Division. The data acquisition used at GIF takes profit of the \textit{Trigger Matching Mode} offered by modules V1190A. A trigger matching is performed in between a trigger time tag and the channel time measurements. The signal provided by the coïncidence of both PMTs is used to trigger the data acquisition. Control over this data acquisition mode, explained through Figure~\ref{fig:V1190A-TMM} is offered through 4 programmable parameters:
+        
+        \begin{itemize}
+            \item \textbf{match window:} the match between a trigger and a hit is done within a programmable time window
+            \item \textbf{window offset:} temporal distance between the trigger tag and the start of the trigger matching window
+            \item \textbf{extra search margin:} an extended time window is used to ensure that all matching hits are found
+            \item \textbf{reject margin:} older hits are automatically rejected to preven buffer overflows and to speed up the search time
+        \end{itemize}
+        
+        \begin{figure}[!h]
+			\centering
+			\includegraphics[width = 1.25\plotwidth]{fig/chapt5/V1190A-TMM.png}\\
+			\caption{\label{fig:V1190A-TMM} Module V1190A \textit{Trigger Matching Mode} timing diagram.}
 		\end{figure}
-		
-		\begin{figure}[!h]
-			\begin{subfigure}{\linewidth}
-				\centering
-				\includegraphics[width = \plotwidth]{fig/chapt5/CFD_1.pdf}\\
-				\caption{\label{fig:CFD:A}}
-			\end{subfigure}
-			\begin{subfigure}{\linewidth}
-			    \centering
-				\includegraphics[width = 1.2\plotwidth]{fig/chapt5/CFD_2.png}
-				\caption{\label{fig:CFD:B}}
-			\end{subfigure}
-			\caption{\label{fig:CFD} Description of the principle of a CFD. A comparison of threshold triggering (left) and constant franction triggering (right) is shown in Figure~\ref{fig:CFD:A}. Constant franction triggering is obtained thanks to zero-crossing technique as explained in Figure~\ref{fig:CFD:B}. The signal arriving at the input of the CFD is split into three components. A first one is delayed and connected to the inverting input of a first comparator. A second component is connected to the noninverting input of this first comparator. A third component is connected to the noninverting input of another comparator along with a threshold value connected to the inverting input. Finally, the output of both comparators is fed through an AND gate.}
-		\end{figure}
+        
+        
 
 	%****************************************** GIF GEOMETRICAL ACCEPTANCE **********************************************************
 	\subsection{Geometrical acceptance of the setup layout to cosmic muons}
 	\label{ssec:GeoAcc}
 				
-		In order to profit from a constant gamma irradiation, the detectors inside of the GIF bunker need to be placed in a plane orthogonal to the beam line. The muon beam that used to be available was meant to test the performance of detectors under test. This beam not being active anymore, another solution to test detector performance had to be used. Thus, it has been decided to use cosmic muons detected through a telescope composed of two scintillators. Lead blocks were used as shielding to protect the photomultipliers from gammas as can be seen from Figure~\ref{fig:RPCSetup}.
+		In order to profit from a constant gamma irradiation, the detectors inside of the GIF bunker need to be placed in a plane orthogonal to the beam line. The muon beam that used to be available was meant to test the performance of detectors under test. This beam not being active anymore, another solution to test detector performance had to be used. Thus, it has been decided to use cosmic muons detected through a telescope composed of two scintillators. Lead blocks were used as shielding to protect the photomultipliers from gammas as can be seen from Figure~\ref{fig:GIF-RPCSetup}.
 					
 		An inclination has been given to the cosmic telescope to maximize the muon flux. A good compromise had to be found between good enough muon flux and narrow enough hit distribution to be sure to contain all the events into only one half partitions as required from the limited available readout hardware. Nevertheless, a consequence of the misplaced trigger, that can be seen as a loss of events in half-partition B1 in Figure~\ref{fig:HitProf}, is an inefficiency. Nevertheless, the innefficiency of approximately \SI{20}{\%} highlighted in Figure~\ref{fig:EffCompar} by comparing the performance of chamber BARC-161 in 904 and at GIF without irradiation seems too important to be explained only by the geometrical acceptance of the setup itself. Simulations have been conducted to show how the setup brings inefficiency.
 	
