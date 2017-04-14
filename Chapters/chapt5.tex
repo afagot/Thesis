@@ -14,27 +14,40 @@
 \section{Testing detectors under extreme conditions}
 \label{sec:extreme}
 	
-	The upgrade from LHC to HL-LHC will increase the peak luminosity from 10$^{34}$ \si{cm^{-2}.s^{-1}} to reach 7.5$\times$10$^{34}$ \si{cm^{-2}.s^{-1}}, increasing in the same way the total expected background to which the RPC system will be subjected to. Composed of low energy gammas and neutrons from $p$-$p$ collisions, low momentum primary and secondary muons, puch-through hadrons from calorimeters, and particles produced in the interaction of the beams with collimators, the background will mostly affect the regions of CMS that are the closest to the beam line, i.e. the RPC detectors located in the endcaps.\\
+	The upgrade from LHC to HL-LHC will increase the peak luminosity from 10$^{34}$ \si{cm^{-2}.s^{-1}} to reach 5$\times$10$^{34}$ \si{cm^{-2}.s^{-1}}, increasing in the same way the total expected background to which the RPC system will be subjected to.
+	Composed of low energy gammas and neutrons from $p$-$p$ collisions, low momentum primary and secondary muons, puch-through hadrons from calorimeters, and particles produced in the interaction of the beams with collimators, the background will mostly affect the regions of CMS that are the closest to the beam line, i.e. the RPC detectors located in the endcaps. {\color{blue} [To update.]}\\
 	
-    The information collected with 2016 data allowed us to understand that the hottest RPC regions are located in the fourth endcap stations. Extrapolating from the data shown in Figure~\ref{Fig:Data-2016}, the maximum rate per unit area under HL-LHC conditions is therefore foreseen to increase to values of the order of \SI{400}{Hz/cm^2} in the chambers of the present muon system. To the \SI{4000}{fb^{-1}} of integrated luminosity, over the 10 years of HL-LHC lifetime, will correspond $\sim$\SI{0.4}{C/cm^2} of integrated charge inside the hottest regions of the detectors, considering the current total delivered luminosity from $p$-$p$ collisions of about \SI{75}{fb^{-1}} and the total integrated charge estimated to be about \SI{5.8}{mC/cm^2} in the endcap.\\
-    
-    During Run-I, the RPC system provided stable operation and excellent performance and did not show any aging effects. In the past, extensive long-term tests were carried out at several gamma and neutron facilities certifying the detector performance up to values of dose, charge and fluence close to those expected after ten years of HL-LHC operation. Both full size and small prototype RPCs have been irradiated with photons up to an integrated charge of $\sim$\SI{0.05}{C/cm^2} and $\sim$\SI{0.4}{C/cm^2}, respectively~\cite{GIF2004,AGING2009}.\\
+    The 2016 data allowed to study the values of the background rate in all RPC system.
+	In Figure~\ref{Fig:HL-LHC}, the distribution of the chamber background hit rate per unit area is shown at a luminosity of $5\times10^{34}cm^{-2}.s^{-1}$ linearly extrapolating from data collected in 2016 {\color{blue} [ref mentioning the linear dependency of rate vs lumi]}.
+	The maximum rate per unit area at HL-LHC conditions is expected to be of the order of ${600}{Hz/cm^2}$ (including a safety factor 3).
+	Nevertheless, Fluka simulations have conducted in order to understand the background at HL-LHC conditions.
+	The comparison to the data has shown, in Figure~\ref{Fig:Fluka}, a discrepancy of a factor 2 even though the order of magnitude is consistent. {\color{blue} [Understand mismatch.]}\\
     
     \begin{figure}[!h]
-	    \begin{subfigure}{\linewidth}
-	        \centering
-    		\includegraphics[height=5cm]{fig/chapt5/RE4-rates-2016-data.png}\\
-        	\caption{\label{Fig:Rates-2016}}
-	    \end{subfigure}
-	    \begin{subfigure}{\linewidth}
-    	    \centering
-    		\includegraphics[height=5cm]{fig/chapt5/Endcap-TOT-Qint-data.png}\\
-        	\caption{\label{Fig:Qint-2016}}
-	    \end{subfigure}
-        \caption{\label{Fig:Data-2016} Figure~\ref{Fig:Rates-2016} represent the RPC rate measured in 2016 in $p$-$p$ collision runs as function of the instantaneous luminosity. Every point corresponds to a particular run. Figure~\ref{Fig:Qint-2016} represent the integrated charge for Endcap. The integrated charge in years is shown in blue. The red curve shows the cumulative evolution of the integrated charge in time.}
+		\begin{subfigure}{\linewidth}
+		    \centering
+			\includegraphics[width = \plotwidth]{fig/chapt5/Barrel-Roll-Rate-HL-LHC.pdf}\\
+			\caption{\label{Fig:HL-LHC:Barrel}}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+		    \centering
+			\includegraphics[width = \plotwidth]{fig/chapt5/Endcap-Disks-Rate-HL-LHC.pdf}
+			\caption{\label{Fig:HL-LHC:Endcap}}
+		\end{subfigure}
+        \caption{\label{Fig:HL-LHC}(\ref{Fig:HL-LHC:Barrel}) Extrapolation from 2016 data of single hit rate per unit area in the barrel region. (\ref{Fig:HL-LHC:Endcap}) Extrapolation from 2016 data of single hit rate per unit area in the endcap region.}
     \end{figure}
     
-    In this perspective, studying the performance of the present system up to an integrated charge of $\sim$\SI{1.2}{C/cm^2}, 3 times higher than what expected for 10 years of operation of HL-LHC, and background hit rates of \SI{1200}{Hz/cm^2}, 3 times stronger than what expected from the designed peak luminosity, and identifying possible long-term aging effects are necessary steps to take to insure that the RPCs will be able to cope with the high radiation conditions.\\
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width=\plotwidth]{fig/chapt5/RE4-Fluka.pdf}\\
+        \caption{\label{Fig:Fluka} Background Fluka simulation compared to 2016 Data at $L=10^{34}cm^{-2}.s^{-1}$ in the fourth endcap disk region. A mismatch in between simulation and data can be observed. {\color{blue} [To be understood.]}}
+    \end{figure}
+
+	In the past, extensive long-term tests were carried out at several gamma and neutron facilities certifying the detector performance.
+	Both full size and small prototype RPCs have been irradiated with photons up to an integrated charge of $\sim {0.05}{C/cm^2}$ and $\sim {0.4}{C/cm^2}$, respectively~\cite{GIF2004,AGING2009}.
+	During Run-I, the RPC system provided stable operation and excellent performance and did not show any aging effects for integrated charge of the order of ${0.01}{C/cm^2}$.
+    Projections on currents from 2016 Data, has allowed to determine that the total integrated charge, by the end of HL-LHC, would be of the order of ${1}{C/cm^2}$ (including a safety factor 3).
+{\color{blue} [Corresponding figure needed.]}\\
 
 	%****************************************** GAMMA IRRADIATION FACILITIES ********************************************************
 	\subsection{The Gamma Irradiation Facilities}
