@@ -41,10 +41,42 @@ Certifying detectors in the perspective of HL-LHC required to develop tools for 
 \section{Data read-out}
 \label{app1:sec:Data}
 
+	To efficiently perform a data readout algorithm, objects to handle the VME modules (TDCs and VME bridge) have been created along with objects to store data and read the configuration file that comes as an input of the DAQ software.\\
+	It is useful to remind that the DAQ software in GIF++ is not a standalone software but it is called by a \acf{webDCS} application, that is the core of interactions with GIF++ setup, when data needs to be taken. But it is straight forward to turn it into a standalone program that could be adapted to any VME setup using V1190A and V1718 modules.\\
+
     \subsection{V1190A TDCs}
     \label{app1:ssec:V1190A}
+
+	The DAQ used at GIF takes profit of the \textit{Trigger Matching Mode} offered by V1190A modules. A trigger matching is performed in between a trigger time tag and the channel time measurements. Control over this data acquisition mode, explained through Figure~\ref{fig:V1190A-TMM}, is offered through 4 programmable parameters:
+        
+	\begin{itemize}
+		\item \textbf{match window:} the match between a trigger and a hit is done within a programmable time window. This is set via the method\\ \cppinline{v1190a::SetTrigWindowWidth(Uint windowWidth,int ntdcs)}
+		\item \textbf{window offset:} temporal distance between the trigger tag and the start of the trigger matching window. This is set via the method\\ \cppinline{v1190a::SetTrigWindowWidth(Uint windowWidth,int ntdcs)}
+		\item \textbf{extra search margin:} an extended time window is used to ensure that all matching hits are found. This is set via the method\\ \cppinline{v1190a::SetTrigSearchMargin(Uint searchMargin,int ntdcs)}
+		\item \textbf{reject margin:} older hits are automatically rejected to preven buffer overflows and to speed up the search time. This is set via the method\\ \cppinline{v1190a::SetTrigRejectionMargin(Uint rejectMargin,int ntdcs)}
+	\end{itemize}
     
-    \begin{lstlisting}[language=C++, style=customcpp]
+    \begin{figure}[H]
+		\centering
+		\includegraphics[width = 1.25\plotwidth]{fig/app1/V1190A-TMM.pdf}\\
+		\caption{\label{fig:V1190A-TMM} Module V1190A \textit{Trigger Matching Mode} timing diagram~\cite{V1190AMUT}.}
+	\end{figure}
+	
+	Each of these 4 parameters are given in number of clocks, \SI{1}{clock} being \SI{25}{ns} long. It is easy to understand at this level that there are 3 possible functionning settings:
+        
+	\begin{itemize}
+		\item \textbf{1:} the match window is entirely contained after the trigger signal,
+		\item \textbf{2:} the match window overlaps the trigger signal, or
+		\item \textbf{3:} the match window is entirely contained before the trigger signal as displayed on Figure~\ref{fig:V1190A-TMM}.
+	\end{itemize}
+	
+	In both the first and second cases, the sum of the window width of of the offset can be set at maximum to be \SI{40}{clocks}, which corresponds to \SI{1}{\micro s}. Of course, the offset can be negative thus allowing for a longer match window, its end being at maximum \SI{1}{\micro s} after the trigger signal. In the third case, the maximum negative offset allowed is of \SI{2048}{clocks} (12 bit) corresponding to \SI{51.2}{\micro s}, the match window being strictly smaller than the offset. In the case of GIF++, the choice has been made to use this last setting by delaying the trigger signal. During the studies performed in GIF++, both the efficiency of the RPCs, using a muon beam, and the noise or gamma background rate are monitored. The extra search and reject margins are left unused.\\
+	To probe the efficiency of RPC detectors, a signal provided by the coïncidence of scintillators when a bunch of muons passes though the area is used to trigger the data acquisition. For this measurement, it is useful to reduce the match window width only to contain the muon information. Indeed, the delay in between a trigger signal and the detection of the corresponding muon in the RPC being very contant (typically a few tens of ns due to jitter and cable length), the muon signals are very localised in time. Thus the settings where chosen to have a window width of \SI{24}{clocks} (\SI{600}{ns}) and a negative offset of \SI{29}{clocks}.\\
+	On the otherhand, monitoring the rates doesn't require for the DAQ to look at a specific time window. It is important to integrate as much time as possible to have a robust measurement of the rate as the number of hits per time unit. The triggerring signal is provided by a pulse generator at a frequency of \SI{300}{Hz} to ensure that the data taking occurs in a random way to probe only the irradiation spectrum on the detectors. The match window is set to \SI{400}{clocks} (\SI{10}{\micro s}) and the negative offset to \SI{401}{clocks} as it needs to exceed the value of the match window.\\
+	
+	The v1190a object, defined in the DAQ software as followed, offer the possility to concatenate all TDCs in the setup into a single object containing a list of hardware addresses (addresses to access the TDC buffer through the VME crate) and each constructor and method acts on the list of TDCs.
+	
+    \begin{cppcode}
 class v1190a
 {
  private :
@@ -83,42 +115,20 @@ class v1190a
     void   SetBlockTransferMode(Data16 mode,int ntdcs);
     void   Set(IniFile *inifile,int ntdcs);
     void   CheckStatus(CVErrorCodes status) const;
-    int    ReadBlockD32(Uint tdc, const Data16 address, Data32 *data, const Uint words, bool ignore_berr);
+    int    ReadBlockD32(Uint tdc, const Data16 address,
+               Data32 *data, const Uint words, bool ignore_berr);
     Uint   Read(RAWData *DataList,int ntdcs);
 };
-    \end{lstlisting}
-
-	The DAQ used at GIF takes profit of the \textit{Trigger Matching Mode} offered by V1190A modules. A trigger matching is performed in between a trigger time tag and the channel time measurements. Control over this data acquisition mode, explained through Figure~\ref{fig:V1190A-TMM}, is offered through 4 programmable parameters:
-        
-	\begin{itemize}
-		\item \textbf{match window:} the match between a trigger and a hit is done within a programmable time window
-		\item \textbf{window offset:} temporal distance between the trigger tag and the start of the trigger matching window
-		\item \textbf{extra search margin:} an extended time window is used to ensure that all matching hits are found
-		\item \textbf{reject margin:} older hits are automatically rejected to preven buffer overflows and to speed up the search time
-	\end{itemize}
-    
-    \begin{figure}[H]
-		\centering
-		\includegraphics[width = 1.25\plotwidth]{fig/app1/V1190A-TMM.pdf}\\
-		\caption{\label{fig:V1190A-TMM} Module V1190A \textit{Trigger Matching Mode} timing diagram~\cite{V1190AMUT}.}
-	\end{figure}
-	
-	Each of these 4 parameters are given in number of clocks, \SI{1}{clock} being \SI{25}{ns} long. It is easy to understand at this level that there are 3 possible functionning settings:
-        
-	\begin{itemize}
-		\item \textbf{1:} the match window is entirely contained after the trigger signal,
-		\item \textbf{2:} the match window overlaps the trigger signal, or
-		\item \textbf{3:} the match window is entirely contained before the trigger signal as displayed on Figure~\ref{fig:V1190A-TMM}.
-	\end{itemize}
-	
-	In both the first and second cases, the sum of the window width of of the offset can be set at maximum to be \SI{40}{clocks}, which corresponds to \SI{1}{\micro s}. Of course, the offset can be negative thus allowing for a longer match window, its end being at maximum \SI{1}{\micro s} after the trigger signal. In the third case, the maximum negative offset allowed is of \SI{2048}{clocks} (12 bit) corresponding to \SI{51.2}{\micro s}, the match window being strictly smaller than the offset. In the case of GIF++, the choice has been made to use this last setting by delaying the trigger signal. During the studies performed in GIF++, both the efficiency of the RPCs, using a muon beam, and the noise or gamma background rate are monitored. The extra search and reject margins are left unused.\\
-	To probe the efficiency of RPC detectors, a signal provided by the coïncidence of scintillators when a bunch of muons passes though the area is used to trigger the data acquisition. For this measurement, it is useful to reduce the match window width only to contain the muon information. Indeed, the delay in between a trigger signal and the detection of the corresponding muon in the RPC being very contant (typically a few tens of ns due to jitter and cable length), the muon signals are very localised in time. Thus the settings where chosen to have a window width of \SI{24}{clocks} (\SI{600}{ns}) and a negative offset of \SI{29}{clocks}.\\
-	On the otherhand, monitoring the rates doesn't require for the DAQ to look at a specific time window. It is important to integrate as much time as possible to have a robust measurement of the rate as the number of hits per time unit. The triggerring signal is provided by a pulse generator at a frequency of \SI{300}{Hz} to ensure that the data taking occurs in a random way to probe only the irradiation spectrum on the detectors. The match window is set to \SI{400}{clocks} (\SI{10}{\micro s}) and the negative offset to \SI{401}{clocks} as it needs to exceed the value of the match window.\\
+    \end{cppcode}
 
     \subsection{V1718 USB Bridge}
     \label{app1:ssec:V1718}
 	
-	\begin{lstlisting}[language=C++, style=customcpp]
+	As previously described in Section~\ref{ssec:PulseProc}, CMS RPC FEEs provide us with \SI{100}{ns} long LVDS output signals that are injected into the TDCs' input. V1190A are VME units accepting 128 independent Multi-Hit/Multi-Event TDC channels whose signals are treated by 4 \SI{100}{ps} high performance TDC chips developped by CERN / ECP-MIC Division. Any avalanche signal that gives a signal above the FEEs threshold is thus recorded by the TDCs as a hit within the match window. Each hit is assigned to a specific TDC channel with a time stamp with a precision of \SI{100}{ps}. The reference time, the 0, is provided by the beginning of the match window. thus for each trigger, coming from a scintillator coïncidence or the pulse generator, a list of hits is stored into the TDCs buffers and will then be transfered into a ROOT Tree.\\
+	
+	The v1718 object is defined in the DAQ software as followed.
+	
+	\begin{cppcode}
 class v1718{
 
     private :
@@ -149,14 +159,12 @@ class v1718{
         void              SetPulsers();
         void              SendBUSY(BusyLevel level);
 };
-    \end{lstlisting}
+    \end{cppcode}
 	
 	\subsection{DataReader}
 	\label{app1:ssec:DataReader}
 	
-	As previously described in Section~\ref{ssec:PulseProc}, CMS RPC FEEs provide us with \SI{100}{ns} long LVDS output signals that are injected into the TDCs' input. V1190A are VME units accepting 128 independent Multi-Hit/Multi-Event TDC channels whose signals are treated by 4 \SI{100}{ps} high performance TDC chips developped by CERN / ECP-MIC Division. Any avalanche signal that gives a signal above the FEEs threshold is thus recorded by the TDCs as a hit within the match window. Each hit is assigned to a specific TDC channel with a time stamp with a precision of \SI{100}{ps}. The reference time, the 0, is provided by the beginning of the match window. thus for each trigger, coming from a scintillator coïncidence or the pulse generator, a list of hits is stored into the TDCs buffers and will then be transfered into a ROOT Tree.\\
-	
-	\begin{lstlisting}[language=C++, style=customcpp]
+	\begin{cppcode}
 class DataReader
 {
     private:
@@ -184,7 +192,7 @@ class DataReader
         void     WriteRunRegistry(string filename);
         void     Run();
 };
-    \end{lstlisting}
+    \end{cppcode}
 	
 	The data transfer is done via \acf{BLT}. Using BLT allows to tranfer a fixed number of events called a \textit{block}. This is used together with an \acf{AFL} of the TDCs' output buffers. This AFL gives the maximum amount of 32 bits words that can writen in the buffer before an \acf{IRQ} is generated and seen by the VME Bridge, stopping the data acquisition to transfer the content of each TDC buffers before resuming. The AFL can, at maximum, be of 32735 words (16 bits). This number corresponds to the depth of the output buffer of a TDC. For each trigger, 6 words or more are written into the TDC buffer:
 	
@@ -204,7 +212,7 @@ class DataReader
 	
 	The data is then transfered one TDC at a time into a structure called RAWData described below.
 	
-	\begin{lstlisting}[language=C++, style=customcpp]
+	\begin{cppcode}
 struct RAWData{
     vector<int>            *EventList;
     vector<int>            *NHitsList;
@@ -212,11 +220,11 @@ struct RAWData{
     vector<vector<int> >   *ChannelList;
     vector<vector<float> > *TimeStampList;
 };
-    \end{lstlisting}
+    \end{cppcode}
     
-    Each event is saved into \verb+TBranch+s of a ROOT \verb+TTree+ as 3 integers that represent the event ID (\verb+EventCount+), the number of hits read from the TDCs (\verb+nHits+), the quality flag that provides information for any problem in the data transfer (\verb+qflag+), and 2 lists of nHits elements containing the fired TDC channel (\verb+TDCCh+) and their respective time stamps (\verb+TDCTS+).\\
+    Each event is saved into \cppinline{TBranch} of a ROOT \cppinline{TTree} as 3 integers that represent the event ID (\cppinline{EventCount}), the number of hits read from the TDCs (\cppinline{nHits}), the quality flag that provides information for any problem in the data transfer (\cppinline{qflag}), and 2 lists of nHits elements containing the fired TDC channel (\cppinline{TDCCh}) and their respective time stamps (\cppinline{TDCTS}).\\
     
-    \begin{lstlisting}[language=C++, style=customcpp]
+    \begin{cppcode}
 RAWData TDCData;
 TFile *outputFile = new TFile(outputFileName.c_str(),"recreate");
 TTree *RAWDataTree = new TTree("RAWData","RAWData");
@@ -246,7 +254,7 @@ for(Uint i=0; i<TDCData.EventList->size(); i++){
     TDCTS       = TDCData.TimeStampList->at(i);
     RAWDataTree->Fill();
 }
-    \end{lstlisting}
+    \end{cppcode}
     
     \subsection{DAQ algorithm overview}
     \label{app1:ssec:algo}
