@@ -53,9 +53,19 @@
 %\usepackage{mathenv}	% better eqnarray
 \usepackage{color}
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
-\usepackage{minted}
+\definecolor{dirtree}{rgb}{0.40,0.40,0.40}
+
+\usepackage[newfloat]{minted}
 \newminted{cpp}{bgcolor=bg,fontsize=\footnotesize}
-\newmintinline{cpp}{fontsize=\footnotesize}
+\newmintinline{cpp}{fontsize=\footnotesize, breaklines=true}
+
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\SetupFloatingEnvironment{listing}{name=Source Code}
+
+\usepackage{dirtree}
+\renewcommand*\DTstylecomment{\footnotesize\rmfamily\color{black}\textsc}
+\renewcommand*\DTstyle{\footnotesize\ttfamily\textcolor{dirtree}}
+
 \usepackage{multicol} % To write documents using multiple columns
 \usepackage{siunitx}
 \usepackage[ % For citing references; more options than standard BibTeX or natbib
