@@ -342,10 +342,19 @@ class v1718{
     \subsection{Configuration file}
     \label{app1:ssec:inifile}
     
+    The DAQ software takes as input a configuration file written using INI standard~\cite{INI}. This file is partly filled with the information provided by the shifters when starting data acquisition using the webDCS, as shown by Figure~\ref{fig:scaninfo}. This information is written in section \iniinline{[General]} and will later be stored in the ROOT file that contains the DAQ data as can be seen from Figure~\ref{fig:ROOTfile}. Indeed, another \cppinline{TTree} called \cppinline{RunParameters} as well as the 2 histograms \cppinline{ID}, containing the scan number, start and stop time stamps, and \cppinline{Triggers}, containing the number of triggers requested by the shifter, are available in the data files.
+    
+    \begin{figure}[H]
+		\centering
+		\includegraphics[width = \plotwidth]{fig/app1/webDCS-scan-information.png}
+		\caption{\label{fig:scaninfo} WebDCS DAQ scan page. On this page, shifters need to choose the type of scan (Rate, Efficiency or Noise Reference scan), the gamma source configuration at the moment of data taking, the beam configuration, and the trigger mode. These information will be stored in the DAQ ROOT output. Are also given the minimal measurement time and waiting time after ramping up of the detectors is over before starting the data acquisition. Then, the list of HV points to scan and the number of triggers for each run of the scan are given in the table underneath.}
+	\end{figure}
+	
+	The rest of the information is written beforehand in the configuration file template, as explicited in Source Code~\ref{ini:INIFile}, and contains the hardware addresses to the differents VME modules in the setup as well as settings for the TDCs. As the TDC settings available in the configuration file are not supposed to be modified, an improvement would be to remove them from the configuration file and to hardcode them inside of the DAQ code itself or to place them into a different INI file that would host only the TDC settings to lower the probability for a bad manipulation of the configuration file that can be modified from one of webDCS' menus.\\
+    
     \begin{code}
 	\captionof{listing}{INI configuration file template for 4 TDCs. In section \iniinline{[General]}, the number of TDCs is explicited and information about the ongoing run is given. Then, there are sections for each and every VME modules. There buffer addresses are given and for the TDCs, the list of channels to enable is given. Finally, in section \iniinline{[TDCSettings]}, a part of the TDC settings are given.}
-	\label{cpp:v1718}
-	
+	\label{ini:INIFile}
     \begin{inicode}
 [General]
 Tdcs=4
