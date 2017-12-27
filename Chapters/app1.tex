@@ -71,19 +71,20 @@ Certifying detectors in the perspective of HL-LHC required to develop tools for 
     The CMS RPC setup at GIF++ counts 5 V1190A \acf{TDC} manufactured by CAEN~\cite{V1190AMUT}. V1190A are VME units accepting 128 independent Multi-Hit/Multi-Event TDC channels whose signals are treated by 4 \SI{100}{ps} high performance TDC chips developped by CERN / ECP-MIC Division. The communication between the computer and the TDCs to transfer data is done via a V1718 VME master module also manufactured by CAEN and operated from a USB port~\cite{V1718MUT}. These VME modules are all hosted into a 6U VME 6021 powered crate manufactured by W-Ie-Ne-R than can accomodate up to 21 VME bus cards~\cite{6U6000MUT}. These 3 components of the DAQ setup are shown in Figure~\ref{fig:DAQSetup}.\\
     
     \begin{figure}[H]
-        \begin{subfigure}{0.5\linewidth}
+    \hspace{-15mm}
+        \begin{subfigure}{0.1\linewidth}
 		    \centering
-			\includegraphics[height = 12cm]{fig/app1/V1190A-front.pdf}
+			\includegraphics[height = 10cm]{fig/app1/V1190A-front.pdf}
 			\caption{\label{fig:DAQSetup:A}}
 		\end{subfigure}
-		\begin{subfigure}{0.5\linewidth}
+		\begin{subfigure}{0.25\linewidth}
 		    \centering
-			\includegraphics[height = 12cm]{fig/app1/V1718-front.pdf}\\
+			\includegraphics[height = 10cm]{fig/app1/V1718-front.pdf}
 			\caption{\label{fig:DAQSetup:B}}
 		\end{subfigure}
-		\begin{subfigure}{\linewidth}
+		\begin{subfigure}{0.65\linewidth}
 		    \centering
-			\includegraphics[width = 0.8\plotwidth]{fig/app1/Wiener-front.png}
+			\includegraphics[width = \plotwidth]{fig/app1/Wiener-front.png}
 			\caption{\label{fig:DAQSetup:C}}
 		\end{subfigure}
 		\caption{\label{fig:DAQSetup} (\ref{fig:DAQSetup:A}) View of the front panel of a V1190A TDC module~\cite{V1190AMUT}. (\ref{fig:DAQSetup:B}) View of the front panel of a V1718 Bridge module~\cite{V1718MUT}. (\ref{fig:DAQSetup:C}) View of the front panel of a 6U 6021 VME crate~\cite{6U6000MUT}.}
@@ -438,7 +439,6 @@ BLTMode=1
     \label{app1:ssec:dcsdaqcomm}
     
     When shifters send instructions to the DAQ via the configuration file, it is the webDCS itself that gives the start command to the DAQ and then the 2 softwares use inter-process communication through file to synchronise themselves. This communication file is represented by the variable \cppinline{const string __runstatuspath}.\\
-    
     On one side, the webDCS sends commands or status that are readout by the DAQ:
     \begin{itemize}
     	\item[•] \verb+INIT+, status sent when launching a scan and read via function \cppinline{CtrlRunStatus(...)},
@@ -446,8 +446,7 @@ BLTMode=1
     	\item[•] \verb+STOP+, command to stop data taking at the end of the scan and read via function \cppinline{CheckSTOP()}, and
     	\item[•] \verb+KILL+, command to kill data taking sent by user and read via function \cppinline{CheckKILL()}
     \end{itemize}
-    
-    and on the other, the DAQ sends status that are controled by the webDCS:
+and on the other, the DAQ sends status that are controled by the webDCS:
     \begin{itemize}
     	\item[•] \verb+DAQ_RDY+, sent with \cppinline{SendDAQReady()} to signify that the DAQ is ready to receive commands from the webDCS,
     	\item[•] \verb+RUNNING+, sent with \cppinline{SendDAQRunning()} to signify that the DAQ is taking data,
@@ -456,12 +455,63 @@ BLTMode=1
     	\item[•] \verb+WR_ERR+, sent when the DAQ wasn't able to write into the communication file.
     \end{itemize}
     
+    \subsection{Example of inter-process communication cycle}
+    \label{app1:ssec:commex}
+    
+    Under normal conditions, the webDCS and the DAQ processes exchange commands and status via the file hosted at the address \cppinline{__runstatuspath}, as explained in subsection~\ref{app1:ssec:dcsdaqcomm}. An example of cycle is given in Table~\ref{tab:intercom}. In this example, the steps 3 to 5 are repeated as long as the webDCS tells the DAQ to take data. A data taking cycle is the equivalent as what is called a \textit{Scan} in GIF++ jargon, referring to a set a runs with several HV steps. Each repetition of steps 3 to 5 is then equivalent to a single \textit{Run}.\\
+    
+    At any moment during the data taking, for any reason, the shifter can decide that the data taking needs to be stopped before it reached the end of the scheduled cycle. Thus at any moment on the cycle, the content of the inter-process communication file will be changed to \verb+KILL+ and the DAQ will shut down right away. The DAQ checks for \verb+KILL+ signals every 5s after the TDCs configuration is over. So far, the function \cppinline{CheckKILL()} has been used only inside of the data taking loop of method \cppinline{DataReader::Run()} and thus, if the shifter decides to KILL the data taking during the TDC configuration phase or the HV ramping in between 2 HV steps, the DAQ will not e stopped smoothly and a \textit{force kill} command will be sent to stop the DAQ process that is still awake on the computer. Improvements can be brought on this part of the software to make sure that the DAQ can safely shutdown at any moment.\\
+    
+    \begin{table}
+	    \begin{tabular}{|c|c|c|c|}
+	    	\hline
+	    	step & actions of webDCS & status of DAQ & \cppinline{__runstatuspath}\\
+	    	\hline
+	    	1 & launch DAQ & readout of IniFfile & \verb+INIT+\\
+	    	 & ramp voltages & configuration of TDCs & \\
+	    	 & ramping over & & \\
+	    	 & wait for currents stabilization & & \\
+	    	\hline
+	    	2 &  & configuration done & \verb+DAQ_RDY+\\
+	    	 &  & send DAQ ready & \\
+	    	 &  & wait for \verb+START+ signal & \\
+	    	\hline
+	    	3 & waiting time over & & \verb+START+\\
+	    	 & send \verb+START+ & & \\
+	    	\hline
+	    	4 & wait for run to end & data taking ongoing & \verb+RUNNING+\\
+	    	 & monitor DAQ run status & check for \verb+KILL+ signal & \\
+	    	\hline
+	    	5 &  & run over & \verb+DAQ_RDY+\\
+	    	 &  & send \verb+DAQ_RDY+ & \\
+	    	 &  & wait for next DCS signal & \\
+	    	\hline
+	    	6 & ramp voltages &  & \verb+DAQ_RDY+\\
+	    	 & ramping over &  & \\
+	    	 & wait for currents stabilization &  & \\
+	    	\hline
+	    	3 & waiting time over & & \verb+START+\\
+	    	 & send \verb+START+ & & \\
+	    	\hline
+	    	4 & wait for run to end & update IniFile information & \verb+RUNNING+\\
+	    	 & monitor DAQ run status & data taking ongoing & \\
+	    	 &  & check for \verb+KILL+ signal & \\
+	    	\hline
+	    	5 &  & run over & \verb+DAQ_RDY+\\
+	    	 &  & send \verb+DAQ_RDY+ & \\
+	    	 &  & wait for next DCS signal & \\
+	    	\hline
+	    	7 & send command \verb+STOP+ & DAQ shuts down & \verb+STOP+\\
+	    	\hline
+	    \end{tabular}
+	    \caption{\label{tab:intercom} Inter-process communication cycles in between the webDCS and the DAQ through file string signals.}
+    \end{table}
+    
 \section{DAQ algorithm overview}
 \label{app1:sec:algo}
-    
-    
 
 \section{Software export}
+\label{app1:sec:export}
 
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
