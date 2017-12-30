@@ -64,6 +64,19 @@ Certifying detectors in the perspective of HL-LHC required to develop tools for 
 	 .2 makefile\DTcomment{compiler instructions}.
 	 .2 README.md\DTcomment{REAMDE file for github}.
 	}
+	
+\section{Usage of the DAQ}
+\label{app1:sec:usage}
+
+	GIF++ DAQ as used in GIF++ is not a standalone software. Indeed, the system being more complexe, the DAQ only is a sub-layer of the software architecture developped to control and monitor the RPCs that are placed into the bunker for performance study in an irradiated environment. The top layer of GIF++ is a \acf{webDCS} application. The DAQ is only called by the webDCS when data needs to be acquired. The webDCS operates the DAQ through command line. To start the DAQ, the webDCS calls:
+	
+	\begin{minted}[bgcolor=bg,fontsize=\footnotesize]{bash}
+	bin/daq /path/to/the/log/file/in/the/output/data/folder
+	\end{minted}
+	
+	where \footnotesize\verb+/path/to/the/log/file/in/the/output/data/folder+ \normalsize is the only argument required. This log file is important for the webDCS as this file contains all the content of the communication of the webDCS and the different systems monitored by the webDCS. Its content is constantly displayed during data taking for the users to be able to follow the operations. The communication messages are normally sent to the webDCS log file via the functions declared in file \verb+MsgSvc.h+, typically \cppinline{MSG_INFO(string message)}.\\
+	
+	Nontheless, it is possible to make the DAQ a standalone program that could be adapted to any VME setup using V1190A and V1718 modules by creating a GUI for the software or by printing the log messages that are normally printed in the webDCS through the log file, into the terminal.\\
 
 \section{Description of the readout setup}
 \label{app1:sec:setup}
@@ -94,7 +107,6 @@ Certifying detectors in the perspective of HL-LHC required to develop tools for 
 \label{app1:sec:Data}
 
 	To efficiently perform a data readout algorithm, C++ objects to handle the VME modules (TDCs and VME bridge) have been created along with objects to store data and read the configuration file that comes as an input of the DAQ software.\\
-	It is useful to remind that the DAQ software in GIF++ is not a standalone software but is called through a \acf{webDCS} application, that is the core of interactions with GIF++ setup, when data needs to be taken. Nevertheless, it is straight forward to make it into a standalone program that could be adapted to any VME setup using V1190A and V1718 modules.\\
 
     \subsection{V1190A TDCs}
     \label{app1:ssec:V1190A}
@@ -253,7 +265,7 @@ class DataReader
     \end{cppcode}
     \end{code}
     
-    Each event is tranferred from \cppinline{TDCData} and saved into branches of a ROOT \cppinline{TTree} as 3 integers that represent the event ID (\cppinline{EventCount}), the number of hits read from the TDCs (\cppinline{nHits}), and the quality flag that provides information for any problem in the data transfer (\cppinline{qflag}), and 2 lists of \textit{nHits} elements containing the fired TDC channels (\cppinline{TDCCh}) and their respective time stamps (\cppinline{TDCTS}), as presented in Source Code~\ref{cpp:datatranfer}. An example of ROOT data file is provided with Figure~\ref{fig:ROOTfile}.\\
+    Each event is tranferred from \cppinline{TDCData} and saved into branches of a ROOT \cppinline{TTree} as 3 integers that represent the event ID (\cppinline{EventCount}), the number of hits read from the TDCs (\cppinline{nHits}), and the quality flag that provides information for any problem in the data transfer (\cppinline{qflag}), and 2 lists of \textit{nHits} elements containing the fired TDC channels (\cppinline{TDCCh}) and their respective time stamps (\cppinline{TDCTS}), as presented in Source Code~\ref{cpp:datatranfer}. The ROOT file file is named using information contained into the configuration file, presented in section~\ref{app1:ssec:inifile}. The needed information is extracted using method \cppinline{DataReader::GetFileName()} and allow to build the output filename format \verb+ScanXXXXXX_HVX_DAQ.root+ where \verb+ScanXXXXXX+ is a 6 digit number representing the scan number into GIF++ database and \verb+HVX+ the HV step within the scan that can be more than a single digit. An example of ROOT data file is provided with Figure~\ref{fig:ROOTfile}.\\
     
     \begin{code}
 	\captionof{listing}{Highlight of the data transfer and organisation within \cppinline{DataReader::Run()} after the data has been collected into \cppinline{TDCData}.}
@@ -348,7 +360,7 @@ class v1718{
     \subsection{Configuration file}
     \label{app1:ssec:inifile}
     
-    The DAQ software takes as input a configuration file written using INI standard~\cite{INI}. This file is partly filled with the information provided by the shifters when starting data acquisition using the webDCS, as shown by Figure~\ref{fig:scaninfo}. This information is written in section \iniinline{[General]} and will later be stored in the ROOT file that contains the DAQ data as can be seen from Figure~\ref{fig:ROOTfile}. Indeed, another \cppinline{TTree} called \cppinline{RunParameters} as well as the 2 histograms \cppinline{ID}, containing the scan number, start and stop time stamps, and \cppinline{Triggers}, containing the number of triggers requested by the shifter, are available in the data files.
+    The DAQ software takes as input a configuration file written using INI standard~\cite{INI}. This file is partly filled with the information provided by the shifters when starting data acquisition using the webDCS, as shown by Figure~\ref{fig:scaninfo}. This information is written in section \iniinline{[General]} and will later be stored in the ROOT file that contains the DAQ data as can be seen from Figure~\ref{fig:ROOTfile}. Indeed, another \cppinline{TTree} called \cppinline{RunParameters} as well as the 2 histograms \cppinline{ID}, containing the scan number, start and stop time stamps, and \cppinline{Triggers}, containing the number of triggers requested by the shifter, are available in the data files. Moreover, \iniinline{ScanID} and \iniinline{HV} are then used to construct the file name thanks to the method \cppinline{DataReader::GetFileName()}.
     
     \begin{figure}[H]
 		\centering
@@ -460,7 +472,7 @@ and on the other, the DAQ sends status that are controled by the webDCS:
     
     Under normal conditions, the webDCS and the DAQ processes exchange commands and status via the file hosted at the address \cppinline{__runstatuspath}, as explained in subsection~\ref{app1:ssec:dcsdaqcomm}. An example of cycle is given in Table~\ref{tab:intercom}. In this example, the steps 3 to 5 are repeated as long as the webDCS tells the DAQ to take data. A data taking cycle is the equivalent as what is called a \textit{Scan} in GIF++ jargon, referring to a set a runs with several HV steps. Each repetition of steps 3 to 5 is then equivalent to a single \textit{Run}.\\
     
-    At any moment during the data taking, for any reason, the shifter can decide that the data taking needs to be stopped before it reached the end of the scheduled cycle. Thus at any moment on the cycle, the content of the inter-process communication file will be changed to \verb+KILL+ and the DAQ will shut down right away. The DAQ checks for \verb+KILL+ signals every 5s after the TDCs configuration is over. So far, the function \cppinline{CheckKILL()} has been used only inside of the data taking loop of method \cppinline{DataReader::Run()} and thus, if the shifter decides to KILL the data taking during the TDC configuration phase or the HV ramping in between 2 HV steps, the DAQ will not e stopped smoothly and a \textit{force kill} command will be sent to stop the DAQ process that is still awake on the computer. Improvements can be brought on this part of the software to make sure that the DAQ can safely shutdown at any moment.\\
+    At any moment during the data taking, for any reason, the shifter can decide that the data taking needs to be stopped before it reached the end of the scheduled cycle. Thus at any moment on the cycle, the content of the inter-process communication file will be changed to \verb+KILL+ and the DAQ will shut down right away. The DAQ checks for \verb+KILL+ signals every 5s after the TDCs configuration is over. So far, the function \cppinline{CheckKILL()} has been used only inside of the data taking loop of method \cppinline{DataReader::Run()} and thus, if the shifter decides to KILL the data taking during the TDC configuration phase or the HV ramping in between 2 HV steps, the DAQ will not be stopped smoothly and a \textit{force kill} command will be sent to stop the DAQ process that is still awake on the computer. Improvements can be brought on this part of the software to make sure that the DAQ can safely shutdown at any moment.\\
     
     \begin{table}
 	    \begin{tabular}{|c|c|c|c|}
