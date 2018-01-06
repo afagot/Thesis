@@ -12,7 +12,7 @@
 {A data acquisition software for CAEN VME TDCs}
 \label{app1}
 
-Certifying detectors in the perspective of HL-LHC required to develop tools for the GIF++ experiment. Among them was the C++ \acf{DAQ} software that allows to make the communications in between the computer and the TDC modules in order to retrieve the RPC data~\cite{GIFDAQ}. In this appendix, details about the software, as of how the software was written, how it functions and how it can be exported to another similar setup.
+Certifying detectors in the perspective of HL-LHC required to develop tools for the GIF++ experiment. Among them was the C++ \acf{DAQ} software that allows to make the communications in between a computer and TDC modules in order to retrieve the RPC data~\cite{GIFDAQ}. In this appendix, details about this software, as of how the software was written, how it functions and how it can be exported to another similar setup, will be given.
 
 \section{GIF++ DAQ file tree}
 \label{app1:sec:code}
@@ -20,14 +20,14 @@ Certifying detectors in the perspective of HL-LHC required to develop tools for 
 	GIF++ DAQ source code is fully available on github at \url{https://github.com/afagot/GIF_DAQ}. The software requires 3 non-optional dependencies:
 
 	\begin{itemize}
-		\item[•] \href{http://www.caen.it/csite/CaenProd.jsp?idmod=417&parent=11}{CAEN USB Driver} to mount the VME hardware
-		\item[•] \href{http://www.caen.it/csite/CaenProd.jsp?idmod=689&parent=38}{CAEN VME Library} to communicate with the VME hardware
-		\item[•] \href{https://root.cern.ch/downloading-root}{ROOT} to organize the collected data into a TTree
+		\item[•] \href{http://www.caen.it/csite/CaenProd.jsp?idmod=417&parent=11}{CAEN USB Driver}, to mount the VME hardware,
+		\item[•] \href{http://www.caen.it/csite/CaenProd.jsp?idmod=689&parent=38}{CAEN VME Library}, to communicate with the VME hardware, and
+		\item[•] \href{https://root.cern.ch/downloading-root}{ROOT}, to organize the collected data into a TTree.
 	\end{itemize}
 
 	The CAEN VME library will not be packaged by distributions and will need to be installed manually. To compile the GIF++ DAQ project via a terminal, from the DAQ folder use the command :
 
-	\begin{minted}[bgcolor=bg,fontsize=\footnotesize]{bash}
+	\begin{minted}[bgcolor=bg]{bash}
 	make
 	\end{minted}
 
@@ -51,7 +51,7 @@ Certifying detectors in the perspective of HL-LHC required to develop tools for 
 	 .3 install.
 	 .3 x86.
 	 .4 libCAENVME.so.2.41.
-	 .2 obj\DTcomment{binary file created by compiler}.
+	 .2 obj\DTcomment{binary files created by compiler}.
 	 .3 ....
 	 .2 src\DTcomment{list of C++ source files}.
 	 .3 daq.cxx\DTcomment{main file}.
@@ -68,15 +68,13 @@ Certifying detectors in the perspective of HL-LHC required to develop tools for 
 \section{Usage of the DAQ}
 \label{app1:sec:usage}
 
-	GIF++ DAQ as used in GIF++ is not a standalone software. Indeed, the system being more complexe, the DAQ only is a sub-layer of the software architecture developped to control and monitor the RPCs that are placed into the bunker for performance study in an irradiated environment. The top layer of GIF++ is a \acf{webDCS} application. The DAQ is only called by the webDCS when data needs to be acquired. The webDCS operates the DAQ through command line. To start the DAQ, the webDCS calls:
+	GIF++ DAQ, as used in GIF++, is not a standalone software. Indeed, the system being more complexe, the DAQ only is a sub-layer of the software architecture developped to control and monitor the RPCs that are placed into the bunker for performance study in an irradiated environment. The top layer of GIF++ is a \acf{webDCS} application. The DAQ is only called by the webDCS when data needs to be acquired. The webDCS operates the DAQ through command line. To start the DAQ, the webDCS calls:
 	
 	\begin{minted}[bgcolor=bg,fontsize=\footnotesize]{bash}
 	bin/daq /path/to/the/log/file/in/the/output/data/folder
 	\end{minted}
 	
 	where \footnotesize\verb+/path/to/the/log/file/in/the/output/data/folder+ \normalsize is the only argument required. This log file is important for the webDCS as this file contains all the content of the communication of the webDCS and the different systems monitored by the webDCS. Its content is constantly displayed during data taking for the users to be able to follow the operations. The communication messages are normally sent to the webDCS log file via the functions declared in file \verb+MsgSvc.h+, typically \cppinline{MSG_INFO(string message)}.\\
-	
-	Nontheless, it is possible to make the DAQ a standalone program that could be adapted to any VME setup using V1190A and V1718 modules by creating a GUI for the software or by printing the log messages that are normally printed in the webDCS through the log file, into the terminal.\\
 
 \section{Description of the readout setup}
 \label{app1:sec:setup}
@@ -518,12 +516,14 @@ and on the other, the DAQ sends status that are controled by the webDCS:
 	    \end{tabular}
 	    \caption{\label{tab:intercom} Inter-process communication cycles in between the webDCS and the DAQ through file string signals.}
     \end{table}
-    
-\section{DAQ algorithm overview}
-\label{app1:sec:algo}
 
 \section{Software export}
 \label{app1:sec:export}
-
+	
+	In section \ref{app1:sec:usage} was discussed the fact that the DAQ as written in its last version is not a standalone software. It is possible to make it a standalone program that could be adapted to any VME setup using V1190A and V1718 modules by creating a GUI for the software or by printing the log messages that are normally printed in the webDCS through the log file, directly into the terminal. This method was used by the DAQ up to version 3.0 moment where the webDCS was completed. Also, it is possible to check branches of DAQ v2.X to have example of communication through a terminal.\\
+	
+	DAQ v2.X is nontheless limited in it's possibilities and requires a lot of offline manual interventions from the users. Indeed, there is no communication of the software with the detectors' power supply system that would allow for a user a predefine a list of voltages to operate the detectors at and loop over to take data without any further manual intervention. In v2.X, the data is taken for a single detector setting and at the end of each run, the softwares asks the user if he intends on taking more runs. If so, the software invites the user to set the operating voltages accordingly to what is necessary and to manual update the configuration file in consequence. This working mode can be a very first approach before an evolution and has been successfuly used by colleagues from different collaborations.\\
+	
+	For a more robust operation, it is recommanded to develop a GUI or a web application to interface the DAQ. Moreover, to limit the amount of manual interventions, and thus the probability to make mistakes, it is also recommanded to add an extra feature into the DAQ by installing the \href{http://caen.it/csite/CaenProd.jsp?idmod=835&parent=42}{HV Wrapper library} provided by CAEN of which an example of use in a similar DAQ software developped by a master student of UGent, and called \href{https://github.ugent.be/favassch/TinyDAQ}{TinyDAQ}, is provided on UGent's github. Then, this HV Wrapper will help you communicating with and give instructions to a CAEN HV powered crate and can be added into the DAQ at the same level where the communication with the user was made in DAQ v2.X. In case you are using another kind of power system for your detectors, it is stringly adviced to use HV modules or crates that can be remotely controled via a using C++ libraries.\\
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
