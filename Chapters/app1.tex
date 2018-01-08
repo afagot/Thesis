@@ -28,10 +28,12 @@ Certifying detectors in the perspective of HL-LHC required to develop tools for 
 	The CAEN VME library will not be packaged by distributions and will need to be installed manually. To compile the GIF++ DAQ project via a terminal, from the DAQ folder use the command :
 
 	\begin{minted}[bgcolor=bg]{bash}
-	make
+make
 	\end{minted}
 
 	The source code tree is provided below along with comments to give an overview of the files' content. The different objects created for this project (\cppinline{v1718}, \cppinline{v1190a}, \cppinline{IniFile} \& \cppinline{DataReader}) will be described in details in the following sections.\\
+	
+	\newpage
 
 	\dirtree{%
 	 .1 GIF\_DAQ.
@@ -71,7 +73,7 @@ Certifying detectors in the perspective of HL-LHC required to develop tools for 
 	GIF++ DAQ, as used in GIF++, is not a standalone software. Indeed, the system being more complexe, the DAQ only is a sub-layer of the software architecture developped to control and monitor the RPCs that are placed into the bunker for performance study in an irradiated environment. The top layer of GIF++ is a \acf{webDCS} application. The DAQ is only called by the webDCS when data needs to be acquired. The webDCS operates the DAQ through command line. To start the DAQ, the webDCS calls:
 	
 	\begin{minted}[bgcolor=bg,fontsize=\footnotesize]{bash}
-	bin/daq /path/to/the/log/file/in/the/output/data/folder
+bin/daq /path/to/the/log/file/in/the/output/data/folder
 	\end{minted}
 	
 	where \footnotesize\verb+/path/to/the/log/file/in/the/output/data/folder+ \normalsize is the only argument required. This log file is important for the webDCS as this file contains all the content of the communication of the webDCS and the different systems monitored by the webDCS. Its content is constantly displayed during data taking for the users to be able to follow the operations. The communication messages are normally sent to the webDCS log file via the functions declared in file \verb+MsgSvc.h+, typically \cppinline{MSG_INFO(string message)}.\\
