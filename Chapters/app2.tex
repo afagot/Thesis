@@ -14,30 +14,28 @@
 {Details on the offline analysis package}
 \label{app2}
 
-The data collected in GIF++ thanks to the DAQ described in Appendix~\ref{app1} is difficult to interpret by a human user that doesn't have a clear idea of the raw data architecture of the CMS RPC ROOT files. In order to render the data human readable, a C++ offline analysis tool was designed to provide users with detector by detector histograms that give a clear overview of the parameters monitored during the data acquisition~\cite{GIFOffline}. In this appendix, details about this software, as of how the software was written and how it functions will be given.
+The data collected in GIF++ thanks to the DAQ described in Appendix~\ref{app1} is difficult to interpret by a human user that doesn't have a clear idea of the raw data architecture of the ROOT data files. In order to render the data human readable, a C++ offline analysis tool was designed to provide users with detector by detector histograms that give a clear overview of the parameters monitored during the data acquisition~\cite{GIFOffline}. In this appendix, details about this software in the context of GIF++, as of how the software was written and how it functions will be given.
 
 \section{GIF++ Offline Analysis file tree}
 \label{app2:sec:code}
 
-	GIF++ Offline Analysis source code is fully available on github at \url{https://github.com/afagot/GIF_OfflineAnalysis}. The software requires \href{https://root.cern.ch/downloading-root}{ROOT} as non-optionnal dependency as it takes ROOT files in input and write an output ROOT file containing histograms. To compile the GIF++ Offline Analysis project is compiled with cmake. To compile, first a \verb+build/+ directory must be created to compile from there:
+	GIF++ Offline Analysis source code is fully available on github at \url{https://github.com/afagot/GIF_OfflineAnalysis}. The software requires \href{https://root.cern.ch/downloading-root}{ROOT} as non-optionnal dependency as it takes ROOT files in input and write an output ROOT file containing histograms. To compile the GIF++ Offline Analysis project is compiled with cmake. To compile, first a \textinline{build/} directory must be created to compile from there:\\
 
-	\begin{minted}[bgcolor=bg]{bash}
-mkdir build
-cd build
-cmake ..
-make
-make install
-	\end{minted}
+	\begin{bashcode}
+ mkdir build
+ cd build
+ cmake ..
+ make
+ make install
+	\end{bashcode}
+\vspace{5mm}
+	To clean the directory and create a new build directory, the bash script \textinline{cleandir.sh} can be used:\\
 	
-	To clean the directory and create a new build directory, the bash script \verb+cleandir.sh+ can be used:
-	
-	\begin{minted}[bgcolor=bg]{bash}
-./cleandir.sh
-	\end{minted}
-
+	\begin{bashcode}
+ ./cleandir.sh
+	\end{bashcode}
+\vspace{5mm}
 	The source code tree is provided below along with comments to give an overview of the files' content. The different objects created for this project (\cppinline{Infrastructure}, \cppinline{Trolley}, \cppinline{RPC}, \cppinline{Mapping}, \cppinline{RPCHit}, \cppinline{RPCCluster} and \cppinline{Inifile}) will be described in details in the following sections.\\
-	
-	\newpage
 
 	\dirtree{%
 	 .1 GIF\_OfflineAnalysis.
@@ -82,63 +80,178 @@ make install
 \section{Usage of the Offline Analysis}
 \label{app2:sec:usage}
 
-	In order to use the Offline Analysis tool, it is mandatory to know the Scan number and the HV Step of the run that needs to be analysed. This information needs to be written in the following format:
+	In order to use the Offline Analysis tool, it is necessary to know the Scan number and the HV Step of the run that needs to be analysed. This information needs to be written in the following format:\\
 	
-	\begin{minted}[bgcolor=bg]{bash}
-Scan00XXXX_HVY
-	\end{minted}
-
-	where \verb+XXXX+ is the scan ID and \verb+Y+ is the high voltage step (in case of a high voltage scan, data will be taken for several HV steps). This format corresponds to the data file base name. Usually, the offline analysis tool is automatically called by the WebDCS of GIF++ but, nontheless, to locally start the analysis for tests, simply type:
+	\begin{bashcode}
+ Scan00XXXX_HVY
+	\end{bashcode}
+\vspace{5mm}
+	where \textinline{XXXX} is the scan ID and \textinline{Y} is the high voltage step (in case of a high voltage scan, data will be taken for several HV steps). This format corresponds to the base name of data files in the database of the GIF++ webDCS. Usually, the offline analysis tool is automatically called by the webDCS at the end of data taking or by a user from the webDCS panel if an update of the tool was brought. Nontheless, an expert can locally launch the analysis for tests on the GIF++ computer, or a user can get the code on is local machine from github and download data from the webDCS for is own analysis. To launch the code, the following command can be used from the \textinline{GIF_OfflineAnalysis} folder:\\
 	
-	\begin{minted}[bgcolor=bg]{bash}
-bin/offlineanalysis /path/to/Scan00XXXX_HVY
-	\end{minted}
-
-	and the offline tool will by itself take care of finding the data ROOT files, as listed bellow:
+	\begin{bashcode}
+ bin/offlineanalysis /path/to/Scan00XXXX_HVY
+	\end{bashcode}
+\vspace{5mm}
+	where, \textinline{/path/to/Scan00XXXX_HVY} refers to the local data files. Then, the offline tool will by itself take care of finding all available ROOT data files present in the folder, as listed bellow:
 
 	\begin{itemize}
-		\item[•] Scan00XXXX\_HVY\_DAQ.root containing the TDC data (events, hit and time lists)
-		\item[•] Scan00XXXX\_HVY\_CAEN.root containing the CAEN mainframe data (HVs and currents of every HV channels)
+		\item[•] \textinline{Scan00XXXX_HVY_DAQ.root} containing the TDC data as described in Appendix~\ref{app1:sec:DataReader} (events, hit and timestamp lists), and
+		\item[•] \textinline{Scan00XXXX_HVY_CAEN.root} containing the CAEN mainframe data recorded by the monitoring tool webDCS during data taking (HVs and currents of every HV channels). This file is created independently of the DAQ.
 	\end{itemize}
 	
-	The analysed output ROOT datafiles are saved into the data folder and called \verb+Scan00XXXX_HVY_Offline.root+. Inside those, a list of \cppinline{TH1} histograms can be found. Its size will vary as a function of the number of detectors in the setup as each set of histograms is produced detector by detector. For each partition of each chamber, you will find:
+	\subsection{Output of the offline tool}
+	\label{app2:ssec:output}
+	
+		\subsubsection{ROOT file}
+		\label{app2:sssec:ROOT}
+	
+	The analysis gives in output ROOT datafiles that are saved into the data folder and called using the naming convention \textinline{Scan00XXXX_HVY_Offline.root}. Inside those, a list of \cppinline{TH1} histograms can be found. Its size will vary as a function of the number of detectors in the setup as each set of histograms is produced detector by detector. For each partition of each chamber, can be found:
 
 	\begin{itemize}
-		\item[•] \cppinline{Time_Profile_Tt_Sc_p} shows the time profile of all recorded events,
-		\item[•] \cppinline{Hit_Profile_Tt_Sc_p} shows the hit profile of all recorded events,
-		\item[•] \cppinline{Hit_Multiplicity_Tt_Sc_p} shows the hit multiplicity of all recorded events (number of hits per event),
-		\item[•] \cppinline{Strip_Mean_Noise_Tt_Sc_p} shows noise/gamma rate for each strip in a selected time range,
-		\item[•] \cppinline{Strip_Activity_Tt_Sc_p} shows noise/gamma activity for each strip (normalised version of previous histogram - strip activity = strip rate / average partition rate),
-		\item[•] \cppinline{Strip_Homogeneity_Tt_Sc_p} shows the homogeneity $h$ of a given partition ($h = e^{-StdDev(strip rates in partition)/(average partition rate)}$)
-		\item[•] \cppinline{mask_Strip_Mean_Noise_Tt_Sc_p} shows noise/gamma rate for each masked strip in a selected time range,
-		\item[•] \cppinline{mask_Strip_Activity_Tt_Sc_p} shows noise/gamma activity for each masked strip with repect to the average rate of active strips,
-		\item[•] \cppinline{NoiseCSize_H_Tt_Sc_p} shows noise/gamma cluster size,
-		\item[•] \cppinline{NoiseCMult_H_Tt_Sc_p} shows noise/gamma cluster multiplicity (number of reconstructed clusters per event),
-		\item[•] \cppinline{Chip_Mean_Noise_Tt_Sc_p} shows the same information than \cppinline{Strip_Mean_Noise_Tt_Scp} using a different binning (1 chip corresponds to 8 strips),
-		\item[•] \cppinline{Chip_Activity_Tt_Sc_p} shows the same information than \cppinline{Strip_Activity_Tt_Scp} using a different binning,
-		\item[•] \cppinline{Chip_Homogeneity_Tt_Sc_p} shows the homogeneity of a given partition using chip binning,
-		\item[•] \cppinline{Beam_Profile_Tt_Sc_p} shows the estimated beam profile when taking efficiency scan (constructed with the hits contained in the muon peak where the noise/gamma background has been subtracted),
-		\item[•] \cppinline{L0_Efficiency_Tt_Sc_p} shows the level 0 efficiency that was estimated \textbf{without} muon tracking,
-		\item[•] \cppinline{MuonCSize_H_Tt_Sc_p} shows the level 0 muon cluster size that was estimated \textbf{without} muon tracking, and
-		\item[•] \cppinline{MuonCMult_H_Tt_Sc_p} shows the level 0 muon cluster multiplicity that was estimated \textbf{without} muon tracking.
+		\item[•] \textinline{Time_Profile_Tt_Sc_p} shows the time profile of all recorded events (number of events per time bin),
+		\item[•] \textinline{Hit_Profile_Tt_Sc_p} shows the hit profile of all recorded events (number of events per channel),
+		\item[•] \textinline{Hit_Multiplicity_Tt_Sc_p} shows the hit multiplicity (number of hits per event) of all recorded events (number of occurences per multiplicity bin),
+		\item[•] \textinline{Strip_Mean_Noise_Tt_Sc_p} shows noise/gamma rate per unit area for each strip in a selected time range. After filters are applied on \textinline{Time_Profile_Tt_Sc_p}, the filtered version of \textinline{Hit_Profile_Tt_Sc_p} is normalised to the total integrated time and active detection area of a single channel,
+		\item[•] \textinline{Strip_Activity_Tt_Sc_p} shows noise/gamma activity for each strip (normalised version of previous histogram - strip activity = strip rate / average partition rate),
+		\item[•] \textinline{Strip_Homogeneity_Tt_Sc_p} shows the \textit{homogeneity} of a given partition (homogeneity = exp(-strip rates standard deviation(strip rates in partition/average partition rate)) ),
+		\item[•] \textinline{mask_Strip_Mean_Noise_Tt_Sc_p} shows noise/gamma rate per unit area for each masked strip in a selected time range. Offline, the user can control the noise/gamma rate and decide to mask the strips that are judged to be noisy or dead. This is done via the \textit{Masking Tool} provided by the webDCS,
+		\item[•] \textinline{mask_Strip_Activity_Tt_Sc_p} shows noise/gamma activity per unit area for each masked strip with repect to the average rate of active strips,
+		\item[•] \textinline{NoiseCSize_H_Tt_Sc_p} shows noise/gamma cluster size, a cluster being constructed out of adjacent strips giving a signal at the \textit{same time} (hits within a time window of \SI{25}{ns}),
+		\item[•] \textinline{NoiseCMult_H_Tt_Sc_p} shows noise/gamma cluster multiplicity (number of reconstructed clusters per event),
+		\item[•] \textinline{Chip_Mean_Noise_Tt_Sc_p} shows the same information than \textinline{Strip_Mean_Noise_Tt_Scp} using a different binning (1 chip corresponds to 8 strips),
+		\item[•] \textinline{Chip_Activity_Tt_Sc_p} shows the same information than \textinline{Strip_Activity_Tt_Scp} using chip binning,
+		\item[•] \textinline{Chip_Homogeneity_Tt_Sc_p} shows the homogeneity of a given partition using chip binning,
+		\item[•] \textinline{Beam_Profile_Tt_Sc_p} shows the estimated beam profile when taking efficiency scan. This is obtained by filtering \textinline{Time_Profile_Tt_Sc_p} to only consider the muon peak where the noise/gamma background has been subtracted. The resulting hit profile corresponds to the beam profile on the detector channels,
+		\item[•] \textinline{L0_Efficiency_Tt_Sc_p} shows the level 0 efficiency that was estimated \textbf{without} muon tracking,
+		\item[•] \textinline{MuonCSize_H_Tt_Sc_p} shows the level 0 muon cluster size that was estimated \textbf{without} muon tracking, and
+		\item[•] \textinline{MuonCMult_H_Tt_Sc_p} shows the level 0 muon cluster multiplicity that was estimated \textbf{without} muon tracking.
 	\end{itemize}
 
-	In the histogram labels, \verb+t+ stands for the trolley number (1 or 3), \verb+c+ for the chamber slot label in trolley \verb+t+ and \verb+p+ for the partition label (A, B, C or D depending on the chamber layout).\\
+	In the histogram labels, \textinline{t} stands for the trolley number (1 or 3), \textinline{c} for the chamber slot label in trolley  \textinline{t} and \textinline{p} for the partition label (A, B, C or D depending on the chamber layout) as explained in Chapter~\ref{chapt5:sec:GIFpptests}.\\
+	
+	In the context of GIF++, an extra script called by the webDCS is called to extract the histograms from the ROOT files. The histograms are then stored in PNG and PDF formats into the corresponding folder (a single folder per HV step, so per ROOT file). the goal is to then display the histograms on the \acf{DQM} page of the webDCS in order for the users to control the quality of the data taking at the end of data taking. An example of histogram organisation is given bellow:\\
+	
+	\newpage
+	
+	\dirtree{%
+	 .1 Scan001000.
+	 .2 Scan001000\_HV1\_DAQ.root.
+	 .2 Scan001000\_HV1\_CAEN.root.
+	 .2 Scan001000\_HV1\_Offline.root.
+	 .2 HV1.
+	 .3 DAQ.
+	 .4 Beam\_Profile\_T1\_S1\_A.png.
+	 .4 Beam\_Profile\_T1\_S1\_A.pdf.
+	 .4 Beam\_Profile\_T1\_S1\_B.png.
+	 .4 Beam\_Profile\_T1\_S1\_B.pdf.
+	 .4 ....
+	 .3 CAEN.
+	 .4 HVapp\_Example\_RPC1.pdf.
+	 .4 HVapp\_Example\_RPC1.png.
+	 .4 HVapp\_Example\_RPC1.pdf.
+	 .4 HVapp\_Example\_RPC1.png.
+	 .4 ....
+	 .2 Scan001000\_HV2\_DAQ.root.
+	 .2 Scan001000\_HV2\_CAEN.root.
+	 .2 Scan001000\_HV2\_Offline.root.
+	 .2 HV2.
+	 .3 DAQ.
+	 .4 ....
+	 .3 CAEN.
+	 .4 ....
+	 .2 Scan001000\_HV3\_DAQ.root.
+	 .2 Scan001000\_HV3\_CAEN.root.
+	 .2 Scan001000\_HV3\_Offline.root.
+	 .2 HV3.
+	 .3 ....
+	 .2 ....
+	}
+	\vspace{5mm}
+	\textbf{\textit{Here can put some screens from the webDCS to show the DQM and the plots available to users.\\}}
+	
+		\subsubsection{CSV files}
+		\label{app2:sssec:CSV}
 
 	Moreover, up to 3 CSV files can be created depending on which ones of the 3 input files were in the data folder:
 
 	\begin{itemize}
-		\item[•] \verb+Offline-Rate.csv+ : contains the summary of the noise/gamma rates and clusters,
-		\item[•] \verb+Offline-Current.csv+ : contains the summary of the currents and voltages applied on the RPCs,
-		\item[•] \verb+Offline-L0-EffCl.csv+ : contains the summary of the level 0 efficiency and muon cluster information without tracking.
+		\item[•] \textinline{Offline-Rate.csv} : contains the summary of the noise/gamma hit and cluster rates for each chamber partitions,
+		\item[•] \textinline{Offline-Current.csv} : contains the summary of the currents and voltages applied on each RPC HV channel, and
+		\item[•] \textinline{Offline-L0-EffCl.csv} : contains the summary of the level 0 efficiency and muon cluster information \textbf{without} tracking.
 	\end{itemize}
 	
-	Note that these 3 CSV files are created along their \textit{headers} (file containing the names of the data columns) and are automatically merged together when the offline analysis is used via the RunDQM button of the webDCS. Thus, the resulting files are:
+	Note that these 3 CSV files are created along with their \textit{headers} (\textinline{Offline-[...]-Header.csv} containing the names of each data columns) and are automatically merged together when the offline analysis tool is called from the webDCS, contrary to the case where the tool is runned locally from the terminal as the merging bash script is then not called. Thus, the resulting files, used to make official plots, are:
 
 	\begin{itemize}
-		\item[•] \verb+Rate.csv+ ,
-		\item[•] \verb+Current.csv+ ,
-		\item[•] \verb+L0-EffCl.csv+ .
+		\item[•] \textinline{Rate.csv} ,
+		\item[•] \textinline{Current.csv} ,
+		\item[•] \textinline{L0-EffCl.csv} .
 	\end{itemize}
-
+	
+\section{Analysis inputs and information handling}
+\label{app2:sec:inputs}
+	
+	The usage of the Offline Analysis tool as well as its output have been presented in the previous section. It is now important to dig further and start looking at the source code and the inputs necessary for the tool to work. Indeed, appart from the raw ROOT data files that are analysed, more information needs to be imported inside of the program to perform the analysis such as the description of the setup inside of GIF++ at the time of data taking (number of trolleys, of RPCs, dimensions of the detectors, etc...) or the mapping that links the TDC channels to the coresponding RPC channels in order to translate the TDC information into human readable data. 2 files are used to transmit all this information:\\
+	
+	\begin{itemize}
+		\item[•] \textinline{Dimensions.ini}, that provides the necessary setup and RPC information, and
+		\item[•] \textinline{ChannelsMapping.csv}, that gives the link between the TDC and RPC channels as well as the \textit{mask} for each channel (masked or not?).
+	\end{itemize}
+	
+	\subsection{Dimensions file and IniFile parser}
+	\label{app2:ssec:dimensions}
+	
+	This input file, present in every data folder, allows the analysis tool to know of the number of active trolleys, the number of active RPCs in those trolleys, and the details about each RPCs such as the number of RPC gaps, the number of pseudo-rapidity partitions (for CMS-like prototypes), the number of strips per partion or the dimensions. To do so, there are 3 types of groups in the INI file architecture. A first general group, appearing only once at the head of the document, gives information about the number of active trolleys as well as their IDs, as presented in Source Code~\ref{ini:general}. For each active trolley, a group similar to Source Code~\ref{ini:trolley} can be found containing information about the number of active detectors in the trolley and their IDs. Finally, for each detector stored in slots of an active trolley, there is a group providing information about their names and dimensions, as showed in Source Code~\ref{ini:slot}.\\
+	
+	\begin{code}
+	\begin{inicode}
+[General]
+nTrolleys=2
+TrolleysID=13
+	\end{inicode}
+	\captionof{listing}{Example of \iniinline{[General]} group as might be found in \textinline{Dimensions.ini}. In GIF++, only 2 trolleys are available to hold RPCs and place them inside of the bunker for irradiation. The IDs of the trolleys are written in a signle string as "13" and then read character by character by the program.}
+	\label{ini:general}
+	\vspace{5mm}
+	\end{code}
+	
+	\begin{code}
+	\begin{inicode}
+[T1]
+nSlots=4
+SlotsID=1234
+	\end{inicode}
+	\captionof{listing}{Example of trolley group as might be found in \textinline{Dimensions.ini}. In this example, the file tells that there are 4 detectors placed in the holding slots of the trolley \textinline{T1} and that their IDs, written as a single string variable, are 1, 2, 3 and 4.}
+	\label{ini:trolley}
+	\vspace{5mm}
+	\end{code}
+	
+	\begin{code}
+	\begin{inicode}
+[T1S1]
+Name=RE2-2-NPD-BARC-8
+Partitions=3
+Gaps=3
+Gap1=BOT
+Gap2=TN
+Gap3=TW
+AreaGap1=11694.25
+AreaGap2=6432
+AreaGap3=4582.82
+Strips=32
+ActiveArea-A=157.8
+ActiveArea-B=121.69
+ActiveArea-C=93.03
+	\end{inicode}
+	\captionof{listing}{Example of slot group as might be found in \textinline{Dimensions.ini}. In this example, the file provides information about a detector named \textinline{RE2-2-NPD-BARC-8}, having 3 pseudo-rapidity readout partitions. This is a CMS RE2-2 type of detector. This information will then be used for example to compute the rate per unit area calculation.}
+	\label{ini:slot}
+	\vspace{5mm}
+	\end{code}
+	
+	This information is readout and stored in a C++ object called \cppinline{IniFile}, that parses the information in the INI input file and stores it into a local buffer for later use. This INI parser is the exact same one that was previously developped for the GIF++ DAQ and described in Appendix~\ref{app1:ssec:inifile}.
+	
+	\subsection{TDC to RPC link file and Mapping}
+	\label{app2:ssec:mapping}
+	
+	
+	
 \clearpage{\pagestyle{empty}\cleardoublepage}

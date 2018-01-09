@@ -25,12 +25,12 @@ Certifying detectors in the perspective of HL-LHC required to develop tools for 
 		\item[•] \href{https://root.cern.ch/downloading-root}{ROOT}, to organize the collected data into a TTree.
 	\end{itemize}
 
-	The CAEN VME library will not be packaged by distributions and will need to be installed manually. To compile the GIF++ DAQ project via a terminal, from the DAQ folder use the command :
+	The CAEN VME library will not be packaged by distributions and will need to be installed manually. To compile the GIF++ DAQ project via a terminal, from the DAQ folder use the command:\\
 
-	\begin{minted}[bgcolor=bg]{bash}
-make
-	\end{minted}
-
+	\begin{bashcode}
+ make
+	\end{bashcode}
+\vspace{5mm}
 	The source code tree is provided below along with comments to give an overview of the files' content. The different objects created for this project (\cppinline{v1718}, \cppinline{v1190a}, \cppinline{IniFile} \& \cppinline{DataReader}) will be described in details in the following sections.\\
 	
 	\newpage
@@ -70,13 +70,13 @@ make
 \section{Usage of the DAQ}
 \label{app1:sec:usage}
 
-	GIF++ DAQ, as used in GIF++, is not a standalone software. Indeed, the system being more complexe, the DAQ only is a sub-layer of the software architecture developped to control and monitor the RPCs that are placed into the bunker for performance study in an irradiated environment. The top layer of GIF++ is a \acf{webDCS} application. The DAQ is only called by the webDCS when data needs to be acquired. The webDCS operates the DAQ through command line. To start the DAQ, the webDCS calls:
+	GIF++ DAQ, as used in GIF++, is not a standalone software. Indeed, the system being more complexe, the DAQ only is a sub-layer of the software architecture developped to control and monitor the RPCs that are placed into the bunker for performance study in an irradiated environment. The top layer of GIF++ is a \acf{webDCS} application. The DAQ is only called by the webDCS when data needs to be acquired. The webDCS operates the DAQ through command line. To start the DAQ, the webDCS calls:\\
 	
-	\begin{minted}[bgcolor=bg,fontsize=\footnotesize]{bash}
-bin/daq /path/to/the/log/file/in/the/output/data/folder
-	\end{minted}
-	
-	where \footnotesize\verb+/path/to/the/log/file/in/the/output/data/folder+ \normalsize is the only argument required. This log file is important for the webDCS as this file contains all the content of the communication of the webDCS and the different systems monitored by the webDCS. Its content is constantly displayed during data taking for the users to be able to follow the operations. The communication messages are normally sent to the webDCS log file via the functions declared in file \verb+MsgSvc.h+, typically \cppinline{MSG_INFO(string message)}.\\
+	\begin{bashcode}
+ bin/daq /path/to/the/log/file/in/the/output/data/folder
+	\end{bashcode}
+\vspace{5mm}
+	where \textinline{/path/to/the/log/file/in/the/output/data/folder} is the only argument required. This log file is important for the webDCS as this file contains all the content of the communication of the webDCS and the different systems monitored by the webDCS. Its content is constantly displayed during data taking for the users to be able to follow the operations. The communication messages are normally sent to the webDCS log file via the functions declared in file \textinline{MsgSvc.h}, typically \cppinline{MSG_INFO(string message)}.\\
 
 \section{Description of the readout setup}
 \label{app1:sec:setup}
@@ -139,9 +139,6 @@ bin/daq /path/to/the/log/file/in/the/output/data/folder
 	On the otherhand, monitoring the rates don't require for the DAQ to look at a specific time window. It is important to integrate enough time to have a robust measurement of the rate as the number of hits per time unit. The triggerring signal is provided by a pulse generator at a frequency of \SI{300}{Hz} to ensure that the data taking occurs in a random way, with respect to beam physics, to probe only the irradiation spectrum on the detectors. The match window is set to \SI{400}{clocks} (\SI{10}{\micro s}) and the negative offset to \SI{401}{clocks} as it needs to exceed the value of the match window.\\
 	
 	\begin{code}
-	\captionof{listing}{Description of C++ object \cppinline{v1190a}.}
-	\label{cpp:v1190a}
-	
     \begin{cppcode}
 class v1190a
 {
@@ -186,6 +183,9 @@ class v1190a
     Uint   Read(RAWData *DataList,int ntdcs);
 };
     \end{cppcode}
+	\captionof{listing}{Description of C++ object \cppinline{v1190a}.}
+	\label{cpp:v1190a}
+	\vspace{5mm}
     \end{code}
 	
 	The v1190a object, defined in the DAQ software as in Source Code~\ref{cpp:v1190a}, offers the possility to concatenate all TDCs in the readout setup into a single object containing a list of hardware addresses (addresses to access the TDCs' buffer through the VME crate) and each constructor and method acts on the list of TDCs.\\
@@ -214,9 +214,6 @@ class v1190a
 	The data is then transfered one TDC at a time into a structure called \cppinline{RAWData} (Source Code~\ref{cpp:rawdata}).\\
 	
 	\begin{code}
-	\captionof{listing}{Description of data holding C++ structure \cppinline{RAWData}.}
-	\label{cpp:rawdata}
-	
     \begin{cppcode}
 struct RAWData{
     vector<int>            *EventList;
@@ -226,14 +223,14 @@ struct RAWData{
     vector<vector<float> > *TimeStampList;
 };
     \end{cppcode}
+	\captionof{listing}{Description of data holding C++ structure \cppinline{RAWData}.}
+	\label{cpp:rawdata}
+	\vspace{5mm}
     \end{code}
-    
+
 	In order to organize the data transfer and the data storage, an object called \cppinline{DataReader} was created (Source Code~\ref{cpp:datareader}). On one hand, it has \cppinline{v1718} and \cppinline{v1190a} objects as private members for communication purposes, such as VME modules settings via the configuration file \cppinline{*iniFile} or data read-out through \cppinline{v1190a::Read()} and on the other hand, it contains the struture \cppinline{RAWData} that allows to organise the data in vectors reproducing the tree structre of a ROOT file.\\
 	
 	\begin{code}
-	\captionof{listing}{Description of C++ object \cppinline{DataReader}.}
-	\label{cpp:datareader}
-	
     \begin{cppcode}
 class DataReader
 {
@@ -263,14 +260,14 @@ class DataReader
         void     Run();
 };
     \end{cppcode}
+	\captionof{listing}{Description of C++ object \cppinline{DataReader}.}
+	\label{cpp:datareader}
+	\vspace{5mm}
     \end{code}
-    
-    Each event is tranferred from \cppinline{TDCData} and saved into branches of a ROOT \cppinline{TTree} as 3 integers that represent the event ID (\cppinline{EventCount}), the number of hits read from the TDCs (\cppinline{nHits}), and the quality flag that provides information for any problem in the data transfer (\cppinline{qflag}), and 2 lists of \textit{nHits} elements containing the fired TDC channels (\cppinline{TDCCh}) and their respective time stamps (\cppinline{TDCTS}), as presented in Source Code~\ref{cpp:datatranfer}. The ROOT file file is named using information contained into the configuration file, presented in section~\ref{app1:ssec:inifile}. The needed information is extracted using method \cppinline{DataReader::GetFileName()} and allow to build the output filename format \verb+ScanXXXXXX_HVX_DAQ.root+ where \verb+ScanXXXXXX+ is a 6 digit number representing the scan number into GIF++ database and \verb+HVX+ the HV step within the scan that can be more than a single digit. An example of ROOT data file is provided with Figure~\ref{fig:ROOTfile}.\\
+
+    Each event is tranferred from \cppinline{TDCData} and saved into branches of a ROOT \cppinline{TTree} as 3 integers that represent the event ID (\cppinline{EventCount}), the number of hits read from the TDCs (\cppinline{nHits}), and the quality flag that provides information for any problem in the data transfer (\cppinline{qflag}), and 2 lists of \textit{nHits} elements containing the fired TDC channels (\cppinline{TDCCh}) and their respective time stamps (\cppinline{TDCTS}), as presented in Source Code~\ref{cpp:datatranfer}. The ROOT file file is named using information contained into the configuration file, presented in section~\ref{app1:ssec:inifile}. The needed information is extracted using method \cppinline{DataReader::GetFileName()} and allow to build the output filename format \textinline{ScanXXXXXX_HVX_DAQ.root} where \textinline{ScanXXXXXX} is a 6 digit number representing the scan number into GIF++ database and \textinline{HVX} the HV step within the scan that can be more than a single digit. An example of ROOT data file is provided with Figure~\ref{fig:ROOTfile}.\\
     
     \begin{code}
-	\captionof{listing}{Highlight of the data transfer and organisation within \cppinline{DataReader::Run()} after the data has been collected into \cppinline{TDCData}.}
-	\label{cpp:datatranfer}
-	
     \begin{cppcode}
 RAWData TDCData;
 TFile *outputFile = new TFile(outputFileName.c_str(),"recreate");
@@ -303,8 +300,11 @@ for(Uint i=0; i<TDCData.EventList->size(); i++){
     RAWDataTree->Fill();
 }
     \end{cppcode}
+    \captionof{listing}{Highlight of the data transfer and organisation within \cppinline{DataReader::Run()} after the data has been collected into \cppinline{TDCData}.}
+	\label{cpp:datatranfer}
+    \vspace{5mm}
     \end{code}
-    
+
     \begin{figure}[H]
 		\centering
 		\includegraphics[width = \plotwidth]{fig/app1/webDCS-ROOT-browser.png}
@@ -322,9 +322,6 @@ for(Uint i=0; i<TDCData.EventList->size(); i++){
     In the previous section, the data transfer as been discussed. The importance of the \cppinline{v1718} object (Source Code~\ref{cpp:v1718}), used as private member of \cppinline{DataReader}, was not explicited. VME  master modules are used for communication purposes as they host the USB port that connects the powered crate buffer to the computer were the DAQ is installed. From the source code point of view, this object is used to control the communication status, by reading the returned error codes with \cppinline{v1718::CheckStatus()}, or to check for IRQs coming from the TDCs through \cppinline{v1718::CheckIRQ()}. Finally, to ensure that triggers are blocked at the hardware level, a NIM pulse is sent out of one of the 5 programmable outputs (\cppinline{v1718::SendBUSY()}) to the VETO of the coïndidence module where the trigger signals originate from. As long as this signal is ON, no trigger can reach the TDCs anymore.\\
 	
 	\begin{code}
-	\captionof{listing}{Description of C++ object \cppinline{v1718}.}
-	\label{cpp:v1718}
-	
     \begin{cppcode}
 class v1718{
     private:
@@ -355,6 +352,9 @@ class v1718{
         void              SendBUSY(BusyLevel level);
 };
     \end{cppcode}
+    \captionof{listing}{Description of C++ object \cppinline{v1718}.}
+	\label{cpp:v1718}
+	\vspace{5mm}
     \end{code}
 
     \subsection{Configuration file}
@@ -371,8 +371,6 @@ class v1718{
 	The rest of the information is written beforehand in the configuration file template, as explicited in Source Code~\ref{ini:INIFile}, and contains the hardware addresses to the differents VME modules in the setup as well as settings for the TDCs. As the TDC settings available in the configuration file are not supposed to be modified, an improvement would be to remove them from the configuration file and to hardcode them inside of the DAQ code itself or to place them into a different INI file that would host only the TDC settings to lower the probability for a bad manipulation of the configuration file that can be modified from one of webDCS' menus.\\
     
     \begin{code}
-	\captionof{listing}{INI configuration file template for 4 TDCs. In section \iniinline{[General]}, the number of TDCs is explicited and information about the ongoing run is given. Then, there are sections for each and every VME modules. There buffer addresses are given and for the TDCs, the list of channels to enable is given. Finally, in section \iniinline{[TDCSettings]}, a part of the TDC settings are given.}
-	\label{ini:INIFile}
     \begin{inicode}
 [General]
 Tdcs=4
@@ -445,26 +443,29 @@ TdcEventSize=0b1001
 TdcTestMode=0b0
 BLTMode=1
 	\end{inicode}
+	\captionof{listing}{INI configuration file template for 4 TDCs. In section \iniinline{[General]}, the number of TDCs is explicited and information about the ongoing run is given. Then, there are sections for each and every VME modules. There buffer addresses are given and for the TDCs, the list of channels to enable is given. Finally, in section \iniinline{[TDCSettings]}, a part of the TDC settings are given.}
+	\label{ini:INIFile}
+	\vspace{5mm}
 	\end{code}
-    
+
     \subsection{WebDCS/DAQ intercommunication}
     \label{app1:ssec:dcsdaqcomm}
     
     When shifters send instructions to the DAQ via the configuration file, it is the webDCS itself that gives the start command to the DAQ and then the 2 softwares use inter-process communication through file to synchronise themselves. This communication file is represented by the variable \cppinline{const string __runstatuspath}.\\
     On one side, the webDCS sends commands or status that are readout by the DAQ:
     \begin{itemize}
-    	\item[•] \verb+INIT+, status sent when launching a scan and read via function \cppinline{CtrlRunStatus(...)},
-    	\item[•] \verb+START+, command to start data taking and read via function \cppinline{CheckSTART()},
-    	\item[•] \verb+STOP+, command to stop data taking at the end of the scan and read via function \cppinline{CheckSTOP()}, and
-    	\item[•] \verb+KILL+, command to kill data taking sent by user and read via function \cppinline{CheckKILL()}
+    	\item[•] \textinline{INIT}, status sent when launching a scan and read via function \cppinline{CtrlRunStatus(...)},
+    	\item[•] \textinline{START}, command to start data taking and read via function \cppinline{CheckSTART()},
+    	\item[•] \textinline{STOP}, command to stop data taking at the end of the scan and read via function \cppinline{CheckSTOP()}, and
+    	\item[•] \textinline{KILL}, command to kill data taking sent by user and read via function \cppinline{CheckKILL()}
     \end{itemize}
 and on the other, the DAQ sends status that are controled by the webDCS:
     \begin{itemize}
-    	\item[•] \verb+DAQ_RDY+, sent with \cppinline{SendDAQReady()} to signify that the DAQ is ready to receive commands from the webDCS,
-    	\item[•] \verb+RUNNING+, sent with \cppinline{SendDAQRunning()} to signify that the DAQ is taking data,
-    	\item[•] \verb+DAQ_ERR+, sent with \cppinline{SendDAQError()} to signify that the DAQ didn't receive the expected command from the webDCS or that the launch command didn't have the right number of arguments,
-    	\item[•] \verb+RD_ERR+, sent when the DAQ wasn't able to read the communication file, and
-    	\item[•] \verb+WR_ERR+, sent when the DAQ wasn't able to write into the communication file.
+    	\item[•] \textinline{DAQ_RDY}, sent with \cppinline{SendDAQReady()} to signify that the DAQ is ready to receive commands from the webDCS,
+    	\item[•] \textinline{RUNNING}, sent with \cppinline{SendDAQRunning()} to signify that the DAQ is taking data,
+    	\item[•] \textinline{DAQ_ERR}, sent with \cppinline{SendDAQError()} to signify that the DAQ didn't receive the expected command from the webDCS or that the launch command didn't have the right number of arguments,
+    	\item[•] \textinline{RD_ERR}, sent when the DAQ wasn't able to read the communication file, and
+    	\item[•] \textinline{WR_ERR}, sent when the DAQ wasn't able to write into the communication file.
     \end{itemize}
     
     \subsection{Example of inter-process communication cycle}
@@ -472,48 +473,48 @@ and on the other, the DAQ sends status that are controled by the webDCS:
     
     Under normal conditions, the webDCS and the DAQ processes exchange commands and status via the file hosted at the address \cppinline{__runstatuspath}, as explained in subsection~\ref{app1:ssec:dcsdaqcomm}. An example of cycle is given in Table~\ref{tab:intercom}. In this example, the steps 3 to 5 are repeated as long as the webDCS tells the DAQ to take data. A data taking cycle is the equivalent as what is called a \textit{Scan} in GIF++ jargon, referring to a set a runs with several HV steps. Each repetition of steps 3 to 5 is then equivalent to a single \textit{Run}.\\
     
-    At any moment during the data taking, for any reason, the shifter can decide that the data taking needs to be stopped before it reached the end of the scheduled cycle. Thus at any moment on the cycle, the content of the inter-process communication file will be changed to \verb+KILL+ and the DAQ will shut down right away. The DAQ checks for \verb+KILL+ signals every 5s after the TDCs configuration is over. So far, the function \cppinline{CheckKILL()} has been used only inside of the data taking loop of method \cppinline{DataReader::Run()} and thus, if the shifter decides to KILL the data taking during the TDC configuration phase or the HV ramping in between 2 HV steps, the DAQ will not be stopped smoothly and a \textit{force kill} command will be sent to stop the DAQ process that is still awake on the computer. Improvements can be brought on this part of the software to make sure that the DAQ can safely shutdown at any moment.\\
+    At any moment during the data taking, for any reason, the shifter can decide that the data taking needs to be stopped before it reached the end of the scheduled cycle. Thus at any moment on the cycle, the content of the inter-process communication file will be changed to \textinline{KILL} and the DAQ will shut down right away. The DAQ checks for \textinline{KILL} signals every 5s after the TDCs configuration is over. So far, the function \cppinline{CheckKILL()} has been used only inside of the data taking loop of method \cppinline{DataReader::Run()} and thus, if the shifter decides to KILL the data taking during the TDC configuration phase or the HV ramping in between 2 HV steps, the DAQ will not be stopped smoothly and a \textit{force kill} command will be sent to stop the DAQ process that is still awake on the computer. Improvements can be brought on this part of the software to make sure that the DAQ can safely shutdown at any moment.\\
     
     \begin{table}
 	    \begin{tabular}{|c|c|c|c|}
 	    	\hline
 	    	step & actions of webDCS & status of DAQ & \cppinline{__runstatuspath}\\
 	    	\hline
-	    	1 & launch DAQ & readout of IniFfile & \verb+INIT+\\
+	    	1 & launch DAQ & readout of IniFfile & \textinline{INIT}\\
 	    	 & ramp voltages & configuration of TDCs & \\
 	    	 & ramping over & & \\
 	    	 & wait for currents stabilization & & \\
 	    	\hline
-	    	2 &  & configuration done & \verb+DAQ_RDY+\\
+	    	2 &  & configuration done & \textinline{DAQ_RDY}\\
 	    	 &  & send DAQ ready & \\
-	    	 &  & wait for \verb+START+ signal & \\
+	    	 &  & wait for \textinline{START} signal & \\
 	    	\hline
-	    	3 & waiting time over & & \verb+START+\\
-	    	 & send \verb+START+ & & \\
+	    	3 & waiting time over & & \textinline{START}\\
+	    	 & send \textinline{START} & & \\
 	    	\hline
-	    	4 & wait for run to end & data taking ongoing & \verb+RUNNING+\\
-	    	 & monitor DAQ run status & check for \verb+KILL+ signal & \\
+	    	4 & wait for run to end & data taking ongoing & \textinline{RUNNING}\\
+	    	 & monitor DAQ run status & check for \textinline{KILL} signal & \\
 	    	\hline
-	    	5 &  & run over & \verb+DAQ_RDY+\\
-	    	 &  & send \verb+DAQ_RDY+ & \\
+	    	5 &  & run over & \textinline{DAQ_RDY}\\
+	    	 &  & send \textinline{DAQ_RDY} & \\
 	    	 &  & wait for next DCS signal & \\
 	    	\hline
-	    	6 & ramp voltages &  & \verb+DAQ_RDY+\\
+	    	6 & ramp voltages &  & \textinline{DAQ_RDY}\\
 	    	 & ramping over &  & \\
 	    	 & wait for currents stabilization &  & \\
 	    	\hline
-	    	3 & waiting time over & & \verb+START+\\
-	    	 & send \verb+START+ & & \\
+	    	3 & waiting time over & & \textinline{START}\\
+	    	 & send \textinline{START} & & \\
 	    	\hline
-	    	4 & wait for run to end & update IniFile information & \verb+RUNNING+\\
+	    	4 & wait for run to end & update IniFile information & \textinline{RUNNING}\\
 	    	 & monitor DAQ run status & data taking ongoing & \\
-	    	 &  & check for \verb+KILL+ signal & \\
+	    	 &  & check for \textinline{KILL} signal & \\
 	    	\hline
-	    	5 &  & run over & \verb+DAQ_RDY+\\
-	    	 &  & send \verb+DAQ_RDY+ & \\
+	    	5 &  & run over & \textinline{DAQ_RDY}\\
+	    	 &  & send \textinline{DAQ_RDY} & \\
 	    	 &  & wait for next DCS signal & \\
 	    	\hline
-	    	7 & send command \verb+STOP+ & DAQ shuts down & \verb+STOP+\\
+	    	7 & send command \textinline{STOP} & DAQ shuts down & \textinline{STOP}\\
 	    	\hline
 	    \end{tabular}
 	    \caption{\label{tab:intercom} Inter-process communication cycles in between the webDCS and the DAQ through file string signals.}

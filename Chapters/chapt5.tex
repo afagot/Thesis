@@ -8,11 +8,11 @@
 
 \chapter[Longevity studies and Consolidation of the present \acs{CMS} \acs{RPC} subsystem]%
 {Longevity studies and Consolidation of the present \acs{CMS} \acs{RPC} subsystem}
-\label{chapt:5}
+\label{chapt5}
 
 %****************************************** TESTING DETECTORS UNDER EXTREME CONDITIONS *****************************************************
 \section{Testing detectors under extreme conditions}
-\label{sec:extreme}
+\label{chapt5:sec:extreme}
 	
 	The upgrade from LHC to HL-LHC will increase the peak luminosity from 10$^{34}$ \si{cm^{-2}.s^{-1}} to reach 5$\times$10$^{34}$ \si{cm^{-2}.s^{-1}}, increasing in the same way the total expected background to which the RPC system will be subjected to.
 	Composed of low energy gammas and neutrons from $p$-$p$ collisions, low momentum primary and secondary muons, puch-through hadrons from calorimeters, and particles produced in the interaction of the beams with collimators, the background will mostly affect the regions of CMS that are the closest to the beam line, i.e. the RPC detectors located in the endcaps. {\color{blue} [To update.]}\\
@@ -51,10 +51,10 @@
 
 	%****************************************** GAMMA IRRADIATION FACILITIES ********************************************************
 	\subsection{The Gamma Irradiation Facilities}
-	\label{ssec:Facilities}
+	\label{chapt5:ssec:Facilities}
 		%****************************************** OLD GIF ******************************************************************
 		\subsubsection{GIF}
-		\label{sssec:GIF}
+		\label{chapt5:sssec:GIF}
 		
 			Located in the SPS West Area at the downstream end of the X5 test beam, the \acf{GIF} was a test area in which particle detectors were exposed to a particle beam in presence of an adjustable gamma background~\cite{AGOSTEO1999}. Its goal was to reproduce background conditions these detectors would suffer in their operating environment at LHC. GIF layout is shown in Figure ~\ref{fig:GIFLayout}. Gamma photons are produced by a strong $^{137}$Cs source installed in the upstream part of the zone inside a lead container. The source container includes a collimator, designed to irradiate a \SIsurface{6}{6}{\meter} area at \SI{5}{\meter} maximum to the source. A thin lens-shaped lead filter helps providing with a uniform outcoming flux in a vertical plane, orthogonal to the beam direction. The principal collimator hole provides a pyramidal aperture of \SI{74}{\degree}$\times$ \SI{74}{\degree} solid angle and provides a photon flux in a pyramidal volume along the beam axis. The photon rate is controled by further lead filters allowing the maximum rate to be limited and to vary within a range of four orders of magnitude. Particle detectors under test are then placed within the pyramidal volume in front of the source, perpendicularly to the beam line in order to profit from the homogeneous photon flux. Adjusting the background flux of photons can then be done by using the filters and choosing the position of the detectors with respect to the source.\\
 	
@@ -75,7 +75,7 @@
 		
 		%****************************************** NEW GIF ******************************************************************
 		\subsubsection{GIF++}
-		\label{sssec:GIF++}
+		\label{chapt5:sssec:GIF++}
 		
 			The \acf{GIF++}, located in the SPS North Area at the downstream end of the H4 test beam, has replaced its predecessor during LS1 and has been operational since spring 2015~\cite{JAKEL2014}. Like GIF, GIF++ features a $^{137}$Cs source of \SI{662}{\keV} gamma photons, their fluence being controlled with a set of filters of various attenuation factors. The source provides two separated large irradiation areas for testing several full-size muon detectors with continuous homogeneous irradiation, as presented in Figure~\ref{fig:GIFpp-Layout}.\\
 			
@@ -105,10 +105,10 @@
 
 %****************************************** PRIMARILY TESTS AT GIF *************************************************************************
 \section{Preliminary tests at GIF}
-\label{sec:GIFtests}
+\label{chapt5:sec:GIFtests}
 	%********************************************* GIF SETUP *************************************************************************
 	\subsection{\acl{RPC} test setup}
-	\label{ssec:RPCSetup}
+	\label{chapt5:ssec:RPCSetup}
 	
 		During summer 2014, preliminary tests have been conducted in the GIF area on a newly produced RE4/2 chamber labelled RE-4-2-BARC-161. This chamber has been placed into a trolley covered with a tent. The position of the RPC inside the tent and of the tent related to the source is described in Figure~\ref{fig:GIFSetup}. To test this CMS RPC, three different absorber settings were used. First of all, measurements were done with fully opened source. Then, to complete this preliminary study, the gamma flux has been attenuated from a factor 2 and a factor 5. The expected gamma flux at the level of our detector will be discussed in subsection~\ref{ssec:gFlux}.
 
@@ -142,13 +142,13 @@
 		
 	%********************************************** GIF DAQ **************************************************************************
 	\subsection{\acl{DAQ}}
-	\label{ssec:GIFDAQ}
+	\label{chapt5:ssec:GIFDAQ}
 
         
 
 	%****************************************** GIF GEOMETRICAL ACCEPTANCE **********************************************************
 	\subsection{Geometrical acceptance of the setup layout to cosmic muons}
-	\label{ssec:GeoAcc}
+	\label{chapt5:ssec:GeoAcc}
 				
 		In order to profit from a constant gamma irradiation, the detectors inside of the GIF bunker need to be placed in a plane orthogonal to the beam line. The muon beam that used to be available was meant to test the performance of detectors under test. This beam not being active anymore, another solution to test detector performance had to be used. Thus, it has been decided to use cosmic muons detected through a telescope composed of two scintillators. Lead blocks were used as shielding to protect the photomultipliers from gammas as can be seen from Figure~\ref{fig:GIF-RPCSetup}.
 					
@@ -162,7 +162,7 @@
 		
 	    %****************************************** SIMULATION LAYOUT *******************************************************
 		\subsubsection{Description of the simulation layout}
-		\label{sssec:SimLayout}
+		\label{chapt5:sssec:SimLayout}
 		
 			The layout of GIF setup has been reproduced and incorporated into a \acf{MC} simulation to study the influence of the disposition of the telescope on the final distribution measured by the RPC. A 3D view of the simulated layout is given into Figure~\ref{fig:SimGIFLay}. Muons are generated randomly in a horizontal plane located at a height corresponding to the lowest point of the PMTs. This way, the needed size of the plane in order to simulate events happening at very big azimutal angles (i.e. $\theta\approx\pi$) can be kept relatively small. The muon flux is designed to follow the usual $cos^2\theta$ distribution for cosmic particle. The goal of the simulation is to look at muons that pass through the muon telescope composed of the two scintilators and define their distribution onto the RPC plane. During the reconstruction, the RPC plane is then divided into its strips and each muon track is assigned to a strip.
 		
@@ -184,7 +184,7 @@
 		
 	    %***************************************** SIMULATION PROCEDURE *****************************************************
 		\subsubsection{Simulation procedure}
-		\label{sssec:SimProc}
+		\label{chapt5:sssec:SimProc}
 		
 			The simulation software has been designed using C++ and the output data is saved into ROOT histograms. Simulations start for a threshold $T_{scint}$ varying in a range from 0 to \SI{45}{mm} in steps of \SI{5}{mm}, where $T_{scint}=$ \SI{0}{mm} corresponds to the case where there isn't any threshold apply on the input signal while $T_{scint}=$ \SI{45}{mm}, which is the scintillator thickness, is the case where muons cannot arrive orthogonally onto the scintillator surface. For a given $T_{scint}$, a set of \acs{RPC} thresholds are considered. The RPC threshold, $T_{RPC}$ varies from \SI{2}{mm}, the thickness of the gas volume, to \SI{3}{mm} in steps of \SI{0.25}{mm}. For each ($T_{scint}$;$T_{RPC}$) pair, $N_{\mu}=10^8$ muons are randomly generated inside the muon plane described in the previous paragraph with an azimutal angle $\theta$ chosen to follow a $cos^2\theta$ distribution. 
 			
@@ -219,7 +219,7 @@
 		
 	    %***************************************** SIMULATION RESULTS *******************************************************
 		\subsubsection{Results}
-		\label{sssec:SimRes}
+		\label{chapt5:sssec:SimRes}
 			
 			\paragraph{Influence of $\mathbf{T_{scint}}$ on the muon distribution}
 			
@@ -231,11 +231,11 @@
 		
 	%****************************************** PHOTON FLUX AT GIF ******************************************************************
 	\subsection{Photon flux at \acs{GIF}}
-	\label{ssec:gFlux}
+	\label{chapt5:ssec:gFlux}
 			
 		%****************************************** EXPECTATIONS FROM SIMULATIONS ********************************************
 		\subsubsection{Expectations from simulations}
-		\label{sssec:Simulations}
+		\label{chapt5:sssec:Simulations}
 		
 			In order to understand and evaluate the $\gamma$ flux in the GIF area, simulations had been conducted in 1999 and published by S. Agosteo et al ~\cite{AGOSTEO1999}. Table~\ref{tab:Sim1997} presented in this article gives us the $\gamma$ flux for different distances $D$ to the source. This simulation was done using GEANT and a \acf{MCNP} transport code, and the flux $F$ is given in number of $\gamma$ per unit area and unit time along with the estimated error from these packages expressed in \%.
 			
@@ -339,7 +339,7 @@
 
 		%****************************************** DOSE MEASUREMENTS ********************************************************
 		\subsubsection{Dose measurements}
-		\label{sssec:Dose}
+		\label{chapt5:sssec:Dose}
 			
 			\begin{figure}[H]
 				\centering
@@ -349,7 +349,7 @@
 
     %************************************* GIF PRELIMINARY RESULTS ******************************************************************
 	\subsection{Results and discussions}
-	\label{ssec:results6}
+	\label{chapt5:ssec:results6}
 		
 		\begin{figure}[H]
 			\begin{subfigure}{0.5\linewidth}
@@ -379,7 +379,7 @@
 \newpage
 
 \section{Longevity tests at \acs{GIF++}}
-\label{sec:GIFtests}
+\label{chapt5:sec:GIFpptests}
 
     Longevity studies imply a monitoring of the performance of the detectors probed using a high intensity muon beam in a irradiated environment by periodically measuring their rate capability, the dark current running through them and the bulk resistivity of the Bakelite composing their electrodes. GIF++, with its very intense $^{137}$Cs source, provides the perfect environment to perform such kind of tests. Assuming a maximum acceleration factor of 3, it is expected to accumulate the equivalent charge in 1.7 years.\\
     As the maximum background is found in the endcap, the choice naturally was made to focus the GIF++ longevity studies on endcap chambers. Most of the RPC system was installed in 2007. Nevertheless, the large chambers in the fourth endcap (RE4/2 and RE4/3) have been installed during LS1 in 2014. The Bakelite of these two different productions having different properties, four spare chambers of the present system were selected, two RE2,3/2 spares and two RE4/2 spares. Having two chambers of each type allows to always keep one of them non irradiated as reference, the performance evolution of the irradiated chamber being then compared through time to the performance of the non irradiated one.\\
@@ -466,7 +466,7 @@
 
     %******************************************** GIF++ DAQ *************************************************************************
 	\subsection{Description of the \acl{DAQ}}
-	\label{ssec:GIF++DAQ}
+	\label{chapt5:ssec:GIF++DAQ}
 
 		For the longevity studies, four spare chambers of the present system are used. Two spare RPCs of the RE2,3 stations as well as two spare RPCs from the new RE4 stations have been mounted in a Trolley. Six RE4 gaps are also placed in the trolley. The trolley is placed inside the GIF++ in the upstream region of the bunker, taking the cesium source as a reference. The trolley is oriented for the detection surface of the chambers to be orthogonal to the beam line. The system can be moved along the orthogonal plane in order to have the beam in all $\eta$-partitions. For the aging the trolley is moved outside the beam line and is placed in a distance of \SI{5.2}{m} to the source, which irradiates the bunker using an attenuation filter of 2.2 which corresponds to a fluence of $10^7$\si{gamma/cm\squared}.
 
@@ -482,7 +482,7 @@
 
     %******************************************** GIF++ DCS *************************************************************************
 	\subsection{RPC current, environmental and operation parameter monitoring}
-	\label{ssec:GIF++DCS}
+	\label{chapt5:ssec:GIF++DCS}
             
 		In order to take into account the variation of pressure and temperature between different data taking periods the applied voltage is corrected following the relationship :
 
@@ -493,7 +493,7 @@
 		where $T_0$ (=\SI{293}{K}) and $P_0$ (=\SI{990}{mbar}) are the reference values.
 
 	\subsection{Measurement procedure}
-	\label{ssec:GIF++Proc}
+	\label{chapt5:ssec:GIF++Proc}
 
 		Insert a short description of the online tools (DAQ, DCS, DQM).\\
 		Insert a short description of the offline tools : tracking and efficiency algorithm.\\
@@ -501,7 +501,7 @@
 	
 	%****************************************** RESULTS AT GIF++ ********************************************************************
 	\subsection{Longevity studies results}
-	\label{ssec:GIF++Results}
+	\label{chapt5:ssec:GIF++Results}
 
 %\renewcommand*{\thesection}{\thechapter.\arabic{section}}       % reset again to chaptnum.sectnum
 

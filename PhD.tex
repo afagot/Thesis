@@ -56,10 +56,12 @@
 \definecolor{dirtree}{rgb}{0.40,0.40,0.40}
 
 \usepackage[newfloat]{minted}
+\newminted{bash}{bgcolor=bg,fontsize=\footnotesize}
 \newminted{cpp}{bgcolor=bg,fontsize=\footnotesize}
 \newmintinline{cpp}{fontsize=\footnotesize, breaklines=true}
 \newminted{ini}{bgcolor=bg,fontsize=\footnotesize}
 \newmintinline{ini}{fontsize=\footnotesize, breaklines=true}
+\newmintinline{text}{fontsize=\footnotesize, breaklines=true}
 
 \newenvironment{code}{\captionsetup{type=listing}}{}
 \SetupFloatingEnvironment{listing}{name=Source Code}
