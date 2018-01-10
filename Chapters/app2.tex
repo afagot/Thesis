@@ -252,6 +252,58 @@ ActiveArea-C=93.03
 	\subsection{TDC to RPC link file and Mapping}
 	\label{app2:ssec:mapping}
 	
+	The same way the INI dimension file information is stored using \cppinline{map}, the channel mapping and mask information is stored and accessed through \cppinline{map}. First of all, the mapping CSV file is organised into 3 columns separated by tabulations (and not by comas, as expected for CSV files as it is easier using streams to read tab or space separated data using C++):\\
 	
+	\begin{textcode}
+ RPC_channel	TDC_channel	mask
+	\end{textcode}
+	\vspace{5mm}
+	
+	using as formatting for each field:\\
+	
+	\begin{textcode}
+ TSCCC	TCCC	M
+	\end{textcode}
+	
+	\begin{itemize}
+		\item[\textinline{TSCCC}] is a 5-digit integer where \textinline{T} is the trolley ID, \textinline{S} the slot ID in which the RPC is held insite the trolley \textinline{T} and \textinline{CCC} is the RPC channel number, or \textit{strip} number, that can take values up to 3-digits depending on the detector,
+		\item[\textinline{TCCC}] is a 4 digit integer where \textinline{T} is the TDC ID, \textinline{CCC} is the TDC channel number that can take values in between 0 and 127, and
+		\item[\textinline{M}] is a 1-digit integer indicating if the channel should be considered (\textinline{M} $=1$) or discarded (\textinline{M} $=0$) during analysis.
+	\end{itemize}
+	
+	This mapping and masking information is readout and stored thanks to the object \cppinline{Mapping}, presented in Source Code~\ref{cpp:mapping}. Similarly to \cppinline{IniFile} objects, this class has private methods. The first one, \cppinline{Mapping::CheckIfNewLine()} is used to find the newline character \cppinline{'\n'} or return character \cppinline{'\r'} (depending on which kind of operating system interacted with the file). This is used for the simple reason that the masking information has been introduced only during the year 2017 but the channel mapping files exist since 2015 and the very beginning of data taking at GIF++. This means that in the older files, before the upgrade, the channel mapping file only had 2 columns, the RPC channel and the TDC channel. This method helps controling the character following the readout of the 2 first fields of a line. In case the method finds any end of line character, no mask information is present in the file and the default \textinline{M} $=1$ is used. On the contrary, if the next character was a tabulation or a space, the mask information is present.
+	
+	Once the 3 fields have been readout, the second private method \cppinline{Mapping::CheckIfTDCCh()} is used to control that the TDC channel is an existing TDC channel. Finally, the information is stored into 3 different maps (\cppinline{Link}, \cppinline{ReverseLink} and \cppinline{Mask}) thanks to the public method \cppinline{Mapping::Read()}. \cppinline{Link} allows to get the RPC channel by knowing the TDC channel while \cppinline{ReverseLink} does the opposite by returning the TDC channel by knowing the RPC channel. Finally, \cppinline{Mask} returns the mask associated to a given RPC channel.\\
+	
+	\begin{code}
+	\begin{cppcode}
+typedef map<Uint,Uint> MappingData;
+
+class Mapping {
+    private:
+        bool        CheckIfNewLine(char next);
+        bool        CheckIfTDCCh(Uint channel);
+        string      FileName;
+        MappingData Link;
+        MappingData ReverseLink;
+        MappingData Mask;
+        int         Error;
+
+    public:
+        Mapping();
+        Mapping(string baseName);
+        ~Mapping();
+
+        void SetFileName(const string filename);
+        int Read();
+        Uint GetLink(Uint tdcchannel);
+        Uint GetReverse(Uint rpcchannel);
+        Uint GetMask(Uint rpcchannel);
+};
+	\end{cppcode}
+	\captionof{listing}{Description of C++ object \cppinline{Mapping} used as a parser for the channel mapping and mask file.}
+	\label{cpp:mapping}
+	\vspace{5mm}
+	\end{code}
 	
 \clearpage{\pagestyle{empty}\cleardoublepage}

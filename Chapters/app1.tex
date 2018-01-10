@@ -447,6 +447,60 @@ BLTMode=1
 	\label{ini:INIFile}
 	\vspace{5mm}
 	\end{code}
+	
+	In order to retreive the information of the configuration file, the object \cppinline{IniFile} has been developped to provide an INI parser, presented in Source Code~\ref{cpp:inifile}. It contains private methods returning a boolean to check the type of line written in the file, whether a comment, a group header or a key line (\cppinline{IniFile::CheckIfComment()}, \cppinline{IniFile::CheckIfGroup()} and \cppinline{IniFile::CheckIfToken()}). The key may sometimes be referred to as \textit{token} in the source code. Moreover, the private element \cppinline{FileData} is a map of \cppinline{const string} to \cppinline{string} that allows to store the data contained inside the configuration file via the public method \cppinline{IniFile::GetFileData()} following the formatting (see method \cppinline{IniFile::Read()}):\\
+	
+	\begin{cppcode}
+ string group, token, value;
+ // Get the field values for the 3 strings.
+ // Then concatenate group and token together as a single string
+ // with a dot separation.
+ token = group + "." + token;
+ FileData[token] = value;
+	\end{cppcode}
+	\vspace{5mm}
+	
+	More methods have been written to translate the different keys into the right variable format when used by the DAQ. For example, to get a \cppinline{float} value out of the configuration file data, knowing the group and the key needed, the method \cppinline{IniFile::floatType()} can be used. It takes 3 arguments being the group name and key name (both \cppinline{string}), and a default \cppinline{float} value used as exception in the case the expected combination of group and key cannot be found in the configuration file. This default value is then used and the DAQ continues on working after sending an alert in the log file for further debugging.\\
+	
+	\begin{code}
+	\begin{cppcode}
+typedef map< const string, string > IniFileData;
+
+class IniFile{
+    private:
+        bool        CheckIfComment(string line);
+        bool        CheckIfGroup(string line,string& group);
+        bool        CheckIfToken(string line,string& key,string& value);
+        string      FileName;
+        IniFileData FileData;
+        int         Error;
+
+    public:
+        IniFile();
+        IniFile(string filename);
+        virtual    ~IniFile();
+
+        // Basic file operations
+        void        SetFileName(string filename);
+        int         Read();
+        int         Write();
+        IniFileData GetFileData();
+
+        // Data readout methods
+        Data32      addressType (string groupname, string keyname, Data32 defaultvalue);
+        long        intType     (string groupname, string keyname, long defaultvalue);
+        long long   longType    (string groupname, string keyname, long long defaultvalue );
+        string      stringType  (string groupname, string keyname, string defaultvalue );
+        float       floatType   (string groupname, string keyname, float defaultvalue );
+
+        // Error methods
+        string      GetErrorMsg();
+};
+	\end{cppcode}
+	\captionof{listing}{Description of C++ object \cppinline{IniFile} used as a parser for INI file format.}
+	\label{cpp:inifile}
+	\vspace{5mm}
+	\end{code}
 
     \subsection{WebDCS/DAQ intercommunication}
     \label{app1:ssec:dcsdaqcomm}
