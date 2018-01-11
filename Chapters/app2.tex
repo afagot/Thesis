@@ -191,7 +191,7 @@ The data collected in GIF++ thanks to the DAQ described in Appendix~\ref{app1} i
 \section{Analysis inputs and information handling}
 \label{app2:sec:inputs}
 	
-	The usage of the Offline Analysis tool as well as its output have been presented in the previous section. It is now important to dig further and start looking at the source code and the inputs necessary for the tool to work. Indeed, appart from the raw ROOT data files that are analysed, more information needs to be imported inside of the program to perform the analysis such as the description of the setup inside of GIF++ at the time of data taking (number of trolleys, of RPCs, dimensions of the detectors, etc...) or the mapping that links the TDC channels to the coresponding RPC channels in order to translate the TDC information into human readable data. 2 files are used to transmit all this information:\\
+	The usage of the Offline Analysis tool as well as its output have been presented in the previous section. It is now important to dig further and start looking at the source code and the inputs necessary for the tool to work. Indeed, other than the raw ROOT data files that are analysed, more information needs to be imported inside of the program to perform the analysis such as the description of the setup inside of GIF++ at the time of data taking (number of trolleys, of RPCs, dimensions of the detectors, etc...) or the mapping that links the TDC channels to the coresponding RPC channels in order to translate the TDC information into human readable data. 2 files are used to transmit all this information:\\
 	
 	\begin{itemize}
 		\item[•] \textinline{Dimensions.ini}, that provides the necessary setup and RPC information, and
@@ -201,7 +201,7 @@ The data collected in GIF++ thanks to the DAQ described in Appendix~\ref{app1} i
 	\subsection{Dimensions file and IniFile parser}
 	\label{app2:ssec:dimensions}
 	
-	This input file, present in every data folder, allows the analysis tool to know of the number of active trolleys, the number of active RPCs in those trolleys, and the details about each RPCs such as the number of RPC gaps, the number of pseudo-rapidity partitions (for CMS-like prototypes), the number of strips per partion or the dimensions. To do so, there are 3 types of groups in the INI file architecture. A first general group, appearing only once at the head of the document, gives information about the number of active trolleys as well as their IDs, as presented in Source Code~\ref{ini:general}. For each active trolley, a group similar to Source Code~\ref{ini:trolley} can be found containing information about the number of active detectors in the trolley and their IDs. Finally, for each detector stored in slots of an active trolley, there is a group providing information about their names and dimensions, as showed in Source Code~\ref{ini:slot}.\\
+	This input file, present in every data folder, allows the analysis tool to know of the number of active trolleys, the number of active RPCs in those trolleys, and the details about each RPCs such as the number of RPC gaps, the number of pseudo-rapidity partitions (for CMS-like prototypes), the number of strips per partion or the dimensions. To do so, there are 3 types of groups in the INI file architecture. A first general group, appearing only once at the head of the document, gives information about the number of active trolleys as well as their IDs, as presented in Source Code~\ref{ini:general}. For each active trolley, a group similar to Source Code~\ref{ini:trolley} can be found containing information about the number of active detectors in the trolley and their IDs. Each trolley group as a \textinline{Tt} name format, where \textinline{t} is the trolley ID. Finally, for each detector stored in slots of an active trolley, there is a group providing information about their names and dimensions, as showed in Source Code~\ref{ini:slot}. Each slot group as a \textinline{TtSs} name format, where \textinline{s} is the slot ID of trolley \textinline{t} where the active RPC is hosted.\\
 	
 	\begin{code}
 	\begin{inicode}
@@ -242,7 +242,7 @@ ActiveArea-A=157.8
 ActiveArea-B=121.69
 ActiveArea-C=93.03
 	\end{inicode}
-	\captionof{listing}{Example of slot group as might be found in \textinline{Dimensions.ini}. In this example, the file provides information about a detector named \textinline{RE2-2-NPD-BARC-8}, having 3 pseudo-rapidity readout partitions. This is a CMS RE2-2 type of detector. This information will then be used for example to compute the rate per unit area calculation.}
+	\captionof{listing}{Example of slot group as might be found in \textinline{Dimensions.ini}. In this example, the file provides information about a detector named \textinline{RE2-2-NPD-BARC-8}, having 3 pseudo-rapidity readout partitions and stored in slot \textinline{S1} of trolley \textinline{T1}. This is a CMS RE2-2 type of detector. This information will then be used for example to compute the rate per unit area calculation.}
 	\label{ini:slot}
 	\vspace{5mm}
 	\end{code}
@@ -271,7 +271,7 @@ ActiveArea-C=93.03
 		\item[\textinline{M}] is a 1-digit integer indicating if the channel should be considered (\textinline{M} $=1$) or discarded (\textinline{M} $=0$) during analysis.
 	\end{itemize}
 	
-	This mapping and masking information is readout and stored thanks to the object \cppinline{Mapping}, presented in Source Code~\ref{cpp:mapping}. Similarly to \cppinline{IniFile} objects, this class has private methods. The first one, \cppinline{Mapping::CheckIfNewLine()} is used to find the newline character \cppinline{'\n'} or return character \cppinline{'\r'} (depending on which kind of operating system interacted with the file). This is used for the simple reason that the masking information has been introduced only during the year 2017 but the channel mapping files exist since 2015 and the very beginning of data taking at GIF++. This means that in the older files, before the upgrade, the channel mapping file only had 2 columns, the RPC channel and the TDC channel. This method helps controling the character following the readout of the 2 first fields of a line. In case the method finds any end of line character, no mask information is present in the file and the default \textinline{M} $=1$ is used. On the contrary, if the next character was a tabulation or a space, the mask information is present.
+	This mapping and masking information is readout and stored thanks to the object \cppinline{Mapping}, presented in Source Code~\ref{cpp:mapping}. Similarly to \cppinline{IniFile} objects, this class has private methods. The first one, \cppinline{Mapping::CheckIfNewLine()} is used to find the newline character \cppinline{'\n'} or return character \cppinline{'\r'} (depending on which kind of operating system interacted with the file). This is used for the simple reason that the masking information has been introduced only during the year 2017 but the channel mapping files exist since 2015 and the very beginning of data taking at GIF++. This means that in the older data folders, before the upgrade, the channel mapping file only had 2 columns, the RPC channel and the TDC channel. For compatibility reasons, this method helps controling the character following the readout of the 2 first fields of a line. In case any end of line character is found, no mask information is present in the file and the default \textinline{M} $=1$ is used. On the contrary, if the next character was a tabulation or a space, the mask information is present.
 	
 	Once the 3 fields have been readout, the second private method \cppinline{Mapping::CheckIfTDCCh()} is used to control that the TDC channel is an existing TDC channel. Finally, the information is stored into 3 different maps (\cppinline{Link}, \cppinline{ReverseLink} and \cppinline{Mask}) thanks to the public method \cppinline{Mapping::Read()}. \cppinline{Link} allows to get the RPC channel by knowing the TDC channel while \cppinline{ReverseLink} does the opposite by returning the TDC channel by knowing the RPC channel. Finally, \cppinline{Mask} returns the mask associated to a given RPC channel.\\
 	
@@ -303,6 +303,284 @@ class Mapping {
 	\end{cppcode}
 	\captionof{listing}{Description of C++ object \cppinline{Mapping} used as a parser for the channel mapping and mask file.}
 	\label{cpp:mapping}
+	\vspace{5mm}
+	\end{code}
+	
+\section{Description of GIF++ setup within the Offline Analysis tool}
+\label{app2:sec:GIFsetup}
+
+	In the previous section, the tool input files have been discussed. The dimension file information is stored in a map hosted by the IniFile object. But this information is then used to create a series of new objects that helps defining the GIF++ infrastructure directly into the Offline Analysis. Indeed, from the \cppinline{RPC}, to the more general \cppinline{Infrastructure}, every element of the GIF++ infrastrucutre is recreated for each data analysis based on the information provided in input. All this information about the infrastructure will be used to assign each hit signal to a specific strip channel of a specific detector, and having a specific active area. This way, rate per unit area calculation is possible.\\
+	
+	\subsection{RPC objects}
+	\label{app2:ssec:RPC}
+	
+	\cppinline{RPC} objects have been developped to represent physical active detectors in GIF++ at the moment of data taking. Thus, there are as many RPC objects created during the analysis than there were active RPCs tested during a run. Each \cppinline{RPC} hosts the information present in the corresponding INI slot group, as shown in~\ref{ini:slot}, and organises it using a similar architecture. This can been seen from Source Code~\ref{cpp:RPC}.
+	
+	To make the object more compact, the lists of gap labels, of gap active areas and strip active areas are stored into \cppinline{vector} dynamical containers. \cppinline{RPC} objects are always contructed thanks to the dimension file information stored into the \cppinline{IniFIle} and their ID, using the format \textinline{TtSs}. Using the RPC ID, the constructor calls the methods of \cppinline{IniFile} to initialise the \cppinline{RPC}. The other constructors are not used but exist in case of need. Finally, some getters have been written to access the different private parameters storing the detector information.\\
+	
+	\begin{code}
+	\begin{cppcode}
+class RPC{
+    private:
+        string          name;        //RPC name as in webDCS database
+        Uint            nGaps;       //Number of gaps in the RPC
+        Uint            nPartitions; //Number of partitions in the RPC
+        Uint            nStrips;     //Number of strips per partition
+        vector<string>  gaps;        //List of gap labels (BOT, TOP, etc...)
+        vector<float>   gapGeo;      //List of gap active areas
+        vector<float>   stripGeo;    //List of strip active areas
+
+    public:
+        RPC();
+        RPC(string ID, IniFile* geofile);
+        RPC(const RPC& other);
+        ~RPC();
+        RPC& operator=(const RPC& other);
+
+        string GetName();
+        Uint   GetNGaps();
+        Uint   GetNPartitions();
+        Uint   GetNStrips();
+        string GetGap(Uint g);
+        float  GetGapGeo(Uint g);
+        float  GetStripGeo(Uint p);
+};
+	\end{cppcode}
+	\captionof{listing}{Description of C++ objects \cppinline{RPC} that describe each active detectors used during data taking.}
+	\label{cpp:RPC}
+	\vspace{5mm}
+	\end{code}
+	
+	\subsection{Trolley objects}
+	\label{app2:ssec:Trolley}
+	
+	\cppinline{Trolley} objects have been developped to represent physical active trolleys in GIF++ at the moment of data taking. Thus, there are as many trolley objects created during the analysis than there were active trolleys hosting tested RPCs during a run. Each \cppinline{Trolley} hosts the information present in the corresponding INI trolley group, as shown in~\ref{ini:trolley}, and organises it using a similar architecture. In addition to the information hosted in the INI file, these object have a dynamical container of \cppinline{RPC} objects, representing the active detectors the active trolley was hosting at the time of data taking. This can been seen from Source Code~\ref{cpp:Trolley}.
+	
+	\cppinline{Trolley} objects are always contructed thanks to the dimension file information stored into the \cppinline{IniFIle} and their ID, using the format \textinline{Tt}. Using the Trolley ID, the constructor calls the methods of \cppinline{IniFile} to initialise the \cppinline{Trolley}. Retrieving the information of the RPC IDs via \cppinline{SlotsID}, a new \cppinline{RPC} is constructed and added to the container \cppinline{RPCs} for each character in the ID \cppinline{string}. The other constructors are not used but exist in case of need. Finally, some getters have been written to access the different private parameters storing the trolley and detectors information.\\
+	
+	\begin{code}
+	\begin{cppcode}
+class Trolley{
+    private:
+        Uint         nSlots;  //Number of active RPCs in the considered trolley
+        string       SlotsID; //Active RPC IDs written into a string
+        vector<RPC*> RPCs;    //List of active RPCs
+
+    public:
+        //Constructors, destructor and operator =
+        Trolley();
+        Trolley(string ID, IniFile* geofile);
+        Trolley(const Trolley& other);
+        ~Trolley();
+        Trolley& operator=(const Trolley& other);
+
+        //Get GIFTrolley members
+        Uint   GetNSlots();
+        string GetSlotsID();
+        Uint   GetSlotID(Uint s);
+
+        //Manage RPC list
+        RPC*   GetRPC(Uint r);
+        void   DeleteRPC(Uint r);
+
+        //Methods to get members of RPC objects stored in RPCs
+        string GetName(Uint r);
+        Uint   GetNGaps(Uint r);
+        Uint   GetNPartitions(Uint r);
+        Uint   GetNStrips(Uint r);
+        string GetGap(Uint r, Uint g);
+        float  GetGapGeo(Uint r, Uint g);
+        float  GetStripGeo(Uint r, Uint p);
+};
+	\end{cppcode}
+	\captionof{listing}{Description of C++ objects \cppinline{Trolley} that describe each active trolley used during data taking.}
+	\label{cpp:Trolley}
+	\vspace{5mm}
+	\end{code}
+	
+	\subsection{Infrastructure object}
+	\label{app2:ssec:Infra}
+	
+	The \cppinline{Infrastructure} object has been developped to represent the GIF++ bunker area dedicated to CMS RPC experiments. With this very specific object, all the information about the CMS RPC setup within GIF++ at the moment of data taking is stored. It hosts the information present in the corresponding INI general group, as shown in~\ref{ini:general}, and organises it using a similar architecture. In addition to the information hosted in the INI file, this object have a dynamical container of \cppinline{Trolley} objects, representing the active tolleys in GIF++ area. This can been seen from Source Code~\ref{cpp:Infrastructure}.
+	
+	The \cppinline{Infrastructure} object is always contructed thanks to the dimension file information stored into the \cppinline{IniFIle}. Retrieving the information of the trolley IDs via \cppinline{TrolleysID}, a new \cppinline{Trolley} is constructed and added to the container \cppinline{Trolleys} for each character in the ID \cppinline{string}. By extension, it is easy to understand that the process described in Section~\ref{app2:ssec:Trolley} for the construction of RPCs takes place when a trolley is constructed. The other constructors are not used but exist in case of need. Finally, some getters have been written to access the different private parameters storing the infrastructure, trolleys and detectors information.\\
+	
+	\begin{code}
+	\begin{cppcode}
+class Infrastructure {
+    private:
+        Uint             nTrolleys;  //Number of active Trolleys in the run
+        string           TrolleysID; //Active trolley IDs written into a string
+        vector<Trolley*> Trolleys;   //List of active Trolleys (struct)
+
+    public:
+        //Constructors and destructor
+        Infrastructure();
+        Infrastructure(IniFile* geofile);
+        Infrastructure(const Infrastructure& other);
+        ~Infrastructure();
+        Infrastructure& operator=(const Infrastructure& other);
+
+        //Get Infrastructure members
+        Uint   GetNTrolleys();
+        string GetTrolleysID();
+        Uint   GetTrolleyID(Uint t);
+
+        //Manage Trolleys
+        Trolley* GetTrolley(Uint t);
+        void     DeleteTrolley(Uint t);
+
+        //Methods to get members of GIFTrolley objects stored in Trolleys
+        Uint   GetNSlots(Uint t);
+        string GetSlotsID(Uint t);
+        Uint   GetSlotID(Uint t, Uint s);
+        RPC*   GetRPC(Uint t, Uint r);
+
+        //Methods to get members of RPC objects stored in RPCs
+        string GetName(Uint t, Uint r);
+        Uint   GetNGaps(Uint t, Uint r);
+        Uint   GetNPartitions(Uint t, Uint r);
+        Uint   GetNStrips(Uint t, Uint r);
+        string GetGap(Uint t, Uint r, Uint g);
+        float  GetGapGeo(Uint t, Uint r, Uint g);
+        float  GetStripGeo(Uint t, Uint r, Uint p);
+};
+	\end{cppcode}
+	\captionof{listing}{Description of C++ object \cppinline{Infrastructure} that contains the full information about CMS RPC experiment in GIF++.}
+	\label{cpp:Infrastructure}
+	\vspace{5mm}
+	\end{code}
+	
+\section{Handeling of data}
+\label{app2:sec:data}
+
+	As discussed in Appendix~\ref{app1:ssec:DataReader}, the raw data as a \cppinline{TTree} architecture where every entry is related to a trigger signal provided by a muon or a random pulse, whether the goal of the data taking was to measure the performance of the detector or the noise/gamma background respectively. Each of these entries, referred also as events, contain a more or less full list of hits in the TDC channels to which the detectors are connected. To this list of hits corresponds a list of time stamps, marking the arrival of the hits within the TDC channel.
+	
+	The infrastructure of the CMS RPC experiment within GIF++ being defined, combining the information about the raw data with the information provided by both the mapping/mask file and the dimension file allows to build new physical objects that will help in computing efficiency or rates.
+	
+	\subsection{RPC hits}
+	\label{app2:ssec:RPCHit}
+	
+	The raw data stored in the ROOT file as output of the GIF++ DAQ, is readout by the analysis tool using the structure \cppinline{RAWData} presented in Source Code~\ref{cpp:rawdataoff} that differs from the structure presented in Appendix~\ref{app1:ssec:DataReader} as it is not meant to hold all of the data contained in the ROOT file. In this sense, this structure is in the case of the offline analysis tool not a dynamical object and will only be storing a single event contained in a single entry of the \cppinline{TTree}.\\
+	
+	\begin{code}
+	\begin{cppcode}
+class RPCHit {
+    private:
+        Uint  Channel;    //RPC channel according to mapping (5 digits)
+        Uint  Trolley;    //0, 1 or 3 (1st digit of the RPC channel)
+        Uint  Station;    //Slot where is held the RPC in Trolley
+        Uint  Strip;      //Physical RPC strip where the hit occured
+        Uint  Partition;  //Readout partition along eta segmentation
+        float TimeStamp;  //Time stamp of the arrival in TDC
+
+    public:
+        //Constructors, destructor & operator =
+        RPCHit();
+        RPCHit(Uint channel, float time, Infrastructure* Infra);
+        RPCHit(const RPCHit& other);
+        ~RPCHit();
+        RPCHit& operator=(const RPCHit& other);
+
+        //Get RPCHit members
+        Uint  GetChannel();
+        Uint  GetTrolley();
+        Uint  GetStation();
+        Uint  GetStrip();
+        Uint  GetPartition();
+        float GetTime();
+};
+
+typedef vector<RPCHit> HitList;
+typedef struct GIFHitList { HitList rpc[NTROLLEYS][NSLOTS][NPARTITIONS]; } GIFHitList;
+
+bool SortHitbyStrip(RPCHit h1, RPCHit h2);
+bool SortHitbyTime(RPCHit h1, RPCHit h2);
+	\end{cppcode}
+	\captionof{listing}{Description of C++ object \cppinline{RPCHit}.}
+	\label{cpp:RPCHit}
+	\vspace{5mm}
+	\end{code}
+	
+	\begin{code}
+    \begin{cppcode}
+struct RAWData{
+    int            iEvent;   //Event i
+    int            TDCNHits; //Number of hits in event i
+    int            QFlag;    //Quality flag list (1 flag digit per TDC)
+    vector<Uint>  *TDCCh;    //List of channels giving hits per event
+    vector<float> *TDCTS;    //List of the corresponding time stamps
+};
+    \end{cppcode}
+	\captionof{listing}{Description of C++ structure \cppinline{RAWData}.}
+	\label{cpp:rawdataoff}
+	\vspace{5mm}
+    \end{code}
+    
+    Each member of the structure in then linked to the corresponding branch of the ROOT data tree, as shown in the example of Source Code~\ref{cpp:rawdatalink}, and using the method \cppinline{GetEntry(int i)} of the ROOT class \cppinline{TTree} will update the state of the members of \cppinline{RAWData}.\\
+	
+	\begin{code}
+    \begin{cppcode}
+TTree*  dataTree = (TTree*)dataFile.Get("RAWData");
+RAWData data;
+
+dataTree->SetBranchAddress("EventNumber",    &data.iEvent);
+dataTree->SetBranchAddress("number_of_hits", &data.TDCNHits);
+dataTree->SetBranchAddress("Quality_flag",   &data.QFlag);
+dataTree->SetBranchAddress("TDC_channel",    &data.TDCCh);
+dataTree->SetBranchAddress("TDC_TimeStamp",  &data.TDCTS);
+    \end{cppcode}
+	\captionof{listing}{Example of link in between RAWData and TTree.}
+	\label{cpp:rawdatalink}
+	\vspace{5mm}
+    \end{code}
+    
+    The data is then analysed entry by entry and to each element in the TDC channel list, a \cppinline{RPCHit} is constructed and stored into 3D dynamical list called \cppinline{GIFHitList} (Source Code~\ref{cpp:rawdataoff}). The 3 dimensions refer to the 3 layers of the readout in GIF++ : in the bunker there are \textit{trolleys} holding detectors in \textit{slots} and each detector readout is divided into 1 or more pseudo-rapidity \textit{partitions}. Using these 3 information allows to assign an address to each readout partition and this address will point to a specific hit list.
+	
+	\subsection{Clusters of hits}
+	\label{app2:ssec:Cluster}
+	
+	
+	
+	\begin{code}
+	\begin{cppcode}
+class RPCCluster{
+    private:
+        Uint  ClusterSize;  //Size of cluster #ID
+        Uint  FirstStrip;   //First strip of cluster #ID
+        Uint  LastStrip;    //Last strip of cluster #ID
+        float Center;       //Center of cluster #ID ((first+last)/2)
+        float StartStamp;   //Time stamp of the earliest hit of cluster #ID
+        float StopStamp;    //Time stamp of the latest hit of cluster #ID
+        float TimeSpread;   //Time difference between earliest and latest hits
+                            //of cluster #ID
+    public:
+        //Constructors, destructor & operator =
+        RPCCluster();
+        RPCCluster(HitList List, Uint cID, Uint cSize, Uint first, Uint firstID);
+        RPCCluster(const RPCCluster& other);
+        ~RPCCluster();
+        RPCCluster& operator=(const RPCCluster& other);
+
+        //Get Cluster members
+        Uint GetID();
+        Uint GetSize();
+        Uint GetFirstStrip();
+        Uint GetLastStrip();
+        float GetCenter();
+        float GetStart();
+        float GetStop();
+        float GetSpread();
+};
+
+typedef vector<RPCCluster> ClusterList;
+
+//Other functions to build cluster lists out of hit lists
+void BuildClusters(HitList &cluster, ClusterList &clusterList);
+void Clusterization(HitList &hits, TH1 *hcSize, TH1 *hcMult);
+	\end{cppcode}
+	\captionof{listing}{Description of C++ object \cppinline{Cluster}.}
+	\label{cpp:Cluster}
 	\vspace{5mm}
 	\end{code}
 	
