@@ -590,4 +590,92 @@ void Clusterization(HitList &hits, TH1 *hcSize, TH1 *hcMult);
 	
 	To investigate the hit list of a given detector partition, the function \cppinline{Clusterization()} definied in \textinline{include/Cluster.h} needs the hits in the list to be time sorted. This is achieved by calling function \cppinline{sort()} of library \cppinline{<algorithm>} using the comparator \cppinline{SortHitbyTime(RPCHit h1, RPCHit h2)} defined in \textinline{include/RPCHit.h} that returns \cppinline{true} if the time stamp of hit \cppinline{h1} is lower than that of \cppinline{h2}. A first isolation of strips is made only based on time information. All the hits within the \SI{25}{ns} window are taken separately from the rest. Then, this sub-list of hits is sorted this time by ascending strip number, using this time the comparator \cppinline{SortHitbyStrip(RPCHit h1, RPCHit h2)}. Finally, the groups of adjacent strips are used to construct \cppinline{RPCCluster} objects that are then stored in a temporary list of clusters that is at the end of the process used to know how many clusters were reconstructed and to fill their sizes into an histogram that will allows to know the mean size of muon or gamma clusters.\\
 	
+\section{Analysis}
+\label{app2:sec:analysis}
+
+	All the ingredients to analyse GIF++ data have been defined. This section will focus on the different part of the analysis performed on the data, from determining the type of data the tool is dealing with to calculating the rate in each detector or reconstructing muon or gamma clusters.
+
+	\subsection{Determination of the run type}
+	\label{app2:ssec:runtype}
+	
+	In GIF++, both the performance of the detectors in detecting muons in an irradiated environment and the gamma background can be independantly measured. These corresponds to different run types and thus, to different TDC settings giving different data to look at.\\
+	
+	In the case of performance measurements, the trigger for data taking is provided by the coïncidence of several scintillators when muons from the beam passing through the area are detected. Data is collected in a \SI{600}{ns} wide window around the arrival of muons in the RPCs. The expected time distribution of hits is shown in Figure~\ref{fig:TS:A}. The muon peak is clearly visible in the center of the distribution and is to be extracted from the gamma background that composes the flat part of the distribution.
+	
+	On the other hand, gamma background or noise measurements are focussed on the non muon related physics and the trigger needs to be independant from the muons to give a good measurement of the gamma/noise distribution as seen by the detectors. The trigger is then provided by a pulse generator at a frequency of \SI{300}{Hz} whose pulse is not likely to be on time with a muon. In order to increase the integrated time without increasing the acquisition time too much, the width of the acquisition windows are increased to \SI{10}{\micro s}. The time distribution of the hits is expected to be flat, as shown by Figure~\ref{fig:TS:B}.
+	
+	\begin{figure}[H]
+        \begin{subfigure}{0.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/app2/beam_TS.pdf}
+			\caption{\label{fig:TS:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/app2/random_TS.pdf}
+			\caption{\label{fig:TS:B}}
+		\end{subfigure}
+		\caption{\label{fig:TS} Example of expected hit time distributions in the cases of efficiency (Figure~\ref{fig:TS:A}) and noise/gamma rate per unit area (Figure~\ref{fig:TS:B}) measurements as extracted from the raw ROOT files. The unit along the x-axis corresponds to \si{ns}. The fact that "the" muon peak is not well defined in Figure~\ref{fig:TS:A} is due to the contribution of all the RPCs being tested at the same time that don't necessarily have the same signal arrival time. Each individual peak can have an offset with the ones of other detectors. The inconsistancy in the first \SI{100}{ns} of both time distributions is an artefact of the TDCs and are systematically rejected during the analysis.}
+	\end{figure}
+	
+	The ROOT files include a \cppinline{TTree} called \cppinline{RunParameters} containing, among other things, the information related to the type of run. The run type can then be accessed as described by Soucrce Code~\ref{cpp:runtype} and the function \cppinline{IsEfficiencyRun()} is then used to determine if the run file is an efficiency run or, on the contrary, another type of run (noise or gamma measurement).\\
+	
+	\begin{code}
+	\begin{cppcode}
+TTree* RunParameters = (TTree*)dataFile.Get("RunParameters");
+TString* RunType = new TString();
+RunParameters->SetBranchAddress("RunType",&RunType);
+RunParameters->GetEntry(0);
+	\end{cppcode}
+	\captionof{listing}{Access to the run type contained in \cppinline{TTree* RunParameters}.}
+	\label{cpp:runtype}
+	\vspace{5mm}
+	\end{code}
+	
+	Finally, the data files will have a slightly different content whether it was collected before or after October 2017 and the upgrade of the DAQ software that brought a new information into the ROOT output. This is discussed in Appendix~\ref{app1:ssec:QFlag} and implies that the analysis will differ a little depending on the data format. Indeed, as no information on the data quality is stored, in older data files, the corrections for missing events has to be done at the end of the analysis. The information about the type of data format is stored in the variable \cppinline{bool isNewFormat} by checking the list of branches contained in the data tree via the methods \cppinline{TTree::GetListOfBranches()} and \cppinline{TCollection::Contains()}.
+	
+	\subsection{Beam time window calculation for efficiency runs}
+	\label{app2:ssec:beamwindow}
+	
+	Knowing the run type is important first of all to know the width of the acquisition window to be used for the rate calculation and finally to be able to seek for muons. Indeed, the peak that appears in the time distribution for each detectors is then fitted to extract the most probable time window in which the tool should look for muon hits. The data outside of this time window in then used to evaluate the noise or gamma background the detector was subbjected too during the data taking. Computing the position of the peak is done calling the function \cppinline{SetBeamWindow()} defined in file \textinline{src/RPCHit.cc} that loops a first time on the data. The data is first sorted in a 3D array of 1D histograms (\cppinline{GIFH1Array}, see \textinline{include/types.h}). Then the location of the highest bin is determined using \cppinline{TH1::GetMaximumBin()} and is used to define a window in which a gaussian fit will be applied to compute the peak width. This window is a \SI{80}{ns} defined by Formula~\ref{eq:fitwindow} around the central bin.
+	
+	\begin{subequations}
+	\label{eq:fitwindow}
+	\begin{align}
+		t_{center}(ns) & = bin \times width_{bin}(ns)\\
+		[t_{low};t_{high}] & = [t_{center} - 40; t_{center} + 40]
+	\end{align}
+	\end{subequations}
+	
+	Before the fit is performed, the average number of noise/gamma hits per bin is evaluated using the data outside of the fit window. Excluding the first \SI{100}{ns}, the average number of hits per bin due to the noise or gamma is defined by Formula~\ref{eq:noisehits} after extracting the amount of hits in the time windows $[100;t_{low}]$ and $[t_{high};600]$ thanks to the method \cppinline{TH1::Integral()}. This average number of hits is then subtracted to every bin of the 1D histogram, in order to \textit{clean} it from the noise or gamma contribution as much as possible. Bins where $\left\langle n_{hits} \right\rangle$ is greater than the actual bin content are set to 0.
+	
+	\begin{subequations}
+	\label{eq:noisehits}
+	\begin{align}
+		\Delta t_{noise}(ns) & = 600 \overbrace{- t_{high} + t_{low}}^{-80ns} - 100 = 420ns \\
+		\left\langle n_{hits} \right\rangle & = width_{bin}(ns) \times \frac{\sum_{t=100}^{t_{low}}+\sum_{t=t_{high}}^{600}}{\Delta t_{noise}(ns)}
+	\end{align}
+	\end{subequations}
+	
+	Finally, the fit parameters are extracted and saved for each detector in 3D arrays of \cppinline{float} (\cppinline{muonPeak}, see \textinline{include/types.h}), a first one for the mean arrival tim eof the muons, \cppinline{PeakTime}, and a second one for the width of the peak, \cppinline{PeakWidth}. The width is defined as 6$\sigma$ of the gaussian fit.
+	
+	\subsection{Data loop and histogram filling}
+	\label{app2:ssec:dataloop}
+	
+	3D arrays of histogram are created to store the data and display it on the DQM of GIF++ webDCS for the use of shifters. These histograms, presented in section~\ref{app2:sssec:ROOT}, are filled while looping on the data. The data is accessed entry by entry in the ROOT \cppinline{TTree} using \cppinline{RAWData} and each hit in the hit list is assigned to a detector channel and saved in the corresponding histograms. In the first part of the analysis, in which the loop over the ROOT file's content is performed, the different steps are:
+	
+	\paragraph{Checking of the data quality for files using the new format:} if the \cppinline{QFlag} value for this entry shows that 1 TDC or more have a \cppinline{CORRUPTED} flag, then this event is discarded. The loss of statistics is low enough to be neglected. \cppinline{QFlag} is controled using the function \cppinline{IsCorruptedEvent()} defined in \textinline{src/utils.cc}. As explained in Appendix~\ref{app1:ssec:QFlag}, each digit of this integer represent a TDC flag that can be 1 or 2. Each 2 is the sign of a \cppinline{CORRUPTED} state.
+	
+	\paragraph{Assign the hits in the hit list to a RPC channel and control the channel:} a check is done on the RPC channel extracted thanks to the mapping via the method \cppinline{Mapping::GetLink()}. If the channel is not initialised and is 0, or if the TDC channel was greater than 5127, the hit is discarded. This means there was a problem in the mapping. Often a mapping problem leads to the crash of the offline tool.
+	
+	\paragraph{A \cppinline{RPCHit} object is created:} to easily get the trolley, slot and partition in which the hit has been assigned, this object is particularly helpful.
+	
+	\paragraph{If this is an efficiency run, check if the hit is within the peak window or not:} if the peak is contained in the peak window previously defined in section~\ref{app2:ssec:beamwindow}, the hit is filled into the beam hit profile histogram of the corresponding chamber, added into the list of muon hits and increments the counter of \textit{in time} hits. The term \textit{in time} here refers to the hits that are likely to be muons by arriving in the expected time window. If the hit is outside of the peak window and not within the first \SI{100}{ns}, it is filled into the noise profile histogram of the corresponding detector, added into the list of noise/gamma hits and increments the counter of noise/gamma hits. Otherwise the hit is discarded.
+	
+	\paragraph{If this was any other type of run:} if the hit is not within the first \SI{100}{ns}, it is filled into the noise profile histogram of the corresponding detector, added into the list of noise/gamma hits and increments the counter of noise/gamma hits. Otherwise the hit is discarded.
+	
+	\paragraph{In any case:} the hit is filled into the time distribution and the general hit distribution histograms, and increments the hit multiplicity counter of the corresponding detector.
+	
+	\paragraph{Finally, when the loop through the hit list is over:} in the case of an efficiency run, check if the muon hit list as been filled. If it has been filled, thus if there was any on time hits, the efficiency histogram is filled to 1 (efficient) otherwise it is filled to 0 (inefficient).
+	
 \clearpage{\pagestyle{empty}\cleardoublepage}
