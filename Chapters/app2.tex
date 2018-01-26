@@ -175,17 +175,19 @@ The data collected in GIF++ thanks to the DAQ described in Appendix~\ref{app1} i
 	Moreover, up to 3 CSV files can be created depending on which ones of the 3 input files were in the data folder:
 
 	\begin{itemize}
-		\item[•] \textinline{Offline-Rate.csv} : contains the summary of the noise/gamma hit and cluster rates for each chamber partitions,
-		\item[•] \textinline{Offline-Current.csv} : contains the summary of the currents and voltages applied on each RPC HV channel, and
-		\item[•] \textinline{Offline-L0-EffCl.csv} : contains the summary of the level 0 efficiency and muon cluster information \textbf{without} tracking.
+		\item[•] \textinline{Offline-Corrupted.csv} , is used to keep track of the amount of data that was corrupted and removed from old data format files that don't contain any data quality flag.
+		\item[•] \textinline{Offline-Current.csv} , contains the summary of the currents and voltages applied on each RPC HV channel.
+		\item[•] \textinline{Offline-L0-EffCl.csv} , is used to write the efficiencies, cluster size and cluster multiplicity of efficiency runs. Note that \textinline{L0} refers here to \textit{Level 0} and means that the results of effiency and clusterization are a first approximation calculated without performing any muon tracking in between the different detectors. This offline tool provides the user with a preliminar calculation of the efficiency and of the muon event parameters. Another analysis software especially dedicated to muon tracking is called on selected data to retrieve the results of efficiency and muon clusterization using a tracking algorithm to discriminate noise or gamma from muons as muons are the only particles that pass through the full setup, leaving hits than can be used to reconstruct their tracks.
+		\item[•] \textinline{Offline-Rate.csv} , is used to write the noise or gamma rates measured in the detector readout partitions.
 	\end{itemize}
 	
-	Note that these 3 CSV files are created along with their \textit{headers} (\textinline{Offline-[...]-Header.csv} containing the names of each data columns) and are automatically merged together when the offline analysis tool is called from the webDCS, contrary to the case where the tool is runned locally from the terminal as the merging bash script is then not called. Thus, the resulting files, used to make official plots, are:
+	Note that these 4 CSV files are created along with their \textit{headers} (\textinline{Offline-[...]-Header.csv} containing the names of each data columns) and are automatically merged together when the offline analysis tool is called from the webDCS, contrary to the case where the tool is runned locally from the terminal as the merging bash script is then not called. Thus, the resulting files, used to make official plots, are:
 
 	\begin{itemize}
-		\item[•] \textinline{Rate.csv} ,
+		\item[•] \textinline{Corrupted.csv} ,
 		\item[•] \textinline{Current.csv} ,
 		\item[•] \textinline{L0-EffCl.csv} .
+		\item[•] \textinline{Rate.csv} .
 	\end{itemize}
 	
 \section{Analysis inputs and information handling}
@@ -590,7 +592,7 @@ void Clusterization(HitList &hits, TH1 *hcSize, TH1 *hcMult);
 	
 	To investigate the hit list of a given detector partition, the function \cppinline{Clusterization()} definied in \textinline{include/Cluster.h} needs the hits in the list to be time sorted. This is achieved by calling function \cppinline{sort()} of library \cppinline{<algorithm>} using the comparator \cppinline{SortHitbyTime(RPCHit h1, RPCHit h2)} defined in \textinline{include/RPCHit.h} that returns \cppinline{true} if the time stamp of hit \cppinline{h1} is lower than that of \cppinline{h2}. A first isolation of strips is made only based on time information. All the hits within the \SI{25}{ns} window are taken separately from the rest. Then, this sub-list of hits is sorted this time by ascending strip number, using this time the comparator \cppinline{SortHitbyStrip(RPCHit h1, RPCHit h2)}. Finally, the groups of adjacent strips are used to construct \cppinline{RPCCluster} objects that are then stored in a temporary list of clusters that is at the end of the process used to know how many clusters were reconstructed and to fill their sizes into an histogram that will allows to know the mean size of muon or gamma clusters.\\
 	
-\section{Analysis}
+\section{DAQ data Analysis}
 \label{app2:sec:analysis}
 
 	All the ingredients to analyse GIF++ data have been defined. This section will focus on the different part of the analysis performed on the data, from determining the type of data the tool is dealing with to calculating the rate in each detector or reconstructing muon or gamma clusters.
@@ -637,7 +639,7 @@ RunParameters->GetEntry(0);
 	\subsection{Beam time window calculation for efficiency runs}
 	\label{app2:ssec:beamwindow}
 	
-	Knowing the run type is important first of all to know the width of the acquisition window to be used for the rate calculation and finally to be able to seek for muons. Indeed, the peak that appears in the time distribution for each detectors is then fitted to extract the most probable time window in which the tool should look for muon hits. The data outside of this time window in then used to evaluate the noise or gamma background the detector was subbjected too during the data taking. Computing the position of the peak is done calling the function \cppinline{SetBeamWindow()} defined in file \textinline{src/RPCHit.cc} that loops a first time on the data. The data is first sorted in a 3D array of 1D histograms (\cppinline{GIFH1Array}, see \textinline{include/types.h}). Then the location of the highest bin is determined using \cppinline{TH1::GetMaximumBin()} and is used to define a window in which a gaussian fit will be applied to compute the peak width. This window is a \SI{80}{ns} defined by Formula~\ref{eq:fitwindow} around the central bin.
+	Knowing the run type is important first of all to know the width of the acquisition window to be used for the rate calculation and finally to be able to seek for muons. Indeed, the peak that appears in the time distribution for each detectors is then fitted to extract the most probable time window in which the tool should look for muon hits. The data outside of this time window in then used to evaluate the noise or gamma background the detector was subbjected to during the data taking. Computing the position of the peak is done calling the function \cppinline{SetBeamWindow()} defined in file \textinline{src/RPCHit.cc} that loops a first time on the data. The data is first sorted in a 3D array of 1D histograms (\cppinline{GIFH1Array}, see \textinline{include/types.h}). Then the location of the highest bin is determined using \cppinline{TH1::GetMaximumBin()} and is used to define a window in which a gaussian fit will be applied to compute the peak width. This window is a \SI{80}{ns} defined by Formula~\ref{eq:fitwindow} around the central bin.
 	
 	\begin{subequations}
 	\label{eq:fitwindow}
@@ -647,7 +649,7 @@ RunParameters->GetEntry(0);
 	\end{align}
 	\end{subequations}
 	
-	Before the fit is performed, the average number of noise/gamma hits per bin is evaluated using the data outside of the fit window. Excluding the first \SI{100}{ns}, the average number of hits per bin due to the noise or gamma is defined by Formula~\ref{eq:noisehits} after extracting the amount of hits in the time windows $[100;t_{low}]$ and $[t_{high};600]$ thanks to the method \cppinline{TH1::Integral()}. This average number of hits is then subtracted to every bin of the 1D histogram, in order to \textit{clean} it from the noise or gamma contribution as much as possible. Bins where $\left\langle n_{hits} \right\rangle$ is greater than the actual bin content are set to 0.
+	Before the fit is performed, the average number of noise/gamma hits per bin is evaluated using the data outside of the fit window. Excluding the first \SI{100}{ns}, the average number of hits per bin due to the noise or gamma is defined by Formula~\ref{eq:noisehits} after extracting the amount of hits in the time windows $[100;t_{low}]$ and $[t_{high};600]$ thanks to the method \cppinline{TH1::Integral()}. This average number of hits is then subtracted to every bin of the 1D histogram, in order to \textit{clean} it from the noise or gamma contribution as much as possible to improve the fit quality. Bins where $\left\langle n_{hits} \right\rangle$ is greater than the actual bin content are set to 0.
 	
 	\begin{subequations}
 	\label{eq:noisehits}
@@ -657,25 +659,38 @@ RunParameters->GetEntry(0);
 	\end{align}
 	\end{subequations}
 	
-	Finally, the fit parameters are extracted and saved for each detector in 3D arrays of \cppinline{float} (\cppinline{muonPeak}, see \textinline{include/types.h}), a first one for the mean arrival tim eof the muons, \cppinline{PeakTime}, and a second one for the width of the peak, \cppinline{PeakWidth}. The width is defined as 6$\sigma$ of the gaussian fit.
+	Finally, the fit parameters are extracted and saved for each detector in 3D arrays of \cppinline{float} (\cppinline{muonPeak}, see \textinline{include/types.h}), a first one for the mean arrival time of the muons, \cppinline{PeakTime}, and a second one for the width of the peak, \cppinline{PeakWidth}. The width is defined as 6$\sigma$ of the gaussian fit. The same settings are applied to every partitions of the same detector. To determine which one of the detector's partitions is directly illuminated by the beam, the peak height of each partition is compared and the highest one is then used to define the peak settings.
 	
 	\subsection{Data loop and histogram filling}
 	\label{app2:ssec:dataloop}
 	
-	3D arrays of histogram are created to store the data and display it on the DQM of GIF++ webDCS for the use of shifters. These histograms, presented in section~\ref{app2:sssec:ROOT}, are filled while looping on the data. The data is accessed entry by entry in the ROOT \cppinline{TTree} using \cppinline{RAWData} and each hit in the hit list is assigned to a detector channel and saved in the corresponding histograms. In the first part of the analysis, in which the loop over the ROOT file's content is performed, the different steps are:
+	3D arrays of histogram are created to store the data and display it on the DQM of GIF++ webDCS for the use of shifters. These histograms, presented in section~\ref{app2:sssec:ROOT}, are filled while looping on the data. Before starting the analysis loop, it is necessary to control the entry quality for the new file formats featuring \cppinline{QFlag}. If the \cppinline{QFlag} value for this entry shows that 1 TDC or more have a \cppinline{CORRUPTED} flag, then this event is discarded. The loss of statistics is low enough to be neglected. \cppinline{QFlag} is controled using the function \cppinline{IsCorruptedEvent()} defined in \textinline{src/utils.cc}. As explained in Appendix~\ref{app1:ssec:QFlag}, each digit of this integer represent a TDC flag that can be 1 or 2. Each 2 is the sign of a \cppinline{CORRUPTED} state. Then, the data is accessed entry by entry in the ROOT \cppinline{TTree} using \cppinline{RAWData} and each hit in the hit list is assigned to a detector channel and saved in the corresponding histograms. In the first part of the analysis, in which the loop over the ROOT file's content is performed, the different steps are:
 	
-	\paragraph{Checking of the data quality for files using the new format:} if the \cppinline{QFlag} value for this entry shows that 1 TDC or more have a \cppinline{CORRUPTED} flag, then this event is discarded. The loss of statistics is low enough to be neglected. \cppinline{QFlag} is controled using the function \cppinline{IsCorruptedEvent()} defined in \textinline{src/utils.cc}. As explained in Appendix~\ref{app1:ssec:QFlag}, each digit of this integer represent a TDC flag that can be 1 or 2. Each 2 is the sign of a \cppinline{CORRUPTED} state.
+	\paragraph{1- RPC channel assignment and control:} a check is done on the RPC channel extracted thanks to the mapping via the method \cppinline{Mapping::GetLink()}. If the channel is not initialised and is 0, or if the TDC channel was greater than 5127, the hit is discarded. This means there was a problem in the mapping. Often a mapping problem leads to the crash of the offline tool.
 	
-	\paragraph{Assign the hits in the hit list to a RPC channel and control the channel:} a check is done on the RPC channel extracted thanks to the mapping via the method \cppinline{Mapping::GetLink()}. If the channel is not initialised and is 0, or if the TDC channel was greater than 5127, the hit is discarded. This means there was a problem in the mapping. Often a mapping problem leads to the crash of the offline tool.
+	\paragraph{2- Creation of a \cppinline{RPCHit} object:} to easily get the trolley, slot and partition in which the hit has been assigned, this object is particularly helpful.
 	
-	\paragraph{A \cppinline{RPCHit} object is created:} to easily get the trolley, slot and partition in which the hit has been assigned, this object is particularly helpful.
+	\paragraph{3- General histograms are filled:} the hit is filled into the time distribution and the general hit distribution histograms, and if the arrival time is within the first \SI{100}{ns}, it is discarded and nothing else happens and the loop proceeds with the next hit in the list.
 	
-	\paragraph{If this is an efficiency run, check if the hit is within the peak window or not:} if the peak is contained in the peak window previously defined in section~\ref{app2:ssec:beamwindow}, the hit is filled into the beam hit profile histogram of the corresponding chamber, added into the list of muon hits and increments the counter of \textit{in time} hits. The term \textit{in time} here refers to the hits that are likely to be muons by arriving in the expected time window. If the hit is outside of the peak window and not within the first \SI{100}{ns}, it is filled into the noise profile histogram of the corresponding detector, added into the list of noise/gamma hits and increments the counter of noise/gamma hits. Otherwise the hit is discarded.
+	\paragraph{4- Multiplicity counter:}  the hit multiplicity counter of the corresponding detectors incremented.
 	
-	\paragraph{If this was any other type of run:} if the hit is not within the first \SI{100}{ns}, it is filled into the noise profile histogram of the corresponding detector, added into the list of noise/gamma hits and increments the counter of noise/gamma hits. Otherwise the hit is discarded.
+	\paragraph{5-a- \textit{Effiency runs} - Is the hit within the peak window? :} if the peak is contained in the peak window previously defined in section~\ref{app2:ssec:beamwindow}, the hit is filled into the beam hit profile histogram of the corresponding chamber, added into the list of muon hits and increments the counter of \textit{in time} hits. The term \textit{in time} here refers to the hits that are likely to be muons by arriving in the expected time window. If the hit is outside of the peak window, it is filled into the noise profile histogram of the corresponding detector, added into the list of noise/gamma hits and increments the counter of noise/gamma hits.
 	
-	\paragraph{In any case:} the hit is filled into the time distribution and the general hit distribution histograms, and increments the hit multiplicity counter of the corresponding detector.
+	\paragraph{5-b- \textit{Noise/gamma rate runs} - Noise histograms are filled:} the hit is filled into the noise profile histogram of the corresponding detector, added into the list of noise/gamma hits and increments the counter of noise/gamma hits.
 	
-	\paragraph{Finally, when the loop through the hit list is over:} in the case of an efficiency run, check if the muon hit list as been filled. If it has been filled, thus if there was any on time hits, the efficiency histogram is filled to 1 (efficient) otherwise it is filled to 0 (inefficient).
+	After the loop on the hit list of the entry is over, the next step is too clusterize the 3D lists filled in the previous steps. A 3D loop is then started over the active trolley, slot and RPC partitions to access these objects. Each \cppinline{NoiseHitList} and \cppinline{MuonHitList}, in case of efficiency run, are clusterized as decribed in section~\ref{app2:ssec:RPCCluster}. There corresponding cluster size and multiplicity histograms are filled at the end of the clustering process. Then, the effiency histogram is filled in case of effieincy run. The selection is simply made by checking whether the RPC detected signals in the peak window during this event. Nevertheless, it is useful to highlight that at this level, it is not possible yet to discriminate in between a muon hit and noise or gamma hit. Thus, \cppinline{MuonCSize_H}, \cppinline{MuonCMult_H} and \cppinline{Efficiency0_H} are subjected to noise and gamma contamination. This contamination will be estimated and corrected at the moment the results will be written into output CSV files. Finally, the loop ends on the filling of the general hit multiplicity histogram.
+	
+	\subsection{Computation of the final results}
+	\label{app2:ssec:results}
+	
+	As mentioned in section~\ref{app2:ssec:output}, the analysis of DAQ data provides the user with 3 CSV files and a ROOT file associated to each and every ROOT data file. The fourth CSV file is provided by the extraction of the CEAN main frame data monitored during data tacking and will be discussed later. After looping on the data in the previous part of the analysis macro, the output files are created and a 3D loop on each RPC readout partitions is started to extract the histograms parameters and compute the final results.\\
+	
+	\begin{figure}[H]
+        \centering
+		\includegraphics[width = 0.7\linewidth]{fig/app1/No_Qflag_nhits_KODEL.pdf}
+		\caption{\label{fig:corrupted} The effect of the quality flag is explained by presenting the reconstructed hit multiplicity of a data file without \cppinline{Quality_flag}. The artificial high content of bin 0 is the effect of corrupted data.}
+	\end{figure}
+	
+	\paragraph{Corrupted data estimation :} In case of old data format files, not containing any quality flag, it is need to estimate the amount of corrupted data via a fit as the corrupted data will always fill events with a fake "0 multiplicity". Indeed, as no hits were stored in the DAQ ROOT files, these events artificially contribute to fill the bin corresponding to a null multiplicity, as shown in Figure~\ref{fig:corrupted}.
 	
 \clearpage{\pagestyle{empty}\cleardoublepage}
