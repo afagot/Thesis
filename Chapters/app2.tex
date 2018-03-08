@@ -620,7 +620,7 @@ void Clusterization(HitList &hits, TH1 *hcSize, TH1 *hcMult);
 		\caption{\label{fig:TS} Example of expected hit time distributions in the cases of efficiency (Figure~\ref{fig:TS:A}) and noise/gamma rate per unit area (Figure~\ref{fig:TS:B}) measurements as extracted from the raw ROOT files. The unit along the x-axis corresponds to \si{ns}. The fact that "the" muon peak is not well defined in Figure~\ref{fig:TS:A} is due to the contribution of all the RPCs being tested at the same time that don't necessarily have the same signal arrival time. Each individual peak can have an offset with the ones of other detectors. The inconsistancy in the first \SI{100}{ns} of both time distributions is an artefact of the TDCs and are systematically rejected during the analysis.}
 	\end{figure}
 	
-	The ROOT files include a \cppinline{TTree} called \cppinline{RunParameters} containing, among other things, the information related to the type of run. The run type can then be accessed as described by Soucrce Code~\ref{cpp:runtype} and the function \cppinline{IsEfficiencyRun()} is then used to determine if the run file is an efficiency run or, on the contrary, another type of run (noise or gamma measurement).\\
+	The ROOT files include a \cppinline{TTree} called \cppinline{RunParameters} containing, among other things, the information related to the type of run. The run type can then be accessed as described by Source Code~\ref{cpp:runtype} and the function \cppinline{IsEfficiencyRun()} is then used to determine if the run file is an efficiency run or, on the contrary, another type of run (noise or gamma measurement).\\
 	
 	\begin{code}
 	\begin{cppcode}
@@ -676,14 +676,28 @@ RunParameters->GetEntry(0);
 	
 	\paragraph{5-a- \textit{Effiency runs} - Is the hit within the peak window? :} if the peak is contained in the peak window previously defined in section~\ref{app2:ssec:beamwindow}, the hit is filled into the beam hit profile histogram of the corresponding chamber, added into the list of muon hits and increments the counter of \textit{in time} hits. The term \textit{in time} here refers to the hits that are likely to be muons by arriving in the expected time window. If the hit is outside of the peak window, it is filled into the noise profile histogram of the corresponding detector, added into the list of noise/gamma hits and increments the counter of noise/gamma hits.
 	
-	\paragraph{5-b- \textit{Noise/gamma rate runs} - Noise histograms are filled:} the hit is filled into the noise profile histogram of the corresponding detector, added into the list of noise/gamma hits and increments the counter of noise/gamma hits.
+	\paragraph{5-b- \textit{Noise/gamma rate runs} - Noise histograms are filled:} the hit is filled into the noise profile histogram of the corresponding detector, added into the list of noise/gamma hits and increments the counter of noise/gamma hits.\\
 	
 	After the loop on the hit list of the entry is over, the next step is too clusterize the 3D lists filled in the previous steps. A 3D loop is then started over the active trolley, slot and RPC partitions to access these objects. Each \cppinline{NoiseHitList} and \cppinline{MuonHitList}, in case of efficiency run, are clusterized as decribed in section~\ref{app2:ssec:RPCCluster}. There corresponding cluster size and multiplicity histograms are filled at the end of the clustering process. Then, the effiency histogram is filled in case of effieincy run. The selection is simply made by checking whether the RPC detected signals in the peak window during this event. Nevertheless, it is useful to highlight that at this level, it is not possible yet to discriminate in between a muon hit and noise or gamma hit. Thus, \cppinline{MuonCSize_H}, \cppinline{MuonCMult_H} and \cppinline{Efficiency0_H} are subjected to noise and gamma contamination. This contamination will be estimated and corrected at the moment the results will be written into output CSV files. Finally, the loop ends on the filling of the general hit multiplicity histogram.
+	
+	\subsection{Strip maskting tool}
+	\label{app2:ssec:mask}
+	
+	After the histograms have been published online in the DQM page, the shifter can decide to mask noisy or dead channels that will contribute to bias the final rate calculation by editing the mask column of \textinline{ChannelsMapping.csv} as can be seen in Figure~\ref{fig:maskingtool}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = \linewidth]{fig/app2/MaskingTool.png}
+		\caption{\label{fig:maskingtool} Display of the maskting tool page on the webDCS. The window on the left allows the shifter to edit \textinline{ChannelsMapping.csv}. To mask a channel, it only is needed to set the 3rd field corresponding to the strip to mask to 0. It is not necessary for older mapping file formats to add a 1 for each strip that is not masked as the code is versatile and the default behaviour is to consider missing mask fields as active strips. The effect of the mask is directly visible for noisy channels as the corresponding bin turns red. The global effect of masking strips will be an update of the rate value showed on the histogram that will take into consideration the rejected channels.}
+	\end{figure}
 	
 	\subsection{Computation of the final results}
 	\label{app2:ssec:results}
 	
 	As mentioned in section~\ref{app2:ssec:output}, the analysis of DAQ data provides the user with 3 CSV files and a ROOT file associated to each and every ROOT data file. The fourth CSV file is provided by the extraction of the CEAN main frame data monitored during data tacking and will be discussed later. After looping on the data in the previous part of the analysis macro, the output files are created and a 3D loop on each RPC readout partitions is started to extract the histograms parameters and compute the final results.\\
+	
+		\subsubsection{Rate normalisation}
+		\label{app2:sssec:norm}
 	
 	\begin{figure}[H]
         \centering
@@ -691,6 +705,28 @@ RunParameters->GetEntry(0);
 		\caption{\label{fig:corrupted} The effect of the quality flag is explained by presenting the reconstructed hit multiplicity of a data file without \cppinline{Quality_flag}. The artificial high content of bin 0 is the effect of corrupted data.}
 	\end{figure}
 	
-	\paragraph{Corrupted data estimation :} In case of old data format files, not containing any quality flag, it is need to estimate the amount of corrupted data via a fit as the corrupted data will always fill events with a fake "0 multiplicity". Indeed, as no hits were stored in the DAQ ROOT files, these events artificially contribute to fill the bin corresponding to a null multiplicity, as shown in Figure~\ref{fig:corrupted}.
+	To analyse old data format files, not containing any quality flag, it is needed to estimate the amount of corrupted data via a fit as the corrupted data will always fill events with a fake "0 multiplicity". Indeed, as no hits were stored in the DAQ ROOT files, these events artificially contribute to fill the bin corresponding to a null multiplicity, as shown in Figure~\ref{fig:corrupted}. In the case the mean of the hit multiplicity distribution is high, the contribution of the corrupted data can easily be evaluated for later correction by comparing the level of the bin at multiplicity 0 and of a skew fit curve that should indicate a value consistent with 0. A skew fit has been chosen over a Poisson fit as it was giving better results for lower mean multiplicity  values. Nevertheless, for low irradiation cases, as explained in Appendix~\ref{app1:ssec:QFlag}, the hit multiplicity distribution mean is, on the contrary, rather small and the probability to record events without hits can't be considered small anymore, leading to a difficult and non-reliable estimation of the corruption. Conditions have been applied to prevent bad fits and wrong corruption estimation in cases where :
+
+	\begin{itemize}
+		\item[•] The difference in between the data for multiplicity 1 and the corresponding fit value should be lower than 1\% of the total amount of data : $\frac{\vert n_{m=1} - sk(1)\vert}{N_{tot}} < 0.01$ where $n_{m=1}$ is the number of entries with multiplicity 1, $sk(1)$ the value of the skew fit, as defined by Formula~\ref{for:skew}, for multiplicity 1 and $N_{tot}$ the total number of entries.
+		\item[•] The amount of data contained in the multiplicity 0 bin should not exceed 40\% : $\frac{n_{m=0}}{N_{tot}} \leq 0.4$ where $n_{m=0}$ is the number of entries with multiplicity 0. This number has been determined to be the maximum to be able to separate the excess of data due to corruption from the hit multiplicity distribution.
+	\end{itemize}
 	
+	Those 2 conditions need to be fulfilled to estimate the corruption of old data format files. If the fit was successful, the  level of corruption is written in \textinline{Corrupted.csv} and the number of corrupted entries, refered as the integer \cppinline{nEmptyEvent}, is subtracted from the total number of entries when the rate normalisation factor is computed as explicited in Source Code~\ref{cpp:rate_norm}. Note that for new data format files, the number of corrupted entries being set to 0, the definition of \cppinline{rate_norm} stays valid.\\
+	
+	\begin{code}
+	\begin{cppcode}
+if(IsEfficiencyRun(RunType)){
+	float noiseWindow = BMTDCWINDOW - TIMEREJECT - 2*PeakWidth.rpc[T][S][p];
+	rate_norm = (nEntries-nEmptyEvent)*noiseWindow*1e-9*stripArea;
+} else
+	rate_norm = (nEntries-nEmptyEvent)*RDMNOISEWDW*1e-9*stripArea;
+	\end{cppcode}
+	\captionof{listing}{Definition of the rate normalisation variable. It takes into account the number of non corrupted entries and the time window used for noise calculation, to estimate the total integrated time, and the strip active area to express the result as rate per unit area.}
+	\label{cpp:rate_norm}
+	\vspace{5mm}
+	\end{code}
+	
+		\subsubsection{•}
+
 \clearpage{\pagestyle{empty}\cleardoublepage}
