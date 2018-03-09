@@ -680,20 +680,9 @@ RunParameters->GetEntry(0);
 	
 	After the loop on the hit list of the entry is over, the next step is too clusterize the 3D lists filled in the previous steps. A 3D loop is then started over the active trolley, slot and RPC partitions to access these objects. Each \cppinline{NoiseHitList} and \cppinline{MuonHitList}, in case of efficiency run, are clusterized as decribed in section~\ref{app2:ssec:RPCCluster}. There corresponding cluster size and multiplicity histograms are filled at the end of the clustering process. Then, the effiency histogram is filled in case of effieincy run. The selection is simply made by checking whether the RPC detected signals in the peak window during this event. Nevertheless, it is useful to highlight that at this level, it is not possible yet to discriminate in between a muon hit and noise or gamma hit. Thus, \cppinline{MuonCSize_H}, \cppinline{MuonCMult_H} and \cppinline{Efficiency0_H} are subjected to noise and gamma contamination. This contamination will be estimated and corrected at the moment the results will be written into output CSV files. Finally, the loop ends on the filling of the general hit multiplicity histogram.
 	
-	\subsection{Strip maskting tool}
-	\label{app2:ssec:mask}
-	
-	After the histograms have been published online in the DQM page, the shifter can decide to mask noisy or dead channels that will contribute to bias the final rate calculation by editing the mask column of \textinline{ChannelsMapping.csv} as can be seen in Figure~\ref{fig:maskingtool}.
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width = \linewidth]{fig/app2/MaskingTool.png}
-		\caption{\label{fig:maskingtool} Display of the maskting tool page on the webDCS. The window on the left allows the shifter to edit \textinline{ChannelsMapping.csv}. To mask a channel, it only is needed to set the 3rd field corresponding to the strip to mask to 0. It is not necessary for older mapping file formats to add a 1 for each strip that is not masked as the code is versatile and the default behaviour is to consider missing mask fields as active strips. The effect of the mask is directly visible for noisy channels as the corresponding bin turns red. The global effect of masking strips will be an update of the rate value showed on the histogram that will take into consideration the rejected channels.}
-	\end{figure}
-	
-	\subsection{Computation of the final results}
-	\label{app2:ssec:results}
-	
+	\subsection{Results calculation}
+	\label{app2:ssec:rate}
+		
 	As mentioned in section~\ref{app2:ssec:output}, the analysis of DAQ data provides the user with 3 CSV files and a ROOT file associated to each and every ROOT data file. The fourth CSV file is provided by the extraction of the CEAN main frame data monitored during data tacking and will be discussed later. After looping on the data in the previous part of the analysis macro, the output files are created and a 3D loop on each RPC readout partitions is started to extract the histograms parameters and compute the final results.\\
 	
 		\subsubsection{Rate normalisation}
@@ -705,17 +694,56 @@ RunParameters->GetEntry(0);
 		\caption{\label{fig:corrupted} The effect of the quality flag is explained by presenting the reconstructed hit multiplicity of a data file without \cppinline{Quality_flag}. The artificial high content of bin 0 is the effect of corrupted data.}
 	\end{figure}
 	
-	To analyse old data format files, not containing any quality flag, it is needed to estimate the amount of corrupted data via a fit as the corrupted data will always fill events with a fake "0 multiplicity". Indeed, as no hits were stored in the DAQ ROOT files, these events artificially contribute to fill the bin corresponding to a null multiplicity, as shown in Figure~\ref{fig:corrupted}. In the case the mean of the hit multiplicity distribution is high, the contribution of the corrupted data can easily be evaluated for later correction by comparing the level of the bin at multiplicity 0 and of a skew fit curve that should indicate a value consistent with 0. A skew fit has been chosen over a Poisson fit as it was giving better results for lower mean multiplicity  values. Nevertheless, for low irradiation cases, as explained in Appendix~\ref{app1:ssec:QFlag}, the hit multiplicity distribution mean is, on the contrary, rather small and the probability to record events without hits can't be considered small anymore, leading to a difficult and non-reliable estimation of the corruption. Conditions have been applied to prevent bad fits and wrong corruption estimation in cases where :
+	To analyse old data format files, not containing any quality flag, it is needed to estimate the amount of corrupted data via a fit as the corrupted data will always fill events with a fake "0 multiplicity". Indeed, as no hits were stored in the DAQ ROOT files, these events artificially contribute to fill the bin corresponding to a null multiplicity, as shown in Figure~\ref{fig:corrupted}. In the case the mean of the hit multiplicity distribution is high, the contribution of the corrupted data can easily be evaluated for later correction by comparing the level of the bin at multiplicity 0 and of a skew fit curve that should indicate a value consistent with 0. A skew fit has been chosen over a Poisson fit as it was giving better results for lower mean multiplicity  values. Nevertheless, for low irradiation cases, as explained in Appendix~\ref{app1:ssec:QFlag}, the hit multiplicity distribution mean is, on the contrary, rather small and the probability to record events without hits can't be considered small anymore, leading to a difficult and non-reliable estimation of the corruption. As can be seen in Source Code~\ref{cpp:rate_norm}, conditions have been applied to prevent bad fits and wrong corruption estimation in cases where :
 
 	\begin{itemize}
 		\item[•] The difference in between the data for multiplicity 1 and the corresponding fit value should be lower than 1\% of the total amount of data : $\frac{\vert n_{m=1} - sk(1)\vert}{N_{tot}} < 0.01$ where $n_{m=1}$ is the number of entries with multiplicity 1, $sk(1)$ the value of the skew fit, as defined by Formula~\ref{for:skew}, for multiplicity 1 and $N_{tot}$ the total number of entries.
 		\item[•] The amount of data contained in the multiplicity 0 bin should not exceed 40\% : $\frac{n_{m=0}}{N_{tot}} \leq 0.4$ where $n_{m=0}$ is the number of entries with multiplicity 0. This number has been determined to be the maximum to be able to separate the excess of data due to corruption from the hit multiplicity distribution.
 	\end{itemize}
 	
-	Those 2 conditions need to be fulfilled to estimate the corruption of old data format files. If the fit was successful, the  level of corruption is written in \textinline{Corrupted.csv} and the number of corrupted entries, refered as the integer \cppinline{nEmptyEvent}, is subtracted from the total number of entries when the rate normalisation factor is computed as explicited in Source Code~\ref{cpp:rate_norm}. Note that for new data format files, the number of corrupted entries being set to 0, the definition of \cppinline{rate_norm} stays valid.\\
+	Those 2 conditions need to be fulfilled to estimate the corruption of old data format files. If the fit was successful, the  level of corruption is written in \textinline{Offline-Corrupted.csv} and the number of corrupted entries, refered as the integer \cppinline{nEmptyEvent}, is subtracted from the total number of entries when the rate normalisation factor is computed as explicited in Source Code~\ref{cpp:rate_norm}. Note that for new data format files, the number of corrupted entries being set to 0, the definition of \cppinline{rate_norm} stays valid.\\
 	
 	\begin{code}
 	\begin{cppcode}
+if(!isNewFormat){
+	TF1* GaussFit = new TF1("gaussfit","[0]*exp(-0.5*((x-[1])/[2])**2)",0,Xmax);
+	GaussFit->SetParameter(0,100);
+	GaussFit->SetParameter(1,10);
+	GaussFit->SetParameter(2,1);
+	HitMultiplicity_H.rpc[T][S][p]->Fit(GaussFit,"LIQR","",0.5,Xmax);
+
+	TF1* SkewFit = new TF1("skewfit","[0]*exp(-0.5*((x-[1])/[2])**2) / (1 + exp(-[3]*(x-[4])))",0,Xmax);
+	SkewFit->SetParameter(0,GaussFit->GetParameter(0));
+	SkewFit->SetParameter(1,GaussFit->GetParameter(1));
+	SkewFit->SetParameter(2,GaussFit->GetParameter(2));
+	SkewFit->SetParameter(3,1);
+	SkewFit->SetParameter(4,1);
+	HitMultiplicity_H.rpc[T][S][p]->Fit(SkewFit,"LIQR","",0.5,Xmax);
+
+	double fitValue = SkewFit->Eval(1,0,0,0);
+	double dataValue = (double)HitMultiplicity_H.rpc[T][S][p]->GetBinContent(2);
+	double difference = TMath::Abs(dataValue - fitValue);
+	double fitTOdataVSentries_ratio = difference / (double)nEntries;
+	bool isFitGOOD = fitTOdataVSentries_ratio < 0.01;
+
+	double nSinglehit = (double)HitMultiplicity_H.rpc[T][S][p]->GetBinContent(1);
+	double lowMultRatio = nSinglehit / (double)nEntries;
+	bool isMultLOW = lowMultRatio > 0.4;
+
+	if(isFitGOOD && !isMultLOW){
+		nEmptyEvent = HitMultiplicity_H.rpc[T][S][p]->GetBinContent(1);
+		nPhysics = (int)SkewFit->Eval(0,0,0,0);
+		if(nPhysics < nEmptyEvent)
+		nEmptyEvent = nEmptyEvent-nPhysics;
+	}
+}
+
+double corrupt_ratio = 100.*(double)nEmptyEvent / (double)nEntries;
+outputCorrCSV << corrupt_ratio << '\t';
+
+float rate_norm = 0.;
+float stripArea = GIFInfra->GetStripGeo(tr,sl,p);	
+	
 if(IsEfficiencyRun(RunType)){
 	float noiseWindow = BMTDCWINDOW - TIMEREJECT - 2*PeakWidth.rpc[T][S][p];
 	rate_norm = (nEntries-nEmptyEvent)*noiseWindow*1e-9*stripArea;
@@ -727,6 +755,257 @@ if(IsEfficiencyRun(RunType)){
 	\vspace{5mm}
 	\end{code}
 	
-		\subsubsection{•}
+		\subsubsection{Rate and activity}
+		\label{app2:sssec:rateact}
+		
+	At this point, the strip rate histograms, \cppinline{StripNoiseProfile_H.rpc[T][S][p]}, only contain an information about the total number of noise or rate hits each channel received during the data taking. As described in Source Code~\ref{cpp:striprateact}, a loop on the strip channels will be used to normalise the content of the rate distribution histogram for each detector partitions. The initial number of hits recorded for a given bin will be extracted and 2 values will be computed:
+
+	\begin{itemize}
+		\item[•] the strip rate, defined as the number of hits recorded in the bin normalised like described in the previous section, using the variable \cppinline{rate_norm}, and
+		\item[•] the strip activity, defined as the number of hits recorded in the bin normalised to the average number of hits per bin contained in the partition histogram, using the variable \cppinline{averageNhit}. This value provides an information on the homogeneity of the detector response to the gamma background or of the detector noise. An activity of 1 corresponds to an average response. Above 1, the channel is more active than the average and bellow 1, the channel is less active.
+	\end{itemize}
+	
+	\begin{code}
+	\begin{cppcode}
+int nNoise = StripNoiseProfile_H.rpc[T][S][p]->GetEntries();	
+float averageNhit = (nNoise>0) ? (float)(nNoise/nStripsPart) : 1.;
+
+for(Uint st = 1; st <= nStripsPart; st++){
+	float stripRate =
+		StripNoiseProfile_H.rpc[T][S][p]->GetBinContent(st)/rate_norm;
+	float stripAct =
+		StripNoiseProfile_H.rpc[T][S][p]->GetBinContent(st)/averageNhit;
+
+	StripNoiseProfile_H.rpc[T][S][p]->SetBinContent(st,stripRate);
+	StripActivity_H.rpc[T][S][p]->SetBinContent(st,stripAct);
+}
+	\end{cppcode}
+	\captionof{listing}{Description of the loop that allows to set the content of each strip rate and strip activity channel for each detector partition.}
+	\label{cpp:striprateact}
+	\vspace{5mm}
+	\end{code}
+	
+	On each detector partitions, which are readout by a single FEE, all the channels are not processed by the same chip. Each chip can give a different noise response and thus, histograms using a chip binning are used to investigate chip related noise behaviours. The average values of the strip rate or activity grouped into a given chip are extracted using the using the function \cppinline{GetChipBin()} and stored in dedicated histograms as described in Source Codes~\ref{cpp:chipbin} and \ref{cpp:chiprateact} respectively.\\
+	
+	\begin{code}
+	\begin{cppcode}
+float GetChipBin(TH1* H, Uint chip){
+    Uint start = 1 + chip*NSTRIPSCHIP;
+    int nActive = NSTRIPSCHIP;
+    float mean = 0.;
+
+    for(Uint b = start; b <= (chip+1)*NSTRIPSCHIP; b++){
+        float value = H->GetBinContent(b);
+        mean += value;
+        if(value == 0.) nActive--;
+    }
+
+    if(nActive != 0) mean /= (float)nActive;
+    else mean = 0.;
+
+    return mean;
+}
+	\end{cppcode}
+	\captionof{listing}{Function used to compute the content of a bin for an histogram using chip binning.}
+	\label{cpp:chipbin}
+	\vspace{5mm}
+	\end{code}
+	
+	\begin{code}
+	\begin{cppcode}
+for(Uint ch = 0; ch < (nStripsPart/NSTRIPSCHIP); ch++){
+	ChipMeanNoiseProf_H.rpc[T][S][p]->
+		SetBinContent(ch+1,GetChipBin(StripNoiseProfile_H.rpc[T][S][p],ch));
+	ChipActivity_H.rpc[T][S][p]->
+		SetBinContent(ch+1,GetChipBin(StripActivity_H.rpc[T][S][p],ch));
+}
+	\end{cppcode}
+	\captionof{listing}{Description of the loop that allows to set the content of each chip rate and chip activity bins for each detector partition knowing the information contained in the corresponding strip distribution histograms.}
+	\label{cpp:chiprateact}
+	\vspace{5mm}
+	\end{code}
+	
+	The activity variable is used to evaluate the homogeneity of the detector response to background or of the detector noise. The homogeneity $h_p$ of each detector partition can be evaluated using the formula $h_p = exp(-\sigma^{R}_p/\langle R\rangle_p)$, where $\langle R\rangle_p$ is the partition mean rate and $\sigma^{R}_p$ is the rate standard deviation calculated over the partition channels. The more homogeneously the rates are distributed and the smaller will $\sigma^{R}_p$ be, and the closer to 1 will $h_p$ get. On the contrary, if the standard deviation of the channel's rates is large, $h_p$ will rapidly get to 0. This value is saved into histograms as showed in Source Code~\ref{cpp:homogeneity} and could in the future be used to monitor through time, once extracted, the evolution of every partition homogeneity. This could be of great help to understand the apparition of eventual hot spots due to ageing of the chambers subjected to high radiation levels. The monitored homogeneity information could then be combined with a monitoring of the activity of each individual channel in order to have a finer information. Monitoring tools have been suggested and need to be developped for this purpose.\\
+	
+	\begin{code}
+	\begin{cppcode}
+float MeanPartSDev = GetTH1StdDev(StripNoiseProfile_H.rpc[T][S][p]);
+float strip_homog = (MeanPartRate==0)
+	? 0.
+	: exp(-MeanPartSDev/MeanPartRate);
+StripHomogeneity_H.rpc[T][S][p]->Fill("exp -#left(#frac{#sigma_{Strip Rate}}{#mu_{Strip Rate}}#right)",strip_homog);
+StripHomogeneity_H.rpc[T][S][p]->GetYaxis()->SetRangeUser(0.,1.);
+
+float ChipStDevMean = GetTH1StdDev(ChipMeanNoiseProf_H.rpc[T][S][p]);
+float chip_homog = (MeanPartRate==0)
+	? 0.
+	: exp(-ChipStDevMean/MeanPartRate);
+ChipHomogeneity_H.rpc[T][S][p]->Fill("exp -#left(#frac{#sigma_{Chip Rate}}{#mu_{Chip Rate}}#right)",chip_homog);
+ChipHomogeneity_H.rpc[T][S][p]->GetYaxis()->SetRangeUser(0.,1.);
+	\end{cppcode}
+	\captionof{listing}{Storage of the homogeneity into dedicated histograms.}
+	\label{cpp:homogeneity}
+	\vspace{5mm}
+	\end{code}
+		
+		\subsubsection{Strip masking tool}
+		\label{app2:sssec:mask}
+	
+	The offline tool is automatically called at the end of each data taking to analyse the data and offer the shifter DQM histograms to control the data quality. After the histograms have been published online in the DQM page, the shifter can decide to mask noisy or dead channels that will contribute to bias the final rate calculation by editing the mask column of \textinline{ChannelsMapping.csv} as can be seen in Figure~\ref{fig:maskingtool}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = \linewidth]{fig/app2/MaskingTool.png}
+		\caption{\label{fig:maskingtool} Display of the maskting tool page on the webDCS. The window on the left allows the shifter to edit \textinline{ChannelsMapping.csv}. To mask a channel, it only is needed to set the 3rd field corresponding to the strip to mask to 0. It is not necessary for older mapping file formats to add a 1 for each strip that is not masked as the code is versatile and the default behaviour is to consider missing mask fields as active strips. The effect of the mask is directly visible for noisy channels as the corresponding bin turns red. The global effect of masking strips will be an update of the rate value showed on the histogram that will take into consideration the rejected channels.}
+	\end{figure}
+	
+	From the code point of view, the function \cppinline{GetTH1Mean()} is used to retrieve the mean rate partition by partition after the rates have been calculated strip by strip and filled into the histograms \cppinline{StripNoiseProfile_H.rpc[T][S][p]}, as described through Source Code~\ref{cpp:th1mean}.
+	
+	Once the mask for each rejected channel has been updated, the shifter can manually run the offline tool again to update the DQM plots, now including the masked strips, as well the rate results written in the output CSV file \textinline{Offline-Rate.csv}. If not done during the shifts, the strip masking procedure needs to be carefully done by the person in charge of data analysis on the scans that were selected to produce the final results.\\
+	
+	\begin{code}
+	\begin{cppcode}
+float GetTH1Mean(TH1* H){
+    int nBins = H->GetNbinsX();
+    int nActive = nBins;
+    float mean = 0.;
+
+    for(int b = 1; b <= nBins; b++){
+        float value = H->GetBinContent(b);
+        mean += value;
+        if(value == 0.) nActive--;
+    }
+
+    if(nActive != 0) mean /= (float)nActive;
+    else mean = 0.;
+
+    return mean;
+}
+	\end{cppcode}
+	\captionof{listing}{The function \cppinline{GetTH1Mean()} is used to return the mean along the y-axis of \cppinline{TH1} histograms containing rate information. In order to take into account masked strips whose rate is set to 0, the function looks for masked channels and decrement the number of active channels for each null value found.}
+	\label{cpp:th1mean}
+	\vspace{5mm}
+	\end{code}
+	
+		\subsubsection{Output CSV files filling}
+		\label{app2:sssec:CSVoutput}
+		
+	\begin{code}
+	\begin{cppcode}
+for (Uint tr = 0; tr < GIFInfra->GetNTrolleys(); tr++){
+	Uint T = GIFInfra->GetTrolleyID(tr);
+
+	for (Uint sl = 0; sl < GIFInfra->GetNSlots(tr); sl++){
+		Uint S = GIFInfra->GetSlotID(tr,sl) - 1;
+
+		float MeanNoiseRate = 0.;
+		float ClusterRate   = 0.;
+		float ClusterSDev   = 0.;
+
+		for (Uint p = 0; p < GIFInfra->GetNPartitions(tr,sl); p++){
+			float MeanPartRate = GetTH1Mean(StripNoiseProfile_H.rpc[T][S][p]);
+			float cSizePart = NoiseCSize_H.rpc[T][S][p]->GetMean();
+			float cSizePartErr = (NoiseCSize_H.rpc[T][S][p]->GetEntries()==0)
+				? 0.
+				: 2*NoiseCSize_H.rpc[T][S][p]->GetStdDev() /
+							sqrt(NoiseCSize_H.rpc[T][S][p]->GetEntries());
+			float cMultPart = NoiseCMult_H.rpc[T][S][p]->GetMean();
+			float cMultPartErr = (NoiseCMult_H.rpc[T][S][p]->GetEntries()==0)
+				? 0.
+				: 2*NoiseCMult_H.rpc[T][S][p]->GetStdDev() /
+							sqrt(NoiseCMult_H.rpc[T][S][p]->GetEntries());
+			float ClustPartRate = (cSizePart==0) ? 0.
+				: MeanPartRate/cSizePart;
+			float ClustPartRateErr = (cSizePart==0) ? 0.
+				: ClustPartRate * cSizePartErr/cSizePart;
+
+			outputRateCSV << MeanPartRate << '\t'
+				<< cSizePart << '\t' << cSizePartErr << '\t'
+				<< cMultPart << '\t' << cMultPartErr << '\t'
+				<< ClustPartRate << '\t' << ClustPartRateErr << '\t';
+				
+			RPCarea       += stripArea * nStripsPart;
+			MeanNoiseRate += MeanPartRate * stripArea * nStripsPart;
+			ClusterRate   += ClustPartRate * stripArea * nStripsPart;
+			ClusterSDev   += (cSizePart==0)
+				? 0.
+				: ClusterRate*cSizePartErr/cSizePart;
+		}
+		
+		MeanNoiseRate /= RPCarea;
+		ClusterRate   /= RPCarea;
+		ClusterSDev   /= RPCarea;
+
+		outputRateCSV << MeanNoiseRate << '\t'
+			<< ClusterRate << '\t' << ClusterSDev << '\t';
+	}
+}
+	\end{cppcode}
+	\captionof{listing}{Description of rate result calculation and writing into the CSV output \textinline{Offline-Rate.csv}. Are saved into the file for each detector, the mean partition rate, cluster size and cluster mutiplicity, along with their errors, for each partition and as well as a detector average.}
+	\label{cpp:ratecsv}
+	\vspace{5mm}
+	\end{code}
+	
+	\begin{code}
+	\begin{cppcode}
+for (Uint tr = 0; tr < GIFInfra->GetNTrolleys(); tr++){
+	Uint T = GIFInfra->GetTrolleyID(tr);
+	for (Uint sl = 0; sl < GIFInfra->GetNSlots(tr); sl++){
+		Uint S = GIFInfra->GetSlotID(tr,sl) - 1;
+		for (Uint p = 0; p < GIFInfra->GetNPartitions(tr,sl); p++){
+			float noiseWindow =
+				BMTDCWINDOW - TIMEREJECT - 2*PeakWidth.rpc[T][S][p];
+			float peakWindow = 2*PeakWidth.rpc[T][S][p];
+			float windowRatio = peakWindow/noiseWindow;
+
+			float PeakCM = MuonCMult_H.rpc[T][S][p]->GetMean();
+			float PeakCS = MuonCSize_H.rpc[T][S][p]->GetMean();
+			float NoiseCM = NoiseCMult_H.rpc[T][S][p]->GetMean()*windowRatio;
+			float NoiseCS = NoiseCSize_H.rpc[T][S][p]->GetMean();
+			float MuonCM = (PeakCM<NoiseCM) ? 0. : PeakCM-NoiseCM;
+			float MuonCS = (MuonCM==0 || PeakCM*PeakCS<NoiseCM*NoiseCS)
+				? 0.
+				: (PeakCM*PeakCS-NoiseCM*NoiseCS)/MuonCM;
+			float PeakCM_err = (MuonCMult_H.rpc[T][S][p]->GetEntries()==0.)
+				? 0.
+				: 2*MuonCMult_H.rpc[T][S][p]->GetStdDev() /
+							sqrt(MuonCMult_H.rpc[T][S][p]->GetEntries());
+			float PeakCS_err = (MuonCSize_H.rpc[T][S][p]->GetEntries()==0.)
+				? 0.
+				: 2*MuonCSize_H.rpc[T][S][p]->GetStdDev() /
+							sqrt(MuonCSize_H.rpc[T][S][p]->GetEntries());
+			float NoiseCM_err = (NoiseCMult_H.rpc[T][S][p]->GetEntries()==0.)
+				? 0.
+				: windowRatio*2*NoiseCMult_H.rpc[T][S][p]->GetStdDev() /
+							sqrt(NoiseCMult_H.rpc[T][S][p]->GetEntries());
+			float NoiseCS_err = (NoiseCSize_H.rpc[T][S][p]->GetEntries()==0.)
+				? 0.
+				: 2*NoiseCSize_H.rpc[T][S][p]->GetStdDev() /
+							sqrt(NoiseCSize_H.rpc[T][S][p]->GetEntries());
+			float MuonCM_err = (MuonCM==0) ? 0. : PeakCM_err+PeakCS_err;
+			float MuonCS_err = (MuonCS==0 || MuonCM==0) ? 0.
+				: (PeakCS*PeakCM_err + PeakCM*PeakCS_err +
+					NoiseCS*NoiseCM_err + NoiseCM*NoiseCS_err +
+					MuonCS*MuonCM_err)/MuonCM;
+
+			float DataRatio = MuonCM/PeakCM;
+			float DataRatio_err = (MuonCM==0) ? 0.
+				: DataRatio*(MuonCM_err/MuonCM + PeakCM_err/PeakCM);
+			float eff = DataRatio*Efficiency0_H.rpc[T][S][p]->GetMean();
+			float eff_err =  DataRatio*2*Efficiency0_H.rpc[T][S][p]->GetStdDev()/
+						sqrt(Efficiency0_H.rpc[T][S][p]->GetEntries()) +
+						Efficiency0_H.rpc[T][S][p]->GetMean()*DataRatio_err;
+
+			outputEffCSV << eff << '\t' << eff_err << '\t'
+				<< MuonCS << '\t' << MuonCS_err << '\t'
+				<< MuonCM << '\t' << MuonCM_err << '\t';
+		}
+	}
+}
+	\end{cppcode}
+	\captionof{listing}{Description of efficiency result calculation and writing into the CSV output \textinline{Offline-L0-EffCl.csv}. Are saved into the file for each detector, the efficiency, corrected taking into account the background in the peak window of the time profile, muon cluster size and muon cluster mutiplicity, along with their errors, for each partition and as well as a detector average.}
+	\label{cpp:effcsv}
+	\vspace{5mm}
+	\end{code}
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
