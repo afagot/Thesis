@@ -203,7 +203,7 @@ The data collected in GIF++ thanks to the DAQ described in Appendix~\ref{app1} i
 	\subsection{Dimensions file and IniFile parser}
 	\label{app2:ssec:dimensions}
 	
-	This input file, present in every data folder, allows the analysis tool to know of the number of active trolleys, the number of active RPCs in those trolleys, and the details about each RPCs such as the number of RPC gaps, the number of pseudo-rapidity partitions (for CMS-like prototypes), the number of strips per partion or the dimensions. To do so, there are 3 types of groups in the INI file architecture. A first general group, appearing only once at the head of the document, gives information about the number of active trolleys as well as their IDs, as presented in Source Code~\ref{ini:general}. For each active trolley, a group similar to Source Code~\ref{ini:trolley} can be found containing information about the number of active detectors in the trolley and their IDs. Each trolley group as a \textinline{Tt} name format, where \textinline{t} is the trolley ID. Finally, for each detector stored in slots of an active trolley, there is a group providing information about their names and dimensions, as showed in Source Code~\ref{ini:slot}. Each slot group as a \textinline{TtSs} name format, where \textinline{s} is the slot ID of trolley \textinline{t} where the active RPC is hosted.\\
+	This input file, present in every data folder, allows the analysis tool to know of the number of active trolleys, the number of active RPCs in those trolleys, and the details about each RPCs such as the number of RPC gaps, the number of pseudo-rapidity partitions (for CMS-like prototypes), the number of strips per partion or the dimensions. To do so, there are 3 types of groups in the INI file architecture. A first general group, appearing only once at the head of the document, gives information about the number of active trolleys as well as their IDs, as presented in Source Code~\ref{ini:general}. For each active trolley, a group similar to Source Code~\ref{ini:trolley} can be found containing information about the number of active detectors in the trolley and their IDs. Each trolley group as a \textinline{Tt} name format, where \textinline{t} is the trolley ID. Finally, for each detector stored in slots of an active trolley, there is a group providing information about their names and dimensions, as shown in Source Code~\ref{ini:slot}. Each slot group as a \textinline{TtSs} name format, where \textinline{s} is the slot ID of trolley \textinline{t} where the active RPC is hosted.\\
 	
 	\begin{code}
 	\begin{inicode}
@@ -825,7 +825,7 @@ for(Uint ch = 0; ch < (nStripsPart/NSTRIPSCHIP); ch++){
 	\vspace{5mm}
 	\end{code}
 	
-	The activity variable is used to evaluate the homogeneity of the detector response to background or of the detector noise. The homogeneity $h_p$ of each detector partition can be evaluated using the formula $h_p = exp(-\sigma^{R}_p/\langle R\rangle_p)$, where $\langle R\rangle_p$ is the partition mean rate and $\sigma^{R}_p$ is the rate standard deviation calculated over the partition channels. The more homogeneously the rates are distributed and the smaller will $\sigma^{R}_p$ be, and the closer to 1 will $h_p$ get. On the contrary, if the standard deviation of the channel's rates is large, $h_p$ will rapidly get to 0. This value is saved into histograms as showed in Source Code~\ref{cpp:homogeneity} and could in the future be used to monitor through time, once extracted, the evolution of every partition homogeneity. This could be of great help to understand the apparition of eventual hot spots due to ageing of the chambers subjected to high radiation levels. The monitored homogeneity information could then be combined with a monitoring of the activity of each individual channel in order to have a finer information. Monitoring tools have been suggested and need to be developped for this purpose.\\
+	The activity variable is used to evaluate the homogeneity of the detector response to background or of the detector noise. The homogeneity $h_p$ of each detector partition can be evaluated using the formula $h_p = exp(-\sigma^{R}_p/\langle R\rangle_p)$, where $\langle R\rangle_p$ is the partition mean rate and $\sigma^{R}_p$ is the rate standard deviation calculated over the partition channels. The more homogeneously the rates are distributed and the smaller will $\sigma^{R}_p$ be, and the closer to 1 will $h_p$ get. On the contrary, if the standard deviation of the channel's rates is large, $h_p$ will rapidly get to 0. This value is saved into histograms as shown in Source Code~\ref{cpp:homogeneity} and could in the future be used to monitor through time, once extracted, the evolution of every partition homogeneity. This could be of great help to understand the apparition of eventual hot spots due to ageing of the chambers subjected to high radiation levels. The monitored homogeneity information could then be combined with a monitoring of the activity of each individual channel in order to have a finer information. Monitoring tools have been suggested and need to be developped for this purpose.\\
 	
 	\begin{code}
 	\begin{cppcode}
@@ -890,6 +890,17 @@ float GetTH1Mean(TH1* H){
 		\subsubsection{Output CSV files filling}
 		\label{app2:sssec:CSVoutput}
 		
+	All the histograms have been filled. Parameters will then be extracted from them to compute the final results that will later be used to produce plots. Once the results have been computed, the very last step of the offline macro is to write these values into the corresponding CSV outputs. Aside of the file \textinline{Offline-Corrupted.csv}, 2 CSV files are being written by the macro \cppinline{OfflineAnalysis()}, \textinline{Offline-Rates.csv} and \textinline{Offline-L0-EffCl.csv} that respectively contain information about noise or gamma rates, cluster size and multiplicity, and about level 0 reconstruction of the detector efficiency, muon cluster size and multiplicity. Details on the computation and file writing are respectively given in Sources Codes~\ref{cpp:ratecsv} and \ref{cpp:effcsv}.
+	
+	\paragraph{Noise/gamma background variables} are computed and written in the output file for each detector partitions. A detector average of the hit and cluster rate is also provided, as shown through Sources Code~\ref{cpp:ratecsv}. The variables that are written for each partition are:
+	
+	\begin{itemize}
+		\item[•] The mean partition hit rate per unit area, \cppinline{MeanPartRate}, that is extracted from the histogram \cppinline{StripNoiseProfile_H} as the mean value along the y-axis, as described in section~\ref{app2:sssec:mask}. No error is recorded for the hit rate as this is considered a single measurement. No statistical error can be associated to it and the systematics are unknown.
+		\item[•] The mean cluster size, \cppinline{cSizePart}, is extracted from the histogram \cppinline{NoiseCSize_H} and it's statistical error, \cppinline{cSizePartErr}, is taken to be $2\sigma$ of the total distribution.
+		\item[•] The mean cluster multiplicity per trigger, \cppinline{cMultPart}, is extracted from the histogram \cppinline{NoiseCMult_H} and it's statistical error, \cppinline{cMultPartErr}, is taken to be $2\sigma$ of the total distribution. It is important to point to the fact that this variable gives an information that is dependent on the buffer window width used for each trigger for the calculation.
+		\item[•] The mean cluster rate per unit area, \cppinline{ClustPartRate}, is defined as the mean hit rate normalised to the mean cluster size and it's statistical error, \cppinline{ClustPartRateErr}, is then obtained using the relative statistical error on the mean cluster size.
+	\end{itemize}
+		
 	\begin{code}
 	\begin{cppcode}
 for (Uint tr = 0; tr < GIFInfra->GetNTrolleys(); tr++){
@@ -946,6 +957,16 @@ for (Uint tr = 0; tr < GIFInfra->GetNTrolleys(); tr++){
 	\vspace{5mm}
 	\end{code}
 	
+	\paragraph{Muon performance variables} are computed and written in the output file for each detector partitions as shown through Sources Code~\ref{cpp:effcsv}. The variables that are written for each partition are:
+	
+	\begin{itemize}
+		\item[•] The muon efficiency, \cppinline{eff}, extracted from the histogram \cppinline{Efficiency0_H}. It is reminded that this offline tool doesn't include any tracking algorithm to identify muons from the beam and only relies on the hits arriving in the time window corresponding to the beam time. The content of the efficiency histogram is thus biased by the noise/gamma background contribution into this window and is thus corrected by estimating the muon data content in the peak region knowing the noise/gamma content in the rate calculation region. Both time windows being different, the choice was made to normalise the noise/gamma background calculation window to it's equivalent beam window in order to have comparable values using the variable \cppinline{windowRatio}. Finally, to estimate the data ratio in the peak region, the variable \cppinline{DataRatio} is defined as the ratio in between the estimated mean cluster multiplicity of the muons in the peak region, \cppinline{MuonCM}, and of the total mean cluster multiplicity in the peak region, \cppinline{PeakCM}. \cppinline{MuonCM} is itself defined as the difference in between the total mean cluster multiplicity in the peak region and the normalised mean noise/gamma cluster multiplicity calculated outside of the peak region. The statistical error related to the efficiency, \cppinline{eff_err}, is computed using a binomial distribution, as the efficiency measure the probability of "success" and "failure" to detect muons.
+		\item[•] The mean muon cluster size, \cppinline{MuonCS}, is calculated using the total mean cluster size and multiplicity in the peak region, respectively extracted from histograms \cppinline{MuonCSize_H} and \cppinline{MuonCMult_H}, the noise/gamma background mean cluster size and normalised multiplicity, extracted from \cppinline{NoiseCSize_H} and \cppinline{NoiseCMult_H}, and of the estimated muon cluster multiplicity \cppinline{MuonCM} previously explicited. The associated statistical error, \cppinline{MuonCM_err}, is calculated using the propagation of errors of the mentioned variables.
+		\item[•] The mean muon cluster multiplicity in the peak region, \cppinline{MuonCM}, explicited above whose statistical error, \cppinline{MuonCM_err}, is the sum of statistical error associated to the total mean cluster multiplicity in the peak reagion, \cppinline{PeakCM_err}, and of the mean noise/gamma cluster size, \cppinline{NoiseCM_err}.
+	\end{itemize}
+	
+	In addition to these 2 CSV files, the histograms are saved in ROOT file \textinline{Scan00XXXX_HVY_Offline.root} as explained in section~\ref{app2:sssec:ROOT}.\\
+	
 	\begin{code}
 	\begin{cppcode}
 for (Uint tr = 0; tr < GIFInfra->GetNTrolleys(); tr++){
@@ -982,7 +1003,7 @@ for (Uint tr = 0; tr < GIFInfra->GetNTrolleys(); tr++){
 				? 0.
 				: 2*NoiseCSize_H.rpc[T][S][p]->GetStdDev() /
 							sqrt(NoiseCSize_H.rpc[T][S][p]->GetEntries());
-			float MuonCM_err = (MuonCM==0) ? 0. : PeakCM_err+PeakCS_err;
+			float MuonCM_err = (MuonCM==0) ? 0. : PeakCM_err+NoiseCM_err;
 			float MuonCS_err = (MuonCS==0 || MuonCM==0) ? 0.
 				: (PeakCS*PeakCM_err + PeakCM*PeakCS_err +
 					NoiseCS*NoiseCM_err + NoiseCM*NoiseCS_err +
@@ -1009,3 +1030,18 @@ for (Uint tr = 0; tr < GIFInfra->GetNTrolleys(); tr++){
 	\end{code}
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
+
+\section{Current data Analysis}
+\label{app2:sec:currents}
+
+	Detectors under test at GIF++ are connected both to a CAEN HV power supply and to a CAEN ADC that reads the currents inside of the RPC gaps bypassing the supply cable. During data taking, the webDCS records into a ROOT file called \textinline{Scan00XXXX_HVY_CAEN.root} histograms with the monitored parameters of both CAEN devices. Are recorded for each RPC channels (in most cases, a channel corresponds to an RPC gap):
+	
+	\begin{itemize}
+		\item[•] the effective voltage, $HV_{eff}$, set by the webDCS using the PT correction on the CAEN power supply,
+		\item[•] the applied voltage, $HV_{app}$, monitored by the CAEN power supply, and the statistical error related to the variations of this value through time to follow the variation of the environmental parameters defined as the RMS of the histogram divided by the square root of the number of recorded points,
+		\item[•] the monitored current, $I_{mon}$, monitored by the CAEN power supply, and the statistical error related to the variations of this value through time to follow the variation of the environmental parameters defined as the RMS of the histogram divided by the square root of the number of recorded points,
+		\item[•] the corresponding current density, $J_{mon}$, defined as the monitored current per unit area, $J_{mon} = I_{mon}/A$, where $A$ is the active area of the corresponding gap,
+		\item[•] the ADC current, $I_{ADC}$, recorded through the CAEN ADC module that monitors the dark current in the gap itself. First of all, the resolution of such a module is better than that of CAEN power supplies and moreover, the current is not read-out through the HV supply line but directly at the chamber level giving the real current inside of the detector. The statistical error is defined as the RMS of the histogram distribution divided by the square root of the number of recorded points.
+	\end{itemize}
+	
+	Once extracted through a loop over the element of GIF++ infrastructure via the C++ macro \cppinline{GetCurrent()}, these parameters, organised in 9 columns per detector HV supply line, are written in the output CSV file \textinline{Offline-Current.csv}. The macro can be found in the file \textinline{Current.cc}.
