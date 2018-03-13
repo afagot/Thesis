@@ -1,5 +1,3 @@
-\graphicspath{{chapt_dutch/}{intro/}{chapt2/}{chapt3/}{chapt4/}{chapt5/}{chapt6/}{chapt7/}}
-
 % Header
 \renewcommand\evenpagerightmark{{\scshape\small Chapter 4}}
 \renewcommand\oddpageleftmark{{\scshape\small Resistive Plate Chambers}}
@@ -12,14 +10,42 @@
 {Resistive Plate Chambers}
 \label{chapt:4}
 
+	A \acf{RPC} is a gaseous detector using the same physical processes described in Chapter~\ref{chapt:3}. It has been developed in 1981 by Santonico and Cardarelli~\cite{SANTONICO81}, under the name of \textit{Resistive Plate Counter}, as an alternative to the local-discharge spark counters proposed in 1978 by Pestov and Fedotovich~\cite{PESTOV78,FEDOTOVICH82}. Working with spark chambers implied using high-pressure gas and high mechanical precision which the RPC simplified by using a gas mixture of argon and butane flowed at atmospheric pressure and a constant and uniform electric field propagated in between two parallel electrode plates. Moreover, a significant increase in rate capability was introduced by the use of electrode plate material with high bulk resistivity, preventing the discharge from growing throughout the whole gas gap. Indeed, the effect of using resistive electrodes is that the constant electric field is locally canceled out by the development of the discharge, limiting its growth.
+	
+	Through its development history, different operating modes have been discovered leading to improve further the rate capability and time resolution of such a detector. The low developing costs and easily achievable large detection areas offered by RPCs, it was a natural choice to use them as muon chambers and trigger detectors in multipurpose experiments such as CMS~\cite{MUONTDR}, taking profit of their very fast response of the order of \SI{1}{ns}.
+
 \section{Principle}
-\label{sec:principle}
+\label{chapt4:sec:principle}
+
+	RPCs are composed of two parallel resistive plate electrodes in between which a constant electric field is set. The space in between the electrodes, referred as \textit{gap}, is filled with a dense gas that is used to generate primary ionization into the gas volume. The free charge carriers (electrons and cations) created by the ionization of the gas molecules are then accelerated towards the electrodes by the electric field, as shown in Figure~\ref{fig:RPC_principle} taken from the thesis of Lippmann~\cite{LIPPMANN2003}.
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width = \plotwidth]{fig/chapt4/RPC_principle.pdf}\\
+		\caption{\label{fig:RPC_principle} Different phases of the avalanche development in the RPC gas volume subjected to a constant electric field $E_0$. a) An avalanche is initiated by the primary ionisation caused by the passage of a charged particle through the gas volume. b) Due to its growing size, the avalanche starts to locally influence the electric field. c) The electrons, lighter than the cations reach the anode first. d) The ions reach the cathode. While the charges have not been recombined, the electric field in the small region around the avalanche stays affected and locally blind the detector.}
+	\end{figure}
+	
+	RPCs being passive detectors, a current on pick-up copper read-out placed outside of the gas volume is induced by the charge accumulation during the growth of the avalanche. As a result, the time resolution of the detector is substantially increased as the output signal is generated while the electrons are still in movement. The advantage of a constant electric field, over multi-wire proportional chambers, is that the electrons are being fully accelerated from the moment charge carriers are freed and feel the full strength of the electric field that doesn't depend on the distance to the readout and that the output signal doesn't need for the electrons to be physically collected.
+	
+	The gas mixture the RPC are operated with is generally composed of:
+	
+	\begin{itemize}
+		\item[•] Freon
+		\item[•] isobutane
+		\item[•] SF$_6$
+	\end{itemize}
 
 \section{Rate capability of Resistive Plate Chambers}
 \label{sec:RateCapa}
+	
+	\subsection{Operation modes}
+	\label{chapt4:ssec:operation}
 
 \section{High time resolution}
 \label{sec:TimeRes}
+	
+	\subsection{Electron drift velocity}
+	\label{chapt4:ssec:drift}
 
 \section{Resistive Plate Chambers at CMS}
 \label{sec:CMS-RPC}
