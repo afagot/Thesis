@@ -10,9 +10,11 @@
 {Resistive Plate Chambers}
 \label{chapt:4}
 
-	A \acf{RPC} is a gaseous detector using the same physical processes described in Chapter~\ref{chapt:3}. It has been developed in 1981 by Santonico and Cardarelli~\cite{SANTONICO81}, under the name of \textit{Resistive Plate Counter}, as an alternative to the local-discharge spark counters proposed in 1978 by Pestov and Fedotovich~\cite{PESTOV78,FEDOTOVICH82}. Working with spark chambers implied using high-pressure gas and high mechanical precision which the RPC simplified by using a gas mixture of argon and butane flowed at atmospheric pressure and a constant and uniform electric field propagated in between two parallel electrode plates. Moreover, a significant increase in rate capability was introduced by the use of electrode plate material with high bulk resistivity, preventing the discharge from growing throughout the whole gas gap. Indeed, the effect of using resistive electrodes is that the constant electric field is locally canceled out by the development of the discharge, limiting its growth.
+	A \acf{RPC} is a gaseous detector using the same physical processes described in Chapter~\ref{chapt:3}. It has been developed in 1981 by Santonico and Cardarelli~\cite{SANTONICO81}, under the name of \textit{Resistive Plate Counter}, as an alternative to the local-discharge spark counters proposed in 1978 by Pestov and Fedotovich~\cite{PESTOV78,FEDOTOVICH82}. Working with spark chambers implied using high-pressure gas and high mechanical precision which the RPC simplified by formerly using a gas mixture of argon and butane flowed at atmospheric pressure and a constant and uniform electric field propagated in between two parallel electrode plates. Moreover, a significant increase in rate capability was introduced by the use of electrode plate material with high bulk resistivity, preventing the discharge from growing throughout the whole gas gap. Indeed, the effect of using resistive electrodes is that the constant electric field is locally canceled out by the development of the discharge, limiting its growth.
 	
-	Through its development history, different operating modes have been discovered leading to improve further the rate capability and time resolution of such a detector. The low developing costs and easily achievable large detection areas offered by RPCs, it was a natural choice to use them as muon chambers and trigger detectors in multipurpose experiments such as CMS~\cite{MUONTDR}, taking profit of their very fast response of the order of \SI{1}{ns}.
+	Through its development history, different operating modes~\cite{CROTTY93,CROTTY94,CARDARELLI96} and new detector designs~\cite{ZEBALLOS96,WILLIAMS98,CZYRKOWSKI98} have been discovered, leading to further improvement of the rate capability of such a detector. Moreover, the addition of $SF_6$ into the gas mix improved the stability of operation of the RPC~\cite{CAMARRI98,ZEBALLOS98}.
+	
+	The low developing costs and easily achievable large detection areas offered by RPCs, as well as the wide range of possible designs, made them a natural choice to as muon chambers and/or trigger detectors in multipurpose experiments such as CMS~\cite{MUONTDR} or ATLAS~\cite{ATLASTDR}, time-of-flight detectors in ALICE~\cite{ALICETDR}, calorimeter with CALICE~\cite{CALICE2016} or even detectors for volcanic muography with ToMuVol~\cite{TOMUVOL2011}. 
 
 \section{Principle}
 \label{chapt4:sec:principle}
@@ -27,13 +29,15 @@
 	
 	RPCs being passive detectors, a current on pick-up copper read-out placed outside of the gas volume is induced by the charge accumulation during the growth of the avalanche. As a result, the time resolution of the detector is substantially increased as the output signal is generated while the electrons are still in movement. The advantage of a constant electric field, over multi-wire proportional chambers, is that the electrons are being fully accelerated from the moment charge carriers are freed and feel the full strength of the electric field that doesn't depend on the distance to the readout and that the output signal doesn't need for the electrons to be physically collected.
 	
-	The gas mixture the RPC are operated with is generally composed of:
+	The typical gas mixture RPCs are operated with is generally composed of 3 gas compounds.
 	
 	\begin{itemize}
-		\item[•] Freon
-		\item[•] isobutane
-		\item[•] SF$_6$
+		\item[•] Tetrafluoroethane ($C_2F_4H_2$), also referred to as \textit{Freon}, is the principal compound of the RPC gas mixtures, with a typical fraction above 90\%. It is used for it's high effective Townsend coefficient and the great average fast charge that allows to operate the detector with a high threshold with respect to argon, for example, that has similar effective Townsend coefficient but suffers from a lower fast charge. To operate with similar conditions, argon would require a higher electric field leading to a higher fraction of streamers, thus limiting the rate capability of the detector~\cite{ABBRESCIA1997}.
+		\item[•] Isobutane ($C_4H_10$), only present in a few percent in the gas mixtures, is used for its UV quenching properties~\cite{BATTISTONI85} helping to prevent streamers due to UV photon emission during the avalanche growth.
+		\item[•] Sulfur hexafluoride, ($SF_6$), referred to simply as \textit{SF6}, is used in very little quantities for its high electronegativity. Excess of electrons are being absorbed by the compound and streamers are suppressed~\cite{ZEBALLOS98}. Nevertheless, a fraction of $SF_6$ higher than 1\% will not bring any extra benefice in terms of streamer cancelation power but will lead to higher operating voltage.
 	\end{itemize}
+	
+	\textbf{Talk about electrodes resistivity and it's effect on charge recombination and rate capability.}
 
 \section{Rate capability of Resistive Plate Chambers}
 \label{sec:RateCapa}
