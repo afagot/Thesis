@@ -19,13 +19,27 @@
 \section{Principle}
 \label{chapt4:sec:principle}
 
-	RPCs are composed of two parallel resistive plate electrodes in between which a constant electric field is set. The space in between the electrodes, referred as \textit{gap}, is filled with a dense gas that is used to generate primary ionization into the gas volume. The free charge carriers (electrons and cations) created by the ionization of the gas molecules are then accelerated towards the electrodes by the electric field, as shown in Figure~\ref{fig:RPC_principle} taken from the thesis of Lippmann~\cite{LIPPMANN2003}.
+	RPCs are ionisation detectors composed of two parallel resistive plate electrodes in between which a constant electric field is set. The space in between the electrodes, referred as \textit{gap}, is filled with a dense gas that is used to generate primary ionization into the gas volume. The free charge carriers (electrons and cations) created by the ionization of the gas molecules are then accelerated towards the electrodes by the electric field, as shown in Figure~\ref{fig:RPC_principle}~\cite{LIPPMANN2003}.
 	
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width = \plotwidth]{fig/chapt4/RPC_principle.pdf}\\
-		\caption{\label{fig:RPC_principle} Different phases of the avalanche development in the RPC gas volume subjected to a constant electric field $E_0$. a) An avalanche is initiated by the primary ionisation caused by the passage of a charged particle through the gas volume. b) Due to its growing size, the avalanche starts to locally influence the electric field. c) The electrons, lighter than the cations reach the anode first. d) The ions reach the cathode. While the charges have not been recombined, the electric field in the small region around the avalanche stays affected and locally blind the detector.}
+		\caption{\label{fig:RPC_principle} Different phases of the avalanche development in the RPC gas volume subjected to a constant electric field $E_0$. a) An avalanche is initiated by the primary ionisation caused by the passage of a charged particle through the gas volume. b) Due to its growing size, the avalanche starts to locally influence the electric field. c) The electrons, lighter than the cations reach the anode first. d) The ions reach the cathode. While the charges have not recombined, the electric field in the small region around the avalanche stays affected and locally blind the detector.}
 	\end{figure}
+	
+	After an avalanche developed in the gas, a time long compared to the development of a discharge is needed to recombine the charge carriers in the electrode material due to their resistivity. This property has the advantage of affecting the local electric field and avoiding sparks in the detector but, on the other hand, the rate capability is intrinsically limited by the time constant $\tau_{RPC}$ of the detector. Using a quasi-static approximation of Maxwell’s equations for weakly conducting media, it can be shown that the time constant $\tau_{RPC}$ necessary to the charge recombination at the interface in between the electrode and the gas volume is given by the Formula~\ref{for:tau}.
+	
+	\begin{equation}
+		\label{for:tau}
+		\tau_{RPC} = \frac{\epsilon_{electrode}+\epsilon_{gas}}{\sigma_{electrode}+\sigma_{gas}}
+	\end{equation}
+	
+	A gas can be assimilated to vacuum, leading to $\epsilon_{gas} = \epsilon_0$ and $\sigma_{gas} = 0$, and the electrodes permittivity and conductivity can be written as $\epsilon_{electrode} = \epsilon_r\epsilon_0$ and $\sigma_{electrode} = 1/\rho_{electrode}$, showing the strong dependance of the time constant to the electrodes resistivity in Formula~\ref{for:taurho}.
+	
+	\begin{equation}
+		\label{for:taurho}
+		\tau_{RPC} = (\epsilon_r + 1)\epsilon_0\times\rho_{electrode}
+	\end{equation}
 	
 	RPCs being passive detectors, a current on pick-up copper read-out placed outside of the gas volume is induced by the charge accumulation during the growth of the avalanche. As a result, the time resolution of the detector is substantially increased as the output signal is generated while the electrons are still in movement. The advantage of a constant electric field, over multi-wire proportional chambers, is that the electrons are being fully accelerated from the moment charge carriers are freed and feel the full strength of the electric field that doesn't depend on the distance to the readout and that the output signal doesn't need for the electrons to be physically collected.
 	
