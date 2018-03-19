@@ -151,7 +151,7 @@
 		\caption{\label{fig:DoubleGap} Comparison of performance of CMS double and single gap RPCs using cosmic muons~\cite{ABBRESCIA2005}. Figure~\ref{fig:DoubleGap:A}: Comparison of efficiency sigmoids. Figure~\ref{fig:DoubleGap:B}: Voltage distribution at 95\% of maximum efficiency. Figure~\ref{fig:DoubleGap:C}: $\Delta^{90\%}_{10\%}$ distribution.}
 	\end{figure}
 	
-	\paragraph{Multigap RPC (MRPC)} are layouts in which floating sub electrode plates are placed into a wide gap RPC to divide the gas volume and create a sum of narrow gaps~\cite{ZEBALLOS96MRPC,WILLIAMS98}. The time resolution of such a detector can reach of few tens of \si{ps}, with gas gaps of the order of a a few hundred \si{\micro m} as shown in Figure~\ref{fig:MRPC} representing ALICE \acf{ToF} MRPCs. Sometimes used as a double multigap RPC, taking advantage of the OR of double gap RPCs, the MRPC is mainly used as ToF detector~\cite{ALICE2002,START2002,BESIII2014,CBM2007,MPD2016} due to it's excellent timing properties that allow to perform particle identification as explained by Williams in~\cite{WILLIAMS2012}. An example of particle identification is given for the case of STAR experiment in Figure~\ref{fig:ParticleID}. Another benefice of using such small gas gaps is the strong reduction of the average avalanche volume and thus of the blind spot on MRPCs leading to an improved rate capability. Multigaps can sustain backgrounds of several \si{kHz/cm^2} as demonstrated in Figure~\ref{fig:MRPCRate}.
+	\paragraph{Multigap RPC (MRPC)} are layouts in which floating sub electrode plates are placed into a wide gap RPC to divide the gas volume and create a sum of narrow gaps~\cite{ZEBALLOS96MRPC,WILLIAMS98}. The time resolution of such a detector can reach of few tens of \si{ps}, with gas gaps of the order of a a few hundred \si{\micro m} as shown in Figure~\ref{fig:MRPC} representing ALICE \acf{ToF} MRPCs.
 	
 	\begin{figure}[!h]
 		\centering
@@ -159,11 +159,27 @@
 		\caption{\label{fig:MRPC} Presentation of ALICE MRPC using \SI{250}{\micro m} gas gaps, \SI{620}{\micro m} outer glass electrodes and \SI{550}{\micro m} inner floating electrodes. More details on the labels are given in~\cite{ALICE2002}.}
 	\end{figure}
 	
+	Sometimes used as a double multigap RPC, taking advantage of the OR of double gap RPCs, the MRPC is mainly used as ToF detector~\cite{ALICE2002,START2002,BESIII2014,CBM2007,MPD2016} due to it's excellent timing properties that allow to perform particle identification as explained by Williams in~\cite{WILLIAMS2012}. The principle of particle identification using ToF is simply the measurement of the velocity of a particle. Indeed, particles are defined by their mass (for the parameter of interest here, their electric charge being measured using the bending angle of the particles traveling through a magnetic field) and this mass can be calculated by measuring the velocity $\beta$ and momentum of the particle:
+	
+	\begin{equation}
+		\beta = \frac{p}{\sqrt{p^2 + m^2}}
+	\end{equation}
+	
+	Intuitively, it is trivial to understand that 2 different particles having the same momentum will have a different velocity due to the mass difference and thus a different flight time $T_1$ and $T_2$ through the detector and this is used to separate and identify particles. The better the time resolution of the ToF system used, the stronger will the separation be:
+	
+	\begin{equation}
+		T = \frac{L}{v} = \frac{L}{c\cdot\beta}, \quad \Delta T = T_1 - T_2 = \frac{L}{c}\left(\sqrt{1+m_1^2/p^2} - \sqrt{1+m_2^2/p^2}\right) \cong (m_1^2 - m_2^2)\frac{L}{2cp^2}
+	\end{equation}
+	
+	An example of particle identification is given for the case of STAR experiment in Figure~\ref{fig:ParticleID}.
+	
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width = \plotwidth]{fig/chapt4/STAR-ToF.png}\\
 		\caption{\label{fig:ParticleID} Particle identification applied to electrons in the STAR experiment. The identification is performed combining ToF and $dE/dx$ measurements~\cite{WILLIAMS2012}.}
 	\end{figure}
+	
+	Another benefice of using such small gas gaps is the strong reduction of the average avalanche volume and thus of the blind spot on MRPCs leading to an improved rate capability. Multigaps can sustain backgrounds of several \si{kHz/cm^2} as demonstrated in Figure~\ref{fig:MRPCRate}.
 	
 	\begin{figure}[!h]
 		\centering
