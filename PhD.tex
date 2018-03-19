@@ -4,27 +4,16 @@
 %% PACKAGE LOADING TIME %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\usepackage{lscape}
 \usepackage{pseudocode}
 \usepackage{times}      % use Times New Roman Type 1 fonts  (redefines sfdefault,rmdefault,ttdefault)
-%\usepackage[T1]{fontenc}
-%\usepackage{pslatex}
 \usepackage[times]{quotchap}   % fancy chapter beginning
 \usepackage{fancyhdr}
-%\usepackage[sectionbib]{chapterbib2} % bibliography per chapter
-%\usepackage[sectionbib]{chapterbib2} % bibliography per chapter
-% (sectionbib -> bibliography is \section* instead of \chapter*), should come before babel chapterbib2 
-%because local version is 1.9 and solves bug that header was 'References' instead of Chaptername
 \usepackage[dutch,english,greek]{babel}
 \usepackage{cmap}
 \usepackage[utf8]{inputenc}
-%\usepackage[sectionbib,numbers,sort&compress]{natbib}  %for citations a la 'Vermeulen et al.' instead of [1]
-%\usepackage{tocbibind} % automatically add bibliography, list of figures, ... to table of contents
 \usepackage[a4paper,verbose, asymmetric, centering]{geometry}  % better control over margins
-%\usepackage[hang]{caption}     %better control over captions (sideways, font, ...)  hang -> 2nd line of caption is indented (caption2 is deprecated and beta)
 \usepackage{caption}     %better control over captions (sideways, font, ...)  
 \usepackage[subrefformat=parens,justification=centering]{subcaption}
-%\usepackage{cite}
 \usepackage{hyperref}
 \usepackage{enumerate}  % to make it possible to define the numbers (A,a, ...)
 \usepackage{verbatim}   % extra support for verbatim environments
@@ -37,20 +26,15 @@
 \fi
 \usepackage{lineno}		%to get the line number in the document
 \linenumbers
-%\usepackage{psfrag}
 \usepackage{chappg}     % page numbering (chapno-pageno), for ToC
 \usepackage{url}        % for better url typesetting
 \usepackage{expdlist}   % Expanded description (e.g. better alignement) -> needed for acronym_expdlist package
 \usepackage{acronym_expdlist}   % for list of acronyms
 \usepackage{hhline}     % generates nicer table lines (without missing pixels) + more flexible
-%\usepackage{colortbl}  % for coloured columns
-%\usepackage{threeparttable}     % adds the possibility to add footnotes in tables
 \usepackage{afterpage}  % adds \afterpage command, which makes it possible to issue \afterpage{\clearpage} which flushes all floats after this page
-%\usepackage{amsmath}    % adds extra commands, ao. \text within math environment
 \usepackage{amsmath,amsfonts,amsthm}
 \usepackage{marvosym}   % for Euro symbol
 \usepackage{ifthen}     % ifthenelse command
-%\usepackage{mathenv}	% better eqnarray
 \usepackage{color}
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
 \definecolor{dirtree}{rgb}{0.40,0.40,0.40}
