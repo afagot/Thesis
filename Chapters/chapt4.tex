@@ -34,8 +34,14 @@
 	\begin{itemize}
 		\item[•] Tetrafluoroethane ($C_2F_4H_2$), also referred to as \textit{Freon}, is the principal compound of the RPC gas mixtures, with a typical fraction above 90\%. It is used for it's high effective Townsend coefficient and the great average fast charge that allows to operate the detector with a high threshold with respect to argon, for example, that has similar effective Townsend coefficient but suffers from a lower fast charge. To operate with similar conditions, argon would require a higher electric field leading to a higher fraction of streamers, thus limiting the rate capability of the detector~\cite{ABBRESCIA1997}.
 		\item[•] Isobutane (i-$C_4H_{10}$), only present in a few percent in the gas mixtures, is used for its UV quenching properties~\cite{BATTISTONI85} helping to prevent streamers due to UV photon emission during the avalanche growth.
-		\item[•] Sulfur hexafluoride, ($SF_6$), referred to simply as \textit{SF6}, is used in very little quantities for its high electronegativity. Excess of electrons are being absorbed by the compound and streamers are suppressed~\cite{ZEBALLOS98}. Nevertheless, a fraction of $SF_6$ higher than 1\% will not bring any extra benefice in terms of streamer cancelation power but will lead to higher operating voltage.
+		\item[•] Sulfur hexafluoride, ($SF_6$), referred to simply as \textit{SF6}, is used in very little quantities for its high electronegativity. Excess of electrons are being absorbed by the compound and streamers are suppressed~\cite{ZEBALLOS98}. Nevertheless, a fraction of $SF_6$ higher than 1\% will not bring any extra benefice in terms of streamer cancelation power but will lead to higher operating voltage~\cite{CAMARRI98}, as can be understood through Figure~\ref{fig:SF6}.
 	\end{itemize}
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/SF6.png}
+		\caption{\label{fig:SF6} Effeciency (circles and stars with \SI{30}{mV} and \SI{100}{mV} thresholds respectively) and streamer probability (opened circles) as function of the operating voltatge of a \SI{2}{mm} single gap HPL RPC flushed with a gas mixture containing (a) 5\%, (b) 2\%, (c) 1\% and (d) no $SF_6$~\cite{CAMARRI98}.}
+	\end{figure}
 	
 	After an avalanche developed in the gas, a time long compared to the development of a discharge is needed to recombine the charge carriers in the electrode material due to their resistivity. This property has the advantage of affecting the local electric field and avoiding sparks in the detector but, on the other hand, the rate capability is intrinsically limited by the time constant $\tau_{RPC}$ of the detector. Using a quasi-static approximation of Maxwell’s equations for weakly conducting media, it can be shown that the time constant $\tau_{RPC}$ necessary to the charge recombination at the interface in between the electrode and the gas volume is given by the Formula~\ref{for:tau}~\cite{RIEGLER2002}.
 	
@@ -71,6 +77,9 @@
 	
 	\subsection{Electron drift velocity}
 	\label{chapt4:ssec:drift}
+	
+	{\color{blue} Talk about the electron drift velocity and mention the time resolution of RPCs.}
+	
 
 \section{Rate capability and time resolution of Resistive Plate Chambers}
 \label{sec:RateCapa}
@@ -125,12 +134,21 @@
 	
 	This mode offers a higher rate capability by providing smaller discharges that don't affect the electrodes charge and are more locally contained in the gas volume as was demonstrated by Crotty with Figure~\ref{fig:ModeRate}~\cite{CROTTY93}. The detector only stays locally blind the time the charge carriers are recombined and there is no need for electrode recharge which is a long process affecting a large portion of the detector. Another advantage of avalanche signals over streamer is the great time consistency. Figure~\ref{fig:ModeSignal} shows very clearly that avalanche signals have a very small time jitter. This is a natural choice for high rate experiments.
 	
-	\subsection{Detector design, active volume and time jitter}
+	\subsection{Detector designs and performance}
 	\label{Chapt4:ssec:design}
 	
 	Different RPC design have been used and each of them present its own advantages. Historically, the first type of RPC to have been developed is what is referred now to \textit{noarrow gap} RPC~\cite{SANTONICO81,ZEBALLOS96COMP}. After the avalanche mode has been discovered~\cite{CROTTY93}, it has been proven that increasing the width of the gas gap lead to higher rate capability, due to lower charge deposition per avalanche, and lower power dissipation~\cite{ZEBALLOS96COMP}. Nevertheless, by increasing the gas gap width, the time resolution of the detector decreases. This is a natural result if the increase of active gas volume in the detector is taken into account. Indeed, for a given threshold, only the small fraction of gas closest to the cathode will provide enough gain to have a detectable signal. In the case of a wider gas volume, the active region is then larger and a larger time jitter is introduced with the variation of starting position of the avalanche, as discussed in~\cite{ZEBALLOS96MRPC}. To solve improve both the time resolution and the rate capability, different methods were used trying to get advantages of both narrow and wide gap RPCs.
 	
-	\paragraph{Double gap RPCs} are made out of 2 narrow RPC detectors. The 2 RPC gap are placed on top of each other, their anodes facing each other and placing the readout panel with the copper strips in between the 2 RPCs. This detector layout is used as an OR system in which each individual chamber participates in the ouput signal. The gain of such a detector is greatly reduced with respect to single gap RPCs with an efficiency plateau reached at lower voltage as visible on Figure~\ref{fig:DoubleGap}.
+		\subsubsection{Double-gap RPC}
+		\label{chapt4:sssec:DGRPC}
+	
+	Double-gap RPCs are made out of 2 narrow RPC detectors. The 2 RPC gaps are stacked on top of each other as shown in Figure~\ref{fig:DGLayout}. This detector layout, popularized by the two multipurpose experiments CMS~\cite{MUONTDR} and ATLAS~\cite{ATLASTDR} at LHC, can be used as an OR system in which each individual chamber participates in the ouput signal. The gain of such a detector is greatly reduced with respect to single-gap RPCs with an efficiency plateau reached at lower voltage, as visible on Figure~\ref{fig:DoubleGap}.
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width = \plotwidth]{fig/chapt4/Double_gap_layouts.pdf}
+		\caption{\label{fig:DGLayout} Possible double-gap RPC layouts: a) "standard" 1D double-gap RPC, as used in CMS experiment, where the anodes are facing each other and a 1D read-out plane is sandwished in between them,  b) double read-out double-gap RPC as used in ATLAS experiment, where the cathodes are facing each other and 2 read-out planes are used on the outter surfaces. This last layout can offer the possibility to use a 2D reconstruction by using orthogonal read-out planes.}
+	\end{figure}
 	
 	\begin{figure}[!h]
 		\begin{subfigure}{0.5\linewidth}
@@ -151,7 +169,10 @@
 		\caption{\label{fig:DoubleGap} Comparison of performance of CMS double and single gap RPCs using cosmic muons~\cite{ABBRESCIA2005}. Figure~\ref{fig:DoubleGap:A}: Comparison of efficiency sigmoids. Figure~\ref{fig:DoubleGap:B}: Voltage distribution at 95\% of maximum efficiency. Figure~\ref{fig:DoubleGap:C}: $\Delta^{90\%}_{10\%}$ distribution.}
 	\end{figure}
 	
-	\paragraph{Multigap RPC (MRPC)} are layouts in which floating sub electrode plates are placed into a wide gap RPC to divide the gas volume and create a sum of narrow gaps~\cite{ZEBALLOS96MRPC,WILLIAMS98}. The time resolution of such a detector can reach of few tens of \si{ps}, with gas gaps of the order of a a few hundred \si{\micro m} as shown in Figure~\ref{fig:MRPC} representing ALICE \acf{ToF} MRPCs.
+		\subsubsection{Multigap RPC (MRPC)}
+		\label{chapt4:sssec:MRPC}
+	
+	MRPCs are layouts in which floating sub electrode plates are placed into a wide gap RPC to divide the gas volume and create a sum of narrow gaps~\cite{ZEBALLOS96MRPC,WILLIAMS98}. The time resolution of such a detector can reach of few tens of \si{ps}, with gas gaps of the order of a a few hundred \si{\micro m} as shown in Figure~\ref{fig:MRPC} representing ALICE \acf{ToF} MRPCs.
 	
 	\begin{figure}[!h]
 		\centering
@@ -185,6 +206,31 @@
 		\centering
 		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/ALICE-Rate_Capability.png}\\
 		\caption{\label{fig:MRPCRate} Comparison of the detector performance of ALICE ToF MRPC~\cite{ALICI2007} at fixed applied voltage (in blue) and at fixed effective voltage (in red). The effective voltage is kept fixed by increasing the applied voltage accordingly to the current drawn by the detector.}
+	\end{figure}
+	
+		\subsubsection{Charge distribution and performance limitations}
+		\label{chapt4:sssec:charge}
+		
+	The direct consequence of the different RPC layouts is a variation of intrinsic time resolution of the RPC as the gap size decreases. An advantage is given to multigaps whose design use sub-millimeter gas volumes providing very consistent signals.
+	
+	On the charge spectrum point of view, each layout has its own advantages. When the double-gap has the highest induced over drifting charge ratio, as seen in Figure~\ref{fig:ChargeRatio}, the multigap has a charge spectrum strongly detached from the origin, as visible in Figure~\ref{fig:ChargeSpectra}. A high induced over drifting charge ratio means that the double gap can be safely operated at high threshold or that at similar threshold it can be operated with a twice smaller drifting charge, meaning a higher rate capability. On the other hand, the strong detachment of the charge spectrum from the origin in the MRPC case allows to reach a higher efficiency with increasing threshold as most of the induced charge is not low due to the convolution of several single gap spectra. The range of stable efficiency increases with the number of gap, as presented in Figure~\ref{fig:EffThreshold}.
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width = 0.6\plotwidth]{fig/chapt4/Layout_charge_ratio.png}\\
+		\caption{\label{fig:ChargeRatio} Ratio between total induced and drifting charge have been simulated for single gap, double-gap and multigap layouts~\cite{ABBRESCIA99}. The total induced charge for a double-gap RPC is a factor 2 higher than for a multigap.}
+	\end{figure}
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width = \plotwidth]{fig/chapt4/Layout_charge_distributions.png}\\
+		\caption{\label{fig:ChargeSpectra} Charge spectra have been simulated for single gap, double-gap and multigap layouts~\cite{ABBRESCIA99}. It appears that when single gap shows a decreasing spectrum, double and multigap layouts exhibit a spectrum whose peak is detached from the origin. The detachment gets stronger as the number of gaps increases.}
+	\end{figure}
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width = 0.6\plotwidth]{fig/chapt4/Layout_eff_vs_thr.png}\\
+		\caption{\label{fig:EffThreshold} The maximal theoretical efficiency is simulated for single gap, double-gap and multigap layouts~\cite{ABBRESCIA99} at a constant gap thickness of \SI{2}{mm} and using an effective Townsend coefficient of \SI{9}{mm^{-1}}.}
 	\end{figure}
 	
 \section{Resistive Plate Chambers at CMS}
