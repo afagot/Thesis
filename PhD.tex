@@ -71,6 +71,20 @@
 ]{biblatex}
 \bibliography{bib/PhD}
 
+% Macros for extra units
+% doesn't use siunitx macros for extra cross-compatiblity
+\newcommand{\hPa}{\hecto\pascal}
+\newcommand{\Ohmcm}{\ohm\cm}
+\newcommand{\GBq}{\giga\becquerel}
+
+% My own implementation of errors to provide compatibility between
+% siunitx v1 and v2
+\newcommand{\numerror}[2]{\ensuremath{(\num{#1}\pm\num{#2}})} % e.g. 1000 ± 10
+\newcommand{\SIerror}[3]{\numerror{#1}{#2}\,\si{#3}} % e.g. (100 ± 5) nA
+\newcommand{\SIsurface}[3]{\mbox{\num{#1 x #2}\,\si{\square #3}}}
+\newcommand{\SIflux}[1]{\num{#1}\,particles\si{\second^{-1}\cm^{-2}}}
+\newcommand{\SIrate}[1]{\num{#1}\,\si{\hertz\cm^{-2}}}
+
 
 %%%%%%%%%%%%%%%%%
 %% PAGE LAYOUT %%
@@ -123,20 +137,7 @@
  \bigskip
    \LARGE\noindent \textsf{Alexis Fagot} \hfill
  \bigskip
-% 
-% % Front Figure
-% %\bigskip
-% %\begin{figure}[htb]%
-% %  \centering%
-% %  \includegraphics*[width=\textwidth]{figFront}%
-% %\end{figure}%
-% %\normalsize
-% 
-% \bigskip
-% \begin{figure}[h!]%
-%   \centering%
-%   \includegraphics*[height=10cm, keepaspectratio, clip]{figFront}%
-% \end{figure}%
+ 
  \normalsize
 % 
 % % Footer
@@ -231,28 +232,9 @@ Alexis Fagot}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \renewcommand{\contentsname}{Table of Contents} % original name = Contents
-
 \tableofcontents
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
-\listoffigures
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
-\listoftables
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
-\include{phdacronyms}
-
-\clearpage      % clear the current page
-\thispagestyle{empty}   % prevent header on this (empty -> next line) page
-\mbox{}         % to insert a not empty page, so that there is min. 1 blank page before next chapter
-\clearpage{\pagestyle{empty}\cleardoublepage}   % clear the current page and start on the right side
-
-%\renewcommand{\tablename}{Table}
 
 \renewcommand{\bibname}{References}     % instead of Bibliography
-%\renewcommand\citeform{\thechapter.}
-%\addcontentsline{toc}{section}{\listfigurename}   % not really sure
 
 	%% SUMMARY IN DUTCH       %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -274,27 +256,8 @@ Alexis Fagot}}
 \renewcommand\evenpagerightmark{{\scshape\small\chaptername\ \thechapter}}
 \renewcommand\oddpageleftmark{{\scshape\small\leftmark}}
 
-%\addtolength{\headwidth}{\marginparsep}
-%\addtolength{\headwidth}{\marginparwidth}
-
-%\newcommand{\tm}[1]{$\mbox{#1}^{\mbox{\emph{\scriptsize TM}}}$}
-
 \newlength{\plotwidth} % To get my plot widths consistent
 \setlength{\plotwidth}{.8\textwidth}
-
-% Macros for extra units
-% doesn't use siunitx macros for extra cross-compatiblity
-\newcommand{\hPa}{\hecto\pascal}
-\newcommand{\Ohmcm}{\ohm\cm}
-\newcommand{\GBq}{\giga\becquerel}
-
-% My own implementation of errors to provide compatibility between
-% siunitx v1 and v2
-\newcommand{\numerror}[2]{\ensuremath{(\num{#1}\pm\num{#2}})} % e.g. 1000 ± 10
-\newcommand{\SIerror}[3]{\numerror{#1}{#2}\,\si{#3}} % e.g. (100 ± 5) nA
-\newcommand{\SIsurface}[3]{\mbox{\num{#1 x #2}\,\si{\square #3}}}
-\newcommand{\SIflux}[1]{\num{#1}\,particles\si{\second^{-1}\cm^{-2}}}
-\newcommand{\SIrate}[1]{\num{#1}\,\si{\hertz\cm^{-2}}}
 
 \baselineskip 13.0pt
 
@@ -304,20 +267,34 @@ Alexis Fagot}}
 \include{Chapters/chapt4}
 \include{Chapters/chapt5}
 \include{Chapters/chapt6}
-\include{Chapters/chapt7}
 
 \newpage
-\printbibliography
-
-%\addcontentsline{toc}{section}{}
-
 \appendix
 \include{Chapters/app1}
 \include{Chapters/app2}
-%\include{Chapters/app3}
 
-%\renewcommand\fdtsvrightmarktmp{{\scshape\small Appendix }}
-\renewcommand\evenpagerightmark{{\scshape\small Appendix \thechapter}}
-\renewcommand\oddpageleftmark{{\scshape\small\leftmark}}
+\pagenumbering{gobble}
+
+\newpage
+\renewcommand\evenpagerightmark{{\scshape\small List of Figures}}
+\renewcommand\oddpageleftmark{{\scshape\small List of Figures}}
+\listoffigures
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\newpage
+\renewcommand\evenpagerightmark{{\scshape\small List of Tables}}
+\renewcommand\oddpageleftmark{{\scshape\small List of Tables}}
+\listoftables
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\newpage
+\renewcommand\evenpagerightmark{{\scshape\small List of Acronyms}}
+\renewcommand\oddpageleftmark{{\scshape\small List of Acronyms}}
+\include{phdacronyms}
+
+\newpage
+\renewcommand\evenpagerightmark{{\scshape\small Bibliography}}
+\renewcommand\oddpageleftmark{{\scshape\small Bibliography}}
+\printbibliography
 
 \end{document}

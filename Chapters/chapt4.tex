@@ -1,242 +1,20 @@
 % Header
 \renewcommand\evenpagerightmark{{\scshape\small Chapter 4}}
-\renewcommand\oddpageleftmark{{\scshape\small Resistive Plate Chambers}}
+\renewcommand\oddpageleftmark{{\scshape\small Longevity studies and Consolidation of the present \acs{CMS} \acs{RPC} subsystem}}
 
 \renewcommand{\bibname}{References}
 
 \hyphenation{}
 
-\chapter[Resistive Plate Chambers]%
-{Resistive Plate Chambers}
-\label{chapt:4}
+\chapter[Longevity studies and Consolidation of the present \acs{CMS} \acs{RPC} subsystem]%
+{Longevity studies and Consolidation of the present \acs{CMS} \acs{RPC} subsystem}
+\label{chapt4}
 
-	A \acf{RPC} is a gaseous detector using the same physical processes described in Chapter~\ref{chapt:3}. It has been developed in 1981 by Santonico and Cardarelli~\cite{SANTONICO81}, under the name of \textit{Resistive Plate Counter}, as an alternative to the local-discharge spark counters proposed in 1978 by Pestov and Fedotovich~\cite{PESTOV78,FEDOTOVICH82}. Working with spark chambers implied using high-pressure gas and high mechanical precision which the RPC simplified by formerly using a gas mixture of argon and butane flowed at atmospheric pressure and a constant and uniform electric field propagated in between two parallel electrode plates. Moreover, a significant increase in rate capability was introduced by the use of electrode plate material with high bulk resistivity, preventing the discharge from growing throughout the whole gas gap. Indeed, the effect of using resistive electrodes is that the constant electric field is locally canceled out by the development of the discharge, limiting its growth.
-	
-	Through its development history, different operating modes~\cite{CROTTY93,CROTTY94,CARDARELLI96} and new detector designs~\cite{ZEBALLOS96MRPC,WILLIAMS98,CZYRKOWSKI98} have been discovered, leading to further improvement of the rate capability of such a detector. Moreover, the addition of $SF_6$ into the gas mix improved the stability of operation of the RPC~\cite{CAMARRI98,ZEBALLOS98}.
-	
-	The low developing costs and easily achievable large detection areas offered by RPCs, as well as the wide range of possible designs, made them a natural choice to as muon chambers and/or trigger detectors in multipurpose experiments such as CMS~\cite{MUONTDR} or ATLAS~\cite{ATLASTDR}, time-of-flight detectors in ALICE~\cite{ALICETDR}, calorimeter with CALICE~\cite{CALICE2016} or even detectors for volcanic muography with ToMuVol~\cite{TOMUVOL2011}. 
-
-\section{Principle}
-\label{chapt4:sec:principle}
-
-	RPCs are ionisation detectors composed of two parallel resistive plate electrodes in between which a constant electric field is set. The space in between the electrodes, referred as \textit{gap}, is filled with a dense gas that is used to generate primary ionization into the gas volume. The free charge carriers (electrons and cations) created by the ionization of the gas molecules are then accelerated towards the electrodes by the electric field, as shown in Figure~\ref{fig:RPC_principle}~\cite{LIPPMANN2003}.
-	
-	\begin{figure}[!h]
-		\centering
-		\includegraphics[width = \plotwidth]{fig/chapt4/RPC_principle.pdf}\\
-		\caption{\label{fig:RPC_principle} Different phases of the avalanche development in the RPC gas volume subjected to a constant electric field $E_0$. a) An avalanche is initiated by the primary ionisation caused by the passage of a charged particle through the gas volume. b) Due to its growing size, the avalanche starts to locally influence the electric field. c) The electrons, lighter than the cations reach the anode first. d) The ions reach the cathode. While the charges have not recombined, the electric field in the small region around the avalanche stays affected and locally blind the detector.}
-	\end{figure}
-	
-	RPCs being passive detectors, a current on pick-up copper read-out placed outside of the gas volume is induced by the charge accumulation during the growth of the avalanche. As a result, the time resolution of the detector is substantially increased as the output signal is generated while the electrons are still in movement. The advantage of a constant electric field, over multi-wire proportional chambers, is that the electrons are being fully accelerated from the moment charge carriers are freed and feel the full strength of the electric field that doesn't depend on the distance to the readout and that the output signal doesn't need for the electrons to be physically collected.
-	
-	The typical gas mixture RPCs are operated with is generally composed of 3 gas compounds.
-	
-	\begin{itemize}
-		\item[•] Tetrafluoroethane ($C_2F_4H_2$), also referred to as \textit{Freon}, is the principal compound of the RPC gas mixtures, with a typical fraction above 90\%. It is used for it's high effective Townsend coefficient and the great average fast charge that allows to operate the detector with a high threshold with respect to argon, for example, that has similar effective Townsend coefficient but suffers from a lower fast charge. To operate with similar conditions, argon would require a higher electric field leading to a higher fraction of streamers, thus limiting the rate capability of the detector~\cite{ABBRESCIA1997}.
-		\item[•] Isobutane (i-$C_4H_{10}$), only present in a few percent in the gas mixtures, is used for its UV quenching properties~\cite{BATTISTONI85} helping to prevent streamers due to UV photon emission during the avalanche growth.
-		\item[•] Sulfur hexafluoride, ($SF_6$), referred to simply as \textit{SF6}, is used in very little quantities for its high electronegativity. Excess of electrons are being absorbed by the compound and streamers are suppressed~\cite{ZEBALLOS98}. Nevertheless, a fraction of $SF_6$ higher than 1\% will not bring any extra benefice in terms of streamer cancelation power but will lead to higher operating voltage~\cite{CAMARRI98}, as can be understood through Figure~\ref{fig:SF6}.
-	\end{itemize}
-	
-	\begin{figure}[!h]
-		\centering
-		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/SF6.png}
-		\caption{\label{fig:SF6} Effeciency (circles and stars with \SI{30}{mV} and \SI{100}{mV} thresholds respectively) and streamer probability (opened circles) as function of the operating voltatge of a \SI{2}{mm} single gap HPL RPC flushed with a gas mixture containing (a) 5\%, (b) 2\%, (c) 1\% and (d) no $SF_6$~\cite{CAMARRI98}.}
-	\end{figure}
-	
-	After an avalanche developed in the gas, a time long compared to the development of a discharge is needed to recombine the charge carriers in the electrode material due to their resistivity. This property has the advantage of affecting the local electric field and avoiding sparks in the detector but, on the other hand, the rate capability is intrinsically limited by the time constant $\tau_{RPC}$ of the detector. Using a quasi-static approximation of Maxwell’s equations for weakly conducting media, it can be shown that the time constant $\tau_{RPC}$ necessary to the charge recombination at the interface in between the electrode and the gas volume is given by the Formula~\ref{for:tau}~\cite{RIEGLER2002}.
-	
-	\begin{equation}
-		\label{for:tau}
-		\tau_{RPC} = \frac{\epsilon_{electrode}+\epsilon_{gas}}{\sigma_{electrode}+\sigma_{gas}}
-	\end{equation}
-	
-	A gas can be assimilated to vacuum, leading to $\epsilon_{gas} = \epsilon_0$ and $\sigma_{gas} = 0$, and the electrodes permittivity and conductivity can be written as $\epsilon_{electrode} = \epsilon_r\epsilon_0$ and $\sigma_{electrode} = 1/\rho_{electrode}$, showing the strong dependence of the time constant to the electrodes resistivity in Formula~\ref{for:taurho}.
-	
-	\begin{equation}
-		\label{for:taurho}
-		\tau_{RPC} = (\epsilon_r + 1)\epsilon_0\times\rho_{electrode}
-	\end{equation}
-	
-	Very few materials with a low enough resistivity exist in nature. The resistivity targeted to build RPCs ranges from $10^9$ to $10^{12}$ \si{\ohm\cdot cm}. The most common RPC electrode materials are displayed in Table~\ref{tab:tau}. When the doped glass and ceramics can offer short time constants of the order of \SI{1}{ms}, the developing cost of such materials is quite high due to the very low demand. Thus, \acf{HPL} is often the choice for high rate experiments using very large RPC detection areas. Other experiments working at cosmic muon fluxes can safely operate with ordinary float glass.
-	
-	\begin{table}[!h]
-		\centering
-		\begin{tabular}{|l|c|c|c|}
-		\hline
-		Material & $\rho_{electrode}$ (\si{\ohm\cdot cm}) & $\epsilon_r$ & $\tau_{RPC}$ (\si{ms})\\
-		\hline
-		Float glass & $10^{12}$ & $\sim$7 & $\sim$700\\
-		\acl{HPL} & $10^{10}$ to $10^{12}$ & $\sim$6 & $\sim$6 to 600\\
-		Doped glass (LR S) & $10^{9}$ to $10^{11}$ & $\sim$10 & $\sim$1 to 100\\
-		Doped ceramics (SiN/SiC) & $10^{9}$ & $\sim$8.5 & $\sim$1\\
-		Doped ceramics (Ferrite) & $10^{8}$ to $10^{12}$ & $\sim$20 & $\sim$0.2 to 2000\\
-		\hline
-		\end{tabular}
-		\caption{\label{tab:tau} Properties of the most used electrode materials for RPCs.}
-	\end{table}
-	
-	\subsection{Electron drift velocity}
-	\label{chapt4:ssec:drift}
-	
-	{\color{blue} Talk about the electron drift velocity and mention the time resolution of RPCs.}
-	
-
-\section{Rate capability and time resolution of Resistive Plate Chambers}
-\label{sec:RateCapa}
-
-	As already previously discussed, the electrode material plays a key role in the max intrinsic rate capability of RPCs. R\&D is being done to develop at always cheaper costs material with lower resistivity. Nevertheless, the amount of charge released, i.e. the size of the discharge, if reduced leads to a smaller blind area in the detector, increasing the rate capability of the detector.
-	
-	\subsection{Operation modes}
-	\label{chapt4:ssec:operation}
-	
-	RPCs where developed early 1980s. At that time it was using an operating mode now referred to as \textit{streamer mode}. Streamers are large discharges that develop in between the 2 electrodes enough to locally discharge the electrodes. If the electric field inside of the gas volume is strong enough, with electrons being fast compared to ions, a large and dense cloud of positive ions will develop nearby the anode and extend toward the cathode while the electrons are being collected, eventually leading to a streamer discharge due to the increase of field seen at the cathode. the field is then strong enough so that electrons are pulled out of the cathode. Electrodes, though they are a unique volume of resistive material, can be assimilated to capacitors. At the moment an electric field is applied in between their outer surfaces, the charge carriers inside of the volume will start moving leading to a situation where there is no voltage across the electrodes and a higher density of negative charges, i.e. electrons, on the inner surface of the cathode. Finally, when a streamer discharge occurs, these electrons are partially released in the gas volume contributing to increase the discharge strength until the formation of a conductive plasma, the streamer. This can be understood through Figure~\ref{fig:ElecCharge}~\cite{CROTTY93}. Streamer signals are very convenient in terms of read-out as no amplification is required with output pulses amplitudes of the order of a few tens to few hundreds of \si{mV} as can be seen on Figure~\ref{fig:ModeSignal}.
-	
-	\begin{figure}[!h]
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/RPC_Charging_1.png}
-			\caption{\label{fig:ElecCharge:A}}
-		\end{subfigure}
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/RPC_Charging_2.png}\\
-			\caption{\label{fig:ElecCharge:B}}
-		\end{subfigure}
-		\begin{subfigure}{\linewidth}
-			\centering
-			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/RPC_Charging_3.png}
-			\caption{\label{fig:ElecCharge:C}}
-		\end{subfigure}
-		\caption{\label{fig:ElecCharge} Movement of the charge carriers in an RPC. Figure~\ref{fig:ElecCharge:A}: Voltage across an RPC whose electrode have a relative permittivity of 5 at the moment the tension s applied. Figure~\ref{fig:ElecCharge:B}: After the charge carriers moved, the electrodes are charged and there is no voltage drop over the electrodes anymore. The full potential is applied on the gas gap only. Figure~\ref{fig:ElecCharge:C}: The streamer discharge initiated by a charged particle transports electrons and cations towards the anode and cathode respectively.}
-	\end{figure}
-	
-	When the electric field is reduced though, the electronic gain is small until the electrons get close enough to the anode and the positive ion cloud is much smaller. The electric field cannot rise to the point a field emission of electrons on the cathode is possible. The resulting signal is weak, of the order of a few \si{mv} as shown on Figure~\ref{fig:ModeSignal}, and requires amplification. This is the \textit{avalanche mode} of RPC operation.
-	
-	\begin{figure}[!h]
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/RPC_Streamer_Mode.png}
-			\caption{\label{fig:ModeSignal:A}}
-		\end{subfigure}
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/RPC_Avalanche_Mode.png}\\
-			\caption{\label{fig:ModeSignal:B}}
-		\end{subfigure}
-		\caption{\label{fig:ModeSignal} Typical oscilloscope pulses in streamer mode (Figure~\ref{fig:ModeSignal:A}) and avalanche mode(Figure~\ref{fig:ModeSignal:B}). In the case of streamer mode, the very small avalanche signal is visible.}
-	\end{figure}
-	
-	\begin{figure}[!h]
-		\centering
-		\includegraphics[width = \plotwidth]{fig/chapt4/Rate_Mode_Comparison.png}
-		\caption{\label{fig:ModeRate} Rate capability comparison for the streamer and avalanche mode of operation. An order of magnitude in rate capability for a maximal efficiency drop of 10\% is gained by using the avalanche mode over the streamer mode.}
-	\end{figure}
-	
-	This mode offers a higher rate capability by providing smaller discharges that don't affect the electrodes charge and are more locally contained in the gas volume as was demonstrated by Crotty with Figure~\ref{fig:ModeRate}~\cite{CROTTY93}. The detector only stays locally blind the time the charge carriers are recombined and there is no need for electrode recharge which is a long process affecting a large portion of the detector. Another advantage of avalanche signals over streamer is the great time consistency. Figure~\ref{fig:ModeSignal} shows very clearly that avalanche signals have a very small time jitter. This is a natural choice for high rate experiments.
-	
-	\subsection{Detector designs and performance}
-	\label{Chapt4:ssec:design}
-	
-	Different RPC design have been used and each of them present its own advantages. Historically, the first type of RPC to have been developed is what is referred now to \textit{noarrow gap} RPC~\cite{SANTONICO81,ZEBALLOS96COMP}. After the avalanche mode has been discovered~\cite{CROTTY93}, it has been proven that increasing the width of the gas gap lead to higher rate capability, due to lower charge deposition per avalanche, and lower power dissipation~\cite{ZEBALLOS96COMP}. Nevertheless, by increasing the gas gap width, the time resolution of the detector decreases. This is a natural result if the increase of active gas volume in the detector is taken into account. Indeed, for a given threshold, only the small fraction of gas closest to the cathode will provide enough gain to have a detectable signal. In the case of a wider gas volume, the active region is then larger and a larger time jitter is introduced with the variation of starting position of the avalanche, as discussed in~\cite{ZEBALLOS96MRPC}. To solve improve both the time resolution and the rate capability, different methods were used trying to get advantages of both narrow and wide gap RPCs.
-	
-		\subsubsection{Double-gap RPC}
-		\label{chapt4:sssec:DGRPC}
-	
-	Double-gap RPCs are made out of 2 narrow RPC detectors. The 2 RPC gaps are stacked on top of each other as shown in Figure~\ref{fig:DGLayout}. This detector layout, popularized by the two multipurpose experiments CMS~\cite{MUONTDR} and ATLAS~\cite{ATLASTDR} at LHC, can be used as an OR system in which each individual chamber participates in the ouput signal. The gain of such a detector is greatly reduced with respect to single-gap RPCs with an efficiency plateau reached at lower voltage, as visible on Figure~\ref{fig:DoubleGap}.
-	
-	\begin{figure}[!h]
-		\centering
-		\includegraphics[width = \plotwidth]{fig/chapt4/Double_gap_layouts.pdf}
-		\caption{\label{fig:DGLayout} Possible double-gap RPC layouts: a) "standard" 1D double-gap RPC, as used in CMS experiment, where the anodes are facing each other and a 1D read-out plane is sandwished in between them,  b) double read-out double-gap RPC as used in ATLAS experiment, where the cathodes are facing each other and 2 read-out planes are used on the outter surfaces. This last layout can offer the possibility to use a 2D reconstruction by using orthogonal read-out planes.}
-	\end{figure}
-	
-	\begin{figure}[!h]
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Double-gap-Sigmoid.png}\\
-			\caption{\label{fig:DoubleGap:A}}
-		\end{subfigure}
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Double-gap-Eff-95.png}
-			\caption{\label{fig:DoubleGap:B}}
-		\end{subfigure}
-		\begin{subfigure}{\linewidth}
-			\centering
-			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Double-gap-Eff-Delta-90-10.png}
-			\caption{\label{fig:DoubleGap:C}}
-		\end{subfigure}
-		\caption{\label{fig:DoubleGap} Comparison of performance of CMS double and single gap RPCs using cosmic muons~\cite{ABBRESCIA2005}. Figure~\ref{fig:DoubleGap:A}: Comparison of efficiency sigmoids. Figure~\ref{fig:DoubleGap:B}: Voltage distribution at 95\% of maximum efficiency. Figure~\ref{fig:DoubleGap:C}: $\Delta^{90\%}_{10\%}$ distribution.}
-	\end{figure}
-	
-		\subsubsection{Multigap RPC (MRPC)}
-		\label{chapt4:sssec:MRPC}
-	
-	MRPCs are layouts in which floating sub electrode plates are placed into a wide gap RPC to divide the gas volume and create a sum of narrow gaps~\cite{ZEBALLOS96MRPC,WILLIAMS98}. The time resolution of such a detector can reach of few tens of \si{ps}, with gas gaps of the order of a a few hundred \si{\micro m} as shown in Figure~\ref{fig:MRPC} representing ALICE \acf{ToF} MRPCs.
-	
-	\begin{figure}[!h]
-		\centering
-		\includegraphics[width = 0.6\plotwidth]{fig/chapt4/MRPC-Layout.png}\\
-		\caption{\label{fig:MRPC} Presentation of ALICE MRPC using \SI{250}{\micro m} gas gaps, \SI{620}{\micro m} outer glass electrodes and \SI{550}{\micro m} inner floating electrodes. More details on the labels are given in~\cite{ALICE2002}.}
-	\end{figure}
-	
-	Sometimes used as a double multigap RPC, taking advantage of the OR of double gap RPCs, the MRPC is mainly used as ToF detector~\cite{ALICE2002,START2002,BESIII2014,CBM2007,MPD2016} due to it's excellent timing properties that allow to perform particle identification as explained by Williams in~\cite{WILLIAMS2012}. The principle of particle identification using ToF is simply the measurement of the velocity of a particle. Indeed, particles are defined by their mass (for the parameter of interest here, their electric charge being measured using the bending angle of the particles traveling through a magnetic field) and this mass can be calculated by measuring the velocity $\beta$ and momentum of the particle:
-	
-	\begin{equation}
-		\beta = \frac{p}{\sqrt{p^2 + m^2}}
-	\end{equation}
-	
-	Intuitively, it is trivial to understand that 2 different particles having the same momentum will have a different velocity due to the mass difference and thus a different flight time $T_1$ and $T_2$ through the detector and this is used to separate and identify particles. The better the time resolution of the ToF system used, the stronger will the separation be:
-	
-	\begin{equation}
-		T = \frac{L}{v} = \frac{L}{c\cdot\beta}, \quad \Delta T = T_1 - T_2 = \frac{L}{c}\left(\sqrt{1+m_1^2/p^2} - \sqrt{1+m_2^2/p^2}\right) \cong (m_1^2 - m_2^2)\frac{L}{2cp^2}
-	\end{equation}
-	
-	An example of particle identification is given for the case of STAR experiment in Figure~\ref{fig:ParticleID}.
-	
-	\begin{figure}[!h]
-		\centering
-		\includegraphics[width = \plotwidth]{fig/chapt4/STAR-ToF.png}\\
-		\caption{\label{fig:ParticleID} Particle identification applied to electrons in the STAR experiment. The identification is performed combining ToF and $dE/dx$ measurements~\cite{WILLIAMS2012}.}
-	\end{figure}
-	
-	Another benefice of using such small gas gaps is the strong reduction of the average avalanche volume and thus of the blind spot on MRPCs leading to an improved rate capability. Multigaps can sustain backgrounds of several \si{kHz/cm^2} as demonstrated in Figure~\ref{fig:MRPCRate}.
-	
-	\begin{figure}[!h]
-		\centering
-		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/ALICE-Rate_Capability.png}\\
-		\caption{\label{fig:MRPCRate} Comparison of the detector performance of ALICE ToF MRPC~\cite{ALICI2007} at fixed applied voltage (in blue) and at fixed effective voltage (in red). The effective voltage is kept fixed by increasing the applied voltage accordingly to the current drawn by the detector.}
-	\end{figure}
-	
-		\subsubsection{Charge distribution and performance limitations}
-		\label{chapt4:sssec:charge}
-		
-	The direct consequence of the different RPC layouts is a variation of intrinsic time resolution of the RPC as the gap size decreases. An advantage is given to multigaps whose design use sub-millimeter gas volumes providing very consistent signals.
-	
-	On the charge spectrum point of view, each layout has its own advantages. When the double-gap has the highest induced over drifting charge ratio, as seen in Figure~\ref{fig:ChargeRatio}, the multigap has a charge spectrum strongly detached from the origin, as visible in Figure~\ref{fig:ChargeSpectra}. A high induced over drifting charge ratio means that the double gap can be safely operated at high threshold or that at similar threshold it can be operated with a twice smaller drifting charge, meaning a higher rate capability. On the other hand, the strong detachment of the charge spectrum from the origin in the MRPC case allows to reach a higher efficiency with increasing threshold as most of the induced charge is not low due to the convolution of several single gap spectra. The range of stable efficiency increases with the number of gap, as presented in Figure~\ref{fig:EffThreshold}.
-	
-	\begin{figure}[!h]
-		\centering
-		\includegraphics[width = 0.6\plotwidth]{fig/chapt4/Layout_charge_ratio.png}\\
-		\caption{\label{fig:ChargeRatio} Ratio between total induced and drifting charge have been simulated for single gap, double-gap and multigap layouts~\cite{ABBRESCIA99}. The total induced charge for a double-gap RPC is a factor 2 higher than for a multigap.}
-	\end{figure}
-	
-	\begin{figure}[!h]
-		\centering
-		\includegraphics[width = \plotwidth]{fig/chapt4/Layout_charge_distributions.png}\\
-		\caption{\label{fig:ChargeSpectra} Charge spectra have been simulated for single gap, double-gap and multigap layouts~\cite{ABBRESCIA99}. It appears that when single gap shows a decreasing spectrum, double and multigap layouts exhibit a spectrum whose peak is detached from the origin. The detachment gets stronger as the number of gaps increases.}
-	\end{figure}
-	
-	\begin{figure}[!h]
-		\centering
-		\includegraphics[width = 0.6\plotwidth]{fig/chapt4/Layout_eff_vs_thr.png}\\
-		\caption{\label{fig:EffThreshold} The maximal theoretical efficiency is simulated for single gap, double-gap and multigap layouts~\cite{ABBRESCIA99} at a constant gap thickness of \SI{2}{mm} and using an effective Townsend coefficient of \SI{9}{mm^{-1}}.}
-	\end{figure}
-	
 \section{Resistive Plate Chambers at CMS}
-\label{sec:CMS-RPC}
+\label{chapt4:sec:CMS-RPC}
 
     \subsection{Overview}
+    \label{chapt4:ssec:Overview}
     
 	The Resistive Plate Chambers (RPC) system, located in both barrel and endcap regions, provides a fast, independent muon trigger with a looser p$_T$ threshold over a large portion of the pseudorapidity range ($|\eta|<1.6$) {\color{blue} [add reconstruction]}.\\
 	
@@ -247,6 +25,7 @@
 	The extension of the RPC system up to $|\eta|=2.1$ was already planned in the CMS TDR [ref cmstdr] and staged because of budget limitations and expected background rates higher than the rate capability of the present CMS RPCs in that region. An extensive R\&D program has been done in order to develop an improved RPC that fulfills the CMS requirements. Two new RPC layers in the innermost ring of stations 3 and 4 will be added with benefits to the  neutron-induced background reduction and efficiency improvement for both trigger and offline reconstruction.
 
     \subsection{The present RPC system}
+    \label{chapt4:ssec:CMSRPC}
     
 	The RPC system is organized in 4 stations called RB1 to RB4 in the barrel region, and RE1 to RE4 in the endcap region. The innermost barrel stations, RB1 and RB2, are instrumented with 2 layers of RPCs facing the innermost (RB1in and RB2in) and outermost (RB1out and RB2out) sides of the DT chambers. Every chamber is then divided from the read-out point of view into 2 or 3 $\eta$ partitions called ``rolls''. The RPC system consist of 480 barrel chambers and 576 endcap chambers. Details on the geometry are discussed in the paper [ref to geo paper].
 %A charged particle crossing an RPC will ionize the gas in both gas volumes and the avalanches generated by the high electric field will induce an image charge, which is picked up by the readout strips. 
@@ -271,19 +50,19 @@ at \SI{1.6}{Gbps}.
 	The High Voltage power system is located in USC, not exposed to radiation and easily accessible for any reparation. A single HV channel powers 2 RPC chambers both in the barrel and endcap regions. The Low Voltage boards are located in UXC on the balconies and provide the voltage to the front end electronics.
 
     \subsection{Pulse processing of CMS RPCs}
-    \label{ssec:PulseProc}
+    \label{chapt4:ssec:PulseProc}
 	
 		Signals induced by cosmic particle in the RPC strips are shaped by standard CMS RPC \acf{FEE} following the scheme of Figure~\ref{fig:DAQ}. On a first stage, analogic signals are amplified and then sent to the \acf{CFD} described in Figure~\ref{fig:CFD}. At the end of the chain, \SI{100}{ns} long pulses are sent in the LVDS output. These output signal are sent on one side to a V1190A \acf{TDC} module from CAEN and on the other to an OR module to count the number of detected signals. Trigger and hit coïncidences are monitored using scalers. The TDC is used to store the data into ROOT files. These files are thus analysed to understand the detectors performance.
 
 			\begin{figure}[!h]
 			\begin{subfigure}{\linewidth}
 				\centering
-				\includegraphics[width = \plotwidth]{fig/chapt5/pulse-processing.pdf}\\
+				\includegraphics[width = \plotwidth]{fig/chapt4/pulse-processing.pdf}\\
 				\caption{\label{fig:DAQ:A}}
 			\end{subfigure}
 			\begin{subfigure}{\linewidth}
 				\centering
-				\includegraphics[width = \plotwidth]{fig/chapt5/pulse-processing-2.pdf}
+				\includegraphics[width = \plotwidth]{fig/chapt4/pulse-processing-2.pdf}
 				\caption{\label{fig:DAQ:B}}
 			\end{subfigure}
 			\caption{\label{fig:DAQ} Signals from the RPC strips are shaped by the FEE described on Figure ~\ref{fig:DAQ:A}. Output LVDS signals are then read-out by a TDC module connected to a computer or converted into NIM and sent to scalers. Figure~\ref{fig:DAQ:B} describes how these converted signals are put in coincidence with the trigger.}
@@ -292,15 +71,510 @@ at \SI{1.6}{Gbps}.
 		\begin{figure}[!h]
 			\begin{subfigure}{\linewidth}
 				\centering
-				\includegraphics[width = \plotwidth]{fig/chapt5/CFD_1.pdf}\\
+				\includegraphics[width = \plotwidth]{fig/chapt4/CFD_1.pdf}\\
 				\caption{\label{fig:CFD:A}}
 			\end{subfigure}
 			\begin{subfigure}{\linewidth}
 			    \centering
-				\includegraphics[width = 1.2\plotwidth]{fig/chapt5/CFD_2.png}
+				\includegraphics[width = 1.2\plotwidth]{fig/chapt4/CFD_2.png}
 				\caption{\label{fig:CFD:B}}
 			\end{subfigure}
 			\caption{\label{fig:CFD} Description of the principle of a CFD. A comparison of threshold triggering (left) and constant franction triggering (right) is shown in Figure~\ref{fig:CFD:A}. Constant franction triggering is obtained thanks to zero-crossing technique as explained in Figure~\ref{fig:CFD:B}. The signal arriving at the input of the CFD is split into three components. A first one is delayed and connected to the inverting input of a first comparator. A second component is connected to the noninverting input of this first comparator. A third component is connected to the noninverting input of another comparator along with a threshold value connected to the inverting input. Finally, the output of both comparators is fed through an AND gate.}
 		\end{figure}
+
+%****************************************** TESTING DETECTORS UNDER EXTREME CONDITIONS *****************************************************
+\section{Testing detectors under extreme conditions}
+\label{chapt4:sec:extreme}
+	
+	The upgrade from LHC to HL-LHC will increase the peak luminosity from 10$^{34}$ \si{cm^{-2}.s^{-1}} to reach 5$\times$10$^{34}$ \si{cm^{-2}.s^{-1}}, increasing in the same way the total expected background to which the RPC system will be subjected to.
+	Composed of low energy gammas and neutrons from $p$-$p$ collisions, low momentum primary and secondary muons, puch-through hadrons from calorimeters, and particles produced in the interaction of the beams with collimators, the background will mostly affect the regions of CMS that are the closest to the beam line, i.e. the RPC detectors located in the endcaps. {\color{blue} [To update.]}\\
+	
+    The 2016 data allowed to study the values of the background rate in all RPC system.
+	In Figure~\ref{Fig:HL-LHC}, the distribution of the chamber background hit rate per unit area is shown at a luminosity of $5\times10^{34}cm^{-2}.s^{-1}$ linearly extrapolating from data collected in 2016 {\color{blue} [ref mentioning the linear dependency of rate vs lumi]}.
+	The maximum rate per unit area at HL-LHC conditions is expected to be of the order of ${600}{Hz/cm^2}$ (including a safety factor 3).
+	Nevertheless, Fluka simulations have conducted in order to understand the background at HL-LHC conditions.
+	The comparison to the data has shown, in Figure~\ref{Fig:Fluka}, a discrepancy of a factor 2 even though the order of magnitude is consistent. {\color{blue} [Understand mismatch.]}\\
+    
+    \begin{figure}[H]
+		\begin{subfigure}{\linewidth}
+		    \centering
+			\includegraphics[width = \plotwidth]{fig/chapt4/Barrel-Roll-Rate-HL-LHC.pdf}\\
+			\caption{\label{Fig:HL-LHC:Barrel}}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+		    \centering
+			\includegraphics[width = \plotwidth]{fig/chapt4/Endcap-Disks-Rate-HL-LHC.pdf}
+			\caption{\label{Fig:HL-LHC:Endcap}}
+		\end{subfigure}
+        \caption{\label{Fig:HL-LHC}(\ref{Fig:HL-LHC:Barrel}) Extrapolation from 2016 data of single hit rate per unit area in the barrel region. (\ref{Fig:HL-LHC:Endcap}) Extrapolation from 2016 data of single hit rate per unit area in the endcap region.}
+    \end{figure}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\plotwidth]{fig/chapt4/RE4-Fluka.pdf}\\
+        \caption{\label{Fig:Fluka} Background Fluka simulation compared to 2016 Data at $L=10^{34}cm^{-2}.s^{-1}$ in the fourth endcap disk region. A mismatch in between simulation and data can be observed. {\color{blue} [To be understood.]}}
+    \end{figure}
+
+	In the past, extensive long-term tests were carried out at several gamma and neutron facilities certifying the detector performance.
+	Both full size and small prototype RPCs have been irradiated with photons up to an integrated charge of $\sim {0.05}{C/cm^2}$ and $\sim {0.4}{C/cm^2}$, respectively~\cite{GIF2004,AGING2009}.
+	During Run-I, the RPC system provided stable operation and excellent performance and did not show any aging effects for integrated charge of the order of ${0.01}{C/cm^2}$.
+    Projections on currents from 2016 Data, has allowed to determine that the total integrated charge, by the end of HL-LHC, would be of the order of ${1}{C/cm^2}$ (including a safety factor 3).
+{\color{blue} [Corresponding figure needed.]}\\
+
+	%****************************************** GAMMA IRRADIATION FACILITIES ********************************************************
+	\subsection{The Gamma Irradiation Facilities}
+	\label{chapt4:ssec:Facilities}
+		%****************************************** OLD GIF ******************************************************************
+		\subsubsection{GIF}
+		\label{chapt4:sssec:GIF}
+		
+			Located in the SPS West Area at the downstream end of the X5 test beam, the \acf{GIF} was a test area in which particle detectors were exposed to a particle beam in presence of an adjustable gamma background~\cite{AGOSTEO1999}. Its goal was to reproduce background conditions these detectors would suffer in their operating environment at LHC. GIF layout is shown in Figure ~\ref{fig:GIFLayout}. Gamma photons are produced by a strong $^{137}$Cs source installed in the upstream part of the zone inside a lead container. The source container includes a collimator, designed to irradiate a \SIsurface{6}{6}{\meter} area at \SI{5}{\meter} maximum to the source. A thin lens-shaped lead filter helps providing with a uniform outcoming flux in a vertical plane, orthogonal to the beam direction. The principal collimator hole provides a pyramidal aperture of \SI{74}{\degree}$\times$ \SI{74}{\degree} solid angle and provides a photon flux in a pyramidal volume along the beam axis. The photon rate is controled by further lead filters allowing the maximum rate to be limited and to vary within a range of four orders of magnitude. Particle detectors under test are then placed within the pyramidal volume in front of the source, perpendicularly to the beam line in order to profit from the homogeneous photon flux. Adjusting the background flux of photons can then be done by using the filters and choosing the position of the detectors with respect to the source.\\
+	
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width = \plotwidth]{fig/chapt4/GIF-Layout.pdf}\\
+				\caption{\label{fig:GIFLayout} Layout of the test beam zone called X5c GIF at CERN. Photons from the radioactive source produce a sustained high rate of random hits over the whole area. The zone is surrounded by \SI{8}{\meter} high and \SI{80}{\cm} thick concrete walls. Access is possible through three entry points. Two access doors for personnel and one large gate for material. A crane allows installation of heavy equipment in the area.}
+			\end{figure}
+			
+			As described on Figure~\ref{fig:CsSource}, the $^{137}$Cs source emits a \SI{662}{\keV} photon in 85\% of the decays. An activity of \SI{740}{\GBq} was measured on the 5$^{th}$ March 1997. To estimate the strength of the flux in 2014, it is necessary to consider the nuclear decay through time assiciated to the Cesium source whose half-life is well known ($t_{1/2}=$ \SIerror{30.05}{0.08}{y}). The GIF tests where done in between the $20^{th}$ and the $31^{st}$ of August 2014, i.e. at a time $t=$ \SIerror{17.47}{0.02}{y} resulting in an attenuation of the activity from \SI{740}{GBq} in 1997 to \SI{494}{GBq} in 2014.\\
+
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width = \plotwidth]{fig/chapt4/Cs137.pdf}\\
+				\caption{\label{fig:CsSource} $^{137}$Cs decays by $\beta^-$ emission to the ground state of $^{137}$Ba (BR = 5.64\%) and via the \SI{662}{\keV} isomeric level of $^{137}$Ba (BR = 94.36\%) whose half-life is 2.55 min.}
+			\end{figure}
+			
+		
+		%****************************************** NEW GIF ******************************************************************
+		\subsubsection{GIF++}
+		\label{chapt4:sssec:GIF++}
+		
+			The \acf{GIF++}, located in the SPS North Area at the downstream end of the H4 test beam, has replaced its predecessor during LS1 and has been operational since spring 2015~\cite{JAKEL2014}. Like GIF, GIF++ features a $^{137}$Cs source of \SI{662}{\keV} gamma photons, their fluence being controlled with a set of filters of various attenuation factors. The source provides two separated large irradiation areas for testing several full-size muon detectors with continuous homogeneous irradiation, as presented in Figure~\ref{fig:GIFpp-Layout}.\\
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width = \plotwidth]{fig/chapt4/GIFpp-Layout.png}\\
+				\caption{\label{fig:GIFpp-Layout} Floor plan of the GIF++ facility. When the facility downstream of the GIF++ takes electron beam, a beam pipe is installed along the beam line (z-axis). The irradiator can be displaced laterally (its center moves from $x=$\SI{0.65}{m} to \SI{2.15}{m}), to increase the distance to the beam pipe.}
+			\end{figure}
+			
+			 The source activity was measured to be about \SI{13.5}{TBq} in March 2016. The photon flux being far greater than HL-LHC expectations, GIF++ provides an excellent facility for accelerated aging tests of muon detectors.\\
+			 
+			\begin{figure}[H]
+				\begin{subfigure}{\linewidth}
+				    \centering
+					\includegraphics[width = \plotwidth]{fig/chapt4/GIFpp-gCurrent-XZ.png}\\
+					\caption{\label{fig:GIFpp-gCurrent:XZ}}
+				\end{subfigure}
+				\begin{subfigure}{\linewidth}
+				    \centering
+					\includegraphics[width = \plotwidth]{fig/chapt4/GIFpp-gCurrent-YZ.png}
+					\caption{\label{fig:GIFpp-gCurrent:YZ}}
+				\end{subfigure}
+				\caption{\label{fig:GIFpp-gCurrent} Simulated unattenuated current of photons in the xz plane (Figure~\ref{fig:GIFpp-gCurrent:XZ}) and yz plane (Figure~\ref{fig:GIFpp-gCurrent:YZ}) through the source at $x=$\SI{0.65}{m} and $y=$\SI{0}{m}. With angular correction filters, the current of \SI{662}{keV} photons is made uniform in xy planes.}
+		    \end{figure}
+			
+			 The source is situated in the muon beam line with the muon beam being available a few times a year. The H4 beam, composed of muons with a momentum of about \SI{150}{GeV/c}, passes through the GIF++ zone and is used to study the performance of the detectors. Its flux is of \SI{104}{particles/s/\square\cm} focused in an area similar to \SIsurface{10}{10}{\cm}. Therefore, with properly adjusted filters, one can imitate the HL-LHC background and study the performance of muon detectors with their trigger/readout electronics in HL-LHC environment.\\
+
+%****************************************** PRIMARILY TESTS AT GIF *************************************************************************
+\section{Preliminary tests at GIF}
+\label{chapt4:sec:GIFtests}
+	%********************************************* GIF SETUP *************************************************************************
+	\subsection{\acl{RPC} test setup}
+	\label{chapt4:ssec:RPCSetup}
+	
+		During summer 2014, preliminary tests have been conducted in the GIF area on a newly produced RE4/2 chamber labelled RE-4-2-BARC-161. This chamber has been placed into a trolley covered with a tent. The position of the RPC inside the tent and of the tent related to the source is described in Figure~\ref{fig:GIFSetup}. To test this CMS RPC, three different absorber settings were used. First of all, measurements were done with fully opened source. Then, to complete this preliminary study, the gamma flux has been attenuated from a factor 2 and a factor 5. The expected gamma flux at the level of our detector will be discussed in subsection~\ref{ssec:gFlux}.
+
+		\begin{figure}[H]
+			\begin{subfigure}{0.5\linewidth}
+			    \centering
+				\includegraphics[width = 0.5\plotwidth]{fig/chapt4/GIF-Setup-A.pdf}
+				\caption{\label{fig:GIFSetup:A}}
+			\end{subfigure}
+			\begin{subfigure}{0.5\linewidth}
+			    \centering
+				\includegraphics[width = 0.5\plotwidth]{fig/chapt4/GIF-Setup-B.pdf}
+				\caption{\label{fig:GIFSetup:B}}
+			\end{subfigure}
+			\caption{\label{fig:GIFSetup} Description of the RPC setup. Dimensions are given in \si{\mm}. A tent containing RPCs is placed at \SI{1720}{\mm} from the source container. The source is situated in the center of the container. RE-4-2-BARC-161 chamber is \SI{160}{\mm} inside the tent. This way, the distance between the source and the chambers plan is \SI{2060}{\mm}. Figure~\ref{fig:GIFSetup:A} provides a side view of the setup in the $xz$ plane while Figure~\ref{fig:GIFSetup:B} shows a top view in the $yz$ plane.}
+		\end{figure}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width = \plotwidth]{fig/chapt4/GIF-RPCSetup.jpg}\\
+			\caption{\label{fig:GIF-RPCSetup} RE-4-2-BARC-161 chamber is inside the tent as described in Figure~\ref{fig:GIFSetup}. In the top right, the two scintillators used as trigger can be seen. This trigger system has an inclination of \SI{10}{\degree} relative to horizontal and is placed above half-partition B2 of the RPCs. PMT electronics are shielded thanks to lead blocks placed in order to protect them without stopping photons from going through the scintillators and the chamber.}
+		\end{figure}
+		
+		At the time of the tests, the beam not being operationnal anymore, a trigger composed of 2 plastic scintillators has been placed in front of the setup with an inclination of \SI{10}{\deg} with respect to the detector plane in order to look at cosmic muons. Using this particular trigger layout, shown on Figure~\ref{fig:GIF-RPCSetup}, leads to a cosmic muon hit distribution into the chamber similar to the one in Figure~\ref{fig:HitProf}. Measured without gamma irradiation, two peaks can be seen on the profil of partition B, centered on strips 52 and 59. Section~\ref{ssec:GeoAcc} will help us undertand that these two peaks are due respectively to forward and backward coming cosmic particles where forward coming particles are first detected by the scintillators and then the RPC while the backward coming muons are first detected in the RPC.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width = 1.2\plotwidth]{fig/chapt4/Data-21-profile.pdf}\\
+			\caption{\label{fig:HitProf} Hit distributions over all 3 parttions of RE-4-2-BARC-161 chamber is showed on these plots. Top, middle and bottom figures respectively correspond to partitions A, B, and C. These plots show that some events still occur in other half-partitions than B2, which corresponds to strips 49 to 64, in front of which the trigger is placed, contributing to the inefficiency of detection of cosmic muons. In the case of partitions A and C, the very low amount of data can be interpreted as noise. On the other hand, it is clear that a little portion of muons reach the half-partition B1, corresponding to strips 33 to 48.}
+		\end{figure}
+		
+	%********************************************** GIF DAQ **************************************************************************
+	\subsection{\acl{DAQ}}
+	\label{chapt4:ssec:GIFDAQ}
+
+        
+
+	%****************************************** GIF GEOMETRICAL ACCEPTANCE **********************************************************
+	\subsection{Geometrical acceptance of the setup layout to cosmic muons}
+	\label{chapt4:ssec:GeoAcc}
+				
+		In order to profit from a constant gamma irradiation, the detectors inside of the GIF bunker need to be placed in a plane orthogonal to the beam line. The muon beam that used to be available was meant to test the performance of detectors under test. This beam not being active anymore, another solution to test detector performance had to be used. Thus, it has been decided to use cosmic muons detected through a telescope composed of two scintillators. Lead blocks were used as shielding to protect the photomultipliers from gammas as can be seen from Figure~\ref{fig:GIF-RPCSetup}.
+					
+		An inclination has been given to the cosmic telescope to maximize the muon flux. A good compromise had to be found between good enough muon flux and narrow enough hit distribution to be sure to contain all the events into only one half partitions as required from the limited available readout hardware. Nevertheless, a consequence of the misplaced trigger, that can be seen as a loss of events in half-partition B1 in Figure~\ref{fig:HitProf}, is an inefficiency. Nevertheless, the innefficiency of approximately \SI{20}{\%} highlighted in Figure~\ref{fig:EffCompar} by comparing the performance of chamber BARC-161 in 904 and at GIF without irradiation seems too important to be explained only by the geometrical acceptance of the setup itself. Simulations have been conducted to show how the setup brings inefficiency.
+	
+		\begin{figure}[H]
+            \centering
+			\includegraphics[width = \plotwidth]{fig/chapt4/Eff-Comparison.pdf}
+			\caption{\label{fig:EffCompar} Results are derived from data taken on half-partition B2 only. On the 18$^{th}$ of June 2014, data has been taken on chamber RE-2-BARC-161 at building 904 (Prevessin Site) with cosmic muons providing us a reference efficiency plateau of \numerror{97.54}{0.15}\% represented by a black curve. A similar measurement has been done at GIF on the 21$^{st}$ of July with the same chamber giving a plateau of \numerror{78.52}{0.94}\% represented by a red curve.}
+		\end{figure}
+		
+	    %****************************************** SIMULATION LAYOUT *******************************************************
+		\subsubsection{Description of the simulation layout}
+		\label{chapt4:sssec:SimLayout}
+		
+			The layout of GIF setup has been reproduced and incorporated into a \acf{MC} simulation to study the influence of the disposition of the telescope on the final distribution measured by the RPC. A 3D view of the simulated layout is given into Figure~\ref{fig:SimGIFLay}. Muons are generated randomly in a horizontal plane located at a height corresponding to the lowest point of the PMTs. This way, the needed size of the plane in order to simulate events happening at very big azimutal angles (i.e. $\theta\approx\pi$) can be kept relatively small. The muon flux is designed to follow the usual $cos^2\theta$ distribution for cosmic particle. The goal of the simulation is to look at muons that pass through the muon telescope composed of the two scintilators and define their distribution onto the RPC plane. During the reconstruction, the RPC plane is then divided into its strips and each muon track is assigned to a strip.
+		
+			\begin{figure}[H]
+				\begin{subfigure}{\linewidth}
+					\centering
+					\includegraphics[width = \plotwidth]{fig/chapt4/GIFSetup-SimA.png}\\
+					\caption{\label{fig:SimGIFLay:A}}
+				\end{subfigure}
+				\begin{subfigure}{\linewidth}
+					\centering
+					\includegraphics[width = \plotwidth]{fig/chapt4/GIFSetup-SimB.png}
+					\caption{\label{fig:SimGIFLay:B}}
+				\end{subfigure}
+				\caption{\label{fig:SimGIFLay} Representation of the layout used for the simulations of the test setup. The RPC is represented as a yellow trapezoid while the two scintillators as blue cuboids looking at the sky. A green plane corresponds to the muon generation plane within the simulation. Figure~\ref{fig:GIFSetup:A} shows a global view of the simulated setup. Figure~\ref{fig:GIFSetup:B} shows a zommed view that allows to see the 2 scintillators as well as the full RPC plane.}
+			\end{figure}
+			
+			In order to further refine the quality of the simulation and understand deeper the results the dependance of the distribution has been studied for a range of telescope inclinations. Moreover, the threshold applied on the PMT signals has been included into the simulation in the form of a cut. In the approximation of uniform scintillators, it has been considered that the threshold can be understood as the minimum distance particles need to travel through the scintillating material to give a strong enough signal. Particles that travel a distance smaller than the set "threshold" are thus not detected by the telescope and cannot trigger the data taking. Finally, the FEE threshold also has been considered in a similar way. The mean momentum of horizontal cosmic rays is higher than those of vertical ones but the stopping power of matter for momenta ranging from \SI{1}{GeV} to \SI{1}{TeV} stays comparable. It is then possible to assume that the mean number of primary $e^-$/ion pairs per unit length will stay similar and thus, depending on the applied discriminator threshold, muons with the shortest path through the gas volume will deposit less charge and induce a smaller signal on the pick-up strips that could eventually not be detected. These two thresholds also restrain the overall geometrical acceptance of the system.
+		
+	    %***************************************** SIMULATION PROCEDURE *****************************************************
+		\subsubsection{Simulation procedure}
+		\label{chapt4:sssec:SimProc}
+		
+			The simulation software has been designed using C++ and the output data is saved into ROOT histograms. Simulations start for a threshold $T_{scint}$ varying in a range from 0 to \SI{45}{mm} in steps of \SI{5}{mm}, where $T_{scint}=$ \SI{0}{mm} corresponds to the case where there isn't any threshold apply on the input signal while $T_{scint}=$ \SI{45}{mm}, which is the scintillator thickness, is the case where muons cannot arrive orthogonally onto the scintillator surface. For a given $T_{scint}$, a set of \acs{RPC} thresholds are considered. The RPC threshold, $T_{RPC}$ varies from \SI{2}{mm}, the thickness of the gas volume, to \SI{3}{mm} in steps of \SI{0.25}{mm}. For each ($T_{scint}$;$T_{RPC}$) pair, $N_{\mu}=10^8$ muons are randomly generated inside the muon plane described in the previous paragraph with an azimutal angle $\theta$ chosen to follow a $cos^2\theta$ distribution. 
+			
+			Planes are associated to each surface of the scintillators. Knowing muon position into the muon plane and its direction allows us, by assuming that muons travel in a straight line, to compute the intersection of the muon track with these planes. Applying conditions to the limits of the surfaces of the scintillator faces then gives us an answer to weither or not the muon passed through the scintillators. In the case the muon has indeed passed through the telescope, the path through each scintillator is computed and muons whose path was shorter than $T_{scint}$ are rejected and are thus considered as having not interacted with the setup.
+			
+			On the contrary, if the muon is labeled as good, its position within the RPC plane is computed and the corresponding strip, determined by geometrical tests in the case the distance through the gas volume was enough not to be rejected because of $T_{RPC}$, gets a hit and several histograms are filled in order to keep track of the generation point on the muon plane, the intersection points of the reconstructed muons within the telescope, or on the RPC plane, the path traveled through each individual scintillator or the gas volume, as well as other histograms. Moreover, muons fill different histograms weither they are forward or backward coming muons. They are discriminated according to their direction components. When a muon is generated, an $(x,y,z)$ position is assigned into the muon plane as well as a ($\theta$;$\phi$) pair that gives us the direction it's coming from. This way, muons satisfying the condition $0\leq\phi<\pi$ are designated as backward coming muons while muons satisfying $\pi\leq\phi<2\pi$ as forward coming muons.
+			
+			This simulation is then repeated for different telescope inclinations ranging in between 4 and \SI{20}{\degree} and varying in steps of \SI{2}{\degree}. Due to this inclination and to the vertical position of the detector under test, the muon distribution reconstructed in the detector plane is asymmetrical. The choice as been made to chose a skew distribution formula to fit the data built as the multiplication of gaussian and sigmoidal curves together. A typical gaussian formula is given as ~\ref{for:gaus} and has three free parameters as $A_g$, its amplitude, $\bar{x}$, its mean value and $\sigma$, its root mean square. Sigmoidal curves as given by formula~\ref{for:sigm} are functions converging to $0$ and $A_s$ as $x$ diverges. The inflexion point is given as $x_i$ and $\lambda$ is proportional to the slope at $x = x_i$. In the limit where $\lambda\longrightarrow\infty$, the sigmoid becomes a step function.
+			
+			\begin{center}
+				\begin{equation}
+				\label{for:gaus}
+					g(x) = A_g e^{\frac{-(x-\bar{x})^2}{2\sigma^2}}
+				\end{equation}
+			\end{center}
+			
+			\begin{center}
+				\begin{equation}
+				\label{for:sigm}
+					s(x) = \frac{A_s}{1+e^{-\lambda(x-x_i)}}
+				\end{equation}
+			\end{center}
+			
+		Finally, a possible representation of a skew distribution is given by formula~\ref{for:skew} and is the product of \ref{for:gaus} and \ref{for:sigm}. Naturally, here $A_{sk} = A_g \times A_s$ and represents the theoretical maximum in the limit where the skew tends to a gaussian function.
+			
+			\begin{center}
+				\begin{equation}
+				\label{for:skew}
+					sk(x) = g(x)\times s(x) = A_{sk}\frac{e^{\frac{-(x-\bar{x})^2}{2\sigma^2}}}{1+e^{-\lambda(x-x_i)}}
+				\end{equation}
+			\end{center}
+		
+	    %***************************************** SIMULATION RESULTS *******************************************************
+		\subsubsection{Results}
+		\label{chapt4:sssec:SimRes}
+			
+			\paragraph{Influence of $\mathbf{T_{scint}}$ on the muon distribution}
+			
+			\paragraph{Influence of $\mathbf{T_{RPC}}$ on the muon distribution}
+		
+			\paragraph{Influence of the telescope inclination on the muon distribution}
+			
+			\paragraph{Comparison to data taken at GIF without irradiation}
+		
+	%****************************************** PHOTON FLUX AT GIF ******************************************************************
+	\subsection{Photon flux at \acs{GIF}}
+	\label{chapt4:ssec:gFlux}
+			
+		%****************************************** EXPECTATIONS FROM SIMULATIONS ********************************************
+		\subsubsection{Expectations from simulations}
+		\label{chapt4:sssec:Simulations}
+		
+			In order to understand and evaluate the $\gamma$ flux in the GIF area, simulations had been conducted in 1999 and published by S. Agosteo et al ~\cite{AGOSTEO1999}. Table~\ref{tab:Sim1997} presented in this article gives us the $\gamma$ flux for different distances $D$ to the source. This simulation was done using GEANT and a \acf{MCNP} transport code, and the flux $F$ is given in number of $\gamma$ per unit area and unit time along with the estimated error from these packages expressed in \%.
+			
+			\begin{table}[H]
+				\hspace*{-1.1cm}
+				\begin{tabular}{|*{5}{c|}}
+					\hline
+					Nominal & \multicolumn{4}{c|}{Photon flux $F$ [\si{\second^{-1}\cm^{-2}}]} \\
+					\cline{2-5}
+					ABS & at $D$ = \SI{50}{\cm} & at $D$ = \SI{155}{\cm} & at $D$ = \SI{300}{\cm} & at $D$ = \SI{400}{\cm} \\
+					\hline
+					1 & $0.12 \cdot 10^8 \pm 0.2\%$ & $0.14 \cdot 10^7 \pm 0.5\%$ & $0.45 \cdot 10^6 \pm 0.5\%$ & $0.28 \cdot 10^6 \pm 0.5\%$ \\
+					\hline
+					2 & $0.68 \cdot 10^7 \pm 0.3\%$ & $0.80 \cdot 10^6 \pm 0.8\%$ & $0.25 \cdot 10^6 \pm 0.8\%$ & $0.16 \cdot 10^6 \pm 0.6\%$ \\
+					\hline
+					5 & $0.31 \cdot 10^7 \pm 0.4\%$ & $0.36 \cdot 10^6 \pm 1.2\%$ & $0.11 \cdot 10^6 \pm 1.2\%$ & $0.70 \cdot 10^5 \pm 0.9\%$ \\
+					\hline
+				\end{tabular}
+				\caption{\label{tab:Sim1997} Total photon flux ($E\gamma \leq$ \SI{662}{\keV}) with statistical error predicted considering a $^{137}$Cs activity of \SI{740}{\GBq} at different values of the distance $D$ to the source along the x-axis of irradiation field~\cite{AGOSTEO1999}.}
+			\end{table}
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width = \plotwidth]{fig/chapt4/simulated_flux.pdf}\\
+				\caption{\label{fig:Sim1997} $\gamma$ flux $F(D)$ is plot using values from table~\ref{tab:Sim1997}. As expected, the plot shows similar attenuation behaviours with increasing distance for each absorption factors.}
+			\end{figure}
+			
+			The simulation doesn't directly provides us with an estimated flux at the level of our RPC. First of all, it is needed to extract the value of the flux from the available data contained in the original paper and then to estimate the flux in 2014 at the time the experimentation took place. Figure~\ref{fig:Sim1997} that contains the data from Table~\ref{tab:Sim1997}. In the case of a pointlike source emiting isotrope and homogeneous gamma radiations, the gamma flux $F$ at a distance $D$ to the source with respect to a reference point situated at $D_0$ where a known flux $F_0$ is measured will be expressed like in Equation~\ref{eq:Flux}, assuming that the flux decreases as $1/D^2$, where $c$ is a fitting factor.
+			
+			\begin{equation}
+				F^{ABS} = F_0^{ABS} \times \left( \frac{c D_0}{D} \right)^2
+				\label{eq:Flux}
+			\end{equation}
+			
+			By rewriting Equation~\ref{eq:Flux}, it comes that :
+			
+			\begin{eqnarray}
+				c & = & \frac{D}{D_0}\sqrt{\frac{F^{ABS}}{F_0^{ABS}}}\label{eq:Factor}\\
+				\Delta c & = & \frac{c}{2}\left(\frac{\Delta F^{ABS}}{F^{ABS}}+\frac{\Delta F^{ABS}_0}{F^{ABS}_0}\right)\label{eq:FactorErr}
+			\end{eqnarray}
+			
+			Finally, using Equation~\ref{eq:Factor} and the data in Table~\ref{tab:Sim1997} with $D_0=$ \SI{50}{cm} as reference point, we can build Table~\ref{tab:CorrFactor}. It is interesting to note that $c$ for each value of $D$ doesn't depend on the absorption factor.
+			
+			\begin{table}[H]
+				\centering
+				\begin{tabular}{|*{4}{c|}}
+					\hline
+					Nominal & \multicolumn{3}{c|}{Correction factor $c$} \\
+					ABS & at $D$ = \SI{155}{\cm} & at $D$ = \SI{300}{\cm} & at $D$ = \SI{400}{\cm} \\
+					\hline
+					1 & $1.059 \pm 0.70\%$ & $1.162 \pm 0.70\%$ & $1.222 \pm 0.70\%$ \\
+					\hline
+					2 & $1.063 \pm 1.10\%$ & $1.150 \pm 1.10\%$ & $1.227 \pm 0.90\%$ \\
+					\hline
+					5 & $1.056 \pm 1.60\%$ & $1.130 \pm 1.60\%$ & $1.202 \pm 1.30\%$ \\
+					\hline
+				\end{tabular}
+				\caption{\label{tab:CorrFactor} Correction factor c is computed thanks to formulae~\ref{eq:Factor} taking as reference $D_0 =$ \SI{50}{cm} and the associated flux $F_0^{ABS}$ for each absorption factor available in table~\ref{tab:Sim1997}.}
+			\end{table}
+			
+			For the range of $D/D_0$ values available, it is possible to use a simple linear fit to get the evolution of $c$. The linear fit will then use only 2 free parameters, $a$ and $b$, as written in Equation~\ref{eq:LinearApprox}. This gives us the results showed in Figure~\ref{fig:CorrFactor}. Figure~\ref{fig:CorrFactor:B} confirms that using only a linear fit to extract $c$ is enough as the evolution of the rate that can be obtained superimposes well on the simulation points.
+			
+			\begin{eqnarray}
+				c\left(\frac{D}{D_0}\right) & = & a\frac{D}{D_0} + b\label{eq:LinearApprox}\\
+				F^{ABS} & = & F^{ABS}_0 \left( a + \frac{bD_0}{D} \right)^2\label{eq:FluxLinearAp}\\
+				\Delta F^{ABS} & = & F^{ABS} \left[\frac{\Delta F^{ABS}_0}{F^{ABS}_0} + 2\frac{\Delta a + \Delta b\frac{D_0}{D}}{a + \frac{bD_0}{D}}\right]\label{eq:FluxLinearApErr}
+			\end{eqnarray}
+			
+			\begin{figure}[H]
+				\begin{subfigure}{\linewidth}
+					\centering
+					\includegraphics[width = \plotwidth]{fig/chapt4/flux_correction.pdf}\\
+					\caption{\label{fig:CorrFactor:A}}
+				\end{subfigure}
+				\begin{subfigure}{\linewidth}
+					\centering
+					\includegraphics[width = \plotwidth]{fig/chapt4/correction_model.pdf}
+					\caption{\label{fig:CorrFactor:B}}
+				\end{subfigure}
+				\caption{\label{fig:CorrFactor} Figure~\ref{fig:CorrFactor:A} shows the linear approximation fit done via formulae~\ref{eq:LinearApprox} on data from table~\ref{tab:CorrFactor}. Figure~\ref{fig:CorrFactor:B} shows a comparison of this model with the simulated flux using a and b given in figure~\ref{fig:CorrFactor:A} in formulae ~\ref{eq:Flux} and the reference value $D_0 = 50 cm$ and the associated flux for each absorption factor $F_0^{ABS}$ from table~\ref{tab:Sim1997}}
+			\end{figure}
+			
+			In the case of the 2014 GIF tests, the RPC plane is located at a distance $D=$\SI{206}{cm} to the source. Moreover, to estimate the strength of the flux in 2014, it is necessary to consider the nuclear decay through time assiciated to the Cesium source whose half-life is well known ($t_{1/2}=$ \SIerror{30.05}{0.08}{y}). The very first source activity measurement has been done on the $5^{th}$ of March 1997 while the GIF tests where done in between the $20^{th}$ and the $31^{st}$ of August 2014, i.e. at a time $t=$ \SIerror{17.47}{0.02}{y} resulting in an attenuation of the activity from \SI{740}{GBq} in 1997 to \SI{494}{GBq} in 2014. All the needed information to extrapolate the flux through our detector in 2014 has now been assembled, leading to the Table~\ref{tab:extra2014}. It isinteresting to note that for a common RPC sensitivity to $\gamma$ of $2 \cdot 10^{-3}$, the order of magnitude of the estimated hit rate per unit area is of the order of the \si{kHz} for the fully opened source. Moreover, taking profit of the two working absorbers, it will be possible to scan background rates at \SI{0}{Hz}, $\sim$\SI{300}{Hz} as well as $\sim$\SI{600}{Hz}. Without source, a good estimate of the intrinsic performance will be available. Then at \SI{300}{Hz}, the goal will be to show that the detectors fulfill the performance certification of CMS RPCs. Then a first idea of the performance of the detectors at higher background will be provided with absorbtion factors 2 ($\sim$\SI{600}{Hz}) and 1 (no absorbtion). \textbf{\textit{[Here I will also put a reference to the plot showing the estimated background rate at the level of RE3/1 in the case of HL-LHC but this one being in another chapter, I will do it later.]}}
+			
+			\begin{table}[H]
+				\hspace*{-2cm}
+				\begin{tabular}{|*{5}{c|}}
+					\hline
+					Nominal & \multicolumn{3}{c|}{Photon flux $F$ [\si{\second^{-1}\cm^{-2}}]} & Hit rate/unit area [\si{Hz.cm^{-2}}] \\
+					ABS & at $D_0^{1997}$ = \SI{50}{\cm} & at $D^{1997}$ = \SI{206}{\cm} & at $D^{2014}$ = \SI{206}{\cm} & at $D^{2014}$ = \SI{206}{\cm} \\
+					\hline
+					1 & $0.12 \cdot 10^8 \pm 0.2\%$ & $0.84 \cdot 10^6 \pm 0.3\%$ & $0.56 \cdot 10^6 \pm 0.3\%$ & $1129 \pm 32$ \\
+					\hline
+					2 & $0.68 \cdot 10^7 \pm 0.3\%$ & $0.48 \cdot 10^6 \pm 0.3\%$ & $0.32 \cdot 10^6 \pm 0.3\%$ & $640 \pm 19$ \\
+					\hline
+					5 & $0.31 \cdot 10^7 \pm 0.4\%$ & $0.22 \cdot 10^6 \pm 0.3\%$ & $0.15 \cdot 10^6 \pm 0.3\%$ & $292 \pm 9$ \\
+					\hline
+				\end{tabular}
+				\caption{\label{tab:extra2014} The data at $D_0$ in 1997 is taken from~\cite{AGOSTEO1999}. In a second step, using Equations~\ref{eq:FluxLinearAp} and~\ref{eq:FluxLinearApErr}, the flux at $D$ can be estimated in 1997. Then, taking into account the attenuation of the source activity, the flux at $D$ can be estimated at the time of the tests in GIF in 2014. Finally, assuming a sensitivity of the RPC to $\gamma$ $s = 2 \cdot 10^{-3}$, an estimation of the hit rate per unit area is obtained.}
+			\end{table}
+
+		%****************************************** DOSE MEASUREMENTS ********************************************************
+		\subsubsection{Dose measurements}
+		\label{chapt4:sssec:Dose}
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width = \plotwidth]{fig/chapt4/GIF-fluxes.pdf}\\
+				\caption{\label{fig:Dose} Dose measurements has been done in a plane corresponding to the tents front side. This plan is \SI{1900}{\mm} away from the source. As explained in the first chapter, a lens-shaped lead filter provides a uniform photon flux in the vertical plan orthogonal to the beam direction. If the second line of measured fluxes is not taken into account because of lower values due to experimental equipments in the way between the source and the tent, the uniformity of the flux is well showed by the results.}
+			\end{figure}
+
+    %************************************* GIF PRELIMINARY RESULTS ******************************************************************
+	\subsection{Results and discussions}
+	\label{chapt4:ssec:results6}
+		
+		\begin{figure}[H]
+			\begin{subfigure}{0.5\linewidth}
+				\centering
+				\includegraphics[width = 0.6\plotwidth]{fig/chapt4/Efficiencies.pdf}
+				\caption{\label{fig:GIFResults:E}}
+			\end{subfigure}
+			\begin{subfigure}{0.5\linewidth}
+				\centering
+				\includegraphics[width = 0.6\plotwidth]{fig/chapt4/Evol_HV.pdf}\\
+				\caption{\label{fig:GIFResults:WP}}
+			\end{subfigure}
+			\begin{subfigure}{0.5\linewidth}
+				\centering
+				\includegraphics[width = 0.6\plotwidth]{fig/chapt4/Clustermultiplicities.pdf}
+				\caption{\label{fig:GIFResults:CM}}
+			\end{subfigure}
+			\begin{subfigure}{0.5\linewidth}
+				\centering
+				\includegraphics[width = 0.6\plotwidth]{fig/chapt4/Clustersizes.pdf}\\
+				\caption{\label{fig:GIFResults:CS}}
+			\end{subfigure}
+			\caption{\label{fig:GIFResults} }
+		\end{figure}
+
+%****************************************** CONSOLIDATION TESTS AT GIF++ *******************************************************************
+\newpage
+
+\section{Longevity tests at \acs{GIF++}}
+\label{chapt4:sec:GIFpptests}
+
+    Longevity studies imply a monitoring of the performance of the detectors probed using a high intensity muon beam in a irradiated environment by periodically measuring their rate capability, the dark current running through them and the bulk resistivity of the Bakelite composing their electrodes. GIF++, with its very intense $^{137}$Cs source, provides the perfect environment to perform such kind of tests. Assuming a maximum acceleration factor of 3, it is expected to accumulate the equivalent charge in 1.7 years.\\
+    As the maximum background is found in the endcap, the choice naturally was made to focus the GIF++ longevity studies on endcap chambers. Most of the RPC system was installed in 2007. Nevertheless, the large chambers in the fourth endcap (RE4/2 and RE4/3) have been installed during LS1 in 2014. The Bakelite of these two different productions having different properties, four spare chambers of the present system were selected, two RE2,3/2 spares and two RE4/2 spares. Having two chambers of each type allows to always keep one of them non irradiated as reference, the performance evolution of the irradiated chamber being then compared through time to the performance of the non irradiated one.\\
+    The performance of the detectors under different level of irradiation is measured periodically during dedicated test beam periods using the H4 muon beam. In between these test beam periods, the two RE2,3/2 and RE4/2 chambers selected for this study are irradiated by the $^{137}$Cs source in order to accumulate charge and the gamma background is monitored, as well as the currents. The two remaining chambers are kept non-irradiated as reference detectors. Due to the limited gas flow in GIF++, the RE4 chamber remained non-irradiated until end of November 2016 where a new mass flow controller has been installed allowing for bigger volumes of gas to flow in the system.\\
+     Figures~\ref{Fig:Eff-vs-Rate} and \ref{Fig:WP-vs-Rate} give us for different test beam periods, and thus for increasing integrated charge through time, a comparison of the maximum efficiency, obtained using a sigmoid-like function, and of the working point of both irradiated and non irradiated chambers~\cite{SIGMOID2005}. No aging is yet to see from this data, the shifts in $\gamma$ rate per unit area  in between irradiated and non irradiated detectors and RE2 and RE4 types being easily explained by a difference of sensitivity due to the various Bakelite resistivities of the HPL electrodes used for the electrode production.\\
+     Collecting performance data at each test beam period allows us to extrapolate the maximum efficiency for a background hit rate of \SI{300}{Hz/cm^2} corresponding to the expected HL-LHC conditions. Aging effects could emerge from a loss of efficiency with increasing integrated charge over time, thus Figure~\ref{Fig:Eff-vs-Qint} helps us understand such degradation of the performance of irradiated detectors in comparison with non irradiated ones. The final answer for an eventual loss of efficiency is given in Figure~\ref{Fig:Eff-Bef-Aft} by comparing for both irradiated and non irradiated detectors the efficiency sigmoids before and after the longevity study. Moreover, to complete the performance information, the Bakelite resistivity is regularly measured thanks to $Ag$ scans (Figure~\ref{Fig:Res-vs-Qint}) and the noise rate is monitored weekly during irradiation periods (Figure~\ref{Fig:Noise-vs-Qint}). At the end of 2016, no signs of aging were observed and further investigation is needed to get closer to the final integrated charge requirements proposed for the longevity study of the present CMS RPC sub-system.\\
+    
+    
+    \begin{figure}[H]
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width=\linewidth]{fig/chapt4/Eff-vs-Rate-RE2.png}\\
+        	\caption{\label{Fig:Eff-vs-Rate:RE2}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width=\linewidth]{fig/chapt4/Eff-vs-Rate-RE4.png}\\
+        	\caption{\label{Fig:Eff-vs-Rate:RE4}}
+    	\end{subfigure}
+        \caption{\label{Fig:Eff-vs-Rate} Evolution of the maximum efficiency for RE2 (\ref{Fig:Eff-vs-Rate:RE2}) and RE4 (\ref{Fig:Eff-vs-Rate:RE4}) chambers with increasing extrapolated $\gamma$ rate per unit area at working point. Both irradiated (blue) and non irradiated (red) chambers are shown.}
+    \end{figure}
+    
+    \begin{figure}[H]
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width=\linewidth]{fig/chapt4/WP-vs-Rate-RE2.png}\\
+        	\caption{\label{Fig:WP-vs-Rate:RE2}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width=\linewidth]{fig/chapt4/WP-vs-Rate-RE4.png}\\
+        	\caption{\label{Fig:WP-vs-Rate:RE4}}
+    	\end{subfigure}
+        \caption{\label{Fig:WP-vs-Rate} Evolution of the working point for RE2 (\ref{Fig:WP-vs-Rate:RE2}) and RE4 (\ref{Fig:WP-vs-Rate:RE4}) with increasing extrapolated $\gamma$ rate per unit area at working point. Both irradiated (blue) and non irradiated (red) chambers are shown.}
+    \end{figure}
+    
+    \begin{figure}[H]
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width=\linewidth]{fig/chapt4/Eff-vs-Qint-RE2.png}\\
+        	\caption{\label{Fig:Eff-vs-Qint:RE2}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width=\linewidth]{fig/chapt4/Eff-vs-Qint-RE4.png}\\
+        	\caption{\label{Fig:Eff-vs-Qint:RE4}}
+    	\end{subfigure}
+        \caption{\label{Fig:Eff-vs-Qint} Evolution of the maximum efficiency at HL-LHC conditions, i.e. a background hit rate per unit area of \SI{300}{Hz/cm^2}, with increasing integrated charge for RE2 (\ref{Fig:Eff-vs-Qint:RE2}) and RE4 (\ref{Fig:Eff-vs-Qint:RE4}) detectors. Both irradiated (blue) and non irradiated (red) chambers are shown. The integrated charge for non irradiated detectors is recorded during test beam periods and stays small with respect to the charge accumulated in irradiated chambers.}
+    \end{figure}
+    
+    \begin{figure}[H]
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width=\linewidth]{fig/CMSlogo.png}\\
+        	\caption{\label{Fig:Eff-Bef-Af:RE2}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width=\linewidth]{fig/CMSlogo.png}\\
+        	\caption{\label{Fig:Eff-Bef-Af:RE4}}
+    	\end{subfigure}
+        \caption{\label{Fig:Eff-Bef-Aft} Comparison of the efficiency sigmoid before (triangles) and after (circles) irradiation for RE2 (\ref{Fig:Eff-Bef-Af:RE2}) and RE4 (\ref{Fig:Eff-Bef-Af:RE4}) detectors. Both irradiated (blue) and non irradiated (red) chambers are shown.}
+    \end{figure}
+    
+    \begin{figure}[H]
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width=\linewidth]{fig/chapt4/Res-vs-Qint-RE2.png}\\
+        	\caption{\label{Fig:Res-vs-Qint:RE2}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width=\linewidth]{fig/chapt4/Res-vs-Qint-RE4.png}\\
+        	\caption{\label{Fig:Res-vs-Qint:RE4}}
+    	\end{subfigure}
+        \caption{\label{Fig:Res-vs-Qint} Evolution of the Bakelite resistivity for RE2 (\ref{Fig:Res-vs-Qint:RE2}) and RE4 (\ref{Fig:Res-vs-Qint:RE4}) detectors. Both irradiated (blue) and non irradiated (red) chambers are shown.}
+    \end{figure}
+    
+    \begin{figure}[H]
+		\centering
+    	\includegraphics[width=0.5\linewidth]{fig/chapt4/Noise-vs-Qint-RE2.png}\\
+        \caption{\label{Fig:Noise-vs-Qint} Evolution of the noise rate per unit area for the irradiated chamber RE2-2-BARC-9 only.}
+    \end{figure}
+
+    %******************************************** GIF++ DAQ *************************************************************************
+	\subsection{Description of the \acl{DAQ}}
+	\label{chapt4:ssec:GIF++DAQ}
+
+		For the longevity studies, four spare chambers of the present system are used. Two spare RPCs of the RE2,3 stations as well as two spare RPCs from the new RE4 stations have been mounted in a Trolley. Six RE4 gaps are also placed in the trolley. The trolley is placed inside the GIF++ in the upstream region of the bunker, taking the cesium source as a reference. The trolley is oriented for the detection surface of the chambers to be orthogonal to the beam line. The system can be moved along the orthogonal plane in order to have the beam in all $\eta$-partitions. For the aging the trolley is moved outside the beam line and is placed in a distance of \SI{5.2}{m} to the source, which irradiates the bunker using an attenuation filter of 2.2 which corresponds to a fluence of $10^7$\si{gamma/cm\squared}.
+
+		During GIF++ operation, the data collected can be divided into different categories as several parameters are monitored in addition to the usual RPC performance data. On one hand, to know the performance of a chamber, it is need to measure its efficiency and to know the background conditions in which it is operated. To do this, the hit signals from the chamber are recorded and stored in a ROOT file via a \acf{DAQ} software. On the other hand, it is also very important to monitor parameters such as environmental pressure and temperature, gas temperature and humidity, RPC HV, LV, and currents, or even source and beam status. This is done through the GIF++ web \acf{DCS} that stores this information in a database.
+            
+		Two different types of tests are conducted on RPCs via the DAQ. Indeed, the performance of the detectors is measured periodically during dedicated test beam periods using the H4 muon beam. In between these test beam periods, when the beam is not available, the chambers are irradiated by the $^{137}$Cs in order to accumulate deposited charge and the gamma background is measured.
+
+		RPCs under test are connected through LVDS cables to V1190A \acf{TDC} modules manufactured by CAEN. These modules, located in the rack area outside of the bunker, get the logic signals sent by the chambers and save them into their buffers. Due to the limited size of the buffers, the collected data is regularly erased and replaced. A trigger signal is needed for the TDC modules to send the useful data to the DAQ computer via a V1718 CAEN USB communication module.
+
+		In the case of performance test, the trigger signal used for data acquisition is generated by the coincidence of three scintillators. A first one is placed upstream outside of the bunker, a second one is placed downstream outside of the bunker, while a third one is placed in front of the trolley, close by the chambers. Every time a trigger is sent to the TDCs, i.e. every time a muon is detected, knowing the time delay in between the trigger and the RPC signals, signals located in the right time window are extracted from the buffers and saved for later analysis. Signals are taken in a time window of \SI{400}{ns} centered on the muon peak (here we could show a time spectrum). On the other hand, in the case of background rate measurement, the trigger signal needs to be "random" not to measure muons but to look at gamma background. A trigger pulse is continuously generated at a rate of \SI{300}{Hz} using a dual timer. To integrate an as great as possible time, all signals contained within a time window of 10us prior to the random trigger signal are extracted form the buffers and saved for further analysis (here another time spectrum to illustrate could be useful, maybe even place both spectrum together as a single Figure).
+
+		The signals sent to the TDCs correspond to hit collections in the RPCs. When a particle hits a RPC, it induce a signal in the pickup strips of the RPC readout. If this signal is higher than the detection threshold, a LVDS signal is sent to the TDCs. The data is then organised into 4 branches keeping track of the event number, the hit multiplicity for the whole setup, and the time and channel profile of the hits in the TDCs.
+
+    %******************************************** GIF++ DCS *************************************************************************
+	\subsection{RPC current, environmental and operation parameter monitoring}
+	\label{chapt4:ssec:GIF++DCS}
+            
+		In order to take into account the variation of pressure and temperature between different data taking periods the applied voltage is corrected following the relationship :
+
+		\begin{equation}
+			HVeff = HVapp\times\left(0.2 + 0.8\cdot\frac{P_0}{P}\times\frac{T}{T_0}\right)
+		\end{equation}
+		
+		where $T_0$ (=\SI{293}{K}) and $P_0$ (=\SI{990}{mbar}) are the reference values.
+
+	\subsection{Measurement procedure}
+	\label{chapt4:ssec:GIF++Proc}
+
+		Insert a short description of the online tools (DAQ, DCS, DQM).\\
+		Insert a short description of the offline tools : tracking and efficiency algorithm.\\
+		Identify long term aging effects we are monitoring the rates per strip.
+	
+	%****************************************** RESULTS AT GIF++ ********************************************************************
+	\subsection{Longevity studies results}
+	\label{chapt4:ssec:GIF++Results}
+
+%\renewcommand*{\thesection}{\thechapter.\arabic{section}}       % reset again to chaptnum.sectnum
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
