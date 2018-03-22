@@ -241,10 +241,30 @@ Alexis Fagot}}
 \selectlanguage{dutch}
 \include{Chapters/chapt_dutch}
 
-	%% SUMMARY IN ENGLISH       %%
+	%% SUMMARY IN ENGLISH     %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \selectlanguage{english}
 \include{Chapters/chapt_english}
+
+	%% CONTENT FOR THE READER %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\renewcommand\evenpagerightmark{{\scshape\small List of Figures}}
+\renewcommand\oddpageleftmark{{\scshape\small List of Figures}}
+\listoffigures
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\newpage
+\renewcommand\evenpagerightmark{{\scshape\small List of Tables}}
+\renewcommand\oddpageleftmark{{\scshape\small List of Tables}}
+\listoftables
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\newpage
+\renewcommand\evenpagerightmark{{\scshape\small List of Acronyms}}
+\renewcommand\oddpageleftmark{{\scshape\small List of Acronyms}}
+\include{phdacronyms}
 
 %% THE BOOK ITSELF   %%
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -274,23 +294,6 @@ Alexis Fagot}}
 \include{Chapters/app2}
 
 \pagenumbering{gobble}
-
-\newpage
-\renewcommand\evenpagerightmark{{\scshape\small List of Figures}}
-\renewcommand\oddpageleftmark{{\scshape\small List of Figures}}
-\listoffigures
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
-\newpage
-\renewcommand\evenpagerightmark{{\scshape\small List of Tables}}
-\renewcommand\oddpageleftmark{{\scshape\small List of Tables}}
-\listoftables
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
-\newpage
-\renewcommand\evenpagerightmark{{\scshape\small List of Acronyms}}
-\renewcommand\oddpageleftmark{{\scshape\small List of Acronyms}}
-\include{phdacronyms}
 
 \newpage
 \renewcommand\evenpagerightmark{{\scshape\small Bibliography}}
