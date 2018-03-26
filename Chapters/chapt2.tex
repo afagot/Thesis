@@ -21,7 +21,7 @@
 	\subsection{LHC, the most powerful particle accelerator}
 	\label{chapt2:ssec:LHC}
 	
-	The LHC has always been considered as an option to the future of CERN. At the moment of the construction of the LEP, the tunnel was built in order to accomodate what would be a \acl{LHC} with a dipole field of \SI{10}{T} and a beam energy in between 8 and \SI{9}{TeV}~\cite{ANNUALREPORT1984} directly followed in 1985 with the creation of a 'Working Group on the Scientific and Technological Future of CERN' to investigate such a collider~\cite{ANNUALREPORT1985}. The decision was finally taken almost 10 years later, in 1994, to construct the LHC in the LEP tunnel~\cite{ANNUALREPORT1994} and the approval of the 4 main experiments that would take place at the 4 interaction points would come in 1997~\cite{ANNUALREPORT1997} and 1998~\cite{ANNUALREPORT1998}:
+	The LHC has always been considered as an option to the future of CERN. At the moment of the construction of the LEP beneath the border between France and Switzerland, the tunnel was built in order to accomodate what would be a \acl{LHC} with a dipole field of \SI{10}{T} and a beam energy in between 8 and \SI{9}{TeV}~\cite{ANNUALREPORT1984} directly followed in 1985 with the creation of a 'Working Group on the Scientific and Technological Future of CERN' to investigate such a collider~\cite{ANNUALREPORT1985}. The decision was finally taken almost 10 years later, in 1994, to construct the LHC in the LEP tunnel~\cite{ANNUALREPORT1994} and the approval of the 4 main experiments that would take place at the 4 interaction points would come in 1997~\cite{ANNUALREPORT1997} and 1998~\cite{ANNUALREPORT1998}:
 	
 	\begin{itemize}
 		\item[•] ALICE~\cite{ALICELOI} has been designed in the purpose of studying quark-gluon plasma that is believed to have been a state of matter that existed in the very first moment of the universe.
@@ -38,7 +38,40 @@
 		\caption{\label{fig:CERNComplex} CERN accelerator complex.}
 	\end{figure}
 	
-	The LHC is a \SI{27}{km} long hadron collider and is the most powerful accelerator used for particle physics since 2008~\cite{LHC2008}. Run 1 of LHC was enough to discover the Higgs boson~\cite{HIGGS2015} and pentaquarks~\cite{PENTAQUARK2015}. The LHC was originally designed to collide protons at a center-of-mass energy of \SI{14}{TeV} and luminosity of $10^{34}$ \si{cm^{-2}s^{-1}}, as well as $Pb$ ions at a center-of-mass energy of \SI{2.8}{TeV/A} with a peak luminosity of $10^{27}$ \si{cm^{-2}s^{-1}}. Nevertheless, after the \acf{LS3} (2024-2026), the accelerator will be in the so called \acf{HL-LHC} configuration~\cite{HLLHC2017}, increasing its instantaneous luminosity to $10^{35}$ \si{cm^{-2}s^{-1}} for $pp$ collisions and to $4.5\times 10^{27}$ \si{cm^{-2}s^{-1}}.
+	The LHC is a \SI{27}{km} long hadron collider and the most powerful accelerator used for particle physics since 2008~\cite{LHC2008}.The LHC was originally designed to collide protons at a center-of-mass energy of \SI{14}{TeV} and luminosity of $10^{34}$ \si{cm^{-2}s^{-1}}, as well as $Pb$ ions at a center-of-mass energy of \SI{2.8}{TeV/A} with a peak luminosity of $10^{27}$ \si{cm^{-2}s^{-1}}. Run 1 of LHC was enough for both CMS and ATLAS to discover the Higgs boson~\cite{HIGGS2015} and for LHCb to discover pentaquarks~\cite{PENTAQUARK2015} and confirm the existance of tetraquarks~\cite{TETRAQUARK2017}. Nevertheless, after the \acf{LS3} (2024-2026), the accelerator will be in the so called \acf{HL-LHC} configuration~\cite{HLLHC2017}, increasing its instantaneous luminosity to $10^{35}$ \si{cm^{-2}s^{-1}} for $pp$ collisions and to $4.5\times 10^{27}$ \si{cm^{-2}s^{-1}}, boosting the discovery potential of the LHC.
+	
+		\subsubsection{Overview of LHC technology}
+		\label{chapt2:sssec:LHCtechno}
+	
+	The two parrallel LHC beams are contained in a single twin-bore magnet because of the space restriction in the LEP tunnel that couldn't allow 2 completely separate proton rings to be built next to each other. The dipoles of the twin-bore magnets are showed in Figure~\ref{fig:LHCDipole} alongside the magnetic field generated along the dipole section to accelerate the particles. Quadrupoles, presented in Figure~\ref{fig:LHCQuadrupole}, are also used to focus to the beams.
+	
+	\begin{figure}[!h]
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width = 0.8\plotwidth]{fig/chapt2/LHC-dipole.jpg}\\
+			\caption{\label{fig:LHCDipole:A}}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width = 0.8\plotwidth]{fig/chapt2/LHC-dipole-field.jpg}
+			\caption{\label{fig:LHCDipole:B}}
+		\end{subfigure}
+		\caption{\label{fig:LHCDipole} Figure~\ref{fig:LHCDipole:A}: schematics of the LHC cryodipoles. Figure~\ref{fig:LHCDipole:B}: magnetic field and resulting motion force applied on the beam particles.}
+	\end{figure}
+	
+	\begin{figure}[!h]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt2/LHC-quadrupole.jpg}
+			\caption{\label{fig:LHCQuadrupole:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt2/LHC-quadrupole-field.png}
+			\caption{\label{fig:LHCQuadrupole:B}}
+		\end{subfigure}
+		\caption{\label{fig:LHCQuadrupole} Figure~\ref{fig:LHCQuadrupole:A}: picture of the LHC quadrupoles. Figure~\ref{fig:LHCQuadrupole:B}: magnetic fields and resulting focussing force applied on the beam bunches by 2 consecutive quadrupoles.}
+	\end{figure}
 
 	\subsection{CMS, a multipurpose experiment}
 	\label{chapt2:ssec:CMS}
