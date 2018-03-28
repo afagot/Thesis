@@ -1,13 +1,13 @@
 % Header
 \renewcommand\evenpagerightmark{{\scshape\small Chapter 2}}
-\renewcommand\oddpageleftmark{{\scshape\small Investigating the\si{TeV} scale}}
+\renewcommand\oddpageleftmark{{\scshape\small Investigating the \si{TeV} scale}}
 
 \renewcommand{\bibname}{References}
 
 \hyphenation{}
 
-\chapter[Investigating the\si{TeV} scale]%
-{Investigating the\si{TeV} scale}
+\chapter[Investigating the \si{TeV} scale]%
+{Investigating the \si{TeV} scale}
 \label{chapt:2}
 
 \section{The Standard Model of Particle Physics}
@@ -38,40 +38,64 @@
 		\caption{\label{fig:CERNComplex} CERN accelerator complex.}
 	\end{figure}
 	
-	The LHC is a \SI{27}{km} long hadron collider and the most powerful accelerator used for particle physics since 2008~\cite{LHC2008}.The LHC was originally designed to collide protons at a center-of-mass energy of \SI{14}{TeV} and luminosity of $10^{34}$ \si{cm^{-2}s^{-1}}, as well as $Pb$ ions at a center-of-mass energy of \SI{2.8}{TeV/A} with a peak luminosity of $10^{27}$ \si{cm^{-2}s^{-1}}. Run 1 of LHC was enough for both CMS and ATLAS to discover the Higgs boson~\cite{HIGGS2015} and for LHCb to discover pentaquarks~\cite{PENTAQUARK2015} and confirm the existance of tetraquarks~\cite{TETRAQUARK2017}. Nevertheless, after the \acf{LS3} (2024-2026), the accelerator will be in the so called \acf{HL-LHC} configuration~\cite{HLLHC2017}, increasing its instantaneous luminosity to $10^{35}$ \si{cm^{-2}s^{-1}} for $pp$ collisions and to $4.5\times 10^{27}$ \si{cm^{-2}s^{-1}}, boosting the discovery potential of the LHC.
+	The LHC is a \SI{27}{km} long hadron collider and the most powerful accelerator used for particle physics since 2008~\cite{LHC2008}. The LHC was originally designed to collide protons at a center-of-mass energy of \SI{14}{TeV} and luminosity of $10^{34}$ \si{cm^{-2}s^{-1}}, as well as $Pb$ ions at a center-of-mass energy of \SI{2.8}{TeV/A} with a peak luminosity of $10^{27}$ \si{cm^{-2}s^{-1}}. Run 1 of LHC, when the center-of-mass energy only was half of the nominal LHC energy, was enough for both CMS and ATLAS to discover the Higgs boson~\cite{HIGGS2015} and for LHCb to discover pentaquarks~\cite{PENTAQUARK2015} and confirm the existance of tetraquarks~\cite{TETRAQUARK2017}. Nevertheless, after the \acf{LS3} (2024-2026), the accelerator will be in the so called \acf{HL-LHC} configuration~\cite{HLLHC2017}, increasing its instantaneous luminosity to $10^{35}$ \si{cm^{-2}s^{-1}} for $pp$ collisions and to $4.5\times 10^{27}$ \si{cm^{-2}s^{-1}}, boosting the discovery potential of the LHC.
 	
-		\subsubsection{Overview of LHC technology}
-		\label{chapt2:sssec:LHCtechno}
+		\subsubsection{Particle acceleration}
+		\label{chapt2:sssec:acceleration}
 	
-	The two parrallel LHC beams are contained in a single twin-bore magnet because of the space restriction in the LEP tunnel that couldn't allow 2 completely separate proton rings to be built next to each other. The dipoles of the twin-bore magnets are showed in Figure~\ref{fig:LHCDipole} alongside the magnetic field generated along the dipole section to accelerate the particles. Quadrupoles, presented in Figure~\ref{fig:LHCQuadrupole}, are also used to focus to the beams.
+	The LHC is the last of a long series of accelerating devices. Before being accelerated by the LHC, the particles need to pass through different acceleration stages. All these acceleration stages are visible on Figure~\ref{fig:CERNComplex} and pictures of the accelerators are showed in Figure~\ref{fig:CERNAccelerators}.\\
 	
-	\begin{figure}[!h]
-		\begin{subfigure}{\linewidth}
-			\centering
-			\includegraphics[width = 0.8\plotwidth]{fig/chapt2/LHC-dipole.jpg}\\
-			\caption{\label{fig:LHCDipole:A}}
-		\end{subfigure}
-		\begin{subfigure}{\linewidth}
-			\centering
-			\includegraphics[width = 0.8\plotwidth]{fig/chapt2/LHC-dipole-field.jpg}
-			\caption{\label{fig:LHCDipole:B}}
-		\end{subfigure}
-		\caption{\label{fig:LHCDipole} Figure~\ref{fig:LHCDipole:A}: schematics of the LHC cryodipoles. Figure~\ref{fig:LHCDipole:B}: magnetic field and resulting motion force applied on the beam particles.}
+	The story of accelerated protons at CERN starts with a bottle of hydrogen gas injected into the source chamber of the linear particle accelerator \textit{LINAC 2} 2 in which a strong electric field strips the electron off the hygroden molecules only to keep their nuclei, the protons. The cylindrical conductors, alternatively positively or negatively charged by radiofrequency cavities, accelerate protons by pushing them from behing and pulling them from the front and ultimately give them an energy of \SI{50}{MeV}, increasing their mass by 5\% in the process.\\
+	
+	When exiting the LINAC 2, the protons are divided into 4 bunches and injected into the 4 superimposed synchrotron rings of the \textit{Booster} where they are then accelerated to reach an energy of \SI{1.4}{GeV} before being injected into the \textit{PS}. Before the Booster was operational in 1972, the protons were directly injected into the PS from the LINAC 2 but the low injection energy limited the amount of protons that could be accelerated at once by the PS. With the Booster, the PS accepts approximately 100 times more particles.\\
+	
+	The 4 proton bunches are thus sent as one to the PS where their energy eventually reaches \SI{26}{GeV}. Since the 70s, the main goal of this \SI{628}{m} circumference synchrotron has been to supply other machines with accelerated particles. Nowadays, not only the PS accelerates protons, it also accelerates heavy ions from the \textit{\acf{LEIR}}. Indeed, the LHC experiments are not only designed to study $pp$-collinsions but also $Pb$-collisions. Lead is first injected into the dedicated linear collider \textit{LINAC 3}, that accelerate the ions using the same principle than LINAC 2. Electrons are striped off the lead ions all along the acceleration process and eventually, only bare nuclei are injected in the LEIR whose goal is to transform the long ion pulses received into short dense bunches for LHC. Ions injected and stored in the PS were aceelerated by the LEIR from \SI{4.2}{MeV} to \SI{72}{MeV}.\\
+	
+	Directly following the PS, is finally the last acceleration stage before the LHC, the \SI{7}{km} long \textit{SPS}. The SPS accelerates the protons to \SI{450}{GeV} and inject proton in both LHC accelerator rings that will increase their energy up to \SI{7}{TeV}. When the LHC runs with heavy lead ions for ALICE and LHCb, ions are injected and accelerated to reach the energy of \SI{2.8}{TeV/A}.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\linewidth]{fig/chapt2/CERN-accelerators.jpg}
+		\caption{\label{fig:CERNAccelerators} Pictures of the different accelerators. From top to bottom: first the LINAC 2 and the $Pb$ source of LINAC 3. Then the Booster and the LEIR. Finally, the PS, the SPS and the LHC.}
 	\end{figure}
 	
-	\begin{figure}[!h]
+	The LHC beams are not continuous and are rather organised in bunch of paticles. When in $pp$-collision mode, the beams are composed of 2808 bunches of $1.15 \times 10^{11}$ protons separated by \SI{25}{ns}. When in $Pb$ collision mode, the 592 $Pb$ bunches are on the contrary composed of $2.2 \times 10^8$ ions separated by \SI{100}{ns}. The two parrallel proton beams of the LHC are contained in a single twin-bore magnet due to the space restriction in the LEP tunnel. Indeed, building 2 completely separate accelerator rings next to each other was impossible. The dipoles of the 1232 twin-bore magnets are showed in Figure~\ref{fig:LHCDipole} alongside the magnetic field generated along the dipole section to accelerate the particles. The dipoles generate a nominal field of \SI{8.33}{T}, needed to give protons and lead nucleons their nominal energy. Some 392 quadrupoles, presented in Figure~\ref{fig:LHCQuadrupole}, are also used to focus to the beams, as well as other multipoles to correct smaller imperfections.
+	
+	\begin{figure}[H]
 		\begin{subfigure}{0.5\linewidth}
 			\centering
-			\includegraphics[width = 0.5\plotwidth]{fig/chapt2/LHC-quadrupole.jpg}
+			\includegraphics[height = 4cm]{fig/chapt2/LHC-dipole.png}
+			\caption{\label{fig:LHCDipole:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[height = 4cm]{fig/chapt2/LHC-dipole-field.jpg}
+			\caption{\label{fig:LHCDipole:B}}
+		\end{subfigure}
+		\caption{\label{fig:LHCDipole} Figure~\ref{fig:LHCDipole:A}: schematics of the LHC cryodipoles. 1: Superconducting Coils, 2: Beam pipe, 3: Heat exchanger Pipe, 4: Helium-II Vessel, 5: Superconducting Bus-bar, 6: Iron Yoke, 7: Non-Magnetic Collars, 8: Vacuum Vessel, 9: Radiation Screen, 10: Thermal Shield, 11: Auxiliary Bus-bar Tube, 12: Instrumentation Feed Throughs, 13: Protection Diode, 14: Quadrupole Bus-bars, 15: Spool Piece Bus-bars. Figure~\ref{fig:LHCDipole:B}: magnetic field and resulting motion force applied on the beam particles.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[height = 4cm]{fig/chapt2/LHC-quadrupole.jpg}
 			\caption{\label{fig:LHCQuadrupole:A}}
 		\end{subfigure}
 		\begin{subfigure}{0.5\linewidth}
 			\centering
-			\includegraphics[width = 0.5\plotwidth]{fig/chapt2/LHC-quadrupole-field.png}
+			\includegraphics[height = 4cm]{fig/chapt2/LHC-quadrupole-field.png}
 			\caption{\label{fig:LHCQuadrupole:B}}
 		\end{subfigure}
-		\caption{\label{fig:LHCQuadrupole} Figure~\ref{fig:LHCQuadrupole:A}: picture of the LHC quadrupoles. Figure~\ref{fig:LHCQuadrupole:B}: magnetic fields and resulting focussing force applied on the beam bunches by 2 consecutive quadrupoles.}
+		\caption{\label{fig:LHCQuadrupole} Figure~\ref{fig:LHCQuadrupole:A}: picture of the LHC quadrupoles. Figure~\ref{fig:LHCQuadrupole:B}: magnetic fields and resulting focussing force applied on the beam by 2 consecutive quadrupoles.}
 	\end{figure}
+	
+		\subsubsection{LHC discoveries and LHC physics program}
+		\label{chapt2:sssec:discovery}
+		
+	The very first proton beam successfully circulated in the LHC in September 2008 directly followed by an incident leading to mechanical damage that would delay the LHC program for a year until November 2009.
+	
+		\subsubsection{\acl{HL-LHC}}
+		\label{chapt2:sssec:HL-LHC}
 
 	\subsection{CMS, a multipurpose experiment}
 	\label{chapt2:ssec:CMS}

@@ -21,7 +21,7 @@ A \acf{RPC} is a gaseous detector using the same physical processes described in
 
 	RPCs are ionisation detectors composed of two parallel resistive plate electrodes in between which a constant electric field is set. The space in between the electrodes, referred as \textit{gap}, is filled with a dense gas that is used to generate primary ionization into the gas volume. The free charge carriers (electrons and cations) created by the ionization of the gas molecules are then accelerated towards the electrodes by the electric field, as shown in Figure~\ref{fig:RPC_principle}~\cite{LIPPMANN2003}.
 	
-	\begin{figure}[!h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width = \plotwidth]{fig/chapt3/RPC_principle.pdf}\\
 		\caption{\label{fig:RPC_principle} Different phases of the avalanche development in the RPC gas volume subjected to a constant electric field $E_0$. a) An avalanche is initiated by the primary ionisation caused by the passage of a charged particle through the gas volume. b) Due to its growing size, the avalanche starts to locally influence the electric field. c) The electrons, lighter than the cations reach the anode first. d) The ions reach the cathode. While the charges have not recombined, the electric field in the small region around the avalanche stays affected and locally blind the detector.}
@@ -37,7 +37,7 @@ A \acf{RPC} is a gaseous detector using the same physical processes described in
 		\item[•] Sulfur hexafluoride, ($SF_6$), referred to simply as \textit{SF6}, is used in very little quantities for its high electronegativity. Excess of electrons are being absorbed by the compound and streamers are suppressed~\cite{ZEBALLOS98}. Nevertheless, a fraction of $SF_6$ higher than 1\% will not bring any extra benefice in terms of streamer cancelation power but will lead to higher operating voltage~\cite{CAMARRI98}, as can be understood through Figure~\ref{fig:SF6}.
 	\end{itemize}
 	
-	\begin{figure}[!h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width = 0.7\plotwidth]{fig/chapt3/SF6.png}
 		\caption{\label{fig:SF6} Effeciency (circles and stars with \SI{30}{mV} and \SI{100}{mV} thresholds respectively) and streamer probability (opened circles) as function of the operating voltatge of a \SI{2}{mm} single gap HPL RPC flushed with a gas mixture containing (a) 5\%, (b) 2\%, (c) 1\% and (d) no $SF_6$~\cite{CAMARRI98}.}
@@ -59,7 +59,7 @@ A \acf{RPC} is a gaseous detector using the same physical processes described in
 	
 	Very few materials with a low enough resistivity exist in nature. The resistivity targeted to build RPCs ranges from $10^9$ to $10^{12}$ \si{\ohm\cdot cm}. The most common RPC electrode materials are displayed in Table~\ref{tab:tau}. When the doped glass and ceramics can offer short time constants of the order of \SI{1}{ms}, the developing cost of such materials is quite high due to the very low demand. Thus, \acf{HPL} is often the choice for high rate experiments using very large RPC detection areas. Other experiments working at cosmic muon fluxes can safely operate with ordinary float glass.
 	
-	\begin{table}[!h]
+	\begin{table}[H]
 		\centering
 		\begin{tabular}{|l|c|c|c|}
 		\hline
@@ -91,7 +91,7 @@ A \acf{RPC} is a gaseous detector using the same physical processes described in
 	
 	RPCs where developed early 1980s. At that time it was using an operating mode now referred to as \textit{streamer mode}. Streamers are large discharges that develop in between the 2 electrodes enough to locally discharge the electrodes. If the electric field inside of the gas volume is strong enough, with electrons being fast compared to ions, a large and dense cloud of positive ions will develop nearby the anode and extend toward the cathode while the electrons are being collected, eventually leading to a streamer discharge due to the increase of field seen at the cathode. the field is then strong enough so that electrons are pulled out of the cathode. Electrodes, though they are a unique volume of resistive material, can be assimilated to capacitors. At the moment an electric field is applied in between their outer surfaces, the charge carriers inside of the volume will start moving leading to a situation where there is no voltage across the electrodes and a higher density of negative charges, i.e. electrons, on the inner surface of the cathode. Finally, when a streamer discharge occurs, these electrons are partially released in the gas volume contributing to increase the discharge strength until the formation of a conductive plasma, the streamer. This can be understood through Figure~\ref{fig:ElecCharge}~\cite{CROTTY93}. Streamer signals are very convenient in terms of read-out as no amplification is required with output pulses amplitudes of the order of a few tens to few hundreds of \si{mV} as can be seen on Figure~\ref{fig:ModeSignal}.
 	
-	\begin{figure}[!h]
+	\begin{figure}[H]
 		\begin{subfigure}{0.5\linewidth}
 			\centering
 			\includegraphics[width = 0.5\plotwidth]{fig/chapt3/RPC_Charging_1.png}
@@ -112,7 +112,7 @@ A \acf{RPC} is a gaseous detector using the same physical processes described in
 	
 	When the electric field is reduced though, the electronic gain is small until the electrons get close enough to the anode and the positive ion cloud is much smaller. The electric field cannot rise to the point a field emission of electrons on the cathode is possible. The resulting signal is weak, of the order of a few \si{mv} as shown on Figure~\ref{fig:ModeSignal}, and requires amplification. This is the \textit{avalanche mode} of RPC operation.
 	
-	\begin{figure}[!h]
+	\begin{figure}[H]
 		\begin{subfigure}{0.5\linewidth}
 			\centering
 			\includegraphics[width = 0.5\plotwidth]{fig/chapt3/RPC_Streamer_Mode.png}
@@ -126,7 +126,7 @@ A \acf{RPC} is a gaseous detector using the same physical processes described in
 		\caption{\label{fig:ModeSignal} Typical oscilloscope pulses in streamer mode (Figure~\ref{fig:ModeSignal:A}) and avalanche mode(Figure~\ref{fig:ModeSignal:B}). In the case of streamer mode, the very small avalanche signal is visible.}
 	\end{figure}
 	
-	\begin{figure}[!h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width = \plotwidth]{fig/chapt3/Rate_Mode_Comparison.png}
 		\caption{\label{fig:ModeRate} Rate capability comparison for the streamer and avalanche mode of operation. An order of magnitude in rate capability for a maximal efficiency drop of 10\% is gained by using the avalanche mode over the streamer mode.}
@@ -144,13 +144,13 @@ A \acf{RPC} is a gaseous detector using the same physical processes described in
 	
 	Double-gap RPCs are made out of 2 narrow RPC detectors. The 2 RPC gaps are stacked on top of each other as shown in Figure~\ref{fig:DGLayout}. This detector layout, popularized by the two multipurpose experiments CMS~\cite{MUONTDR} and ATLAS~\cite{ATLASTDR} at LHC, can be used as an OR system in which each individual chamber participates in the ouput signal. The gain of such a detector is greatly reduced with respect to single-gap RPCs with an efficiency plateau reached at lower voltage, as visible on Figure~\ref{fig:DoubleGap}.
 	
-	\begin{figure}[!h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width = \plotwidth]{fig/chapt3/Double_gap_layouts.pdf}
 		\caption{\label{fig:DGLayout} Possible double-gap RPC layouts: a) "standard" 1D double-gap RPC, as used in CMS experiment, where the anodes are facing each other and a 1D read-out plane is sandwished in between them,  b) double read-out double-gap RPC as used in ATLAS experiment, where the cathodes are facing each other and 2 read-out planes are used on the outter surfaces. This last layout can offer the possibility to use a 2D reconstruction by using orthogonal read-out planes.}
 	\end{figure}
 	
-	\begin{figure}[!h]
+	\begin{figure}[H]
 		\begin{subfigure}{0.5\linewidth}
 			\centering
 			\includegraphics[width = 0.5\plotwidth]{fig/chapt3/Double-gap-Sigmoid.png}\\
@@ -174,7 +174,7 @@ A \acf{RPC} is a gaseous detector using the same physical processes described in
 	
 	MRPCs are layouts in which floating sub electrode plates are placed into a wide gap RPC to divide the gas volume and create a sum of narrow gaps~\cite{ZEBALLOS96MRPC,WILLIAMS98}. The time resolution of such a detector can reach of few tens of \si{ps}, with gas gaps of the order of a a few hundred \si{\micro m} as shown in Figure~\ref{fig:MRPC} representing ALICE \acf{ToF} MRPCs.
 	
-	\begin{figure}[!h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width = 0.6\plotwidth]{fig/chapt3/MRPC-Layout.png}\\
 		\caption{\label{fig:MRPC} Presentation of ALICE MRPC using \SI{250}{\micro m} gas gaps, \SI{620}{\micro m} outer glass electrodes and \SI{550}{\micro m} inner floating electrodes. More details on the labels are given in~\cite{ALICE2002}.}
@@ -194,7 +194,7 @@ A \acf{RPC} is a gaseous detector using the same physical processes described in
 	
 	An example of particle identification is given for the case of STAR experiment in Figure~\ref{fig:ParticleID}.
 	
-	\begin{figure}[!h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width = \plotwidth]{fig/chapt3/STAR-ToF.png}\\
 		\caption{\label{fig:ParticleID} Particle identification applied to electrons in the STAR experiment. The identification is performed combining ToF and $dE/dx$ measurements~\cite{WILLIAMS2012}.}
@@ -202,7 +202,7 @@ A \acf{RPC} is a gaseous detector using the same physical processes described in
 	
 	Another benefice of using such small gas gaps is the strong reduction of the average avalanche volume and thus of the blind spot on MRPCs leading to an improved rate capability. Multigaps can sustain backgrounds of several \si{kHz/cm^2} as demonstrated in Figure~\ref{fig:MRPCRate}.
 	
-	\begin{figure}[!h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width = 0.7\plotwidth]{fig/chapt3/ALICE-Rate_Capability.png}\\
 		\caption{\label{fig:MRPCRate} Comparison of the detector performance of ALICE ToF MRPC~\cite{ALICI2007} at fixed applied voltage (in blue) and at fixed effective voltage (in red). The effective voltage is kept fixed by increasing the applied voltage accordingly to the current drawn by the detector.}
@@ -215,19 +215,19 @@ A \acf{RPC} is a gaseous detector using the same physical processes described in
 	
 	On the charge spectrum point of view, each layout has its own advantages. When the double-gap has the highest induced over drifting charge ratio, as seen in Figure~\ref{fig:ChargeRatio}, the multigap has a charge spectrum strongly detached from the origin, as visible in Figure~\ref{fig:ChargeSpectra}. A high induced over drifting charge ratio means that the double gap can be safely operated at high threshold or that at similar threshold it can be operated with a twice smaller drifting charge, meaning a higher rate capability. On the other hand, the strong detachment of the charge spectrum from the origin in the MRPC case allows to reach a higher efficiency with increasing threshold as most of the induced charge is not low due to the convolution of several single gap spectra. The range of stable efficiency increases with the number of gap, as presented in Figure~\ref{fig:EffThreshold}.
 	
-	\begin{figure}[!h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width = 0.6\plotwidth]{fig/chapt3/Layout_charge_ratio.png}\\
 		\caption{\label{fig:ChargeRatio} Ratio between total induced and drifting charge have been simulated for single gap, double-gap and multigap layouts~\cite{ABBRESCIA99}. The total induced charge for a double-gap RPC is a factor 2 higher than for a multigap.}
 	\end{figure}
 	
-	\begin{figure}[!h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width = \plotwidth]{fig/chapt3/Layout_charge_distributions.png}\\
 		\caption{\label{fig:ChargeSpectra} Charge spectra have been simulated for single gap, double-gap and multigap layouts~\cite{ABBRESCIA99}. It appears that when single gap shows a decreasing spectrum, double and multigap layouts exhibit a spectrum whose peak is detached from the origin. The detachment gets stronger as the number of gaps increases.}
 	\end{figure}
 	
-	\begin{figure}[!h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width = 0.6\plotwidth]{fig/chapt3/Layout_eff_vs_thr.png}\\
 		\caption{\label{fig:EffThreshold} The maximal theoretical efficiency is simulated for single gap, double-gap and multigap layouts~\cite{ABBRESCIA99} at a constant gap thickness of \SI{2}{mm} and using an effective Townsend coefficient of \SI{9}{mm^{-1}}.}

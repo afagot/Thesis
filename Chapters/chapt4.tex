@@ -54,7 +54,7 @@ at \SI{1.6}{Gbps}.
 	
 		Signals induced by cosmic particle in the RPC strips are shaped by standard CMS RPC \acf{FEE} following the scheme of Figure~\ref{fig:DAQ}. On a first stage, analogic signals are amplified and then sent to the \acf{CFD} described in Figure~\ref{fig:CFD}. At the end of the chain, \SI{100}{ns} long pulses are sent in the LVDS output. These output signal are sent on one side to a V1190A \acf{TDC} module from CAEN and on the other to an OR module to count the number of detected signals. Trigger and hit coïncidences are monitored using scalers. The TDC is used to store the data into ROOT files. These files are thus analysed to understand the detectors performance.
 
-			\begin{figure}[!h]
+			\begin{figure}[H]
 			\begin{subfigure}{\linewidth}
 				\centering
 				\includegraphics[width = \plotwidth]{fig/chapt4/pulse-processing.pdf}\\
@@ -68,7 +68,7 @@ at \SI{1.6}{Gbps}.
 			\caption{\label{fig:DAQ} Signals from the RPC strips are shaped by the FEE described on Figure ~\ref{fig:DAQ:A}. Output LVDS signals are then read-out by a TDC module connected to a computer or converted into NIM and sent to scalers. Figure~\ref{fig:DAQ:B} describes how these converted signals are put in coincidence with the trigger.}
 		\end{figure}
 		
-		\begin{figure}[!h]
+		\begin{figure}[H]
 			\begin{subfigure}{\linewidth}
 				\centering
 				\includegraphics[width = \plotwidth]{fig/chapt4/CFD_1.pdf}\\
