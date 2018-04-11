@@ -82,14 +82,19 @@
 \newcommand{\numerror}[2]{\ensuremath{(\num{#1}\pm\num{#2}})} % e.g. 1000 ± 10
 \newcommand{\SIerror}[3]{\numerror{#1}{#2}\,\si{#3}} % e.g. (100 ± 5) nA
 \newcommand{\SIsurface}[3]{\mbox{\num{#1 x #2}\,\si{\square #3}}}
-\newcommand{\SIflux}[1]{\num{#1}\,particles\si{\second^{-1}\cm^{-2}}}
+\newcommand{\SIflux}[1]{\num{#1}\,\si{\second^{-1}\cm^{-2}}}
 \newcommand{\SIrate}[1]{\num{#1}\,\si{\hertz\cm^{-2}}}
+\newcommand{\siflux}{\si{\second^{-1}\cm^{-2}}}
+\newcommand{\sirate}{\si{\hertz\cm^{-2}}}
 
 % Functions to write century number or date numbers
 \newcommand{\St}[1]{#1$^{st}$}
 \newcommand{\Nd}[1]{#1$^{nd}$}
 \newcommand{\Rd}[1]{#1$^{rd}$}
 \newcommand{\Th}[1]{#1$^{th}$}
+
+% Function to write scientific numbers
+\newcommand{\Sci}[2]{$#1 \times 10^{#2}$}
 
 
 %%%%%%%%%%%%%%%%%
