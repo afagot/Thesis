@@ -68,7 +68,25 @@
 	\subsubsection*{Development of the \acl{QED}, of the Weak interaction and the Electroweak unification}
 	\label{chapt2:sssec:QED}
 	
-	Historically, the development of the quantum theory revolved around the question of emission and absorption of light. Einstein used the initial intuition of Plank to develop in 1905 a model to explain the photoelectric effect.
+	Historically, the development of the quantum theory revolved around the question of emission and absorption of discrete amount of energy through light. Einstein used the initial intuition of Plank about the black-body radiation to develop in 1905 a model to explain the photoelectric effect in which light was described by discrete quanta now called \textit{photons}. For this model, Einstein introduced the concept of wave-particle duality as classical theory was not able to describe the phenomenon. With the new understanding of atoms and of their structure, classical theories also proved unable to explain atoms stability. Indeed, using classical mechanics, electrons orbiting aroung a nucleus should radiate an energy proportionnal to their angular momentum and thus loose energy through time and the spectrum of energy emission should then be continuous, but it was known since the \Th{19} century and the discovery of spectral lines that the emission spectrum of material was discrete.
+	
+	This was Bohr who first suggested that a quantum description of the atom was necessary in 1913. Using the correspondence principle stating that are large enough numbers the quantum calculations should give the same results than the classical theory, he proposed the very first quantum model of the hydrogen atom explaining the line spectrum by introducing the principal quantum number $n$ describing the electron shell. This model would then be improved by Sommerfeld that would quantize the z-component of the angular momentum, leading to a the second and third quantum numbers, or azimuthal and magnetic quantum number, $l$ and $m$ defining for the second the orbital angular momentum of the electrons on their shells and thus, the shape of the orbital, and for the third the available orbital on the subshell for each electron. Nevertheless, although the model was not only limited to sperical orbitals anymore, making the atom more realistic, the Zeeman effect couldn't be completely explained by just using $n$, $l$ and $m$. A solution would be brought after the discovery of Pauli in 1924, as Uhlenbeck, Goudsmit, and Kronig proposed in 1925 the idea of intrinsic rotation of the electron, introducing a new angular momentum vector associated to the particle itself, and not to the orbital, and associated to a new quantic number $s$, the \textit{spin} projection quantum number explaining the lift of degeneracy to an even number of energy levels.
+	
+	The introduction of the \textit{spin} happened 1 year after another attempt of improvement of the theory was made by De Broglie in his PhD thesis. The original formulation of the quantum theory only considered photons as energy quanta behaving as both waves and particles. De Broglie proposed that all matter are described by waves and that there momentum is proportional to the oscillation of quantized electromagnetic field oscillators. This interpretation was able to reproduce the previous version of the quantum energy levels by showing that the quantum condition involves an integer multiple of $2\pi$, as shown by Formula~\ref{eq:matterwave}.
+	
+	\begin{equation}
+		\label{eq:matterwave}
+		p = \hbar k \Leftrightarrow \int p dx = \hbar\int k dx = 2\pi\hbar n
+	\end{equation}
+	
+	Although the intuition of De Broglie about the wave-particle duality of all matter, his interpretation was semiclassical and it's in 1926 that the first fully quantum mechanical wave-equation would be introduced by Schrödinger to describe electron-like particles, reproducing the previous semiclassical formulation without inconsistencies. This complexe equation describes the evolution of the wave function $\Psi$ of the quantum system, defined by it's position vector $\mathbf{r}$ and time $t$ as an energy conservation law, in which the hamiltonian of the system $\hat{H}$ is explicit, by solving the Equation~\ref{eq:schrodinger}.
+	
+	\begin{equation}
+		\label{eq:schrodinger}
+		i\hbar \frac{\partial}{\partial t} \vert \Psi(\mathbf{r},t)\rangle  = \hat{H} \vert \Psi(\mathbf{r},t)\rangle
+	\end{equation}
+	
+	In 1927, Dirac would go further in his paper about emission and absorption of radiation by proposing a quantization not only of the physical process at play but also of the electromagnetic field, leading to the first formulation of \textit{\acf{QED}}.
 	
 	\subsubsection*{Development of the Higgs mechanism}
 	\label{chapt2:sssec:Higgs}
