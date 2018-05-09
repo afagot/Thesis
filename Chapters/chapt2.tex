@@ -183,7 +183,7 @@
 	
 	All these different aspects of physics beyond the Standard Model of particle physics and the Standard model itself can be tested through the use of very energetic and intense hadron and ion colliders. The LHC at CERN is a perfect tool to seek answers to these open questions except maybe for the gravity as gravity is extremely weak at particles level. For example, one of LHCb experiment's goal is to investigate CP-violation and thus baryonic asymmetry. In 2017, the collaboration has announced to have so far a \Sig{3.3} statistical significance over a CP-violation through the study of the decays of $\Lambda^0_b$ and $\overline{\Lambda^0_b}$ into a proton (or antiproton) and 3 pions. Many analysis teams are also working hard on supersymmetry both in ATLAS and CMS collaborations, the two multipurpose experiments of LHC, even though no evidence of a supersymmetrical theory was seen, the few hint having the tendency to confirm the standard model. These experiments also have the possibility to investigate ways to explain Majorana neutrino mass through Yukawa interactions of scalar particles.
 	
-	The higher the center-of-mass energy, the smaller details the experiments will be able to see, the heavier the potential particle creation barrier will be, the stronger the cross-section of certain rare decay channels will be. All these advantages eventually lead to new discoveries and deeper understanding of the models describing our Universe. But the LHC only is a step forward to gather more precise tests of the Standard Model and new knowledge about the physics beyond it. A successful physics campaign will probably serve to justify the building of new accelerators with even greater discovery potential like for example the \acf{FCC} that would push even further the study of the unanswered questions of contemporary physics.
+	The higher the center-of-mass energy, the smaller details the experiments will be able to see, the heavier the potential particle creation barrier will be, the stronger the cross-section of certain rare decay channels will be. As a comparison, with collisions happening at \SI{14}{TeV}, the LHC is approximately 2 orders of magnitude more sensitive to the Higgs than the Tevatron was with its already very powerful \SI{2}{TeV}. All these advantages eventually lead to new discoveries and deeper understanding of the models describing our Universe. But the LHC only is a step forward to gather more precise tests of the Standard Model and new knowledge about the physics beyond it. A successful physics campaign will probably serve to justify the building of new accelerators with even greater discovery potential like for example the \acf{FCC} that would push even further the study of the unanswered questions of contemporary physics.
 
 \section{The \acl{LHC} \& the \acl{CMS}}
 \label{chapt2:sec:LHC-CMS}
@@ -258,9 +258,68 @@
 		\end{subfigure}
 		\caption{\label{fig:LHCQuadrupole} Figure~\ref{fig:LHCQuadrupole:A}: picture of the LHC quadrupoles. Figure~\ref{fig:LHCQuadrupole:B}: magnetic fields and resulting focussing force applied on the beam by 2 consecutive quadrupoles.}
 	\end{figure}
+
+	\subsection{CMS, a multipurpose experiment}
+	\label{chapt2:ssec:CMS}
 	
-		\subsubsection{\acl{HL-LHC}}
-		\label{chapt2:sssec:HL-LHC}
+	Among the four main LHC experiment is the Compact Muon Solenoid used as a multipurpose tool to investigate the SM and physics beyond its scope. Proposed through a letter of intention in 1992~\cite{CMSLOI}, and as its name suggests, this very compact detector's uses the muons as a clear tag of most of SM and new physics interesting channels. In the original 1997 \acf{TDR}~\cite{MUONTDR}, the very first sentences were stating that \textit{"Muons are an unmistakable signature of most of the physics LHC is designed to explore. The ability to trigger on and reconstruct muons at the highest luminosities is central to the concept of CMS, the Compact Muon Solenoid."} CMS participated in the discovery of the Higgs boson and the measurement of its properties and couplings together with ATLAS and is also actively involved in the search for SUSY and heavy ion collisions. Other exotic physics are also being investigated using the data collected by CMS.
+	
+	The CMS apparatus in itself is the heaviest detector ever built starring a SI{15}{m} diameter and a \SI{29}{m} length for a total weight of \SI{14}{kT}. A thick \SI{4}{T} solenoid magnet located at the beam interaction point hosts trackers and calorimeters. Extending in all directions around the magnet, heavy iron return yokes are installed to extend the magnetic field and support a muon system. The apparatus consists of a barrel, referring to the magnet and the detectors contained in it and the part of the muon system built directly in the cylinder around the magnet, and of 2 endcaps in the forward and backward region of the detector that closes the apparatus and complete the detection coverage along the beam line. A front view on the barrel is provided in Figure~\ref{fig:CMS} while a detailed view of the apparatus is given in Figure~\ref{fig:CMS-detail}.
+	
+	In order to efficiently detect all long leaving particles and measure their properties with good precision, the CMS detector uses an onion like layout around of the interaction point in order to maximize the covered solid angle. As detailed in Figure~\ref{fig:CMS-slice}, in the innermost region of the detector, closest to the interaction point, the silicon tracker records the trajectory of charged particles. Around it, the \acf{ECAL} stops and measure the energy deposition of electrons and photons. In the next layer, the \acf{HCAL}, hadrons are stopped are their energy measured. These layers are contained inside of the magnet of CMS, the superconducting solenoid. Outside of the magnet are the muon chambers embedded into iron return yokes used to control the magnetic field and gives muons, the only particles traveling completely through the whole detector, a double bending helping in reconstructing their energy and trajectory. Note that photons and neutral hadrons are differentiated from electrons and charged hadrons in the calorimeters by the fact  that don't interact with the silicon tracker and that they are not influenced by the magnetic field.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\textwidth]{fig/chapt2/CMS.jpg}
+		\caption{\label{fig:CMS} Picture of the CMS barrel. The red outer layer is the muon system hosted into the red iron return yokes. The calorimeters are the blue cylinder inside in magnet solenoid and the tracker is the inner yellow cylinder built around the beam pipe.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{fig/chapt2/CMS_detail.pdf}
+		\caption{\label{fig:CMS-detail} View of the CMS apparatus and of its different components.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\textwidth]{fig/chapt2/CMS_slice.png}
+		\caption{\label{fig:CMS-slice} Slice showing CMS sub-detectors and how particles interact with them.}
+	\end{figure}
+	
+	The silicon tracker visible on Figure~\ref{fig:tracker} is divided into 2 different sub-systems: the \textit{pixel detector} at the very core and the \textit{microstrip detector} around it. This system is composed of 75 million individual readout channels with up to 6000 channels per squared centimeter for the pixels making it the world's biggest silicon detector. This density allows for measurements of the particle tracks with a precision of the order of \SI{10}{\mu m}. This is necessary to reconstruct all the different interaction vertices with precision and have a precise measure of the curvature of the charged particles traveling through the magnetic field to estimate their charge and momentum.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\textwidth]{fig/chapt2/Tracker.jpg}
+		\caption{\label{fig:tracker} CMS tracker.}
+	\end{figure}
+	
+	The ECAL directly surrounding the tracker is composed of crystals of lead tungstate, $PbWO_4$, a very dense but optically transparent material used to stop high energy electrons and photons. These crystal blocks basically are extremely dense scintillators which scintillate in fast, short light bursts proportionally to the energy deposition. The light is yielded rapidly and contained at 80\% in the corresponding \SI{25}{ns} lasting bunch crossing. Each crystal is isolated from the other by the carbon fiber matrix they are embedded in. It is composed of a barrel containing more than 60,000 crystals and of closing endcaps containing another 15,000 crystals. In front of the ECAL endcap is installed a preshower detector made out of two layers of lead and silicon strip detectors to increase the spatial resolution close to the beam line for pion-photon and single-double photon discrimination purposes. Figure~\ref{fig:ECAL} shows the calorimeter inside of the magnet and the crystals.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[height = 4cm]{fig/chapt2/ECAL_barrel.jpg}
+			\caption{\label{fig:ECAL:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[height = 4cm]{fig/chapt2/ECAL_crystals.jpg}
+			\caption{\label{fig:ECAL:B}}
+		\end{subfigure}
+		\caption{\label{fig:ECAL} Figure~\ref{fig:ECAL:A}: picture of the ECAL. Figure~\ref{fig:ECAL:B}: picture of the lead tungstate crystals composing the ECAL.}
+	\end{figure}
+	
+	The next layer is the HCAL measuring the hadrons momentum and providing indirect hints of non interacting neutral particles, such as neutrinos, as missing transverse momentum. Several layers of brass or steel are interleaved with plastic scintillators readout by photodiodes using wavelength-shifting fibers. The HCAL is also composed of a barrel, showed in Figure~\ref{fig:HCAL} and of endcaps. It also features forward calorimeters on both sides of CMS in the region very close to the beam line at high pseudorapidity ($3.0 <$ \Norm{\eta} $< 5.0$). The role of these forward calorimeters, made using steel and quartz fibers, is to measure very energetic hadrons.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\textwidth]{fig/chapt2/HCAL.jpg}
+		\caption{\label{fig:HCAL} CMS hadron calorimeter barrel.}
+	\end{figure}
+	
+	\subsection{\acl{HL-LHC}}
+	\label{chapt2:ssec:HL-LHC}
 		
 	The very first proton beam successfully circulated in the LHC in September 2008 directly followed by an incident leading to mechanical damage that would delay the LHC program for a year until November 2009, the very first collisions at a center-of-mass energy of \SI{7}{TeV} taking place in March 2010. The energy of the beam would be increased after a \acf{LS1} starting early 2013 after less than 3 years of data taking. Nevertheless, this first data taking period at only \SI{7}{TeV} was sufficient to claim the discovery of a new particle compatible with the Higgs boson in July 2012. During the 2 years of shutdown, the upgrade of the accelerator allowed for several maintainances along the beam pipes, repair and consolidation of magnet connection and high-current splices. But not only the LHC was upgraded. Indeed, the experiments at the 4 collision points also took the advantage of this time to upgrade their system in prevision of the next LHC run (Run-II) until 2018 and the \acf{LS2} as the luminosity and energy of the beam would be continuously increasing. By the end of Run-II, the luminosity will have reached twice its nominal value when the center-of-mass energy has already got close to its nominal value by reaching an historical \SI{13}{TeV} for the first time in 2017.
 	
@@ -275,12 +334,9 @@
 		
 	After approximately 15 years of operation, the LHC will undergo a new series of upgrade during the LS3 in order to boost its discovery potential. This moment onward is what is referred to HL-LHC or Phase-II as showed in Figure~\ref{fig:HL-LHC-Timeline}. The goal is to aim to a luminosity 5 to 7 times stronger than the nominal one trying to reach even 10 times this value if possible. Increasing the luminosity means that the beam size at the collision points needs to be reduced to boost the number of collisions per bunch. For this purpose, new focusing and bending magnets and collimators will be installed at the collision points as well as newly developed \textit{"crab cavities"} that will tilt the particle bunches just prior to the collisions by giving them transverse momentum and thus increasing their meeting area. In addition, the full proton injection line will be upgraded.
 	
-	So far, the HL-LHC is expected to deliver an outstanding integrated luminosity of \SI{3000}{fb^{-1}} leading, in the case of Higgs studies, to measuring the couplings of the boson to a precision of 2 to 5\% thanks to the estimated 15 millions of Higgs created each year providing a more precise measurement of potential deviations from the theoretical predictions. SUSY studies would also see their limits pushed away and could lead to a new breakthrough. SUSY is a particularly important topic as it could give an answer to why the Higgs boson can stay so light while coupled to heavy particles by introducing the contributions of the super partners on top of providing dark matter candidates. Finally, the increase of luminosity will give the possibility to investigate "exotic" mode like for example the models introducing extra dimensions to explain the hierarchy problem.
+	Over its full lifetime, the HL-LHC is expected to deliver an outstanding integrated luminosity of \SI{3000}{fb^{-1}} leading, in the case of Higgs studies, to measuring the couplings of the boson to a precision of 2 to 5\% thanks to the estimated 15 millions of Higgs created each year providing a more precise measurement of potential deviations from the theoretical predictions. SUSY studies would also see their limits pushed away and could lead to a new breakthrough. SUSY is a particularly important topic as it could give an answer to why the Higgs boson can stay so light while coupled to heavy particles by introducing the contributions of the super partners on top of providing dark matter candidates. Finally, the increase of luminosity will give the possibility to investigate "exotic" mode like for example the models introducing extra dimensions to explain the hierarchy problem.
 	
 	On the experiments side, the \acf{PU} will be increased up to 150 to 200 interactions per bunch crossing in ATLAS and CMS, making necessary an strong upgrade of the trigger system and of the inner trackers and of the calorimeters. Both ATLAS and CMS will also need to upgrade the muon trigger at the level of the endcaps mainly focusing on the coverage near the beam line in order to increase the detection acceptance and event selection. Moreover, the increased luminosity will also lead to an increased background rate and a faster ageing of the detectors. This PhD work takes place into this very specific context of muon detector consolidation and certification for the HL-LHC period in order to provide the CMS experiment with robust detectors that will live through the next 20 years of HL-LHC.
-
-	\subsection{CMS, a multipurpose experiment}
-	\label{chapt2:ssec:CMS}
 
 \section{Muon Phase-II Upgrade}
 \label{chapt2:sec:phase-2}
@@ -299,7 +355,7 @@ The measurement of small production cross-section and/or decay branching ratio p
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{fig/chapt2/MuonUpgrade-Plans.jpg}
+	\includegraphics[width=0.7\textwidth]{fig/chapt2/CMS_Muon_quadrant.pdf}
 	\caption{\label{fig:Quadrant} A quadrant of the muon system, showing DTs (yellow), RPCs (light blue), and CSCs (green). The locations of new forward muon detectors for Phase-II are contained within the dashed box and indicated in red for GEM stations (ME0, GE1/1, and GE2/1) and dark blue for improved RPC (iRPC) stations (RE3/1 and RE4/1).}
 \end{figure}
 
