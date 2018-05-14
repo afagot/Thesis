@@ -264,13 +264,13 @@
 	
 	Among the four main LHC experiment is the Compact Muon Solenoid used as a multipurpose tool to investigate the SM and physics beyond its scope. Proposed through a letter of intention in 1992~\cite{CMSLOI}, and as its name suggests, this very compact detector's uses the muons as a clear tag of most of SM and new physics interesting channels. In the original 1997 \acf{TDR}~\cite{MUONTDR}, the very first sentences were stating that \textit{"Muons are an unmistakable signature of most of the physics LHC is designed to explore. The ability to trigger on and reconstruct muons at the highest luminosities is central to the concept of CMS, the Compact Muon Solenoid."} CMS participated in the discovery of the Higgs boson and the measurement of its properties and couplings together with ATLAS and is also actively involved in the search for SUSY and heavy ion collisions. Other exotic physics are also being investigated using the data collected by CMS.
 	
-	The CMS apparatus in itself is the heaviest detector ever built starring a SI{15}{m} diameter and a \SI{29}{m} length for a total weight of \SI{14}{kT}. A thick \SI{4}{T} solenoid magnet located at the beam interaction point hosts trackers and calorimeters. Extending in all directions around the magnet, heavy iron return yokes are installed to extend the magnetic field and support a muon system. The apparatus consists of a barrel, referring to the magnet and the detectors contained in it and the part of the muon system built directly in the cylinder around the magnet, and of 2 endcaps in the forward and backward region of the detector that closes the apparatus and complete the detection coverage along the beam line. A front view on the barrel is provided in Figure~\ref{fig:CMS} while a detailed view of the apparatus is given in Figure~\ref{fig:CMS-detail}.
+	The CMS apparatus in itself is the heaviest detector ever built starring a SI{15}{m} diameter and a \SI{29}{m} length for a total weight of \SI{14}{kT}. A thick \SI{4}{T} solenoid magnet located at the beam interaction point hosts trackers and calorimeters. Extending in all directions around the magnet, heavy iron return yokes are installed to extend the magnetic field and support a muon system. The apparatus consists of a barrel, referring to the magnet and the detectors contained in it and the part of the muon system built directly in the cylinder around the magnet, and of 2 endcaps in the forward and backward region of the detector that closes the apparatus and complete the detection coverage along the beam line. A front view on the barrel is provided in Figure~\ref{fig:CMS} while a detailed view of the apparatus is given in Figure~\ref{fig:CMS-detail}.\\
 	
 	In order to efficiently detect all long leaving particles and measure their properties with good precision, the CMS detector uses an onion like layout around of the interaction point in order to maximize the covered solid angle. As detailed in Figure~\ref{fig:CMS-slice}, in the innermost region of the detector, closest to the interaction point, the silicon tracker records the trajectory of charged particles. Around it, the \acf{ECAL} stops and measure the energy deposition of electrons and photons. In the next layer, the \acf{HCAL}, hadrons are stopped are their energy measured. These layers are contained inside of the magnet of CMS, the superconducting solenoid. Outside of the magnet are the muon chambers embedded into iron return yokes used to control the magnetic field and gives muons, the only particles traveling completely through the whole detector, a double bending helping in reconstructing their energy and trajectory. Note that photons and neutral hadrons are differentiated from electrons and charged hadrons in the calorimeters by the fact  that don't interact with the silicon tracker and that they are not influenced by the magnetic field.
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.7\textwidth]{fig/chapt2/CMS.jpg}
+		\includegraphics[width=0.65\textwidth]{fig/chapt2/CMS.jpg}
 		\caption{\label{fig:CMS} Picture of the CMS barrel. The red outer layer is the muon system hosted into the red iron return yokes. The calorimeters are the blue cylinder inside in magnet solenoid and the tracker is the inner yellow cylinder built around the beam pipe.}
 	\end{figure}
 	
@@ -310,13 +310,82 @@
 		\caption{\label{fig:ECAL} Figure~\ref{fig:ECAL:A}: picture of the ECAL. Figure~\ref{fig:ECAL:B}: picture of the lead tungstate crystals composing the ECAL.}
 	\end{figure}
 	
-	The next layer is the HCAL measuring the hadrons momentum and providing indirect hints of non interacting neutral particles, such as neutrinos, as missing transverse momentum. Several layers of brass or steel are interleaved with plastic scintillators readout by photodiodes using wavelength-shifting fibers. The HCAL is also composed of a barrel, showed in Figure~\ref{fig:HCAL} and of endcaps. It also features forward calorimeters on both sides of CMS in the region very close to the beam line at high pseudorapidity ($3.0 <$ \Norm{\eta} $< 5.0$). The role of these forward calorimeters, made using steel and quartz fibers, is to measure very energetic hadrons.
+	The next layer is the HCAL measuring the hadrons momentum and providing indirect hints of non interacting neutral particles, such as neutrinos, as missing transverse momentum. Several layers of brass or steel are interleaved with plastic scintillators readout by photodiodes using wavelength-shifting fibers. The HCAL is also composed of a barrel, showed in Figure~\ref{fig:HCAL} and of endcaps. It also features forward calorimeters on both sides of CMS in the region very close to the beam line at high pseudorapidity (\psrapr{3.0}{5.0}). The role of these forward calorimeters, made using steel and quartz fibers, is to measure very energetic hadrons.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.6\textwidth]{fig/chapt2/HCAL.jpg}
 		\caption{\label{fig:HCAL} CMS hadron calorimeter barrel.}
 	\end{figure}
+	
+	Finally, in the outer region of the apparatus, a muon system is used to trigger on potentially interesting event by identifying muons. Indeed, the muon system is a very important part of the CMS trigger infrastructure designed to efficiently select data from the enormous data flow received by the detectors as the LHC delivers collisions at a rate of \SI{40}{MHz} with a pile-ip of 20 to 30 collisions per bunch crossing during Phase-I and up to 200 during Phase-II, representing billions of interactions per second among which a large quantity are low energy collisions that are not likely to produce new reactions, and which is physically impossible for nowadays technologies to cope with. Working at a maximum rate of \SI{100}{kHz}, the trigger system is able to select the 100,000 more interesting events by looking at the energy distribution of the interaction products and clear signatures like muons reconstructed by the muon system. the vast majority of these events will not finally be stored after physics tests are applied.
+	
+	The challenge for the muon system is to provide a robust and fast measurement of muons. Three different subsystems, and soon 4 after LS2, compose the muon system as showed in Figure~\ref{fig:Quadrant} in which a quadrant of the CMS detector focused on muon system. \acf{DT} are found in the barrel region covering the low pseudorapidity region where particles traasverse momentum is lower and \acf{CSC} are found in the endcap region covering higher pseudorapidity region closer to beam line where particles have a stronger momentum. The redundancy of the system is insured by \acf{RPC} in both the barrel and endcap region. Nevertheless, the region closest to the beam line (\psrapg{1.8}) was not equipped with RPCs. This lack of redundancy in the high pseudo rapidity region will be solved during LS2, the following \acf{YETS} in 2021 and 2022, and LS3 where the necessary services, detectors and Link System, that collects the data and synchronizes them, will be installed.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\textwidth]{fig/chapt2/Muon_quadrant.png}
+		\caption{\label{fig:Quadrant} A quadrant of the muon system, showing DTs (yellow), RPCs (blue), and CSCs (green).}
+	\end{figure}
+
+	The barrel region is divided into 5 \textit{wheels} made out of 4 \textit{rings} of detectors with iron return yokes in between them whereas the endcaps are made out of 4 disks, each divided into pseudorapidity stations, 2 for CSCs (except for the first disk where 3 stations are equipped) and 3 for RPCs, although only 2 RPCs stations are equipped at present. The wheels and disks are showed in Figure~\ref{fig:Muon}. So far, each subsystem was dedicated to a particular task. DTs, in the barrel, and CSCs, in the endcaps, are used mainly for their spatial resolution. Indeed, DTs' resolution along the $(r-\phi)$ component is of the order of \SI{150}{\micro m} and of \SI{100}{\micro m} along the $(r-z)$ component while the resolution of CSCs is similar as it reaches \SI{150}{\micro m}. On the other hand, RPCs are used for their time resolution as they can deliver an information on the muon tracks in less than \SI{5}{ns}.
+	
+	The 250 CMS DTs, found in the barrel covering the pseudorapidity region \psrapr{0}{1.2} and whose structure is shown in Figure~\ref{fig:DT}, are composed of 3 \textit{superlayers} of DT cells. Two of these superlayers are dedicated to measuring the $\phi$ coordinate of the muons and while the last one measures the $\eta$ (or $z$) coordinate. Each superlayer consists on 4 layers of 60 to 70 DT cells arranged in quincunx to allow for a precise reconstruction of the muon path through the DT layers. Each DT cell is a rectangular aluminium gas volume with a central anode wire. Cathode strips are placed on the narrow surface of the cells and electrode strips are placed on the wide surface to help shaping the electric field to ensure a consistent drift velocity of electrons in the drift volume. These detectors are operated using a 85/15 mixture of $Ar$ and $CO_2$.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.35\linewidth}
+			\centering
+			\includegraphics[height = 6cm]{fig/chapt2/Wheel.jpg}
+			\caption{\label{fig:Muon:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.3\linewidth}
+			\centering
+			\includegraphics[height = 6cm]{fig/chapt2/Disk_CSC.jpg}
+			\caption{\label{fig:Muon:B}}
+		\end{subfigure}
+		\begin{subfigure}{0.35\linewidth}
+			\centering
+			\includegraphics[height = 6cm]{fig/chapt2/Disk_RPC.jpg}
+			\caption{\label{fig:Muon:C}}
+		\end{subfigure}
+		\caption{\label{fig:Muon} Figure~\ref{fig:Muon:A}: Barrel wheel with its detector rings and return yokes. Figure~\ref{fig:Muon:B}: CSC endcap disk with the 2 CSC stations. The outer station is made of \SI{10}{\deg} detectors while the inner station is made of \SI{20}{\deg} detectors. Figure~\ref{fig:Muon:C}: RPC endcap disk. The inner station is not equipped and the inner CSC station can be seen.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.6\linewidth}
+			\centering
+			\includegraphics[height = 4.5cm]{fig/chapt2/DT_layout.png}
+			\caption{\label{fig:DT:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[height = 4.5cm]{fig/chapt2/DT_cells.png}
+			\caption{\label{fig:DT:B}}
+		\end{subfigure}
+		\caption{\label{fig:DT} Figure~\ref{fig:DT:A}: Cross section of a DT module showing the two superlayers measuring the $\phi$ coordinate, perpendicular to the cross section plane, and the superlayer measuring the $\eta$ coordinate, placed in between the two others with honeycomb and parallel to the cross section plane. The DT detector is sandwiched in between 2 RPCs whose readout strips are perpendicular to the cross section plane, measuring the $\phi$ coordinate. Figure~\ref{fig:DT:B}: A DT cell is shown together with its electric field. The path of a muon through a superlayer is shown.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[height = 5cm]{fig/chapt2/CSC_layout.png}
+			\caption{\label{fig:CSC-layout:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.6\linewidth}
+			\centering
+			\includegraphics[height = 5cm]{fig/chapt2/CSC_avalanche.png}
+			\caption{\label{fig:CSC-layout:B}}
+		\end{subfigure}
+		\caption{\label{fig:CSC-layout} Figure~\ref{fig:CSC-layout:A}: cathode strips and anode wire layout of a CSC panel. Figure~\ref{fig:CSC-layout:B} avalanche development and charge collection by anode wires and induction on cathode strips inside of a CSC panel.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{fig/chapt2/CSC_track.png}
+		\caption{\label{fig:CSC-track} Muon track reconstruction through the 6 panels of a CMS CSC using the information of anode wire groups and cathode strip charge distribution combined with comparator bits to decide on which half strip the muon is more likely to have passed.}
+	\end{figure}
+	
+	The 540 CMS CSCs, found in the endcaps covering the pseudorapidity region \psrapr{0.9}{2.5} and described through Figure~\ref{fig:CSC-layout}, are composed of 6 panels of CSC, each panel consisting in a wide gas volume of \SI{9.5}{mm} (\SI{7}{mm} in the case of ME1/1 station) containing anode wires and whose surfaces are cathodes. The top cathode is a wide copper plane of the size of the gas volume. The bottom cathode is divided into thin trapezoidal copper strips radially arranged to measure the azimuthal coordinate $\phi$ with a pitch ranging from 8 to \SI{16}{mm}. The \SI{0.50}{\micro m} anode wires are placed perpendicularly to the strips to measure radial coordinate $r$ and are grouped by 10 to 15 with a wire to wire space of \SI{3.2}{mm}. In he specific case of ME1/1 placed against the HCAL endcap, the \SI{0.30}{\micro m} anode wires have a wire to wire distance of \SI{2.5}{mm} and are not disposed perpendicularly to the strips but slightly tilted by an angle of \SI{29}{\deg} to compensate for the lorentz force due to the very strong local magnetic field of \SI{4}{T}. These detectors are operated with a 40/50/10 mixture of $Ar$, $CO_2$ and $CF_4$. Combining the information of the multiple CSC panels, the detectors achieve a very precise measurement of the muon track.
 	
 	\subsection{\acl{HL-LHC}}
 	\label{chapt2:ssec:HL-LHC}
@@ -351,15 +420,15 @@ From the LHC Phase-2 or HL-LHC period onwards, i.e. past LS3, the performance de
 	\caption{\label{fig:Dose} Absorbed dose in the CMS cavern after an integrated luminosity of \SI{3000}{\femto\per\barn}. R is the transverse distance from the beamline and Z is the distance along the beamline from the Interaction Point at Z=0.}
 \end{figure}
 
-The measurement of small production cross-section and/or decay branching ratio processes, such as the Higgs boson coupling to charge leptons or the $B_s \longrightarrow \mu^+\mu^-$ decay, is of major interest and specific upgrades in the forward regions of the detector will be required to maximize the physics acceptance on the largest possible solid angle. To ensure proper trigger performance within the present coverage, the muon system will be completed with new chambers. In figure~\ref{fig:Quadrant} one can see that the existing \acfp{CSC} will be completed by \acfp{GEM} and \acfp{RPC} in the pseudo-rapidity region $1.6<\vert\eta\vert<2.4$ to complete its redundancy as originally scheduled in the CMS Technical Proposal~\cite{CMSTP}.
+The measurement of small production cross-section and/or decay branching ratio processes, such as the Higgs boson coupling to charge leptons or the $B_s \longrightarrow \mu^+\mu^-$ decay, is of major interest and specific upgrades in the forward regions of the detector will be required to maximize the physics acceptance on the largest possible solid angle. To ensure proper trigger performance within the present coverage, the muon system will be completed with new chambers. Figure~\ref{fig:P2Quadrant} shows that the existing CSC will be completed by \acf{GEM} and RPC in the pseudo-rapidity region $1.6<\vert\eta\vert<2.4$ to complete its redundancy as originally scheduled in the CMS Technical Proposal~\cite{CMSTP}. GEMs will be installed on the first endcap disk in position GE1/1 during LS2, and during LS3 \acf{iRPC} will be installed on the third and fourth endcap disks in position RE3/1 and RE4/1, and more GEMs will equip the second endcap in position GE2/1 and the inner layer, closest to the HCAL endcap called ME0.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{fig/chapt2/CMS_Muon_quadrant.pdf}
-	\caption{\label{fig:Quadrant} A quadrant of the muon system, showing DTs (yellow), RPCs (light blue), and CSCs (green). The locations of new forward muon detectors for Phase-II are contained within the dashed box and indicated in red for GEM stations (ME0, GE1/1, and GE2/1) and dark blue for improved RPC (iRPC) stations (RE3/1 and RE4/1).}
+	\includegraphics[width=0.7\textwidth]{fig/chapt2/Phase2_Muon_quadrant.pdf}
+	\caption{\label{fig:P2Quadrant} A quadrant of the muon system, showing DTs (yellow), RPCs (blue), and CSCs (green). The locations of new forward muon detectors for Phase-II are contained within the dashed box and indicated in red for GEM stations (ME0, GE1/1, and GE2/1) and dark blue for improved RPC (iRPC) stations (RE3/1 and RE4/1).}
 \end{figure}
 
-RPCs are used by the CMS first level trigger for their good timing performances. Indeed, a very good bunch crossing identification can be obtained with the present CMS RPC system, given their fast response of the order of \SI{1}{ns}. In order to contribute to the precision of muon momentum measurements, muon chambers should have a spatial resolution less or comparable to the contribution of multiple scattering~\cite{MUONTDR}. Most of the plausible physics is covered only considering muons with $p_T<$\SI{100}{GeV} thus, in order to match CMS requirements, a spatial resolution of $\mathcal{O}$(few $\mathrm{mm}$) the proposed new RPC stations, as shown by the simulation in figure~\ref{fig:MultiScat}. According to preliminary designs, RE3/1 and RE4/1 readout pitch will be comprised between 3 and \SI{6}{mm} and 5 $\eta$-partitions could be considered.
+	RPCs are used by the CMS first level trigger for their good timing performances. Indeed, a very good bunch crossing identification can be obtained with the present CMS RPC system, given their fast response of the order of \SI{1}{ns}. In order to contribute to the precision of muon momentum measurements, muon chambers should have a spatial resolution less or comparable to the contribution of multiple scattering~\cite{MUONTDR}. Most of the plausible physics is covered only considering muons with $p_T<$\SI{100}{GeV} thus, in order to match CMS requirements, a spatial resolution of $\mathcal{O}$(few $\mathrm{mm}$) the proposed new RPC stations, as shown by the simulation in figure~\ref{fig:MultiScat}. According to preliminary designs, RE3/1 and RE4/1 readout pitch will be comprised between 3 and \SI{6}{mm} and 5 $\eta$-partitions could be considered.
 
 \begin{figure}[H]
 	\centering
