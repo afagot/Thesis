@@ -328,7 +328,7 @@
 		\caption{\label{fig:Quadrant} A quadrant of the muon system, showing DTs (yellow), RPCs (blue), and CSCs (green).}
 	\end{figure}
 
-	The barrel region is divided into 5 \textit{wheels} made out of 4 \textit{rings} of detectors with iron return yokes in between them whereas the endcaps are made out of 4 disks, each divided into pseudorapidity stations, 2 for CSCs (except for the first disk where 3 stations are equipped) and 3 for RPCs, although only 2 RPCs stations are equipped at present. The wheels and disks are showed in Figure~\ref{fig:Muon}. So far, each subsystem was dedicated to a particular task. DTs, in the barrel, and CSCs, in the endcaps, are used mainly for their spatial resolution. Indeed, DTs' resolution along the $(r-\phi)$ component is of the order of \SI{150}{\micro m} and of \SI{100}{\micro m} along the $(r-z)$ component while the resolution of CSCs is similar as it reaches \SI{150}{\micro m}. On the other hand, RPCs are used for their time resolution as they can deliver an information on the muon tracks in less than \SI{5}{ns}.
+	The barrel region is divided into 5 \textit{wheels} made out of 4 \textit{rings} of detectors with iron return yokes in between them whereas the endcaps are made out of 4 disks, each divided into pseudorapidity stations, 2 for CSCs (except for the first disk where 3 stations are equipped) and 3 for RPCs, although only 2 RPCs stations are equipped at present. The wheels and disks are showed in Figure~\ref{fig:Muon}. So far, each subsystem was dedicated to a particular task. DTs, in the barrel, and CSCs, in the endcaps, are used mainly for their spatial resolution. Indeed, DTs' resolution is of the order of \SI{100}{\micro m} along both the $(r-\phi)$ and $(r-z)$ components while the resolution of CSCs is similar but varies in a range from \SI{50}{\micro m} to \SI{140}{\micro m} depending on the distance to the beamline. On the other hand, RPCs are used for their time resolution as they can deliver an information on the muon tracks within \SI{1.5}{ns}.
 	
 	The 250 CMS DTs, found in the barrel covering the pseudorapidity region \psrapr{0}{1.2} and whose structure is shown in Figure~\ref{fig:DT}, are composed of 3 \textit{superlayers} of DT cells. Two of these superlayers are dedicated to measuring the $\phi$ coordinate of the muons and while the last one measures the $\eta$ (or $z$) coordinate. Each superlayer consists on 4 layers of 60 to 70 DT cells arranged in quincunx to allow for a precise reconstruction of the muon path through the DT layers. Each DT cell is a rectangular aluminium gas volume with a central anode wire. Cathode strips are placed on the narrow surface of the cells and electrode strips are placed on the wide surface to help shaping the electric field to ensure a consistent drift velocity of electrons in the drift volume. These detectors are operated using a 85/15 mixture of $Ar$ and $CO_2$.
 	
@@ -387,6 +387,16 @@
 	
 	The 540 CMS CSCs, found in the endcaps covering the pseudorapidity region \psrapr{0.9}{2.5} and described through Figure~\ref{fig:CSC-layout}, are composed of 6 panels of CSC, each panel consisting in a wide gas volume of \SI{9.5}{mm} (\SI{7}{mm} in the case of ME1/1 station) containing anode wires and whose surfaces are cathodes. The top cathode is a wide copper plane of the size of the gas volume. The bottom cathode is divided into thin trapezoidal copper strips radially arranged to measure the azimuthal coordinate $\phi$ with a pitch ranging from 8 to \SI{16}{mm}. The \SI{0.50}{\micro m} anode wires are placed perpendicularly to the strips to measure radial coordinate $r$ and are grouped by 10 to 15 with a wire to wire space of \SI{3.2}{mm}. In he specific case of ME1/1 placed against the HCAL endcap, the \SI{0.30}{\micro m} anode wires have a wire to wire distance of \SI{2.5}{mm} and are not disposed perpendicularly to the strips but slightly tilted by an angle of \SI{29}{\deg} to compensate for the lorentz force due to the very strong local magnetic field of \SI{4}{T}. These detectors are operated with a 40/50/10 mixture of $Ar$, $CO_2$ and $CF_4$. Combining the information of the multiple CSC panels, the detectors achieve a very precise measurement of the muon track.
 	
+	Despite their excellent spatial resolution, the wire chambers (DTs and CSCs) are limited in terms of time resolution by the fact that the charge needs to drift towards the anode wire and be collected before having the confirmation that a particle was detected as the drift volume is not used to develop avalanches. Indeed, the stronger electric field close to the anode wire triggers the avalanche and the gain of the detector. Due to the drift, the time resolution is thus limited at best to approximately 2 to \SI{3}{ns}. In addition, even though the intrinsic time resolution of the tracking chambers is rather good compared to the \SI{25}{ns} in between successive collisions, the processing time of the trigger system doesn't allow for very fast triggering as it provides a time precision of only \SI{12.5}{ns}. Thus, detectors fully dedicated to timing measurement have been installed as a redundant system. These detectors are RPCs, also gaseous detectors but that use current induction instead of charge collection allowing for a time resolution of the order of \SI{1.5}{ns} only. Theoretically, depending on the design used, RPCs could reach a time resolution of the order of \SI{10}{ps} but in the context of LHC where bunch crossing happen every \SI{25}{ns}, a time resolution of \SI{1.5}{ns} is sufficient to accurately assign the right bunch crossing to each detected muon.
+	
+	The 1056 RPCs equipping the CMS muon system both in the barrel and endcap regions and covering the pseudorapidity region \psrapr{0}{1.6} are composed of two layers of RPC \textit{gaps} as described in Figure~\ref{fig:RPC-DG-layout}. Each gap consists in two resistive electrodes made out of \SI{2}{mm} thick Bakelite enclosing a \SI{2}{mm} thick gas volume containing a 95.2/4.5/0.3 mixture of $C_2H_2F_4$, $i-C_4H10$ and $SF_6$. Due to this geometry, the electric field inside of a gap is homogeneous and linear at every point in the gas translating into a uniform development of avalanches in the gas volume as soon as a passing muon ionises the gas. The two gaps sandwich a readout copper strip plane. A negative voltage is applied on the outer electrodes, used as cathodes, and the inner electrodes, the anodes, are simply connected to the ground as well as the readout panel that picks up the current induced by the accumulated charge of the growing avalanches in one or both of the gas gaps. This OR system allows for a lower gain (i.e. a lower electric field) on both gaps to reach the maximal efficiency of such a detector.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\textwidth]{fig/chapt2/RPC_DG_layout.png}
+		\caption{\label{fig:RPC-DG-layout} Double gap layout of CMS RPCs. Muons passing through the gas volumes will create electron-ions pairs by ionising the gas. this ionisation will immediately translate into a developing avalanche.}
+	\end{figure}
+	
 	\subsection{\acl{HL-LHC}}
 	\label{chapt2:ssec:HL-LHC}
 		
@@ -410,23 +420,36 @@
 \section{Muon Phase-II Upgrade}
 \label{chapt2:sec:phase-2}
 
-After the more than two years lasting LS1, the LHC delivered its very first Run-II proton-proton collisions early 2015. LS1 gave the opportunity to the LHC and to the its experiments to undergo upgrades. The accelerator is now providing collisions at center-of-mass energy of \SI{13}{TeV} and bunch crossing rate of \SI{40}{MHz}, with a peak luminosity exceeding its design value. During the first and upcoming second LHC Long Shutdown, the CMS detector is also undergoing a number of upgrades to maintain a high system performance~\cite{MUONTDR}.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\textwidth]{fig/chapt2/HL-LHC-Dose.png}
+		\caption{\label{fig:Dose} Absorbed dose in the CMS cavern after an integrated luminosity of \SI{3000}{\femto\per\barn}. R is the transverse distance from the beamline and Z is the distance along the beamline from the Interaction Point at Z=0.}
+	\end{figure}
 
-From the LHC Phase-2 or HL-LHC period onwards, i.e. past LS3, the performance degradation due to integrated radiation as well as the average number of inelastic collisions per bunch crossing, or pileup, will rise substantially and become a major challenge for the LHC experiments, like CMS that are forced to address an upgrade program for Phase-II~\cite{PHASEIITP}. Simulations of the expected distribution of absorbed dose in the CMS detector under HL-LHC conditions, show in figure~\ref{fig:Dose} that detectors placed close to the beamline will have to withstand high irradiation, the radiation dose being of the order of a few tens of\si{Gy}.
+	The end of 2018 will mark the beginning of LS2 and the start of Phase-II upgrade activities. From the HL-LHC period onwards, i.e. past LS3, the performance degradation due to integrated radiation as well as the average number of inelastic collisions per bunch crossing, seen as pile-up into the detector readout that far exceeds the original LHC plans, will rise substantially and become a major challenge for all of the LHC experiments, like CMS, that were forced to address an upgrade program for Phase-II~\cite{PHASEIITP}. Dealing with the data from the muon detectors will force to upgrade the detectors and electronics towards the most recent technologies. Simultaneously, this will push new latency requirements onto Level-1 trigger and data acquisition that will only be fulfilled by upgrading the system with electronics having deeper buffering and faster processing. Simulations of the expected distribution of absorbed dose in the CMS detector under HL-LHC conditions show in Figure~\ref{fig:Dose} that detectors placed close to the beam line will have to withstand high irradiation, the radiation dose being of the order of a few tens of \si{Gy}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\textwidth]{fig/chapt2/Phase2_Muon_quadrant.pdf}
+		\caption{\label{fig:P2Quadrant} A quadrant of the muon system, showing DTs (yellow), RPCs (blue), and CSCs (green). The locations of new forward muon detectors for Phase-II are contained within the dashed box and indicated in red for GEM stations (ME0, GE1/1, and GE2/1) and dark blue for improved RPC (iRPC) stations (RE3/1 and RE4/1).}
+	\end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\textwidth]{fig/chapt2/HL-LHC-Dose.png}
-	\caption{\label{fig:Dose} Absorbed dose in the CMS cavern after an integrated luminosity of \SI{3000}{\femto\per\barn}. R is the transverse distance from the beamline and Z is the distance along the beamline from the Interaction Point at Z=0.}
-\end{figure}
+	Moreover, the increase of background close to the beam line will affect the background rate seen by the muon detectors in this area and tracking muons will prove to be difficult as this region is not yet equipped with all the detectors that were already foreseen for Phase-I. Improving this situation will come with the increase of hit numbers recorded along the particle track to reduce the ambiguity on muon versus background detection. The measurement of small production cross-section and/or decay branching ratio processes, such as the Higgs boson coupling to charge leptons or the $B_s \longrightarrow \mu^+\mu^-$ decay, is of major interest and specific upgrades in the forward regions of the detector will be required to maximize the physics acceptance on the largest possible solid angle.
+	
+	To ensure proper trigger performance within the present coverage, the muon system will be completed with new chambers. Figure~\ref{fig:P2Quadrant} shows the addition of \acf{GEM} and RPCs in the pseudo-rapidity region $1.6<\vert\eta\vert<2.4$ to complete the redundancy of the already existing CSCs as originally scheduled in the CMS Technical Proposal~\cite{CMSTP}. A first step into this direction will be taken by installing GEMs on the first endcap disk in position GE1/1 during LS2, during which preparations for the future installation of more GEMs and RPCs will take place by installing the needed services. During the YETS following LS2, \acf{iRPC} will be installed on the third and fourth endcap disks in position RE3/1 and RE4/1, and more GEMs will equip the second endcap in position GE2/1 and the inner layer, closest to the HCAL endcap called ME0 during LS3, finally completing the redundant coverage of the muon system.
+	
+	Nevertheless, the region beyond \psrapg{2.4} and extending to \psrape{5.0} only is covered by the forward HCAL detectors. Extensions of the tracker in the context of HL-LHC will increase its coverage up to \psrape{4.0} but the identification of muons and measurement of their energy with reasonable precision with only the tracker is nearly impossible. Thus, this increased tracker coverage range needs to be put in parallel with a matching muon detector and will open doors to multi-lepton final states in which leptons are likely to have a great  momentum and to be found near the beam line.\\
+	
+	Finally, as the muon system is composed only of gaseous detectors, strong environmental concerns have risen over the last years as the European directives will restrict the use of fluorine based gas mixtures. Both the CSC and RPC subsystems, using $CF_4$, $C_2H_2F_4$, or $SF_6$, will need to adapt their working gas in order to strongly reduce the greenhouse potential of the mixtures released into the atmosphere due to gas leaks.
+	
+	\subsection{Phase-II upgrade of the DT system}
+	\label{chapt2:ssec:DTP2}
 
-The measurement of small production cross-section and/or decay branching ratio processes, such as the Higgs boson coupling to charge leptons or the $B_s \longrightarrow \mu^+\mu^-$ decay, is of major interest and specific upgrades in the forward regions of the detector will be required to maximize the physics acceptance on the largest possible solid angle. To ensure proper trigger performance within the present coverage, the muon system will be completed with new chambers. Figure~\ref{fig:P2Quadrant} shows that the existing CSC will be completed by \acf{GEM} and RPC in the pseudo-rapidity region $1.6<\vert\eta\vert<2.4$ to complete its redundancy as originally scheduled in the CMS Technical Proposal~\cite{CMSTP}. GEMs will be installed on the first endcap disk in position GE1/1 during LS2, and during LS3 \acf{iRPC} will be installed on the third and fourth endcap disks in position RE3/1 and RE4/1, and more GEMs will equip the second endcap in position GE2/1 and the inner layer, closest to the HCAL endcap called ME0.
+	\subsection{Phase-II upgrade of the CSC system}
+	\label{chapt2:ssec:CSCP2}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\textwidth]{fig/chapt2/Phase2_Muon_quadrant.pdf}
-	\caption{\label{fig:P2Quadrant} A quadrant of the muon system, showing DTs (yellow), RPCs (blue), and CSCs (green). The locations of new forward muon detectors for Phase-II are contained within the dashed box and indicated in red for GEM stations (ME0, GE1/1, and GE2/1) and dark blue for improved RPC (iRPC) stations (RE3/1 and RE4/1).}
-\end{figure}
+	\subsection{Phase-II upgrade of the RPC system}
+	\label{chapt2:ssec:RPCP2}
 
 	RPCs are used by the CMS first level trigger for their good timing performances. Indeed, a very good bunch crossing identification can be obtained with the present CMS RPC system, given their fast response of the order of \SI{1}{ns}. In order to contribute to the precision of muon momentum measurements, muon chambers should have a spatial resolution less or comparable to the contribution of multiple scattering~\cite{MUONTDR}. Most of the plausible physics is covered only considering muons with $p_T<$\SI{100}{GeV} thus, in order to match CMS requirements, a spatial resolution of $\mathcal{O}$(few $\mathrm{mm}$) the proposed new RPC stations, as shown by the simulation in figure~\ref{fig:MultiScat}. According to preliminary designs, RE3/1 and RE4/1 readout pitch will be comprised between 3 and \SI{6}{mm} and 5 $\eta$-partitions could be considered.
 
@@ -435,5 +458,10 @@ The measurement of small production cross-section and/or decay branching ratio p
 	\includegraphics[width=0.6\textwidth]{fig/chapt2/MS_allstations.pdf}
 	\caption{\label{fig:MultiScat}  RMS of the multiple scattering displacement as a function of muon $p_T$ for the  proposed forward muon stations. All of the electromagnetic processes such as bremsstrahlung and magnetic field effect are included in the simulation.}
 \end{figure}
+
+	\subsection{Phase-II upgrade of the Level-1 trigger}
+	\label{chapt2:ssec:L1tP2}
+	
+	
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
