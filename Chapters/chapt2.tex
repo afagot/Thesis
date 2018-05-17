@@ -219,7 +219,7 @@
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.5\linewidth]{fig/chapt2/CERN-accelerators.jpg}
+		\includegraphics[width=0.45\linewidth]{fig/chapt2/CERN-accelerators.jpg}
 		\caption{\label{fig:CERNAccelerators} Pictures of the different accelerators. From top to bottom: first the LINAC 2 and the $Pb$ source of LINAC 3. Then the Booster and the LEIR. Finally, the PS, the SPS and the LHC.}
 	\end{figure}
 	
@@ -270,7 +270,7 @@
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.65\textwidth]{fig/chapt2/CMS.jpg}
+		\includegraphics[width=0.55\textwidth]{fig/chapt2/CMS.jpg}
 		\caption{\label{fig:CMS} Picture of the CMS barrel. The red outer layer is the muon system hosted into the red iron return yokes. The calorimeters are the blue cylinder inside in magnet solenoid and the tracker is the inner yellow cylinder built around the beam pipe.}
 	\end{figure}
 	
@@ -286,13 +286,19 @@
 		\caption{\label{fig:CMS-slice} Slice showing CMS sub-detectors and how particles interact with them.}
 	\end{figure}
 	
+		\subsubsection{The silicon tracker, core of CMS}
+		\label{chapt2:sssec:tracker}
+	
 	The silicon tracker visible on Figure~\ref{fig:tracker} is divided into 2 different sub-systems: the \textit{pixel detector} at the very core and the \textit{microstrip detector} around it. This system is composed of 75 million individual readout channels with up to 6000 channels per squared centimeter for the pixels making it the world's biggest silicon detector. This density allows for measurements of the particle tracks with a precision of the order of \SI{10}{\mu m}. This is necessary to reconstruct all the different interaction vertices with precision and have a precise measure of the curvature of the charged particles traveling through the magnetic field to estimate their charge and momentum.
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.6\textwidth]{fig/chapt2/Tracker.jpg}
+		\includegraphics[height = 4cm]{fig/chapt2/Tracker.jpg}
 		\caption{\label{fig:tracker} CMS tracker.}
 	\end{figure}
+	
+		\subsubsection{The calorimeters, measurement of particle's energy}
+		\label{chapt2:sssec:calo}
 	
 	The ECAL directly surrounding the tracker is composed of crystals of lead tungstate, $PbWO_4$, a very dense but optically transparent material used to stop high energy electrons and photons. These crystal blocks basically are extremely dense scintillators which scintillate in fast, short light bursts proportionally to the energy deposition. The light is yielded rapidly and contained at 80\% in the corresponding \SI{25}{ns} lasting bunch crossing. Each crystal is isolated from the other by the carbon fiber matrix they are embedded in. It is composed of a barrel containing more than 60,000 crystals and of closing endcaps containing another 15,000 crystals. In front of the ECAL endcap is installed a preshower detector made out of two layers of lead and silicon strip detectors to increase the spatial resolution close to the beam line for pion-photon and single-double photon discrimination purposes. Figure~\ref{fig:ECAL} shows the calorimeter inside of the magnet and the crystals.
 	
@@ -314,11 +320,14 @@
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.6\textwidth]{fig/chapt2/HCAL.jpg}
+		\includegraphics[height = 4cm]{fig/chapt2/HCAL.jpg}
 		\caption{\label{fig:HCAL} CMS hadron calorimeter barrel.}
 	\end{figure}
 	
 	Finally, in the outer region of the apparatus, a muon system is used to trigger on potentially interesting event by identifying muons. Indeed, the muon system is a very important part of the CMS trigger infrastructure designed to efficiently select data from the enormous data flow received by the detectors as the LHC delivers collisions at a rate of \SI{40}{MHz} with a pile-ip of 20 to 30 collisions per bunch crossing during Phase-I and up to 200 during Phase-II, representing billions of interactions per second among which a large quantity are low energy collisions that are not likely to produce new reactions, and which is physically impossible for nowadays technologies to cope with. Working at a maximum rate of \SI{100}{kHz}, the trigger system is able to select the 100,000 more interesting events by looking at the energy distribution of the interaction products and clear signatures like muons reconstructed by the muon system. the vast majority of these events will not finally be stored after physics tests are applied.
+	
+		\subsubsection{The muon system, corner stone of CMS}
+		\label{chapt2:sssec:muon}
 	
 	The challenge for the muon system is to provide a robust and fast measurement of muons. Three different subsystems, and soon 4 after LS2, compose the muon system as showed in Figure~\ref{fig:Quadrant} in which a quadrant of the CMS detector focused on muon system. \acf{DT} are found in the barrel region covering the low pseudorapidity region where particles traasverse momentum is lower and \acf{CSC} are found in the endcap region covering higher pseudorapidity region closer to beam line where particles have a stronger momentum. The redundancy of the system is insured by \acf{RPC} in both the barrel and endcap region. Nevertheless, the region closest to the beam line (\psrapg{1.8}) was not equipped with RPCs. This lack of redundancy in the high pseudo rapidity region will be solved during LS2, the following \acf{YETS} in 2021 and 2022, and LS3 where the necessary services, detectors and Link System, that collects the data and synchronizes them, will be installed.
 
@@ -396,72 +405,5 @@
 		\includegraphics[width=0.7\textwidth]{fig/chapt2/RPC_DG_layout.png}
 		\caption{\label{fig:RPC-DG-layout} Double gap layout of CMS RPCs. Muons passing through the gas volumes will create electron-ions pairs by ionising the gas. this ionisation will immediately translate into a developing avalanche.}
 	\end{figure}
-	
-	\subsection{\acl{HL-LHC}}
-	\label{chapt2:ssec:HL-LHC}
-		
-	The very first proton beam successfully circulated in the LHC in September 2008 directly followed by an incident leading to mechanical damage that would delay the LHC program for a year until November 2009, the very first collisions at a center-of-mass energy of \SI{7}{TeV} taking place in March 2010. The energy of the beam would be increased after a \acf{LS1} starting early 2013 after less than 3 years of data taking. Nevertheless, this first data taking period at only \SI{7}{TeV} was sufficient to claim the discovery of a new particle compatible with the Higgs boson in July 2012. During the 2 years of shutdown, the upgrade of the accelerator allowed for several maintainances along the beam pipes, repair and consolidation of magnet connection and high-current splices. But not only the LHC was upgraded. Indeed, the experiments at the 4 collision points also took the advantage of this time to upgrade their system in prevision of the next LHC run (Run-II) until 2018 and the \acf{LS2} as the luminosity and energy of the beam would be continuously increasing. By the end of Run-II, the luminosity will have reached twice its nominal value when the center-of-mass energy has already got close to its nominal value by reaching an historical \SI{13}{TeV} for the first time in 2017.
-	
-	The next long shutdown will occur at the end of this year and will again be the occasion for similar maintenance and consolidation in prevision of Run-III and the future upgrade of LS3. Still, the main occupation of LS2 on LHC side will be the upgrade of LHC injectors. On the experiments side, LHCb and ALICE will, in a very tight schedule, implement major upgrades while ATLAS and CMS will wait until LS3 to upgrade their detectors in prevision of high luminosity LHC-Phase-II. ALICE main challenge is an upgrade of their apparatus to cope with the \SI{50}{kHz} $Pb-Pb$ collisions. Similarly, LHCb will upgrade their frontend readout electronics to cope with the full \SI{40}{MHz} collisions delivered by LHC. ATLAS will perform standard maintenance and CMS will focus on the urgent upgrade of the pixel detector and on the installation of new muon detectors in order to take profit of LS2 time to mitigate the upgrade of detectors forseen during LS3. Run-III will start in 2021 with the LHC at its nominal center-of-mass energy and will bring LHC-Phase-I to an end at the end of 2023. By then the luminosity will only increase to reach 2.5 times the nominal luminosity but during these 3 years of run, the LHC will deliver as much integrated luminosity as what what brought during the almost 7 years of both Run-I and II of data taking. Phase-I will end with an overall \SI{300}{fb^{-1}} delivered.\\
-
-	\begin{figure}[H]
-		\centering
-		\hspace*{-0.1\linewidth}
-		\includegraphics[width=1.2\linewidth]{fig/chapt2/HL-LHC-plan-2017.jpg}
-		\caption{\label{fig:HL-LHC-Timeline} Detailed timeline of for LHC and HL-LHC operation until 2028 and operation projection until 2038. This timeline only describes the operation plans after LS1.}
-	\end{figure}
-		
-	After approximately 15 years of operation, the LHC will undergo a new series of upgrade during the LS3 in order to boost its discovery potential. This moment onward is what is referred to HL-LHC or Phase-II as showed in Figure~\ref{fig:HL-LHC-Timeline}. The goal is to aim to a luminosity 5 to 7 times stronger than the nominal one trying to reach even 10 times this value if possible. Increasing the luminosity means that the beam size at the collision points needs to be reduced to boost the number of collisions per bunch. For this purpose, new focusing and bending magnets and collimators will be installed at the collision points as well as newly developed \textit{"crab cavities"} that will tilt the particle bunches just prior to the collisions by giving them transverse momentum and thus increasing their meeting area. In addition, the full proton injection line will be upgraded.
-	
-	Over its full lifetime, the HL-LHC is expected to deliver an outstanding integrated luminosity of \SI{3000}{fb^{-1}} leading, in the case of Higgs studies, to measuring the couplings of the boson to a precision of 2 to 5\% thanks to the estimated 15 millions of Higgs created each year providing a more precise measurement of potential deviations from the theoretical predictions. SUSY studies would also see their limits pushed away and could lead to a new breakthrough. SUSY is a particularly important topic as it could give an answer to why the Higgs boson can stay so light while coupled to heavy particles by introducing the contributions of the super partners on top of providing dark matter candidates. Finally, the increase of luminosity will give the possibility to investigate "exotic" mode like for example the models introducing extra dimensions to explain the hierarchy problem.
-	
-	On the experiments side, the \acf{PU} will be increased up to 150 to 200 interactions per bunch crossing in ATLAS and CMS, making necessary an strong upgrade of the trigger system and of the inner trackers and of the calorimeters. Both ATLAS and CMS will also need to upgrade the muon trigger at the level of the endcaps mainly focusing on the coverage near the beam line in order to increase the detection acceptance and event selection. Moreover, the increased luminosity will also lead to an increased background rate and a faster ageing of the detectors. This PhD work takes place into this very specific context of muon detector consolidation and certification for the HL-LHC period in order to provide the CMS experiment with robust detectors that will live through the next 20 years of HL-LHC.
-
-\section{Muon Phase-II Upgrade}
-\label{chapt2:sec:phase-2}
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.7\textwidth]{fig/chapt2/HL-LHC-Dose.png}
-		\caption{\label{fig:Dose} Absorbed dose in the CMS cavern after an integrated luminosity of \SI{3000}{\femto\per\barn}. R is the transverse distance from the beamline and Z is the distance along the beamline from the Interaction Point at Z=0.}
-	\end{figure}
-
-	The end of 2018 will mark the beginning of LS2 and the start of Phase-II upgrade activities. From the HL-LHC period onwards, i.e. past LS3, the performance degradation due to integrated radiation as well as the average number of inelastic collisions per bunch crossing, seen as pile-up into the detector readout that far exceeds the original LHC plans, will rise substantially and become a major challenge for all of the LHC experiments, like CMS, that were forced to address an upgrade program for Phase-II~\cite{PHASEIITP}. Dealing with the data from the muon detectors will force to upgrade the detectors and electronics towards the most recent technologies. Simultaneously, this will push new latency requirements onto Level-1 trigger and data acquisition that will only be fulfilled by upgrading the system with electronics having deeper buffering and faster processing. Simulations of the expected distribution of absorbed dose in the CMS detector under HL-LHC conditions show in Figure~\ref{fig:Dose} that detectors placed close to the beam line will have to withstand high irradiation, the radiation dose being of the order of a few tens of \si{Gy}.
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.7\textwidth]{fig/chapt2/Phase2_Muon_quadrant.pdf}
-		\caption{\label{fig:P2Quadrant} A quadrant of the muon system, showing DTs (yellow), RPCs (blue), and CSCs (green). The locations of new forward muon detectors for Phase-II are contained within the dashed box and indicated in red for GEM stations (ME0, GE1/1, and GE2/1) and dark blue for improved RPC (iRPC) stations (RE3/1 and RE4/1).}
-	\end{figure}
-
-	Moreover, the increase of background close to the beam line will affect the background rate seen by the muon detectors in this area and tracking muons will prove to be difficult as this region is not yet equipped with all the detectors that were already foreseen for Phase-I. Improving this situation will come with the increase of hit numbers recorded along the particle track to reduce the ambiguity on muon versus background detection. The measurement of small production cross-section and/or decay branching ratio processes, such as the Higgs boson coupling to charge leptons or the $B_s \longrightarrow \mu^+\mu^-$ decay, is of major interest and specific upgrades in the forward regions of the detector will be required to maximize the physics acceptance on the largest possible solid angle.
-	
-	To ensure proper trigger performance within the present coverage, the muon system will be completed with new chambers. Figure~\ref{fig:P2Quadrant} shows the addition of \acf{GEM} and RPCs in the pseudo-rapidity region $1.6<\vert\eta\vert<2.4$ to complete the redundancy of the already existing CSCs as originally scheduled in the CMS Technical Proposal~\cite{CMSTP}. A first step into this direction will be taken by installing GEMs on the first endcap disk in position GE1/1 during LS2, during which preparations for the future installation of more GEMs and RPCs will take place by installing the needed services. During the YETS following LS2, \acf{iRPC} will be installed on the third and fourth endcap disks in position RE3/1 and RE4/1, and more GEMs will equip the second endcap in position GE2/1 and the inner layer, closest to the HCAL endcap called ME0 during LS3, finally completing the redundant coverage of the muon system.
-	
-	Nevertheless, the region beyond \psrapg{2.4} and extending to \psrape{5.0} only is covered by the forward HCAL detectors. Extensions of the tracker in the context of HL-LHC will increase its coverage up to \psrape{4.0} but the identification of muons and measurement of their energy with reasonable precision with only the tracker is nearly impossible. Thus, this increased tracker coverage range needs to be put in parallel with a matching muon detector and will open doors to multi-lepton final states in which leptons are likely to have a great  momentum and to be found near the beam line.\\
-	
-	Finally, as the muon system is composed only of gaseous detectors, strong environmental concerns have risen over the last years as the European directives will restrict the use of fluorine based gas mixtures. Both the CSC and RPC subsystems, using $CF_4$, $C_2H_2F_4$, or $SF_6$, will need to adapt their working gas in order to strongly reduce the greenhouse potential of the mixtures released into the atmosphere due to gas leaks.
-	
-	\subsection{Phase-II upgrade of the DT system}
-	\label{chapt2:ssec:DTP2}
-
-	\subsection{Phase-II upgrade of the CSC system}
-	\label{chapt2:ssec:CSCP2}
-
-	\subsection{Phase-II upgrade of the RPC system}
-	\label{chapt2:ssec:RPCP2}
-
-	RPCs are used by the CMS first level trigger for their good timing performances. Indeed, a very good bunch crossing identification can be obtained with the present CMS RPC system, given their fast response of the order of \SI{1}{ns}. In order to contribute to the precision of muon momentum measurements, muon chambers should have a spatial resolution less or comparable to the contribution of multiple scattering~\cite{MUONTDR}. Most of the plausible physics is covered only considering muons with $p_T<$\SI{100}{GeV} thus, in order to match CMS requirements, a spatial resolution of $\mathcal{O}$(few $\mathrm{mm}$) the proposed new RPC stations, as shown by the simulation in figure~\ref{fig:MultiScat}. According to preliminary designs, RE3/1 and RE4/1 readout pitch will be comprised between 3 and \SI{6}{mm} and 5 $\eta$-partitions could be considered.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\textwidth]{fig/chapt2/MS_allstations.pdf}
-	\caption{\label{fig:MultiScat}  RMS of the multiple scattering displacement as a function of muon $p_T$ for the  proposed forward muon stations. All of the electromagnetic processes such as bremsstrahlung and magnetic field effect are included in the simulation.}
-\end{figure}
-
-	\subsection{Phase-II upgrade of the Level-1 trigger}
-	\label{chapt2:ssec:L1tP2}
-	
-	
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
