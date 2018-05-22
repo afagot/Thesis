@@ -56,7 +56,36 @@
 	
 	While only the RPCs' electronic system is able to operate under Phase-II requirements, DTs and CSCs will need to improve their trigger accept rate and latency to ensure that Level-1 trigger threshold stays at the same level~\cite{LEVEL1IR}, and DAQ data transfer rate, that respectively need to achieve a minimum of \SI{500}{kHz}, get down to \SI{12.5}{\micro s}~\cite{CMSIITP}, and increase to \SI{1082}{Gbit/s} DTs and to \SI{1026}{Gbit/s} for CSCs. As of today, the Level-1 trigger accept rate of DTs doesn't reach \SI{300}{kHz} while this of CSCs is bellow \SI{250}{kHz} but the foreseen upgrades are expected to increase the rate way beyond the requirement in the of DTs and up to \SI{4}{MHz} for CSCs~\cite{PHASEIITP}.
 	
-	The \acf{MiC1} used by DTs don't allow for high enough trigger rate. In addition to this problem, it was showed that these electronics contain components that are not radiation hard enough to sustain HL-LHC conditions and thus, a too large number of channels may fail due to radiations. On the other hand, CSCs showed that there electronics would be able to live through the 10 years of Phase-II but the limited buffer depth might cause memory overflows and readout inefficiencies with a fraction of event loss ranging from 5 to 10\% depending on the expected background. Thus the replacement of CSCs' \acf{CFEBs} by digital ones, DCFEBs, with deeper buffer would solve the problem and satisfy HL-LHC requirements. Moreover, a lack of FPGA memory ressources is feared for CSCs' \acf{ALCTs} and the boards that were not already upgraded during LS1 will need to be replaced, also ensuring that the out bandwidth will be sufficient for the expected high data rate. Finally, all these new DT and CSC electronics will be connected to the trigger electronics via optical links to ensure a faster communication~\cite{PHASEIITP}.\\
+	The \acf{MiC1} used by DTs don't allow for high enough trigger rate. In addition to this problem, it was showed that these electronics contain components that are not radiation hard enough to sustain HL-LHC conditions and thus, a too large number of channels may fail due to radiations (Figure~\ref{fig:DT-upgrade}). On the other hand, CSCs showed that there electronics would be able to live through the 10 years of Phase-II but the limited buffer depth might cause memory overflows and readout inefficiencies with a fraction of event loss ranging from 5 to 10\% depending on the expected background (Figure~\ref{fig:CSC-upgrade}). Thus the replacement of CSCs' \acf{CFEBs} by digital ones, DCFEBs, with deeper buffer would solve the problem and satisfy HL-LHC requirements. Moreover, a lack of FPGA memory resources is feared for CSCs' \acf{ALCTs} and the boards that were not already upgraded during LS1 will need to be replaced, also ensuring that the out bandwidth will be sufficient for the expected high data rate. Finally, all these new DT and CSC electronics will be connected to the trigger electronics via optical links to ensure a faster communication~\cite{PHASEIITP}.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width=0.8\plotwidth]{fig/chapt3/DT-channel-failure.png}\\
+			\caption{\label{fig:DT-upgrade:A}}
+			
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width=0.9\plotwidth]{fig/chapt3/DT-upgrade.png}
+			\caption{\label{fig:DT-upgrade:B}}
+		\end{subfigure}
+		\caption{\label{fig:DT-upgrade} Figure~\ref{fig:DT-upgrade:A}: extrapolated fraction of failing channels of the present DT MiC1 electronics as a function of the integrated luminosity. Considering the most optimistic scenario, at least 19\% of the channels could have failed by LS4, far before the end of the HL-LHC campain. Figure~\ref{fig:DT-upgrade:B}: Comparison of the current (left) and upgraded (right) DT data processing. So far, the data is sent to service cavern of CMS facility via copper-to-optical-fiber translators (CuOF) by each MiC1. There, data including RPCs and outer hadron calorimeter is combined into trigger primitives (TPG) and transmitted by the TwinMux system to CMS Track Finder. The time-to-digital converter (TDC) data is collected and sent to the CMS data acquisition system (DAQ) by the micro read-out server ($\mu$ROS). After the upgrade, the TDC data will be sent via optical links to a patch panel inside the experimental cavern by each MiC2, and transferred to the back-end, where triggering and event building will be performed.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width=\plotwidth]{fig/chapt3/CSC-event-loss.png}\\
+			\caption{\label{fig:CSC-upgrade:A}}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width=\plotwidth]{fig/chapt3/CSC-upgrade.png}
+			\caption{\label{fig:CSC-upgrade:B}}
+		\end{subfigure}
+		\caption{\label{fig:CSC-upgrade} Figure~\ref{fig:CSC-upgrade:A}: The event loss fractions as a function of the instantaneous luminosity is compared for CFEBs (Phase-1) and DCFEBs (Phase-II) at different CSC locations. HL-LHC luminosity is marked with the dashed brown line. Figure~\ref{fig:CSC-upgrade:B}: Comparison of the current (left) and upgraded (right) CSC data processing. A part of the connections in between ALCTs and DCFEBs, and the trigger mother boards (TMBs) and data acquisition mother boards (DMBs) will be upgraded toward optical data transfer. The detector dependent units (DDUs) used as interface in betweend CSCs' front-end electronics and the CMS DAQ will be replaced by new FED boards.}
+	\end{figure}
 
 	The increase of irradiation close to the beam line will affect the background rate seen by the muon detectors in this area and tracking muons will prove to be difficult as this region is not yet equipped with all the detectors that were already foreseen for Phase-I. Improving this situation will come with the increase of hit numbers recorded along the particle track to reduce the ambiguity on muon versus background detection. Moreover, the measurement of small production cross-section and/or decay branching ratio processes, such as the Higgs boson coupling to charge leptons, and in particular to muons, or the $B_s \longrightarrow \mu^+\mu^-$ decay, is of major interest and specific upgrades in the forward regions of the detector will be required to maximize the physics acceptance to the largest possible solid angle.
 	
