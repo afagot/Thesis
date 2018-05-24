@@ -90,24 +90,24 @@ at \SI{1.6}{Gbps}.
 	Composed of low energy gammas and neutrons from $p$-$p$ collisions, low momentum primary and secondary muons, puch-through hadrons from calorimeters, and particles produced in the interaction of the beams with collimators, the background will mostly affect the regions of CMS that are the closest to the beam line, i.e. the RPC detectors located in the endcaps. {\color{blue} [To update.]}\\
 	
     The 2016 data allowed to study the values of the background rate in all RPC system.
-	In Figure~\ref{Fig:HL-LHC}, the distribution of the chamber background hit rate per unit area is shown at a luminosity of $5\times10^{34}cm^{-2}.s^{-1}$ linearly extrapolating from data collected in 2016 {\color{blue} [ref mentioning the linear dependency of rate vs lumi]}.
+	In Figure~\ref{fig:RPC-HL-LHC}, the distribution of the chamber background hit rate per unit area is shown at a luminosity of $5\times10^{34}cm^{-2}.s^{-1}$ linearly extrapolating from data collected in 2016 {\color{blue} [ref mentioning the linear dependency of rate vs lumi]}.
 	The maximum rate per unit area at HL-LHC conditions is expected to be of the order of ${600}{Hz/cm^2}$ (including a safety factor 3).
 	Nevertheless, Fluka simulations have conducted in order to understand the background at HL-LHC conditions.
 	The comparison to the data has shown, in Figure~\ref{Fig:Fluka}, a discrepancy of a factor 2 even though the order of magnitude is consistent. {\color{blue} [Understand mismatch.]}\\
     
-    \begin{figure}[H]
-		\begin{subfigure}{\linewidth}
-		    \centering
-			\includegraphics[width = \plotwidth]{fig/chapt5/Barrel-Roll-Rate-HL-LHC.pdf}\\
-			\caption{\label{Fig:HL-LHC:Barrel}}
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[height=5cm]{fig/chapt5/RPC-Rate-HL-LHC_2017.png}
+			\caption{\label{fig:RPC-HL-LHC:A}}
 		\end{subfigure}
-		\begin{subfigure}{\linewidth}
-		    \centering
-			\includegraphics[width = \plotwidth]{fig/chapt5/Endcap-Disks-Rate-HL-LHC.pdf}
-			\caption{\label{Fig:HL-LHC:Endcap}}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[height=5cm]{fig/chapt5/RPC-IC-HL-LHC_2016.png}
+			\caption{\label{fig:RPC-HL-LHC:B}}
 		\end{subfigure}
-        \caption{\label{Fig:HL-LHC}(\ref{Fig:HL-LHC:Barrel}) Extrapolation from 2016 data of single hit rate per unit area in the barrel region. (\ref{Fig:HL-LHC:Endcap}) Extrapolation from 2016 data of single hit rate per unit area in the endcap region.}
-    \end{figure}
+		\caption{\label{fig:RPC-HL-LHC} Figure~\ref{fig:RPC-HL-LHC:A}: The integrated charge per region (Barrel, Endcap) is extrapolated to HL-LHC integrated luminosity (\SI{3000}{fb^{-1}}) using the data accumulated in 2016 in every HV channels. Figure~\ref{fig:RPC-HL-LHC:B}: The hit rate per region (Barrel, Endcap) is linearly extrapolated to HL-LHC highest instantaneous luminosity ($5\times10^{34}$ \si{cm^{-2}s^{-1}}) using the rate as a function of instantaneous luminosity recorded by RPCs in 2017 showing a linear dependence.}
+	\end{figure}
     
     \begin{figure}[H]
         \centering

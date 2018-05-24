@@ -60,7 +60,7 @@ To ensure proper trigger performance within the present coverage, the muon syste
 	Finally, as the muon system is composed only of gaseous detectors, strong environmental concerns have risen over the last years as the European directives will restrict the use of fluorine based gas mixtures. Both the CSC and RPC subsystems, using $CF_4$, $C_2H_2F_4$, or $SF_6$, will need to adapt their working gas in order to strongly reduce the greenhouse potential of the mixtures released into the atmosphere due to gas leaks.
 	
 \section{Necessity for improved electronics}
-\label{chapt3:sec:DTCSCP2}
+\label{chapt3:sec:electronics}
 
 	Drift Tubes and Cathode Strip Chambers are important components used to identify and measure muons, especially thanks to their spatial resolution of the order of \SI{100}{\micro m}. Nevertheless, the luminosity and irradiation during HL-LHC will cause serious event loss and ageing on the electronics of these subsystems that will comprise the triggering and data transfering needs of CMS. Thus, electronics upgrade are foreseen to address these expected problems. While only the RPCs' electronic system is able to operate under Phase-II requirements, DTs and CSCs will need to improve their trigger accept rate and latency to ensure that Level-1 trigger threshold stays at the same level~\cite{LEVEL1IR}, and DAQ data transfer rate, that respectively need to achieve a minimum of \SI{500}{kHz}, get down to \SI{12.5}{\micro s}~\cite{CMSIITP}, and increase to \SI{1082}{Gbit/s} DTs and to \SI{1026}{Gbit/s} for CSCs. As of today, the Level-1 trigger accept rate of DTs doesn't reach \SI{300}{kHz} while this of CSCs is bellow \SI{250}{kHz} but the foreseen upgrades are expected to increase the rate way beyond the requirement in the of DTs and up to \SI{4}{MHz} for CSCs~\cite{PHASEIITP}.
 	
@@ -96,17 +96,43 @@ To ensure proper trigger performance within the present coverage, the muon syste
 	\end{figure}
 	
 	All these new DT and CSC electronics will be connected to the trigger electronics via optical links to ensure a faster communication. The main change will come from the new DT minicrate modules which will not anymore be responsible for trigger and event building logic which will be transfered to the back-end electronics instead located in the service cavern via the patch pannels to which the \acf{TDC} data will be sent. The trigger and data transfer logic will barely change for CSCs. The existing copper cable connections of cathode and anode FEBs (CFEBs, and AFEBs which data is transmitted through the ALCTs) toward the trigger and data mother boards (TMBs and DMBs) will simply be replaced by optical fibers and the TMBs and DMBs upgraded with optical versions (OTMBS and ODMBs). As a new feature, the full anode wire data from ALCTs will be sent to the ODMBs causing a lack of FPGA memory resources in these ALCT boards that will thus need replacement.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\plotwidth]{fig/chapt3/RPC-ugrade-LS.png}
+		\caption{\label{fig:RPC-time} Comparison of the simulated time residuals in between reconstructed and true muon times without (blue) and with (red) the upgraded RPC link system.}
+	\end{figure}
+	
+	The upgrade on the side of Resistive Plate Chambers will then not come from their on-board electronics but from the Link System located in the service cavern of CMS and that connects the front-end electronics data of RPCs into CMS trigger processors. The main motivation for such and upgrade is that the electronic board composing the link system are built using obsolete components and weak components that can easily suffer from the electromagnetic noise. These components may be the source of failing channels throughout Phase-II. Moreover, these link boards were originally designed only to match RPC digitized signals with the corresponding bunch crossing. Due to this feature, the time resolution of the full RPC chain is thus limited to \SI{25}{ns} and does not exploit the full time resolution of the detectors. This would make the synchronization of the RPC system easier and allow to have a finer offline background removal within the \SI{25}{ns} in between bunch crossings thanks to the order of magnitude gained in terms of time resolution.
+	
+	Upgrading RPC link system will require the installation of 1376 new link boards and 216 control boards. The new boards will make use of the recent progress made with fast FPGAs and will be a great improvement to the ASICs formerly used as they will be able to process signals from several detectors in parallel. The benefice from using the full RPC time resolution thanks to the upgraded link system can be seen through Figure~\ref{fig:RPC-time} where the resolution of the RPC system itself is better than which of DTs and CSCs that was used until now.
 
 \section{New detectors and increased acceptance}
 \label{chapt3:sec:GEMRPC}
 
-	In the present muon system, RPCs are used by CMS L1 trigger for their good timing performances. Indeed, a very good bunch crossing identification can be obtained with the present CMS RPC system, given their fast response of the order of \SI{1}{ns}. In order to contribute to the precision of muon momentum measurements, muon chambers should have a spatial resolution less or comparable to the contribution of multiple scattering~\cite{MUONTDR}. Most of the plausible physics is covered only considering muons with $p_T<$\SI{100}{GeV} thus, in order to match CMS requirements, a spatial resolution of $\mathcal{O}$(few $\mathrm{mm}$) the proposed new RPC stations, as shown by the simulation in figure~\ref{fig:MultiScat}. According to preliminary designs, RE3/1 and RE4/1 readout pitch will be comprised between 3 and \SI{6}{mm} and 5 $\eta$-partitions could be considered.
+	In the present muon system, the redundancy of was assured by RPCs used for their good timing performances. The extension of the muon system towards higher pseudo-rapidity in order to complete the redundancy in this very region and to contribute to the precision of muon momentum measurements will require muon chambers with a spatial resolution less or comparable to the contribution  muon of multiple scattering through the detector volume~\cite{MUONTDR}. Most of the plausible physics is covered only considering muons with $p_T<$\SI{100}{GeV} thus, in order to match CMS requirements, a spatial resolution of $\mathcal{O}$(few $\mathrm{mm}$) will be necessary for the proposed new RPC stations while the GEMs will need a resolution better than \SI{1}{mm}, as showed by the simulation in Figure~\ref{fig:MultiScat}.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\textwidth]{fig/chapt3/MS_allstations.pdf}
-	\caption{\label{fig:MultiScat}  RMS of the multiple scattering displacement as a function of muon $p_T$ for the  proposed forward muon stations. All of the electromagnetic processes such as bremsstrahlung and magnetic field effect are included in the simulation.}
-\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\textwidth]{fig/chapt3/MS_allstations.pdf}
+		\caption{\label{fig:MultiScat} RMS of the multiple scattering displacement as a function of muon $p_T$ for the proposed forward muon stations. All of the electromagnetic processes such as bremsstrahlung and magnetic field effect are included in the simulation.}
+	\end{figure}
+	
+	\subsection{Improved forward resistive plate chambers}
+	\label{chapt3:ssec:iRPCs}
+	
+	Figure~\ref{fig:P2Quadrant} shows that the iRPCs that will equip the third and fourth endcap disks in position RE3/1 and RE4/1 will finally be the partners of the CSCs in position ME3/1 and ME4/1 and complete Phase-I plans but bringing the needed upgrades in the scope of Phase-II as the older chambers are not suitable to equip the forward region of CMS due to HL-LHC rates and charge deposition. By completing the redundancy, more track along the muon trajectory will be available and the lever arm will be improved. The detectors that will be installed in the coming years will be similar to the already existing RPC system. 18 of the new chambers, each spanning \SI{20}{\degree} in $\varphi$ around the beam axis with radially oriented trapezoidal read-out strips, will cover each muon endcap disk leading to the production of 72 iRPCs. The main difference with the old RPC chambers is that these detectors will not have readout strips segmented in $\eta$ as by using fast front-end electronics the strips will be read-out on both sides allowing for a radial spatial resolution of the order of \SI{2}{cm} in order to contribute to the better reconstruction of muon in the forward region where the bending of muons by the magnetic field is low. The strip pitch will range from \SI{6.0}{mm} (\SI{5.9}{mm}) on the high pseudo-rapidity end to \SI{12.3}{mm} (\SI{10.9}{mm}) on the low one on position RE3/1 (RE4/1). The spatial resolution in the direction perpendicular to the strips should reach approximately \SI{3}{mm}, better than the minimal needed resolution (Figure~\ref{fig:MultiScat}), and the overall time resolution of the new installation will be equally \SI{1.5}{ns}, as for the present due to the same link system being used.\\
+	
+	The instantaneous luminosity at HL-LHC being very high, the rates at the level of the new chambers needed to be simulated in order to understand the necessary requirements for these detectors. The simulated results for different background components (neutrons, photons, electrons and positrons) are showed in Figure~\ref{fig:iRPC-Rate} assuming known sensitivities to these particles. it is showed that in the hottest area, the rates could increase beyond \SI{700}{Hz/cm^2}. Thus, taking nito account a safety factor of about 3, it was decided that improved RPCs should at least be certified for rates reaching \SI{2}{kHz/cm^2} which would be achieved thanks to several improvements on the design and on the electronics. The detectors design will be based on the existing RPC design as they will be double gaps. The electrode material will be HPL as well although the thickness of the electrodes and of the gas gap will be reduced to \SI{1.4}{mm}.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\textwidth]{fig/chapt3/RPC-Sim-HL-LHC_Rate.png}
+		\caption{\label{fig:iRPC-Rate} Expected hit rate due to neutrons, photons, electrons and positrons at HL-HLC instantaneous luminosity of $5\times10^{34}$ \si{cm^{-2}s^{-1}} in RE3/1 chambers. In the upper part of the figure the sensitivities of RPCs used in the simulation for each particle are reported. The hit rates are expected to be similar in RE4/1.}
+	\end{figure}
+	
+	\subsection{Gas electron multipliers}
+	\label{chapt3:ssec:GEMs}
 
 \section{Implications of the different upgrades on the Level-1 Trigger. Improvement of physics performance.}
 \label{chapt3:sec:L1tP2}
