@@ -160,9 +160,53 @@ To ensure proper trigger performance within the present coverage, the muon syste
 	\subsection{Gas electron multipliers}
 	\label{chapt3:ssec:GEMs}
 	
-	In the region closer to the interaction point where the spatial resolution is requested to be better than \SI{1}{mm} for the new detectors (at least for GE1/1 and ME0, GE2/1 being in the same order of spatial resolution than the new iRPCs that will equip the third and fourth endcaps), the choice has been made to use triple GEMs, micro pattern gaseous detectors, in the place of RPCs. The GE1/1 project had been the first to be approved and demonstrators had been installed in CMS already during LS1. The rest of the detectors will be installed during LS2 while the GE2/1 and ME0 projects are still under development. ME0, GE1/1 and GE2/1 will be installed respectively next to the HCAL endcap, on the first and on the second muon endcap disks as can be seen from Figure~\ref{fig:P2Quadrant}.
+	In the region closer to the interaction point where the spatial resolution is requested to be better than \SI{1}{mm} for the new detectors (at least for GE1/1 and ME0, GE2/1 being in the same order of requested spatial resolution than the new iRPCs that will equip the third and fourth endcaps), the choice has been made to use triple GEMs, micro pattern gaseous detectors, in the place of RPCs. The GE1/1 project had been the first to be approved and demonstrators had been installed in CMS already during LS1. The rest of the detectors will be installed during LS2 while the GE2/1 and ME0 projects are still under development. ME0, GE1/1 and GE2/1 will be installed respectively next to the HCAL endcap, on the first and on the second muon endcap disks as can be seen from Figure~\ref{fig:P2Quadrant}.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\plotwidth]{fig/chapt3/GEM.png}
+		\caption{\label{fig:GEM} Schematics of a GEM showing the cathode on top, the GEM foil separating the gas volume into the drift region, in between the cathode and foil, and the induction region, in between the GEM foil and the anode, and the anode on which a 2D read-out is installed. A negative voltage is applied on the cathode while the anode is connected to the ground.}
+	\end{figure}
 	
-	Gas Electron multipliers are gaseous detectors containing a drift volume contained in between 2 plane electrodes in which primary electrons travels before being locally accelerated and multiplied by passing through a "GEM" foil. The GEM foils used in CMS are \SI{50}{\micro m} foils clad with \SI{5}{\micro m} of copper on each side. The foils are pierced with holes which inner diameter is \SI{50}{\micro m} and a very strong electric field is applied in between the outer surfaces of the foils which makes the volume in the holes an amplification area.
+	Gas Electron multipliers are gaseous detectors~\cite{SAULI97} which gas volume is confined in between 2 planar electrodes, the anode serving as read-out panel. The gas volume is divided in 2 or more regions by a single or multiple \textit{GEM foils} as showed in Figure~\ref{fig:GEM}. These foils are very thin, of the order of a few tens of \si{\micro m}, and are pierced with holes as can be seen in Figure~\ref{fig:GEM-foil}. Both surfaces of the GEM foils are clad with copper in order to apply a strong electric field in between each side that will generate very strong potentials in the holes. The gas region contained in between the cathode and the GEM foil is called the drift region as the electric field is not strong enough to cause avalanches and thus start an amplification. The primary electrons drift toward the foil and are accelerated and amplify by the very high potential within the holes, as showed in Figure~\ref{fig:GEM-foil}. Then the electrons reach the second drift region in which they will induce signal on the read-out located on the anode. By restraining the amplification process at the level of the holes, the electrons can stay in a very confined space and thus induce a very localized current, providing the GEMs with a very good spatial resolution.
+	
+	In order to achieve a stronger amplification, the amplification process can be repeated several times in a row. The GEMs that will be used in CMS are triple GEM detectors operated with a 70/30 gas mixture of $Ar$/$CO_2$. They contain 3 GEM foils and thus 3 electron amplifications, as can be seen in Figure~\ref{fig:GEM-drift}. The GEM foils used in CMS are \SI{50}{\micro m} foils clad with \SI{5}{\micro m} of copper on each side. The foils are pierced with double-canonical holes which inner and outer diameters are respectively 50 and \SI{70}{\micro m} which are placed \SI{140}{\micro m} from each other in an hexagonal pattern, as showed in Figure~\ref{fig:GEM-foil}. These detectors have a time resolution better than \SI{10}{ns} and reach very good spatial resolutions of less than \SI{300}{\micro m} with an angular precision of less than \SI{200}{\micro rad}.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\plotwidth]{fig/chapt3/GEM-foil-ampli.png}
+		\caption{\label{fig:GEM-foil} Left: Picture of a CMS GEM foil provided by a scanning electron microscope. Righ: Representation of the electric field lines in a GEM hole and of the amplification that electrons and ions undergo in the hole's volume due to the very intense electric field.}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\plotwidth]{fig/chapt3/GEM-drift.png}
+		\caption{\label{fig:GEM-drift} Schematic representation of CMS triple GEMs. The gas volume is divided into 4 areas. The drift area is the region where the primary electrons are created before being amplified a first time while passing through the first GEM foil. Then the process of drift and amplification is repeated twice in following two transfer areas and GEM foils. Finally, the charges have been amplified enough to induce current in the read-out strips while in the last drift area. The dimensions, potentials and electric fields are provided.}
+	\end{figure}
+	
+	The GEM Upgrade is divided into 3 subsystems as GE1/1 was the first approved project~\cite{GEM11TDR} and that the detectors will already be installed during LS2. GE2/1 and ME0, on the other hand, will profit of the R\&D knowledge and skills developed for GE1/1 while the requirements for each subsystem are different as they are not placed at the same distance from the interaction point. In this very forward region, a different position with respect to the center of the detector can change dramatically the conditions in which the detectors will have to be operated. In terms of rate capability, GE2/1, which is the furthest, is required to whisthand \SI{2.1}{kHz/cm^2} while GE1/1 needs to be better than \SI{10}{kHz/cm^2} and ME), better than \SI{150}{kHz/cm^2}. In terms of ageing with respect to charge deposition, ME0 needs to be certified to \SI{840}{mC/cm^2}, GE1/1 to \SI{200}{mC/cm^2} and GE2/1 only to \SI{9}{mC/cm^2}. All 3 detectors need to have a time resoltion better than \SI{10}{ns} and an angular resolution better than \SI{500}{\micro rad}.
+	
+	Adding the GEMs into the forward region of the muon system will allow to strongly enhance the Level-1 Trigger performance by reducing the inefficiency regions and the trigger rate as showed in Figure~\ref{fig:GEM-Trigger}. Moreover, benefiting from the good spatial and angular resolution of the GEMs, the precision into the muon measurement will also be greatly improved by the addition of GEMs as can be seen from the simulation presented in Figure~\ref{fig:GEM-Muon}.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{fig/chapt3/GEM-Trigger.png}
+		\caption{\label{fig:GEM-Trigger} Simulated efficiency and rate of the standalone Level-1 muon trigger using tracks reconstructed in CSCs and all GEM stations compared with Phase-I values in the case where only CSCs are used or CSCs+GE1/1. The zones of inefficiency of the CSC subsystem are compensated by the addition of GEMs during Phase-II and the trigger rates is kept from increasing due to the high luminosity.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.6\linewidth}
+			\centering
+			\includegraphics[height=5cm]{fig/chapt3/GEM-muon-direction.png}
+			\caption{\label{fig:GEM-Muon:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[height=6cm]{fig/chapt3/GEM-Muon-bending.png}
+			\caption{\label{fig:GEM-Muon:B}}
+		\end{subfigure}
+		\caption{\label{fig:GEM-Muon} Figure~\ref{fig:GEM-Muon:A}: Simulated resolution of the muon direction measurement $\Delta\phi$ with Phase-II conditions. In the second endcap station, the resolution is compared in the case of CSCs (ME2/1) alone and CSCs+GEMs (GE2/1+ME2/1) while a similar resolution measurement is given in the case of the first station (GE1/1+ME1/1). Figure~\ref{fig:GEM-Muon:B}: The addition of GEM detectors on stations 1 and 2 (ME0 is considered to contribute to station station 1) as redundant system to CSCs allows to improve the muon momentum improvement through a more accurate measurement of the local bending angles $\phi_1$ and $\phi_2$.}
+	\end{figure}
 	
 	\subsection{Installation schedule}
 	\label{chapt3:ssec:schedule}
