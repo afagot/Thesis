@@ -259,10 +259,35 @@ To ensure proper trigger performance within the present coverage, the muon syste
 	\subsection{Installation schedule}
 	\label{chapt3:ssec:schedule}
 	
+	The previous discussion on the different upgrade projects makes it clear that a lot of work is schedule for CMS to be ready at the end of LS3 for HL-LHC. Conducting all the upgrades of the muon system together with upgrades of the other subsystems like the replacement of the Tracker and of part of the ECAL, will prove to be very difficult as the opening of CMS to access the Barrel will be done by fully opening the endcaps leaving only the first disk to be accessible. Thus, most subsystems have planed early installation over LS2, and the following YETS until LS3 in order to give more space to LS3 schedule.\\
 	
-
+	First of all, LS2 will see the installation of GE1/1 detectors, all the on-detector schedule of CSCs and the installation of the necessary services for the improved RPCs to be installed later, such as the HV and LV power supply lines, the gas and cooling lines or signal cables. CSCs will have a huge work to do during LS2 as they will need to extract all of their detectors to refurbish them with upgraded DCFEB and ALCT mezzanine boards. The GE1/1 services were installed during LS1 together with a few demonstrator and only the detectors needs to be integrated into the first endcap disk. The detectors are presently being built and tested at the different assembly site to prepare for a smooth LS2 work.
+	
+	The work of GEMs will be continued during the following YETS during which is planned the installation of the GE2/1 stations to only leave the ME0 to be installed during LS3. The iRPC program will follow a similar path as the new detectors will be installed during the YETS preceding LS3 in prevision of the fact that the endcap disks will not be accessible during LS3. This way, all the subsystems, but DTs, made great effort on planing their installation and integration within CMS only to have to deal with off-detector issues during the LS3 period, such as the replacement of ODMBs and HV system in the case of CSCs or the upgrade of the RPC Link System. Finallly, during LS3 are schedules the replacement of DT minicrates electronics and the installation and integration of ME0 GEMs together with the HGCAL.
+	
 \section{Implications of the different upgrades on the Level-1 Trigger. Improvement of physics performance.}
 \label{chapt3:sec:L1tP2}
+
+	The upgrades of the different subsystems will have a subsequent impact on the Level-1 Trigger. Indeed, although its main scheme will not be affected, the efficiency of the trigger in efficiency identifying muons and provide the DAQ with good and fast trigger that can cope with HL-LHC instantaneous luminosity is a major improvement. In addition to the upgrade of the muon system in terms of trigger accept rate and latency, the Level-1 Trigger will get extra information in including the Tracker Trigger into its Muon Track Finder logic and combine the L1 Muon Trigger with Tracker and Calorimeter Triggers to generate a Global L1 Trigger with a much better momentum resolution, as showed in Figure~\ref{fig:L1-trigger}.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\plotwidth]{fig/chapt3/Phase-II-L1-Trigger.png}
+		\caption{\label{fig:L1-trigger} Data flow of the Level-1 Trigger during Phase-II operations.}
+	\end{figure}
+	
+	In terms of muon trigger, 3 regions are considered due to their different track finding logic: the \acf{BMTF}, the \acf{EMTF} for both the barrel and endcap regions, and finally the \acf{OMTF} which concerns the pseudo-rapidity region in which there is a common coverage by both the barrel and endcap muon systems. This region can be seen in Figure~\ref{fig:P2Quadrant} for \psrapr{0.9}{1.2} and requires a specific more complex logic to provide with an efficient reconstruction of the muons due to the different orientation of the detectors and of the more complex magnetic field of this region that needs to be taken into account. The benefits of the upgrade for each of these track finders will be coming from different improvements and will be detailed sector by sector.
+	
+	\subsection{Barrel region}
+	\label{chapt3:ssec:BMTF}
+	
+	The main contribution to the improvement of the BMTF is the time resolution improvement of RPC link systems that will allow to take profit of the full \SI{1.5}{ns} resolution of the detectors. The upgrade of DT electronics is also to take into account as the trigger primitive generator will be renewed through the use of TDCs that will send the digitized signals directly to the back-end electronics instead of having an on-detector trigger logic as it will be the case until the end of Phase-I. The front data of both DTs and RPCs will be sent to the same back-end electronics. These upgrades were detailed in section~\ref{chapt3:sec:electronics} and will lead to a more robust operation of the trigger in the barrel region. Indeed, the combination of RPC hits in addition to the DT primitives will improvement the bunch crossing assignment and improve the efficiency of the trigger in between the wheels were the quality of DT primitives is the poorest. Moreover, having a redundant information is important in the case of failure of one of either subsystems.
+	
+	\subsection{Endcap region}
+	\label{chapt3:ssec:EMTF}
+	
+	\subsection{Overlap region}
+	\label{chapt3:ssec:OMTF}
 
 \section{Ecofriendly gas studies}
 \label{chapt3:sec:EcoGas}
