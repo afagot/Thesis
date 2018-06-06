@@ -276,18 +276,87 @@ To ensure proper trigger performance within the present coverage, the muon syste
 		\caption{\label{fig:L1-trigger} Data flow of the Level-1 Trigger during Phase-II operations.}
 	\end{figure}
 	
-	In terms of muon trigger, 3 regions are considered due to their different track finding logic: the \acf{BMTF}, the \acf{EMTF} for both the barrel and endcap regions, and finally the \acf{OMTF} which concerns the pseudo-rapidity region in which there is a common coverage by both the barrel and endcap muon systems. This region can be seen in Figure~\ref{fig:P2Quadrant} for \psrapr{0.9}{1.2} and requires a specific more complex logic to provide with an efficient reconstruction of the muons due to the different orientation of the detectors and of the more complex magnetic field of this region that needs to be taken into account. The benefits of the upgrade for each of these track finders will be coming from different improvements and will be detailed sector by sector.
+	In terms of muon trigger, 3 regions are considered due to their different track finding logic: the \acf{BMTF}, the \acf{EMTF} for both the barrel and endcap regions, and finally the \acf{OMTF} which concerns the pseudo-rapidity region in which there is a common coverage by both the barrel and endcap muon systems. This region can be seen in Figure~\ref{fig:P2Quadrant} for \psrapr{0.9}{1.2} and requires a specific more complex logic to provide with an efficient reconstruction of the muons due to the different orientation of the detectors and of the more complex magnetic field of this region that needs to be taken into account. The benefits of the upgrade for each of these track finders will be coming from different improvements and will be detailed sector by sector.\\
 	
-	\subsection{Barrel region}
-	\label{chapt3:ssec:BMTF}
+	The main contribution to the improvement of the BMTF is the time resolution improvement of RPC link systems that will allow to take profit of the full \SI{1.5}{ns} resolution of the detectors. From the perspective of RPCs only, this improvement will help reducing the neutron induced background and slightly improve the bunch crossing assignment. The upgrade of DT electronics is also to take into account as the trigger primitive generator will be renewed through the use of TDCs that will send the digitized signals directly to the back-end electronics instead of having an on-detector trigger logic as it will be the case until the end of Phase-I. The front data of both DTs and RPCs will be sent to the same back-end electronics. These upgrades were detailed in section~\ref{chapt3:sec:electronics} and will lead to a more robust operation of the trigger in the barrel region. Indeed, the combination of RPC hits together with DT primitives will bring improvement in the bunch crossing assignment and improve the efficiency of the trigger in between the wheels were the quality of DT primitives is the poorest. Moreover, having a redundant information is important in the case of failure and loos of efficiency of one of either subsystems.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\plotwidth]{fig/chapt3/DT-efficiency-algo.png}
+		\caption{\label{fig:DT-P2-eff} Comparison of Phase-II DT trigger primitives algorithmic efficiency for segments obtained with 2 super-layers (quality $\geq$ 6/8) and 1 super-lay only (quality = 4/4). The simulation was done by generating $2 \times 10^6$ muons. The candidate tracks with correct time identification is showed with open symbols.}
+	\end{figure}
 	
-	The main contribution to the improvement of the BMTF is the time resolution improvement of RPC link systems that will allow to take profit of the full \SI{1.5}{ns} resolution of the detectors. The upgrade of DT electronics is also to take into account as the trigger primitive generator will be renewed through the use of TDCs that will send the digitized signals directly to the back-end electronics instead of having an on-detector trigger logic as it will be the case until the end of Phase-I. The front data of both DTs and RPCs will be sent to the same back-end electronics. These upgrades were detailed in section~\ref{chapt3:sec:electronics} and will lead to a more robust operation of the trigger in the barrel region. Indeed, the combination of RPC hits in addition to the DT primitives will improvement the bunch crossing assignment and improve the efficiency of the trigger in between the wheels were the quality of DT primitives is the poorest. Moreover, having a redundant information is important in the case of failure of one of either subsystems.
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[height=5cm]{fig/chapt3/DT-spatial-res-algo.png}
+			\caption{\label{fig:DT-P2-res:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[height=5cm]{fig/chapt3/DT-angular-res-algo.png}
+			\caption{\label{fig:DT-P2-res:B}}
+		\end{subfigure}
+		\caption{\label{fig:DT-P2-res} Simulated spatial (\ref{fig:DT-P2-res:A}) and angular (\ref{fig:DT-P2-res:B}) resolution of the algorithm using 8 aligned hits in both super-layers (quality = 8/8) and 4 aligned hits in only one super-layer (quality = 4/4). The contribution of intermediate quality tracks (6 aligned hits) is negligible in the angular range shown. \textbf{[Be careful to update this caption as it uses a text to close to the published one.]}}
+	\end{figure}
 	
-	\subsection{Endcap region}
-	\label{chapt3:ssec:EMTF}
+	The loss of single hit efficiency of DTs due to ageing will also force the DT to change the algorithm use to identify tracks. So far, the identification was only performed at the level of a single DT super-layer, which is composed of 4 single DT layers. In the perspective the single efficiency drops, this will require to be upgraded to try to combine the data of more than a single super-layer to keep a high muon track identification efficiency. In addition to this change in trigger primitive candidate quality, new algorithms with higher efficiency are being developed. According to Figure~\ref{fig:DT-P2-eff}, the efficiency of the new algorithm, both in the cases using 1 or 2 super-layers, is higher than with the current system~\cite{CMS2013}. Moreover, the overall efficiency of an algorithm requesting at least a muon detected in 6 DT layers out of the 8 composing the 2 super-layers of a DT module would stay comparable to the 4 DT layers out of 4 algorithm within the local bending angle range. On the other hand, despite the slight loss of efficiency in the low angle range, the algorithm using more DT layers achieves both higher spatial and angular resolution according to Figure~\ref{fig:DT-P2-res}.\\
 	
-	\subsection{Overlap region}
-	\label{chapt3:ssec:OMTF}
+	With new detectors to cover the very forward region and the upgrade of RPC Link System, the EMTF will be greatly improved. The current EMTF already use more sophisticated algorithms by combining together RPC hits and CSC primitives and will also benefit from the improved time resolution of the RPC system. The GEMs, in stations 1 and 2, and the iRPCs, in stations 3 and 4, will be added into the EMTF algorithm. Both these contributions will help increasing the efficiency of the L1 trigger in the endcap region in one hand, and help lowering the L1 trigger rate in the other hand, especially in the most forward region. The improvement of the efficiency will come both from the better time resolution of RPC link boards and from the addition of more hits along the muon tracks and also a contribution from the GEMs to the lever arm of each track thanks to there high angular resolution.
+	
+	The rate will be partly reduced in the forward region thanks to the better spatial resolution of iRPCs, with respect to the current RPC system, that will reduce the ambiguity brought by multiple local charged tracks in CSCs, as explained through Figure~\ref{fig:LCT-ambiguity}. Indeed, as the rates will increase, the probability to record more than a single local charged track will greatly increase. This is due to the fact that the trigger algorithm uses information from 3 consecutive bunch crossings to find muon tracks. It is estimated that with iRPCs operated at 95\% efficiency the resolution of ambiguous events would be of the order of 99.7\%.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[height=5cm]{fig/chapt3/EMTF-eff-2of4.png}
+			\caption{\label{fig:EMTF-eff:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[height=5cm]{fig/chapt3/EMTF-eff-4of4.png}
+			\caption{\label{fig:EMTF-eff:B}}
+		\end{subfigure}
+		\caption{\label{fig:EMTF-eff} Efficiency of the L1 trigger in the endcap region after Phase-II upgrade in the case CSC/GEM/RPC hits are requested in at least 2 stations out of four (\ref{fig:EMTF-eff:A}) and in all four stations (\ref{fig:EMTF-eff:B}).}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\plotwidth]{fig/chapt3/CSC-LCT-ambiguity.png}
+		\caption{\label{fig:LCT-ambiguity} Resolution of the LCT ambiguous events thanks to the combination of CSC and iRPC readout data. Using CSCs only, 2 pairs of hits are possible.}
+	\end{figure}
+	
+	The addition of GEMs will improve greatly the measured muon momentum resolution by improving the global resolution of the direction of muon tracks, as can be seen in Figure~\ref{fig:CSC-GEM-res}, which will contribute to lowering the trigger rate and increase the efficiency, as can be seen from Figure~\ref{fig:CSC-GEM-perf} that focuses especially in the most challenging pseudo-rapidity region. Data from both CSCs and GEMs are combined into the OTMB to build on each station, GEM/CSC primitives matching space and time information from both subsystems.
+	
+	Finally, the development of a track finder specific to the overlap region was already achieved during the Phase-I upgrade of the L1-Trigger~\cite{L1UPGRADE2016}. Nevertheless, the improvements of DT spatial resolution and RPC timing will be carried and implemented into the OMTF.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[height=5cm]{fig/chapt3/CSC-angular-res.png}
+			\caption{\label{fig:CSC-GEM-res:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[height=5cm]{fig/chapt3/GEM-angular-res.png}
+			\caption{\label{fig:CSC-GEM-res:B}}
+		\end{subfigure}
+		\caption{\label{fig:CSC-GEM-res} The angular resolution on reconstructed muon tracks in the GEM overlap region \psrapr{2.0}{2.15} is compared for Phase-II conditions in the case CSC are alone (Figure~\ref{fig:CSC-GEM-res:A}) and in the case the GEMs' data, including ME0, is combined to which of CSCs (Figure~\ref{fig:CSC-GEM-res:B}).}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[height=5cm]{fig/chapt3/GEM-trigger-rate.png}
+			\caption{\label{fig:CSC-GEM-perf:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[height=5cm]{fig/chapt3/GEM-trigger-eff.png}
+			\caption{\label{fig:CSC-GEM-perf:B}}
+		\end{subfigure}
+		\caption{\label{fig:CSC-GEM-perf} Comparison of L1 trigger performances for prompt muons with and without the addition of GEMs in the region \psrapr{2.1}{2.4} at Phase-II conditions. GEMs would allow a reduction of the trigger accept rate by an order of magnitude (Figure~\ref{fig:CSC-GEM-perf:A}) while increasing the trigger efficiency (Figure~\ref{fig:CSC-GEM-perf:B}).}
+	\end{figure}
 
 \section{Ecofriendly gas studies}
 \label{chapt3:sec:EcoGas}
