@@ -10,37 +10,19 @@
 {Physics of Resistive plate chambers}
 \label{chapt:4}
 
-A \acf{RPC} is a gaseous detector using the same physical processes described in Chapter~\ref{chapt:3}. It has been developed in 1981 by Santonico and Cardarelli~\cite{SANTONICO81}, under the name of \textit{Resistive Plate Counter}, as an alternative to the local-discharge spark counters proposed in 1978 by Pestov and Fedotovich~\cite{PESTOV78,FEDOTOVICH82}. Working with spark chambers implied using high-pressure gas and high mechanical precision which the RPC simplified by formerly using a gas mixture of argon and butane flowed at atmospheric pressure and a constant and uniform electric field propagated in between two parallel electrode plates. Moreover, a significant increase in rate capability was introduced by the use of electrode plate material with high bulk resistivity, preventing the discharge from growing throughout the whole gas gap. Indeed, the effect of using resistive electrodes is that the constant electric field is locally canceled out by the development of the discharge, limiting its growth.
+A \acf{RPC} is a gaseous detector used in high-energy physics experiments as described in Chapter~\ref{chapt:3}. It has been developed in 1981 by Santonico and Cardarelli~\cite{SANTONICO81}, under the name of \textit{Resistive Plate Counter}, as an alternative to the local-discharge spark counters proposed in 1978 by Pestov and Fedotovich~\cite{PESTOV78,FEDOTOVICH82}. Working with spark chambers implied using high-pressure gas and high mechanical precision which the RPC simplified by formerly using a gas mixture of argon and butane flowed at atmospheric pressure and a constant and uniform electric field propagated in between two parallel electrode plates. Moreover, a significant increase in rate capability was introduced by the use of electrode plate material with high bulk resistivity, preventing the discharge from growing throughout the whole gas gap. Indeed, the effect of using resistive electrodes is that the constant electric field is locally canceled out by the development of the discharge, limiting its growth.
 	
-	Through its development history, different operating modes~\cite{CROTTY93,CROTTY94,CARDARELLI96} and new detector designs~\cite{ZEBALLOS96MRPC,WILLIAMS98,CZYRKOWSKI98} have been discovered, leading to further improvement of the rate capability of such a detector. Moreover, the addition of $SF_6$ into the gas mix improved the stability of operation of the RPC~\cite{CAMARRI98,ZEBALLOS98}.
-	
-	The low developing costs and easily achievable large detection areas offered by RPCs, as well as the wide range of possible designs, made them a natural choice to as muon chambers and/or trigger detectors in multipurpose experiments such as CMS~\cite{MUONTDR} or ATLAS~\cite{ATLASTDR}, time-of-flight detectors in ALICE~\cite{ALICETDR}, calorimeter with CALICE~\cite{CALICE2016} or even detectors for volcanic muography with ToMuVol~\cite{TOMUVOL2011}. 
+	Through its development history, different operating modes~\cite{CROTTY93,CROTTY94,CARDARELLI96} and new detector designs~\cite{ZEBALLOS96MRPC,WILLIAMS98,CZYRKOWSKI98} have been discovered, leading to further improvement of the rate capability of such a detector. The low developing costs and easily achievable large detection areas offered by RPCs, as well as the wide range of possible designs, made them a natural choice to as muon chambers and/or trigger detectors in multipurpose experiments such as CMS~\cite{MUONTDR} or ATLAS~\cite{ATLASTDR}, time-of-flight detectors in ALICE~\cite{ALICETDR}, calorimeter with CALICE~\cite{CALICE2016} or even detectors for volcanic muography with ToMuVol~\cite{TOMUVOL2011}. 
 
 \section{Principle}
 \label{chapt4:sec:principle}
 
-	RPCs are ionisation detectors composed of two parallel resistive plate electrodes in between which a constant electric field is set. The space in between the electrodes, referred as \textit{gap}, is filled with a dense gas that is used to generate primary ionization into the gas volume. The free charge carriers (electrons and cations) created by the ionization of the gas molecules are then accelerated towards the electrodes by the electric field, as shown in Figure~\ref{fig:RPC_principle}~\cite{LIPPMANN2003}.
+	RPCs are ionisation detectors composed of two parallel resistive plate electrodes in between which a constant electric field is set. The space in between the electrodes, referred to as \textit{gap}, is filled with a dense gas that is used to generate primary ionization into the gas volume. The free charge carriers (electrons and cations) created by the ionization of the gas molecules are then accelerated towards the electrodes by the electric field, as shown in Figure~\ref{fig:RPC_principle}~\cite{LIPPMANN2003}. RPCs being passive detectors, a current on pick-up copper read-out placed outside of the gas volume is induced by the charge accumulation during the growth of the avalanche resulting from the acceleration of the charge carriers. As a consequence, the time resolution of the detector is substantially increased as the output signal is generated while the electrons are still in movement. The advantage of a constant electric field, over multi-wire proportional chambers, is that the electrons are being fully accelerated from the moment charge carriers are freed and feel the full strength of the electric field that doesn't depend on the distance to the readout and that the output signal doesn't need for the electrons to be physically collected.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width = \plotwidth]{fig/chapt4/RPC_principle.pdf}\\
-		\caption{\label{fig:RPC_principle} Different phases of the avalanche development in the RPC gas volume subjected to a constant electric field $E_0$. a) An avalanche is initiated by the primary ionisation caused by the passage of a charged particle through the gas volume. b) Due to its growing size, the avalanche starts to locally influence the electric field. c) The electrons, lighter than the cations reach the anode first. d) The ions reach the cathode. While the charges have not recombined, the electric field in the small region around the avalanche stays affected and locally blind the detector.}
-	\end{figure}
-	
-	RPCs being passive detectors, a current on pick-up copper read-out placed outside of the gas volume is induced by the charge accumulation during the growth of the avalanche. As a result, the time resolution of the detector is substantially increased as the output signal is generated while the electrons are still in movement. The advantage of a constant electric field, over multi-wire proportional chambers, is that the electrons are being fully accelerated from the moment charge carriers are freed and feel the full strength of the electric field that doesn't depend on the distance to the readout and that the output signal doesn't need for the electrons to be physically collected.
-	
-	The typical gas mixture RPCs are operated with is generally composed of 3 gas compounds.
-	
-	\begin{itemize}
-		\item[•] Tetrafluoroethane ($C_2F_4H_2$), also referred to as \textit{Freon}, is the principal compound of the RPC gas mixtures, with a typical fraction above 90\%. It is used for it's high effective Townsend coefficient and the great average fast charge that allows to operate the detector with a high threshold with respect to argon, for example, that has similar effective Townsend coefficient but suffers from a lower fast charge. To operate with similar conditions, argon would require a higher electric field leading to a higher fraction of streamers, thus limiting the rate capability of the detector~\cite{ABBRESCIA1997}.
-		\item[•] Isobutane (i-$C_4H_{10}$), only present in a few percent in the gas mixtures, is used for its UV quenching properties~\cite{BATTISTONI85} helping to prevent streamers due to UV photon emission during the avalanche growth.
-		\item[•] Sulfur hexafluoride, ($SF_6$), referred to simply as \textit{SF6}, is used in very little quantities for its high electronegativity. Excess of electrons are being absorbed by the compound and streamers are suppressed~\cite{ZEBALLOS98}. Nevertheless, a fraction of $SF_6$ higher than 1\% will not bring any extra benefice in terms of streamer cancelation power but will lead to higher operating voltage~\cite{CAMARRI98}, as can be understood through Figure~\ref{fig:SF6}.
-	\end{itemize}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/SF6.png}
-		\caption{\label{fig:SF6} Effeciency (circles and stars with \SI{30}{mV} and \SI{100}{mV} thresholds respectively) and streamer probability (opened circles) as function of the operating voltatge of a \SI{2}{mm} single gap HPL RPC flushed with a gas mixture containing (a) 5\%, (b) 2\%, (c) 1\% and (d) no $SF_6$~\cite{CAMARRI98}.}
+		\caption{\label{fig:RPC_principle} Different phases of the avalanche development in the RPC gas volume subjected to a constant electric field $E_0$. a) An avalanche is initiated by the primary ionisation caused by the passage of a charged particle through the gas volume. b) Due to its growing size, the avalanche starts to locally influence the electric field. c) The electrons, lighter than the cations reach the anode first. d) The ions reach the cathode. While the charges have not recombined, the electric field in the small region around the avalanche stays affected and locally blinds the detector.}
 	\end{figure}
 	
 	After an avalanche developed in the gas, a time long compared to the development of a discharge is needed to recombine the charge carriers in the electrode material due to their resistivity. This property has the advantage of affecting the local electric field and avoiding sparks in the detector but, on the other hand, the rate capability is intrinsically limited by the time constant $\tau_{RPC}$ of the detector. Using a quasi-static approximation of Maxwell’s equations for weakly conducting media, it can be shown that the time constant $\tau_{RPC}$ necessary to the charge recombination at the interface in between the electrode and the gas volume is given by the Formula~\ref{for:tau}~\cite{RIEGLER2002}.
@@ -74,22 +56,18 @@ A \acf{RPC} is a gaseous detector using the same physical processes described in
 		\end{tabular}
 		\caption{\label{tab:tau} Properties of the most used electrode materials for RPCs.}
 	\end{table}
-	
-	\subsection{Electron drift velocity}
-	\label{chapt4:ssec:drift}
-	
-	{\color{blue} Talk about the electron drift velocity and mention the time resolution of RPCs.}
-	
 
 \section{Rate capability and time resolution of Resistive Plate Chambers}
 \label{chapt4:sec:RateCapa}
 
-	As already previously discussed, the electrode material plays a key role in the max intrinsic rate capability of RPCs. R\&D is being done to develop at always cheaper costs material with lower resistivity. Nevertheless, the amount of charge released, i.e. the size of the discharge, if reduced leads to a smaller blind area in the detector, increasing the rate capability of the detector.
+	The electrode material plays a key role in the maximum intrinsic rate capability of RPCs. R\&D is continuously being done to develop at always cheaper costs material with lower resistivity. Nevertheless, the amount of charge released, i.e. the size of the discharge, if reduced leads to a smaller blind area in the detector, increasing the rate capability of the detector. On the other hand, the drift velocity of electrons in the gas volume being quite stable with the applied electric field, the design of a detector and the associated read-out and pulse-processing electronics will be a major component of the time resolution of RPCs. Moreover, the sensitivity of the electronics will also help increasing the rate capability by lowering the gain the gas volume needs to be operated at, increasingly lowering the gas volume in which the signals will develop.
 	
 	\subsection{Operation modes}
 	\label{chapt4:ssec:operation}
 	
-	RPCs where developed early 1980s. At that time it was using an operating mode now referred to as \textit{streamer mode}. Streamers are large discharges that develop in between the 2 electrodes enough to locally discharge the electrodes. If the electric field inside of the gas volume is strong enough, with electrons being fast compared to ions, a large and dense cloud of positive ions will develop nearby the anode and extend toward the cathode while the electrons are being collected, eventually leading to a streamer discharge due to the increase of field seen at the cathode. the field is then strong enough so that electrons are pulled out of the cathode. Electrodes, though they are a unique volume of resistive material, can be assimilated to capacitors. At the moment an electric field is applied in between their outer surfaces, the charge carriers inside of the volume will start moving leading to a situation where there is no voltage across the electrodes and a higher density of negative charges, i.e. electrons, on the inner surface of the cathode. Finally, when a streamer discharge occurs, these electrons are partially released in the gas volume contributing to increase the discharge strength until the formation of a conductive plasma, the streamer. This can be understood through Figure~\ref{fig:ElecCharge}~\cite{CROTTY93}. Streamer signals are very convenient in terms of read-out as no amplification is required with output pulses amplitudes of the order of a few tens to few hundreds of \si{mV} as can be seen on Figure~\ref{fig:ModeSignal}.
+	Being a gaseous detector using an accelerating electric field to amplify the signal of primary charge carriers, the RPC can be operated into different modes as the electric field intensity varies. Each mode offers different performances for such a detector, and it will be showed that the operating mode corresponding to the lowest electric field possible is best suited for high rate detectors working in collider experiments.
+	
+	RPCs where developed early 1980s. At that time it was using an operating mode now referred to as \textit{streamer mode}. Streamers are large discharges that develop in between the 2 electrodes enough to locally discharge the electrodes. If the electric field inside of the gas volume is strong enough, with electrons being fast compared to ions, a large and dense cloud of positive ions will develop nearby the anode and extend toward the cathode while the electrons are being collected, eventually leading to a streamer discharge due to the increase of field seen at the cathode. The field is then strong enough so that electrons are pulled out of the cathode. Electrodes, though they are a unique volume of resistive material, can be assimilated to capacitors. At the moment an electric field is applied in between their outer surfaces, the charge carriers inside of the volume will start moving leading to a situation where there is no voltage across the electrodes and a higher density of negative charges, i.e. electrons, on the inner surface of the cathode. Finally, when a streamer discharge occurs, these electrons are partially released in the gas volume contributing to increase the discharge strength until the formation of a conductive plasma, the streamer. This can be understood through Figure~\ref{fig:ElecCharge}~\cite{CROTTY93}. Streamer signals are very convenient in terms of read-out as no further amplification is required with output pulses amplitudes of the order of a few tens to few hundreds of \si{mV} as can be seen on Figure~\ref{fig:ModeSignal}.
 	
 	\begin{figure}[H]
 		\begin{subfigure}{0.5\linewidth}
@@ -110,8 +88,6 @@ A \acf{RPC} is a gaseous detector using the same physical processes described in
 		\caption{\label{fig:ElecCharge} Movement of the charge carriers in an RPC. Figure~\ref{fig:ElecCharge:A}: Voltage across an RPC whose electrode have a relative permittivity of 5 at the moment the tension s applied. Figure~\ref{fig:ElecCharge:B}: After the charge carriers moved, the electrodes are charged and there is no voltage drop over the electrodes anymore. The full potential is applied on the gas gap only. Figure~\ref{fig:ElecCharge:C}: The streamer discharge initiated by a charged particle transports electrons and cations towards the anode and cathode respectively.}
 	\end{figure}
 	
-	When the electric field is reduced though, the electronic gain is small until the electrons get close enough to the anode and the positive ion cloud is much smaller. The electric field cannot rise to the point a field emission of electrons on the cathode is possible. The resulting signal is weak, of the order of a few \si{mv} as shown on Figure~\ref{fig:ModeSignal}, and requires amplification. This is the \textit{avalanche mode} of RPC operation.
-	
 	\begin{figure}[H]
 		\begin{subfigure}{0.5\linewidth}
 			\centering
@@ -126,13 +102,37 @@ A \acf{RPC} is a gaseous detector using the same physical processes described in
 		\caption{\label{fig:ModeSignal} Typical oscilloscope pulses in streamer mode (Figure~\ref{fig:ModeSignal:A}) and avalanche mode(Figure~\ref{fig:ModeSignal:B}). In the case of streamer mode, the very small avalanche signal is visible.}
 	\end{figure}
 	
+	When the electric field is reduced though, the electronic gain is small until the electrons get close enough to the anode and the positive ion cloud is much smaller. The electric field cannot rise to the point a field emission of electrons on the cathode is possible. The resulting signal is weak, of the order of a few \si{mv} as shown on Figure~\ref{fig:ModeSignal}, and requires amplification. This is the \textit{avalanche mode} of RPC operation. This mode offers a higher rate capability by providing smaller discharges that don't affect the electrodes charge and are more locally contained in the gas volume as was demonstrated by Crotty with Figure~\ref{fig:ModeRate}~\cite{CROTTY93}. The detector only stays locally blind the time the charge carriers are recombined and there is no need for electrode recharge which is a long process affecting a large portion of the detector. Another advantage of avalanche signals over streamer is the great time consistency. Figure~\ref{fig:ModeSignal} shows very clearly that avalanche signals have a very small time jitter. Thus, using such a mode is a natural choice for experiments in which the detectors are required to have a high detection rate.
+	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width = \plotwidth]{fig/chapt4/Rate_Mode_Comparison.png}
 		\caption{\label{fig:ModeRate} Rate capability comparison for the streamer and avalanche mode of operation. An order of magnitude in rate capability for a maximal efficiency drop of 10\% is gained by using the avalanche mode over the streamer mode.}
 	\end{figure}
+
+	\subsection{Standard gas mixture for RPCs operated in collider experiments}
+	\label{chat4:ssec:gasmix}
 	
-	This mode offers a higher rate capability by providing smaller discharges that don't affect the electrodes charge and are more locally contained in the gas volume as was demonstrated by Crotty with Figure~\ref{fig:ModeRate}~\cite{CROTTY93}. The detector only stays locally blind the time the charge carriers are recombined and there is no need for electrode recharge which is a long process affecting a large portion of the detector. Another advantage of avalanche signals over streamer is the great time consistency. Figure~\ref{fig:ModeSignal} shows very clearly that avalanche signals have a very small time jitter. This is a natural choice for high rate experiments.
+	The first RPC working in streamer mode was operated with a 50/50 mixture of argon and butane~\cite{SANTONICO81}, a standard mixture used at that time in multi-wire proportional chambers, taking profit of the good effective Townsend coefficient of argon to maximize the number of primary charge carriers freed in the gas by ionizing particles and of the quenching properties of butane. Before the discovery of the avalanche mode of RPC operation and concerned about the rate capability of RPCs operated in streamer mode, the performance improvement of the detectors through the increase of fast charge proportion in the signal development was studied by adding Freon based gases, such as $CF_3Br$~\cite{CARDARELLI93}, into the typical $Ar$/$C_4H_{10}$ gas mixture.
+	
+	The typical gas mixture RPCs are operated with is generally composed of the following 3 gas compounds, although, as mentioned in Chapter~\ref{chapt3:sec:EcoGas}, research is being conducted into new more ecofriendly gas mixture using gases with a much lower \acl{GWP}:
+	
+	\begin{itemize}
+		\item[•] Tetrafluoroethane ($C_2F_4H_2$), also referred to as \textit{Freon} or \textit{R134a}, is the principal compound of the RPC gas mixtures, with a typical fraction above 90\%. It is used for it's high effective Townsend coefficient and the great average fast charge that allows to operate the detector with a high threshold with respect to argon, for example, that has similar effective Townsend coefficient but suffers from a lower fast charge. To operate with similar conditions, argon would require a higher electric field leading to a higher fraction of streamers, thus limiting the rate capability of the detector~\cite{ABBRESCIA1997}.
+		\item[•] Isobutane (i-$C_4H_{10}$), only present in a few percent in the gas mixtures, is used for its UV quenching properties~\cite{BATTISTONI85} helping to prevent streamers due to UV photon emission during the avalanche growth.
+		\item[•] Sulfur hexafluoride, ($SF_6$), simply referred to as \textit{SF6}, is used in very little quantities for its high electronegativity. Excess of electrons are being absorbed by the compound and streamers are suppressed~\cite{ZEBALLOS98}. Nevertheless, a fraction of $SF_6$ higher than 1\% will not bring any extra benefice in terms of streamer cancelation power but will lead to higher operating voltage~\cite{CAMARRI98}, as can be understood through Figure~\ref{fig:SF6}.
+	\end{itemize}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/SF6.png}
+		\caption{\label{fig:SF6} Effeciency (circles and stars with \SI{30}{mV} and \SI{100}{mV} thresholds respectively) and streamer probability (opened circles) as function of the operating voltatge of a \SI{2}{mm} single gap HPL RPC flushed with a gas mixture containing (a) 5\%, (b) 2\%, (c) 1\% and (d) no $SF_6$~\cite{CAMARRI98}.}
+	\end{figure}
+	
+	\subsection{Electron drift velocity}
+	\label{chapt4:ssec:drift}
+	
+	{\color{blue} Talk about the electron drift velocity and mention the time resolution of RPCs.}
 	
 	\subsection{Detector designs and performance}
 	\label{chapt4:ssec:design}
