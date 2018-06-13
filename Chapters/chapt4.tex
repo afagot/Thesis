@@ -12,7 +12,7 @@
 
 A \acf{RPC} is a gaseous detector used in high-energy physics experiments as described in Chapter~\ref{chapt:3}. It has been developed in 1981 by Santonico and Cardarelli~\cite{SANTONICO81}, under the name of \textit{Resistive Plate Counter}, as an alternative to the local-discharge spark counters proposed in 1978 by Pestov and Fedotovich~\cite{PESTOV78,FEDOTOVICH82}. Working with spark chambers implied using high-pressure gas and high mechanical precision which the RPC simplified by formerly using a gas mixture of argon and butane flowed at atmospheric pressure and a constant and uniform electric field propagated in between two parallel electrode plates. Moreover, a significant increase in rate capability was introduced by the use of electrode plate material with high bulk resistivity, preventing the discharge from growing throughout the whole gas gap. Indeed, the effect of using resistive electrodes is that the constant electric field is locally canceled out by the development of the discharge, limiting its growth.
 	
-	Through its development history, different operating modes~\cite{CROTTY93,CROTTY94,CARDARELLI96} and new detector designs~\cite{ZEBALLOS96MRPC,WILLIAMS98,CZYRKOWSKI98} have been discovered, leading to further improvement of the rate capability of such a detector. The low developing costs and easily achievable large detection areas offered by RPCs, as well as the wide range of possible designs, made them a natural choice to as muon chambers and/or trigger detectors in multipurpose experiments such as CMS~\cite{MUONTDR} or ATLAS~\cite{ATLASTDR}, time-of-flight detectors in ALICE~\cite{ALICETDR}, calorimeter with CALICE~\cite{CALICE2016} or even detectors for volcanic muography with ToMuVol~\cite{TOMUVOL2011}. 
+	Through its development history, different operating modes~\cite{CROTTY93,CROTTY94,CARDARELLI96}, gas mixtures~\cite{SANTONICO81,CARDARELLI93,CARDARELLI96,ABBRESCIA1997PERF,ABBRESCIA1997,CAMARRI98,ZEBALLOS98} and new detector designs~\cite{ZEBALLOS96MRPC,WILLIAMS98,CZYRKOWSKI98} have been discovered, leading to further improvement of the rate capability of such a detector. The low developing costs and easily achievable large detection areas offered by RPCs, as well as the wide range of possible designs, made them a natural choice to as muon chambers and/or trigger detectors in multipurpose experiments such as CMS~\cite{MUONTDR} or ATLAS~\cite{ATLASTDR}, time-of-flight detectors in ALICE~\cite{ALICETDR}, calorimeter with CALICE~\cite{CALICE2016} or even detectors for volcanic muography with ToMuVol~\cite{TOMUVOL2011}. 
 
 \section{Principle}
 \label{chapt4:sec:principle}
@@ -113,14 +113,63 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 	\subsection{Standard gas mixture for RPCs operated in collider experiments}
 	\label{chat4:ssec:gasmix}
 	
-	The first RPC working in streamer mode was operated with a 50/50 mixture of argon and butane~\cite{SANTONICO81}, a standard mixture used at that time in multi-wire proportional chambers, taking profit of the good effective Townsend coefficient of argon to maximize the number of primary charge carriers freed in the gas by ionizing particles and of the quenching properties of butane. Before the discovery of the avalanche mode of RPC operation and concerned about the rate capability of RPCs operated in streamer mode, the performance improvement of the detectors through the increase of fast charge proportion in the signal development was studied by adding Freon based gases, such as $CF_3Br$~\cite{CARDARELLI93}, into the typical $Ar$/$C_4H_{10}$ gas mixture.
+	The first RPC working in streamer mode was operated with a 50/50 mixture of argon and butane~\cite{SANTONICO81}, a standard mixture used at that time in multi-wire proportional chambers, taking profit of the good effective Townsend coefficient of argon to maximize the number of primary charge carriers freed in the gas by ionizing particles and of the quenching properties of butane. Before the discovery of the avalanche mode of RPC operation and concerned about the rate capability of RPCs operated in streamer mode, the performance improvement of the detectors through the increase of fast charge ratio in the signal development ,decreasing the charge induced per avalanche as can be seen through Figure~\ref{fig:FreonCharge}, was studied by adding Freon based gases, such as $CF_3Br$, into the typical $Ar$/$C_4H_{10}$ gas mixture was studied and showed that a lower induced charge could lead to an improvement the rate capability~\cite{CARDARELLI93}. This consideration lead to the discovery of the avalanche mode which confirmed that the smaller the induced charge, the better the rate capability of the RPCs~\cite{CROTTY93}. This discovery could happen thanks to the increased number of lower induced charge events allowed by adding a fraction of strong quencher in the gas mixture.
 	
-	The typical gas mixture RPCs are operated with is generally composed of the following 3 gas compounds, although, as mentioned in Chapter~\ref{chapt3:sec:EcoGas}, research is being conducted into new more ecofriendly gas mixture using gases with a much lower \acl{GWP}:
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Gas-mix-0-freon.png}
+			\caption{\label{fig:FreonCharge:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Gas-mix-4-freon.png}
+			\caption{\label{fig:FreonCharge:B}}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Gas-mix-8-freon.png}\\
+			\caption{\label{fig:FreonCharge:C}}
+		\end{subfigure}
+		\caption{\label{fig:FreonCharge} Comparison of the charge distribution of signals induced by cosmic muons in an RPC operated with a gas mixture of argon, butane and bromotrifluoromethane ($CF_3Br$). The $Ar$/$C_4H_10$ is kept constant at 60/40 in volume while the total amount of $CF_3Br$ in the mixture is varied: 0\% (Figure~\ref{fig:FreonCharge:A}), 4\% (Figure~\ref{fig:FreonCharge:B}) and 8\% (Figure~\ref{fig:FreonCharge:C})~\cite{CARDARELLI93}.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Freon-perf-irrad.png}
+			\caption{\label{fig:FreonArgonPerf:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Argon-perf-irrad.png}
+			\caption{\label{fig:FreonArgonPerf:B}}
+		\end{subfigure}
+		\caption{\label{fig:FreonArgonPerf} Comparison of the efficiency and streamer probability, defined as the fraction of events with an induced charge 10 times larger than that of the average avalanche, with and without irradiation by a \SI{24}{GBq} $^{137}Cs$ source of an RPC successively operated with a 90/10 mixture $C_2H_2F_4$/i-$C_4H_{10}$ (Figure~\ref{fig:FreonArgonPerf:A}) and a 70/5/10/15 mixture of $Ar$/i-$C_4H_{10}$/$CO_2$/$C_2H_2F_4$ (Figure~\ref{fig:FreonArgonPerf:B})~\cite{ABBRESCIA1997PERF}.}
+	\end{figure}
+	
+	From this moment onward, more and more studies were conducted in order to find a gas mixture that would allow for the best suppression of streamers for the benefit of low charge avalanches. Most R\&D groups working with narrow gaps started using freon-based gas mixtures while users of wide gap RPCs kept using $Ar$/$CO_2$ based mixtures. The differences in between narrow and wide gaps will be later discussed in Section~\ref{chapt4:ssec:design}. The $CF_3Br$ having a high GWP, tetrafluoroethane ($C_2H_2F_4$) was preferred to it as more suitable ecofriendly gas in the middle of the 90s. An advantage of this new freon component is that it featured a high primary ionization and a low operating voltage, as reported by Cardarelli~\cite{CARDARELLI96}. Thus, the new gas mixtures used were mainly composed of tetrafluoroethane alone with lower content of isobutane in order to reduce the flammability of the mixtures in the case it were to be used in accelerator experiments for safety reasons. Performance and models about such mixtures were discussed in papers of Abbrescia~\cite{ABBRESCIA1997PERF,ABBRESCIA1997} and showed a better suitability of such a gas mixture, with respect to argon based ones, for operations with high radiation backgrounds leading to a need for high rate capability of the detectors, as can be seen from Figures~\ref{fig:FreonArgonPerf} and \ref{fig:FreonArgonFastCharge}. Indeed, although the operating voltage of a tetrafluoroethane based mixture is higher than which of an argon based mixture but the efficiency under irradiation is more stable, the voltage range with negligible streamer probability is much wider, and the fast charge ratio available is much greater, providing with more stable operation of the detector.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Freon-fast-charge-irrad.png}
+			\caption{\label{fig:FreonArgonFastCharge:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Argon-fast-charge-irrad.png}
+			\caption{\label{fig:FreonArgonFastCharge:B}}
+		\end{subfigure}
+		\caption{\label{fig:FreonArgonFastCharge} Comparison of the fast charge ratio with and without irradiation by a \SI{24}{GBq} $^{137}Cs$ source of an RPC successively operated with a 90/10 mixture $C_2H_2F_4$/i-$C_4H_{10}$ (Figure~\ref{fig:FreonArgonFastCharge:A}) and a 70/5/10/15 mixture of $Ar$/i-$C_4H_{10}$/$CO_2$/$C_2H_2F_4$ (Figure~\ref{fig:FreonArgonFastCharge:B}). The results are provided for both single gap and double gap operation~\cite{ABBRESCIA1997PERF}.}
+	\end{figure}
+	
+	Aside of the improvement of the rate capability through linseed oil surface treatment of HPL electrodes, which allowed for a lower intrinsic noise rate and dark current of the detectors by improving the smoothness of the electrodes surface~\cite{ABBRESCIA1997OIL}, it was later found that the streamers could be further suppressed by adding an electronegative compound into the gas mixture. The benefits of adding $SF_6$ in order to push the transitions from avalanche to streamers towards high voltages has been discussed in 1998~\cite{CAMARRI98,ZEBALLOS98} and eventually the high rate RPC destined to be used in accelerator physics would unanimously start using this compound into RPC gas mixtures. Being able to control the creation of streamers allows for slower ageing of the detector and lower power consumption as the currents driven by the electrodes consecutively to the induced charges would be smaller. In summary, the typical gas mixture RPCs are operated with is generally composed of the following 3 gas compounds, although, as mentioned in Chapter~\ref{chapt3:sec:EcoGas}, research is being conducted into new more ecofriendly gas mixture using gases with a much lower \acl{GWP}:
 	
 	\begin{itemize}
-		\item[•] Tetrafluoroethane ($C_2F_4H_2$), also referred to as \textit{Freon} or \textit{R134a}, is the principal compound of the RPC gas mixtures, with a typical fraction above 90\%. It is used for it's high effective Townsend coefficient and the great average fast charge that allows to operate the detector with a high threshold with respect to argon, for example, that has similar effective Townsend coefficient but suffers from a lower fast charge. To operate with similar conditions, argon would require a higher electric field leading to a higher fraction of streamers, thus limiting the rate capability of the detector~\cite{ABBRESCIA1997}.
+		\item[•] Tetrafluoroethane ($C_2F_4H_2$), also referred to as \textit{Freon} or \textit{R134a}, is the principal compound of the RPC gas mixtures, with a typical fraction above 90\%. It is used for it's high effective Townsend coefficient and the great average fast charge that allows to operate the detector with a high threshold with respect to argon, for example, that has similar effective Townsend coefficient but suffers from a lower fast charge. To operate with similar conditions, argon would require a higher electric field leading to a higher fraction of streamers, thus limiting the rate capability of the detector~\cite{ABBRESCIA1997,ABBRESCIA1997PERF}.
 		\item[•] Isobutane (i-$C_4H_{10}$), only present in a few percent in the gas mixtures, is used for its UV quenching properties~\cite{BATTISTONI85} helping to prevent streamers due to UV photon emission during the avalanche growth.
-		\item[•] Sulfur hexafluoride, ($SF_6$), simply referred to as \textit{SF6}, is used in very little quantities for its high electronegativity. Excess of electrons are being absorbed by the compound and streamers are suppressed~\cite{ZEBALLOS98}. Nevertheless, a fraction of $SF_6$ higher than 1\% will not bring any extra benefice in terms of streamer cancelation power but will lead to higher operating voltage~\cite{CAMARRI98}, as can be understood through Figure~\ref{fig:SF6}.
+		\item[•] Sulfur hexafluoride, ($SF_6$), simply referred to as \textit{SF6}, is used in very little quantities for its high electronegativity. Excess of electrons are being absorbed by the compound and streamers are suppressed~\cite{CAMARRI98,ZEBALLOS98}. Nevertheless, a fraction of $SF_6$ higher than 1\% will not bring any extra benefice in terms of streamer cancelation power but will lead to higher operating voltage~\cite{CAMARRI98}, as can be understood through Figure~\ref{fig:SF6}.
 	\end{itemize}
 	
 	\begin{figure}[H]
@@ -129,10 +178,23 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 		\caption{\label{fig:SF6} Effeciency (circles and stars with \SI{30}{mV} and \SI{100}{mV} thresholds respectively) and streamer probability (opened circles) as function of the operating voltatge of a \SI{2}{mm} single gap HPL RPC flushed with a gas mixture containing (a) 5\%, (b) 2\%, (c) 1\% and (d) no $SF_6$~\cite{CAMARRI98}.}
 	\end{figure}
 	
-	\subsection{Electron drift velocity}
-	\label{chapt4:ssec:drift}
+	In the last steps of R\&D, the gas mixture of CMS RPCs was forseen to be a 96.2/3.5/0.3 composition of $C_2H_2F_4$/i-$C_4H_{10}$/$SF_6$~\cite{ABBRESCIA2005} but finally it was slightly changed into a 95.2/4.5/0.3 mixture of the same gases~\cite{THYSSEN2012}. A summary of the operation performance of the RPCs since the start of LHC and of CMS data taking is given in Figure~\ref{fig:CMSRPCperf}~\cite{SHAH2018}. The performance of the detectors is regularly monitored and the operating voltages updated in order to obtain a very stable performance through time. Nevertheless, the detectors will face new challenges during Phase-II during which they will exposed to more extreme radiation conditions. Description of the longevity tests with extreme irradiation and the conclusions regarding the operation of the present RPC system will be given in Chapter~\ref{chapt5}.
 	
-	{\color{blue} Talk about the electron drift velocity and mention the time resolution of RPCs.}
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/HVScanSummaryBarrel.pdf}
+			\caption{\label{fig:CMSRPCperf:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/HVScanSummaryEndcap.pdf}
+			\caption{\label{fig:CMSRPCperf:B}}
+		\end{subfigure}
+		\caption{\label{fig:CMSRPCperf} Evolution of the efficiency, working voltage, and voltage at 50\% of maximum efficiency for CMS Barrel (Figure~\ref{fig:CMSRPCperf:A}) and Endcap (Figure~\ref{fig:CMSRPCperf:B}) RPCs obtained through yearly voltage scans since 2011. The working voltage of each RPC is updated after each voltage scan to ensure optimal operation~\cite{SHAH2018}.}
+	\end{figure}
+	
+	It was already discussed that in the future, it is likely that the use of freon gases could be banned. As potential replacement for tetrafluoroethane was proposed the trifluoroiodomethane ($CF_3I$), a molecule with similar properties than $CF_3Br$ which was replaced by the tetrafluoroethane, and the 1,3,3,3-tetrafluoropropene ($C_3H_2F_4$ or HFO-1234re), a molecule with similar properties than the actual tetrafluoroethane and proposed as a replacement in refrigirating and air conditioning systems~\cite{HFO2015}. These 2 gases have stronger quenching properties than $C_2H_2F_4$ which means a much stronger electric field needs to be applied on the parallel electrodes of the RPCs in order to reach full efficiency. But the power supply system of CMS RPC is limited to \SI{15}{kV} and so is ATLAS power supply system which is participating in a joined R\&D. As can be seen from Figure~\ref{fig:RPC-eco}, reducing the working voltage was achieved by mixing the potential replacements together with $CO_2$. Introducing carbon dioxide into the mixture while keeping similar levels of isobutane and $SF_6$ increases the streamer probability and the best candidate identified for a compromise in between low enough working voltage and acceptable levels of streamers corresponds to a mixture containing 50\% of $CO_2$, 45\% of HFO, 4\% of isobutane and 1\% of $SF_6$ but is not yet considered satisfactory. On the other hand, no good replacement for $SF_6$ has yet been identified. With its very high \acl{GWP} (23900), even small fraction of this gas in the mixture (it only represents 0.3\% of CMS standard mixture but more than 5\% of its overall GWP) substantially increase the danger for the environment. Although finding a replacement for this gas is less critical than for the tetrafluoroethane composing more than 90\% of usual RPC standard mixtures, the problem will need to be addressed.
 	
 	\subsection{Detector designs and performance}
 	\label{chapt4:ssec:design}
@@ -235,6 +297,11 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 
 \section{Signal formation}
 \label{chapt4:sec:signal}
+	
+	\subsection{Electron drift velocity}
+	\label{chapt4:ssec:drift}
+	
+	{\color{blue} Talk about the electron drift velocity and mention the time resolution of RPCs.}
 
 \section{Gas transport parameters}
 \label{chapt4:sec:transport}
