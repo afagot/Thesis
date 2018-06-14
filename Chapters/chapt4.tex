@@ -181,14 +181,15 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 	In the last steps of R\&D, the gas mixture of CMS RPCs was forseen to be a 96.2/3.5/0.3 composition of $C_2H_2F_4$/i-$C_4H_{10}$/$SF_6$~\cite{ABBRESCIA2005} but finally it was slightly changed into a 95.2/4.5/0.3 mixture of the same gases~\cite{THYSSEN2012}. A summary of the operation performance of the RPCs since the start of LHC and of CMS data taking is given in Figure~\ref{fig:CMSRPCperf}~\cite{SHAH2018}. The performance of the detectors is regularly monitored and the operating voltages updated in order to obtain a very stable performance through time. Nevertheless, the detectors will face new challenges during Phase-II during which they will exposed to more extreme radiation conditions. Description of the longevity tests with extreme irradiation and the conclusions regarding the operation of the present RPC system will be given in Chapter~\ref{chapt5}.
 	
 	\begin{figure}[H]
+		\hspace*{-0.05\plotwidth}
 		\begin{subfigure}{0.5\linewidth}
 			\centering
-			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/HVScanSummaryBarrel.pdf}
+			\includegraphics[width = 0.7\plotwidth]{fig/chapt4/HVScanSummaryBarrel.pdf}
 			\caption{\label{fig:CMSRPCperf:A}}
 		\end{subfigure}
 		\begin{subfigure}{0.5\linewidth}
 			\centering
-			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/HVScanSummaryEndcap.pdf}
+			\includegraphics[width = 0.7\plotwidth]{fig/chapt4/HVScanSummaryEndcap.pdf}
 			\caption{\label{fig:CMSRPCperf:B}}
 		\end{subfigure}
 		\caption{\label{fig:CMSRPCperf} Evolution of the efficiency, working voltage, and voltage at 50\% of maximum efficiency for CMS Barrel (Figure~\ref{fig:CMSRPCperf:A}) and Endcap (Figure~\ref{fig:CMSRPCperf:B}) RPCs obtained through yearly voltage scans since 2011. The working voltage of each RPC is updated after each voltage scan to ensure optimal operation~\cite{SHAH2018}.}
@@ -199,12 +200,48 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 	\subsection{Detector designs and performance}
 	\label{chapt4:ssec:design}
 	
-	Different RPC design have been used and each of them present its own advantages. Historically, the first type of RPC to have been developed is what is referred now to \textit{noarrow gap} RPC~\cite{SANTONICO81,ZEBALLOS96COMP}. After the avalanche mode has been discovered~\cite{CROTTY93}, it has been proven that increasing the width of the gas gap lead to higher rate capability, due to lower charge deposition per avalanche, and lower power dissipation~\cite{ZEBALLOS96COMP}. Nevertheless, by increasing the gas gap width, the time resolution of the detector decreases. This is a natural result if the increase of active gas volume in the detector is taken into account. Indeed, for a given threshold, only the small fraction of gas closest to the cathode will provide enough gain to have a detectable signal. In the case of a wider gas volume, the active region is then larger and a larger time jitter is introduced with the variation of starting position of the avalanche, as discussed in~\cite{ZEBALLOS96MRPC}. To solve improve both the time resolution and the rate capability, different methods were used trying to get advantages of both narrow and wide gap RPCs.
+	Different RPC design have been used and each of them present its own advantages. Historically, the first type of RPC to have been developed is what is now referred to as \textit{narrow gap} RPC~\cite{SANTONICO81,ZEBALLOS96COMP}.
 	
-		\subsubsection{Double-gap RPC}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/Gap-width-rate-cap.png}
+		\caption{\label{fig:GapWidthRate} Comparison of the rate capability of \SI{8}{mm} and \SI{2}{mm} wide RPCs. The lines are linear fits on the data~\cite{ZEBALLOS96COMP}.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\hspace*{-0.05\plotwidth}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Fast-charge-2mm.png}
+			\caption{\label{fig:GapWidthCharge:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Fast-charge-8mm.png}
+			\caption{\label{fig:GapWidthCharge:B}}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width = 0.7\plotwidth]{fig/chapt4/Fast-charge-evolution.png}
+			\caption{\label{fig:GapWidthCharge:C}}
+		\end{subfigure}
+		\caption{\label{fig:GapWidthCharge} Distributions of the induced charge of fast signals on \SI{2}{mm} (Figure~\ref{fig:GapWidthCharge:A}) and \SI{8}{mm} (Figure~\ref{fig:GapWidthCharge:B}) RPCs exposed to a radiation rate of \SI{100}{Hz/cm^2}. Average induced charge of fast signals as a function of the high voltage applied on \SI{2}{mm} and \SI{8}{mm} RPCs (Figure~\ref{fig:GapWidthCharge:C}). In the case of the \SI{2}{mm} RPC, a saturation of the pre-amplifier was observed. The average of the distribution is underestimated and the median is showed together with the average to account for this bias~\cite{ZEBALLOS96COMP}.}
+	\end{figure}
+	
+	After the avalanche mode has been discovered~\cite{CROTTY93}, it has been showed that increasing the width of the gas gap lead to higher rate capability, due to lower charge deposition per avalanche, and lower power dissipation~\cite{ZEBALLOS96COMP}, as is showed in Figures~\ref{fig:GapWidthRate} and \ref{fig:GapWidthCharge}. The distance in between the electrode being greater, a weaker electric field can be applied and a lower gain used as a longer gas volume will contribute to the signal induction on the read-out circuit. Nevertheless, by increasing the gas gap width, the time resolution of the detector decreases. This is a natural result if the increase of active gas volume in the detector is taken into account. Indeed, for a given detection threshold on the induced charge per signal, only the small fraction of gas closest to the cathode will provide enough gain to have a detectable signal. In the case of a wider gas volume, the active region is then larger and a larger time jitter is introduced with the variation of starting position of the avalanche, as discussed in~\cite{ZEBALLOS96MRPC} and showed in Figure~\ref{fig:GapWidthTime}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = \linewidth]{fig/chapt4/Time-res-gap-width.png}
+		\caption{\label{fig:GapWidthTime} Time distributions of the leading, trailing, and average of both leading and traling edges for \SI{2}{mm} (top row) and \SI{8}{mm} (bottom row) RPCs exposed to a \SI{100}{Hz/cm^2} radiation rate. The data was collected with RPCs operated at the voltage corresponding to the knee of the efficiency distribution, defined as the point where 95\% of the maximum efficiency is obtained~\cite{ZEBALLOS96COMP}.}
+	\end{figure}
+	
+	To improve both the time resolution and the rate capability, different methods were used trying to take advantage of both narrow and wide gap RPCs into a single design. Thus, double gap RPCs, combining two narrow gaps into a single detector to increase the effective sensitive volume, and multigap RPCs, which divided the large volume of a wide gap RPC into thinner sub-gaps by adding intermediate electrodes in between the cathode and anode to improve the time resolution by mimicking narrow gap RPCs, were developed starting from the middle of the 90s.
+	
+		\subsubsection{Double gap RPC}
 		\label{chapt4:sssec:DGRPC}
 	
-	Double-gap RPCs are made out of 2 narrow RPC detectors. The 2 RPC gaps are stacked on top of each other as shown in Figure~\ref{fig:DGLayout}. This detector layout, popularized by the two multipurpose experiments CMS~\cite{MUONTDR} and ATLAS~\cite{ATLASTDR} at LHC, can be used as an OR system in which each individual chamber participates in the ouput signal. The gain of such a detector is greatly reduced with respect to single-gap RPCs with an efficiency plateau reached at lower voltage, as visible on Figure~\ref{fig:DoubleGap}.
+	Made out of 2 narrow RPC detectors stacked on top of each other as shown in Figure~\ref{fig:DGLayout}, this detector layout, popularized by the two multipurpose experiments CMS~\cite{MUONTDR} and ATLAS~\cite{ATLASTDR} at LHC, can be used as an OR system in which each individual chamber participates in the ouput signal and increases the overall sensitive volume of the detector apparatus. Keeping the copper strip read-out system at the ground, CMS and ATLAS, due to different goals, have chosen different designs as CMS RPCs possess a 1D read-out while ATLAS RPCs offer a 2D read-out. The difference comes from placing the read-out in between the gaps, the anodes facing each other, or to have both RPC gaps in between 2 layers of read-out panels, one along the X-axis and one along the Y-axis, the cathodes facing each other.
 	
 	\begin{figure}[H]
 		\centering
@@ -213,36 +250,71 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 	\end{figure}
 	
 	\begin{figure}[H]
-		\begin{subfigure}{0.5\linewidth}
+		\begin{subfigure}{0.33\linewidth}
 			\centering
-			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Double-gap-Sigmoid.png}\\
+			\hspace*{-0.3\linewidth}
+			\includegraphics[height = 3.6cm]{fig/chapt4/Double-gap-Sigmoid.png}
 			\caption{\label{fig:DoubleGap:A}}
 		\end{subfigure}
-		\begin{subfigure}{0.5\linewidth}
+		\begin{subfigure}{0.33\linewidth}
 			\centering
-			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Double-gap-Eff-95.png}
+			\hspace*{-0.1\linewidth}
+			\includegraphics[height = 3.6cm]{fig/chapt4/Double-gap-Eff-95.png}
 			\caption{\label{fig:DoubleGap:B}}
 		\end{subfigure}
-		\begin{subfigure}{\linewidth}
+		\begin{subfigure}{0.33\linewidth}
 			\centering
-			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Double-gap-Eff-Delta-90-10.png}
+			\hspace*{0.03\linewidth}
+			\includegraphics[height = 3.6cm]{fig/chapt4/Double-gap-Eff-Delta-90-10.png}
 			\caption{\label{fig:DoubleGap:C}}
 		\end{subfigure}
 		\caption{\label{fig:DoubleGap} Comparison of performance of CMS double and single gap RPCs using cosmic muons~\cite{ABBRESCIA2005}. Figure~\ref{fig:DoubleGap:A}: Comparison of efficiency sigmoids. Figure~\ref{fig:DoubleGap:B}: Voltage distribution at 95\% of maximum efficiency. Figure~\ref{fig:DoubleGap:C}: $\Delta^{90\%}_{10\%}$ distribution.}
 	\end{figure}
 	
+	The gain of such a detector is reduced by a factor 2 with respect to single-gap RPCs with an efficiency plateau reached at lower voltage, as visible on Figure~\ref{fig:DoubleGap}, due to the two gas gaps contributing to the signal formation and offering a dynamic range closer to witch of a wide gap RPC. A double gap is then fully efficient while the individual RPC gaps composing it are only 70 to 80\% efficient. Naturally, by operating the double gap at a lower voltage, the rate capability in found to be increased as the induced charge per gap is then lower than in the can than a single gap detector also leading to a reduction of the streamer probability and a better extraction of the fast charge of the total signal as could be seen through previously presented Figure~\ref{fig:FreonArgonFastCharge}.
+	
 		\subsubsection{Multigap RPC (MRPC)}
 		\label{chapt4:sssec:MRPC}
 	
-	MRPCs are layouts in which floating sub electrode plates are placed into a wide gap RPC to divide the gas volume and create a sum of narrow gaps~\cite{ZEBALLOS96MRPC,WILLIAMS98}. The time resolution of such a detector can reach of few tens of \si{ps}, with gas gaps of the order of a a few hundred \si{\micro m} as shown in Figure~\ref{fig:MRPC} representing ALICE \acf{ToF} MRPCs.
+	MRPCs are layouts in which floating sub electrode plates are placed into a wide gap RPC to divide the gas volume and create a sum of narrow gaps~\cite{ZEBALLOS96MRPC,WILLIAMS98}. Similarly to the double gap RPC for which the gain could be reduced by increasing the dynamic range, the multigap reduces the gain while keeping a total dynamic range similar to which of a wide gap RPC by reducing the size of each individual sub-gap composing the detector. The dynamic range, associated to the sensitive volume, and the comparison of each detector layout to the wide gap RPC is showed in Figure~\ref{fig:RPClayouts}.
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width = 0.6\plotwidth]{fig/chapt4/MRPC-Layout.png}\\
-		\caption{\label{fig:MRPC} Presentation of ALICE MRPC using \SI{250}{\micro m} gas gaps, \SI{620}{\micro m} outer glass electrodes and \SI{550}{\micro m} inner floating electrodes. More details on the labels are given in~\cite{ALICE2002}.}
+		\includegraphics[width = 0.5\plotwidth]{fig/chapt4/RPC-layouts-dyn-range.png}\\
+		\caption{\label{fig:RPClayouts} Representation of different RPC layouts (wide gap on Figure (a), double gap on Figure (b) and multigap on Figure (c)), of the corresponding sensitive volume in gray, and of the associated avalanche size~\cite{WILLIAMS98}.}
 	\end{figure}
 	
-	Sometimes used as a double multigap RPC, taking advantage of the OR of double gap RPCs, the MRPC is mainly used as ToF detector~\cite{ALICE2002,START2002,BESIII2014,CBM2007,MPD2016} due to it's excellent timing properties that allow to perform particle identification as explained by Williams in~\cite{WILLIAMS2012}. The principle of particle identification using ToF is simply the measurement of the velocity of a particle. Indeed, particles are defined by their mass (for the parameter of interest here, their electric charge being measured using the bending angle of the particles traveling through a magnetic field) and this mass can be calculated by measuring the velocity $\beta$ and momentum of the particle:
+	By operating the detector with thinner gaps, the time resolution is improved. Comparatively to the time resolution presented in Figure~\ref{fig:GapWidthTime} for the wide gap RPC of \SI{8}{mm}, a complementary study was conducted on multigaps using two \SI{4}{mm} and four \SI{2}{mm} subgaps and showed, via Figure~\ref{fig:MRPCTimeRes}, an improvement of the time resolution with the reduction of the gap width and of the number of gaps while the same sensitive volume was kept~\cite{WILLIAMS98}.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width = \plotwidth]{fig/chapt4/MRPC-2-4mm-time-res.png}
+			\caption{\label{fig:MRPCTimeRes:A}}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width = \plotwidth]{fig/chapt4/MRPC-4-2mm-time-res.png}
+			\caption{\label{fig:MRPCTimeRes:B}}
+		\end{subfigure}
+		\caption{\label{fig:MRPCTimeRes} Time distributions of the leading, trailing, and average of both leading and traling edges for multigap RPCs consisting in two \SI{4}{mm} (Figure~\ref{fig:MRPCTimeRes:A}) and four \SI{2}{mm} (Figure~\ref{fig:MRPCTimeRes:B}) exposed to a \SI{100}{Hz/cm^2} radiation rate. The data was collected with RPCs operated at the voltage corresponding to the knee of the efficiency distribution, defined as the point where 95\% of the maximum efficiency is obtained~\cite{WILLIAMS98}.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[width = 0.45\plotwidth]{fig/chapt4/MRPC-Layout.png}
+			\caption{\label{fig:ALICEMRPC:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.6\linewidth}
+			\centering
+			\includegraphics[width = 0.7\plotwidth]{fig/chapt4/ALICE-2002-time-res.png}
+			\caption{\label{fig:ALICEMRPC:B}}
+		\end{subfigure}
+		\caption{\label{fig:ALICEMRPC} Presentation of a study of a possible ALICE MRPC cell using \SI{250}{\micro m} gas gaps, \SI{620}{\micro m} outer glass electrodes, and \SI{550}{\micro m} inner floating electrodes (Figure~\ref{fig:ALICEMRPC:A}), and of its time resolution performance as a function of the applied high voltage for different radiation levels referred through different filter settings of the \SI{740}{GBq} $^{137}Cs$ source the former CERN GIF facility~\cite{ALICE2002}.}
+	\end{figure}
+	
+	After the problem of the streamers was solved by adding $SF_6$ into the gas mixture, the size of the MRPCs decreased as the research groups started applying the concept of dividing the gas volume into subvolumes to the narrow gap RPCs leading to the now widely used micro gap MRPCs. The time resolution of such a detector can reach of few tens of \si{ps}, with gas gaps of the order of a few hundred \si{\micro m} as showed in Figure~\ref{fig:ALICEMRPC} representing a single cell of ALICE \acf{ToF} system consisting of double MRPCs, as it was studied in the early 2000s~\cite{ALICE2002}. Sometimes used as a double multigap RPC, taking advantage of the OR of double gap RPCs to both be able to operate a higher number of gaps while keeping a reasonable high voltage applied in between the cathode and anode and to further reduce the gain, the MRPC is mainly used as ToF detector~\cite{ALICE2002,START2002,BESIII2014,CBM2007,MPD2016} due to its excellent timing properties that allow to perform particle identification as explained by Williams in~\cite{WILLIAMS2012}. The principle of particle identification using ToF is simply the measurement of the velocity of a particle. Indeed, particles are defined by their mass (for the parameter of interest here, their electric charge being measured using the bending angle of the particles traveling through a magnetic field) and this mass can be calculated by measuring the velocity $\beta$ and momentum of the particle:
 	
 	\begin{equation}
 		\beta = \frac{p}{\sqrt{p^2 + m^2}}
