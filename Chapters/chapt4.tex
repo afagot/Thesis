@@ -314,7 +314,9 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 		\caption{\label{fig:ALICEMRPC} Presentation of a study of a possible ALICE MRPC cell using \SI{250}{\micro m} gas gaps, \SI{620}{\micro m} outer glass electrodes, and \SI{550}{\micro m} inner floating electrodes (Figure~\ref{fig:ALICEMRPC:A}), and of its time resolution performance as a function of the applied high voltage for different radiation levels referred through different filter settings of the \SI{740}{GBq} $^{137}Cs$ source the former CERN GIF facility~\cite{ALICE2002}.}
 	\end{figure}
 	
-	After the problem of the streamers was solved by adding $SF_6$ into the gas mixture, the size of the MRPCs decreased as the research groups started applying the concept of dividing the gas volume into subvolumes to the narrow gap RPCs leading to the now widely used micro gap MRPCs. The time resolution of such a detector can reach of few tens of \si{ps}, with gas gaps of the order of a few hundred \si{\micro m} as showed in Figure~\ref{fig:ALICEMRPC} representing a single cell of ALICE \acf{ToF} system consisting of double MRPCs, as it was studied in the early 2000s~\cite{ALICE2002}. Sometimes used as a double multigap RPC, taking advantage of the OR of double gap RPCs to both be able to operate a higher number of gaps while keeping a reasonable high voltage applied in between the cathode and anode and to further reduce the gain, the MRPC is mainly used as ToF detector~\cite{ALICE2002,START2002,BESIII2014,CBM2007,MPD2016} due to its excellent timing properties that allow to perform particle identification as explained by Williams in~\cite{WILLIAMS2012}. The principle of particle identification using ToF is simply the measurement of the velocity of a particle. Indeed, particles are defined by their mass (for the parameter of interest here, their electric charge being measured using the bending angle of the particles traveling through a magnetic field) and this mass can be calculated by measuring the velocity $\beta$ and momentum of the particle:
+	After the problem of streamers was solved by adding $SF_6$ into the gas mixture, the size of the MRPCs decreased as the research groups started applying the concept of dividing the gas volume into subvolumes to the narrow gap RPCs leading to the now widely used micro gap MRPCs. The time resolution of such a detector can reach of few tens of \si{ps}, with gas gaps of the order of a few hundred \si{\micro m} as showed in Figure~\ref{fig:ALICEMRPC} representing a single cell of ALICE \acf{ToF} system consisting of double MRPCs, as it was studied in the early 2000s~\cite{ALICE2002}.
+	
+	Sometimes used as a double multigap RPC, taking advantage of the OR of double gap RPCs to both be able to operate a higher number of gaps while keeping a reasonable high voltage applied in between the cathode and anode and to further reduce the gain, the MRPC is mainly used as ToF detector~\cite{ALICE2002,START2002,BESIII2014,CBM2007,MPD2016} due to its excellent timing properties that allow to perform particle identification as explained by Williams in~\cite{WILLIAMS2012}. The principle of particle identification using ToF is simply the measurement of the velocity of a particle. Indeed, particles are defined by their mass (for the parameter of interest here, their electric charge being measured using the bending angle of the particles traveling through a magnetic field) and this mass can be calculated by measuring the velocity $\beta$ and momentum of the particle:
 	
 	\begin{equation}
 		\beta = \frac{p}{\sqrt{p^2 + m^2}}
@@ -334,7 +336,7 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 		\caption{\label{fig:ParticleID} Particle identification applied to electrons in the STAR experiment. The identification is performed combining ToF and $dE/dx$ measurements~\cite{WILLIAMS2012}.}
 	\end{figure}
 	
-	Another benefice of using such small gas gaps is the strong reduction of the average avalanche volume and thus of the blind spot on MRPCs leading to an improved rate capability. Multigaps can sustain backgrounds of several \si{kHz/cm^2} as demonstrated in Figure~\ref{fig:MRPCRate}.
+	Taking into account the distortion effect on the electric field inside of a MRPC built using micro gaps due to the exposition to irradiation, distortion that can be understood by monitoring the current drawn by the detector which should stay constant at constant electric field, another benefice of using such small gas gaps is the strong reduction of the average avalanche volume and thus of the blind spot on MRPCs leading to an improved rate capability. Multigaps can sustain backgrounds of several \si{kHz/cm^2} as demonstrated in Figure~\ref{fig:MRPCRate}.
 	
 	\begin{figure}[H]
 		\centering
@@ -345,9 +347,11 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 		\subsubsection{Charge distribution and performance limitations}
 		\label{chapt4:sssec:charge}
 		
-	The direct consequence of the different RPC layouts is a variation of intrinsic time resolution of the RPC as the gap size decreases. An advantage is given to multigaps whose design use sub-millimeter gas volumes providing very consistent signals.
+	{\color{blue}\textbf{[This part could be moved in the next section of the chapter and deepened using the perspective of the avalanche physics.]}}
+		
+	The direct consequence of the different RPC layouts is a variation of intrinsic time resolution of the RPC as the gap size decreases and of the rate capability when the deposited charge per event is spread over a larger number of amplification volumes, allowing for a reduction of the overall gain of the detectors which is replaced by an on-electronics pre-amplification of the signals. in this sense, an advantage is given to multigaps whose design use sub-millimeter gas volumes providing very consistent signals.
 	
-	On the charge spectrum point of view, each layout has its own advantages. When the double-gap has the highest induced over drifting charge ratio, as seen in Figure~\ref{fig:ChargeRatio}, the multigap has a charge spectrum strongly detached from the origin, as visible in Figure~\ref{fig:ChargeSpectra}. A high induced over drifting charge ratio means that the double gap can be safely operated at high threshold or that at similar threshold it can be operated with a twice smaller drifting charge, meaning a higher rate capability. On the other hand, the strong detachment of the charge spectrum from the origin in the MRPC case allows to reach a higher efficiency with increasing threshold as most of the induced charge is not low due to the convolution of several single gap spectra. The range of stable efficiency increases with the number of gap, as presented in Figure~\ref{fig:EffThreshold}.
+	From the charge spectrum point of view, each layout has its own advantages. When the double-gap has the highest induced over drifting charge ratio, as seen in Figure~\ref{fig:ChargeRatio}, the multigap has a charge spectrum strongly detached from the origin, as visible in Figure~\ref{fig:ChargeSpectra}. A high induced over drifting charge ratio means that the double gap can be safely operated at high threshold or that at similar threshold it can be operated with a twice smaller drifting charge, meaning a higher rate capability if operated with sensitive enough electronics. On the other hand, the strong detachment of the charge spectrum from the origin in the MRPC case allows to reach a higher efficiency with increasing threshold as most of the induced charge is not low due to the convolution of several single gap spectra. The range of stable efficiency increases with the number of gap, as presented in Figure~\ref{fig:EffThreshold}.
 	
 	\begin{figure}[H]
 		\centering
@@ -370,10 +374,128 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 \section{Signal formation}
 \label{chapt4:sec:signal}
 	
-	\subsection{Electron drift velocity}
-	\label{chapt4:ssec:drift}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = \plotwidth]{fig/chapt4/rpp_icru49_cu_col.pdf}\\
+		\caption{\label{fig:enerlylosscopper} Mass stopping power as a function of $\beta\gamma = p/Mc$ for positive muons in copper~\cite{PDG2016}. The total stopping power is indicated with solid line and local components with dashed lines. the vertical bands are used to indicate boundaries between different approximations used at different energy range.}
+	\end{figure}
+
+	The physics of Resistive Plate Chambers still is far from being fully understood and work is regularly being accomplished in trying to model these detectors the best way possible by phenomenological models using well-defined physics~\cite{LIPPMANN2003,VINCENT2016,VINCENT2017}. These theoretical works have nevertheless lead to a better understanding of the key principles that account for RPCs signal formation. As previously discussed, the typical mixture of such a detector is in great majority composed by a ionizing gas with some quenching properties and a low ionization potential to easily produce electrons, with the addition of UV quencher and electronegative compounds. The electronic avalanche formation will be triggered by a charged particle passing through the gas, typically a muon in the case of most uses of RPCs. The production of electrons in the gas of a detector is related to the energy lost by the incoming particle traveling through a material medium. The example of the mass stopping power of copper on muons is given in Figure~\ref{fig:enerlylosscopper} on which the different energy loss mechanisms at different energy ranges are visible. Once primary electrons have been freed in the gas volume, the electric field applied in between the electrodes of the RPC will make the charges move and there will be a competition in the gas in between the Townsend and attachment coefficient which describe the evolution of the number of electrons in an avalanche. While drifting through the gas, the electrons are also subjected to diffusion that will affect the evolution of the avalanches. Finally, when the avalanche is big enough, the accumulation of negative (electrons) and positive (ions) charges in the gas volume will start affecting the local electric field. This effect is known as space charge effect.
 	
-	{\color{blue} Talk about the electron drift velocity and mention the time resolution of RPCs.}
+	\subsection{Energy loss at intermediate energies}
+	\label{chapt4:ssec:ElossBethe}
+	
+	Intuitively, a particle traveling through a medium will interact with its components, losing energy. When a muon travels through the gas of a gaseous detector, at the energy range usually observed, it interacts with the molecules of the gas leading to dissipation of the transferred energy in the form of inelastic diffusion or ionization. The photons and electron-ion pairs resulting from these interaction can trigger avalanches in the gas which will contribute to feed the avalanche growth thanks to the strong electric field applied in between the 2 electrodes of a RPC.
+	
+	The mass stopping power of moderately relativistic ($0.1 \lesssim \beta\gamma \lesssim 1000$) heavy particles ($M \gg m_e$) traveling through a medium via excitation and ionization processes was studied by Bethe in 1930~\cite{BETHE1930} and is well described by the so called the Bethe Formula given in Equation~\ref{eq:bethe}.
+	
+	\begin{equation}
+	\label{eq:bethe}
+	\left\langle-\frac{dE}{dx}\right\rangle = Kz^2\frac{Z}{A}\frac{1}{\beta^2}\left(\frac{1}{2}ln\frac{2m_ec^2\beta^2\gamma^2W_{max}}{I^2}-\beta^2-\delta(\beta\gamma)\right)
+	\end{equation}
+	
+	The different parameters used in this equation are
+	
+	\begin{longtable}{r c l l}
+		$E$ &-& incident particle energy $\gamma Mc^2$ & \si{MeV}\\
+		$x$ &-& mass per unit area & \si{g.cm^{-2}}\\
+		$N_A$ &-& Avogadro's number & 6.022 140 857(74) $\times 10^{23}$\si{mol^{-1}}\\
+		$c$ &-& speed of light in vacuum & 299 792 458\si{m.s^{-1}}\\
+		$\mu_0$ &-& permeability of free space & 4$\pi\times 10^{-7}$\si{N.A^{-2}}\\
+		$\epsilon_0$ &-& permittivity of free space $\epsilon_0 = 1/\mu_0c^2$ & 8.854 187 817 . . . $\times 10^{-12}$\si{F.m^{-1}}\\
+		$\alpha$ &-& fine structure constant $\alpha = e^2/4\pi\epsilon_0\hbar c$ & 1/137.035 999 139(31)\\
+		$r_e$ &-& classical electron radius $r_e = e^2/4\pi\epsilon_0m_ec^2$ & 2.817 940 3227(19)\si{fm}\\
+		$e$ &-& elementary charge of the electron & -1.6021766208(98) $\times 10^{-19}$\si{C}\\
+		$m_ec^2$ &-& electron mass $\times c^2$ & 0.510 998 9461(31)\si{MeV}\\
+		$K$ &-& constant defined as $K = 4\pi N_A r_e^2 m_ec^2$ & \SI{0.307075}{MeV.mol^{-1}.cm^2}\\
+		$z$ &-& charge number of incident particle &\\
+		$Z$ &-& atomic number of absorbing medium &\\
+		$A$ &-& atomic mass of absorbing medium & \si{g.mol^{-1}}\\
+		$\beta$ &-& velocity of particle $\beta = v/c$ &\\
+		$\gamma$ &-& Lorentz factor $\gamma = (1-\beta^2)^{-1/2}$&\\
+		$W_{max}$ &-& maximum energy transfer through a single collision & \si{MeV}\\
+		$I$ &-& mean excitation energy of absorbing medium & \si{eV}\\
+		$\delta(\beta\gamma)$ &-& density effect correction to ionization energy loss & \\
+	\end{longtable}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.8\plotwidth]{fig/chapt4/dedx_table_98.pdf}\\
+		\caption{\label{fig:enerlyloss} Mean mass stopping power for liquid hydrogen, as used in bubble chambers, gaseous helium, carbon, aluminum, iron, tin, and lead without the inclusion of radiative effect at higher $\beta\gamma$ necessary for pions and muons in denser materials~\cite{PDG2016}.}
+	\end{figure}
+	
+	In this equation, the maximum energy transfer $W_{max}$ is defined as function of the incident particle mass $M$, expressed in \si{MeV/c^2}
+	
+	\begin{equation}
+	\label{eq:maxenergytrans}
+	W_{max} = \frac{2m_ec^2\beta^2\gamma^2}{1 + 2\gamma m_e/M + (m_e/M)^2}
+	\end{equation}
+	
+	and the mean excitation energy $I$ depends on the absorber and its determination is non-trivial but recommendation are given by the \acf{ICRU} based on experimental measurements and interpolations as showed in Figure~\ref{fig:excitationenergy}.
+	
+	For the case of copper, the mean stopping power is visible in Figure~\ref{fig:enerlylosscopper}. The mean stopping power corresponding only to the Bethe range for other materials is given in Figure~\ref{fig:enerlyloss} and shows that $\langle-dE/dx\rangle$ is similar for each material with a slow decrease with $Z$. The factor affecting the equation the most is $\beta$ as the dependence on $M$ is introduced at higher energies in the logarithm via the max transfer energy per single collision but in most practicle cases, only the dependence on $\beta$ is considered as most of the relativistic particles are closed to the lowest mean energy loss rate and are referred to as \acf{mip's}. The almost logarithmic relation in between the mean energy loss rate for \acl{mip's} and $Z$ is showed in Figure~\ref{fig:miplossrate}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.8\plotwidth]{fig/chapt4/Iadj_pegs_adndt.pdf}\\
+		\caption{\label{fig:excitationenergy} Mean excitation energies normalized to the atomic number as adopted by the ICRU~\cite{ICRU37,ICRU49,PDG2016}.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.8\plotwidth]{fig/chapt4/dedx_min_06.pdf}\\
+		\caption{\label{fig:miplossrate} Mean mass stopping power at minimum ionization as a function of the atomic number~\cite{PDG2016}.}
+	\end{figure}
+	
+	Finally, the term $\delta(\beta\gamma)/2$ corresponds to the density effect correction introduced to account for the polarization of a real media that limits the spatial extension of the electric field of relativistic particles. Indeed, as the energy of a particle increases, the associated electric field will flatten and extend. Due to this effect, the distant collision contribution to Equation~\ref{eq:bethe} will increase as $ln(\beta\gamma)$ but the polarization of the media trunc this rise. At high energies, the correction is given by Equation~\ref{eq:densityeffect}
+	
+	\begin{equation}
+	\label{eq:densityeffect}
+	\delta/2 \longrightarrow ln(\hbar\omega_p/I) + ln(\beta\gamma) - 1/2
+	\end{equation}
+	
+	where $\hbar\omega_p$ represents the plasma energy that depends on the electron density of the media and the electron mass and can be calculated as $\sqrt{\rho\langle Z/A \rangle} \times 28.816$ \si{eV}. The introduction of this correction term reduces the increase of the mean stopping power at higher energies as can be seen in Figure~\ref{fig:enerlylosscopper}. Moreover, due to poorer electron density, the effect is less visible on gases than on liquids and solids has van be seen from Figure~\ref{fig:enerlyloss}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.8\plotwidth]{fig/chapt4/Straggling-gas.pdf}\\
+		\caption{\label{fig:straggling-gas} Example of straggling function $f(\Delta)$ of particles passing through \SI{1.2}{cm} of Argon gas with a $\beta\gamma$ of 3.6 and represented with a solid line. The original Landau distribution is showed with a dashed line~\cite{BISCHEL2006}.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.8\plotwidth]{fig/chapt4/Straggling-gas-thickness.pdf}\\
+		\caption{\label{fig:straggling-thickness} Evolution of straggling functions $f(\Delta)$ of particles passing through a volume of Argon gas with a $\beta\gamma$ of 3.6 with increasing thickness $x$~\cite{BISCHEL2006}.}
+	\end{figure}
+	
+	The mean energy loss per collision can be difficult to measure for low data samples and is not always representative of the energy loss distribution for a given incident particle energy. Hence, it is easier to access the most probable energy loss which is a lower value than than the average loss due to the distribution of the energy transfer. This value is well described by a highly skewed Landau distribution for detectors with "moderate" thickness $x$, expressed in \si{g.mol^{-1}}. But for gas volumes, a Landau distribution greatly underestimates the width $w$ of the distribution and only succeeds to provide with a correct value for the most probable energy loss, as showed in Figure~\ref{fig:straggling-gas}. Thus, the energy loss distribution is better represented by its most probable energy loss $\Delta_p$ and its \acf{FWHM} $w$. As showed by Figure~\ref{fig:straggling-thickness}, the distribution is affected by the thickness of the gas volume and the most probable energy loss normalized to the thickness is increased and the width decreased, converging towards the Landau distribution, whereas the mean energy loss is unchanged. Correction are brought to the original Landau equation in order to account better for the number of collisions leading to an increased width of the energy loss distribution~\cite{BISCHEL2006}.
+	
+	In the case of gas mixtures, composed of several elements, using Bragg additivity it can be understood that the mean energy loss of the mixture is the sum of the mean energy losses in each individual element $j$ layer of weight $w_j$.
+	
+	\begin{equation}
+	\label{eq:mixtureloss}
+	\left\langle \frac{dE}{dx} \right\rangle = \sum w_j \left\langle \frac{dE}{dx} \right\rangle_j
+	\end{equation}
+		
+	\subsection{Primary ionization}
+	\label{chapt4:ssec:ionization}
+	
+	Using Bethe formula to understand the mean energy transfer of charged particle when traveling through a gas volume give an intuition of the physics that affect the particle but doesn't provide a detailed enough information about the individual ionizations along its tracks at a microscopic level. In order to simulate efficiently and RPC and hence understand the processes that govern the avalanche creation and growth, knowledge on the ionization process is necessary.
+	
+	\subsection{Development and propagation of avalanches}
+	\label{chapt4:ssec:avalanche}
+	
+	{\color{blue} \textbf{[Summary of Vincent's chapter 3.]}}
+	
+	\subsection{Drif and diffusion of electrons}
+	\label{chapt4:ssec:electrons}
+	
+	{\color{blue} \textbf{[Summary of Vincent's chapter 3.]}}
+	
+	\subsection{Space charge effect}
+	\label{chapt4:ssec:space-charge}
+	
+	{\color{blue} \textbf{[Summary of Vincent's chapter 3.]}}
 
 \section{Gas transport parameters}
 \label{chapt4:sec:transport}
