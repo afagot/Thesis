@@ -480,7 +480,50 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 	\subsection{Primary ionization}
 	\label{chapt4:ssec:ionization}
 	
-	Using Bethe formula to understand the mean energy transfer of charged particle when traveling through a gas volume give an intuition of the physics that affect the particle but doesn't provide a detailed enough information about the individual ionizations along its tracks at a microscopic level. In order to simulate efficiently and RPC and hence understand the processes that govern the avalanche creation and growth, knowledge on the ionization process is necessary.
+	Using Bethe formula to understand the mean energy transfer of charged particle when traveling through a gas volume give an intuition of the physics that affect the particle but doesn't provide a detailed enough information about the individual ionizations along its tracks at a microscopic level. In order to simulate efficiently an RPC and hence understand the processes  governing avalanches creation and growth, knowledge on the ionization process is necessary.
+	
+	To convert the energy loss rate into a number of primary ionizations was developed in 1980 the \acf{PAI} model~\cite{ALLISON1980} based on the cross section of ionization of gas atoms to real photons and the dielectric constant of the medium through which the charged particles are going. Indeed, the interaction of charged particles with the gas molecules being of electromagnetic nature, it is mediated by quasi-real photons and, hence, the cross section to photon ionization is important to understand. This approach is nevertheless semi-classical as it relies on classical electrodynamics and it only gives access to the energy transfer to the gas atoms and no information on the energy dissipation and secondary emissions is available on the output of the model. The energy transfered to the medium is not all used for ionization. For an energy deposition $\Delta$, the number of electron-ion pairs produced is:
+	
+	\begin{equation}
+	\label{eq:npairs}
+	\Delta = n_iW
+	\end{equation}
+	
+	$W$ corresponds to the mean work per pair production that depends on the medium and is greater than the ionization potential leading to the conclusion that part of the transfered energy is dissipated through other processes~\cite{VINCENT2017,ICRU31}. In order to understand the energy dissipation and the secondary emissions, the fine structure of each atom is taken into account. Through the PAI model, the incident charged particle interacts is assumed to interact with the full atom rather than with a single electron.
+	
+	Although, considering that the particle interacts with a single electron, leads to the possibility to study the excited state of the atom once the photo-electron has been emitted with an energy corresponding to the transfered energy minus the binding energy of the electronic shell. The resulting vacancies in the electronic shell will be filled through emission of photons or Auger electrons and can contribute to further ionization or excitation in the gas volume. Fluorescence photons are usually not considered as they only constitute a very small fraction of secondary emissions~\cite{SMIRNOV2005}. Assuming that the transfered energy is absorbed in its totality by a single electronic shell, the PAI model was modified to include relaxations and constitute the new \acf{PAIR} model~\cite{SMIRNOV2005}. In this model, the cross section corresponding to the whole atom is re-expressed using a sum of partial cross sections corresponding to the different electronic shells. When one or more electrons are knocked out of the atom, the vacancies are filled by electrons of the shell above with relaxation by Auger electron emission. These processes happen in cascade from the inner shell to the outer one until all the vacancies are filled and the energy has been released.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/HEED-Argon.pdf}
+			\caption{\label{fig:PAIR:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/HEED-Neon.pdf}
+			\caption{\label{fig:PAIR:B}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/HEED-Helium.pdf}
+			\caption{\label{fig:PAIR:C}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/HEED-Xenon.pdf}
+			\caption{\label{fig:PAIR:D}}
+		\end{subfigure}
+		\caption{\label{fig:PAIR} Photo-absorption cross section as computed by HEED for nobles gases with different electric shell numbers~\cite{VINCENT2017}.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/HEED-RPC.pdf}\\
+		\caption{\label{fig:PAIR-RPC} Photo-absorption cross section as computed by HEED for typical RPC gas mixtures~\cite{VINCENT2017}.}
+	\end{figure}
+	
+	This model is included in the program HEED developed at CERN and called by Garfield, a program developed for the simulation of gaseous detectors. The results for the cross section for a few noble gases are given in Figure~\ref{fig:PAIR}. It can be seen that for each shell, the cross section is increased. More complex patterns are seen with bigger atoms such as Xenon on Figure~\ref{fig:PAIR:D}. For gas mixtures, like the typical RPC mixtures, the cross section is showed in Figure~\ref{fig:PAIR-RPC}. Both mixtures being mainly composed of $C_2H_2F_4$, the variations in between the 2 cross section profiles are very subtle and depends on the concentration of the other compounds.
 	
 	\subsection{Development and propagation of avalanches}
 	\label{chapt4:ssec:avalanche}
