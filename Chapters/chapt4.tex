@@ -496,23 +496,23 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 	\begin{figure}[H]
 		\begin{subfigure}{0.5\linewidth}
 			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/HEED-Helium.pdf}
+			\caption{\label{fig:PAIR:A} Helium}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
 			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/HEED-Argon.pdf}
-			\caption{\label{fig:PAIR:A}}
+			\caption{\label{fig:PAIR:B} Argon}
 		\end{subfigure}
 		\begin{subfigure}{0.5\linewidth}
 			\centering
 			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/HEED-Neon.pdf}
-			\caption{\label{fig:PAIR:B}}
-		\end{subfigure}
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/HEED-Helium.pdf}
-			\caption{\label{fig:PAIR:C}}
+			\caption{\label{fig:PAIR:C} Neon}
 		\end{subfigure}
 		\begin{subfigure}{0.5\linewidth}
 			\centering
 			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/HEED-Xenon.pdf}
-			\caption{\label{fig:PAIR:D}}
+			\caption{\label{fig:PAIR:D} Xenon}
 		\end{subfigure}
 		\caption{\label{fig:PAIR} Photo-absorption cross section as computed by HEED for nobles gases with different electric shell numbers~\cite{VINCENT2017}.}
 	\end{figure}
@@ -520,15 +520,73 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/HEED-RPC.pdf}\\
-		\caption{\label{fig:PAIR-RPC} Photo-absorption cross section as computed by HEED for typical RPC gas mixtures~\cite{VINCENT2017}.}
+		\caption{\label{fig:PAIR-RPC} Photo-absorption cross section as computed by HEED for typical RPC gas mixtures~\cite{VINCENT2017}. The RPC mixture with $CO_2$ corresponds to the mixture used by CALICE SDHCAL~\cite{ARNAUD2015} while the other one was forseen for the experiement ATLAS~\cite{RIEGLER2004} but has been changed since then.}
 	\end{figure}
 	
-	This model is included in the program HEED developed at CERN and called by Garfield, a program developed for the simulation of gaseous detectors. The results for the cross section for a few noble gases are given in Figure~\ref{fig:PAIR}. It can be seen that for each shell, the cross section is increased. More complex patterns are seen with bigger atoms such as Xenon on Figure~\ref{fig:PAIR:D}. For gas mixtures, like the typical RPC mixtures, the cross section is showed in Figure~\ref{fig:PAIR-RPC}. Both mixtures being mainly composed of $C_2H_2F_4$, the variations in between the 2 cross section profiles are very subtle and depends on the concentration of the other compounds.
+	This model is included in the program HEED developed at CERN~\cite{HEED} and called by Garfield, a program developed for the simulation of gaseous detectors. The results for the cross section for a few noble gases are given in Figure~\ref{fig:PAIR}. It can be seen that for each shell, the cross section is increased. More complex patterns are seen with bigger atoms such as Xenon on Figure~\ref{fig:PAIR:D}. For gas mixtures, like the typical RPC mixtures, the cross section is showed in Figure~\ref{fig:PAIR-RPC}. Both mixtures being mainly composed of $C_2H_2F_4$, the variations in between the 2 cross section profiles are very subtle and depends on the concentration of the other compounds.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/N_elec_Helium.pdf}
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/E_loss_Helium.pdf}
+			\caption{\label{fig:Primary:A} Helium}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/N_elec_Argon.pdf}
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/E_loss_Argon.pdf}
+			\caption{\label{fig:Primary:B} Argon}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/N_elec_RPC.pdf}
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/E_loss_RPC.pdf}
+			\caption{\label{fig:Primary:C} 96.7\% $C_2H_2F_4$, 3\% i-$C_4H_{10}$ and 0.3\% $SF_6$~\cite{RIEGLER2004}}
+		\end{subfigure}
+		\caption{\label{fig:Primary} Distributions of number of electrons (left) and energy loss (right) for a \SI{5}{GeV/c} muon passing through \SI{1.2}{mm} of Helium (Figure~\ref{fig:Primary:A}), Argon (Figure~\ref{fig:Primary:B}) or a typical RPC gas mixture (Figure~\ref{fig:Primary:C})~\cite{VINCENT2017}.}
+	\end{figure}
+	
+	Once the cross section of interaction is known, it is possible to extract the distribution of energy loss and of the number of electron produced, as showed in Figure~\ref{fig:Primary} for Helium, Argon, which is used in gaseous detectors, and for a typical RPC mixture~\cite{VINCENT2017}. The distributions are computed using HEED and show typical straggling function profiles with some complex structures that can be related to interaction of the incoming particle with the different electronic shells. Helium does not have a great photo-absorption cross-section according to Figure~\ref{fig:PAIR:A} and a muon will not be likely to lose a lot of energy and to create a lot of electrons whereas in a more complex atom like Argon, the cross-section is greater and will lead to a greater energy loss of muons and more electron produced. Finally, a complex gas mixture used in RPCs will offer an even greater cross-section, a wider energy loss distribution and will be able to produce more electrons. The same information is seen by looking at the evolution of the mean number of cluster as a function of the lorentz factor associated to muons showed in Figure~\ref{fig:ClusterDensity:A}. Indeed, the greater photo-absorption cross-section of RPC mixtures allow for a much greater amount of clusters to be created by charged particles. The size of these clusters is studied through Figure~\ref{fig:ClusterDensity:B} which shows that, in most of the cases ($\approx$80\%), the clusters only are composed of a single electron which is consistent with minimum ionizing particles.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Cluster-distribution.pdf}
+			\caption{\label{fig:ClusterDensity:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/N_elec_cluster_RPC.pdf}
+			\caption{\label{fig:ClusterDensity:B}}
+		\end{subfigure}
+		\caption{\label{fig:ClusterDensity} Figure~\ref{fig:ClusterDensity:A}: Mean cluster density for muons through different gas volumes~\cite{VINCENT2017}. Figure~\ref{fig:ClusterDensity:B}: Distribution of the number of electrons per cluster for a \SI{5}{GeV/c} muon traveling through a mixture of 96.7\% $C_2H_2F_4$, 3\% i-$C_4H_{10}$ and 0.3\% $SF_6$~\cite{VINCENT2017,RIEGLER2004}.}
+	\end{figure}
 	
 	\subsection{Development and propagation of avalanches}
 	\label{chapt4:ssec:avalanche}
 	
-	{\color{blue} \textbf{[Summary of Vincent's chapter 3.]}}
+	From the clusters released in the gas volume by the charged particles, free electrons will start drifting due to the electric applied in between the electrodes of the RPC. Gaining velocity and energy, these electrons in their turn will be able to ionize the gas. This process being repeated by all the produced electrons will trigger an avalanche to develop. The growth of the avalanche is a competition between 2 effects. Due to their increasing energy, electrons have a probability to trigger new ionizations by interacting with gas molecules. On the other hand, before the minimal amount of energy is reached, the electrons can get attached to a gas molecule instead. These two effects can be described using a simple model in which the multiplication and attachment processes are given by the Townsend coefficient $\alpha$ and the attachment coefficient $\eta$, assuming that the history of previous interactions in the gas does not influence new interactions. This model simply takes into account probabilities to have at the gas depth $z$ for a given number $n$ of free electrons in the gas $n+1$ or $n-1$ electrons  at the depth $z+\deriv z$ (respectively $n\alpha\deriv z$ and $n\eta\deriv z$). Then, the mean number of electrons $\bar{n}$ and cations $\bar{p}$ can be written for single compound gases as
+	
+	\begin{equation}
+	\label{eq:townsend}
+	\frac{\deriv\bar{n}}{\deriv z} = (\alpha - \eta)\bar{n},\; \frac{\deriv\bar{p}}{\deriv z} = \alpha\bar{n}
+	\end{equation}
+	
+	which, assuming the initial conditions $\bar{n}(0) = 1$ and $\bar{p}(0) = 0$, lead to the mean number of electrons and cations at a depth $z$
+	
+	\begin{equation}
+	\label{eq:Townsend-avalanche}
+	\bar{n}(z) = e^{(\alpha - \eta)z},\; \bar{p}(z) = \frac{\alpha}{\alpha - \eta}\left( e^{(\alpha - \eta)z} - 1\right)
+	\end{equation}
+	
+	The Townsend and attachment coefficient as a function of the applied electric field are given in Figure~\ref{fig:Townsend} for a standard RPC gas mixture using Magboltz~\cite{MAGBOLTZ}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/Townsend-RPC.pdf}\\
+		\caption{\label{fig:Townsend} Townsend and attachment coefficient for a typical 96.7/3/0.3 mixture of $C_2H_2F_4$/i-$C_4H_{10}$/$SF_6$, at a temperature $T=$\SI{296.15}{K} and a pressure $P=$\SI{1013}{hPa}~\cite{VINCENT2017,RIEGLER2004}.}
+	\end{figure}
 	
 	\subsection{Drif and diffusion of electrons}
 	\label{chapt4:ssec:electrons}
