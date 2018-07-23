@@ -520,7 +520,7 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/HEED-RPC.pdf}\\
-		\caption{\label{fig:PAIR-RPC} Photo-absorption cross section as computed by HEED for typical RPC gas mixtures~\cite{VINCENT2017}. The RPC mixture with $CO_2$ corresponds to the mixture used by CALICE SDHCAL~\cite{ARNAUD2015} while the other one was forseen for the experiement ATLAS~\cite{RIEGLER2004} but has been changed since then.}
+		\caption{\label{fig:PAIR-RPC} Photo-absorption cross section as computed by HEED for typical RPC gas mixtures~\cite{VINCENT2017}. The RPC mixture with $CO_2$ corresponds to the mixture used by CALICE SDHCAL~\cite{ARNAUD2015} while the other one was forseen for the experiement ATLAS~\cite{RIEGLER2003} but has been changed since then.}
 	\end{figure}
 	
 	This model is included in the program HEED developed at CERN~\cite{HEED} and called by Garfield, a program developed for the simulation of gaseous detectors. The results for the cross section for a few noble gases are given in Figure~\ref{fig:PAIR}. It can be seen that for each shell, the cross section is increased. More complex patterns are seen with bigger atoms such as Xenon on Figure~\ref{fig:PAIR:D}. For gas mixtures, like the typical RPC mixtures, the cross section is showed in Figure~\ref{fig:PAIR-RPC}. Both mixtures being mainly composed of $C_2H_2F_4$, the variations in between the 2 cross section profiles are very subtle and depends on the concentration of the other compounds.
@@ -542,7 +542,7 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 			\centering
 			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/N_elec_RPC.pdf}
 			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/E_loss_RPC.pdf}
-			\caption{\label{fig:Primary:C} 96.7\% $C_2H_2F_4$, 3\% i-$C_4H_{10}$ and 0.3\% $SF_6$~\cite{RIEGLER2004}}
+			\caption{\label{fig:Primary:C} 96.7\% $C_2H_2F_4$, 3\% i-$C_4H_{10}$ and 0.3\% $SF_6$~\cite{RIEGLER2003}}
 		\end{subfigure}
 		\caption{\label{fig:Primary} Distributions of number of electrons (left) and energy loss (right) for a \SI{5}{GeV/c} muon passing through \SI{1.2}{mm} of Helium (Figure~\ref{fig:Primary:A}), Argon (Figure~\ref{fig:Primary:B}) or a typical RPC gas mixture (Figure~\ref{fig:Primary:C})~\cite{VINCENT2017}.}
 	\end{figure}
@@ -560,24 +560,26 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/N_elec_cluster_RPC.pdf}
 			\caption{\label{fig:ClusterDensity:B}}
 		\end{subfigure}
-		\caption{\label{fig:ClusterDensity} Figure~\ref{fig:ClusterDensity:A}: Mean cluster density for muons through different gas volumes~\cite{VINCENT2017}. Figure~\ref{fig:ClusterDensity:B}: Distribution of the number of electrons per cluster for a \SI{5}{GeV/c} muon traveling through a mixture of 96.7\% $C_2H_2F_4$, 3\% i-$C_4H_{10}$ and 0.3\% $SF_6$~\cite{VINCENT2017,RIEGLER2004}.}
+		\caption{\label{fig:ClusterDensity} Figure~\ref{fig:ClusterDensity:A}: Mean cluster density for muons through different gas volumes~\cite{VINCENT2017}. Figure~\ref{fig:ClusterDensity:B}: Distribution of the number of electrons per cluster for a \SI{5}{GeV/c} muon traveling through a mixture of 96.7\% $C_2H_2F_4$, 3\% i-$C_4H_{10}$ and 0.3\% $SF_6$~\cite{VINCENT2017,RIEGLER2003}.}
 	\end{figure}
 	
 	\subsection{Development and propagation of avalanches}
 	\label{chapt4:ssec:avalanche}
 	
-	From the clusters released in the gas volume by the charged particles, free electrons will start drifting due to the electric applied in between the electrodes of the RPC. Gaining velocity and energy, these electrons in their turn will be able to ionize the gas. This process being repeated by all the produced electrons will trigger an avalanche to develop. The growth of the avalanche is a competition between 2 effects. Due to their increasing energy, electrons have a probability to trigger new ionizations by interacting with gas molecules. On the other hand, before the minimal amount of energy is reached, the electrons can get attached to a gas molecule instead. These two effects can be described using a simple model in which the multiplication and attachment processes are given by the Townsend coefficient $\alpha$ and the attachment coefficient $\eta$, assuming that the history of previous interactions in the gas does not influence new interactions. This model simply takes into account probabilities to have at the gas depth $z$ for a given number $n$ of free electrons in the gas $n+1$ or $n-1$ electrons  at the depth $z+\deriv z$ (respectively $n\alpha\deriv z$ and $n\eta\deriv z$). Then, the mean number of electrons $\bar{n}$ and cations $\bar{p}$ can be written for single compound gases as
+	From the clusters released in the gas volume by the charged particles, free electrons will start drifting due to the electric applied in between the electrodes of the RPC. Gaining velocity and energy, these electrons in their turn will be able to ionize the gas. This process being repeated by all the produced electrons will trigger an avalanche to develop.
+	
+	The growth of the avalanche can be intuitively understood as a competition between 2 effects. Due to their increasing energy, electrons have a probability to trigger new ionizations by interacting with gas molecules. On the other hand, before the minimal amount of energy is reached, the electrons can get attached to a gas molecule instead. These two effects can be described using a simple model in which the multiplication and attachment processes are given by the Townsend coefficient $\alpha$ and the attachment coefficient $\eta$, assuming that the history of previous interactions in the gas does not influence new interactions. This model simply takes into account probabilities to have at the gas depth $z$ for a given number $n$ of free electrons in the gas $n+1$ or $n-1$ electrons  at the depth $z+\deriv z$ (respectively $n\alpha\deriv z$ and $n\eta\deriv z$). Then, the mean number of electrons $\bar{n}$ and cations $\bar{p}$ can be written for single compound gases as
 	
 	\begin{equation}
 	\label{eq:townsend}
-	\frac{\deriv\bar{n}}{\deriv z} = (\alpha - \eta)\bar{n},\; \frac{\deriv\bar{p}}{\deriv z} = \alpha\bar{n}
+	\frac{\deriv\bar{n}}{\deriv z} = (\alpha - \eta)\bar{n} \, , \;\;\;\; \frac{\deriv\bar{p}}{\deriv z} = \alpha\bar{n}
 	\end{equation}
 	
 	which, assuming the initial conditions $\bar{n}(0) = 1$ and $\bar{p}(0) = 0$, lead to the mean number of electrons and cations at a depth $z$
 	
 	\begin{equation}
 	\label{eq:Townsend-avalanche}
-	\bar{n}(z) = e^{(\alpha - \eta)z},\; \bar{p}(z) = \frac{\alpha}{\alpha - \eta}\left( e^{(\alpha - \eta)z} - 1\right)
+	\bar{n}(z) = e^{(\alpha - \eta)z} \, , \; \bar{p}(z) = \frac{\alpha}{\alpha - \eta}\left( e^{(\alpha - \eta)z} - 1\right)
 	\end{equation}
 	
 	The Townsend and attachment coefficient as a function of the applied electric field are given in Figure~\ref{fig:Townsend} for a standard RPC gas mixture using Magboltz~\cite{MAGBOLTZ}.
@@ -585,10 +587,82 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/Townsend-RPC.pdf}\\
-		\caption{\label{fig:Townsend} Townsend and attachment coefficient for a typical 96.7/3/0.3 mixture of $C_2H_2F_4$/i-$C_4H_{10}$/$SF_6$, at a temperature $T=$\SI{296.15}{K} and a pressure $P=$\SI{1013}{hPa}~\cite{VINCENT2017,RIEGLER2004}.}
+		\caption{\label{fig:Townsend} Townsend and attachment coefficient for a typical 96.7/3/0.3 mixture of $C_2H_2F_4$/i-$C_4H_{10}$/$SF_6$, at a temperature $T=$\SI{296.15}{K} and a pressure $P=$\SI{1013}{hPa}~\cite{VINCENT2017,RIEGLER2003}.}
 	\end{figure}
 	
-	\subsection{Drif and diffusion of electrons}
+	Nevertheless, there are more to the avalanche growth than simply these two factors. Throughout the \Th{20} century, models have been developed to better understand the physics of discharges in gas. In 1937, Furry developed a model to describe electromagnetic cascades~\cite{FURRY1937} that would be used for electron avalanches in gas during the 1950s. Furry realized that the use of a Poisson law to describe the distribution of shower sizes could not be accurate as he understood that the events occurring in the development of a cascade are not independent from each other, as a Poisson law would suggest. Indeed, part of the particles produce others and this process depends on both their original energy and energy lost. Experimental results showed excess of small showers and an under estimate of very large ones. To solve this problem, Furry proposed a distribution of sizes of following the likelihood described in Equation~\ref{eq:Furry}, in which $\bar{n} = e^{\alpha z}$, compared with a Poisson law in Figure~\ref{fig:furry}.
+	
+	\begin{equation}
+	\label{eq:Furry}
+	P(n,\bar{n}) = \bar{n}^{-1} (1-\bar{n}^{-1})^{n-1}
+	\end{equation}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/Furry.png}\\
+		\caption{\label{fig:furry} Comparison of the distribution law of Furry and the Poisson law for $\bar{n} = 5$~\cite{FURRY1937}.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.6\plotwidth]{fig/chapt4/Genz1973.png}\\
+		\caption{\label{fig:genz} Single-electron avalanche size distribution in a proportionnal counter filled with methylal at different $E/p$ values. (a) 70, (b) 76.5, (c) 105, (d) 186.5, (e) 426\si{V/cm.torr}~\cite{GENZ1973}.}
+	\end{figure}
+	
+	In this model, no extra energy is brought to the electrons in the showers, contrary to the case of a gaseous detector such as a RPC where an electric field accelerates them. Using the Furry model, Genz studied the fluctuations in electron avalanches in gaseous detectors~\cite{GENZ1973}. Collisions leading to ionizations leave electrons with an energy much smaller than the ionization energy $eU_i$, where $U_i$ is the ionization potential of a gas molecule. Hence, the electrons need to travel a distance $s = U_i/E$ along the electric field $E$ to acquire a high enough energy to trigger a new ionization. For the probability of a new ionization to be independent from the path followed by the electrons since the previous ionization, the mean free path $1/\alpha$ of electrons in the gas has to be large compared to $s$ and thus $E/\alpha \gg U_i$. The Townsend coefficient is related to the gas pressure leading to conditions on the value of $E/p$. Avalanches in gas are large compared to the showers Furry has studied in his original paper. For very large avalanche sizes, Equation~\ref{eq:Furry} can be written as an exponential, as showed in Equation~\ref{eq:FurryGenz}.
+	
+	\begin{equation}
+	\label{eq:FurryGenz}
+	P(n,\bar{n}) = \bar{n}^{-1} e^{-n/\bar{n}}
+	\end{equation}
+	
+	This exponential behaviour is showed through Figure~\ref{fig:genz}. In practice, to fully understand the avalanche growth, taking into account the path followed by electrons from one ionization to another will become necessary. In the same paper, Genz then discusses models using Polya distributions to estimate the multiplication by looking at the size of the avalanche it self. Indeed, the number of charge carriers in the avalanche might become important enough to have an effect on the multiplication process. To account for this, it was proposed to use a varying Townsend coefficient such as described by Equation~\ref{eq:Polya-T} depending on the position $x$ in which $\theta$ is an empirical parameter leading to the probability distribution of Equation~\ref{eq:Polya-P}. In the limit case where $\theta$ goes to 0, the formula describes again the Furry model. But the data deviates from this model as well at large n values. Moreover, the introduction of an empirical parameters makes the model hard to interpret physically.
+	
+	\begin{equation}
+	\label{eq:Polya-T}
+	\alpha(n,x) = \alpha(x) \left( 1 + \frac{\theta}{n} \right) \, , \;\;\;\; n > 0
+	\end{equation}
+	
+	\begin{equation}
+	\label{eq:Polya-P}
+	P(n,x) = \frac{1+\theta}{\bar{n}}\frac{1}{\theta !} \left( \frac{n(1+\theta)}{\bar{n}} \right)^\theta e^{-\frac{n(1+\theta)}{\bar{n}}}
+	\end{equation}
+	
+	In order to have a model that describes reality better, the introduction of the attachment into the model is an important step. Despite its limitations, the Furry model had the advantage to describe well avalanches occurring when the attachment could be ignored. This is only natural that this model was then extended to included attachment. This was done by Riegler, Lippmann and Veenhof~\cite{RIEGLER2003} which showed that was important was to consider both the Townsend coefficient describing the multiplication \textit{and} the attachment coefficient, not only the effective multiplication coefficient $\bar{\alpha} = \alpha - \eta$. The probability to see an avalanche started by a single electron grow to a size $n$ after having traveled a distance $z$ through the gas is given by Equation~\ref{eq:RLV}.
+	
+	\begin{equation}
+	\label{eq:RLV}
+		\begin{aligned}
+		P(n,z) &= P(n-1,z) \, (n-1)\alpha\deriv{z} \, (1-(n-1)\eta\deriv{z})\\
+			   &+ P(n,z)   \, (1-n\alpha\deriv{z}) \, (1-n\eta\deriv{z})\\
+			   &+ P(n,z)   \, n\alpha\deriv{z} \, n\eta\deriv{z}\\
+			   &+ P(n+1,z) \, (1-(n+1)\alpha\deriv{z}) \, (n+1)\eta\deriv{z}
+		\end{aligned}
+	\end{equation}
+	
+	The first term of this probability that from a state with $n-1$ electrons, only 1 multiplies while the others don't get attached. Both the second and third terms describes the probability that from a state with already $n$ electrons the total number of electrons stay the same. On the second term, no electron gets attached nor multiplies while on the third term, 1 electron gets multiplied and 1 gets attached to compensate. Finally, the fourth term describes the probability to fall from a state with $n+1$ to a state with $n$ electrons due to the attachment of a single electron. At the first order, the evaluation of the previous expression leads to Equation~\ref{eq:dRLV} which general solution is given in Equation~\ref{eq:sol-RLV} in which are introduced the variables $\bar{n}(z)$, defined as in Equation~\ref{eq:Townsend-avalanche}, and $k = \eta/\alpha$ making explicit the fact that the distribution not only depends on the effective Townsend coefficient. An example is given through Figure~\ref{fig:RVL}.
+	
+	\begin{equation}
+	\label{eq:dRLV}
+	\frac{\deriv{P(n,z)}}{\deriv{z}} = -P(n,z)n(\alpha+\eta) \, + \, P(n-1,z)(n-1)\alpha \, + \, P(n+1,z)(n+1)\eta
+	\end{equation}
+	
+	\begin{equation}
+	\label{eq:sol-RLV}
+	P(n,z) = \left\{
+				\begin{array}{l l}
+  				k\frac{\bar{n}(z)-1}{\bar{n}(z)-k} \, , & n=0\\
+  				\bar{n}(z) \left( \frac{1-k}{\bar{n}(z)-k} \right)^2 \left( \frac{\bar{n}(z)-1}{\bar{n}(z)-k} \right)^{n-1} \, , & n>0\\
+  				\end{array} \right.
+	\end{equation}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/Riegler-distrib.pdf}\\
+		\caption{\label{fig:RVL} Comparison of avalanche size distributions for different values of Townsend and attachment coefficients. The effective Townsend coefficient is the same for both distributions~\cite{RIEGLER2003}.}
+	\end{figure}
+		
+	\subsection{Drift and diffusion of electrons}
 	\label{chapt4:ssec:electrons}
 	
 	{\color{blue} \textbf{[Summary of Vincent's chapter 3.]}}
