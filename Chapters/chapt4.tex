@@ -514,16 +514,16 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/HEED-Xenon.pdf}
 			\caption{\label{fig:PAIR:D} Xenon}
 		\end{subfigure}
-		\caption{\label{fig:PAIR} Photo-absorption cross section as computed by HEED for nobles gases with different electric shell numbers~\cite{VINCENT2017}.}
+		\caption{\label{fig:PAIR} Photo-absorption cross section as computed by \texttt{HEED} for nobles gases with different electric shell numbers~\cite{VINCENT2017}.}
 	\end{figure}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/HEED-RPC.pdf}\\
-		\caption{\label{fig:PAIR-RPC} Photo-absorption cross section as computed by HEED for typical RPC gas mixtures~\cite{VINCENT2017}. The RPC mixture with $CO_2$ corresponds to the mixture used by CALICE SDHCAL~\cite{ARNAUD2015} while the other one was forseen for the experiement ATLAS~\cite{RIEGLER2003} but has been changed since then.}
+		\caption{\label{fig:PAIR-RPC} Photo-absorption cross section as computed by \texttt{HEED} for typical RPC gas mixtures~\cite{VINCENT2017}. The RPC mixture with $CO_2$ corresponds to the mixture used by CALICE SDHCAL~\cite{ARNAUD2015} while the other one was forseen for the experiement ATLAS~\cite{RIEGLER2003} but has been changed since then.}
 	\end{figure}
 	
-	This model is included in the program HEED developed at CERN~\cite{HEED} and called by Garfield, a program developed for the simulation of gaseous detectors. The results for the cross section for a few noble gases are given in Figure~\ref{fig:PAIR}. It can be seen that for each shell, the cross section is increased. More complex patterns are seen with bigger atoms such as Xenon on Figure~\ref{fig:PAIR:D}. For gas mixtures, like the typical RPC mixtures, the cross section is showed in Figure~\ref{fig:PAIR-RPC}. Both mixtures being mainly composed of $C_2H_2F_4$, the variations in between the 2 cross section profiles are very subtle and depends on the concentration of the other compounds.
+	This model is included in the program \texttt{HEED} developed at CERN~\cite{HEED} and called by \texttt{Garfield}, a program developed for the simulation of gaseous detectors. The results for the cross section for a few noble gases are given in Figure~\ref{fig:PAIR}. It can be seen that for each shell, the cross section is increased. More complex patterns are seen with bigger atoms such as Xenon on Figure~\ref{fig:PAIR:D}. For gas mixtures, like the typical RPC mixtures, the cross section is showed in Figure~\ref{fig:PAIR-RPC}. Both mixtures being mainly composed of $C_2H_2F_4$, the variations in between the 2 cross section profiles are very subtle and depends on the concentration of the other compounds.
 	
 	\begin{figure}[H]
 		\begin{subfigure}{\linewidth}
@@ -547,7 +547,7 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 		\caption{\label{fig:Primary} Distributions of number of electrons (left) and energy loss (right) for a \SI{5}{GeV/c} muon passing through \SI{1.2}{mm} of Helium (Figure~\ref{fig:Primary:A}), Argon (Figure~\ref{fig:Primary:B}) or a typical RPC gas mixture (Figure~\ref{fig:Primary:C})~\cite{VINCENT2017}.}
 	\end{figure}
 	
-	Once the cross section of interaction is known, it is possible to extract the distribution of energy loss and of the number of electron produced, as showed in Figure~\ref{fig:Primary} for Helium, Argon, which is used in gaseous detectors, and for a typical RPC mixture~\cite{VINCENT2017}. The distributions are computed using HEED and show typical straggling function profiles with some complex structures that can be related to interaction of the incoming particle with the different electronic shells. Helium does not have a great photo-absorption cross-section according to Figure~\ref{fig:PAIR:A} and a muon will not be likely to lose a lot of energy and to create a lot of electrons whereas in a more complex atom like Argon, the cross-section is greater and will lead to a greater energy loss of muons and more electron produced. Finally, a complex gas mixture used in RPCs will offer an even greater cross-section, a wider energy loss distribution and will be able to produce more electrons. The same information is seen by looking at the evolution of the mean number of cluster as a function of the lorentz factor associated to muons showed in Figure~\ref{fig:ClusterDensity:A}. Indeed, the greater photo-absorption cross-section of RPC mixtures allow for a much greater amount of clusters to be created by charged particles. The size of these clusters is studied through Figure~\ref{fig:ClusterDensity:B} which shows that, in most of the cases ($\approx$80\%), the clusters only are composed of a single electron which is consistent with minimum ionizing particles.
+	Once the cross section of interaction is known, it is possible to extract the distribution of energy loss and of the number of electron produced, as showed in Figure~\ref{fig:Primary} for Helium, Argon, which is used in gaseous detectors, and for a typical RPC mixture~\cite{VINCENT2017}. The distributions are computed using \texttt{HEED} and show typical straggling function profiles with some complex structures that can be related to interaction of the incoming particle with the different electronic shells. Helium does not have a great photo-absorption cross-section according to Figure~\ref{fig:PAIR:A} and a muon will not be likely to lose a lot of energy and to create a lot of electrons whereas in a more complex atom like Argon, the cross-section is greater and will lead to a greater energy loss of muons and more electron produced. Finally, a complex gas mixture used in RPCs will offer an even greater cross-section, a wider energy loss distribution and will be able to produce more electrons. The same information is seen by looking at the evolution of the mean number of cluster as a function of the lorentz factor associated to muons showed in Figure~\ref{fig:ClusterDensity:A}. Indeed, the greater photo-absorption cross-section of RPC mixtures allow for a much greater amount of clusters to be created by charged particles. The size of these clusters is studied through Figure~\ref{fig:ClusterDensity:B} which shows that, in most of the cases ($\approx$80\%), the clusters only are composed of a single electron which is consistent with minimum ionizing particles.
 	
 	\begin{figure}[H]
 		\begin{subfigure}{0.5\linewidth}
@@ -675,7 +675,42 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 	\subsection{Drift and diffusion of the electron cloud}
 	\label{chapt4:ssec:electrons}
 	
-	During the growth of avalanches, an electron cloud drifting along the electric field through the gas will undergo thermal diffusion due to random collisions with the gas molecules. This phenomenon can be studied using Maxwell-Boltzmann distribution whose mean is defined by the thermal energy of the cloud $\left\langle E\right\rangle = 3/2 kT$ with an extra component coming from the constant drift motion. The drift of electrons along the field lines is usually observed on a macroscopic scale through which the speed can be assimilated to a constant $v_D$ which corresponds to the mean drift speed over a large number of collisions in the gas. Indeed, at the microscopic scale, the electrons are drifting over a distance $\delta z$ while acquiring the corresponding kinetic energy $T = e_0 \vert\overrightarrow{E}\vert\delta z$ until they are slowed down by a collision in which they lose part of their energy. This process is repeated as long as electrons are free carriers. Starting from a point-like electron cloud, the Gaussian density distribution at $\overrightarrow{r_0}$ will be described by Formula~\ref{eq:Diff-Gauss} in which the width of the isotropic distribution is $\sigma = 2\bar{D}t$, with $\bar{D}$ being a diffusion coefficient expressed in \si{m^2/s}~\cite{LIPPMANN2003}.
+	During the growth of avalanches, an electron cloud drifting along the electric field through the gas will undergo thermal diffusion due to random collisions with the gas molecules. This phenomenon can be studied using Maxwell-Boltzmann distribution whose mean is defined by the thermal energy of the cloud $\left\langle E\right\rangle = 3/2 kT$ with an extra component coming from the constant drift motion. The drift of electrons along the field lines is usually observed on a macroscopic scale through which the speed can be assimilated to a constant $v_D$ which corresponds to the mean drift speed over a large number of collisions in the gas.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width = 0.6\plotwidth]{fig/chapt4/Drift_velocity.pdf}
+			\caption{\label{fig:Drift-Diff:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Diff_Trans.pdf}
+			\caption{\label{fig:Drift-Diff:B}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Diff_Long.pdf}
+			\caption{\label{fig:Drift-Diff:C}}
+		\end{subfigure}
+		\caption{\label{fig:Drift-Diff} Figure~\ref{fig:Drift-Diff:A}: Electron mean drift velocity $v_D$ in pure $C_2H_2F_4$ and typical RPC gas mixtures. Figure~\ref{fig:Drift-Diff:B}: Transverse diffusion coefficient in pure $C_2H_2F_4$ and a typical RPC gas mixture. Figure~\ref{fig:Drift-Diff:C}: Longitudinal diffusion coefficient in pure $C_2H_2F_4$ and a typical RPC gas mixture. All results are given with a pressure $P = $ \SI{760}{Torr} and a temperature $T =$ \SI{296.15}{K}~\cite{VINCENT2017}.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Elec_distrib_no_diff.pdf}
+			\caption{\label{fig:Diff-Distrib:A} $n_e =$ \Sci{4.01}{5}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Elec_distrib_w_diff.pdf}
+			\caption{\label{fig:Diff-Distrib:B} $n_e =$ \Sci{1.25}{6}}
+		\end{subfigure}
+		\caption{\label{fig:Diff-Distrib} Comparison of the free charge carriers in the gas after a time $t =$ \SI{7.90}{ns} in the case where no diffusion is taken into account to simulate the avalanche (Figure~\ref{fig:Diff-Distrib:A}) and in the case where the diffusion is implemented (Figure~\ref{fig:Diff-Distrib:B})~\cite{VINCENT2017}.}
+	\end{figure}
+	
+	Indeed, at the microscopic scale, the electrons are drifting over a distance $\delta z$ while acquiring the corresponding kinetic energy $T = e_0 \vert\overrightarrow{E}\vert\delta z$ until they are slowed down by a collision in which they lose part of their energy. This process is repeated as long as electrons are free carriers. Starting from a point-like electron cloud, the Gaussian density distribution at $\overrightarrow{r_0}$ will be described by Formula~\ref{eq:Diff-Gauss} in which the width of the isotropic distribution is $\sigma = 2\bar{D}t$, with $\bar{D}$ being a diffusion coefficient expressed in \si{m^2/s}~\cite{LIPPMANN2003}.
 	
 	\begin{equation}
 	\label{eq:Diff-Gauss}
@@ -694,49 +729,61 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 	\varphi_L(z,t) = \frac{1}{\sqrt{2\pi l}D_L} exp\left( -\frac{(z - z_0)^2}{2D_L^2l)} \right)
 	\end{equation}
 	
-	These coefficients, as well as the drift velocity of the electrons, can be calculated thanks to \texttt{Magboltz} as showed in Figure~\ref{fig:Drift-Diff}. The influence of the diffusion on the distribution of charge carriers throughout the gas volume is depicted in Figure~\ref{fig:Diff-Distrib}.
-	
-	\begin{figure}[H]
-		\begin{subfigure}{\linewidth}
-			\centering
-			\includegraphics[width = 0.6\plotwidth]{fig/chapt4/Drift_velocity.pdf}
-			\caption{\label{fig:Drift-Diff:A}}
-		\end{subfigure}
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Diff_Trans.pdf}
-			\caption{\label{fig:Drift-Diff:B}}
-		\end{subfigure}
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Diff_Long.pdf}
-			\caption{\label{fig:Drift-Diff:C}}
-		\end{subfigure}
-		\caption{\label{fig:Drift-Diff} Figure~\ref{fig:Drift-Diff:A}: Electron drift velocity $v_D$ in pure $C_2H_2F_4$ and typical RPC gas mixtures. Figure~\ref{fig:Drift-Diff:B}: Transverse diffusion coefficient in pure $C_2H_2F_4$ and a typical RPC gas mixture. Figure~\ref{fig:Drift-Diff:C}: Longitudinal diffusion coefficient in pure $C_2H_2F_4$ and a typical RPC gas mixture. All results are given with a pressure $P = $ \SI{760}{Torr} and a temperature $T =$ \SI{296.15}{K}~\cite{VINCENT2017}.}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Elec_distrib_no_diff.pdf}
-			\caption{\label{fig:Diff-Distrib:A} $n_e =$ \Sci{4.01}{5}}
-		\end{subfigure}
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Elec_distrib_w_diff.pdf}
-			\caption{\label{fig:Diff-Distrib:B} $n_e =$ \Sci{1.25}{6}}
-		\end{subfigure}
-		\caption{\label{fig:Diff-Distrib} Comparison of the free charge carriers in the gas after a time $t =$ \SI{7.90}{ns} in the case where no diffusion is taken into account to simulate the avalanche (Figure~\ref{fig:Diff-Distrib:A}) and in the case where the diffusion is implemented (Figure~\ref{fig:Diff-Distrib:B})~\cite{VINCENT2017}.}
-	\end{figure}
+	These coefficients, as well as the drift velocity of the electrons, can be calculated thanks to \texttt{Magboltz} as showed in Figure~\ref{fig:Drift-Diff}. The influence of the diffusion on the distribution of charge carriers throughout the gas volume is depicted in Figure~\ref{fig:Diff-Distrib}. From very localised electron clusters in the gas in Figure~\ref{fig:Diff-Distrib:A}, a Gaussian diffusion is then visible in Figure~\ref{fig:Diff-Distrib:B}. Due to the interactions with gas molecules during the drift, diffusions can occur in the forward and backward direction. Electrons diffused backward will effectively drift over a longer distance and multiply more than electrons diffused forward that will see a shorter drift length. As an effect, the avalanche develops over a longer time and extends over a greater gas volume than in the case the electron cloud is considered as point like and without diffusion. Moreover, as a side effect to the longer growth of the avalanche due to backward longitudinal diffusion, the total production of electrons is increased.
 	
 	\subsection{Space charge effect}
 	\label{chapt4:ssec:space-charge}
 	
-	{\color{blue} \textbf{[Summary of Vincent's chapter 3.]}}
-
-\section{Gas transport parameters}
-\label{chapt4:sec:transport}
-
-
+	Now that have been considered the basic processes that influence the development of avalanches in a gaseous detector in the previous sections, it is now important to consider the influence of the charge carriers present in the avalanche on the electric field seen by the avalanche. Indeed, each charged particle induces an electric field and it is only natural that the increasing density of electrons and ions in the detector volume will affect the electric field. Thus, parameters such as the Townsend and attachment coefficients, drift velocity or diffusion coefficients will find themselves to be modified along the gas gap length due to this effect referred to as \textit{space charge effect}. Figure~\ref{fig:Space_charge} is a more detailed version of Figure~\ref{fig:RPC_principle} \textit{(b)} in which three electric regions are distinguished~\cite{LIPPMANN2003}. When compared to the linear electric field of strength $E_0$ that is developed in between the detector's electrodes, the accumulation of negative charges (electrons) on the front of the avalanche will reinforce the effective electric field in between the anode of the avalanche front. Deeper in the gas volume, the positive charges (cations) slowly drift towards the cathode and can induce together with the avalanche front opposite electric field loops. Finally, due to the density of positive charges, the electric field seen in between the ions tails and the cathode charged with negative charges is on average stronger than $E_0$ and compensate for the locally reversed field $E_2$. Lippmann roughly estimated by considering that \Ord{6} charges were contained in a sphere of radius $r_d =$ \SI{0.1}{mm} that the space charge effect could change the electric field by 3\% and the Townsend and attachment coefficient up to 14\%~\cite{LIPPMANN2003,VINCENT2017}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/Avalanche_space_charge.pdf}\\
+		\caption{\label{fig:Space_charge} Schematic representation of an avalanche and of the electric field deformation it causes due to the local concentration of charge carriers~\cite{LIPPMANN2003}.}
+	\end{figure}
+	
+	To account for the space charge effect, the electric potential and field of free charges are solved and applied to each charges in the avalanche~\cite{LIPPMANN2003,VINCENT2017}. As discussed by Français who has been working on simulating RPCs similar to that used by the SDHCAL project of ILC, the computation of these equations for each individual charge carrier to dynamically know the space charge field at every stage of an avalanche development is a difficult task and would require far too much computation time and a solution is to pre-compute an interpolation table keeping an adequately large number of values of the space charge field for each positions in space thanks to which the values stored in the interpolation table become very close to the analytic solution and allow for a much faster simulation.\\
+	
+	The study of space charge effect through simulation shows that the it can lead to a saturation of the avalanche growth due to the deformation of the electric field, as showed through Figure~\ref{fig:Space-charge-effect}. Additionnally, a more precise understanding of the space charge effect is given through Figure~\ref{fig:Avalanche-develop} which looks at the distribution of charges and the distortion of the electric field at different steps of the evolution of an avalanche in a RPC. At the moment a \SI{5}{GeV} muon ionizes the gas, electron-ion pairs are created in the gas in different clusters (Figure~\ref{fig:Avalanche-develop:A}). Later, the first clusters have reached the anode while the clusters that where created the closest to the cathode are now big enough to start influencing the electric field in the gap (Figure~\ref{fig:Avalanche-develop:B}). When a cluster is big enough, the electric field in front of it locally increases a lot and contributes to a stronger but very localised multiplication. At the same moment, the positive ions right behind the cluster avalanche front decrease the electric field, saturating the electron multiplication on the tail of the electron cloud (Figure~\ref{fig:Avalanche-develop:C}). Finally, when all the electrons have reached the anode and are relaxing, the electric field still is very deformed by the distribution of both positive and negative ions in the the gas volume closest to the anode (Figure~\ref{fig:Avalanche-develop:D}).
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Induced_charge_no_space_charge.pdf}
+			\caption{\label{fig:Space-charge-effect:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Induced_charge_w_space_charge.pdf}
+			\caption{\label{fig:Space-charge-effect:B}}
+		\end{subfigure}
+		\caption{\label{fig:Space-charge-effect} Evolution of the charge induced by an avalanche started by a single electron in a \SI{1.2}{mm} thick RPC with an applied electric field of \SI{54}{kV/cm} in the case space charge is not taken into account (Figure~\ref{fig:Space-charge-effect:A}) and in the case it is implemented into the simulation (Figure~\ref{fig:Space-charge-effect:B}). The total induced charge is correlated to the size of the avalanche~\cite{VINCENT2017}.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Avalanche_dev_step1.pdf}
+			\caption{\label{fig:Avalanche-develop:A} $t=$ \SI{0}{ns}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Avalanche_dev_step2.pdf}
+			\caption{\label{fig:Avalanche-develop:B}$t=$ \SI{7.94}{ns}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Avalanche_dev_step3.pdf}
+			\caption{\label{fig:Avalanche-develop:C}$t=$ \SI{8.94}{ns}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Avalanche_dev_step4.pdf}
+			\caption{\label{fig:Avalanche-develop:D}$t=$ \SI{23.9}{ns}}
+		\end{subfigure}
+		\caption{\label{fig:Avalanche-develop} Distributions of charge carriers within the gas volume of a \SI{1.2}{mm} thick RPC and the corresponding deformation of the electric field at different time steps with an applied electric field of \SI{55.5}{kV/cm}~\cite{VINCENT2017}.}
+	\end{figure}
+	
+	The electric field following the development of an avalanche can stay perturbed for a long time with respect to the avalanche development due to the slow drift of the much heavier ions. This can result in secondary avalanches triggered by the fluctuation of the electric field close enough to the cathode leading to emission of electrons at the surface of the electrode. this phenomenon is frequently observed experimentally after a strong avalanche.
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
