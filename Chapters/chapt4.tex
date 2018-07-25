@@ -582,7 +582,7 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 	\bar{n}(z) = e^{(\alpha - \eta)z} \, , \; \bar{p}(z) = \frac{\alpha}{\alpha - \eta}\left( e^{(\alpha - \eta)z} - 1\right)
 	\end{equation}
 	
-	The Townsend and attachment coefficient as a function of the applied electric field are given in Figure~\ref{fig:Townsend} for a standard RPC gas mixture using Magboltz~\cite{MAGBOLTZ}.
+	The Townsend and attachment coefficient as a function of the applied electric field are given in Figure~\ref{fig:Townsend} for a standard RPC gas mixture using \texttt{Magboltz}~\cite{MAGBOLTZ}.
 	
 	\begin{figure}[H]
 		\centering
@@ -640,7 +640,7 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 		\end{aligned}
 	\end{equation}
 	
-	The first term of this probability that from a state with $n-1$ electrons, only 1 multiplies while the others don't get attached. Both the second and third terms describes the probability that from a state with already $n$ electrons the total number of electrons stay the same. On the second term, no electron gets attached nor multiplies while on the third term, 1 electron gets multiplied and 1 gets attached to compensate. Finally, the fourth term describes the probability to fall from a state with $n+1$ to a state with $n$ electrons due to the attachment of a single electron. At the first order, the evaluation of the previous expression leads to Equation~\ref{eq:dRLV} which general solution is given in Equation~\ref{eq:sol-RLV} in which are introduced the variables $\bar{n}(z)$, defined as in Equation~\ref{eq:Townsend-avalanche}, and $k = \eta/\alpha$ making explicit the fact that the distribution not only depends on the effective Townsend coefficient. An example is given through Figure~\ref{fig:RVL}.
+	The first term of this probability that from a state with $n-1$ electrons, only 1 multiplies while the others don't get attached. Both the second and third terms describes the probability that from a state with already $n$ electrons the total number of electrons stay the same. On the second term, no electron gets attached nor multiplies while on the third term, 1 electron gets multiplied and 1 gets attached to compensate. Finally, the fourth term describes the probability to fall from a state with $n+1$ to a state with $n$ electrons due to the attachment of a single electron. At the first order, the evaluation of the previous expression leads to Equation~\ref{eq:dRLV} which general solution is given in Equation~\ref{eq:sol-RLV} in which are introduced the variables $\bar{n}(z)$, defined as in Equation~\ref{eq:Townsend-avalanche}, and $k = \eta/\alpha$ making explicit the fact that the distribution not only depends on the effective Townsend coefficient.
 	
 	\begin{equation}
 	\label{eq:dRLV}
@@ -656,16 +656,78 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
   				\end{array} \right.
 	\end{equation}
 	
+	The example given through Figure~\ref{fig:RVL} shows the importance of each individual process in the growth of avalanches and the fluctuation of their size. The values of $\alpha$ and $\eta$ will influence the probability distribution, as can be seen from Figure~\ref{fig:RVL:A}. Then, Figure~\ref{fig:RVL:B} shows that the fluctuation really takes place within the very first interactions. Indeed, when the avalanche contains a large enough amount of charge carriers (a few hundreds), its size then increases like $e^{z(\alpha-\eta)}$.
+	
 	\begin{figure}[H]
-		\centering
-		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/Riegler-distrib.pdf}\\
-		\caption{\label{fig:RVL} Comparison of avalanche size distributions for different values of Townsend and attachment coefficients. The effective Townsend coefficient is the same for both distributions~\cite{RIEGLER2003}.}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Riegler-distrib.pdf}
+			\caption{\label{fig:RVL:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.5\plotwidth]{fig/chapt4/Riegler-fluctuations.pdf}
+			\caption{\label{fig:RVL:B}}
+		\end{subfigure}
+		\caption{\label{fig:RVL} Figure~\ref{fig:RVL:A}: Comparison of avalanche size distributions for different values of Townsend and attachment coefficients. The effective Townsend coefficient is the same for both distributions. Figure~\ref{fig:RVL:B}: Fluctuation in avalanche size for avalanche started by a single electron with $\alpha$ = \SI{13}{mm^{-1}} and $\eta$ = \SI{3.5}{mm^{-1}}~\cite{RIEGLER2003}.}
 	\end{figure}
 		
-	\subsection{Drift and diffusion of electrons}
+	\subsection{Drift and diffusion of the electron cloud}
 	\label{chapt4:ssec:electrons}
 	
-	{\color{blue} \textbf{[Summary of Vincent's chapter 3.]}}
+	During the growth of avalanches, an electron cloud drifting along the electric field through the gas will undergo thermal diffusion due to random collisions with the gas molecules. This phenomenon can be studied using Maxwell-Boltzmann distribution whose mean is defined by the thermal energy of the cloud $\left\langle E\right\rangle = 3/2 kT$ with an extra component coming from the constant drift motion. The drift of electrons along the field lines is usually observed on a macroscopic scale through which the speed can be assimilated to a constant $v_D$ which corresponds to the mean drift speed over a large number of collisions in the gas. Indeed, at the microscopic scale, the electrons are drifting over a distance $\delta z$ while acquiring the corresponding kinetic energy $T = e_0 \vert\overrightarrow{E}\vert\delta z$ until they are slowed down by a collision in which they lose part of their energy. This process is repeated as long as electrons are free carriers. Starting from a point-like electron cloud, the Gaussian density distribution at $\overrightarrow{r_0}$ will be described by Formula~\ref{eq:Diff-Gauss} in which the width of the isotropic distribution is $\sigma = 2\bar{D}t$, with $\bar{D}$ being a diffusion coefficient expressed in \si{m^2/s}~\cite{LIPPMANN2003}.
+	
+	\begin{equation}
+	\label{eq:Diff-Gauss}
+	\varphi(\overrightarrow{r},t) = \frac{1}{\left(\sqrt{2\pi}\sigma(t)\right)^3} exp\left( -\frac{(\overrightarrow{r} - \overrightarrow{r_0})^2}{2\sigma^2(t)} \right)
+	\end{equation}
+	
+	Now, if the constant drifting motion is added, the distribution is anisotropic and can be divided onto transversal (Formula~\ref{eq:Diff-Trans}) and longitudinal (Formula~\ref{eq:Diff-Long}) terms, $\varphi(r,z,t) = \varphi_T(r,t)\varphi_L(z,t)$, with a cylindrical symmetry around the field axis~\cite{LIPPMANN2003}. The variables $t$ and $\sigma_{T,L}(t)$ can be hidden to the profit of the diffusion coefficients by using the relations $v_D = l/t$ and $\sigma_{T,L}^2(t) = 2\bar{D}_{T,L}l/v_D$ and introducing new diffusion coefficients $D_{T,L} = \sqrt{2\bar{D}_{T,L}/v_D}$ in order to explicitly show the dependence of the Gaussian width in drifted distance $l$.
+	
+	\begin{equation}
+	\label{eq:Diff-Trans}
+	\varphi_T(r,t) = \frac{1}{D_T^2l} exp\left( -\frac{(r - r_0)^2}{2D_T^2l} \right)
+	\end{equation}
+	
+	\begin{equation}
+	\label{eq:Diff-Long}
+	\varphi_L(z,t) = \frac{1}{\sqrt{2\pi l}D_L} exp\left( -\frac{(z - z_0)^2}{2D_L^2l)} \right)
+	\end{equation}
+	
+	These coefficients, as well as the drift velocity of the electrons, can be calculated thanks to \texttt{Magboltz} as showed in Figure~\ref{fig:Drift-Diff}. The influence of the diffusion on the distribution of charge carriers throughout the gas volume is depicted in Figure~\ref{fig:Diff-Distrib}.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width = 0.6\plotwidth]{fig/chapt4/Drift_velocity.pdf}
+			\caption{\label{fig:Drift-Diff:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Diff_Trans.pdf}
+			\caption{\label{fig:Drift-Diff:B}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Diff_Long.pdf}
+			\caption{\label{fig:Drift-Diff:C}}
+		\end{subfigure}
+		\caption{\label{fig:Drift-Diff} Figure~\ref{fig:Drift-Diff:A}: Electron drift velocity $v_D$ in pure $C_2H_2F_4$ and typical RPC gas mixtures. Figure~\ref{fig:Drift-Diff:B}: Transverse diffusion coefficient in pure $C_2H_2F_4$ and a typical RPC gas mixture. Figure~\ref{fig:Drift-Diff:C}: Longitudinal diffusion coefficient in pure $C_2H_2F_4$ and a typical RPC gas mixture. All results are given with a pressure $P = $ \SI{760}{Torr} and a temperature $T =$ \SI{296.15}{K}~\cite{VINCENT2017}.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Elec_distrib_no_diff.pdf}
+			\caption{\label{fig:Diff-Distrib:A} $n_e =$ \Sci{4.01}{5}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.55\plotwidth]{fig/chapt4/Elec_distrib_w_diff.pdf}
+			\caption{\label{fig:Diff-Distrib:B} $n_e =$ \Sci{1.25}{6}}
+		\end{subfigure}
+		\caption{\label{fig:Diff-Distrib} Comparison of the free charge carriers in the gas after a time $t =$ \SI{7.90}{ns} in the case where no diffusion is taken into account to simulate the avalanche (Figure~\ref{fig:Diff-Distrib:A}) and in the case where the diffusion is implemented (Figure~\ref{fig:Diff-Distrib:B})~\cite{VINCENT2017}.}
+	\end{figure}
 	
 	\subsection{Space charge effect}
 	\label{chapt4:ssec:space-charge}
