@@ -731,7 +731,7 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 	
 	These coefficients, as well as the drift velocity of the electrons, can be calculated thanks to \texttt{Magboltz} as showed in Figure~\ref{fig:Drift-Diff}. The influence of the diffusion on the distribution of charge carriers throughout the gas volume is depicted in Figure~\ref{fig:Diff-Distrib}. From very localised electron clusters in the gas in Figure~\ref{fig:Diff-Distrib:A}, a Gaussian diffusion is then visible in Figure~\ref{fig:Diff-Distrib:B}. Due to the interactions with gas molecules during the drift, diffusions can occur in the forward and backward direction. Electrons diffused backward will effectively drift over a longer distance and multiply more than electrons diffused forward that will see a shorter drift length. As an effect, the avalanche develops over a longer time and extends over a greater gas volume than in the case the electron cloud is considered as point like and without diffusion. Moreover, as a side effect to the longer growth of the avalanche due to backward longitudinal diffusion, the total production of electrons is increased.
 	
-	\subsection{Space charge effect}
+	\subsection{Space charge effect \& streamers}
 	\label{chapt4:ssec:space-charge}
 	
 	Now that have been considered the basic processes that influence the development of avalanches in a gaseous detector in the previous sections, it is now important to consider the influence of the charge carriers present in the avalanche on the electric field seen by the avalanche. Indeed, each charged particle induces an electric field and it is only natural that the increasing density of electrons and ions in the detector volume will affect the electric field. Thus, parameters such as the Townsend and attachment coefficients, drift velocity or diffusion coefficients will find themselves to be modified along the gas gap length due to this effect referred to as \textit{space charge effect}. Figure~\ref{fig:Space_charge} is a more detailed version of Figure~\ref{fig:RPC_principle} \textit{(b)} in which three electric regions are distinguished~\cite{LIPPMANN2003}. When compared to the linear electric field of strength $E_0$ that is developed in between the detector's electrodes, the accumulation of negative charges (electrons) on the front of the avalanche will reinforce the effective electric field in between the anode of the avalanche front. Deeper in the gas volume, the positive charges (cations) slowly drift towards the cathode and can induce together with the avalanche front opposite electric field loops. Finally, due to the density of positive charges, the electric field seen in between the ions tails and the cathode charged with negative charges is on average stronger than $E_0$ and compensate for the locally reversed field $E_2$. Lippmann roughly estimated by considering that \Ord{6} charges were contained in a sphere of radius $r_d =$ \SI{0.1}{mm} that the space charge effect could change the electric field by 3\% and the Townsend and attachment coefficient up to 14\%~\cite{LIPPMANN2003,VINCENT2017}.
@@ -784,6 +784,59 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 		\caption{\label{fig:Avalanche-develop} Distributions of charge carriers within the gas volume of a \SI{1.2}{mm} thick RPC and the corresponding deformation of the electric field at different time steps with an applied electric field of \SI{55.5}{kV/cm}~\cite{VINCENT2017}.}
 	\end{figure}
 	
-	The electric field following the development of an avalanche can stay perturbed for a long time with respect to the avalanche development due to the slow drift of the much heavier ions. This can result in secondary avalanches triggered by the fluctuation of the electric field close enough to the cathode leading to emission of electrons at the surface of the electrode. this phenomenon is frequently observed experimentally after a strong avalanche.
+	The electric field following the development of an avalanche can stay perturbed for a long time with respect to the avalanche development due to the slow drift of the much heavier ions. This can result in powerful secondary avalanches triggered by the fluctuation of the electric field together with the emission of UV-photons leading to emission of electrons at the surface of the electrode. This is a slow phenomenon compared to the development of avalanches. Experimentally, it is observed that the stronger the electric field applied over the gap, the sooner after the avalanche, referred to as \textit{precursor signal} in this context, and the stronger will the secondary avalanche be, possibly reaching the streamer regime. This could be due to the amount of UV-photons emitted by the growing precursor. These photons will be able to trigger new avalanches in a radius of a few \si{mm} around the precursor by knocking electrons from the cathode by photoelectric effect. The strong distortions of the electric field due to a large avalanche will be more likely to emit UV-photons as the electric field at the front of the precursor avalanche will be large, providing the electrons with a larger energy. Eventually, the new avalanches can grow to form streamers.
+	
+\section{Effect of atmospherical conditions on the detector's performance}
+\label{chapt4:sec:PTcorrection}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/Weighting_field.pdf}\\
+		\caption{\label{fig:weighting-field} Representation of the weighting field in the volume of a RPC and the resulting induced current in the strip placed at \SI{1}{V} and its neighbour connected to the ground. The induced current corresponds, as can be understood from Formula~\ref{eq:IndCurrent}~\cite{LIPPMANN2003}.}
+	\end{figure}
+
+	The movement of charge carriers, and in particular, the movement of a dense electron cloud toward the anode induces a current signal on the readout electrodes (strips or pads). The ions on the other hand induce only a very small current as their movement is much slower than which of the electrons. The current induced by $n_Cl$ clusters of $N_j(t)$ charge carriers drifting at velocities $\overrightarrow{v_{Dj}}(t) = \dot{\overrightarrow{x_j}}(t)$ at a time $t$ is given by Formula~\ref{eq:IndCurrent} in which $e_0$ is the unit charge and $\overrightarrow{E_w}$ is the \textit{weighting field}.
+	
+	\begin{equation}
+	\label{eq:IndCurrent}
+	i(t) = \sum_{j=1}^{n_Cl} \overrightarrow{E_{wj}}(\overrightarrow{x_j}(t)) \cdot \overrightarrow{v_{Dj}}(t) e_0 N_j(t)
+	\end{equation}
+	
+	The weighting field, that has been schematised in Figure~\ref{fig:weighting-field}, corresponds to the electric field that would be oberved in the gas gap if a readout electrode is placed at a potential of \SI{1}{V} while keeping all the other electrodes grounded. Then the induced charge in the readout can be simply obtained by integrating Formula~\ref{eq:IndCurrent} over the duration $T$ of the signal, as given by Formula~\ref{eq:IndCharge}.
+	
+	\begin{equation}
+	\label{eq:IndCharge}
+	Q(t) = \int_0^T \sum_{j=1}^{n_Cl} \overrightarrow{E_{wj}}(\overrightarrow{x_j}(t)) \cdot \overrightarrow{v_{Dj}}(t) e_0 N_j(t)
+	\end{equation}
+	
+	The signal induced in the readout of RPCs operated in avalanche mode is then sent into \acl{FEE} in which they will be pre-amplified and discriminated. The discrimination and digitization of signals in CMS FEE is described through Figure~\ref{fig:CMS-FEE}. On a first stage, analogic signals are amplified, following the curve given on Figure~\ref{fig:CMS-FEE-preamp}, and then sent to the \acf{CFD} described in Figure~\ref{fig:CFD}. At the end of the chain, \SI{100}{ns} long pulses are sent in the LVDS output. The digital signals are both used as trigger for CMS and to evaluate the performance of the detectors. The performance will dependent on the applied HV, i.e. on the electric field inside of the gas volume, but also on the threshold applied on the CFDs. Indeed, in order to reduce the probability to measure noise, the threshold is set to a level where the noise is strongly suppressed while the signals are not too affected. Typically, CMS FEEs are set to a threshold of \SI{215}{mV} after pre-amplification, corresponding to an input charge of about \SI{140}{fC}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.6\plotwidth]{fig/chapt4/CMS-FEE.pdf}\\
+		\caption{\label{fig:CMS-FEE} Schematics of CMS RPC FEE logic.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/CMS-FEE-preamp.pdf}\\
+		\caption{\label{fig:CMS-FEE-preamp} Equivalence in between the charge of the induced signal in input of the CMS FEE and the signal strength on the output of the pre-amplier.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width = 0.7\plotwidth]{fig/chapt4/CFD_1.pdf}\\
+			\caption{\label{fig:CFD:A}}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+		    \centering
+			\includegraphics[width = 0.84\plotwidth]{fig/chapt4/CFD_2.png}
+			\caption{\label{fig:CFD:B}}
+		\end{subfigure}
+		\caption{\label{fig:CFD} Description of the principle of a CFD. A comparison of threshold triggering (left) and constant franction triggering (right) is shown in Figure~\ref{fig:CFD:A}. Constant franction triggering is obtained thanks to zero-crossing technique as explained in Figure~\ref{fig:CFD:B}. The signal arriving at the input of the CFD is split into three components. A first one is delayed and connected to the inverting input of a first comparator. A second component is connected to the noninverting input of this first comparator. A third component is connected to the noninverting input of another comparator along with a threshold value connected to the inverting input. Finally, the output of both comparators is fed through an AND gate.}
+	\end{figure}
+	
+	
 
 \clearpage{\pagestyle{empty}\cleardoublepage}

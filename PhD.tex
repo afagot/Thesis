@@ -91,7 +91,7 @@
 \newcommand{\SIsurface}[3]{\mbox{\num{#1 x #2}\,\si{#3^2}}}
 \newcommand{\SIflux}[1]{\num{#1}\,\si{\second^{-1}\cm^{-2}}}
 \newcommand{\SIrate}[1]{\num{#1}\,\si{\hertz\cm^{-2}}}
-\newcommand{\siflux}{\si{\second^{-1}\cm^{-2}}}
+\newcommand{\siflux}{\si{\cm^{-2}\second^{-1}}}
 \newcommand{\sirate}{\si{\hertz\cm^{-2}}}
 
 % Functions to write century number or date numbers
@@ -116,6 +116,9 @@
 
 % Command to simplify writing straight derivatives
 \newcommand{\deriv}{\mathrm{d}}
+
+% Command to write pT without using to many characters
+\newcommand{\pT}{p$_T$}
 
 %%%%%%%%%%%%%%%%%
 %% PAGE LAYOUT %%
@@ -318,7 +321,6 @@ Alexis Fagot}}
 \include{Chapters/chapt4}
 \include{Chapters/chapt5}
 \include{Chapters/chapt6}
-\include{Chapters/chapt7}
 
 \newpage
 \appendix
