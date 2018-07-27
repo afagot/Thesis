@@ -795,7 +795,7 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 		\caption{\label{fig:weighting-field} Representation of the weighting field in the volume of a RPC and the resulting induced current in the strip placed at \SI{1}{V} and its neighbour connected to the ground. The induced current corresponds, as can be understood from Formula~\ref{eq:IndCurrent}~\cite{LIPPMANN2003}.}
 	\end{figure}
 
-	The movement of charge carriers, and in particular, the movement of a dense electron cloud toward the anode induces a current signal on the readout electrodes (strips or pads). The ions on the other hand induce only a very small current as their movement is much slower than which of the electrons. The current induced by $n_Cl$ clusters of $N_j(t)$ charge carriers drifting at velocities $\overrightarrow{v_{Dj}}(t) = \dot{\overrightarrow{x_j}}(t)$ at a time $t$ is given by Formula~\ref{eq:IndCurrent} in which $e_0$ is the unit charge and $\overrightarrow{E_w}$ is the \textit{weighting field}.
+	Accordingly to Ramo's theorem, the movement of charge carriers, and in particular, the movement of a dense electron cloud toward the anode induces a current signal on one or more of the readout electrodes (strips or pads). The ions on the other hand induce only a very small current as their movement is much slower than which of the electrons. The current induced by $n_Cl$ clusters of $N_j(t)$ charge carriers drifting at velocities $\overrightarrow{v_{Dj}}(t) = \dot{\overrightarrow{x_j}}(t)$ at a time $t$ is given by Formula~\ref{eq:IndCurrent} in which $e_0$ is the unit charge and $\overrightarrow{E_w}$ is the \textit{weighting field}.
 	
 	\begin{equation}
 	\label{eq:IndCurrent}
@@ -837,6 +837,71 @@ A \acf{RPC} is a gaseous detector used in high-energy physics experiments as des
 		\caption{\label{fig:CFD} Description of the principle of a CFD. A comparison of threshold triggering (left) and constant franction triggering (right) is shown in Figure~\ref{fig:CFD:A}. Constant franction triggering is obtained thanks to zero-crossing technique as explained in Figure~\ref{fig:CFD:B}. The signal arriving at the input of the CFD is split into three components. A first one is delayed and connected to the inverting input of a first comparator. A second component is connected to the noninverting input of this first comparator. A third component is connected to the noninverting input of another comparator along with a threshold value connected to the inverting input. Finally, the output of both comparators is fed through an AND gate.}
 	\end{figure}
 	
+	The performance of a detector is then simply measured relatively to which of a reference detector used as trigger as the ratio in between the number of events recorded in coincidence in the detector and the reference and the total amount of trigger events, $\epsilon = n_{events}/n_{triggers}$. An example of efficiency measured as a function of the effective voltage $HV_{eff}$ is given in Figure~\ref{fig:Sigmoid} and can be fitted thanks to a sigmoidal function described as in Formula~\ref{eq:Sigmoid} and where $\epsilon_{max}$ is the maximal efficiency of the detector, $\lambda$ is proportional to the slope at half maximum and $HV_{50}$ is the value of the voltage when the efficiency reaches half of the maximum.
 	
+	\begin{equation}
+	\label{eq:Sigmoid}
+	\epsilon(HV_{eff}) = \frac{\epsilon_{max}}{1+e^{-\lambda(HV_{eff}-HV_{50})}}
+	\end{equation}
+	
+	CMS RPC also define two points on this sigmoid that called \textit{knee} and \textit{working point}. The corresponding voltages $HV_{knee}$ is defined as the voltage at 95\% of the maximum efficiency, and $HV_{WP}$ is defined as in Formula~\ref{eq:KneeWP}.
+	
+	\begin{equation}
+	\label{eq:KneeWP}
+	HV_{WP} = HV_{knee} + \left\{\begin{array}{l l}100\mathrm{V} & \quad \mathrm{(barrel)}\\ 150\mathrm{V} & \quad \mathrm{(endcap)}\\ \end{array}\right.
+	\end{equation}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.7\plotwidth]{fig/chapt4/Eff_sigmoid.png}\\
+		\caption{\label{fig:Sigmoid} Typical efficiency sigmoid of a CMS RPC detector. The black dots correspond to the data, the blue line to the sigmoid fit and the opened cross to the knee and working extracted from the fit line.}
+	\end{figure}
+	
+	Nevertheless, the voltage applied on a detector may vary due to a change in environmental conditions. Indeed, the variation of temperature and/or pressure will have effects on the gas density and the electrodes' resistivity which can be overcome by changing the electric field accordingly. The variation in temperature and pressure are depicted respectively in Figure~\ref{fig:TCorr} and Figure~\ref{fig:PCorr}. A standard procedure to correct for temperature and pressure variations is to keep the factor $HV\cdot T/P$ constant using Formula~\ref{eq:PTSimple}~\cite{ABBRESCIA1995,ABBRESCIA1997PRES} with reference values for $T_0$ and $P_0$. For example, CMS uses $T_0=$ \SI{293.15}{K} and $P_0=$ \SI{965}{hPa}.
+	
+	\begin{equation}
+	\label{eq:PTSimple}
+	HV_{app} = HV_{eff}\frac{P_0}{P}\frac{T}{T_0}
+	\end{equation}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.58\plotwidth]{fig/chapt4/Rate-temperature.png}\\
+			\caption{\label{fig:TCorr:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+		    \centering
+			\includegraphics[width = 0.58\plotwidth]{fig/chapt4/Efficiency-temperature.png}
+			\caption{\label{fig:TCorr:B}}
+		\end{subfigure}
+		\caption{\label{fig:TCorr} Effect of the temperature variation on the rate (Figure~\ref{fig:TCorr:A}) and the efficiency (Figure~\ref{fig:TCorr:B}) of a RPC~\cite{ABBRESCIA1995}.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width = 0.7\plotwidth]{fig/chapt4/Rate-pressure.png}\\
+			\caption{\label{fig:PCorr:A}}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+		    \centering
+			\includegraphics[width = 0.7\plotwidth]{fig/chapt4/Efficiency-pressure.png}
+			\caption{\label{fig:PCorr:B}}
+		\end{subfigure}
+		\caption{\label{fig:PCorr} Effect of the pressure variation on the rate (Figure~\ref{fig:PCorr:A}) and the efficiency (Figure~\ref{fig:PCorr:B}) of a RPC~\cite{ABBRESCIA1997PRES}.}
+	\end{figure}
+	
+	It was actually found that such a simple procedure would overcorrect the applied voltage in the case the variations of temperature or pressure were too important~\cite{ABBRESCIA2013,FILIP2014,BIANCO2007,BIANCO2009}. CMS, considering that the temperature variations in the detector cavern were very small, decided only to improve the pressure correction, giving rise to Formula~\ref{eq:PTCMS}~\cite{ABBRESCIA2013} while on the other hand, ATLAS decided to have a more robust correction for both parameters and uses Formula~\ref{eq:PTATLAS} instead~\cite{BIANCO2009}. The coefficients $\alpha$, in the case of CMS, and $\alpha,\beta$, in the case of ATLAS, are extracted from fit on available dataset obtained during the operation of the detectors.
+	
+	\begin{equation}
+	\label{eq:PTCMS}
+	HV_{app} = HV_{eff}\left( 1 - \alpha + \alpha\frac{P_0}{P} \right) \frac{T}{T_0} \; , \quad \alpha = 0.8
+	\end{equation}
+	
+	\begin{equation}
+	\label{eq:PTATLAS}
+	HV_{eff} = HV_{app}\left( 1 + \alpha\frac{\Delta T}{T_0} \right) \left( 1 - \beta\frac{\Delta P}{P_0} \right) \; , \quad \alpha = 0.5 \; , \; \beta = 0.71
+	\end{equation}
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
