@@ -78,21 +78,15 @@
 ]{biblatex}
 \bibliography{bib/PhD}
 
-% Macros for extra units
-% doesn't use siunitx macros for extra cross-compatiblity
-\newcommand{\hPa}{\hecto\pascal}
-\newcommand{\Ohmcm}{\ohm\cm}
-\newcommand{\GBq}{\giga\becquerel}
-
 % My own implementation of errors to provide compatibility between
 % siunitx v1 and v2
 \newcommand{\numerror}[2]{\ensuremath{(\num{#1}\pm\num{#2}})} % e.g. 1000 ± 10
 \newcommand{\SIerror}[3]{\numerror{#1}{#2}\,\si{#3}} % e.g. (100 ± 5) nA
 \newcommand{\SIsurface}[3]{\mbox{\num{#1 x #2}\,\si{#3^2}}}
-\newcommand{\SIflux}[1]{\num{#1}\,\si{\second^{-1}\cm^{-2}}}
-\newcommand{\SIrate}[1]{\num{#1}\,\si{\hertz\cm^{-2}}}
-\newcommand{\siflux}{\si{\cm^{-2}\second^{-1}}}
-\newcommand{\sirate}{\si{\hertz\cm^{-2}}}
+\newcommand{\SIflux}[1]{\num{#1}\,\si{cm^{-2}.s^{-1}}}
+\newcommand{\SIrate}[1]{\num{#1}\,\si{Hz/cm^2}}
+\newcommand{\siflux}{\si{cm^{-2}.s^{-1}}}
+\newcommand{\sirate}{\si{Hz/cm^2}}
 
 % Functions to write century number or date numbers
 \newcommand{\St}[1]{#1$^{st}$}
@@ -173,9 +167,11 @@
 % 
 \vfill
  \bigskip
-   \LARGE\noindent\centering \textsf{Alexis Fagot}
+ \begin{centering}
+   \LARGE\noindent\textsf{Alexis Fagot}
+ \end{centering}
  \bigskip
- \normalsize\flushleft
+ \normalsize
 % 
 % % Footer
  \vfill
@@ -223,11 +219,10 @@ Promotoren: & Dr.\ Michael Tytgat\\
 
 \noindent Universiteit Gent \\
 \noindent Faculteit Wetenschappen\\
-\\[0.3cm]
+[0.3cm]
 \noindent Vakgroep Fysica en Sterrenkunde \\
-\noindent Proeftuinstraat 86,
-\noindent B-9000 Gent, Belgi\"e 
-\\[0.3cm]
+\noindent Proeftuinstraat 86, B-9000 Gent, Belgi\"e\\
+[0.3cm]
 \noindent Tel.: +32 9 264.65.28\\
 \noindent Fax.: +32 9 264.66.97
 
@@ -246,7 +241,6 @@ Promotoren: & Dr.\ Michael Tytgat\\
      \includegraphics*[width=2.0cm]{CERN}%       % CERN logo
  \end{minipage}\hfill
 \clearpage{\pagestyle{empty}\cleardoublepage}
-
 
 %% ACKNOWLEDGMENT   %%
 %%%%%%%%%%%%%%%%%%%%%%%
