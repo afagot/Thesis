@@ -20,12 +20,6 @@
 \label{chapt5:sec:extreme}
 
 	The upgrade from LHC to HL-LHC will increase the peak luminosity from \Ord{34} \siflux to reach \Sci{5}{34} \siflux, increasing in the same way the total expected background to which the RPC System will be subjected to. Mainly composed of low energy gammas, neutrons, and electrons and positrons from $p$-$p$ collisions, but also of low momentum primary and secondary muons, punch-through hadrons from calorimeters, and particles produced in the interaction of the beams with collimators, the background will mostly affect the regions of CMS that are the closest to the beam line, i.e. the RPC detectors located in the endcaps.
-
-	Data collected over 2017, presented through Figure~\ref{fig:Rate-I-vs-Lumi}, allows to study the values of the background rate in all the RPC System. This was achieved thanks to a monitoring of the rates in each RPC rolls, where rolls correspond to the pseudo-rapidity partitioning of the readout electronics, and of the current in each HV channel. A linear dependence in between the mean rate or current with instantaneous luminosity is showed in selected runs with identical LHC running parameters. In Figure~\ref{fig:RPC-HL-LHC}, a linear extrapolation of the distribution of the background hit rate per unit area as well as the integrated charge is showed at a HL-LHC condition. The maximum rate per unit area in the endcap detectors at HL-LHC conditions is expected to be of the order of \SIrate{600} while the charge deposition should reach approximately \SI{800}{mC/cm^2}. These extrapolations are provided with a required safety factor 3 for the certification study.
-
-	In the past, extensive long-term tests were carried out at several gamma and neutron facilities certifying the detector performance. Both full size and small prototype RPCs have been irradiated with photons up to an integrated charge of $\sim$\SI{0.05}{C/cm^2} and $\sim$\SI{0.4}{C/cm^2} respectively and were certified for rates reaching \SIrate{200}~\cite{GIF2004,AGING2009}. Since the beginning of Run-I until December 2017, the RPC system provided stable operation and excellent performance and did not show any ageing effects for a maximum integrated charge in a detector of the order of \SI{0.01}{C/cm^2} - the average being of the order of \SI{2}{mC/cm^2} in the Barrel and \SI{5}{mC/cm^2} in the Endcap, closer to the beam line, as can be seen from Figure~\ref{fig:Mean-Int-Charge} - and a peak luminosity reaching \Sci{1.4}{34} \siflux during 2017 data taking period.
-	
-	To perform the necessary studies on the present CMS RPC detectors, facilities offering the possibility to irradiate the chambers are necessary in order to recreate HL-LHC conditions or stronger and study their performance through time. Such facilities exist at CERN and were exploited to conduct this study. A first series of preliminary studies were conducted in the former gamma facility of CERN (GIF) before its dismantlement. This preliminary study was used as a stepping stone towards the building of a more powerful irradiation fully dedicated to longevity studies of CMS and ATLAS subsystems in the perspective of HL-LHC. The period of preliminary work has also been a key moment in the elaboration and improvement of data acquisition, offline analysis and online monitoring tools that are extensively used in the new gamma irradiation facility.
     
 	\begin{figure}[H]
 		\begin{subfigure}{0.5\linewidth}
@@ -50,6 +44,8 @@
 		\end{subfigure}
 		\caption{\label{fig:Rate-I-vs-Lumi} Mean RPC Barrel (left column) and Endcap (right column) rate (top row) and current (bottom row) as a function of the instantaneous luminosity as measured in 2017 $p$-$p$ collision data.}
 	\end{figure}
+
+	Data collected over 2017, presented through Figure~\ref{fig:Rate-I-vs-Lumi}, allows to study the values of the background rate in all the RPC System. This was achieved thanks to a monitoring of the rates in each RPC rolls, where rolls correspond to the pseudo-rapidity partitioning of the readout electronics, and of the current in each HV channel. A linear dependence in between the mean rate or current with instantaneous luminosity is showed in selected runs with identical LHC running parameters. In Figure~\ref{fig:RPC-HL-LHC}, a linear extrapolation of the distribution of the background hit rate per unit area as well as the integrated charge is showed at a HL-LHC condition. The maximum rate per unit area in the endcap detectors at HL-LHC conditions is expected to be of the order of \SIrate{600} while the charge deposition should reach approximately \SI{800}{mC/cm^2}. These extrapolations are provided with a required safety factor 3 for the certification study.
     
 	\begin{figure}[H]
 		\begin{subfigure}{0.5\linewidth}
@@ -78,6 +74,10 @@
 		\end{subfigure}
 		\caption{\label{fig:Mean-Int-Charge} CMS RPC mean integrated charge in the Barrel region (Figure~\ref{fig:Mean-Int-Charge:A}) and the Endcap region (Figure~\ref{fig:Mean-Int-Charge:B}). The integrated charge per year is shown in blue. The red curve shows the evolution of the accumulated integrated charge through time. The blank period in 2013 and 2014 corresponds to LS1. The total integrated charge for the entire operation period (Oct.2009 - Dec.2017) is estimated to be about \SI{1.66}{mC/cm^2} in the Barrel and \SI{4.58}{mC/cm^2} in the Endcap.}
 	\end{figure}
+
+	In the past, extensive long-term tests were carried out at several gamma and neutron facilities certifying the detector performance. Both full size and small prototype RPCs have been irradiated with photons up to an integrated charge of $\sim$\SI{0.05}{C/cm^2} and $\sim$\SI{0.4}{C/cm^2} respectively and were certified for rates reaching \SIrate{200}~\cite{GIF2004,AGING2009}. Since the beginning of Run-I until December 2017, the RPC system provided stable operation and excellent performance and did not show any ageing effects for a maximum integrated charge in a detector of the order of \SI{0.01}{C/cm^2} - the average being of the order of \SI{2}{mC/cm^2} in the Barrel and \SI{5}{mC/cm^2} in the Endcap, closer to the beam line, as can be seen from Figure~\ref{fig:Mean-Int-Charge} - and a peak luminosity reaching \Sci{1.4}{34} \siflux during 2017 data taking period.
+	
+	To perform the necessary studies on the present CMS RPC detectors, facilities offering the possibility to irradiate the chambers are necessary in order to recreate HL-LHC conditions or stronger and study their performance through time. Such facilities exist at CERN and were exploited to conduct this study. A first series of preliminary studies were conducted in the former gamma facility of CERN (GIF) before its dismantlement. This preliminary study was used as a stepping stone towards the building of a more powerful irradiation fully dedicated to longevity studies of CMS and ATLAS subsystems in the perspective of HL-LHC. The period of preliminary work has also been a key moment in the elaboration and improvement of data acquisition, offline analysis and online monitoring tools that are extensively used in the new gamma irradiation facility.
 	
 		\subsection{GIF}
 		\label{chapt5:ssec:GIF}
@@ -131,7 +131,7 @@
 	\subsection{\acl{RPC} test setup}
 	\label{chapt5:ssec:RPCSetup}
 	
-	During summer 2014, preliminary tests have been conducted in the GIF area on a newly produced RE4/2 chamber labeled \texttt{RE-4-2-BARC-161}. This chamber has been placed into a trolley covered with a tent. The position of the RPC inside the tent and of the tent with respect to the source in the bunker are described in Figure~\ref{fig:GIFSetup}. The goal of the study were to have a preliminary understanding of the rate capability of the present technology used in CMS. It was decided to measure the efficiency of the RPC under irradiation at detecting cosmic muons as, at the time of the tests, the beam not operational anymore. Three different absorber settings were used and compared to the case where the detector was not irradiated in order to study the evolution of the performance of the detector with increasing exposition to gamma radiation. First of all, measurements were done with fully opened source. To complete this preliminary study, the gamma flux has been attenuated by a factor 2, a factor 5 and finally the source was shut down. Was measured the efficiency of the RPC at detecting the cosmic muons in coincidence with a cosmic trigger as well as the background rate as seen by the detectors.
+	During summer 2014, preliminary tests have been conducted in the GIF area on an endcap chamber of type RE4/2 and labeled \texttt{RE-4-2-BARC-161} produced for the extension of the endcap with a fouth disk in 2013. This chamber has been placed into a trolley covered with a tent. The position of the RPC inside the tent and of the tent with respect to the source in the bunker are described in Figure~\ref{fig:GIFSetup}. The goal of the study were to have a preliminary understanding of the rate capability of the present technology used in CMS. It was decided to measure the efficiency of the RPC under irradiation at detecting cosmic muons as, at the time of the tests, the beam not operational anymore. Three different absorber settings were used and compared to the case where the detector was not irradiated in order to study the evolution of the performance of the detector with increasing exposition to gamma radiation. First of all, measurements were done with fully opened source. To complete this preliminary study, the gamma flux has been attenuated by a factor 2, a factor 5 and finally the source was shut down. Was measured the efficiency of the RPC at detecting the cosmic muons in coincidence with a cosmic trigger as well as the background rate as seen by the detectors.
 
 	\begin{figure}[H]
 		\begin{subfigure}{0.5\linewidth}
@@ -244,7 +244,7 @@
 
 	\begin{figure}[H]
             \centering
-		\includegraphics[width = 0.7\plotwidth]{fig/chapt5/Compared-Efficiency-Correction.pdf}
+		\includegraphics[width = \plotwidth]{fig/chapt5/Compared-Efficiency-Correction.pdf}
 		\caption{\label{fig:EffCorrection} Correction of the efficiency without source. The efficiency after correction gets much closer to the Reference measurement performed before the study in GIF by reaching a plateau of \numerror{93.52}{2.64}\%.}
 	\end{figure}
 	
@@ -364,35 +364,87 @@
 	\subsection{Results and discussions}
 	\label{chapt5:ssec:results6}
 	
-	The data taking at GIF has been conducted in between the \St{21} and the \St{31} of August, 2014. Data has been collected with both source OFF and ON using three different absorber settings (ABS 5, 2 and 1) in order to vary the irradiation on the RPC. For each source setting, two HV scans have been performed with two different trigger settings. During a first scan the trigger sent to the TDC module was the coincidence of the two scintillators composing the telescope while during a second scan the trigger was a pulse coming from a pulse generator in order to measure the noise or gamma rate seen by the chamber. Indeed, using a pulse allows to trigger at moments not linked to any physical event and thus to obtain a \textit{RANDOM} trigger on noise and gamma events to measure the associated rates, the probability to have a pulse in coincidence with a cosmic muon being negligible.
+	The data taking at GIF has been conducted in between the \St{21} and the \St{31} of August, 2014. Data has been collected with both source OFF and ON using three different absorber settings (ABS 5, 2 and 1) in order to vary the irradiation on the RPC. For each source setting, two HV scans have been performed with two different trigger settings. During a first scan the trigger sent to the TDC module was the coincidence of the two scintillators composing the telescope while during a second scan the trigger was a pulse coming from a pulse generator in order to measure the noise or gamma rate seen by the chamber. Indeed, using a pulse allows to trigger at moments not linked to any physical event and, hence, to obtain a \textit{RANDOM} trigger on noise and gamma events to measure the associated rates, the probability to have a pulse in coincidence with a cosmic muon being negligible.
 	
-	From the cosmic trigger scans, a summary of the effiencies and corresponding cluster sizes is showed in Figures~\ref{fig:GIFEfficiency} and \ref{fig:GIFCluster-Size}. The efficiency curves with Source ON show a shift with respect to the case without irradiation. With ABS 5, the general shape of the efficiency curve stays unchanged whereas a clear alteration of the performance is observed at ABS 2 and ABS 1. From the cluster size results, a reduction of the cluster size under irradiation can be oberved at equivalent efficiency. This effect can be due to the perturbation of the electric field by the strong rate of gamma particles starting avalanches in the gas volume of the detector.
+	From the cosmic trigger scans, a summary of the effiencies and corresponding cluster sizes is showed in Figure~\ref{fig:GIFEffCS}. The efficiency curves with Source ON show a shift with respect to the case without irradiation. With ABS 5, the general shape of the efficiency curve stays unchanged whereas a clear alteration of the performance is observed at ABS 2 and ABS 1. From the cluster size results, a reduction of the cluster size under irradiation can be oberved at equivalent efficiency. This effect can be due to the perturbation of the electric field by the strong rate of gamma particles starting avalanches in the gas volume of the detector.
 	
 	\begin{figure}[H]
-		\centering
-		\includegraphics[width = \plotwidth]{fig/chapt5/Efficiency.pdf}
-		\caption{\label{fig:GIFEfficiency} Efficiency of chamber \texttt{RE-4-2-BARC-161} measured at GIF with Source OFF (red) and Source ON using different absorber settings: ABS 5 (green), ABS 2 (blue) and ABS 1 (yellow). The results are compared to the Reference values obtained with cosmics.}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.7\plotwidth]{fig/chapt5/Efficiency.pdf}
+        	\caption{\label{fig:GIFEffCS:A}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.7\plotwidth]{fig/chapt5/Cluster-Size.pdf}
+        	\caption{\label{fig:GIFEffCS:B}}
+    	\end{subfigure}
+		\caption{\label{fig:GIFEffCS} Efficiency (Figure~\ref{fig:GIFEffCS:A}) and cluster size (Figure~\ref{fig:GIFEffCS:B}) of chamber \texttt{RE-4-2-BARC-161} measured at GIF with Source OFF (red) and Source ON using different absorber settings: ABS 5 (green), ABS 2 (blue) and ABS 1 (yellow). The results are compared to the Reference values obtained with cosmics.}
+	\end{figure}
+	
+	It is necessary to study the evolution of the performance of the chamber with the increasing rate. In Figure~\ref{fig:GIFRate:A}, the noise rate when the source is OFF stays low but increases at voltages above \SI{9500}{V}. The rise of the noise rate in the detector can be related to the increased streamer probability observed with such a large electric field. The rates with source ON measured at GIF all show a similar behaviour until a high voltage of approximately \SI{9400}{V} at which the rate of ABS 5 saturates, corresponding to the chamber reaching full efficiency. It is important to note that, eventhough the rates look similar independently from the gamma flux, relatively to the efficiency of the chamber, the rate actually increases with increasing flux at equivalent efficiency. A rough way to measure the rate effectively observed by the detector for each source setting would be to normalize the measured rates to the efficiency of the detector. This exercise was done with Figure~\ref{fig:GIFRate:B} from which constant fits where done on Source ON data in order to extract the rate the chamber was subjected to.
+	
+	\begin{figure}[H]
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.7\plotwidth]{fig/chapt5/Gamma-Rate.pdf}
+        	\caption{\label{fig:GIFRate:A}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+			\includegraphics[width = 0.7\plotwidth]{fig/chapt5/Unconvoluted-Gamma-Rate.pdf}
+        	\caption{\label{fig:GIFRate:B}}
+    	\end{subfigure}
+		\caption{\label{fig:GIFRate} Rates in chamber \texttt{RE-4-2-BARC-161} measured at GIF with Source OFF (red) and Source ON using different absorber settings: ABS 5 (green), ABS 2 (blue) and ABS 1 (yellow). On Figure~\ref{fig:GIFRate:B}, the rates of Figure~\ref{fig:GIFRate:A} were normalized to the measured efficiency and constant fits are performed on Source ON data showing the gamma rate in the chamber.}
 	\end{figure}
 	
 	\begin{figure}[H]
-		\centering
-		\includegraphics[width = \plotwidth]{fig/chapt5/Cluster-Size.pdf}
-		\caption{\label{fig:GIFCluster-Size} Cluster size of chamber \texttt{RE-4-2-BARC-161} measured at GIF with Source OFF (red) and Source ON using different absorber settings: ABS 5 (green), ABS 2 (blue) and ABS 1 (yellow). The results are compared to the Reference values obtained with cosmics.}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = 0.7\plotwidth]{fig/chapt5/HV-Knee-ABS.pdf}
+        	\caption{\label{fig:Evolution:A}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = 0.7\plotwidth]{fig/chapt5/Eff-ABS.pdf}\\
+        	\caption{\label{fig:Evolution:B}}
+    	\end{subfigure}
+		\caption{\label{fig:Evolution} Evolution of the voltages at half maximum and at 95\% of the maximum efficiency (Figure~\ref{fig:Evolution:A}), and of the maximum efficiency (Figure~\ref{fig:Evolution:B}) as a function of the rate in chamber \texttt{RE-4-2-BARC-161}. The data is extracted from the fits in Figures~\ref{fig:GIFEffCS:A} and~\ref{fig:GIFRate:B}.}
 	\end{figure}
+	
+	The results need to be taken with care as a better estimation of the rate would have been to push the detector towards higher voltages to reach the efficiency plateau for each absorber configuration and only then extract the measured rate at working voltage, defined as in Formula~\ref{eq:KneeWP}. Nevertheless, using this method to estimate the rate the chamber is subjected to, it is possible to look at the evolution of the $HV_{50}$ and $HV_{knee}$ (the working voltage being defined to be \SI{150}{V} above the knee in the endcap) as a function of the increasing rate as showed in Figure~\ref{fig:Evolution}. The results from GIF suggest that at a rate of \SIrate{600} the working voltage of the chamber is increased by a thousand \si{V} while the efficiency is reduced to approximately 80\%, although the result still is consistent with an efficiency better than 90\% due to the large error on the measurement. Moreover, it is likely that the rates obtained through fitting on normalized values is underestimated. Indeed, monitoring the current in the 3 gaps composing a CMS endcap RPC (Figure~\ref{fig:EndcapRPC}) while knowing the rate, the charge deposition per avalanche $q_\gamma$ can be computed.
 	
 	\begin{figure}[H]
-		\centering
-		\includegraphics[width = \plotwidth]{fig/chapt5/Gamma-Rate.pdf}
-		\caption{\label{fig:GIFRate} Rates in chamber \texttt{RE-4-2-BARC-161} measured at GIF with Source OFF (red) and Source ON using different absorber settings: ABS 5 (green), ABS 2 (blue) and ABS 1 (yellow).}
+    	\begin{subfigure}{0.69\linewidth}
+			\centering
+    		\includegraphics[height = 5cm]{fig/chapt5/Endcap-3D.pdf}
+        	\caption{\label{fig:EndcapRPC:A}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.29\linewidth}
+			\centering
+    		\includegraphics[height = 5cm]{fig/chapt5/Endcap-side.pdf}\\
+        	\caption{\label{fig:EndcapRPC:B}}
+    	\end{subfigure}
+		\caption{\label{fig:EndcapRPC} Presentation of a double-gap endcap RPC with its 3 RPC gaps. Due to the partitioniing of the read-out strips into 3 rolls, the TOP layer of gap is divided into 2 gaps: TOP NARROW (TN) and TOP WIDE (TW). The BOTTOM (B) only consists in 1 gap.}
 	\end{figure}
 	
-	It is necessary to study the evolution of the performance of the chamber with the increasing rate. In Figure~\ref{ig:GIFRate}, the noise rate when the source is OFF stays low but increases at voltages above \SI{9700}{V}. The rise of the noise rate in the detector can be related to the increased probability of streamer oserved with such a large electric field. The rates with source ON measured at GIF all show a similar behaviour until a high voltage of approximately \SI{9600}{V} at which the rate of ABS 5 saturates, corresponding to the chamber reaching full efficiency. It is important to note that, eventhough the rates look similar independently from the gamma flux, relatively to the effiency of the chamber, the rate actually increases at similar efficiency. A rough way to measure the rate actually observed by the detector for each source setting would be to unconvolute the measured rates from the efficiency of the detector. This exercise was done with Figure~\ref{fig:GIFUncovRate} from which constant fits where done on the data of Source ON in order to extract the rate the chamber was subjected to.
+	A charge is expressed in \si{C} which is consistent with a current density, expressed in \si{A/cm^2}, divided by a rate per unit area, expressed in \si{Hz/cm^2}. The current driven by the RPC is assumed to be due to the irradiation, hence, to the avalanches developing in the gas volume due to the photons of the Cesium source. On the other hand, the rate is supposed to be a measure of the number of photons interacting with the detector. This way, it comes that the charge deposition per avalanche is expressed like $q_\gamma = J_{mon}/R_\gamma$, $J_{mon}$ being the monitored current density and $R_\gamma$ the measured $\gamma$ rate. The current density is computed as the sum of the current density measured on the top gap layer and of which measured in the bottom gap layer, $J_{mon} = (I_{mon}^{TW}+I_{mon}^{TW})/(A_{TW}+A_{TN}) + I_{mon}^B/A_B$, $A_{B,TN,TW}$ being the active area and $I_{mon}^{B,TN,TW}$ the monitored currents of the gaps. According to Figure~\ref{fig:Charge}, the charge deposition per avalanche consistently converges to a value of the order of \SI{50}{pC} for each absorber setting which corresponds to a value more than twice greater than what reported in litterature for CMS detectors~\cite{PUGLIESE2002,PUGLIESE2003} indicating that the rates could have been wrongly evaluated during the short study performed at GIF. An increase of the $\gamma$ rate by a factor 2 would be consistent with the expected rates calculated in Table~\ref{tab:extra2014}, assuming the sensitivity to $\gamma$ to be of the order of \Sci{2}{-3}.
 	
 	\begin{figure}[H]
-		\centering
-		\includegraphics[width = \plotwidth]{fig/chapt5/Unconvoluted-Gamma-Rate.pdf}
-		\caption{\label{fig:GIFUncovRate} Rates in chamber \texttt{RE-4-2-BARC-161} unconvoluted from the corresponding efficiency measured at GIF with Source OFF (red) and Source ON using different absorber settings: ABS 5 (green), ABS 2 (blue) and ABS 1 (yellow). Constant fits are performed on Source ON data showing the gamma rate in the chamber.}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = 0.7\plotwidth]{fig/chapt5/Current-Density.pdf}
+        	\caption{\label{fig:Charge:A}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = 0.7\plotwidth]{fig/chapt5/Charge-per-gamma.pdf}
+        	\caption{\label{fig:Charge:B}}
+    	\end{subfigure}
+		\caption{\label{fig:Charge} Current density and charge deposition per gamma avalanche, defined as the current density normalized to the measured rate taken from Figure~\ref{fig:GIFRate:A} as a function of the effective high voltage in chamber \texttt{RE-4-2-BARC-161} measured at GIF with Source ON using different absorber settings: ABS 5 (green), ABS 2 (blue) and ABS 1 (yellow).}
 	\end{figure}
+	
+	Overall, working at GIF has been a rewarding experience as it offered CMS RPC R\&D team the possibility to start developping the necessary skills and tools that would become the core of GIF++ experiment. The quality of the results can be argued both due to the little robustness of the experimental setup and the lack of available statistics to draw conclusions from, bringing large errors on the final result. The confrontation of the data to known results pointed to a failure in correctly measuring the $\gamma$ rate at working voltage and, hence, to an overestimation of the charge per avalanche and of the drift of working voltage with increasing rate. Nevertheless, the prototypes of DAQ and offline analysis tools proved to be reliable.
 
 \section{Longevity tests at \acs{GIF++}}
 \label{chapt5:sec:GIFpptests}
