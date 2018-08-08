@@ -128,7 +128,7 @@
 \section{Preliminary studies at GIF}
 \label{chapt5:sec:GIFtests}
 
-	\subsection{\acl{RPC} test setup}
+	\subsection{RPC test setup}
 	\label{chapt5:ssec:RPCSetup}
 	
 	During summer 2014, preliminary tests have been conducted in the GIF area on an endcap chamber of type RE4/2 and labeled \texttt{RE-4-2-BARC-161} produced for the extension of the endcap with a fouth disk in 2013. This chamber has been placed into a trolley covered with a tent. The position of the RPC inside the tent and of the tent with respect to the source in the bunker are described in Figure~\ref{fig:GIFSetup}. The goal of the study were to have a preliminary understanding of the rate capability of the present technology used in CMS. It was decided to measure the efficiency of the RPC under irradiation at detecting cosmic muons as, at the time of the tests, the beam not operational anymore. Three different absorber settings were used and compared to the case where the detector was not irradiated in order to study the evolution of the performance of the detector with increasing exposition to gamma radiation. First of all, measurements were done with fully opened source. To complete this preliminary study, the gamma flux has been attenuated by a factor 2, a factor 5 and finally the source was shut down. Was measured the efficiency of the RPC at detecting the cosmic muons in coincidence with a cosmic trigger as well as the background rate as seen by the detectors.
@@ -362,7 +362,7 @@
 	The goal of the study will be to have a good measurement of the intrinsic performance without source irradiation. Then, taking profit of the two working absorbers, at absorbtion factors 5 (\SI{300}{Hz}) and 2 ($\sim$\SI{600}{Hz}) the goal will be to show that the detectors fulfill the performance certification of CMS RPCs. Finally, a first idea of the performance of the detectors at higher background will be provided with absorbtion factor 1 (no absorbtion and $>$\SI{1}{kHz})).
 	
 	\subsection{Results and discussions}
-	\label{chapt5:ssec:results6}
+	\label{chapt5:ssec:resultsGIF}
 	
 	The data taking at GIF has been conducted in between the \St{21} and the \St{31} of August, 2014. Data has been collected with both source OFF and ON using three different absorber settings (ABS 5, 2 and 1) in order to vary the irradiation on the RPC. For each source setting, two HV scans have been performed with two different trigger settings. During a first scan the trigger sent to the TDC module was the coincidence of the two scintillators composing the telescope while during a second scan the trigger was a pulse coming from a pulse generator in order to measure the noise or gamma rate seen by the chamber. Indeed, using a pulse allows to trigger at moments not linked to any physical event and, hence, to obtain a \textit{RANDOM} trigger on noise and gamma events to measure the associated rates, the probability to have a pulse in coincidence with a cosmic muon being negligible.
 	
@@ -449,10 +449,103 @@
 \section{Longevity tests at \acs{GIF++}}
 \label{chapt5:sec:GIFpptests}
 
-    Longevity studies imply a monitoring of the performance of the detectors probed using a high intensity muon beam in a irradiated environment by periodically measuring their rate capability, the dark current running through them and the bulk resistivity of the Bakelite composing their electrodes. GIF++, with its very intense $^{137}$Cs source, provides the perfect environment to perform such kind of tests. Assuming a maximum acceleration factor of 3, it is expected to accumulate the equivalent charge in 1.7 years.\\
-    As the maximum background is found in the endcap, the choice naturally was made to focus the GIF++ longevity studies on endcap chambers. Most of the RPC system was installed in 2007. Nevertheless, the large chambers in the fourth endcap (RE4/2 and RE4/3) have been installed during LS1 in 2014. The Bakelite of these two different productions having different properties, four spare chambers of the present system were selected, two RE2,3/2 spares and two RE4/2 spares. Having two chambers of each type allows to always keep one of them non irradiated as reference, the performance evolution of the irradiated chamber being then compared through time to the performance of the non irradiated one.\\
-    The performance of the detectors under different level of irradiation is measured periodically during dedicated test beam periods using the H4 muon beam. In between these test beam periods, the two RE2,3/2 and RE4/2 chambers selected for this study are irradiated by the $^{137}$Cs source in order to accumulate charge and the gamma background is monitored, as well as the currents. The two remaining chambers are kept non-irradiated as reference detectors. Due to the limited gas flow in GIF++, the RE4 chamber remained non-irradiated until end of November 2016 where a new mass flow controller has been installed allowing for bigger volumes of gas to flow in the system.\\
-     Figures~\ref{Fig:Eff-vs-Rate} and \ref{Fig:WP-vs-Rate} give us for different test beam periods, and thus for increasing integrated charge through time, a comparison of the maximum efficiency, obtained using a sigmoid-like function, and of the working point of both irradiated and non irradiated chambers~\cite{ABBRESCIA2005}. No aging is yet to see from this data, the shifts in $\gamma$ rate per unit area  in between irradiated and non irradiated detectors and RE2 and RE4 types being easily explained by a difference of sensitivity due to the various Bakelite resistivities of the HPL electrodes used for the electrode production.\\
+	\subsection{Selection and characterization of CMS RPCs for longevity at GIF++}
+	\label{chapt5:ssec:selection}
+
+	First proposed in 2009~\cite{GIF++2009}, the \acl{GIF++} of CERN was thought in the perscpective of future upgrades of PHC that would bring detectors to be operated in a high irradiation environment. GIF++ would thus provide all LHC R\&D teams working on behalf of the different LHC experiment with a facility to perform longevity studies using a very intense Cesium gamma source.
+	
+	In the specific case of CMS RPC, the longevity studies imply a constant irradiation of selected detectors in order to accumulate a charge equivalent to what is expected during HL-LHC, i.e. a charge of \SI{0.8}{C/cm^2} according to Figure~\ref{fig:RPC-HL-LHC} including a safety factor 3, while other detectors are left non irradiated to be used as references. Throughout the irradiation campaign, the performance of the irradiated and reference detectors will be periodically probed using the high intensity H4 muon beam. Dedicated test beam periods will be used to measure the efficiency and $\gamma$ rate at the level of the detectors with different source absorber settings to have access to the rate capability of CMS RPCs, that needs to be certified above \SIrate{600}, and to identify signs of ageing in the case the performance of the irradiated detectors diverges from those of the reference detectors with increasing accumulated charge. Other than the performance of the detectors, signs of ageing could come from increasing dark current that would be related to local ageing of the electrodes. A close monitoring of the current driven by the detectors will then be necessary as well as dedicated periodical electrode resistivity measurement.
+	
+	\begin{figure}[H]
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = 0.7\plotwidth]{fig/chapt5/Consolidation-Efficiency.pdf}
+        	\caption{\label{fig:consolidation:A}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = 0.7\plotwidth]{fig/chapt5/Consolidation-Cluster-Size.pdf}
+        	\caption{\label{fig:consolidation:B}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = 0.7\plotwidth]{fig/chapt5/Consolidation-Noise-Rate.pdf}
+        	\caption{\label{fig:consolidation:C}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = 0.7\plotwidth]{fig/chapt5/Consolidation-Current-Density.pdf}
+        	\caption{\label{fig:consolidation:D}}
+    	\end{subfigure}
+		\caption{\label{fig:consolidation} Characterization of CMS RPC detectors foreseen to be used at GIF++ for longevity studies of the present system. Using cosmic muons, efficiency (Figure~\ref{fig:consolidation:A}) and cluster size (Figure~\ref{fig:consolidation:B}) were measured as well as noise rate (Figure~\ref{fig:consolidation:C}) and current density (Figure~\ref{fig:consolidation:D}). For each detector, the working voltage, defined as in Formula~\ref{eq:KneeWP}, was extracted from sigmoid fits performed in Figure~\ref{fig:consolidation:A} and the values of efficiency, cluster size, noise rate and current density at this voltage are reported using open crosses.}
+	\end{figure}
+	
+    As the maximum background is found in the endcap, the choice naturally was made to focus the GIF++ longevity studies on endcap chambers. Most of the RPC system was installed in 2007. Nevertheless, the large chambers in the fourth endcap (RE4/2 and RE4/3) have been installed during LS1 in 2014. The Bakelite of these two different productions having different properties, four spare chambers of the present system were selected. From the original CMS RPC system, two RE2/2 spares were selected along two RE4/2 spares from the newest detectors. Having two chambers of each type allows to always keep one of them non irradiated as reference. Due to the limited gas flow in GIF++, the RE4 chamber remained non-irradiated until end of November 2016 where the longevity studies could finally be started on those chambers.
+    
+    The performance of the chambers prior to the start of the longevity campaign has been characterized in Ghent before being shipped to CERN to be installed in GIF++. The results of the characterization are showed in Figure~\ref{fig:consolidation} and summarized in Table~\ref{tab:consolidation}. A clear difference in performance for both types of chambers is observed as the working voltages of the newest chambers, of type RE4, are 300 to \SI{400}{V} lower to the older chambers indicating that the gap thickness of RE4 detectors could be thinner. This conclusion could as well be supported by the lower cluster size at working voltages that also are smaller in RE4 chambers. Even though the measured currents are low, RE4 detectors draw less current without irradiation than RE2 detectors pointing to a difference in electrode resistivity that were produced at different moments. Efficiency and noise rate levels are of the same order of magnitude for both type of RPCs.
+	
+	\begin{table}[H]
+		\hspace*{-1cm}
+		\begin{tabular}{|*{5}{c|}}
+			\hline
+			RPC & \footnotesize{\texttt{RE2-2-NDP-BARC-08}} & \footnotesize{\texttt{RE2-2-NDP-BARC-09}} & \footnotesize{\texttt{RE4-2-CERN-165}} & \footnotesize{\texttt{RE4-2-CERN-166}} \\
+			\hline
+			Used as & Reference & Irradiation & Reference & Irradiation \\
+			\hline
+			$HV_{WP}$ [\si{V}] & \numerror{9762}{6} & \numerror{9833}{6} & \numerror{9449}{5} & \numerror{9464}{5} \\
+			\hline
+			Efficiency at WP & \numerror{96.2}{0.3} & \numerror{96.6}{0.3} & \numerror{95.9}{0.3} & \numerror{95.5}{0.3} \\
+			\hline
+			Cluster size at WP & \numerror{2.19}{0.04} & \numerror{2.27}{0.05} & \numerror{1.88}{0.04} & \numerror{1.80}{0.04} \\
+			\hline
+			Noise at WP [\sirate] & \numerror{0.51}{0.01} & \numerror{0.39}{0.01} & \numerror{0.44}{0.00} & \numerror{0.15}{0.01} \\
+			\hline
+			$J^{WP}$ [\si{pA/cm^2}] & \numerror{30.1}{0.1} & \numerror{22.2}{0.1} & \numerror{3.8}{0.0} & \numerror{10.2}{0.0} \\
+			\hline
+		\end{tabular}
+		\caption{\label{tab:consolidation} Summary of the characterization measurement performed in Ghent on CMS RPC detectors foreseen to be used at GIF++ for longevity studies of the present system. For each detector, the working voltage, defined as in Formula~\ref{eq:KneeWP}, was extracted from sigmoid fits performed in Figure~\ref{fig:consolidation:A} and the values of efficiency, cluster size, noise rate and current density at this voltage are reported.}
+	\end{table}
+
+	\subsection{RPC test setup}
+	\label{chapt5:ssec:GIFppSetup}
+	
+	For an easy manipulation of the detectors, a trolley with a structure containing slots in which the RPCs can be slid vertically and referred to as \texttt{T1} was used. In this position described in Figure~\ref{}, each chamber is in a plane perpendicular to the beam line and the source flux as can be seen through Figure~\ref{}, recieving a uniform irradiation. Moreover the trolley allows for easy movement of the system. Indeed, the position of trolley varies according to the period of the year.
+	
+	During the dedicated test beam periods during which GIF++ longevity experiments are in control of the muon beam, the trolley is placed in the upstream region of the bunker, in the beam line. The CMS RPC detectors are the ones being further away from the source on this side of the source as other detectors need to be certified at higher background rates. An additional trolley, reffered to as \texttt{T3}, containing iRPCs and tracking RPCs is placed in between the source and the trolley containing present CMS RPCs. Indeed, iRPCs need to be certified at higher rates and thus need to be placed closer to the source to receive a stronger irradiation using the same absorber settings. The space on \texttt{T1} being limited, the tracking RPCs used for extra offline information during the analysis are placed on the same trolley than iRPCs and are kept at full efficiency at all time to reconstruct muon tracks in correlate them with hits recorded in \texttt{T1} chambers.
+	
+	However, most of the year, \texttt{T1} is placed in the so called \textit{ageing position} corresponding to the furthest position from the source outside of the beam line, which needs to stay clear during periods where GIF++ doesn't have the control of the beam so that a beam tube can be installed through the bunker. The reason for placing the chambers as far as possible from the source comes from the too high irradiation delivered by the source during the continuous irradiation periods where all the other experiment having placed detectors into the bunker requires to integrate as much charge as possible. Hence, the source is operated with any absorbers. On the contrary, during the test beam periods, all the groups working in GIF++ are interested in operating the source using various absorber settings to study the performance of their detectors under different irradiation conditions. The time spent with a source fully opened and during which the RPCs of \texttt{T1} are kept at a standby voltage much lower than what necessary to grow avalanches in the gas is then small compared to the time spent with other source settings and during which data can be taken.
+
+	\subsection{Description of the \acl{DAQ}}
+	\label{chapt5:ssec:GIF++DAQ}
+
+	For the longevity studies, four spare chambers of the present system are used. Two spare RPCs of the RE2,3 stations as well as two spare RPCs from the new RE4 stations have been mounted in a Trolley. Six RE4 gaps are also placed in the trolley. The trolley is placed inside the GIF++ in the upstream region of the bunker, taking the cesium source as a reference. The trolley is oriented for the detection surface of the chambers to be orthogonal to the beam line. The system can be moved along the orthogonal plane in order to have the beam in all $\eta$-partitions. For the aging the trolley is moved outside the beam line and is placed in a distance of \SI{5.2}{m} to the source, which irradiates the bunker using an attenuation filter of 2.2 which corresponds to a fluence of \Ord{7}\si{gamma/cm\squared}.
+	
+	During GIF++ operation, the data collected can be divided into different categories as several parameters are monitored in addition to the usual RPC performance data. On one hand, to know the performance of a chamber, it is need to measure its efficiency and to know the background conditions in which it is operated. To do this, the hit signals from the chamber are recorded and stored in a ROOT file via a DAQ software. On the other hand, it is also very important to monitor parameters such as environmental pressure and temperature, gas temperature and humidity, RPC HV, LV, and currents, or even source and beam status. This is done through the GIF++ web DCS that stores this information in a database.
+	            
+	Two different types of tests are conducted on RPCs via the DAQ. Indeed, the performance of the detectors is measured periodically during dedicated test beam periods using the H4 muon beam. In between these test beam periods, when the beam is not available, the chambers are irradiated by the $^{137}$Cs in order to accumulate deposited charge and the gamma background is measured.
+	
+	RPCs under test are connected through LVDS cables to V1190A TDC modules manufactured by CAEN. These modules, located in the rack area outside of the bunker, get the logic signals sent by the chambers and save them into their buffers. Due to the limited size of the buffers, the collected data is regularly erased and replaced. A trigger signal is needed for the TDC modules to send the useful data to the DAQ computer via a V1718 CAEN USB communication module.
+	
+	In the case of performance test, the trigger signal used for data acquisition is generated by the coincidence of three scintillators. A first one is placed upstream outside of the bunker, a second one is placed downstream outside of the bunker, while a third one is placed in front of the trolley, close by the chambers. Every time a trigger is sent to the TDCs, i.e. every time a muon is detected, knowing the time delay in between the trigger and the RPC signals, signals located in the right time window are extracted from the buffers and saved for later analysis. Signals are taken in a time window of \SI{400}{ns} centered on the muon peak (here we could show a time spectrum). On the other hand, in the case of background rate measurement, the trigger signal needs to be "random" not to measure muons but to look at gamma background. A trigger pulse is continuously generated at a rate of \SI{300}{Hz} using a dual timer. To integrate an as great as possible time, all signals contained within a time window of 10us prior to the random trigger signal are extracted form the buffers and saved for further analysis (here another time spectrum to illustrate could be useful, maybe even place both spectrum together as a single Figure).
+	
+	The signals sent to the TDCs correspond to hit collections in the RPCs. When a particle hits a RPC, it induce a signal in the pickup strips of the RPC readout. If this signal is higher than the detection threshold, a LVDS signal is sent to the TDCs. The data is then organised into 4 branches keeping track of the event number, the hit multiplicity for the whole setup, and the time and channel profile of the hits in the TDCs.
+	
+	\subsection{RPC current, environmental and operation parameter monitoring}
+	\label{chapt5:ssec:GIF++DCS}
+            
+	
+
+	\subsection{Measurement procedure}
+	\label{chapt5:ssec:GIF++Proc}
+
+	Insert a short description of the online tools (DAQ, DCS, DQM).\\
+	Insert a short description of the offline tools : tracking and efficiency algorithm.\\
+	Identify long term aging effects we are monitoring the rates per strip.
+	
+	\subsection{Results and discussions}
+	\label{chapt5:ssec:resultsGIFpp}
+    
+	Figures~\ref{Fig:Eff-vs-Rate} and \ref{Fig:WP-vs-Rate} give us for different test beam periods, and thus for increasing integrated charge through time, a comparison of the maximum efficiency, obtained using a sigmoid-like function, and of the working point of both irradiated and non irradiated chambers~\cite{ABBRESCIA2005}. No aging is yet to see from this data, the shifts in $\gamma$ rate per unit area  in between irradiated and non irradiated detectors and RE2 and RE4 types being easily explained by a difference of sensitivity due to the various Bakelite resistivities of the HPL electrodes used for the electrode production.\\
      Collecting performance data at each test beam period allows us to extrapolate the maximum efficiency for a background hit rate of \SIflux{300} corresponding to the expected HL-LHC conditions. Aging effects could emerge from a loss of efficiency with increasing integrated charge over time, thus Figure~\ref{Fig:Eff-vs-Qint} helps us understand such degradation of the performance of irradiated detectors in comparison with non irradiated ones. The final answer for an eventual loss of efficiency is given in Figure~\ref{Fig:Eff-Bef-Aft} by comparing for both irradiated and non irradiated detectors the efficiency sigmoids before and after the longevity study. Moreover, to complete the performance information, the Bakelite resistivity is regularly measured thanks to $Ag$ scans (Figure~\ref{Fig:Res-vs-Qint}) and the noise rate is monitored weekly during irradiation periods (Figure~\ref{Fig:Noise-vs-Qint}). At the end of 2016, no signs of aging were observed and further investigation is needed to get closer to the final integrated charge requirements proposed for the longevity study of the present CMS RPC sub-system.\\
     
     \begin{figure}[H]
@@ -530,41 +623,5 @@
     	\includegraphics[width=0.5\linewidth]{fig/chapt5/Noise-vs-Qint-RE2.png}\\
         \caption{\label{Fig:Noise-vs-Qint} Evolution of the noise rate per unit area for the irradiated chamber RE2-2-BARC-9 only.}
     \end{figure}
-
-	\subsection{Description of the \acl{DAQ}}
-	\label{chapt5:ssec:GIF++DAQ}
-
-	For the longevity studies, four spare chambers of the present system are used. Two spare RPCs of the RE2,3 stations as well as two spare RPCs from the new RE4 stations have been mounted in a Trolley. Six RE4 gaps are also placed in the trolley. The trolley is placed inside the GIF++ in the upstream region of the bunker, taking the cesium source as a reference. The trolley is oriented for the detection surface of the chambers to be orthogonal to the beam line. The system can be moved along the orthogonal plane in order to have the beam in all $\eta$-partitions. For the aging the trolley is moved outside the beam line and is placed in a distance of \SI{5.2}{m} to the source, which irradiates the bunker using an attenuation filter of 2.2 which corresponds to a fluence of \Ord{7}\si{gamma/cm\squared}.
-	
-	During GIF++ operation, the data collected can be divided into different categories as several parameters are monitored in addition to the usual RPC performance data. On one hand, to know the performance of a chamber, it is need to measure its efficiency and to know the background conditions in which it is operated. To do this, the hit signals from the chamber are recorded and stored in a ROOT file via a DAQ software. On the other hand, it is also very important to monitor parameters such as environmental pressure and temperature, gas temperature and humidity, RPC HV, LV, and currents, or even source and beam status. This is done through the GIF++ web DCS that stores this information in a database.
-	            
-	Two different types of tests are conducted on RPCs via the DAQ. Indeed, the performance of the detectors is measured periodically during dedicated test beam periods using the H4 muon beam. In between these test beam periods, when the beam is not available, the chambers are irradiated by the $^{137}$Cs in order to accumulate deposited charge and the gamma background is measured.
-	
-	RPCs under test are connected through LVDS cables to V1190A TDC modules manufactured by CAEN. These modules, located in the rack area outside of the bunker, get the logic signals sent by the chambers and save them into their buffers. Due to the limited size of the buffers, the collected data is regularly erased and replaced. A trigger signal is needed for the TDC modules to send the useful data to the DAQ computer via a V1718 CAEN USB communication module.
-	
-	In the case of performance test, the trigger signal used for data acquisition is generated by the coincidence of three scintillators. A first one is placed upstream outside of the bunker, a second one is placed downstream outside of the bunker, while a third one is placed in front of the trolley, close by the chambers. Every time a trigger is sent to the TDCs, i.e. every time a muon is detected, knowing the time delay in between the trigger and the RPC signals, signals located in the right time window are extracted from the buffers and saved for later analysis. Signals are taken in a time window of \SI{400}{ns} centered on the muon peak (here we could show a time spectrum). On the other hand, in the case of background rate measurement, the trigger signal needs to be "random" not to measure muons but to look at gamma background. A trigger pulse is continuously generated at a rate of \SI{300}{Hz} using a dual timer. To integrate an as great as possible time, all signals contained within a time window of 10us prior to the random trigger signal are extracted form the buffers and saved for further analysis (here another time spectrum to illustrate could be useful, maybe even place both spectrum together as a single Figure).
-	
-	The signals sent to the TDCs correspond to hit collections in the RPCs. When a particle hits a RPC, it induce a signal in the pickup strips of the RPC readout. If this signal is higher than the detection threshold, a LVDS signal is sent to the TDCs. The data is then organised into 4 branches keeping track of the event number, the hit multiplicity for the whole setup, and the time and channel profile of the hits in the TDCs.
-	
-	\subsection{RPC current, environmental and operation parameter monitoring}
-	\label{chapt5:ssec:GIF++DCS}
-            
-	In order to take into account the variation of pressure and temperature between different data taking periods the applied voltage is corrected following the relationship :
-
-	\begin{equation}
-		HVeff = HVapp\times\left(0.2 + 0.8\cdot\frac{P_0}{P}\times\frac{T}{T_0}\right)
-	\end{equation}
-	
-	where $T_0$ (=\SI{293}{K}) and $P_0$ (=\SI{990}{mbar}) are the reference values.
-
-	\subsection{Measurement procedure}
-	\label{chapt5:ssec:GIF++Proc}
-
-	Insert a short description of the online tools (DAQ, DCS, DQM).\\
-	Insert a short description of the offline tools : tracking and efficiency algorithm.\\
-	Identify long term aging effects we are monitoring the rates per strip.
-	
-	\subsection{Longevity studies results}
-	\label{chapt5:ssec:GIF++Results}
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
