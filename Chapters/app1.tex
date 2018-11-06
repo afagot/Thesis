@@ -26,31 +26,27 @@ Certifying detectors in the perspective of HL-LHC required to develop tools for 
 	The CAEN VME library will not be packaged by distributions and will need to be installed manually. To compile the GIF++ DAQ project via a terminal, from the DAQ folder use the command:\\
 
 	\begin{bashcode}
- make
+ mkdir build
+ cd build
+ cmake ..
+ make install
 	\end{bashcode}
 \vspace{5mm}
 	The source code tree is provided below along with comments to give an overview of the files' content. The different objects created for this project (\cppinline{v1718}, \cppinline{v1190a}, \cppinline{IniFile} \& \cppinline{DataReader}) will be described in details in the following sections.\\
-	
-	\newpage
 
 	\dirtree{%
 	 .1 GIF\_DAQ.
 	 .2 bin.
 	 .3 daq\DTcomment{executable}.
+	 .2 build\DTcomment{build folder}.
+	 .3 ....
 	 .2 include\DTcomment{list of C++ header files}.
-	 .3 CAENVMElib.h\DTcomment{CAEN C++ libs}.
-	 .3 CAENVMEoslib.h\DTcomment{CAEN OS C++ libs}.
-	 .3 CAENVMEtypes.h\DTcomment{CAEN variables}.
 	 .3 DataReader.h\DTcomment{declaration of object DataReader}.
 	 .3 IniFile.h\DTcomment{declaration of object IniFile for ini parser}.
 	 .3 MsgSvc.h\DTcomment{declaration of DAQ log messages}.
 	 .3 utils.h\DTcomment{declaration of useful variables and comm. functions}.
 	 .3 v1190a.h\DTcomment{declaration of object v1190a}.
 	 .3 v1718.h\DTcomment{declaration of object v1718}.
-	 .2 lib\DTcomment{CAEN library}.
-	 .3 install.
-	 .3 x86.
-	 .4 libCAENVME.so.2.41.
 	 .2 obj\DTcomment{binary files created by compiler}.
 	 .3 ....
 	 .2 src\DTcomment{list of C++ source files}.
@@ -61,7 +57,9 @@ Certifying detectors in the perspective of HL-LHC required to develop tools for 
 	 .3 utils.cxx\DTcomment{definition of useful communication functions}.
 	 .3 v1190a.cxx\DTcomment{declaration of v1190a's methods}.
 	 .3 v1718.cxx\DTcomment{declaration of v1718's methods}.
-	 .2 makefile\DTcomment{compiler instructions}.
+	 .2 CMakeLists.txt\DTcomment{compiler instructions}.
+	 .2 config.h.in\DTcomment{code version}.
+	 .2 Doc-DAQ-v5.pdf\DTcomment{documentation (this appendix)}.
 	 .2 README.md\DTcomment{REAMDE file for github}.
 	}
 	
@@ -133,8 +131,12 @@ Certifying detectors in the perspective of HL-LHC required to develop tools for 
 	\end{itemize}
 	
 	In both the first and second cases, the sum of the window width and of the offset can be set to a maximum of \SI{40}{clocks}, which corresponds to \SI{1}{\micro s}. Evidently, the offset can be negative, allowing for a longer match window, with the constraint of having the window ending at most \SI{1}{\micro s} after the trigger signal. In the third case, the maximum negative offset allowed is of \SI{2048}{clocks} (12 bit) corresponding to \SI{51.2}{\micro s}, the match window being strictly smaller than the offset. In the case of GIF++, the choice has been made to use this last setting by delaying the trigger signal. During the studies performed in GIF++, both the efficiency of the RPCs, probed using a muon beam, and the noise or gamma background rate are monitored. The extra search and reject margins are left unused.\\
-	To probe the efficiency of RPC detectors, the trigger time tag is provided by the coïncidence of scintillators when a bunch of muons passes through GIF++ area is used to trigger the data acquisition. For this measurement, it is useful to reduce the match window width only to contain the muon information. Indeed, the delay in between a trigger signal and the detection of the corresponding muon in the RPC being very contant (typically a few tens of ns due to jitter and cable length), the muon signals are very localised in time. Thus, due to a delay of approximalety \SI{325}{ns} in between the muons and the trigger, the settings where chosen to have a window width of \SI{24}{clocks} (\SI{600}{ns}) centered on the muon peak thanks to a negative offset of \SI{29}{clocks} (\SI{725}{ns}).\\
-	On the otherhand, monitoring the rates don't require for the DAQ to look at a specific time window. It is important to integrate enough time to have a robust measurement of the rate as the number of hits per time unit. The triggerring signal is provided by a pulse generator at a frequency of \SI{300}{Hz} to ensure that the data taking occurs in a random way, with respect to beam physics, to probe only the irradiation spectrum on the detectors. The match window is set to \SI{400}{clocks} (\SI{10}{\micro s}) and the negative offset to \SI{401}{clocks} as it needs to exceed the value of the match window.\\
+	To probe the efficiency of RPC detectors, the trigger time tag is provided by the coïncidence of scintillators when a bunch of muons passes through GIF++ area is used to trigger the data acquisition. For this measurement, it is useful to reduce the match window width only to contain the muon information. Indeed, the delay in between a trigger signal and the detection of the corresponding muon in the RPC being very contant (typically a few tens of ns due to jitter and cable length), the muon signals are very localised in time. Thus, due to a delay of approximalety \SI{325}{ns} in between the muons and the trigger, the settings were chosen to have a window width of \SI{24}{clocks} (\SI{600}{ns}) centered on the muon peak thanks to a negative offset of \SI{29}{clocks} (\SI{725}{ns}).\\
+	On the otherhand, monitoring the rates don't require for the DAQ to look at a specific time window. It is important to integrate enough time to have a robust measurement of the rate as the number of hits per time unit. The triggerring signal is provided by the pulse generator integrated into the communication module V1718 at a frequency of \SI{100}{Hz} to ensure that the data taking occurs in a random way, uncorrelated with beam physics, to probe only the irradiation spectrum on the detectors. The match window is set to \SI{400}{clocks} (\SI{10}{\micro s}) and the negative offset to \SI{401}{clocks} as it needs to exceed the value of the match window.\\
+	
+	The v1190a object, defined in the DAQ software as in Source Code~\ref{cpp:v1190a}, offers the possility to store all TDCs in the readout setup into a single object containing a list of hardware addresses (addresses to access the TDCs' buffer through the VME crate) and each constructor and method acts on the list of TDCs to set the different acquisition parameters as describe above. The type of trigger matching is chosen with \cppinline{v1190a::SetTrigMatching()} and the time substraction, used to have a time measurement referring to the beggining of the time window, is set by \cppinline{v1190a::SetTrigTimeSubstraction()}. Then, the wiwdow width and offset are respectively set thanks to \cppinline{v1190a::SetTrigWindowWidth()} and \cppinline{v1190a::SetTrigWindowOffset()}. The rejection and extra search margin, even if left unused and hence set to a default value of 0, can be set through \cppinline{v1190a::SetTrigRejectionMargin()} and \cppinline{v1190a::SetTrigSearchMargin()}. These methods are then called in \cppinline{v1190a::SetTrigConfiguration()} that uses the information contained in the configuration file \cppinline{IniFile *inifile} to set the different TDC parameters. A thorough explaination of the content of the configuration file is provided in Section~\ref{app1:ssec:inifile}.\\
+	
+	Among the other methods of class \cppinline{v1190a} can be found a set of the detection mode (\cppinline{v1190a::SetTDC DetectionMode()}), of the TDC time resolution (\cppinline{v1190a::SetTDCResolution()}), of the dead time in between two consecutive signals recorded into a single channel (\cppinline{v1190a::SetTDCDeadTime()}) or of the maximal number of signals that can be recorded per event (\cppinline{v1190a::SetTDCEventSize()}). To help with setting these parameters, \cppinline{enum} were used (\cppinline{EdgeMode}, \cppinline{Resolution}, \cppinline{DeadTime} and \cppinline{HitMax} are defined in \textinline{include/v1190a.h}).\\
 	
 	\begin{code}
     \begin{cppcode}
@@ -185,31 +187,29 @@ class v1190a
 	\label{cpp:v1190a}
 	\vspace{5mm}
     \end{code}
-	
-	The v1190a object, defined in the DAQ software as in Source Code~\ref{cpp:v1190a}, offers the possility to concatenate all TDCs in the readout setup into a single object containing a list of hardware addresses (addresses to access the TDCs' buffer through the VME crate) and each constructor and method acts on the list of TDCs.\\
+    
+	The detection mode corresponds to the the type of edge detection the TDC will be using to record the data. The TDCs can record the time stamp of the leading edge alone, of the trailing edge alone, of both or they can operate in pair mode, meaning that the leading edge is recorded together with the time difference in between leading and trailing edges. This last mode is not very practical for the case of GIF++ measurements as the information is coded into a single words in the TDC's buffer, putting strong constraints on the time wondow and duration of the input signals. Indeed, when recording the edges individually (single edge or both edges), a 32-bit word, of which 18 are used to provide the time information alone, is stored into memory for each signal edge. With the pair mode, instead of having one 32-bit word per edge, only a single 32-bit word is written of which 12 are used for the leading edge time information and 6 for the width of the pulse, as described on p73 of reference~\cite{V1190AMUT}. This way, eventhough the pair mode is convenient to use as it automatically correlates a leading edge with the corresponding signal width in a single word, it is advised to be careful when using it and to be aware of the extra time constraints (for both leading time and signal width) that will come for chosing this setting. If it is necessary to work with large input signals, the mode recording both edges will be preferred to the pair mode and the association of a leading and trailing edges pair will then be performed offline by the user. Then, the time resolution is to be chosen in a range from 100 to \SI{800}{ps}, the dead time in a range from 5 to \SI{100}{ns}, and the maximal number of hits per event in a range from 0 to 128 with the possibility to chose to have no limits.
 	
 	\subsection{DataReader}
 	\label{app1:ssec:DataReader}
 	
-	Enabled thanks to \cppinline{v1190a::SetBlockTransferMode(Data16 mode, int ntdcs)}, the data transfer is done via \acf{BLT}. Using BLT allows to tranfer a fixed number of events called a \textit{block}. This is used together with an \acf{AFL} of the TDCs' output buffers, defined through \cppinline{v1190a::SetIRQ(Data32 level, Data32 count,int ntdcs)}. This AFL gives the maximum amount of 32735 words (16 bits, corresponding to the depth of a TDC output buffer) that can writen in a buffer before an \acf{IRQ} is generated and seen by the VME Bridge, stopping the data acquisition to transfer the content of each TDC buffers before resuming. For each trigger, 6 words or more are written into the TDC buffer:
+	Enabled thanks to \cppinline{v1190a::SetBlockTransferMode()}, the data transfer is done via \acf{BLT}. Using BLT allows to tranfer a fixed number of events called a \textit{block}. This is used together with an \acf{AFL} of the TDCs' output buffers, defined through \cppinline{v1190a::SetIRQ()}. This AFL gives the maximum amount of 32735 words (16 bits, corresponding to the depth of a TDC output buffer) that can writen in a buffer before an \acf{IRQ} is generated and seen by the VME Bridge V1718, which sends a \textinline{BUSY} signal intended to stopping the data acquisition during the transfer of the content of each TDC buffers before resuming. For each trigger, 6 words or more are written into the TDC buffer:
 	
 	\begin{itemize}
 		\item \textbf{a global header} providing information of the event number since the beginning of the data acquisition,
-		\item \textbf{a TDC header},
+		\item \textbf{a TDC header} which is enabled thanks to \cppinline{v1190a::SetTDCHeadTrailer()},
 		\item \textbf{the TDC data} (\textit{if any}), 1 for each hit recorded during the event, providing the channel and the time stamp associated to the hit,
 		\item \textbf{a TDC error} providing error flags,
-		\item \textbf{a TDC trailer},
+		\item \textbf{a TDC trailer} which is enabled thanks to \cppinline{v1190a::SetTDCHeadTrailer()},
 		\item \textbf{a global trigger time tag} that provides the absolute trigger time relatively to the last reset, and
 		\item \textbf{a global trailer} providing the total word count in the event.
 	\end{itemize}
 	
-	As previously described in Section~\ref{ssec:PulseProc}, CMS RPC FEEs provide us with \SI{100}{ns} long LVDS output signals that are injected into the TDCs' input. Any avalanche signal that gives a signal above the FEEs threshold is thus recorded by the TDCs as a hit within the match window. Each hit is assigned to a specific TDC channel with a time stamp, with a precision of \SI{100}{ps}. The reference time, $t_0=0$, is provided by the beginning of the match window. Thus for each trigger, coming from a scintillator coïncidence or the pulse generator, a list of hits is stored into the TDCs' buffers and will then be transfered into a ROOT Tree.\\
-	
+	CMS RPC FEEs provide with \SI{100}{ns} long LVDS output signals that are injected into the TDCs' input. Any avalanche signal that gives a signal above the FEEs threshold is thus recorded by the TDCs as a hit within the match window. Each hit is assigned to a specific TDC channel with a time stamp, with a precision of \SI{100}{ps}. The reference time, $t_0=0$, is provided by the beginning of the match window. Thus for each trigger, coming from a scintillator coïncidence or the pulse generator, a list of hits is stored into the TDCs' buffers and will then be transfered into a ROOT Tree.\\
 	When the BLT is used, it is easy to understand that the maximum number of words that have been set as ALF will not be a finite number of events or, at least, the number of events that would be recorded into the TDC buffers will not be a multiple of the block size. In the last BLT cycle to tranfer data, the number of events to transfer will most propably be lower than the block size. In that case, the TDC can add fillers at the end of the block but this option requires to send more data to the computer and is thus a little slower. Another solution is to finish the transfer after the last event by sending a bus error that states that the BLT reached the last event in the pile. This method has been chosen in GIF++.\\
-	
 	Due to irradiation, an event in GIF++ can count up to 300 words per TDC. A limit of 4096 words (12 bits) has been set to generate IRQ which represent from 14 to almost 700 events depending on the average of hits collected per event. Then the block size has been set to 100 events with enabled bus errors. When an AFL is reached for one of the TDCs, the VME bridge stops the acquisition by sending a BUSY signal.\\
 	
-	The data is then transfered one TDC at a time into a structure called \cppinline{RAWData} (Source Code~\ref{cpp:rawdata}).\\
+	The data is then transfered one TDC at a time into a structure called \cppinline{RAWData} (Source Code~\ref{cpp:rawdata}). Note that the structure as presented here is used when a single edge detection is used as there is only one time stamp list associated to the hits. When using detection on both edges, a second time stamp list could be added and when using pair detection, a list with the signal width could be added instead.\\
 	
 	\begin{code}
     \begin{cppcode}
@@ -225,8 +225,6 @@ struct RAWData{
 	\label{cpp:rawdata}
 	\vspace{5mm}
     \end{code}
-
-	In order to organize the data transfer and the data storage, an object called \cppinline{DataReader} was created (Source Code~\ref{cpp:datareader}). On one hand, it has \cppinline{v1718} and \cppinline{v1190a} objects as private members for communication purposes, such as VME modules settings via the configuration file \cppinline{*iniFile} or data read-out through \cppinline{v1190a::Read()} and on the other hand, it contains the struture \cppinline{RAWData} that allows to organise the data in vectors reproducing the tree structre of a ROOT file.\\
 	
 	\begin{code}
     \begin{cppcode}
@@ -263,6 +261,7 @@ class DataReader
 	\vspace{5mm}
     \end{code}
 
+	In order to organize the data transfer and the data storage, an object called \cppinline{DataReader} was created (Source Code~\ref{cpp:datareader}). On one hand, it has \cppinline{v1718} and \cppinline{v1190a} objects as private members for communication purposes, such as VME modules settings via the configuration file \cppinline{*iniFile} or data read-out through \cppinline{v1190a::Read()} and on the other hand, it contains the struture \cppinline{RAWData} that allows to organise the data in vectors reproducing the tree structre of a ROOT file.\\
     Each event is tranferred from \cppinline{TDCData} and saved into branches of a ROOT \cppinline{TTree} as 3 integers that represent the event ID (\cppinline{EventCount}), the number of hits read from the TDCs (\cppinline{nHits}), and the quality flag that provides information for any problem in the data transfer (\cppinline{qflag}), and 2 lists of \textit{nHits} elements containing the fired TDC channels (\cppinline{TDCCh}) and their respective time stamps (\cppinline{TDCTS}), as presented in Source Code~\ref{cpp:datatranfer}. The ROOT file file is named using information contained into the configuration file, presented in section~\ref{app1:ssec:inifile}. The needed information is extracted using method \cppinline{DataReader::GetFileName()} and allow to build the output filename format \textinline{ScanXXXXXX_HVX_DAQ.root} where \textinline{ScanXXXXXX} is a 6 digit number representing the scan number into GIF++ database and \textinline{HVX} the HV step within the scan that can be more than a single digit. An example of ROOT data file is provided with Figure~\ref{fig:ROOTfile}.\\
     
     \begin{code}
@@ -312,31 +311,16 @@ for(Uint i=0; i<TDCData.EventList->size(); i++){
 	\subsection{Data quality flag}
 	\label{app1:ssec:QFlag}
 	
-	Among the parameters that are recorded for each event, the quality flag, defined in Source Code~\ref{cpp:qflag}, is determined on the fly by checking the data recorded by every single TDC. From method \cppinline{v1190a::Read()}, it can be understood that the content of each TDC buffer is readout one TDC at a time. Entries are created in the data list for the first TDC and then, when the second buffer is readout, events corresponding to entries that have already been created to store data for the previous TDC are added to the existing list element. On the contrary, when an event entry has not been yet created in the data list, a new entry is created.\\
-	
-	\begin{code}
-    \begin{cppcode}
-typedef enum _QualityFlag {
-    GOOD      = 1,
-    CORRUPTED = 0
-} QualityFlag;
-    \end{cppcode}
-    \captionof{listing}{Definition of the quality flag \cppinline{enum}.} 
-	\label{cpp:qflag}
-    \vspace{5mm}
-    \end{code}
-	
-	It is possible that each TDC buffer contains a different number of events. In cases where the first element in the buffer list is an event for corresponds to a new entry, the difference in between the intry from the buffer and the last entry in the data list is recorded and checked. If it is greater than 1, what should never be the case, the quality flag is set to \cppinline{CORRUPTED} for this TDC and an empty entry is created in the place of the missing ones. Missing entries are believe to be the result of a bad hold on the TDC buffers at the moment of the readout. Indeed, the software hold is effective only on 1 TDC at a time and no solution as been found yet to completely block the writting in the buffers when an IRQ is received.
-	
+	Among the parameters that are recorded for each event, the quality flag is determined on the fly by checking the data recorded by every single TDC. An \cppinline{enum} called \cppinline{QualityFlag} was written to associate the key \cppinline{GOOD} to the integer 1 and \cppinline{CORRUPTED} to 0. From method \cppinline{v1190a::Read()}, it can be understood that the content of each TDC buffer is readout one TDC at a time. Entries are created in the data list for the first TDC and then, when the second buffer is readout, events corresponding to entries that have already been created to store data for the previous TDC are added to the existing list element. On the contrary, when an event entry has not been yet created in the data list, a new entry is created.\\
+	It is possible that each TDC buffer contains a different number of events. In cases where the first element in the buffer list is an event for corresponds to a new entry, the difference in between the intry from the buffer and the last entry in the data list is recorded and checked. If it is greater than 1, what should never be the case, the quality flag is set to \cppinline{CORRUPTED} for this TDC and an empty entry is created in the place of the missing ones. Missing entries are believe to be the result of a bad hold on the TDC buffers at the moment of the readout. Indeed, the software hold is effective only on 1 TDC at a time and no solution as been found yet to completely block the writting in the buffers when an IRQ is received.\\
 	At the end of each BLT cycle, the ID of the last entry stored for each TDC buffer is not recorded. When starting the next cycle, if the first entry in the pile corresponds to an event already existing in the list, the readout will start from this list element and will not be able to check the difference in between this entry's ID and the one of the last entry that was recorded for this TDC buffer in the previous cycle. In the case events were missing, the flag stays at its initial value of 0, which is similar to \cppinline{CORRUPTED} and it is assumed that then this TDC will not contribute to \cppinline{number_of_hits}, \cppinline{TDC_channel} or \cppinline{TDC_TimeStamp}.
-	
 	Finally, since there will be 1 \cppinline{RAWData} entry per TDC for each event (meaning \cppinline{nTDCs} entries, referring to \cppinline{DataReader} private attribute), the individual flags of each TDC will be added together. The final format is an integer composed \cppinline{nTDCs} digits where each digit is the flag of a specific TDC. This is constructed using powers of 10 like follows:
 	
 	\begin{itemize}
-		\item[] TDC 0: \cppinline{QFlag} $= 10^0 \times$ \cppinline{_QualityFlag}
-		\item[] TDC 1: \cppinline{QFlag} $= 10^1 \times$ \cppinline{_QualityFlag}
+		\item[] TDC 0: \cppinline{QFlag} $= 10^0 \times$ \cppinline{QualityFlag}
+		\item[] TDC 1: \cppinline{QFlag} $= 10^1 \times$ \cppinline{QualityFlag}
 		\item[] ...
-		\item[] TDC N: \cppinline{QFlag} $= 10^N \times$ \cppinline{_QualityFlag}
+		\item[] TDC N: \cppinline{QFlag} $= 10^N \times$ \cppinline{QualityFlag}
 	\end{itemize}
                          
 and the final flag to be with N digits:
@@ -367,7 +351,7 @@ each digit being 1 or 0. Bellow is given an example with a 4 TDCs setup.
 			\includegraphics[width = \linewidth]{fig/app1/With_Qflag_nhits_DAQ.pdf}
 			\caption{\label{fig:qflag-daq:B}}
 		\end{subfigure}
-		\caption{\label{fig:qflag-daq} The effect of the quality flag is explained by presenting the content of \cppinline{TBranch number_of_hits} of a data file without \cppinline{Quality_flag} in Figure~\ref{fig:qflag-daq:A} and the content of the same \cppinline{TBranch} for data corresponding to a \cppinline{Quality_flag} where all TDCs were labelled as \cppinline{GOOD} in Figure~\ref{fig:qflag-daq:B} taken with similar conditions. It can be noted that the number of entries in Figure~\ref{fig:qflag-daq:B} is slightly lower then in Figure~\ref{fig:qflag-daq:A} due to the excluded events.}
+		\caption{\label{fig:qflag-daq} The effect of the quality flag is explained by presenting the content of \cppinline{TBranch number_of_hits} of a data file without \cppinline{Quality_flag} in Figure~\ref{fig:qflag-daq:A} and the content of the same \cppinline{TBranch} for data corresponding to a \cppinline{Quality_flag} where all TDCs were labelled as \cppinline{GOOD} in Figure~\ref{fig:qflag-daq:B} taken with similar conditions. It can be noted that the number of entries in Figure~\ref{fig:qflag-daq:B} is slightly lower than in Figure~\ref{fig:qflag-daq:A} due to the excluded events.}
 	\end{figure}
 	
 	\begin{figure}[H]
@@ -392,7 +376,7 @@ each digit being 1 or 0. Bellow is given an example with a 4 TDCs setup.
     \subsection{V1718 USB Bridge}
     \label{app1:ssec:V1718}
     
-    In the previous section, the data transfer as been discussed. The importance of the \cppinline{v1718} object (Source Code~\ref{cpp:v1718}), used as private member of \cppinline{DataReader}, was not explicited. VME  master modules are used for communication purposes as they host the USB port that connects the powered crate buffer to the computer were the DAQ is installed. From the source code point of view, this object is used to control the communication status, by reading the returned error codes with \cppinline{v1718::CheckStatus()}, or to check for IRQs coming from the TDCs through \cppinline{v1718::CheckIRQ()}. Finally, to ensure that triggers are blocked at the hardware level, a NIM pulse is sent out of one of the 5 programmable outputs (\cppinline{v1718::SendBUSY()}) to the VETO of the coïndidence module where the trigger signals originate from. As long as this signal is ON, no trigger can reach the TDCs anymore.\\
+    In the previous section, the data transfer as been discussed. The importance of the \cppinline{v1718} object (Source Code~\ref{cpp:v1718}), used as private member of \cppinline{DataReader}, was not explicited. VME  master modules are used for communication purposes as they host the USB port that connects the powered crate buffer to the computer were the DAQ is installed. From the source code point of view, this object is used to control the communication status, by reading the returned error codes with \cppinline{v1718::CheckStatus()}, or to check for IRQs coming from the TDCs through \cppinline{v1718::CheckIRQ()}. To ensure that triggers are blocked at the hardware level, a NIM pulse is sent out of one the two first programmable outputs of the module (\cppinline{v1718::SendBUSY()}) to the VETO of the coïndidence module where the trigger signals originate. As long as this signal is ON, no trigger can reach the TDCs anymore. Finally, used in the case of noise and background measurements in which the trigger needs not to be provided by the muon mean but by an uncorrelated source, a pulse generator is enabled with \cppinline{v1718::RDMTriggerPulse()}. The "random" pulse is sent through the third and fourth outputs of the module. Both the BUSY signal and the random pulse are shaped in the method \cppinline{v1718::SetPulsers()} where the number of pulses to be generated, their width, as well as the period of the pulse generator is defined.\\
 	
 	\begin{code}
     \begin{cppcode}
@@ -421,8 +405,9 @@ class v1718{
         Data16            GetBaseAddress(void);
         void              CheckStatus(CVErrorCodes status) const;
         bool              CheckIRQ();
-        void              SetPulsers();
-        void              SendBUSY(BusyLevel level);
+        void              SetPulsers(Uint RDM_Frequency);
+        void              SendBUSY(PulserLevel level);
+        void              RDMTriggerPulse(PulserLevel level);
 };
     \end{cppcode}
     \captionof{listing}{Description of C++ object \cppinline{v1718}.}
@@ -456,6 +441,7 @@ Beam=$beam
 Type=V1718
 BaseAddress=0xFF0000
 Name=VmeInterface
+int_trig_freq=100
 [TDC0]
 Type=V1190A
 BaseAddress=0x00000000
@@ -521,20 +507,6 @@ BLTMode=1
 	\vspace{5mm}
 	\end{code}
 	
-	In order to retreive the information of the configuration file, the object \cppinline{IniFile} has been developped to provide an INI parser, presented in Source Code~\ref{cpp:inifile}. It contains private methods returning a boolean to check the type of line written in the file, whether a comment, a group header or a key line (\cppinline{IniFile::CheckIfComment()}, \cppinline{IniFile::CheckIfGroup()} and \cppinline{IniFile::CheckIfToken()}). The key may sometimes be referred to as \textit{token} in the source code. Moreover, the private element \cppinline{FileData} is a map of \cppinline{const string} to \cppinline{string} that allows to store the data contained inside the configuration file via the public method \cppinline{IniFile::GetFileData()} following the formatting (see method \cppinline{IniFile::Read()}):\\
-	
-	\begin{cppcode}
- string group, token, value;
- // Get the field values for the 3 strings.
- // Then concatenate group and token together as a single string
- // with a dot separation.
- token = group + "." + token;
- FileData[token] = value;
-	\end{cppcode}
-	\vspace{5mm}
-	
-	More methods have been written to translate the different keys into the right variable format when used by the DAQ. For example, to get a \cppinline{float} value out of the configuration file data, knowing the group and the key needed, the method \cppinline{IniFile::floatType()} can be used. It takes 3 arguments being the group name and key name (both \cppinline{string}), and a default \cppinline{float} value used as exception in the case the expected combination of group and key cannot be found in the configuration file. This default value is then used and the DAQ continues on working after sending an alert in the log file for further debugging.\\
-	
 	\begin{code}
 	\begin{cppcode}
 typedef map< const string, string > IniFileData;
@@ -560,11 +532,11 @@ class IniFile{
         IniFileData GetFileData();
 
         // Data readout methods
-        Data32      addressType (string groupname, string keyname, Data32 defaultvalue);
-        long        intType     (string groupname, string keyname, long defaultvalue);
-        long long   longType    (string groupname, string keyname, long long defaultvalue );
-        string      stringType  (string groupname, string keyname, string defaultvalue );
-        float       floatType   (string groupname, string keyname, float defaultvalue );
+        Data32 addressType(string groupname,string keyname,Data32 defaultvalue);
+        long intType(string groupname,string keyname,long defaultvalue);
+        long long longType(string groupname,string keyname,long long defaultvalue);
+        string stringType(string groupname,string keyname,string defaultvalue);
+        float floatType(string groupname,string keyname,float defaultvalue);
 
         // Error methods
         string      GetErrorMsg();
@@ -574,6 +546,20 @@ class IniFile{
 	\label{cpp:inifile}
 	\vspace{5mm}
 	\end{code}
+	
+	In order to retreive the information of the configuration file, the object \cppinline{IniFile} has been developped to provide an INI parser, presented in Source Code~\ref{cpp:inifile}. It contains private methods returning a boolean to check the type of line written in the file, whether a comment, a group header or a key line (\cppinline{IniFile::CheckIfComment()}, \cppinline{IniFile::CheckIfGroup()} and \cppinline{IniFile::CheckIfToken()}). The key may sometimes be referred to as \textit{token} in the source code. Moreover, the private element \cppinline{FileData} is a map of \cppinline{const string} to \cppinline{string} that allows to store the data contained inside the configuration file via the public method \cppinline{IniFile::GetFileData()} following the formatting (see method \cppinline{IniFile::Read()}):\\
+	
+	\begin{cppcode}
+ string group, token, value;
+ // Get the field values for the 3 strings.
+ // Then concatenate group and token together as a single string
+ // with a dot separation.
+ token = group + "." + token;
+ FileData[token] = value;
+	\end{cppcode}
+	\vspace{5mm}
+	
+	More methods have been written to translate the different keys into the right variable format when used by the DAQ. For example, to get a \cppinline{float} value out of the configuration file data, knowing the group and the key needed, the method \cppinline{IniFile::floatType()} can be used. It takes 3 arguments being the group name and key name (both \cppinline{string}), and a default \cppinline{float} value used as exception in the case the expected combination of group and key cannot be found in the configuration file. This default value is then used and the DAQ continues on working after sending an alert in the log file for further debugging.\\
 
     \subsection{WebDCS/DAQ intercommunication}
     \label{app1:ssec:dcsdaqcomm}
@@ -584,7 +570,7 @@ class IniFile{
     	\item[•] \textinline{INIT}, status sent when launching a scan and read via function \cppinline{CtrlRunStatus(...)},
     	\item[•] \textinline{START}, command to start data taking and read via function \cppinline{CheckSTART()},
     	\item[•] \textinline{STOP}, command to stop data taking at the end of the scan and read via function \cppinline{CheckSTOP()}, and
-    	\item[•] \textinline{KILL}, command to kill data taking sent by user and read via function \cppinline{CheckKILL()}
+    	\item[•] \textinline{KILL}, command to kill data taking sent by user and read via function \cppinline{CheckKILL()}. Note that the DAQ doesn't stop before the current ROOT file is safely written and saved.
     \end{itemize}
 and on the other, the DAQ sends status that are controled by the webDCS:
     \begin{itemize}
@@ -599,10 +585,9 @@ and on the other, the DAQ sends status that are controled by the webDCS:
     \label{app1:ssec:commex}
     
     Under normal conditions, the webDCS and the DAQ processes exchange commands and status via the file hosted at the address \cppinline{__runstatuspath}, as explained in subsection~\ref{app1:ssec:dcsdaqcomm}. An example of cycle is given in Table~\ref{tab:intercom}. In this example, the steps 3 to 5 are repeated as long as the webDCS tells the DAQ to take data. A data taking cycle is the equivalent as what is called a \textit{Scan} in GIF++ jargon, referring to a set a runs with several HV steps. Each repetition of steps 3 to 5 is then equivalent to a single \textit{Run}.\\
-    
     At any moment during the data taking, for any reason, the shifter can decide that the data taking needs to be stopped before it reached the end of the scheduled cycle. Thus at any moment on the cycle, the content of the inter-process communication file will be changed to \textinline{KILL} and the DAQ will shut down right away. The DAQ checks for \textinline{KILL} signals every 5s after the TDCs configuration is over. So far, the function \cppinline{CheckKILL()} has been used only inside of the data taking loop of method \cppinline{DataReader::Run()} and thus, if the shifter decides to KILL the data taking during the TDC configuration phase or the HV ramping in between 2 HV steps, the DAQ will not be stopped smoothly and a \textit{force kill} command will be sent to stop the DAQ process that is still awake on the computer. Improvements can be brought on this part of the software to make sure that the DAQ can safely shutdown at any moment.\\
     
-    \begin{table}
+    \begin{table}[H]
 	    \begin{tabular}{|c|c|c|c|}
 	    	\hline
 	    	step & actions of webDCS & status of DAQ & \cppinline{__runstatuspath}\\
@@ -651,9 +636,7 @@ and on the other, the DAQ sends status that are controled by the webDCS:
 \label{app1:sec:export}
 	
 	In section \ref{app1:sec:usage} was discussed the fact that the DAQ as written in its last version is not a standalone software. It is possible to make it a standalone program that could be adapted to any VME setup using V1190A and V1718 modules by creating a GUI for the software or by printing the log messages that are normally printed in the webDCS through the log file, directly into the terminal. This method was used by the DAQ up to version 3.0 moment where the webDCS was completed. Also, it is possible to check branches of DAQ v2.X to have example of communication through a terminal.\\
-	
 	DAQ v2.X is nontheless limited in it's possibilities and requires a lot of offline manual interventions from the users. Indeed, there is no communication of the software with the detectors' power supply system that would allow for a user a predefine a list of voltages to operate the detectors at and loop over to take data without any further manual intervention. In v2.X, the data is taken for a single detector setting and at the end of each run, the softwares asks the user if he intends on taking more runs. If so, the software invites the user to set the operating voltages accordingly to what is necessary and to manual update the configuration file in consequence. This working mode can be a very first approach before an evolution and has been successfuly used by colleagues from different collaborations.\\
-	
 	For a more robust operation, it is recommanded to develop a GUI or a web application to interface the DAQ. Moreover, to limit the amount of manual interventions, and thus the probability to make mistakes, it is also recommanded to add an extra feature into the DAQ by installing the \href{http://caen.it/csite/CaenProd.jsp?idmod=835&parent=42}{HV Wrapper library} provided by CAEN of which an example of use in a similar DAQ software developped by a master student of UGent, and called \href{https://github.ugent.be/favassch/TinyDAQ}{TinyDAQ}, is provided on UGent's github. Then, this HV Wrapper will help you communicating with and give instructions to a CAEN HV powered crate and can be added into the DAQ at the same level where the communication with the user was made in DAQ v2.X. In case you are using another kind of power system for your detectors, it is stringly adviced to use HV modules or crates that can be remotely controled via a using C++ libraries.\\
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
