@@ -107,6 +107,7 @@ The data collected in GIF++ thanks to the DAQ described in Appendix~\ref{app1} i
 		\item[•] \textinline{Time_Profile_Tt_Sc_p} shows the time profile of all recorded events (number of events per time bin),
 		\item[•] \textinline{Hit_Profile_Tt_Sc_p} shows the hit profile of all recorded events (number of events per channel),
 		\item[•] \textinline{Hit_Multiplicity_Tt_Sc_p} shows the hit multiplicity (number of hits per event) of all recorded events (number of occurences per multiplicity bin),
+		\item[•] \textinline{Time_vs_Strip_Profile_Tt_Sc_p} shows the 2D time vs strip profile of all recorded events (number of events per time bin per strip),
 		\item[•] \textinline{Strip_Mean_Noise_Tt_Sc_p} shows noise/gamma rate per unit area for each strip in a selected time range. After filters are applied on \textinline{Time_Profile_Tt_Sc_p}, the filtered version of \textinline{Hit_Profile_Tt_Sc_p} is normalised to the total integrated time and active detection area of a single channel,
 		\item[•] \textinline{Strip_Activity_Tt_Sc_p} shows noise/gamma activity for each strip (normalised version of previous histogram - strip activity = strip rate / average partition rate),
 		\item[•] \textinline{Strip_Homogeneity_Tt_Sc_p} shows the \textit{homogeneity} of a given partition (homogeneity = exp(-strip rates standard deviation(strip rates in partition/average partition rate)) ),
@@ -118,16 +119,18 @@ The data collected in GIF++ thanks to the DAQ described in Appendix~\ref{app1} i
 		\item[•] \textinline{Chip_Activity_Tt_Sc_p} shows the same information than \textinline{Strip_Activity_Tt_Scp} using chip binning,
 		\item[•] \textinline{Chip_Homogeneity_Tt_Sc_p} shows the homogeneity of a given partition using chip binning,
 		\item[•] \textinline{Beam_Profile_Tt_Sc_p} shows the estimated beam profile when taking efficiency scan. This is obtained by filtering \textinline{Time_Profile_Tt_Sc_p} to only consider the muon peak where the noise/gamma background has been subtracted. The resulting hit profile corresponds to the beam profile on the detector channels,
-		\item[•] \textinline{L0_Efficiency_Tt_Sc_p} shows the level 0 efficiency that was estimated \textbf{without} muon tracking,
-		\item[•] \textinline{MuonCSize_H_Tt_Sc_p} shows the level 0 muon cluster size that was estimated \textbf{without} muon tracking, and
-		\item[•] \textinline{MuonCMult_H_Tt_Sc_p} shows the level 0 muon cluster multiplicity that was estimated \textbf{without} muon tracking.
+		\item[•] \textinline{Efficiency_Fake_Tt_Ss_p} shows the efficiency given by fake hits by probing outside the peak in an uncorrelated window as wide as the peak window,
+		\item[•] \textinline{Efficiency_Peak_Tt_Ss_p} shows the efficiency given by hits contained in the peak window,
+		\item[•] \textinline{PeakCSize_H_Tt_Sc_p} shows the cluster size that was estimated using all the hits in the peak window,
+		\item[•] \textinline{PeakCMult_H_Tt_Sc_p} shows the cluster multiplicity that was estimated using all the hits in the peak window,
+		\item[•] \textinline{L0_Efficiency_Tt_Sc_p} shows the level 0 muon efficiency that was estimated \textbf{without} muon tracking after correction,
+		\item[•] \textinline{MuonCSize_H_Tt_Sc_p} shows the level 0 muon cluster size that was estimated \textbf{without} muon tracking after correction, and
+		\item[•] \textinline{MuonCMult_H_Tt_Sc_p} shows the level 0 muon cluster multiplicity that was estimated \textbf{without} muon tracking after correction.
 	\end{itemize}
 
 	In the histogram labels, \textinline{t} stands for the trolley number (1 or 3), \textinline{c} for the chamber slot label in trolley  \textinline{t} and \textinline{p} for the partition label (A, B, C or D depending on the chamber layout) as explained in Chapter~\ref{chapt5:sec:GIFpptests}.\\
 	
-	In the context of GIF++, an extra script called by the webDCS is called to extract the histograms from the ROOT files. The histograms are then stored in PNG and PDF formats into the corresponding folder (a single folder per HV step, so per ROOT file). the goal is to then display the histograms on the \acf{DQM} page of the webDCS in order for the users to control the quality of the data taking at the end of data taking. An example of histogram organisation is given bellow:\\
-	
-	\newpage
+	In the context of GIF++, an extra script called by the webDCS is called to extract the histograms from the ROOT files. The histograms are then stored in PNG and PDF formats into the corresponding folder (a single folder per HV step, so per ROOT file). An example of histogram organisation is given bellow for an hypothetical scan 001000 with at least 3 HV steps and whose chamber located in slot 1 of trolley 1 is called \textit{Example\_RPC1} and has at least 2 read-out partitions A and B. The goal is to then display the histograms graphs on the \acf{DQM} page of the webDCS, as presented in Figure~\ref{fig:DQM-DAQ}, in order for the users to control the quality of the data taking at the end of data taking.\\
 	
 	\dirtree{%
 	 .1 Scan001000.
@@ -142,8 +145,6 @@ The data collected in GIF++ thanks to the DAQ described in Appendix~\ref{app1} i
 	 .4 Beam\_Profile\_T1\_S1\_B.pdf.
 	 .4 ....
 	 .3 CAEN.
-	 .4 HVapp\_Example\_RPC1.pdf.
-	 .4 HVapp\_Example\_RPC1.png.
 	 .4 HVapp\_Example\_RPC1.pdf.
 	 .4 HVapp\_Example\_RPC1.png.
 	 .4 ....
@@ -163,12 +164,11 @@ The data collected in GIF++ thanks to the DAQ described in Appendix~\ref{app1} i
 	 .2 ....
 	}
 	\vspace{5mm}
-	\textbf{\textit{Here can put some screens from the webDCS to show the DQM and the plots available to users.\\}}
 	
 		\subsubsection{CSV files}
 		\label{app2:sssec:CSV}
 
-	Moreover, up to 3 CSV files can be created depending on which ones of the 3 input files were in the data folder:
+	Moreover, up to 4 CSV files can be created depending on which ones of the 3 input files were in the data folder:
 
 	\begin{itemize}
 		\item[•] \textinline{Offline-Corrupted.csv} , is used to keep track of the amount of data that was corrupted and removed from old data format files that don't contain any data quality flag.
@@ -189,7 +189,7 @@ The data collected in GIF++ thanks to the DAQ described in Appendix~\ref{app1} i
 \section{Analysis inputs and information handling}
 \label{app2:sec:inputs}
 	
-	The usage of the Offline Analysis tool as well as its output have been presented in the previous section. It is now important to dig further and start looking at the source code and the inputs necessary for the tool to work. Indeed, other than the raw ROOT data files that are analysed, more information needs to be imported inside of the program to perform the analysis such as the description of the setup inside of GIF++ at the time of data taking (number of trolleys, of RPCs, dimensions of the detectors, etc...) or the mapping that links the TDC channels to the coresponding RPC channels in order to translate the TDC information into human readable data. 2 files are used to transmit all this information:\\
+	The usage of the Offline Analysis tool as well as its output have been presented in the previous section. It is now important to dig further and start looking at the source code and the inputs necessary for the tool to work. Indeed, other than the raw ROOT data files that are analysed, more information needs to be imported inside of the program to perform the analysis such as the description of the setup inside of GIF++ at the time of data taking (number of trolleys, of RPCs, dimensions of the detectors, etc...) or the mapping that links the TDC channels to the coresponding RPC channels in order to translate the TDC information into human readable data. Two files are used to transmit all this information:\\
 	
 	\begin{itemize}
 		\item[•] \textinline{Dimensions.ini}, that provides the necessary setup and RPC information, and
@@ -199,7 +199,7 @@ The data collected in GIF++ thanks to the DAQ described in Appendix~\ref{app1} i
 	\subsection{Dimensions file and IniFile parser}
 	\label{app2:ssec:dimensions}
 	
-	This input file, present in every data folder, allows the analysis tool to know of the number of active trolleys, the number of active RPCs in those trolleys, and the details about each RPCs such as the number of RPC gaps, the number of pseudo-rapidity partitions (for CMS-like prototypes), the number of strips per partion or the dimensions. To do so, there are 3 types of groups in the INI file architecture. A first general group, appearing only once at the head of the document, gives information about the number of active trolleys as well as their IDs, as presented in Source Code~\ref{ini:general}. For each active trolley, a group similar to Source Code~\ref{ini:trolley} can be found containing information about the number of active detectors in the trolley and their IDs. Each trolley group as a \textinline{Tt} name format, where \textinline{t} is the trolley ID. Finally, for each detector stored in slots of an active trolley, there is a group providing information about their names and dimensions, as shown in Source Code~\ref{ini:slot}. Each slot group as a \textinline{TtSs} name format, where \textinline{s} is the slot ID of trolley \textinline{t} where the active RPC is hosted.\\
+	GIF++ CMS RPC setup consists in detectors held into trolleys inside of the GIF++ bunker. Each of these detector may have a read-out segmented to cover different pseudo-rapidity range once intalled in CMS. The segmentation of the read-out is referred to as "partitions". This input file, present in every data folder, allows the analysis tool to know of the number of active trolleys, the number of active RPCs in those trolleys, and the details about each RPCs such as the number of RPC gaps, the number of pseudo-rapidity partitions, the number of strips per partion or the dimensions. To do so, there are 3 types of groups in the INI file architecture. Groups are sections of the INI file content starting with a title encapsulated in between sqaure brackets. A first general group, appearing only once at the head of the document, gives information about the number of active trolleys as well as their IDs, as presented in Source Code~\ref{ini:general}. For each active trolley, a group similar to Source Code~\ref{ini:trolley} can be found containing information about the number of active detectors in the trolley and their IDs. Each trolley group as a \textinline{Tt} name format, where \textinline{t} is the trolley ID. Finally, for each detector stored in slots of an active trolley, there is a group providing information about their names and dimensions, as shown in Source Code~\ref{ini:slot}. Each slot group as a \textinline{TtSs} name format, where \textinline{s} is the slot ID of trolley \textinline{t} where the active RPC is hosted.\\
 	
 	\begin{code}
 	\begin{inicode}
@@ -245,12 +245,12 @@ ActiveArea-C=93.03
 	\vspace{5mm}
 	\end{code}
 	
-	This information is readout and stored in a C++ object called \cppinline{IniFile}, that parses the information in the INI input file and stores it into a local buffer for later use. This INI parser is the exact same one that was previously developped for the GIF++ DAQ and described in Appendix~\ref{app1:ssec:inifile}.
+	This information is read-out and stored in a C++ object called \cppinline{IniFile}, that parses the information of the INI input file and stores it into a local buffer for later use. This INI parser is the exact same one that was previously developped for the GIF++ DAQ and described in Appendix~\ref{app1:ssec:inifile}.
 	
 	\subsection{TDC to RPC link file and Mapping}
 	\label{app2:ssec:mapping}
 	
-	The same way the INI dimension file information is stored using \cppinline{map}, the channel mapping and mask information is stored and accessed through \cppinline{map}. First of all, the mapping CSV file is organised into 3 columns separated by tabulations (and not by comas, as expected for CSV files as it is easier using streams to read tab or space separated data using C++):\\
+	The same way the INI dimension file information is stored using \cppinline{map}, the channel mapping and mask information making the link in between TDC channels and RPC strips is stored and accessed through \cppinline{map}. First of all, the mapping CSV file is organised into 3 columns separated by tabulations:\\
 	
 	\begin{textcode}
  RPC_channel	TDC_channel	mask
@@ -264,14 +264,14 @@ ActiveArea-C=93.03
 	\end{textcode}
 	
 	\begin{itemize}
-		\item[\textinline{TSCCC}] is a 5-digit integer where \textinline{T} is the trolley ID, \textinline{S} the slot ID in which the RPC is held insite the trolley \textinline{T} and \textinline{CCC} is the RPC channel number, or \textit{strip} number, that can take values up to 3-digits depending on the detector,
-		\item[\textinline{TCCC}] is a 4 digit integer where \textinline{T} is the TDC ID, \textinline{CCC} is the TDC channel number that can take values in between 0 and 127, and
-		\item[\textinline{M}] is a 1-digit integer indicating if the channel should be considered (\textinline{M} $=1$) or discarded (\textinline{M} $=0$) during analysis.
+		\item[\textinline{TSCCC}] is a 5-digit integer where \textinline{T} is the trolley ID, \textinline{S} the slot ID in which the RPC is held inside the trolley \textinline{T} and \textinline{CCC} is the RPC channel number, or \textit{strip} number, that can take values up to 3-digits depending on the detector,
+		\item[\textinline{TCCC}] is a 4 digit integer where \textinline{T} is the TDC ID to which the RPC is connected, \textinline{CCC} is the TDC channel number linked to the RPC strip that can take values in between 0 and 127, and
+		\item[\textinline{M}] is a 1-digit integer indicating if the channel should be considered (\textinline{M} $=1$) or discarded (\textinline{M} $=0$) during analysis. Note that the absence of a third column is interpreted by the mapping file parser as \textinline{M} $=1$ by default.
 	\end{itemize}
 	
-	This mapping and masking information is readout and stored thanks to the object \cppinline{Mapping}, presented in Source Code~\ref{cpp:mapping}. Similarly to \cppinline{IniFile} objects, this class has private methods. The first one, \cppinline{Mapping::CheckIfNewLine()} is used to find the newline character \cppinline{'\n'} or return character \cppinline{'\r'} (depending on which kind of operating system interacted with the file). This is used for the simple reason that the masking information has been introduced only during the year 2017 but the channel mapping files exist since 2015 and the very beginning of data taking at GIF++. This means that in the older data folders, before the upgrade, the channel mapping file only had 2 columns, the RPC channel and the TDC channel. For compatibility reasons, this method helps controling the character following the readout of the 2 first fields of a line. In case any end of line character is found, no mask information is present in the file and the default \textinline{M} $=1$ is used. On the contrary, if the next character was a tabulation or a space, the mask information is present.
+	This mapping and masking information is readout and stored thanks to the object \cppinline{Mapping}, presented in Source Code~\ref{cpp:mapping}. Similarly to \cppinline{IniFile} objects, this class has private methods to provide with parser rules. The first one, \cppinline{Mapping::CheckIfNewLine()} is used to find the newline character \cppinline{'\n'} or return character \cppinline{'\r'} (depending on which kind of operating system interacted with the file). Finding and identifying a newline or return character is used for the simple reason that the masking information has been introduced only during the year 2017 but the channel mapping files exist since 2015 and the very beginning of data taking at GIF++. This means that in the older data folders, before the upgrade, the channel mapping file only had 2 columns, the RPC channel and the TDC channel. For compatibility reasons, this method helps controling the character following the readout of the 2 first fields of a line. In case any end of line character is found, no mask information is present in the file and the default \textinline{M} $=1$ is used. On the contrary, if the next character was a tabulation or a space, the mask information is present.
 	
-	Once the 3 fields have been readout, the second private method \cppinline{Mapping::CheckIfTDCCh()} is used to control that the TDC channel is an existing TDC channel. Finally, the information is stored into 3 different maps (\cppinline{Link}, \cppinline{ReverseLink} and \cppinline{Mask}) thanks to the public method \cppinline{Mapping::Read()}. \cppinline{Link} allows to get the RPC channel by knowing the TDC channel while \cppinline{ReverseLink} does the opposite by returning the TDC channel by knowing the RPC channel. Finally, \cppinline{Mask} returns the mask associated to a given RPC channel.\\
+	Once the 3 fields have been readout, the second private method \cppinline{Mapping::CheckIfTDCCh()} is used to control that the TDC channel is an existing TDC channel by checking its format. Finally, the information is stored into 3 different maps (\cppinline{Link}, \cppinline{ReverseLink} and \cppinline{Mask}) thanks to the public method \cppinline{Mapping::Read()}. \cppinline{Link} allows to get the RPC channel by knowing the TDC channel while \cppinline{ReverseLink} does the opposite by returning the TDC channel by knowing the RPC channel. Finally, \cppinline{Mask} returns the mask associated to a given RPC channel.\\
 	
 	\begin{code}
 	\begin{cppcode}
@@ -312,9 +312,23 @@ class Mapping {
 	\subsection{RPC objects}
 	\label{app2:ssec:RPC}
 	
-	\cppinline{RPC} objects have been developped to represent physical active detectors in GIF++ at the moment of data taking. Thus, there are as many RPC objects created during the analysis than there were active RPCs tested during a run. Each \cppinline{RPC} hosts the information present in the corresponding INI slot group, as shown in~\ref{ini:slot}, and organises it using a similar architecture. This can been seen from Source Code~\ref{cpp:RPC}.
+	\cppinline{RPC} objects have been developped to represent physical active detectors in GIF++ at the moment of data taking. Thus, there are as many RPC objects created during the analysis than there were active RPCs tested during a run. Each \cppinline{RPC} hosts the information present in the corresponding INI slot group, as showed in~\ref{ini:slot}, and organises it using a similar architecture. This can been seen from Source Code~\ref{cpp:RPC}.
 	
 	To make the object more compact, the lists of gap labels, of gap active areas and strip active areas are stored into \cppinline{vector} dynamical containers. \cppinline{RPC} objects are always contructed thanks to the dimension file information stored into the \cppinline{IniFIle} and their ID, using the format \textinline{TtSs}. Using the RPC ID, the constructor calls the methods of \cppinline{IniFile} to initialise the \cppinline{RPC}. The other constructors are not used but exist in case of need. Finally, some getters have been written to access the different private parameters storing the detector information.\\
+	
+	\subsection{Trolley objects}
+	\label{app2:ssec:Trolley}
+	
+	\cppinline{Trolley} objects have been developped to represent physical active trolleys in GIF++ at the moment of data taking. Thus, there are as many trolley objects created during the analysis than there were active trolleys hosting RPCs under test during a run. Each \cppinline{Trolley} hosts the information present in the corresponding INI trolley group, as shown in~\ref{ini:trolley}, and organises it using a similar architecture. In addition to the information hosted in the INI file, these objects have a dynamical container of \cppinline{RPC} objects, representing the active detectors the active trolley was hosting at the time of data taking. This can been seen from Source Code~\ref{cpp:Trolley}.
+	
+	\cppinline{Trolley} objects are always contructed thanks to the dimension file information stored into the \cppinline{IniFIle} and their ID, using the format \textinline{Tt}. Using the Trolley ID, the constructor calls the methods of \cppinline{IniFile} to initialise the \cppinline{Trolley}. Retrieving the information of the RPC IDs via \cppinline{SlotsID}, a new \cppinline{RPC} is constructed and added to the container \cppinline{RPCs} for each character in the ID \cppinline{string}. The other constructors are not used but exist in case of need. Finally, some getters have been written to access the different private parameters storing the trolley and detectors information.\\
+	
+	\subsection{Infrastructure object}
+	\label{app2:ssec:Infra}
+	
+	The \cppinline{Infrastructure} object has been developped to represent the GIF++ bunker area dedicated to CMS RPC experiments. With this very specific object, all the information about the CMS RPC setup within GIF++ at the moment of data taking is stored. It hosts the information present in the corresponding INI general group, as shown in~\ref{ini:general}, and organises it using a similar architecture. In addition to the information hosted in the INI file, this object have a dynamical container of \cppinline{Trolley} objects representing the active tolleys in GIF++ area, themselves containing \cppinline{RPC} objects. This can been seen from Source Code~\ref{cpp:Infrastructure}.
+	
+	The \cppinline{Infrastructure} object is always contructed thanks to the dimension file information stored into the \cppinline{IniFIle}. Retrieving the information of the trolley IDs via \cppinline{TrolleysID}, a new \cppinline{Trolley} is constructed and added to the container \cppinline{Trolleys} for each character in the ID \cppinline{string}. By extension, it is easy to understand that the process described in Section~\ref{app2:ssec:Trolley} for the construction of RPCs takes place when a trolley is constructed. The other constructors are not used but exist in case of need. Finally, some getters have been written to access the different private parameters storing the infrastructure, trolleys and detectors information.\\
 	
 	\begin{code}
 	\begin{cppcode}
@@ -349,13 +363,6 @@ class RPC{
 	\vspace{5mm}
 	\end{code}
 	
-	\subsection{Trolley objects}
-	\label{app2:ssec:Trolley}
-	
-	\cppinline{Trolley} objects have been developped to represent physical active trolleys in GIF++ at the moment of data taking. Thus, there are as many trolley objects created during the analysis than there were active trolleys hosting tested RPCs during a run. Each \cppinline{Trolley} hosts the information present in the corresponding INI trolley group, as shown in~\ref{ini:trolley}, and organises it using a similar architecture. In addition to the information hosted in the INI file, these object have a dynamical container of \cppinline{RPC} objects, representing the active detectors the active trolley was hosting at the time of data taking. This can been seen from Source Code~\ref{cpp:Trolley}.
-	
-	\cppinline{Trolley} objects are always contructed thanks to the dimension file information stored into the \cppinline{IniFIle} and their ID, using the format \textinline{Tt}. Using the Trolley ID, the constructor calls the methods of \cppinline{IniFile} to initialise the \cppinline{Trolley}. Retrieving the information of the RPC IDs via \cppinline{SlotsID}, a new \cppinline{RPC} is constructed and added to the container \cppinline{RPCs} for each character in the ID \cppinline{string}. The other constructors are not used but exist in case of need. Finally, some getters have been written to access the different private parameters storing the trolley and detectors information.\\
-	
 	\begin{code}
 	\begin{cppcode}
 class Trolley{
@@ -363,24 +370,20 @@ class Trolley{
         Uint         nSlots;  //Number of active RPCs in the considered trolley
         string       SlotsID; //Active RPC IDs written into a string
         vector<RPC*> RPCs;    //List of active RPCs
-
+        
     public:
-        //Constructors, destructor and operator =
         Trolley();
         Trolley(string ID, IniFile* geofile);
         Trolley(const Trolley& other);
         ~Trolley();
         Trolley& operator=(const Trolley& other);
-
-        //Get GIFTrolley members
+        
         Uint   GetNSlots();
         string GetSlotsID();
         Uint   GetSlotID(Uint s);
-
-        //Manage RPC list
         RPC*   GetRPC(Uint r);
         void   DeleteRPC(Uint r);
-
+        
         //Methods to get members of RPC objects stored in RPCs
         string GetName(Uint r);
         Uint   GetNGaps(Uint r);
@@ -396,13 +399,6 @@ class Trolley{
 	\vspace{5mm}
 	\end{code}
 	
-	\subsection{Infrastructure object}
-	\label{app2:ssec:Infra}
-	
-	The \cppinline{Infrastructure} object has been developped to represent the GIF++ bunker area dedicated to CMS RPC experiments. With this very specific object, all the information about the CMS RPC setup within GIF++ at the moment of data taking is stored. It hosts the information present in the corresponding INI general group, as shown in~\ref{ini:general}, and organises it using a similar architecture. In addition to the information hosted in the INI file, this object have a dynamical container of \cppinline{Trolley} objects, representing the active tolleys in GIF++ area. This can been seen from Source Code~\ref{cpp:Infrastructure}.
-	
-	The \cppinline{Infrastructure} object is always contructed thanks to the dimension file information stored into the \cppinline{IniFIle}. Retrieving the information of the trolley IDs via \cppinline{TrolleysID}, a new \cppinline{Trolley} is constructed and added to the container \cppinline{Trolleys} for each character in the ID \cppinline{string}. By extension, it is easy to understand that the process described in Section~\ref{app2:ssec:Trolley} for the construction of RPCs takes place when a trolley is constructed. The other constructors are not used but exist in case of need. Finally, some getters have been written to access the different private parameters storing the infrastructure, trolleys and detectors information.\\
-	
 	\begin{code}
 	\begin{cppcode}
 class Infrastructure {
@@ -412,19 +408,16 @@ class Infrastructure {
         vector<Trolley*> Trolleys;   //List of active Trolleys (struct)
 
     public:
-        //Constructors and destructor
         Infrastructure();
         Infrastructure(IniFile* geofile);
         Infrastructure(const Infrastructure& other);
         ~Infrastructure();
         Infrastructure& operator=(const Infrastructure& other);
 
-        //Get Infrastructure members
         Uint   GetNTrolleys();
         string GetTrolleysID();
         Uint   GetTrolleyID(Uint t);
 
-        //Manage Trolleys
         Trolley* GetTrolley(Uint t);
         void     DeleteTrolley(Uint t);
 
@@ -452,9 +445,9 @@ class Infrastructure {
 \section{Handeling of data}
 \label{app2:sec:data}
 
-	As discussed in Appendix~\ref{app1:ssec:DataReader}, the raw data as a \cppinline{TTree} architecture where every entry is related to a trigger signal provided by a muon or a random pulse, whether the goal of the data taking was to measure the performance of the detector or the noise/gamma background respectively. Each of these entries, referred also as events, contain a more or less full list of hits in the TDC channels to which the detectors are connected. To this list of hits corresponds a list of time stamps, marking the arrival of the hits within the TDC channel.
+	As discussed in Appendix~\ref{app1:ssec:DataReader}, the raw data uses a \cppinline{TTree} architecture where every entry is related to a trigger signal provided by a muon or a random pulse, whether the goal of the data taking was to measure the performance of the detector or the noise/gamma background respectively. Each of these entries, referred also as events, contain a more or less full list of hits in the TDC channels to which the detectors are connected. To this list of hits corresponds a list of time stamps, marking the arrival of the hits within the TDC channel.
 	
-	The infrastructure of the CMS RPC experiment within GIF++ being defined, combining the information about the raw data with the information provided by both the mapping/mask file and the dimension file allows to build new physical objects that will help in computing efficiency or rates.
+	The infrastructure of the CMS RPC experiment within GIF++ being defined, combining the raw data information with the information provided by both the mapping/mask file and the dimension file allows to build new physical objects that will help in computing efficiency or rates.
 	
 	\subsection{RPC hits}
 	\label{app2:ssec:RPCHit}
@@ -468,19 +461,17 @@ class RPCHit {
         Uint  Channel;    //RPC channel according to mapping (5 digits)
         Uint  Trolley;    //0, 1 or 3 (1st digit of the RPC channel)
         Uint  Station;    //Slot where is held the RPC in Trolley (2nd digit)
-        Uint  Strip;      //Physical RPC strip where the hit occured (last 3 digits)
+        Uint  Strip;      //RPC strip where the hit occured (last 3 digits)
         Uint  Partition;  //Readout partition along eta segmentation
         float TimeStamp;  //Time stamp of the arrival in TDC
 
     public:
-        //Constructors, destructor & operator =
         RPCHit();
         RPCHit(Uint channel, float time, Infrastructure* Infra);
         RPCHit(const RPCHit& other);
         ~RPCHit();
         RPCHit& operator=(const RPCHit& other);
 
-        //Get RPCHit members
         Uint  GetChannel();
         Uint  GetTrolley();
         Uint  GetStation();
@@ -490,7 +481,7 @@ class RPCHit {
 };
 
 typedef vector<RPCHit> HitList;
-typedef struct GIFHitList { HitList rpc[NTROLLEYS][NSLOTS][NPARTITIONS]; } GIFHitList;
+typedef struct GIFHitList {HitList rpc[NTROLLEYS][NSLOTS][NPARTITIONS];} GIFHitList;
 
 bool SortHitbyStrip(RPCHit h1, RPCHit h2);
 bool SortHitbyTime(RPCHit h1, RPCHit h2);
@@ -515,7 +506,9 @@ struct RAWData{
 	\vspace{5mm}
     \end{code}
     
-    Each member of the structure in then linked to the corresponding branch of the ROOT data tree, as shown in the example of Source Code~\ref{cpp:rawdatalink}, and using the method \cppinline{GetEntry(int i)} of the ROOT class \cppinline{TTree} will update the state of the members of \cppinline{RAWData}.\\
+    Each member of the structure in then linked to the corresponding branch of the ROOT data tree, as shown in the example of Source Code~\ref{cpp:rawdatalink}, and using the method \cppinline{GetEntry(int i)} of the ROOT class \cppinline{TTree} will update the state of the members of \cppinline{RAWData}.
+    
+    The data is then analysed entry by entry and to each element of the TDC channel list, a \cppinline{RPCHit} is constructed by linking each TDC channel to the corresponding RPC channel thanks to the \cppinline{Mapping} object. The information carried by the RPC channel format allows to easily retrieve the trolley and slot from which the hit was recorded (see section~\ref{app2:ssec:mapping}). Using these 2 values, the readout partition can be found by knowing the strip channel and comparing it with the number of partitions and strips per partition stored into the \cppinline{Infrastructure} object.\\
 	
 	\begin{code}
     \begin{cppcode}
@@ -533,9 +526,7 @@ dataTree->SetBranchAddress("TDC_TimeStamp",  &data.TDCTS);
 	\vspace{5mm}
     \end{code}
     
-    The data is then analysed entry by entry and to each element of the TDC channel list, a \cppinline{RPCHit} is constructed by linking each TDC channel to the corresponding RPC channel thanks to the \cppinline{Mapping} object. The information carried by the RPC channel format allows to easily retrieve the trolley and slot from which the hit was recorded (see section~\ref{app2:ssec:mapping}). Using these 2 values, the readout partition can be found by knowing the strip channel and comparing it with the number of partitions and strips per partition stored into the \cppinline{Infrastructure} object.
-    
-    Thus \cppinline{RPCHit} objects are then stored into 3D dynamical list called \cppinline{GIFHitList} (Source Code~\ref{cpp:rawdataoff}) where the 3 dimensions refer to the 3 layers of the readout in GIF++ : in the bunker there are \textit{trolleys} (\textinline{T}) holding detectors in \textit{slots} (\textinline{S}) and each detector readout is divided into 1 or more pseudo-rapidity \textit{partitions} (\textinline{p}). Using these 3 information allows to assign an address to each readout partition and this address will point to a specific hit list.\\
+    Thus \cppinline{RPCHit} objects are then stored into 3D dynamical list called \cppinline{GIFHitList} (Source Code~\ref{cpp:RPCHit}) where the 3 dimensions refer to the 3 layers of the readout in GIF++ : in the bunker there are \textit{trolleys} (\textinline{T}) holding detectors in \textit{slots} (\textinline{S}) and each detector readout is divided into 1 or more pseudo-rapidity \textit{partitions} (\textinline{p}). Using these 3 information allows to assign an address to each readout partition and this address will point to a specific hit list.\\
 	
 	\subsection{Clusters of hits}
 	\label{app2:ssec:RPCCluster}
@@ -543,6 +534,8 @@ dataTree->SetBranchAddress("TDC_TimeStamp",  &data.TDCTS);
 	All the hits contained in the ROOT file have been sorted into the different hit lists through the \cppinline{GIFHitList}. At this point, it is possible to start looking for clusters. A cluster is a group of adjacent strips getting hits within a time window of \SI{25}{ns}. These strips are then assumed to be part of the same physical avalanch signal generated by a muon passing through the chamber or by the interaction of a gamma stopping into the electrodes of the RPCs.
 	
 	To keep the cluster information, \cppinline{RPCCluster} objects have been defined as shown in Source Code~\ref{cpp:RPCCluster}. Using the information of each individual \cppinline{RPCHit} taken out of the hit list, it stores the cluster size (number of adjacent strips composing the cluster), the first and last hit, the center for spatial reconstruction and finally the start and stop time stamps as well as te time spread in between the first and last hit.\\
+	
+	To investigate the hit list of a given detector partition, the function \cppinline{Clusterization()} definied in \textinline{include/Cluster.h} needs the hits in the list to be time sorted. This is achieved by calling function \cppinline{sort()} of library \cppinline{<algorithm>} using the comparator \cppinline{SortHitbyTime(RPCHit h1, RPCHit h2)} defined in \textinline{include/RPCHit.h} that returns \cppinline{true} if the time stamp of hit \cppinline{h1} is lower than that of \cppinline{h2}. A first isolation of strips is made only based on time information. All the hits within the \SI{25}{ns} window are taken separately from the rest. Then, this sub-list of hits is sorted this time by ascending strip number, using this time the comparator \cppinline{SortHitbyStrip(RPCHit h1, RPCHit h2)}. Finally, the groups of adjacent strips are used to construct \cppinline{RPCCluster} objects that are then stored in a temporary list of clusters that is at the end of the process used to know how many clusters were reconstructed and to fill their sizes into an histogram that will allows to know the mean size of muon or gamma clusters.  This method to group hits together into clusters is limited as no systematic study of the average avalanche time development into TDC hits was performed and that there is no correlation of both spatial and time information to make the first selection of hits. Due to this, two clusters developping consecutively next to each other during a total time longer to \SI{25}{ns} could be wrongly grouped as a cluster composed of the first developped cluster plus a part of the second cluster while the rest of the second cluster would be placed in a second truncated cluster. This kind of event is not likely but needs to be taken into account nontheless. A possible improvement would be to identify clusters in a 2D space whose dimensions are time and strip. In this 2D space, the cluster could be geometrically identified as isolated groups of adjacent strips recieving a hit at a similar time.\\
 	
 	\begin{code}
 	\begin{cppcode}
@@ -557,14 +550,12 @@ class RPCCluster{
         float TimeSpread;   //Time difference between earliest and latest hits
                             //of cluster #ID
     public:
-        //Constructors, destructor & operator =
         RPCCluster();
         RPCCluster(HitList List, Uint cID, Uint cSize, Uint first, Uint firstID);
         RPCCluster(const RPCCluster& other);
         ~RPCCluster();
         RPCCluster& operator=(const RPCCluster& other);
 
-        //Get Cluster members
         Uint GetID();
         Uint GetSize();
         Uint GetFirstStrip();
@@ -586,21 +577,19 @@ void Clusterization(HitList &hits, TH1 *hcSize, TH1 *hcMult);
 	\vspace{5mm}
 	\end{code}
 	
-	To investigate the hit list of a given detector partition, the function \cppinline{Clusterization()} definied in \textinline{include/Cluster.h} needs the hits in the list to be time sorted. This is achieved by calling function \cppinline{sort()} of library \cppinline{<algorithm>} using the comparator \cppinline{SortHitbyTime(RPCHit h1, RPCHit h2)} defined in \textinline{include/RPCHit.h} that returns \cppinline{true} if the time stamp of hit \cppinline{h1} is lower than that of \cppinline{h2}. A first isolation of strips is made only based on time information. All the hits within the \SI{25}{ns} window are taken separately from the rest. Then, this sub-list of hits is sorted this time by ascending strip number, using this time the comparator \cppinline{SortHitbyStrip(RPCHit h1, RPCHit h2)}. Finally, the groups of adjacent strips are used to construct \cppinline{RPCCluster} objects that are then stored in a temporary list of clusters that is at the end of the process used to know how many clusters were reconstructed and to fill their sizes into an histogram that will allows to know the mean size of muon or gamma clusters.\\
-	
 \section{DAQ data Analysis}
 \label{app2:sec:analysis}
 
-	All the ingredients to analyse GIF++ data have been defined. This section will focus on the different part of the analysis performed on the data, from determining the type of data the tool is dealing with to calculating the rate in each detector or reconstructing muon or gamma clusters.
+	All the ingredients to analyse GIF++ data have been introduced. This section will focus on the different part of the analysis performed on the data, from determining the type of data the tool is dealing with to calculate the hit and cluster rate per unit area in each detector or reconstructing muon or gamma clusters.
 
 	\subsection{Determination of the run type}
 	\label{app2:ssec:runtype}
 	
-	In GIF++, both the performance of the detectors in detecting muons in an irradiated environment and the gamma background can be independantly measured. These corresponds to different run types and thus, to different TDC settings giving different data to look at.\\
+	In GIF++, both the performance of the detectors in detecting muons in an irradiated environment and the gamma or noise background can be independantly measured. These correspond to different run types and hence, to different TDC settings giving different data to look at.
 	
-	In the case of performance measurements, the trigger for data taking is provided by the coïncidence of several scintillators when muons from the beam passing through the area are detected. Data is collected in a \SI{600}{ns} wide window around the arrival of muons in the RPCs. The expected time distribution of hits is shown in Figure~\ref{fig:TS:A}. The muon peak is clearly visible in the center of the distribution and is to be extracted from the gamma background that composes the flat part of the distribution.
+	In the case of performance measurements, the trigger for data taking is provided by the coincidence of several scintillators when muons from the beam passing through the area are detected. Data is collected in a \SI{600}{ns} wide window centered around the arrival of muons in the RPCs. The expected time distribution of hits is shown in Figure~\ref{fig:TS:A}. The muon peak is clearly visible in the center of the distribution and is to be extracted from the gamma background that composes the flat part of the distribution.
 	
-	On the other hand, gamma background or noise measurements are focussed on the non muon related physics and the trigger needs to be independant from the muons to give a good measurement of the gamma/noise distribution as seen by the detectors. The trigger is then provided by a pulse generator at a frequency of \SI{300}{Hz} whose pulse is not likely to be on time with a muon. In order to increase the integrated time without increasing the acquisition time too much, the width of the acquisition windows are increased to \SI{10}{\micro s}. The time distribution of the hits is expected to be flat, as shown by Figure~\ref{fig:TS:B}.
+	On the other hand, gamma background or noise measurements are focussed on the non muon related physics and the trigger needs to be independant from the muons to give a good measurement of the gamma/noise distribution as seen by the detectors. The trigger is then provided by a pulse generated by the DAQ at a frequency of \SI{100}{Hz} whose pulse is not likely to be on time with a muon. In order to increase the integrated time without increasing proportionnaly the acquisition time, the width of the acquisition windows are increased to \SI{10}{\micro s}. The time distribution of the hits is expected to be flat, as shown by Figure~\ref{fig:TS:B}.
 	
 	\begin{figure}[H]
         \begin{subfigure}{0.5\linewidth}
@@ -616,7 +605,9 @@ void Clusterization(HitList &hits, TH1 *hcSize, TH1 *hcMult);
 		\caption{\label{fig:TS} Example of expected hit time distributions in the cases of efficiency (Figure~\ref{fig:TS:A}) and noise/gamma rate per unit area (Figure~\ref{fig:TS:B}) measurements as extracted from the raw ROOT files. The unit along the x-axis corresponds to \si{ns}. The fact that "the" muon peak is not well defined in Figure~\ref{fig:TS:A} is due to the contribution of all the RPCs being tested at the same time that don't necessarily have the same signal arrival time. Each individual peak can have an offset with the ones of other detectors. The inconsistancy in the first \SI{100}{ns} of both time distributions is an artefact of the TDCs and are systematically rejected during the analysis.}
 	\end{figure}
 	
-	The ROOT files include a \cppinline{TTree} called \cppinline{RunParameters} containing, among other things, the information related to the type of run. The run type can then be accessed as described by Source Code~\ref{cpp:runtype} and the function \cppinline{IsEfficiencyRun()} is then used to determine if the run file is an efficiency run or, on the contrary, another type of run (noise or gamma measurement).\\
+	The ROOT files include a \cppinline{TTree} called \cppinline{RunParameters} containing, among other things, the information related to the run type. The run type can then be accessed as described by Source Code~\ref{cpp:runtype} and the function \cppinline{IsEfficiencyRun()} is then used to determine if the run file is an efficiency run or, on the contrary, another type of run (noise or gamma measurement).
+	
+	Finally, the data files will have a slightly different content whether it was collected before or after October 2017 and the upgrade of the DAQ software that brought a new information into the ROOT output. This is discussed in Appendix~\ref{app1:ssec:QFlag} and implies that the analysis will differ a little depending on the data format. Indeed, as no information on the data quality is stored, in older data files, the corrections for missing events has to be done at the end of the analysis. The information about the type of data format is stored in the variable \cppinline{bool isNewFormat} by checking the list of branches contained in the data tree via the methods \cppinline{TTree::GetListOfBranches()} and \cppinline{TCollection::Contains()}.\\
 	
 	\begin{code}
 	\begin{cppcode}
@@ -629,8 +620,6 @@ RunParameters->GetEntry(0);
 	\label{cpp:runtype}
 	\vspace{5mm}
 	\end{code}
-	
-	Finally, the data files will have a slightly different content whether it was collected before or after October 2017 and the upgrade of the DAQ software that brought a new information into the ROOT output. This is discussed in Appendix~\ref{app1:ssec:QFlag} and implies that the analysis will differ a little depending on the data format. Indeed, as no information on the data quality is stored, in older data files, the corrections for missing events has to be done at the end of the analysis. The information about the type of data format is stored in the variable \cppinline{bool isNewFormat} by checking the list of branches contained in the data tree via the methods \cppinline{TTree::GetListOfBranches()} and \cppinline{TCollection::Contains()}.
 	
 	\subsection{Beam time window calculation for efficiency runs}
 	\label{app2:ssec:beamwindow}
@@ -655,26 +644,148 @@ RunParameters->GetEntry(0);
 	\end{align}
 	\end{subequations}
 	
-	Finally, the fit parameters are extracted and saved for each detector in 3D arrays of \cppinline{float} (\cppinline{muonPeak}, see \textinline{include/types.h}), a first one for the mean arrival time of the muons, \cppinline{PeakTime}, and a second one for the width of the peak, \cppinline{PeakWidth}. The width is defined as 6$\sigma$ of the gaussian fit. The same settings are applied to every partitions of the same detector. To determine which one of the detector's partitions is directly illuminated by the beam, the peak height of each partition is compared and the highest one is then used to define the peak settings.
+	Finally, the fit parameters are extracted and saved for each detector in 3D arrays of \cppinline{float} (\cppinline{muonPeak}, see \textinline{include/types.h}), a first one for the mean arrival time of the muons, \cppinline{PeakTime}, a second for the height or strength of the peak, \cppinline{PeakHeight}, and a third one for the width of the peak, \cppinline{PeakWidth}. The width is on purpose chosen to be wider than the peak and defined as 6$\sigma$ of the gaussian fit, for a peak range being as given by Formula~\ref{eq:peakwindow}.
+	
+	\begin{equation}
+	\label{eq:peakwindow}
+		 [t^{peak}_{low};t^{pean}_{high}]  = [t^{peak}_{center}-3\sigma; t^{peak}_{center}+3\sigma]
+	\end{equation}
+	
+	For a finer analysis, it is advised to determine more precisely the width of the peak to exclude as much noise or background hits os possible. The same settings are applied to every partitions of the same detector. To determine which one of the detector's partitions is directly illuminated by the beam, the peak height of each partition is compared and the highest one is then used to define the peak settings.
+	
+	It is not possible to identify the particles causing the hits, hence muons, background gamma particles or even noise could be responsible of hits within the time window. To be able to account for this effect, the peak width extracted from the fit on the peak will also be used to define a fake time window, uncorrelated to the muon peak and in which a fake efficiency, contribution from both background and noise, will be measured. This window corresponds to the time range described in Formula~\ref{eq:fakewindow}.
+	
+	\begin{equation}
+	\label{eq:fakewindow}
+		 [t^{fake}_{low};t^{fake}_{high}]  = [600-6\sigma; 600]
+	\end{equation}
 	
 	\subsection{Data loop and histogram filling}
 	\label{app2:ssec:dataloop}
 	
-	3D arrays of histogram are created to store the data and display it on the DQM of GIF++ webDCS for the use of shifters. These histograms, presented in section~\ref{app2:sssec:ROOT}, are filled while looping on the data. Before starting the analysis loop, it is necessary to control the entry quality for the new file formats featuring \cppinline{QFlag}. If the \cppinline{QFlag} value for this entry shows that 1 TDC or more have a \cppinline{CORRUPTED} flag, then this event is discarded. The loss of statistics is low enough to be neglected. \cppinline{QFlag} is controled using the function \cppinline{IsCorruptedEvent()} defined in \textinline{src/utils.cc}. As explained in Appendix~\ref{app1:ssec:QFlag}, each digit of this integer represent a TDC flag that can be 1 or 2. Each 2 is the sign of a \cppinline{CORRUPTED} state. Then, the data is accessed entry by entry in the ROOT \cppinline{TTree} using \cppinline{RAWData} and each hit in the hit list is assigned to a detector channel and saved in the corresponding histograms. In the first part of the analysis, in which the loop over the ROOT file's content is performed, the different steps are:
+	3D arrays of histogram are created to store the data and display it on the DQM of GIF++ webDCS for the use of shifters. The dimensions correspond to the different layers held into the GIF++ infrastructure (trolleys \textinline{T} containing RPCs or \textit{slots} \textinline{S} each being divided into read-out partitions \textinline{p}). These histograms, presented in section~\ref{app2:sssec:ROOT}, are filled while looping on the data. Before starting the analysis loop, it is necessary to control the entry quality for the new file formats featuring \cppinline{QFlag}. If the \cppinline{QFlag} value for this entry shows that 1 TDC or more have a \cppinline{CORRUPTED} flag, then this event is discarded. The loss of statistics is low enough to be neglected. \cppinline{QFlag} is controled using the function \cppinline{IsCorruptedEvent()} defined in \textinline{src/utils.cc}. As explained in Appendix~\ref{app1:ssec:QFlag}, each digit of this integer represent a TDC flag that can be either  1 or 2. Each 2 is the sign of a \cppinline{CORRUPTED} state. Then, the data is accessed entry by entry in the ROOT \cppinline{TTree} using \cppinline{RAWData} and each hit in the hit list is assigned to a detector channel and saved in the corresponding histograms. As described in Source Code~\ref{cpp:hitsTOlists}, in the first part of the analysis, in which the loop over the ROOT file's content is performed, the different steps are:
 	
-	\paragraph{1- RPC channel assignment and control:} a check is done on the RPC channel extracted thanks to the mapping via the method \cppinline{Mapping::GetLink()}. If the channel is not initialised and is 0, or if the TDC channel was greater than 5127, the hit is discarded. This means there was a problem in the mapping. Often a mapping problem leads to the crash of the offline tool.
+	\paragraph{1- RPC channel assignment and control:} a check is done on the RPC channel extracted thanks to the mapping via the method \cppinline{Mapping::GetLink()}. If the channel is not initialised and is 0, or if the TDC channel is not contained in a range in between X000 and X127, X being the TDC ID, the hit is discarded. This means there was a problem in the mapping. Often a mapping problem leads to the failure of the offline tool.
 	
 	\paragraph{2- Creation of a \cppinline{RPCHit} object:} to easily get the trolley, slot and partition in which the hit has been assigned, this object is particularly helpful.
 	
-	\paragraph{3- General histograms are filled:} the hit is filled into the time distribution and the general hit distribution histograms, and if the arrival time is within the first \SI{100}{ns}, it is discarded and nothing else happens and the loop proceeds with the next hit in the list.
+	\paragraph{3- General histograms are filled:} the hit is filled into the time distribution, global hit distribution and time versus strip histograms, and if the arrival time is within the first \SI{100}{ns}, it is discarded and nothing else happens and the loop proceeds with the next hit in the list, going back to step 1.\\
 	
-	\paragraph{4- Multiplicity counter:}  the hit multiplicity counter of the corresponding detectors incremented.
+	\begin{code}
+	\begin{cppcode}
+for(int h = 0; h < data.TDCCh->size(); h++){
+    Uint tdcchannel = data.TDCCh->at(h);
+    Uint rpcchannel = RPCChMap->GetLink(tdcchannel);
+    float timestamp = data.TDCTS->at(h);
+    //Get rid of the hits in channels not considered in the mapping
+    if(rpcchannel != NOCHANNELLINK){
+        RPCHit hit(rpcchannel, timestamp, GIFInfra);
+        Uint T = hit.GetTrolley();
+        Uint S = hit.GetStation()-1;
+        Uint P = hit.GetPartition()-1;
+        //Fill the time and hit profiles
+        TimeProfile_H.rpc[T][S][P]->Fill(hit.GetTime());
+        HitProfile_H.rpc[T][S][P]->Fill(hit.GetStrip());
+        TimeVSChanProfile_H.rpc[T][S][P]->Fill(hit.GetStrip(),hit.GetTime());
+        //Reject the 100 first ns due to inhomogeneity of data
+        if(hit.GetTime() >= TIMEREJECT){
+            Multiplicity.rpc[T][S][P]++;
+            if(IsEfficiencyRun(RunType)){
+                //Define peak time range for efficiency calculation
+                float lowlimit_eff = PeakTime.rpc[T][S][P]
+                                   - PeakWidth.rpc[T][S][P];
+                float highlimit_eff = PeakTime.rpc[T][S][P]
+                                    + PeakWidth.rpc[T][S][P];
+                bool peakrange = (hit.GetTime() >= lowlimit_eff
+                               && hit.GetTime() < highlimit_eff);
+                //Fill hits inside of the defined peak and noise range
+                if(peakrange){
+                    BeamProfile_H.rpc[T][S][P]->Fill(hit.GetStrip());
+                    PeakHitList.rpc[T][S][P].push_back(hit);
+                } else {
+                    StripNoiseProfile_H.rpc[T][S][P]->Fill(hit.GetStrip());
+                    NoiseHitList.rpc[T][S][P].push_back(hit);
+                }
+                //Then define time range for fake efficiency
+                float highlimit_fake = BMTDCWINDOW;
+                float lowlimit_fake = highlimit_fake
+                                   - (highlimit_eff-lowlimit_eff);
+                bool fakerange = (hit.GetTime() >= lowlimit_fake
+                               && hit.GetTime() < highlimit_fake);
+                //Fill the hits inside of the fake window
+                if(fakerange){
+                    FakeHitList.rpc[T][S][P].push_back(hit);
+                }
+            } else {
+                //Fill the hits inside of the defined noise range
+                StripNoiseProfile_H.rpc[T][S][P]->Fill(hit.GetStrip());
+                NoiseHitList.rpc[T][S][P].push_back(hit);
+            }
+        }
+    }
+}
+	\end{cppcode}
+	\captionof{listing}{For each entry of the raw ROOT data file, the code loops over the list of channels and corresponding time stamps contained in branches \cppinline{TDC_channel} and \cppinline{TDC_TimeStamp} and constructs \cppinline{RPCHit} objects that are filled in the peak, noise and fake hit lists and also fills the time, hit, beam and noise profiles.}
+	\label{cpp:hitsTOlists}
+	\vspace{5mm}
+	\end{code}
 	
-	\paragraph{5-a- \textit{Effiency runs} - Is the hit within the peak window? :} if the peak is contained in the peak window previously defined in section~\ref{app2:ssec:beamwindow}, the hit is filled into the beam hit profile histogram of the corresponding chamber, added into the list of muon hits and increments the counter of \textit{in time} hits. The term \textit{in time} here refers to the hits that are likely to be muons by arriving in the expected time window. If the hit is outside of the peak window, it is filled into the noise profile histogram of the corresponding detector, added into the list of noise/gamma hits and increments the counter of noise/gamma hits.
+	\paragraph{4- Multiplicity counter:}  the hit multiplicity counter of the corresponding detectors is incremented.
+	
+	\paragraph{5-a-1 \textit{Effiency runs} - Is the hit within the peak window? :} if the hit is contained in the peak window previously defined by Formula~\ref{eq:peakwindow}, it is filled into the beam hit profile histogram of the corresponding chamber, added into the list of peak hits and increments the counter of \textit{in time} hits. The term \textit{in time} here refers to the hits that are likely to be muons by arriving in the expected time window. If the hit is outside of the peak window, it is filled into the noise profile histogram of the corresponding detector, added into the list of noise/gamma hits and increments the counter of noise/gamma hits.
+	
+	\paragraph{5-a-2 \textit{Effiency runs} - Is the hit within the fake window? :} if the hit is contained in the fake window previously defined by Formula~\ref{eq:fakewindow}, it is added into the list of fake hits. Counting the fake hits outside the peak window allows to estimate the probability to detect in time background or noise.
 	
 	\paragraph{5-b- \textit{Noise/gamma rate runs} - Noise histograms are filled:} the hit is filled into the noise profile histogram of the corresponding detector, added into the list of noise/gamma hits and increments the counter of noise/gamma hits.\\
 	
-	After the loop on the hit list of the entry is over, the next step is too clusterize the 3D lists filled in the previous steps. A 3D loop is then started over the active trolley, slot and RPC partitions to access these objects. Each \cppinline{NoiseHitList} and \cppinline{MuonHitList}, in case of efficiency run, are clusterized as decribed in section~\ref{app2:ssec:RPCCluster}. There corresponding cluster size and multiplicity histograms are filled at the end of the clustering process. Then, the effiency histogram is filled in case of effieincy run. The selection is simply made by checking whether the RPC detected signals in the peak window during this event. Nevertheless, it is useful to highlight that at this level, it is not possible yet to discriminate in between a muon hit and noise or gamma hit. Thus, \cppinline{MuonCSize_H}, \cppinline{MuonCMult_H} and \cppinline{Efficiency0_H} are subjected to noise and gamma contamination. This contamination will be estimated and corrected at the moment the results will be written into output CSV files. Finally, the loop ends on the filling of the general hit multiplicity histogram.
+	\begin{code}
+	\begin{cppcode}
+for(Uint tr = 0; tr < GIFInfra->GetNTrolleys(); tr++){
+    Uint T = GIFInfra->GetTrolleyID(tr);
+    for(Uint sl = 0; sl < GIFInfra->GetNSlots(tr); sl++){
+        Uint S = GIFInfra->GetSlotID(tr,sl) - 1;
+        Uint  nStripsPart   = GIFInfra->GetNStrips(tr,sl);
+        string rpcID = GIFInfra->GetName(tr,sl);
+        for (Uint p = 0; p < GIFInfra->GetNPartitions(tr,sl); p++){
+            //Clusterize noise/gamma data
+            sort(NoiseHitList.rpc[T][S][p].begin(),
+                 NoiseHitList.rpc[T][S][p].end(),SortHitbyTime);
+            Clusterization(NoiseHitList.rpc[T][S][p],
+                         NoiseCSize_H.rpc[T][S][p],NoiseCMult_H.rpc[T][S][p]);
+            //Clusterize muon data and fill efficiency histograms based on
+            //the content of peak and fake hit vectors if efficiency run
+            if(IsEfficiencyRun(RunType)){
+                //Peak data
+                sort(PeakHitList.rpc[T][S][p].begin(),
+                     PeakHitList.rpc[T][S][p].end(),SortHitbyTime);
+                Clusterization(PeakHitList.rpc[T][S][p],
+                           PeakCSize_H.rpc[T][S][p],PeakCMult_H.rpc[T][S][p]);
+                if(PeakHitList.rpc[T][S][p].size() > 0)
+                    EfficiencyPeak_H.rpc[T][S][p]->Fill(DETECTED);
+                else EfficiencyPeak_H.rpc[T][S][p]->Fill(MISSED);
+
+                //Fake data
+                if(FakeHitList.rpc[T][S][p].size() > 0)
+                    EfficiencyFake_H.rpc[T][S][p]->Fill(DETECTED);
+                else EfficiencyFake_H.rpc[T][S][p]->Fill(MISSED);
+            }
+            //Save and reinitialise the hit multiplicity
+            HitMultiplicity_H.rpc[T][S][p]->Fill(Multiplicity.rpc[T][S][p]);
+            Multiplicity.rpc[T][S][p] = 0;
+        }
+    }
+}
+	\end{cppcode}
+	\captionof{listing}{Loops to clusterize the hit lists and fill efficiency and multiplicity histograms.}
+	\label{cpp:clusterization}
+	\vspace{5mm}
+	\end{code}
+	
+	After the loop on the hit list of the entry is over, the next step is too clusterize the 3D lists filled in the previous steps, as displayed in Source Code~\ref{cpp:clusterization}. A 3D loop is then started over the active trolley, slot and RPC partitions to access these objects. Each \cppinline{NoiseHitList} and \cppinline{PeakHitList}, in case of efficiency run, are clusterized as decribed in section~\ref{app2:ssec:RPCCluster}. There corresponding cluster size and multiplicity histograms are filled at the end of the clustering process.
+	
+	Then, the peak and fake effiency histograms are filled in case of efficiency run. The selection is simply made by checking whether the RPC detected signals in the peak window or/and fake window during this event. In the case a hit is recorded in either of both time windows, the histogram is filled with 1. On the contrary, the histogram is filled with 0. Finally, it is useful to remind that at this level, it is not possible yet to discriminate in between a muon hit and noise or gamma hit. the histograms \cppinline{PeakCSize_H}, \cppinline{PeakCMult_H} and \cppinline{EfficiencyPeak_H} are then subjected to noise and background contamination. This contamination is estimated thanks to the fake efficiency histogram \cppinline{EfficiencyFake_H} and corrected at the moment the results will be written into output CSV files and the histograms \cppinline{MuonCSize_H}, \cppinline{MuonCMult_H} and \cppinline{Efficiency0_H} will be filled. The correction will be explained in Section~\ref{app2:sssec:effcorr}.
+	
+	Finally, the loop ends on the filling of the general hit multiplicity histogram of each detector partitions.
 	
 	\subsection{Results calculation}
 	\label{app2:ssec:rate}
@@ -689,15 +800,8 @@ RunParameters->GetEntry(0);
 		\includegraphics[width = 0.7\linewidth]{fig/app1/No_Qflag_nhits_KODEL.pdf}
 		\caption{\label{fig:corrupted} The effect of the quality flag is explained by presenting the reconstructed hit multiplicity of a data file without \cppinline{Quality_flag}. The artificial high content of bin 0 is the effect of corrupted data.}
 	\end{figure}
-	
-	To analyse old data format files, not containing any quality flag, it is needed to estimate the amount of corrupted data via a fit as the corrupted data will always fill events with a fake "0 multiplicity". Indeed, as no hits were stored in the DAQ ROOT files, these events artificially contribute to fill the bin corresponding to a null multiplicity, as shown in Figure~\ref{fig:corrupted}. In the case the mean of the hit multiplicity distribution is high, the contribution of the corrupted data can easily be evaluated for later correction by comparing the level of the bin at multiplicity 0 and of a skew fit curve that should indicate a value consistent with 0. A skew fit has been chosen over a Poisson fit as it was giving better results for lower mean multiplicity  values. Nevertheless, for low irradiation cases, as explained in Appendix~\ref{app1:ssec:QFlag}, the hit multiplicity distribution mean is, on the contrary, rather small and the probability to record events without hits can't be considered small anymore, leading to a difficult and non-reliable estimation of the corruption. As can be seen in Source Code~\ref{cpp:rate_norm}, conditions have been applied to prevent bad fits and wrong corruption estimation in cases where :
-
-	\begin{itemize}
-		\item[•] The difference in between the data for multiplicity 1 and the corresponding fit value should be lower than 1\% of the total amount of data : $\frac{\vert n_{m=1} - sk(1)\vert}{N_{tot}} < 0.01$ where $n_{m=1}$ is the number of entries with multiplicity 1, $sk(1)$ the value of the skew fit, as defined by Formula~\ref{for:skew}, for multiplicity 1 and $N_{tot}$ the total number of entries.
-		\item[•] The amount of data contained in the multiplicity 0 bin should not exceed 40\% : $\frac{n_{m=0}}{N_{tot}} \leq 0.4$ where $n_{m=0}$ is the number of entries with multiplicity 0. This number has been determined to be the maximum to be able to separate the excess of data due to corruption from the hit multiplicity distribution.
-	\end{itemize}
-	
-	Those 2 conditions need to be fulfilled to estimate the corruption of old data format files. If the fit was successful, the  level of corruption is written in \textinline{Offline-Corrupted.csv} and the number of corrupted entries, refered as the integer \cppinline{nEmptyEvent}, is subtracted from the total number of entries when the rate normalisation factor is computed as explicited in Source Code~\ref{cpp:rate_norm}. Note that for new data format files, the number of corrupted entries being set to 0, the definition of \cppinline{rate_norm} stays valid.\\
+		
+	The hit rate normalization corresponds to translating a number of hits recorded during the full duration of data taking into a rate per unit area value. In order to achieve such result, it is first needed to know the total integrated time and the active area of the read-out partition on which the hits are counted. The total integrated is simply the noise window used for each event multiplied by the total number of events stored in the data file.\\
 	
 	\begin{code}
 	\begin{cppcode}
@@ -721,11 +825,9 @@ if(!isNewFormat){
 	double difference = TMath::Abs(dataValue - fitValue);
 	double fitTOdataVSentries_ratio = difference / (double)nEntries;
 	bool isFitGOOD = fitTOdataVSentries_ratio < 0.01;
-
 	double nSinglehit = (double)HitMultiplicity_H.rpc[T][S][p]->GetBinContent(1);
 	double lowMultRatio = nSinglehit / (double)nEntries;
 	bool isMultLOW = lowMultRatio > 0.4;
-
 	if(isFitGOOD && !isMultLOW){
 		nEmptyEvent = HitMultiplicity_H.rpc[T][S][p]->GetBinContent(1);
 		nPhysics = (int)SkewFit->Eval(0,0,0,0);
@@ -733,10 +835,8 @@ if(!isNewFormat){
 		nEmptyEvent = nEmptyEvent-nPhysics;
 	}
 }
-
 double corrupt_ratio = 100.*(double)nEmptyEvent / (double)nEntries;
 outputCorrCSV << corrupt_ratio << '\t';
-
 float rate_norm = 0.;
 float stripArea = GIFInfra->GetStripGeo(tr,sl,p);	
 	
@@ -746,19 +846,30 @@ if(IsEfficiencyRun(RunType)){
 } else
 	rate_norm = (nEntries-nEmptyEvent)*RDMNOISEWDW*1e-9*stripArea;
 	\end{cppcode}
-	\captionof{listing}{Definition of the rate normalisation variable. It takes into account the number of non corrupted entries and the time window used for noise calculation, to estimate the total integrated time, and the strip active area to express the result as rate per unit area.}
+	\captionof{listing}{Definition of the rate normalisation variable. It takes into account the number of non corrupted entries and the time window used for noise and background calculation, to estimate the total integrated time, and the strip active area to express the result as rate per unit area.}
 	\label{cpp:rate_norm}
 	\vspace{5mm}
 	\end{code}
 	
+	Nevertheless, to analyse old data format files, not containing any quality flag, it is needed to estimate the amount of corrupted data via a fit as the corrupted data will always fill events with a fake "0 multiplicity". Indeed, as no hits were stored in the DAQ ROOT files, these events artificially contribute to fill the bin corresponding to a null multiplicity, as shown in Figure~\ref{fig:corrupted}. In the case the mean of the hit multiplicity distribution is high, the contribution of the corrupted data can easily be evaluated for later correction by comparing the level of the bin at multiplicity 0 and of a skew fit curve that should indicate a value consistent with 0. A skew fit has been chosen over a Poisson fit as it was giving better results for lower mean multiplicity  values. Nevertheless, for low irradiation cases, as explained in Appendix~\ref{app1:ssec:QFlag}, the hit multiplicity distribution mean is, on the contrary, rather small and the probability to record events without hits can't be considered small anymore, leading to a difficult and non-reliable estimation of the corruption.
+	
+	As can be seen in Source Code~\ref{cpp:rate_norm}, conditions have been applied to prevent bad fits and wrong corruption estimation in cases where :
+
+	\begin{itemize}
+		\item[•] The difference in between the data for multiplicity 1 and the corresponding fit value should be lower than 1\% of the total amount of data : $\frac{\vert n_{m=1} - sk(1)\vert}{N_{tot}} < 0.01$ where $n_{m=1}$ is the number of entries with multiplicity 1, $sk(1)$ the value of the skew fit, as defined by Formula~\ref{eq:skew}, for multiplicity 1 and $N_{tot}$ the total number of entries.
+		\item[•] The amount of data contained in the multiplicity 0 bin should not exceed 40\% of the total data content: $\frac{n_{m=0}}{N_{tot}} \leq 0.4$ where $n_{m=0}$ is the number of entries with multiplicity 0. This number has been determined to be the maximum to be able to separate the excess of data due to corruption from the hit multiplicity distribution.
+	\end{itemize}
+	
+	Those 2 conditions need to be fulfilled to estimate the corruption of old data format files. If the fit was successful, the  level of corruption is written in \textinline{Offline-Corrupted.csv} and the number of corrupted entries, refered as the integer \cppinline{nEmptyEvent}, is subtracted from the total number of entries when the rate normalisation factor is computed as explicited in Source Code~\ref{cpp:rate_norm}. Note that for new data format files, the number of corrupted entries being set to 0, the definition of \cppinline{rate_norm} stays valid.
+	
 		\subsubsection{Rate and activity}
 		\label{app2:sssec:rateact}
 		
-	At this point, the strip rate histograms, \cppinline{StripNoiseProfile_H.rpc[T][S][p]}, only contain an information about the total number of noise or rate hits each channel received during the data taking. As described in Source Code~\ref{cpp:striprateact}, a loop on the strip channels will be used to normalise the content of the rate distribution histogram for each detector partitions. The initial number of hits recorded for a given bin will be extracted and 2 values will be computed:
+	At this point, the strip rate histograms, \cppinline{StripNoiseProfile_H.rpc[T][S][p]}, only contain an information about the total number of noise or background rate hits each channel received during the data taking. As described in Source Code~\ref{cpp:striprateact}, a loop on the strip channels will be used to normalise the content of the rate distribution histogram for each detector partitions. The initial number of hits recorded for a given bin will be extracted and 2 values are computed.
 
 	\begin{itemize}
-		\item[•] the strip rate, defined as the number of hits recorded in the bin normalised like described in the previous section, using the variable \cppinline{rate_norm}, and
-		\item[•] the strip activity, defined as the number of hits recorded in the bin normalised to the average number of hits per bin contained in the partition histogram, using the variable \cppinline{averageNhit}. This value provides an information on the homogeneity of the detector response to the gamma background or of the detector noise. An activity of 1 corresponds to an average response. Above 1, the channel is more active than the average and bellow 1, the channel is less active.
+		\item[•] The strip hit rate, defined as the number of hits recorded in the bin normalised like described in the previous section, using the variable \cppinline{rate_norm} and the corresponding bin in histogram \cppinline{StripNoiseProfile_H.rpc[T][S][p]} is updated, and
+		\item[•] the strip activity, defined as the number of hits recorded in the bin normalised to the average number of hits per bin contained in the partition histogram, using the variable \cppinline{averageNhit}. This value provides an information on the homogeneity of the detector response to the gamma background or of the detector noise. An activity of 1 corresponds to an average response. Above 1, the channel is more active than the average and bellow 1, the channel is less active. This value is filled in the histograms \cppinline{StripActivity_H.rpc[T][S][p]}.
 	\end{itemize}
 	
 	\begin{code}
@@ -781,7 +892,7 @@ for(Uint st = 1; st <= nStripsPart; st++){
 	\vspace{5mm}
 	\end{code}
 	
-	On each detector partitions, which are readout by a single FEE, all the channels are not processed by the same chip. Each chip can give a different noise response and thus, histograms using a chip binning are used to investigate chip related noise behaviours. The average values of the strip rate or activity grouped into a given chip are extracted using the using the function \cppinline{GetChipBin()} and stored in dedicated histograms as described in Source Codes~\ref{cpp:chipbin} and \ref{cpp:chiprateact} respectively.\\
+	On each detector partitions, which are read-out by a single FEE, all the channels are not processed by the same chip. Each chip can give a different noise response and hence, histograms using a chip binning are used to investigate chip related noise behaviours. The average values of the strip rate or activity grouped into a given chip are extracted using the using the function \cppinline{GetChipBin()} and stored in dedicated histograms as described in Source Codes~\ref{cpp:chipbin} and \ref{cpp:chiprateact} respectively.\\
 	
 	\begin{code}
 	\begin{cppcode}
@@ -821,7 +932,7 @@ for(Uint ch = 0; ch < (nStripsPart/NSTRIPSCHIP); ch++){
 	\vspace{5mm}
 	\end{code}
 	
-	The activity variable is used to evaluate the homogeneity of the detector response to background or of the detector noise. The homogeneity $h_p$ of each detector partition can be evaluated using the formula $h_p = exp(-\sigma^{R}_p/\langle R\rangle_p)$, where $\langle R\rangle_p$ is the partition mean rate and $\sigma^{R}_p$ is the rate standard deviation calculated over the partition channels. The more homogeneously the rates are distributed and the smaller will $\sigma^{R}_p$ be, and the closer to 1 will $h_p$ get. On the contrary, if the standard deviation of the channel's rates is large, $h_p$ will rapidly get to 0. This value is saved into histograms as shown in Source Code~\ref{cpp:homogeneity} and could in the future be used to monitor through time, once extracted, the evolution of every partition homogeneity. This could be of great help to understand the apparition of eventual hot spots due to ageing of the chambers subjected to high radiation levels. The monitored homogeneity information could then be combined with a monitoring of the activity of each individual channel in order to have a finer information. Monitoring tools have been suggested and need to be developped for this purpose.\\
+	The activity variable is then used to evaluate the homogeneity of the detector response to background or of the detector noise. The homogeneity $h_p$ of each detector partition can be evaluated using the formula $h_p = exp(-\sigma^{R}_p/\langle R\rangle_p)$, where $\langle R\rangle_p$ is the partition mean rate and $\sigma^{R}_p$ is the rate standard deviation calculated over the partition channels. The more homogeneously the rates are distributed and the smaller will $\sigma^{R}_p$ be, and the closer to 1 will $h_p$ get. On the contrary, if the standard deviation of the channel's rates is large, $h_p$ will rapidly get to 0. This value is saved into histograms as shown in Source Code~\ref{cpp:homogeneity} and could in the future be used to monitor through time, once extracted, the evolution of every partition homogeneity. This could be of great help to understand the apparition of eventual hot spots due to ageing of the chambers subjected to high radiation levels. The monitored homogeneity information could then be combined with a monitoring of the activity of each individual channel in order to have a finer information. Monitoring tools have been suggested and need to be developped for this purpose.\\
 	
 	\begin{code}
 	\begin{cppcode}
@@ -843,21 +954,123 @@ ChipHomogeneity_H.rpc[T][S][p]->GetYaxis()->SetRangeUser(0.,1.);
 	\label{cpp:homogeneity}
 	\vspace{5mm}
 	\end{code}
+	
+		\subsubsection{Correction of muon performance parameters}
+		\label{app2:sssec:effcorr}
+		
+	By previously filling the peak and fake efficiency histograms as well as the peak and noise cluster size and cluster multiplicity it is possible to compute the efficiency of muon detection, the muon cluster size, as well as the muon cluster multiplicity. This calculation is based on independant event probabilities. The independant events that can be measured in the data are, "$\mu$: A muon was detected" and "$\gamma$: noise or background was detected". It is trivial to realize that the data in the peak window corresponds to the intersection of both events, "$\mu\cup\gamma$: a muon or noise or background was detected". This way, the efficiency measured in the peak window is actually the probability of the event $\mu\cup\gamma$ while the efficiency in the fake window is then the probability of the event $\gamma$ alone. Assuming that $\mu$ and $\gamma$ are indenpendant, the probability or their intersection can be written as in Formula~\ref{eq:intersection}.
+	
+	\begin{equation}
+	\label{eq:intersection}
+	P(\mu\cup\gamma) = P(\mu) + P(\gamma) - P(\mu)P(\gamma)
+	\end{equation}
+	
+	Isolating the probability of the event $\mu$ alone, actually corresponding to the muon detection efficiency, can be then calculated with the quantities that are contained in the peak and fake histogram as in Formula~\ref{eq:muoneff}.
+	
+	\begin{equation}
+	\label{eq:muoneff}
+	P(\mu) = \frac{P(\mu\cup\gamma) - P(\gamma)}{1 - P(\gamma)} \quad \Leftrightarrow \quad \epsilon_{\mu} = \frac{\epsilon_{peak} - \epsilon_{fake}}{1 - \epsilon_{fake}}
+	\end{equation}
+	
+	\begin{code}
+	\begin{cppcode}
+if(IsEfficiencyRun(RunType)){
+    //Evaluate the probabilities for each detection case with errors
+    float P_peak = EfficiencyPeak_H.rpc[T][S][p]->GetMean();
+    float P_fake = EfficiencyFake_H.rpc[T][S][p]->GetMean();
+    float P_muon = (P_peak-P_fake)/(1-P_fake);
+    float P_both = P_muon*P_fake;
+    float P_peak_err = sqrt(P_peak*(1.-P_peak)/nEntries);
+    float P_fake_err = sqrt(P_fake*(1.-P_fake)/nEntries);
+    float P_muon_err = sqrt(P_muon*(1.-P_muon)/nEntries);
+    float P_both_err = sqrt(P_both*(1.-P_both)/nEntries);
+    Efficiency0_H.rpc[T][S][p]->Fill("muon efficiency",P_muon);
+    Efficiency0_H.rpc[T][S][p]->Fill("muon efficiency error",P_muon_err);
+
+    //For each case get the fractionof events it represents
+    float F_both = P_both/P_peak;
+    float F_muon = (P_muon-P_both)/P_peak;
+    float F_fake = (P_fake-P_both)/P_peak;
+    float F_both_err = F_both*(P_both_err/P_both+P_peak_err/P_peak);
+    float F_muon_err = (P_muon_err+F_both_err+F_muon*P_peak_err)/P_peak;
+    float F_fake_err = (P_fake_err+F_both_err+F_fake*P_peak_err)/P_peak;
+    //Get the measured cluster sizes correcting using the fractions
+    float CS_peak = PeakCSize_H.rpc[T][S][p]->GetMean();
+    float CS_fake = NoiseCSize_H.rpc[T][S][p]->GetMean();
+    float CS_peak_err = 2*PeakCSize_H.rpc[T][S][p]->GetStdDev()
+                        /sqrt(PeakCSize_H.rpc[T][S][p]->GetEntries());
+    float CS_fake_err = 2*NoiseCSize_H.rpc[T][S][p]->GetStdDev()
+                        /sqrt(NoiseCSize_H.rpc[T][S][p]->GetEntries());
+    float CS_muon = (CS_peak-CS_fake*(F_fake+F_both/2.))/(F_muon+F_both/2.);
+    float CS_muon_err = (CS_peak_err
+                         +(F_fake+F_both/2.)*CS_fake_err
+                         +CS_muon*F_muon_err
+                         +CS_fake*(F_fake_err+F_both_err/2.))
+                        /(F_muon+F_both/2.);
+    MuonCSize_H.rpc[T][S][p]->Fill("muon cluster size",CS_muon);
+    MuonCSize_H.rpc[T][S][p]->Fill("muon cluster size error",CS_muon_err);
+
+    //Finally get the muon cluster multiplicity as peak-fake
+    float noiseWindow = BMTDCWINDOW - TIMEREJECT - 2*PeakWidth.rpc[T][S][p];
+    float peakWindow = 2*PeakWidth.rpc[T][S][p];
+    float CM_peak = PeakCMult_H.rpc[T][S][p]->GetMean();
+    float CM_fake = NoiseCMult_H.rpc[T][S][p]->GetMean()*peakWindow/noiseWindow;
+    float CM_muon = CM_peak-CM_fake;
+    float CM_peak_err = 2*PeakCMult_H.rpc[T][S][p]->GetStdDev()
+                        /sqrt(PeakCMult_H.rpc[T][S][p]->GetEntries());
+    float CM_fake_err = 2*NoiseCMult_H.rpc[T][S][p]->GetStdDev()
+                        /sqrt(NoiseCMult_H.rpc[T][S][p]->GetEntries())
+                        * peakWindow/noiseWindow;
+    float CM_muon_err = CM_peak_err + CM_fake_err;
+    MuonCMult_H.rpc[T][S][p]->Fill("muon cluster multiplicity",CM_muon);
+    MuonCMult_H.rpc[T][S][p]->Fill("muon cluster multiplicity error",CM_muon_err);
+
+    //Write in the output CSV file
+    outputEffCSV << P_muon << '\t' << P_muon_err << '\t'
+                 << CS_muon << '\t' << CS_muon_err << '\t'
+                 << CM_peak << '\t' << CM_peak_err << '\t';
+}
+	\end{cppcode}
+	\captionof{listing}{Analysis algorithm to compute muon efficiency, cluster size and multiplicity knowing the peak and fake efficiency, cluster size and multiplicity.}
+	\label{cpp:effcorr}
+	\vspace{5mm}
+	\end{code}
+	
+	 When it comes to the computation of the muon cluster size, a similar reasoning than for the muon detection efficiency computation can be used. Indeed, using Formula~\ref{eq:intersection}, out of the total number of events where a muon or noise or background can be expressed as a sum of fractions of events $\mu$, $\gamma$ and $\mu\cap\gamma$, the later being the event corresponding to the detection of both events simultaneously, as showed in Formula~\ref{eq:fractions}. The fractions can be expressed as a ratio of the probabilities already known, using this time the notation $P(\mu\cap\gamma)$ instead of $P(\mu)P(\gamma)$. This choice was made to make the code a little clearer.
+	
+	\begin{equation}
+	\label{eq:fractions}
+	1 = F_{\mu} + F_{\gamma} + F_{\mu\cap\gamma} = \frac{P(\mu)-P(\mu\cap\gamma)}{P(\mu\cup\gamma)} + \frac{P(\gamma)-P(\mu\cap\gamma)}{P(\mu\cup\gamma)} + \frac{P(\mu\cap\gamma)}{P(\mu\cup\gamma)}
+	\end{equation}
+	
+	Each ones of these events have an associated cluster size. The cluster size of the noise or background already is measured thanks to the clusterization of the noise hit list. In the same way, the peak cluster size corresponds to the cluster measured for the event $\mu\cup\gamma$. Nevertheless, the cluster of the event $\mu\cap\gamma$ is not known but it can be assumed that the probability of having more than 1 noise or background cluster contained in the peak window is very low if the peak wondow duration is compared to the background rate that rarely seen to go beyond \SIrate{2000} \textbf{[to be confirmed]}. Hence, the cluster size that is likely to be measured in such kind of event where both a muon and a background or noise cluster was recorded is the average of the muon cluster size and the background cluster size. The cluster size $C_{\mu\cup\gamma}$ probed in the peak can then be written as in Formula~\ref{eq:peakCS} and leads to the expression for the muon cluster size $C_{\mu}$ written in Formula~\ref{eq:muonCS}.
+	
+	\begin{equation}
+	\label{eq:peakCS}
+	C_{\mu\cup\gamma} = C_{\mu}F_{\mu} + C_{\gamma}F_{\gamma} + \frac{C_{\mu}+C_{\gamma}}{2} \times F_{\mu\cap\gamma}
+	\end{equation}
+	
+	\begin{equation}
+	\label{eq:muonCS}
+	C_{\mu} = \frac{C_{\mu\cup\gamma} - C_{\gamma}\times(F_{\gamma}+F_{\mu\cap\gamma}/2)}{F_{\mu}+F_{\mu\cap\gamma}/2}
+	\end{equation}
+	
+	Finally, the computation of the muon cluster multiplicity comes quite naturally as the cluster multiplicity measured in the peak to which is subtracted the background cluster multiplpicity taken in a window of similar width. These calculations, as well as the error propagation that was not explicited here, can be seen going through Source Code~\ref{cpp:effcorr}.
 		
 		\subsubsection{Strip masking tool}
 		\label{app2:sssec:mask}
 	
 	The offline tool is automatically called at the end of each data taking to analyse the data and offer the shifter DQM histograms to control the data quality. After the histograms have been published online in the DQM page, the shifter can decide to mask noisy or dead channels that will contribute to bias the final rate calculation by editing the mask column of \textinline{ChannelsMapping.csv} as can be seen in Figure~\ref{fig:maskingtool}.
 	
+	From the code point of view, the function \cppinline{GetTH1Mean()} is used to retrieve the mean rate partition by partition after the rates have been calculated strip by strip and filled into the histograms \cppinline{StripNoiseProfile_H.rpc[T][S][p]}, as described through Source Code~\ref{cpp:th1mean}.
+	
+	Once the mask for each rejected channel has been updated, the shifter can manually run the offline tool again to update the DQM plots, now including the masked strips, as well the rate results written in the output CSV file \textinline{Offline-Rate.csv}. If not done during the shifts, the strip masking procedure needs to be carefully done by the person in charge of data analysis on the scans that were selected to produce the final results.
+	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width = \linewidth]{fig/app2/MaskingTool.png}
 		\caption{\label{fig:maskingtool} Display of the maskting tool page on the webDCS. The window on the left allows the shifter to edit \textinline{ChannelsMapping.csv}. To mask a channel, it only is needed to set the 3rd field corresponding to the strip to mask to 0. It is not necessary for older mapping file formats to add a 1 for each strip that is not masked as the code is versatile and the default behaviour is to consider missing mask fields as active strips. The effect of the mask is directly visible for noisy channels as the corresponding bin turns red. The global effect of masking strips will be an update of the rate value showed on the histogram that will take into consideration the rejected channels.}
 	\end{figure}
-	
-	From the code point of view, the function \cppinline{GetTH1Mean()} is used to retrieve the mean rate partition by partition after the rates have been calculated strip by strip and filled into the histograms \cppinline{StripNoiseProfile_H.rpc[T][S][p]}, as described through Source Code~\ref{cpp:th1mean}.
-	
-	Once the mask for each rejected channel has been updated, the shifter can manually run the offline tool again to update the DQM plots, now including the masked strips, as well the rate results written in the output CSV file \textinline{Offline-Rate.csv}. If not done during the shifts, the strip masking procedure needs to be carefully done by the person in charge of data analysis on the scans that were selected to produce the final results.\\
 	
 	\begin{code}
 	\begin{cppcode}
@@ -886,25 +1099,12 @@ float GetTH1Mean(TH1* H){
 		\subsubsection{Output CSV files filling}
 		\label{app2:sssec:CSVoutput}
 		
-	All the histograms have been filled. Parameters will then be extracted from them to compute the final results that will later be used to produce plots. Once the results have been computed, the very last step of the offline macro is to write these values into the corresponding CSV outputs. Aside of the file \textinline{Offline-Corrupted.csv}, 2 CSV files are being written by the macro \cppinline{OfflineAnalysis()}, \textinline{Offline-Rates.csv} and \textinline{Offline-L0-EffCl.csv} that respectively contain information about noise or gamma rates, cluster size and multiplicity, and about level 0 reconstruction of the detector efficiency, muon cluster size and multiplicity. Details on the computation and file writing are respectively given in Sources Codes~\ref{cpp:ratecsv} and \ref{cpp:effcsv}.
-	
-	\paragraph{Noise/gamma background variables} are computed and written in the output file for each detector partitions. A detector average of the hit and cluster rate is also provided, as shown through Sources Code~\ref{cpp:ratecsv}. The variables that are written for each partition are:
-	
-	\begin{itemize}
-		\item[•] The mean partition hit rate per unit area, \cppinline{MeanPartRate}, that is extracted from the histogram \cppinline{StripNoiseProfile_H} as the mean value along the y-axis, as described in section~\ref{app2:sssec:mask}. No error is recorded for the hit rate as this is considered a single measurement. No statistical error can be associated to it and the systematics are unknown.
-		\item[•] The mean cluster size, \cppinline{cSizePart}, is extracted from the histogram \cppinline{NoiseCSize_H} and it's statistical error, \cppinline{cSizePartErr}, is taken to be $2\sigma$ of the total distribution.
-		\item[•] The mean cluster multiplicity per trigger, \cppinline{cMultPart}, is extracted from the histogram \cppinline{NoiseCMult_H} and it's statistical error, \cppinline{cMultPartErr}, is taken to be $2\sigma$ of the total distribution. It is important to point to the fact that this variable gives an information that is dependent on the buffer window width used for each trigger for the calculation.
-		\item[•] The mean cluster rate per unit area, \cppinline{ClustPartRate}, is defined as the mean hit rate normalised to the mean cluster size and it's statistical error, \cppinline{ClustPartRateErr}, is then obtained using the relative statistical error on the mean cluster size.
-	\end{itemize}
-		
 	\begin{code}
 	\begin{cppcode}
 for (Uint tr = 0; tr < GIFInfra->GetNTrolleys(); tr++){
 	Uint T = GIFInfra->GetTrolleyID(tr);
-
 	for (Uint sl = 0; sl < GIFInfra->GetNSlots(tr); sl++){
 		Uint S = GIFInfra->GetSlotID(tr,sl) - 1;
-
 		float MeanNoiseRate = 0.;
 		float ClusterRate   = 0.;
 		float ClusterSDev   = 0.;
@@ -938,13 +1138,11 @@ for (Uint tr = 0; tr < GIFInfra->GetNTrolleys(); tr++){
 				? 0.
 				: ClusterRate*cSizePartErr/cSizePart;
 		}
-		
 		MeanNoiseRate /= RPCarea;
 		ClusterRate   /= RPCarea;
 		ClusterSDev   /= RPCarea;
-
-		outputRateCSV << MeanNoiseRate << '\t'
-			<< ClusterRate << '\t' << ClusterSDev << '\t';
+		outputRateCSV << MeanNoiseRate << '\t' << ClusterRate << '\t'
+		              << ClusterSDev << '\t';
 	}
 }
 	\end{cppcode}
@@ -952,82 +1150,29 @@ for (Uint tr = 0; tr < GIFInfra->GetNTrolleys(); tr++){
 	\label{cpp:ratecsv}
 	\vspace{5mm}
 	\end{code}
+		
+	All the histograms have been filled. Parameters will then be extracted from them to compute the final results that will later be used to produce plots. Once the results have been computed, the very last step of the offline macro is to write these values into the corresponding CSV outputs. Aside of the file \textinline{Offline-Corrupted.csv}, 2 CSV files are being written by the macro \cppinline{OfflineAnalysis()}, \textinline{Offline-Rates.csv} and \textinline{Offline-L0-EffCl.csv} that respectively contain information about noise or gamma rates, cluster size and multiplicity, and about level 0 reconstruction of the detector efficiency, muon cluster size and multiplicity. Details on the computation and file writing are respectively given in Sources Codes~\ref{cpp:ratecsv} and \ref{cpp:effcorr}.
 	
-	\paragraph{Muon performance variables} are computed and written in the output file for each detector partitions as shown through Sources Code~\ref{cpp:effcsv}. The variables that are written for each partition are:
+	\paragraph{Noise/gamma background variables} are computed and written in the output file for each detector partitions. A detector average of the hit and cluster rate is also provided, as shown through Sources Code~\ref{cpp:ratecsv}. The variables that are written for each partition are:
 	
 	\begin{itemize}
-		\item[•] The muon efficiency, \cppinline{eff}, extracted from the histogram \cppinline{Efficiency0_H}. It is reminded that this offline tool doesn't include any tracking algorithm to identify muons from the beam and only relies on the hits arriving in the time window corresponding to the beam time. The content of the efficiency histogram is thus biased by the noise/gamma background contribution into this window and is thus corrected by estimating the muon data content in the peak region knowing the noise/gamma content in the rate calculation region. Both time windows being different, the choice was made to normalise the noise/gamma background calculation window to it's equivalent beam window in order to have comparable values using the variable \cppinline{windowRatio}. Finally, to estimate the data ratio in the peak region, the variable \cppinline{DataRatio} is defined as the ratio in between the estimated mean cluster multiplicity of the muons in the peak region, \cppinline{MuonCM}, and of the total mean cluster multiplicity in the peak region, \cppinline{PeakCM}. \cppinline{MuonCM} is itself defined as the difference in between the total mean cluster multiplicity in the peak region and the normalised mean noise/gamma cluster multiplicity calculated outside of the peak region. The statistical error related to the efficiency, \cppinline{eff_err}, is computed using a binomial distribution, as the efficiency measure the probability of "success" and "failure" to detect muons.
-		\item[•] The mean muon cluster size, \cppinline{MuonCS}, is calculated using the total mean cluster size and multiplicity in the peak region, respectively extracted from histograms \cppinline{MuonCSize_H} and \cppinline{MuonCMult_H}, the noise/gamma background mean cluster size and normalised multiplicity, extracted from \cppinline{NoiseCSize_H} and \cppinline{NoiseCMult_H}, and of the estimated muon cluster multiplicity \cppinline{MuonCM} previously explicited. The associated statistical error, \cppinline{MuonCM_err}, is calculated using the propagation of errors of the mentioned variables.
-		\item[•] The mean muon cluster multiplicity in the peak region, \cppinline{MuonCM}, explicited above whose statistical error, \cppinline{MuonCM_err}, is the sum of statistical error associated to the total mean cluster multiplicity in the peak reagion, \cppinline{PeakCM_err}, and of the mean noise/gamma cluster size, \cppinline{NoiseCM_err}.
+		\item[•] The mean partition hit rate per unit area, \cppinline{MeanPartRate}, that is extracted from the histogram \cppinline{StripNoiseProfile_H} as the mean value along the y-axis, as described in section~\ref{app2:sssec:mask}. No error is recorded for the hit rate as this is considered a single measurement. No statistical error can be associated to it and the systematics are unknown.
+		\item[•] The mean cluster size, \cppinline{cSizePart}, is extracted from the histogram \cppinline{NoiseCSize_H} and it's statistical error, \cppinline{cSizePartErr}, is taken to be $2\sigma$ of the total distribution.
+		\item[•] The mean cluster multiplicity per trigger, \cppinline{cMultPart}, is extracted from the histogram \cppinline{NoiseCMult_H} and it's statistical error, \cppinline{cMultPartErr}, is taken to be $2\sigma$ of the total distribution. It is important to point to the fact that this variable gives an information that is dependent on the buffer window width used for each trigger for the calculation.
+		\item[•] The mean cluster rate per unit area, \cppinline{ClustPartRate}, is defined as the mean hit rate normalised to the mean cluster size and it's statistical error, \cppinline{ClustPartRateErr}, is then obtained using the relative statistical error on the mean cluster size.
 	\end{itemize}
 	
-	In addition to these 2 CSV files, the histograms are saved in ROOT file \textinline{Scan00XXXX_HVY_Offline.root} as explained in section~\ref{app2:sssec:ROOT}.\\
+	\paragraph{Muon performance variables} are computed as discussed in the Section~\ref{app2:sssec:effcorr} and written in the output file for each detector partitions as shown through Sources Code~\ref{cpp:effcorr}. It is reminded that this offline tool doesn't include any tracking algorithm to identify muons from the beam and only relies on the hits arriving in the time window corresponding to the beam time and is corrected thanks to the estimation of the contribution of the background and noise to the efficiency of the detector. Assuming that the detection of background and muons were independent events, a probabilistic approach was then used to correct efficiency, muon cluster size and muon cluster multiplicity. The variables that are written for each partition are:
 	
-	\begin{code}
-	\begin{cppcode}
-for (Uint tr = 0; tr < GIFInfra->GetNTrolleys(); tr++){
-	Uint T = GIFInfra->GetTrolleyID(tr);
-	for (Uint sl = 0; sl < GIFInfra->GetNSlots(tr); sl++){
-		Uint S = GIFInfra->GetSlotID(tr,sl) - 1;
-		for (Uint p = 0; p < GIFInfra->GetNPartitions(tr,sl); p++){
-			float noiseWindow =
-				BMTDCWINDOW - TIMEREJECT - 2*PeakWidth.rpc[T][S][p];
-			float peakWindow = 2*PeakWidth.rpc[T][S][p];
-			float windowRatio = peakWindow/noiseWindow;
+	\begin{itemize}
+		\item[•] The muon efficiency, referred to as the probability to detect a muon in the peak window \cppinline{P_muon}, also filled in histogram \cppinline{Efficiency0_H}. The statistical error related to the efficiency, \cppinline{P_muon_err}, is computed using a binomial distribution, as the efficiency measures the probability of "success" and "failure" to detect muons.
+		\item[•] The mean muon cluster size, \cppinline{CS_muon}, and its related statistical error, \cppinline{CS_muon_err}, also filled in the histogram \cppinline{MuonCSize_H}.
+		\item[•] The mean muon cluster multiplicity, \cppinline{CM_muon}, and its related statistical error, \cppinline{CM_muon_err}, also filled in the histogram \cppinline{MuonCMult_H}.
+	\end{itemize}
+	
+	In addition to these 2 CSV files, the histograms are saved in ROOT file \textinline{Scan00XXXX_HVY_Offline.root} as explained in section~\ref{app2:sssec:ROOT}.
 
-			float PeakCM = MuonCMult_H.rpc[T][S][p]->GetMean();
-			float PeakCS = MuonCSize_H.rpc[T][S][p]->GetMean();
-			float NoiseCM = NoiseCMult_H.rpc[T][S][p]->GetMean()*windowRatio;
-			float NoiseCS = NoiseCSize_H.rpc[T][S][p]->GetMean();
-			float MuonCM = (PeakCM<NoiseCM) ? 0. : PeakCM-NoiseCM;
-			float MuonCS = (MuonCM==0 || PeakCM*PeakCS<NoiseCM*NoiseCS)
-				? 0.
-				: (PeakCM*PeakCS-NoiseCM*NoiseCS)/MuonCM;
-			float PeakCM_err = (MuonCMult_H.rpc[T][S][p]->GetEntries()==0.)
-				? 0.
-				: 2*MuonCMult_H.rpc[T][S][p]->GetStdDev() /
-							sqrt(MuonCMult_H.rpc[T][S][p]->GetEntries());
-			float PeakCS_err = (MuonCSize_H.rpc[T][S][p]->GetEntries()==0.)
-				? 0.
-				: 2*MuonCSize_H.rpc[T][S][p]->GetStdDev() /
-							sqrt(MuonCSize_H.rpc[T][S][p]->GetEntries());
-			float NoiseCM_err = (NoiseCMult_H.rpc[T][S][p]->GetEntries()==0.)
-				? 0.
-				: windowRatio*2*NoiseCMult_H.rpc[T][S][p]->GetStdDev() /
-							sqrt(NoiseCMult_H.rpc[T][S][p]->GetEntries());
-			float NoiseCS_err = (NoiseCSize_H.rpc[T][S][p]->GetEntries()==0.)
-				? 0.
-				: 2*NoiseCSize_H.rpc[T][S][p]->GetStdDev() /
-							sqrt(NoiseCSize_H.rpc[T][S][p]->GetEntries());
-			float MuonCM_err = (MuonCM==0) ? 0. : PeakCM_err+NoiseCM_err;
-			float MuonCS_err = (MuonCS==0 || MuonCM==0) ? 0.
-				: (PeakCS*PeakCM_err + PeakCM*PeakCS_err +
-					NoiseCS*NoiseCM_err + NoiseCM*NoiseCS_err +
-					MuonCS*MuonCM_err)/MuonCM;
-
-			float DataRatio = MuonCM/PeakCM;
-			float DataRatio_err = (MuonCM==0) ? 0.
-				: DataRatio*(MuonCM_err/MuonCM + PeakCM_err/PeakCM);
-			float eff = DataRatio*Efficiency0_H.rpc[T][S][p]->GetMean();
-			float eff_err =  DataRatio*2*Efficiency0_H.rpc[T][S][p]->GetStdDev()/
-						sqrt(Efficiency0_H.rpc[T][S][p]->GetEntries()) +
-						Efficiency0_H.rpc[T][S][p]->GetMean()*DataRatio_err;
-
-			outputEffCSV << eff << '\t' << eff_err << '\t'
-				<< MuonCS << '\t' << MuonCS_err << '\t'
-				<< MuonCM << '\t' << MuonCM_err << '\t';
-		}
-	}
-}
-	\end{cppcode}
-	\captionof{listing}{Description of efficiency result calculation and writing into the CSV output \textinline{Offline-L0-EffCl.csv}. Are saved into the file for each detector, the efficiency, corrected taking into account the background in the peak window of the time profile, muon cluster size and muon cluster mutiplicity, along with their errors, for each partition and as well as a detector average.}
-	\label{cpp:effcsv}
-	\vspace{5mm}
-	\end{code}
-
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
-\section{Current data Analysis}
+\section{Current information extraction}
 \label{app2:sec:currents}
 
 	Detectors under test at GIF++ are connected both to a CAEN HV power supply and to a CAEN ADC that reads the currents inside of the RPC gaps bypassing the supply cable. During data taking, the webDCS records into a ROOT file called \textinline{Scan00XXXX_HVY_CAEN.root} histograms with the monitored parameters of both CAEN devices. Are recorded for each RPC channels (in most cases, a channel corresponds to an RPC gap):
