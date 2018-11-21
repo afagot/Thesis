@@ -1,0 +1,27 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" 
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+
+<svg xmlns="http://www.w3.org/2000/svg" 
+ xmlns:xlink="http://www.w3.org/1999/xlink" 
+ width='650px' height='460px'>
+
+<title>Semiclassical elliptical orbits </title>
+
+<g transform='translate(150,230)' > 
+<circle cx='0' cy='0' r='4' stroke='black' />
+<g transform='scale(10)' stroke-width='0.2' fill='none'>
+<ellipse cx='24.87' cy='0' rx='25' ry='2.5' stroke='red'/>
+<ellipse cx='23.84' cy='0' rx='25' ry='7.5'  stroke='orange' />
+<ellipse cx='21.65' cy='0' rx='25' ry='12.5' stroke='green' />
+<ellipse cx='17.85' cy='0' rx='25' ry='17.5' stroke='blue' />
+<ellipse cx='10.90' cy='0' rx='25' ry='22.5' stroke='black' />
+</g>
+
+<text x='130' y='17'>5<tspan style="font-style:italic">s</tspan> (&#x2113;=0)</text>
+<text x='120' y='62'>5<tspan style="font-style:italic">p</tspan> (&#x2113;=1)</text>
+<text x='110' y='110'>5<tspan style="font-style:italic">d</tspan> (&#x2113;=2)</text>
+<text x='95' y='162'>5<tspan style="font-style:italic">f</tspan> (&#x2113;=3)</text>
+<text x='80' y='218'>5<tspan style="font-style:italic">g</tspan> (&#x2113;=4)</text>
+</g>
+
+</svg>

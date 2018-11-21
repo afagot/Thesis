@@ -11,14 +11,13 @@
 \label{chapt6}
 
 	The extension in the endcap of the RPC sub-system towards higher pseudo-rapidity will bring the new detectors to be exposed to much more intense background radiations due to the proximity of the detectors with the beam line. The challenge will be to produce high counting rate detectors with limited ageing rate to ensure a stable operation of the detector over a period longer than 10 years. In Chapter~\ref{chapt4} was discussed the influence of the detector design (number and thickness of gas volumes, OR system, etc...) on the charge deposition and rate capability. Nevertheless, this question can also be adressed from the electronics point of view as a better signal to noise ratio would also mean the possibility to greatly lower the charge threshold on the signals to be detected, allowing to use the detector at lower gain, hence lowering the charge deposition per avalanche in the gas volume. Cardarelli showed that the production of low-noise fast FEE could help decreasing the charge deposition per avalanche at working voltage by an order of magnitude virtually increasing the life expectancy of such a detector in the same way~\cite{CARDARELLI2012}.
-	
-\section{Extension of the RPC endcap}
-\label{chapt6:sec:iRPCs}
 
 \section{FEE candidate for the production of iRPCs}
 \label{chapt6:sec:candidates}
 
-	In the context of the CMS Muon Upgrade, two \acf{FEE}s solutions have been considered to equip the new \acf{iRPC}s that are to be added on CMS endcaps. The baseline for the RPC upgrade is based on the PETIROC ASIC, initially for \acf{ToF} applications. A back-up solution is also under study and focusses on a new low-noise preamplifier designed in INFN laboratories in Rome to replace the preamplification stage of the already existing CMS RPC \acf{FEB}.
+	The extension of the third of fourth endcap disks with \acl{iRPC}s has been presentated in Chapter~\ref{chapt:3} together with the expected background levels and the needed requirements from such detectors to bring out the full potential of the CMS detector by strongly reducing the detection rate thanks to a more precise reconstruction of the events of interest. An important piece of these iRPCs wil be the \acl{FEE} that will be equiped on the chambers. A fast, low-jitter and low charge sensitive electronics will help in further reducing the charge deposition in the detector by making it possible to operate at lower gain.
+	
+	In the context of the CMS Muon Upgrade, two FEE solutions have been considered to equip the iRPCs. The baseline for the RPC upgrade is based on the PETIROC ASIC, initially for \acf{ToF} applications. A back-up solution is also under study and focusses on a new low-noise preamplifier designed in INFN laboratories in Rome to replace the preamplification stage of the already existing CMS RPC \acl{FEB}.
 
 	The FEEs that are foreseen to equip the new RPCs need to be able to detect charges as small as \SI{10}{fC}. Not only the new electronics need to be fast and reliable, they also should be able to sustain the high radiation the detectors will be subjected to in the region closest to the beam.
 	
@@ -33,9 +32,7 @@
 		\caption{\label{fig:PETIROCASIC} PETIROC 2A block diagram.}
 	\end{figure}
 	
-	Nevertheless, in order to adapt this ASIC to CMS, modifications were brought to the PETIROC~\cite{PHASEIITP}. In the new CMS RPCROC, the measurement of the charge will be performed by a TimeOverTechnic, taking profit of the capacity the ASIC has in measuring both the leading and trailing edges of the input signals. The dynamic range will be expanded towards lower values to allow for the detection of charges as low as \SI{10}{fC}. Due to the radiation levels that are foreseen at the level of the iRPCs, the SiGe technology will be replaced by the Taiwan Semiconductor Manufacturing Company (TSMC) \SI{130}{nm} CMOS, to increase its radiation hardness. Finally, the number of channels will be increased to 64.
-	
-	 on which the original SiGe technology will be replaced by CMOS to increase its radiation hardness while keeping fast pre-amplification and discrimination with a very low jitter that can reach less than \SI{20}{ps} if no internal clock is used, as can be seen from Figure~\ref{fig:jitter}. The ASIC is associated with an FPGA which purpose is to measure time thanks to a TDC with a time resolution of 50-100 \si{ps} developed by Tsinghua University and that will provide a measurement of the signal position along the strip with a precision of a few \si{cm} by measuring the signal timing on both ends of the strips. In order to read-out all 96 strips, 3 ASICs and 3 TDCs, each having 64 channels, are hosted on a front-end board attached to the chamber.
+	Nevertheless, in order to adapt this ASIC to CMS, modifications were brought to the PETIROC~\cite{PHASEIITP}. In the new CMS RPCROC, the measurement of the charge will be performed by a TimeOverTechnic, taking profit of the capacity the ASIC has in measuring both the leading and trailing edges of the input signals. The dynamic range will be expanded towards lower values to allow for the detection of charges as low as \SI{10}{fC}. Due to the radiation levels that are foreseen at the level of the iRPCs, the SiGe technology will be replaced by the Taiwan Semiconductor Manufacturing Company (TSMC) \SI{130}{nm} CMOS, to increase its radiation hardness while keeping fast pre-amplification and discrimination with a very low jitter that can reach less than \SI{20}{ps} if no internal clock is used, as can be seen from Figure~\ref{fig:jitter}. The ASIC is associated with an FPGA which purpose is to measure time thanks to a TDC with a time resolution of 50-100 \si{ps} developed by Tsinghua University and that will provide a measurement of the signal position along the strip with a precision of a few \si{cm} by measuring the signal timing on both ends of the strips. In order to read-out all 96 strips, 3 ASICs and 3 TDCs, each having an increased number of 64-channels, are hosted on a FEB attached to the chamber.
 
 	\begin{figure}[H]
 		\centering
@@ -47,7 +44,5 @@
 	\label{chapt6:ssec:INFN}
 
 \section{Preliminary tests at CERN}
-
-\section{Test }
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
