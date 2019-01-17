@@ -31,28 +31,80 @@
 		\caption{\label{fig:HSCPs} Slice of the CMS detector showing example of passage of SM particles and R-hadrons. On the one hand, lepton-like HSCPs will appear to behave like slow and heavy muons. On the other hand, R-hadrons are likely to convert into other kind of charged or neutral R-hadrons due to interactions inside the detector volume.}
 	\end{figure}
 	
-\section{\acl{HL-LHC} and muon system requirements}
-\label{chapt3:sec:requirements}
-		
-	After approximately 15 years of operation, the LHC will undergo a new series of upgrade during the LS3 in order to boost its discovery potential as showed in Figure~\ref{fig:HL-LHC-Timeline}. This moment onward is what is referred to HL-LHC or Phase-II. The goal is to aim for a luminosity 5 to 7 times stronger than the nominal one trying to reach even 10 times this value if possible. Increasing the luminosity means that the beam size at the collision points needs to be reduced to boost the number of collisions per bunch crossing. For this purpose, new focusing and bending magnets, and collimators will be installed at the collision points as well as newly developed \textit{"crab cavities"} that will tilt the particle bunches just prior to the collisions by giving them transverse momentum and thus increasing their meeting area. In addition, the full proton injection line will be upgraded.
+\section{Desciption of the muon system}
+\label{chapt3:sec:muonsystem}
 	
-	On the experiments side, the \acf{PU} will be increased up to 150 to 200 interactions per bunch crossing in ATLAS and CMS, making necessary an strong upgrade of the trigger system and of the inner trackers and of the calorimeters. Both ATLAS and CMS will also need to upgrade the muon trigger at the level of the endcaps mainly focusing on the coverage near the beam line in order to increase the detection acceptance and event selection. Moreover, the increased luminosity will also lead to an increased background rate and a faster ageing of the detectors. This PhD work takes place into this very specific context of muon detector consolidation and certification for the HL-LHC period in order to provide the CMS experiment with robust new detectors and confirm that the present system will survive through the next 20 years of HL-LHC.
-
-	The end of 2018 will mark the beginning of LS2 and the start of Phase-II upgrade activities. From the HL-LHC period onwards, i.e. past LS3, the performance degradation due to integrated radiation as well as the average number of inelastic collisions per bunch crossing, seen as pile-up into the detectors' readout that far exceeds this of the original LHC plans, will rise substantially and become a major challenge for all of the LHC experiments, like CMS, that were forced to address an upgrade program for Phase-II~\cite{PHASEIITP}. Dealing with the data from the muon detectors will force to upgrade the detectors and electronics towards the most recent technologies. Simultaneously, this will push new latency requirements onto the Level-1 trigger and the \acf{DAQ} that will only be fulfilled by upgrading the system with electronics having deeper buffering and faster processing. Simulations of the expected distribution of absorbed dose in the CMS detector under HL-LHC conditions show, in Figure~\ref{fig:Dose}, that detectors placed close to the beam line will have to withstand high irradiation, the radiation dose being of the order of a few tens of \si{Gy}.
+	The barrel region is divided into 5 \textit{wheels} made out of 4 \textit{rings} of detectors with iron return yokes in between them whereas the endcaps are made out of 4 disks, each divided into pseudorapidity stations, 2 for CSCs (except for the first disk where 3 stations are equipped) and 3 for RPCs, although only 2 RPCs stations are equipped at present. The wheels and disks are shown in Figure~\ref{fig:Muon}. So far, each subsystem was dedicated to a particular task. DTs, in the barrel, and CSCs, in the endcaps, are used mainly for their spatial resolution. Indeed, DTs' resolution is of the order of \SI{100}{\micro m} along both the $(r-\phi)$ and $(r-z)$ components while the resolution of CSCs is similar but varies in a range from \SI{50}{\micro m} to \SI{140}{\micro m} depending on the distance to the beamline. On the other hand, RPCs are used for their time resolution as they can deliver an information on the muon tracks within \SI{1.5}{ns}.
 	
 	\begin{figure}[H]
-		\begin{subfigure}{\linewidth}
+		\begin{subfigure}{0.35\linewidth}
 			\centering
-			\includegraphics[width=\plotwidth]{fig/chapt3/HL-LHC-nominal.png}\\
-			\caption{\label{fig:HL-LHC-Timeline:A}}
+			\includegraphics[height = 6cm]{fig/chapt2/Wheel.jpg}
+			\caption{\label{fig:Muon:A}}
 		\end{subfigure}
-		\begin{subfigure}{\linewidth}
+		\begin{subfigure}{0.3\linewidth}
 			\centering
-			\includegraphics[width=\plotwidth]{fig/chapt3/HL-LHC-ultimate.png}
-			\caption{\label{fig:HL-LHC-Timeline:B}}
+			\includegraphics[height = 6cm]{fig/chapt2/Disk_CSC.jpg}
+			\caption{\label{fig:Muon:B}}
 		\end{subfigure}
-		\caption{\label{fig:HL-LHC-Timeline} Detailed timeline projection of for LHC and HL-LHC operation until 2039 showing the evolution of the instanteneous and integrated luminosity as designed (Figure~\ref{fig:HL-LHC-Timeline:A}) and in the ultimate case where the instantaneous luminosity is increased to $7.5\times10^{34}$ \si{cm^{-2}s^{-1}} (Figure~\ref{fig:HL-LHC-Timeline:B})~\cite{HLLHC2017,HLLHCPDR}.}
+		\begin{subfigure}{0.35\linewidth}
+			\centering
+			\includegraphics[height = 6cm]{fig/chapt2/Disk_RPC.jpg}
+			\caption{\label{fig:Muon:C}}
+		\end{subfigure}
+		\caption{\label{fig:Muon} Figure~\ref{fig:Muon:A}: Barrel wheel with its detector rings and return yokes. Figure~\ref{fig:Muon:B}: CSC endcap disk with the 2 CSC stations. The outer station is made of \SI{10}{\deg} detectors while the inner station is made of \SI{20}{\deg} detectors. Figure~\ref{fig:Muon:C}: RPC endcap disk. The inner station is not equipped and the inner CSC station can be seen.}
 	\end{figure}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.6\linewidth}
+			\centering
+			\includegraphics[height = 4.5cm]{fig/chapt2/DT_layout.png}
+			\caption{\label{fig:DT:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[height = 4.5cm]{fig/chapt2/DT_cells.png}
+			\caption{\label{fig:DT:B}}
+		\end{subfigure}
+		\caption{\label{fig:DT} Figure~\ref{fig:DT:A}: Cross section of a DT module showing the two superlayers measuring the $\phi$ coordinate, perpendicular to the cross section plane, and the superlayer measuring the $\eta$ coordinate, placed in between the two others with honeycomb and parallel to the cross section plane. The DT detector is sandwiched in between 2 RPCs whose readout strips are perpendicular to the cross section plane, measuring the $\phi$ coordinate. Figure~\ref{fig:DT:B}: A DT cell is shown together with its electric field. The path of a muon through a superlayer is shown.}
+	\end{figure}
+	
+	The 250 CMS DTs, found in the barrel covering the pseudorapidity region \psrapr{0}{1.2} and whose structure is shown in Figure~\ref{fig:DT}, are composed of 3 \textit{superlayers} of DT cells. Two of these superlayers are dedicated to measuring the $\phi$ coordinate of the muons and while the last one measures the $\eta$ (or $z$) coordinate. Each superlayer consists on 4 layers of 60 to 70 DT cells arranged in quincunx to allow for a precise reconstruction of the muon path through the DT layers. Each DT cell is a rectangular aluminium gas volume with a central anode wire. Cathode strips are placed on the narrow surface of the cells and electrode strips are placed on the wide surface to help shaping the electric field to ensure a consistent drift velocity of electrons in the drift volume. These detectors are operated using a 85/15 mixture of $Ar$ and $CO_2$.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{0.4\linewidth}
+			\centering
+			\includegraphics[height = 5cm]{fig/chapt2/CSC_layout.png}
+			\caption{\label{fig:CSC-layout:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.6\linewidth}
+			\centering
+			\includegraphics[height = 5cm]{fig/chapt2/CSC_avalanche.png}
+			\caption{\label{fig:CSC-layout:B}}
+		\end{subfigure}
+		\caption{\label{fig:CSC-layout} Figure~\ref{fig:CSC-layout:A}: cathode strips and anode wire layout of a CSC panel. Figure~\ref{fig:CSC-layout:B} avalanche development and charge collection by anode wires and induction on cathode strips inside of a CSC panel.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{fig/chapt2/CSC_track.png}
+		\caption{\label{fig:CSC-track} Muon track reconstruction through the 6 panels of a CMS CSC using the information of anode wire groups and cathode strip charge distribution combined with comparator bits to decide on which half strip the muon is more likely to have passed.}
+	\end{figure}
+	
+	The 540 CMS CSCs, found in the endcaps covering the pseudorapidity region \psrapr{0.9}{2.5} and described through Figures~\ref{fig:CSC-layout} and \ref{fig:CSC-track}, are composed of 6 panels of CSC, each panel consisting in a wide gas volume of \SI{9.5}{mm} (\SI{7}{mm} in the case of ME1/1 station) containing anode wires and whose surfaces are cathodes. The top cathode is a wide copper plane of the size of the gas volume. The bottom cathode is divided into thin trapezoidal copper strips radially arranged to measure the azimuthal coordinate $\phi$ with a pitch ranging from 8 to \SI{16}{mm}. The \SI{0.50}{\micro m} anode wires are placed perpendicularly to the strips to measure radial coordinate $r$ and are grouped by 10 to 15 with a wire to wire space of \SI{3.2}{mm}. In he specific case of ME1/1 placed against the HCAL endcap, the \SI{0.30}{\micro m} anode wires have a wire to wire distance of \SI{2.5}{mm} and are not disposed perpendicularly to the strips but slightly tilted by an angle of \SI{29}{\deg} to compensate for the lorentz force due to the very strong local magnetic field of \SI{4}{T}. These detectors are operated with a 40/50/10 mixture of $Ar$, $CO_2$ and $CF_4$. Combining the information of the multiple CSC panels, the detectors achieve a very precise measurement of the muon track.
+	
+	Despite their excellent spatial resolution, the wire chambers (DTs and CSCs) are limited in terms of time resolution by the fact that the charge needs to drift towards the anode wire and be collected before having the confirmation that a particle was detected as the drift volume is not used to develop avalanches. Indeed, the stronger electric field close to the anode wire triggers the avalanche and the gain of the detector. Due to the drift, the time resolution is thus limited at best to approximately 2 to \SI{3}{ns}. In addition, even though the intrinsic time resolution of the tracking chambers is rather good compared to the \SI{25}{ns} in between successive collisions, the processing time of the trigger system doesn't allow for very fast triggering as it provides a time precision of only \SI{12.5}{ns}. Thus, detectors fully dedicated to timing measurement have been installed as a redundant system. These detectors are RPCs, also gaseous detectors but that use current induction instead of charge collection allowing for a time resolution of the order of \SI{1.5}{ns} only. Theoretically, depending on the design used, RPCs could reach a time resolution of the order of \SI{10}{ps} but in the context of LHC where bunch crossing happen every \SI{25}{ns}, a time resolution of \SI{1.5}{ns} is sufficient to accurately assign the right bunch crossing to each detected muon.
+	
+	The 1056 RPCs equipping the CMS muon system both in the barrel and endcap regions and covering the pseudorapidity region \psrapr{0}{1.6} are composed of two layers of RPC \textit{gaps} as described in Figure~\ref{fig:RPC-DG-layout}. Each gap consists in two resistive electrodes made out of \SI{2}{mm} thick Bakelite enclosing a \SI{2}{mm} thick gas volume containing a 95.2/4.5/0.3 mixture of $C_2H_2F_4$, $i-C_4H10$ and $SF_6$. Due to this geometry, the electric field inside of a gap is homogeneous and linear at every point in the gas translating into a uniform development of avalanches in the gas volume as soon as a passing muon ionises the gas. The two gaps sandwich a readout copper strip plane. A negative voltage is applied on the outer electrodes, used as cathodes, and the inner electrodes, the anodes, are simply connected to the ground as well as the readout panel that picks up the current induced by the accumulated charge of the growing avalanches in one or both of the gas gaps. This OR system allows for a lower gain (i.e. a lower electric field) on both gaps to reach the maximal efficiency of such a detector.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\textwidth]{fig/chapt2/RPC_DG_layout.png}
+		\caption{\label{fig:RPC-DG-layout} Double gap layout of CMS RPCs. Muons passing through the gas volumes will create electron-ions pairs by ionising the gas. this ionisation will immediately translate into a developing avalanche.}
+	\end{figure}
+	
+\section{Muon system requirements for HL-LHC}
+\label{chapt3:sec:requirements}
 
 	The increase of irradiation close to the beam line will affect the background rate seen by the muon detectors in this area and tracking muons will prove to be difficult as this region is not yet equipped with all the detectors that were already foreseen for Phase-I. Improving this situation will come with the increase of hit numbers recorded along the particle track to reduce the ambiguity on muon versus background detection. Moreover, the measurement of small production cross-section and/or decay branching ratio processes, such as the Higgs boson coupling to charge leptons, and in particular to muons, or the $B_s \longrightarrow \mu^+\mu^-$ decay, is of major interest and specific upgrades in the forward regions of the detector will be required to maximize the physics acceptance to the largest possible solid angle.
 
