@@ -794,14 +794,20 @@ for(Uint tr = 0; tr < GIFInfra->GetNTrolleys(); tr++){
 	
 		\subsubsection{Rate normalisation}
 		\label{app2:sssec:norm}
-	
-	\begin{figure}[H]
-        \centering
-		\includegraphics[width = 0.7\linewidth]{fig/app1/No_Qflag_nhits_KODEL.pdf}
-		\caption{\label{fig:corrupted} The effect of the quality flag is explained by presenting the reconstructed hit multiplicity of a data file without \cppinline{Quality_flag}. The artificial high content of bin 0 is the effect of corrupted data.}
-	\end{figure}
 		
-	The hit rate normalization corresponds to translating a number of hits recorded during the full duration of data taking into a rate per unit area value. In order to achieve such result, it is first needed to know the total integrated time and the active area of the read-out partition on which the hits are counted. The total integrated is simply the noise window used for each event multiplied by the total number of events stored in the data file.\\
+\begingroup\setlength{\intextsep}{5pt}\setlength{\columnsep}{15pt}
+	
+	\begin{wrapfigure}{l}{.65\linewidth}
+        \centering
+		\includegraphics[width = \linewidth]{fig/app1/No_Qflag_nhits_KODEL.pdf}
+		\caption{\label{fig:corrupted} The effect of the quality flag is explained by presenting the reconstructed hit multiplicity of a data file without \cppinline{Quality_flag}. The artificial high content of bin 0 is the effect of corrupted data.}
+	\end{wrapfigure}
+		
+	The hit rate normalization corresponds to translating a number of hits recorded during the full duration of data taking into a rate per unit area value. In order to achieve such result, it is first needed to know the total integrated time and the active area of the read-out partition on which the hits are counted. The total integrated is simply the noise window used for each event multiplied by the total number of events stored in the data file.
+	
+	Nevertheless, to analyse old data format files, not containing any quality flag, it is needed to estimate the amount of corrupted data via a fit as the corrupted data will always fill events with a fake "0 multiplicity". Indeed, as no hits were stored in the DAQ ROOT files, these events artificially contribute to fill the bin corresponding to a null multiplicity, as shown in Figure~\ref{fig:corrupted}. In the case the mean of the hit multiplicity distribution is high, the contribution of the corrupted data can easily be evaluated for later correction by comparing the level of the bin at multiplicity 0 and of a skew fit curve that should indicate a value consistent with 0. A skew fit has been chosen over a Poisson fit as it was giving better results for lower mean multiplicity  values. Nevertheless, for low irradiation cases, as explained in Appendix~\ref{app1:ssec:QFlag}, the hit multiplicity distribution mean is, on the contrary, rather small and the probability to record events without hits can't be considered small anymore, leading to a difficult and non-reliable estimation of the corruption.\\
+	
+\endgroup
 	
 	\begin{code}
 	\begin{cppcode}
@@ -851,8 +857,6 @@ if(IsEfficiencyRun(RunType)){
 	\vspace{5mm}
 	\end{code}
 	
-	Nevertheless, to analyse old data format files, not containing any quality flag, it is needed to estimate the amount of corrupted data via a fit as the corrupted data will always fill events with a fake "0 multiplicity". Indeed, as no hits were stored in the DAQ ROOT files, these events artificially contribute to fill the bin corresponding to a null multiplicity, as shown in Figure~\ref{fig:corrupted}. In the case the mean of the hit multiplicity distribution is high, the contribution of the corrupted data can easily be evaluated for later correction by comparing the level of the bin at multiplicity 0 and of a skew fit curve that should indicate a value consistent with 0. A skew fit has been chosen over a Poisson fit as it was giving better results for lower mean multiplicity  values. Nevertheless, for low irradiation cases, as explained in Appendix~\ref{app1:ssec:QFlag}, the hit multiplicity distribution mean is, on the contrary, rather small and the probability to record events without hits can't be considered small anymore, leading to a difficult and non-reliable estimation of the corruption.
-	
 	As can be seen in Source Code~\ref{cpp:rate_norm}, conditions have been applied to prevent bad fits and wrong corruption estimation in cases where :
 
 	\begin{itemize}
@@ -864,13 +868,6 @@ if(IsEfficiencyRun(RunType)){
 	
 		\subsubsection{Rate and activity}
 		\label{app2:sssec:rateact}
-		
-	At this point, the strip rate histograms, \cppinline{StripNoiseProfile_H.rpc[T][S][p]}, only contain an information about the total number of noise or background rate hits each channel received during the data taking. As described in Source Code~\ref{cpp:striprateact}, a loop on the strip channels will be used to normalise the content of the rate distribution histogram for each detector partitions. The initial number of hits recorded for a given bin will be extracted and 2 values are computed.
-
-	\begin{itemize}
-		\item[•] The strip hit rate, defined as the number of hits recorded in the bin normalised like described in the previous section, using the variable \cppinline{rate_norm} and the corresponding bin in histogram \cppinline{StripNoiseProfile_H.rpc[T][S][p]} is updated, and
-		\item[•] the strip activity, defined as the number of hits recorded in the bin normalised to the average number of hits per bin contained in the partition histogram, using the variable \cppinline{averageNhit}. This value provides an information on the homogeneity of the detector response to the gamma background or of the detector noise. An activity of 1 corresponds to an average response. Above 1, the channel is more active than the average and bellow 1, the channel is less active. This value is filled in the histograms \cppinline{StripActivity_H.rpc[T][S][p]}.
-	\end{itemize}
 	
 	\begin{code}
 	\begin{cppcode}
@@ -891,6 +888,13 @@ for(Uint st = 1; st <= nStripsPart; st++){
 	\label{cpp:striprateact}
 	\vspace{5mm}
 	\end{code}
+		
+	At this point, the strip rate histograms, \cppinline{StripNoiseProfile_H.rpc[T][S][p]}, only contain an information about the total number of noise or background rate hits each channel received during the data taking. As described in Source Code~\ref{cpp:striprateact}, a loop on the strip channels will be used to normalise the content of the rate distribution histogram for each detector partitions. The initial number of hits recorded for a given bin will be extracted and 2 values are computed.
+
+	\begin{itemize}
+		\item[•] The strip hit rate, defined as the number of hits recorded in the bin normalised like described in the previous section, using the variable \cppinline{rate_norm} and the corresponding bin in histogram \cppinline{StripNoiseProfile_H.rpc[T][S][p]} is updated, and
+		\item[•] the strip activity, defined as the number of hits recorded in the bin normalised to the average number of hits per bin contained in the partition histogram, using the variable \cppinline{averageNhit}. This value provides an information on the homogeneity of the detector response to the gamma background or of the detector noise. An activity of 1 corresponds to an average response. Above 1, the channel is more active than the average and bellow 1, the channel is less active. This value is filled in the histograms \cppinline{StripActivity_H.rpc[T][S][p]}.
+	\end{itemize}
 	
 	On each detector partitions, which are read-out by a single FEE, all the channels are not processed by the same chip. Each chip can give a different noise response and hence, histograms using a chip binning are used to investigate chip related noise behaviours. The average values of the strip rate or activity grouped into a given chip are extracted using the using the function \cppinline{GetChipBin()} and stored in dedicated histograms as described in Source Codes~\ref{cpp:chipbin} and \ref{cpp:chiprateact} respectively.\\
 	
@@ -952,7 +956,6 @@ ChipHomogeneity_H.rpc[T][S][p]->GetYaxis()->SetRangeUser(0.,1.);
 	\end{cppcode}
 	\captionof{listing}{Storage of the homogeneity into dedicated histograms.}
 	\label{cpp:homogeneity}
-	\vspace{5mm}
 	\end{code}
 	
 		\subsubsection{Correction of muon performance parameters}
@@ -970,6 +973,13 @@ ChipHomogeneity_H.rpc[T][S][p]->GetYaxis()->SetRangeUser(0.,1.);
 	\begin{equation}
 	\label{eq:muoneff}
 	P(\mu) = \frac{P(\mu\cup\gamma) - P(\gamma)}{1 - P(\gamma)} \quad \Leftrightarrow \quad \epsilon_{\mu} = \frac{\epsilon_{peak} - \epsilon_{fake}}{1 - \epsilon_{fake}}
+	\end{equation}
+	
+	 When it comes to the computation of the muon cluster size, a similar reasoning than for the muon detection efficiency computation can be used. Indeed, using Formula~\ref{eq:intersection}, out of the total number of events where a muon or noise or background can be expressed as a sum of fractions of events $\mu$, $\gamma$ and $\mu\cap\gamma$, the later being the event corresponding to the detection of both events simultaneously, as showed in Formula~\ref{eq:fractions}. The fractions can be expressed as a ratio of the probabilities already known, using this time the notation $P(\mu\cap\gamma)$ instead of $P(\mu)P(\gamma)$. This choice was made to make the code a little clearer.
+	
+	\begin{equation}
+	\label{eq:fractions}
+	1 = F_{\mu} + F_{\gamma} + F_{\mu\cap\gamma} = \frac{P(\mu)-P(\mu\cap\gamma)}{P(\mu\cup\gamma)} + \frac{P(\gamma)-P(\mu\cap\gamma)}{P(\mu\cup\gamma)} + \frac{P(\mu\cap\gamma)}{P(\mu\cup\gamma)}
 	\end{equation}
 	
 	\begin{code}
@@ -1035,13 +1045,6 @@ if(IsEfficiencyRun(RunType)){
 	\label{cpp:effcorr}
 	\vspace{5mm}
 	\end{code}
-	
-	 When it comes to the computation of the muon cluster size, a similar reasoning than for the muon detection efficiency computation can be used. Indeed, using Formula~\ref{eq:intersection}, out of the total number of events where a muon or noise or background can be expressed as a sum of fractions of events $\mu$, $\gamma$ and $\mu\cap\gamma$, the later being the event corresponding to the detection of both events simultaneously, as showed in Formula~\ref{eq:fractions}. The fractions can be expressed as a ratio of the probabilities already known, using this time the notation $P(\mu\cap\gamma)$ instead of $P(\mu)P(\gamma)$. This choice was made to make the code a little clearer.
-	
-	\begin{equation}
-	\label{eq:fractions}
-	1 = F_{\mu} + F_{\gamma} + F_{\mu\cap\gamma} = \frac{P(\mu)-P(\mu\cap\gamma)}{P(\mu\cup\gamma)} + \frac{P(\gamma)-P(\mu\cap\gamma)}{P(\mu\cup\gamma)} + \frac{P(\mu\cap\gamma)}{P(\mu\cup\gamma)}
-	\end{equation}
 	
 	Each ones of these events have an associated cluster size. The cluster size of the noise or background already is measured thanks to the clusterization of the noise hit list. In the same way, the peak cluster size corresponds to the cluster measured for the event $\mu\cup\gamma$. Nevertheless, the cluster of the event $\mu\cap\gamma$ is not known but it can be assumed that the probability of having more than 1 noise or background cluster contained in the peak window is very low if the peak wondow duration is compared to the background rate that rarely seen to go beyond \SIrate{2000} \textbf{[to be confirmed]}. Hence, the cluster size that is likely to be measured in such kind of event where both a muon and a background or noise cluster was recorded is the average of the muon cluster size and the background cluster size. The cluster size $C_{\mu\cup\gamma}$ probed in the peak can then be written as in Formula~\ref{eq:peakCS} and leads to the expression for the muon cluster size $C_{\mu}$ written in Formula~\ref{eq:muonCS}.
 	

@@ -12,7 +12,7 @@
 
 	Throughout history, physics experiment became more and more powerful in order to investigate finer details of nature to help understanding the building blocks of matter and the fundamental interactions that bind them in the microscopic world. Nowadays, the \acl{SM} of particle physics is the most accurate theory designed to explain the behaviour of particles and is able to make very precise predictions that are constantly verified. Nevertheless, some hints of new physics are visible as bricks are still missing to obtain a global description of the Universe.
 	
-	To highlight the limits of the SM and test the different alternative theories, evermore powerful machines are needed. It is in this context that the \acl{LHC} has been thought and built to accelerate and collide particles at energies exceeding anything that had been done before. Higher collision energies and high pile-up imply the use of enormous detectors to measure the properties of the interaction products. The \acl{CMS} is a multipurpose experiment that have been designed to study the proton-proton collisions of the LHC and give answers on various high-energy physics scenarios such as different \acf{SUSY} extensions to the \acl{SM} or Extra Dimensions models.\\
+	To highlight the limits of the SM and test the different alternative theories, evermore powerful machines are needed. It is in this context that the \acl{LHC} has been thought and built to accelerate and collide particles at energies exceeding anything that had been done before. Higher collision energies and high pile-up imply the use of enormous detectors to measure the properties of the interaction products. The \acl{CMS} is a multipurpose experiment that have been designed to study the proton-proton collisions of the LHC and give answers on various high-energy physics scenarios such as different \acf{SUSY} extensions to the \acl{SM} or Extra Dimensions models.
 	
 	This Chapter will be the occasion to go through the history of the \acl{SM} of Particle Physics to understand the research conducted today in \acf{HEP} facilities. From the discovery of the atom and of its inner structure to the development of the theories governing the fundamental interactions, all the elements leading to the construction SM will be discussed. Furthermore, highlights on the \acf{BSM} will be given to replace the document in the context of today's research.  Finally, a full description of the LHC and of the CMS detector will be provided.
 
@@ -59,26 +59,34 @@
 	
 	Historically, the development of the quantum theory revolved around the question of emission and absorption of discrete amount of energy through light. Einstein used the initial intuition of Planck about the black-body radiation to develop in 1905 a model to explain the photoelectric effect in which light was described by discrete \textit{quanta} now called \textit{photons}~\cite{PLANK1900,EINSTEIN1905PHOTO}. For this model, Einstein introduced the concept of wave-particle duality as classical theory was not able to describe the phenomenon. With the new understanding of atoms and of their structure, classical theories also proved unable to explain atoms' stability. Indeed, using classical mechanics, electrons orbiting around a nucleus should radiate an energy proportional to their angular momentum and hence, loose energy through time and the spectrum of energy emission should then be continuous. However, it was known since the \Th{19} century and the discovery of spectral lines that the emission spectrum of material was discrete~\cite{FRAUNHOFER1814}.
 	
-	\begin{figure}[H]
-		\begin{subfigure}{0.4\linewidth}
-			\centering
-			\includegraphics[height=5cm]{fig/chapt2/Bohr_atom_model.pdf}\\
-			\caption{\label{fig:quantum-numbers:A}}
-		\end{subfigure}
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[height=6cm]{fig/chapt2/Sommerfeld_ellipses.pdf}
-			\caption{\label{fig:quantum-numbers:B}}
-		\end{subfigure}
-		\begin{subfigure}{\linewidth}
-			\centering
-			\includegraphics[height=6cm]{fig/chapt2/Vector_model_of_orbital_angular_momentum.pdf}
-			\caption{\label{fig:quantum-numbers:C}}
-		\end{subfigure}
+\begingroup\setlength{\intextsep}{0pt}\setlength{\columnsep}{15pt}
+	
+	\begin{wrapfigure}{r}{0.45\linewidth}
+		\begin{minipage}{\linewidth}
+			\centering\captionsetup[subfigure]{justification=centering}
+			\includegraphics[width=.65\linewidth]{fig/chapt2/Bohr_atom_model.pdf}
+			\subcaption{\label{fig:quantum-numbers:A}}
+			\includegraphics[width=.85\linewidth]{fig/chapt2/Sommerfeld_ellipses.pdf}
+			\subcaption{\label{fig:quantum-numbers:B}}
+			\includegraphics[width=.8\linewidth]{fig/chapt2/Vector_model_of_orbital_angular_momentum.pdf}
+			\subcaption{\label{fig:quantum-numbers:C}}
+		\end{minipage}
 		\caption{\label{fig:quantum-numbers} Figure~\ref{fig:quantum-numbers:A}: The orbits in which the electron may travel according to the Borh model of the hydrogen atom. An electron jumps between orbits and is accompanied by an emitted or absorbed amount of electromagnetic energy ($h\nu$).The orbits radius increases as $n^2$. Figure~\ref{fig:quantum-numbers:B}: Elliptical orbits with the same energy and quantized angular momentum $l= 0, 1,...,n-1$ in the case $n=5$. Figure~\ref{fig:quantum-numbers:C}: Illustration of quantum mechanical orbital angular momentum. The cones and plane represent possible orientations of the angular momentum vector for $l=2$ and $m=-2,-1,0,1,2$.}
-	\end{figure}
+		\vspace{-5pt}
+	\end{wrapfigure}
 	
 	In 1913, quantum physics was introduced into the atomic model by Bohr to overcome the electron's energy loss due to orbiting radiation emission~\cite{BOHR1913}. Using the correspondence principle stating that for large enough numbers the quantum calculations should give the same results than the classical theory, he proposed the very first quantum model of the hydrogen atom explaining the line spectrum by introducing the \textit{principal quantum number} $n$ describing the electron \textit{shell}. The same year, Moseley confirmed Borh's model through the Moseley's law~\cite{MOSELEY1913}. Debye and then Sommerfeld extended it by introducing the quantization of the angular momentum~\cite{SOMMERFELD1916}. The quantization the z-component of the angular momentum led to the \textit{second} and \textit{third quantum numbers}, or \textit{azimuthal} and \textit{magnetic quantum number}, $l$ and $m$. The second defines the orbital angular momentum of the electrons on their shells and hence, the shape of the orbital, while the third the available orbital on the subshell for each electron as shown in Figure~\ref{fig:quantum-numbers}.
+	
+	Nevertheless, although the model was not only limited to spherical orbitals anymore, making the atom more realistic, the Zeeman effect couldn't be completely explained by just using $n$, $l$ and $m$~\cite{ZEEMAN431897,ZEEMAN441897I,ZEEMAN441897II,ZEEMAN451898} nor could the result of the Stern-Gerlach experiment~\cite{GERLACH1922}. Both experiments are shown in Figure~\ref{fig:spin}. A solution was brought after Pauli in 1925 proposed together with his exclusion principle the idea of a new quantum degree of freedom in order to resolve the apparent problem~\cite{PAULI1925I,PAULI1925II}. This degree of freedom was interpreted as an intrinsic angular momentum vector associated to the particle itself, not to the orbital~\cite{UHLENBECK1926}, and associated to a new quantum number $s$, the \textit{spin} projection quantum number explaining the lift of degeneracy to an even number of energy levels~\cite{PAULI1927}. The new quantum number helped in theorizing the neutron as a neutral particle rather than a bond state of a proton and an electron confined in the nucleus itself.
+	
+	The introduction of the \textit{spin} happened one year after another attempt of improvement of the theory was made by De Broglie in his Ph.D. thesis~\cite{DEBROGLIE1924}. The original formulation of the quantum theory only considered photons as energy quanta behaving as both \textit{waves} and \textit{particles}. De Broglie proposed that \textit{all} matter are described by waves and that their momentum is proportional to the oscillation of quantized electromagnetic field oscillators. This interpretation was able to reproduce the previous version of the quantum energy levels by showing that the quantum condition involves an integer multiple of $2\pi$, as shown by Formula~\ref{eq:matterwave}.
+	
+	\begin{equation}
+		\label{eq:matterwave}
+		p = \hbar k \Leftrightarrow \int p dx = \hbar\int k dx = 2\pi\hbar n
+	\end{equation}
+	
+\endgroup
 	
 	\begin{figure}[H]
 		\begin{subfigure}{\linewidth}
@@ -93,15 +101,6 @@
 		\end{subfigure}
 		\caption{\label{fig:spin} Figure~\ref{fig:spin:A}: The spectral lines of mercury vapor lamp anomalous Zeeman effect without magnetic field (A) and with magnetic field (B - transverse Zeeman effect \& C - longitudinal Zeeman effect). Figure~\ref{fig:spin:B}: Stern–Gerlach experiment: Silver atoms traveling through an inhomogeneous magnetic field and being deflected up or down depending on their spin.}
 	\end{figure}
-	
-	Nevertheless, although the model was not only limited to spherical orbitals anymore, making the atom more realistic, the Zeeman effect couldn't be completely explained by just using $n$, $l$ and $m$~\cite{ZEEMAN431897,ZEEMAN441897I,ZEEMAN441897II,ZEEMAN451898} nor could the result of the Stern-Gerlach experiment~\cite{GERLACH1922}. Both experiments are shown in Figure~\ref{fig:spin}. A solution was brought after Pauli in 1925 proposed together with his exclusion principle the idea of a new quantum degree of freedom in order to resolve the apparent problem~\cite{PAULI1925I,PAULI1925II}. This degree of freedom was interpreted as an intrinsic angular momentum vector associated to the particle itself, not to the orbital~\cite{UHLENBECK1926}, and associated to a new quantum number $s$, the \textit{spin} projection quantum number explaining the lift of degeneracy to an even number of energy levels~\cite{PAULI1927}. The new quantum number helped in theorizing the neutron as a neutral particle rather than a bond state of a proton and an electron confined in the nucleus itself.
-	
-	The introduction of the \textit{spin} happened one year after another attempt of improvement of the theory was made by De Broglie in his Ph.D. thesis~\cite{DEBROGLIE1924}. The original formulation of the quantum theory only considered photons as energy quanta behaving as both \textit{waves} and \textit{particles}. De Broglie proposed that \textit{all} matter are described by waves and that their momentum is proportional to the oscillation of quantized electromagnetic field oscillators. This interpretation was able to reproduce the previous version of the quantum energy levels by showing that the quantum condition involves an integer multiple of $2\pi$, as shown by Formula~\ref{eq:matterwave}.
-	
-	\begin{equation}
-		\label{eq:matterwave}
-		p = \hbar k \Leftrightarrow \int p dx = \hbar\int k dx = 2\pi\hbar n
-	\end{equation}
 	
 	Although the intuition of De Broglie about the wave-particle duality of all matter was a step in the right direction, his interpretation was semiclassical and it is in 1926 that the first full quantum wave equation would be introduced by Schrödinger to describe electron-like particles, reproducing the previous semiclassical formulation without inconsistencies~\cite{SCHRODINGER1926}. This complex equation describes the evolution of the wave function $\Psi$ of the quantum system, defined by its position vector $\mathbf{r}$ and time $t$ as an energy conservation law, in which the hamiltonian of the system $\hat{H}$ is explicit, by solving the Equation~\ref{eq:schrodinger}.
 	
@@ -138,25 +137,44 @@
 	\subsubsection*{Development of the quark model and \acl{QCD}}
 	\label{chapt2:sssec:quark}
 	
+\begingroup\setlength{\intextsep}{0pt}\setlength{\columnsep}{15pt}
+	
+	\begin{wrapfigure}{r}{0.45\linewidth}
+		\begin{minipage}{\linewidth}
+			\centering\captionsetup[subfigure]{justification=centering}
+			\includegraphics[width=.8\linewidth]{fig/chapt2/mu-meson.png}
+			\subcaption{\label{fig:emulsions:A}}
+			\includegraphics[width=.8\linewidth]{fig/chapt2/pion-emulsion.pdf}
+			\subcaption{\label{fig:emulsions:B}}
+		\end{minipage}
+		\caption{\label{fig:emulsions} Figure~\ref{fig:emulsions:A}: decay of a $\mu$-meson in an emulsion. Figure~\ref{fig:emulsions:B}: track of a $\pi$-meson in an emulsion signed by Lattes, Powell, and Occhialini.}
+		\vspace{-5pt}
+	\end{wrapfigure}
+	
 	To explain the nuclear force that holds \textit{nucleons} (protons and neutrons) together, Yukawa proposed in 1934 the existence of a force carrier called \textit{meson} due to its predicted mass in the range in between the electron and nucleon masses~\cite{YUKAWA1935}. Discovered in 1936 by Anderson and Neddermeyer~\cite{ANDERSON1936,NEDDERMEYER1937}, and confirmed using bubble chambers in 1937 by Street and Stevenson~\cite{STREET1937}, a first meson candidate was observed in the decay products of cosmic rays. Assuming it had the same electric charge as electrons and protons, this particle was observed to have a curvature due to magnetic field that was sharper than protons but smoother than electrons resulting in a mass in between the two. But its properties were not compatible with Yukawa's theory, which was emphasized by the discovery of a new candidate in 1947, again in cosmic ray products using photographic emulsions~\cite{LATTES1947I,LATTES1947II,LATTES1947III}. The detections of the mu-meson and of the pi-meson in emulsions are showed in Figure~\ref{fig:emulsions}.
 	
 	This new candidate, although it had a similar mass than the already believed \textit{meson}, would rather decay into it. For distinction, the first candidate would then be renamed "\textit{mu meson}" when the second would be the "\textit{pi meson}". The \textit{mu meson} was behaving like a heavy electron and didn't participate in the strong interaction whereas the pion was believed to be the carrier of the nuclear interaction. This led to classify the \textit{mu} in a new category of particles  that shared similar properties called \textit{leptons} under the name of \textit{muon} together with the electron. The \textit{pi meson} was finally found to be a triplet of particles: a positively charged, a negatively charged, and a neutral particle. The neutral \textit{pi meson} has been more difficult to identify as it wouldn't leave tracks on emulsions nor on bubble chambers and needed to be studied via its decay products. It was ultimately identified in University of California's cyclotron in 1950 through the observation of its decay into 2 photons~\cite{BJORKLUND1950}.
 	
-	\begin{figure}[H]
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[width=6cm]{fig/chapt2/mu-meson.png}
-			\caption{\label{fig:emulsions:A}}
-		\end{subfigure}
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[width=6cm]{fig/chapt2/pion-emulsion.pdf}
-			\caption{\label{fig:emulsions:B}}
-		\end{subfigure}
-		\caption{\label{fig:emulsions} Figure~\ref{fig:emulsions:A}: decay of a $\mu$-meson in an emulsion. Figure~\ref{fig:emulsions:B}: track of a $\pi$-meson in an emulsion signed by Lattes, Powell, and Occhialini.}
-	\end{figure}
+\endgroup
 	
 	Also discovered in 1947 but in cloud chamber photographs, the \textit{K meson} has also been an important step towards the establishment of the \acl{SM}~\cite{ROCHESTER1947}. A triplet of particles, two charged and a neutral, with a mass roughly half that of a proton, were reported. These particles were baptised \textit{K meson} in contrast to the "light" \textit{pi} and \textit{mu} "L-mesons". The particularity of the \textit{K} is their very slow decays with a typical lifetime of the order of \Ord{-10}\si{s} much longer than the \Ord{-23}\si{s} of \textit{pi}-proton reactions. The concept of \textit{strangeness}, a new quantum number was then introduced thanks to an idea of Pais as an attempt to explain this phenomenon as \textit{strange} particles appeared as the pair production of a strange and anti-strange particle~\cite{PAIS1952}.
+	
+\begingroup\setlength{\intextsep}{5pt}\setlength{\columnsep}{15pt}
+	
+	\begin{wrapfigure}{r}{.45\linewidth}
+		\vspace{-10pt}
+		\begin{minipage}{\linewidth}
+			\centering\captionsetup[subfigure]{justification=centering}
+			\includegraphics[width=\linewidth]{fig/chapt2/Meson_octet.png}
+			\subcaption{\label{fig:Eightfold:A}}
+			\includegraphics[width=\linewidth]{fig/chapt2/Baryon_octet.png}
+			\subcaption{\label{fig:Eightfold:B}}
+			\includegraphics[width=\linewidth]{fig/chapt2/Baryon_decuplet.png}
+			\subcaption{\label{fig:Eightfold:C}}
+		\end{minipage}
+		\caption{\label{fig:Eightfold} Figure~\ref{fig:Eightfold:A}: Meson octet. Figure~\ref{fig:Eightfold:B}: Baryon octet. Figure~\ref{fig:Eightfold:C}: Baryon decuplet.}
+		\vspace{-5pt}
+	\end{wrapfigure}
 	
 	With the development of synchrotrons, the particle \textit{zoo} grew to several dozens during the 1950s as higher energies were reachable through acceleration. In 1961, a first classification system, called \textit{Eightfold Way}, was proposed by Gell-Mann~\cite{GELLMANN1962}. It found its roots in the Gell-Mann--Nishijima formula, which relates the electric charge $Q$, the third component of the isospin $I_3$, the \textit{baryon} number $B$ and the strangeness $S$, as showed in Formula~\ref{eq:NNG}~\cite{NISHIJIMA1953,NISHIJIMA1955,GELLMANN1956}.
 	
@@ -167,26 +185,9 @@
 	
 	The isospin is a quantum number introduced in 1932 to explain symmetries of the newly discovered neutron using representation theory of SU(2)~\cite{HEISENBERG1932}. The baryon number, was introduced by Nishijima as a quantum number for baryons, i.e. particles of the same family as nucleons~\cite{NISHIJIMA1953}. The mesons were classified in an octet and baryons of spin $\pm\frac{1}{2}$ and $\pm\frac{3}{2}$ were respectively classified into an octet and a decuplet, as shown in Figure~\ref{fig:Eightfold}. To complete the baryon decuplet, Gell-Mann predicted the existence of baryon $\Omega^-$ which would later be discovered in 1964~\cite{BARNES1964}.
 	
-	\begin{figure}[H]
-		\begin{subfigure}{\linewidth}
-			\centering
-			\includegraphics[width=0.4\linewidth]{fig/chapt2/Meson_octet.png}\\
-			\caption{\label{fig:Eightfold:A}}
-		\end{subfigure}
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[width=0.8\linewidth]{fig/chapt2/Baryon_octet.png}
-			\caption{\label{fig:Eightfold:B}}
-		\end{subfigure}
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[width=0.8\linewidth]{fig/chapt2/Baryon_decuplet.png}
-			\caption{\label{fig:Eightfold:C}}
-		\end{subfigure}
-		\caption{\label{fig:Eightfold} Figure~\ref{fig:Eightfold:A}: Meson octet. Figure~\ref{fig:Eightfold:B}: Baryon octet. Figure~\ref{fig:Eightfold:C}: Baryon decuplet.}
-	\end{figure}
-	
 	Gell-Mann, and independently Zweig, then proposed a full theoretical model in which \textit{hadrons} (strongly interacting particles, i.e. mesons and baryons) were not elementary particles anymore~\cite{GELLMANN1964,ZWEIG1964I,ZWEIG1964II}. They were rather composed of three flavors of particles called \textit{quarks} and their anti-particles. The three flavors were called \textit{up}, \textit{down} and \textit{strange}. \textit{Up} and \textit{down} were used to explain the nucleons and non-strange mesons, while \textit{strange} came into the composition of hadrons showing strangeness. \textit{Up} and \textit{down} flavors were discovered in 1968 thanks to the deep inelastic scattering experiments conducted at the \acf{SLAC}~\cite{BLOOM1969,BREIDENBACH1969}, and \textit{strange} could only be indirectly validated even though it provided a robust explanation to \textit{kaon} (K) and \textit{pion} ($\pi$).
+	
+\endgroup
 	
 	However, in the decade following the Gell-Mann-Zweig quark model proposition, several improvement to the model were brought. First by Glashow and Bjorken the same year that predicted the existence of a fourth quark flavor, the \textit{charm}, that would equalize the then known number of quarks and leptons~\cite{BJORKEN1964,GLASHOW1970}. Finally in 1973 by Kobayashi and Maskawa that increased the number of quarks to six to explain the experimental observation of CP violation~\cite{CHRISTENSON1964,KOBAYASHI1973}. These two quarks were referred to as \textit{top} and \textit{bottom} for the first time in 1975~\cite{HARARI1975}. It's only after these additions to the quark model that finally the \textit{charm} was discovered in 1974 at both SLAC and \acf{BNL}~\cite{RICHTER1974,TING1974}. A meson in which the \textit{charm} is bonded with an \textit{anti-charm}, called $J/\psi$ and presented in Figure~\ref{fig:JPsi}, helped convince the physics community of the validity of the model. The \textit{bottom} was discovered soon after in 1977 in Fermilab~\cite{HERB1977} and indicated the existence of the \textit{top} that resisted to discovery until Fermilab's experiments CDF and D$\emptyset$ in 1995 due its very large mass and the energy needed to produce it~\cite{ABASHI1995,ABE1995}.
 	
@@ -225,11 +226,13 @@
 	
 	The weak interaction is the process that causes radioactive decays. Thanks to the neutron discovery~\cite{CHADWICK1932}, Fermi could explain in 1934 beta radiations through the beta decay process in which the neutron decays into a proton by emitting an electron~\cite{FERMI1934}. Though the missing energy observed during this process triggered a huge debate about the apparent non-conservation of energy, momentum and spin of the process, Fermi, as Pauli before him~\cite{PAULI1930}, proposed that the missing energy was due to a neutral not yet discovered particle that was then baptised \textit{neutrino}. The impossibility to detect such a particle left some members of the scientific community sceptical, but hints of energy conservation and of the existence of the neutrino were provided by measuring the energy spectrum of electrons emitted through beta decay, as there was a strict limit on their energy, as showed in Figure~\ref{fig:beta-decay}.
 	
-	\begin{figure}[H]
+\begingroup\setlength{\intextsep}{5pt}\setlength{\columnsep}{15pt}
+	
+	\begin{wrapfigure}{l}{0.6\linewidth}
 		\centering
-		\includegraphics[width=\plotwidth]{fig/chapt2/Beta-decay-electron-spectrum.jpg}
+		\includegraphics[width=\linewidth]{fig/chapt2/Beta-decay-electron-spectrum.jpg}
 		\caption{\label{fig:beta-decay} Energy spectrum of beta particles emitted by a source of $^{210}Bi$.}
-	\end{figure}
+	\end{wrapfigure}
 	
 	It's only 30 years later in 1953 that it was discovered by the team of Cowan and Reines using the principle of inverse beta decay described through Formula~\ref{eq:invbeta}~\cite{COWAN1953}.
 	
@@ -238,25 +241,27 @@
 		\overline{\nu} + p \rightarrow n + e^+
 	\end{equation}
 	
-	The experiment consisted in placing water tanks sandwiched in between liquid scintillators near a nuclear reactor with an estimated neutrino flux of \Sci{5}{13}\siflux. However, in order to explain the absence of some reactions in the experiment of Cowan and Reines and constraint the beta decay theory of Fermi and extend it to the case of the muon, Konopinski and Mahmoud proposed in 1953 that the muon decay would eject a particle similar to the neutrino~\cite{KONOPINSKI1953}. They predicted the existence of a muon neutrino that would be different to the one involved in the beta decay, related to the electron. With this, the idea of \textit{lepton number} arised. The \textit{muon neutrino} was successfully detected in 1962 by Lederman, Schwartz, and Steinberger~\cite{LEDERMAN1962}.\\
+	The experiment consisted in placing water tanks sandwiched in between liquid scintillators near a nuclear reactor with an estimated neutrino flux of \Sci{5}{13}\siflux. However, in order to explain the absence of some reactions in the experiment of Cowan and Reines and constraint the beta decay theory of Fermi and extend it to the case of the muon, Konopinski and Mahmoud proposed in 1953 that the muon decay would eject a particle similar to the neutrino~\cite{KONOPINSKI1953}. They predicted the existence of a muon neutrino that would be different to the one involved in the beta decay, related to the electron. With this, the idea of \textit{lepton number} arised. The \textit{muon neutrino} was successfully detected in 1962 by Lederman, Schwartz, and Steinberger~\cite{LEDERMAN1962}.
+	
+\endgroup
 	
 	The theory could not be valid though as the probability of interaction, called \textit{cross-section}, would have been increasing without limitation with the square of the energy. Fermi had proposed a two vector current coupling but Lee and Yang noted that an axial current could appear and would violate parity~\cite{LEE1956}. Gamov and Teller had already tried to account for such parity violation by describing Fermi's interaction through allowed (parity-violating) and superallowed (parity-conserving) decays~\cite{GAMOW1936}. The Wu experiment in 1956 confirmed the parity violation~\cite{WU1957}, as showed by Figure~\ref{fig:parity-violation}. But the success of QED as a quantum field theory sparked the development of similar theory to describe the weak interaction.
 	
+	As previously discussed, the great success of QED was built on an underlying symmetry, interpreted as a gauge invariance so that the effect of the force is the same in all space-time coordinates, and of the possibility to renormalize it in order to resolve infinities. In 1967, Weinberg found a way to unite both the electromagnetic and weak interaction into a gauge theory involving four gauge bosons, three of which are massive and carry out the weak interaction and the last is a massless boson carrying the electromagnetic interaction~\cite{WEINBERG1967}. Among the three massive bosons, two are charged and one is neutral, similarly to the previously theorized \textit{pi meson} vector of the Yukawa model~\cite{YUKAWA1935} and all have a mass much greater than nucleons and thus a very short life time implying a finite very short range, contrary to the contact interaction originally proposed by Fermi.
+	
 	\begin{figure}[H]
-		\begin{subfigure}{0.6\linewidth}
+		\begin{subfigure}{0.5\linewidth}
 			\centering
 			\includegraphics[width=0.6\plotwidth]{fig/chapt2/Wu_experiment.jpg}
 			\caption{\label{fig:parity-violation:A}}
 		\end{subfigure}
-		\begin{subfigure}{0.4\linewidth}
+		\begin{subfigure}{0.5\linewidth}
 			\centering
 			\includegraphics[width=0.5\plotwidth]{fig/chapt2/Wu_result.png}
 			\caption{\label{fig:parity-violation:B}}
 		\end{subfigure}
 		\caption{\label{fig:parity-violation} As explained through Figure~\ref{fig:parity-violation:A}, the Wu experiment consisted in measuring the preferred direction of emission of beta rays of a Colbalt source placed in a stable magnetic field aligned, in one case, and anti-aligned, in the other case, with the nuclear spin. The result of Figure~\ref{fig:parity-violation:B} showed a violation of parity.}
 	\end{figure}
-	
-	As previously discussed, the great success of QED was built on an underlying symmetry, interpreted as a gauge invariance so that the effect of the force is the same in all space-time coordinates, and of the possibility to renormalize it in order to resolve infinities. In 1967, Weinberg found a way to unite both the electromagnetic and weak interaction into a gauge theory involving four gauge bosons, three of which are massive and carry out the weak interaction and the last is a massless boson carrying the electromagnetic interaction~\cite{WEINBERG1967}. Among the three massive bosons, two are charged and one is neutral, similarly to the previously theorized \textit{pi meson} vector of the Yukawa model~\cite{YUKAWA1935} and all have a mass much greater than nucleons and thus a very short life time implying a finite very short range, contrary to the contact interaction originally proposed by Fermi.
 	
 	Breakthroughs in other fields of physics contributed in giving theoretical support and interpretation to the unified electroweak theory. The stepping stone was the use of spontaneous symmetry breaking that was inspired to Nambu at the beginning of the 1960s~\cite{NAMBU1961I,NAMBU1961II} following the development of the \acf{BCS} superconductivity mechanism in 1957~\cite{BCS1957}. Cooper had shown that BCS pairs, pairs of electrons bound together at low temperature, can have lower energy than the Fermi Energy and are responsible for superconductivity. This led to the discovery of Goldstone-Nambu bosons~\cite{NAMBU1960,GOLDSTONE1961} as a result of the spontaneous breaking of the chiral symmetry in a theory describing nucleons and mesons developed by Nambu and Jona-Lasinio in 1961, and now understood as a low-energy approximation of QCD. Similarly to the mechanism of energy gap appearance in superconductivity, the nucleon mass is suggested to be the result of a self-energy of a fermion field and is studied through a four-fermion interaction in which, as a consequence of the symmetry, bound states of nucleon-antinucleon pairs appear and can be regarded as virtual pions. Though the symmetry is maintained in the equations, the ground state is not preserved. Goldstone showed that the bound states correspond to spinless bosons with zero mass~\cite{GOLDSTONE1961}.
 	
@@ -295,47 +300,53 @@
 		\lum = f_{BX}\frac{n^2}{\sigma^*}
 	\end{equation}
 	
-	This expression doesn't depend on time anymore and leads to a simple estimation of the integrated luminosity and hence, knowing the cross-section of each available physics channel, to the expected number of events in each channel. The total interaction cross section is the sum of all the different output channels allowed by the interaction process. In the case of highly relativistic protons, the proton-proton (pp) total cross-section increases with the center-of-mass energy of interactions, as can be seen from Figure~\ref{fig:pp-cross-section}.
+\begingroup\setlength{\intextsep}{0pt}\setlength{\columnsep}{15pt}
 	
-	\begin{figure}[H]
-		\begin{subfigure}{0.4\linewidth}
-			\centering
-			\includegraphics[width=0.55\plotwidth]{fig/chapt2/pp-total-cross-section.pdf}
-			\caption{\label{fig:pp-cross-section:A}}
-		\end{subfigure}
-		\begin{subfigure}{0.6\linewidth}
-			\centering
-			\includegraphics[width=0.65\plotwidth]{fig/chapt2/Cross-sections.png}
-			\caption{\label{fig:pp-cross-section:B}}
-		\end{subfigure}
+	\begin{wrapfigure}{r}{.5\linewidth}
+		\vspace{15pt}
+		\begin{minipage}{\linewidth}
+			\centering\captionsetup[subfigure]{justification=centering}
+			\includegraphics[width=\linewidth]{fig/chapt2/pp-total-cross-section.pdf}
+			\subcaption{\label{fig:pp-cross-section:A}}
+			\includegraphics[width=\linewidth]{fig/chapt2/Cross-sections.png}
+			\subcaption{\label{fig:pp-cross-section:B}}
+		\end{minipage}
 		\caption{\label{fig:pp-cross-section} Figure~\ref{fig:pp-cross-section:A}: Total proton-proton cross-section as a function of the collisions center-of-mass energy $\sqrt{s}$~\cite{ARKHIPOV2001} with cosmic-ray data from Akeno Observatory and Fly’s Eye Collaboration. Figure~\ref{fig:pp-cross-section:B}: Total proton-(anti)proton and interaction channel cross-sections in the \si{TeV} scale.}
-	\end{figure}
+	\end{wrapfigure}
+	
+	This expression doesn't depend on time anymore and leads to a simple estimation of the integrated luminosity and hence, knowing the cross-section of each available physics channel, to the expected number of events in each channel. The total interaction cross section is the sum of all the different output channels allowed by the interaction process. In the case of highly relativistic protons, the proton-proton (pp) total cross-section increases with the center-of-mass energy of interactions, as can be seen from Figure~\ref{fig:pp-cross-section}.
 	
 	Enhancing rare processes that allow to finely test the \acl{SM} is then achieved through an increase in both energy and luminosity. At the energy range that were scanned thanks to high-energy colliders, the SM has so far been a well tested theory. Nevertheless, several hints of physics going beyond its scope have been observed.
 	
 	\paragraph*{Dark matter and gravity: }
 	
 	The discrepancy of velocity dispersion of stars in galaxies with respect to the visible mass they contain is known since the end of the \Th{19} century where Kelvin proposed that this problem could be solved if a great majority of the stars would be dark bodies, idea strongly criticized by Pointcaré~\cite{POINTCARE1906}. Throughout the \Th{20} century, physicists like Kapteyn~\cite{KAPTEYN1922} or Zwicky~\cite{ZWICKY1933,ZWICKY1937}, showed the first hints of a \textit{dark matter} by studying star velocities and galactic clusters, followed by robust measurements of galaxy rotation curves by Babcock which suggested that the mass-to-luminosity ratio was different from what would be expected from watching the visible light~\cite{BABCOCK1939}. Later in the 1970s, Rubin and Ford from direct light observations~\cite{RUNBIN1970} and Rogstad and Shostak from radio measurements~\cite{ROGSTAD1972} showed that the radial velocity of visible objects in galaxies was increasing with increasing distance to the center of the galaxy. An example of galaxy rotation curve is provided in Figure~\ref{fig:galaxy}. Finally observation of lensing effect by galaxy clusters, temperature distribution of hot gas in galaxies and clusters, and the anisotropies in the \acf{CMB}, showed in Figure~\ref{fig:CMB}, kept on pointing to a \textit{dark matter}~\cite{PLANK2016}. From all the data accumulated, the visible matter would only account to no more than 5\% of the total content on the visible universe~\cite{JAROSIK2011}. Alternative theories have tried to investigate modified versions of the General Relativity as this theory is only well tested at the scale of the solar system but is not sufficiently tested on wider ranges or even theories in which gravitation is not a fundamental force but rather an emergent one~\cite{VERLINDE2016,MAEDER2017}. But so far, such theories have difficulties to reproduce all the experimental observations as easily as through dark matter.
+
+\endgroup
 	
-	\begin{figure}[H]
+\begingroup\setlength{\intextsep}{0pt}\setlength{\columnsep}{15pt}
+	
+	\begin{wrapfigure}{l}{.6\linewidth}
 		\centering
-		\includegraphics[width=0.7\plotwidth]{fig/chapt2/M33-rotation-curve.png}
+		\includegraphics[width=\linewidth]{fig/chapt2/M33-rotation-curve.png}
 		\caption{\label{fig:galaxy} Rotation curve (points) of the galaxy M33 compared with best fitting model (line). The short-dashed line represents the rotation profile that would be expected from the observation of the stellar disc alone~\cite{CORBELLI2000}.}
-	\end{figure}
+	\end{wrapfigure}
 	
 	A possible theory to offer dark matter candidates would be \textit{supersymmetry} (SUSY) which proposes a relationship in between bosons and fermions in the frame of the \acf{MSSM}. In this model, each elementary particle, through a spontaneous space-time symmetry breaking mechanism would have a \textit{super partner} from the other family of particles, pairing bosons and fermions together. The model was first introduced as a way to solve the \textit{Hierarchy Problem}~\cite{DIMOPOULOS1981}. The discrepancy between the strength of the weak force and gravity translates into a light Higgs boson compared to the \textit{Planck Mass}. In the SM, the Higgs mass is left to be a measured parameter rather than a calculated one even though the model requires a mass in between 100 and \SI{1000}{GeV/c^2} to stay unitary. Nevertheless, quantum corrections to the Higgs mass coming from its interactions with virtual particles should make the scalar boson much heavier than what measured~\cite{TANEDO2012}. Through the MSSM, the stability of fermion masses would provide stability to the Higgs boson mass via the introduction of a fermionic super partner.
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\plotwidth]{fig/chapt2/CMB.jpg}
-		\caption{\label{fig:CMB} \acl{CMB} as measured by the space observatory Planck which mean temperature is $T_\gamma =$ \numerror{2.7255}{0.0006}\si{K} with anisotropies of the order of a few \si{\micro K}.}
-	\end{figure}
+\endgroup
 	
 	On top of providing a solution to the Hierarchy Problem, the model comes with heavy dark matter candidates in the \si{TeV} scale~\cite{JUNGMAN1996}. Indeed, in the case \textit{R-parity} is not violated, the \acf{LSP} cannot decay and could then explain the dark matter. The LSP in the model is neutral and can only interact through the weak and gravitational interactions. Typical candidates are the \textit{neutralino}, the \textit{sneutrino} or the \textit{gravitino}.
 	
 	Finally, gravity is not explained through the SM, and huge difficulties are encountered when trying to include it. The strength of gravitational interaction is expected to be negligible at the scale of elementary particles, nevertheless, adding gravitation in the perspective of developing a \textit{"theory of everything"} leads to divergent integrals that could not be fixed through renormalization. Extensions to the MSSM, and in particular \acf{mSUGRA}, include general relativity as mediator of the symmetry breaking. mSUGRA gives access to the hidden sector in which the MSSM only interacts gravitationally and suppresses the infinities arising from attempts to include gravity into the SM thanks to possible renormalization~\cite{CHAMSEDDINE1982}.
 	
 	Signatures for the MSSM would come from the super partners of quarks and gluons that can decay into an LSP that could then be identified as missing energy as it escapes the detectors undetected. But even in the case MSSM predictions are not to be seen, the other models treating dark matter also propose \acf{WIMPs} that could be observed in similar ways than LSPs~\cite{ASKEW2014}. Moreover alternative models exist to provide solutions to the Hierarchy Problem. The most investigated models are extra dimensions such as Arkani-Hamed Dimopoulos Dvali~\cite{ADD1998,ADD1999}, Kaluza–Klein~\cite{KALUZA1921,KLEIN1926} or Randall-Sundrum models~\cite{RS1999I,RS1999II} that usually also include gravitation. Finally, alternative models also exist for the production of dark matter candidates. Models with a hidden valley that would unravel the existence of a new group of light particles through the extension of the SM with a new confining gauge group~\cite{ZUREK2007}.\\
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\plotwidth]{fig/chapt2/CMB.jpg}
+		\caption{\label{fig:CMB} \acl{CMB} as measured by the space observatory Planck which mean temperature is $T_\gamma =$ \numerror{2.7255}{0.0006}\si{K} with anisotropies of the order of a few \si{\micro K}.}
+	\end{figure}
 	 
 	\paragraph*{Baryon asymmetry: }
 	
@@ -377,14 +388,6 @@
 
 	\subsection{LHC, the most powerful particle accelerator}
 	\label{chapt2:ssec:LHC}
-	
-	The different aspects of physics beyond the Standard Model of particle physics and the Standard Model itself can be tested through the use of very energetic and intense hadron and ion colliders. Powerful hadron colliders are suited for searching for strongly interacting particles. The LHC at CERN is a perfect tool to seek answers to these open questions and the experiments build along its beam lines already started investigating further into the SM and BSM physics. The LHC has always been considered as an option for the future of CERN. At the moment of the construction of the LEP beneath the border between France and Switzerland, the tunnel was built in order to accommodate what would be a \acl{LHC} with a dipole field of \SI{10}{T} and a beam energy in between 8 and \SI{9}{TeV}~\cite{ANNUALREPORT1984}. In 1985, the creation of a 'Working Group on the Scientific and Technological Future of CERN' took place to investigate such a collider~\cite{ANNUALREPORT1985}. The decision was finally taken almost ten years later, in 1994, to construct the LHC in the LEP tunnel~\cite{ANNUALREPORT1994} and the approval of the 4 main experiments that would take place at the four interaction points came in 1997~\cite{ANNUALREPORT1997} and 1998~\cite{ANNUALREPORT1998}:
-	
-	\begin{itemize}
-		\item[•] ALICE~\cite{ALICELOI} has been designed for the purpose of studying the confinement of quarks through exploration of the quark-gluon plasma that is believed to have been a state of matter that existed in the very first moment of the universe.
-		\item[•] ATLAS~\cite{ATLASLOI} and CMS~\cite{CMSLOI} are general purpose experiments that have been designed with the goal of continuing the exploration of the Standard Model and the investigation of new physics.
-		\item[•] LHCb~\cite{LHCBLOI} has been designed to investigate the preference of matter over antimatter in the universe through CP violation.
-	\end{itemize}
 
 	\begin{figure}[H]
 		\centering
@@ -392,32 +395,49 @@
 		\caption{\label{fig:CERNComplex} CERN accelerator complex.}
 	\end{figure}
 	
-	These large-scale experiments, as well as the full CERN accelerator complex, are displayed in Figure~\ref{fig:CERNComplex}. The LHC is a \SI{27}{km} long hadron collider and the most powerful accelerator used for particle physics since 2008~\cite{LHC2008}. The LHC is designed to collide protons at a center-of-mass energy of \SI{14}{TeV} and luminosity of \Ord{34} \si{cm^{-2}s^{-1}}, as well as $Pb$ ions at a center-of-mass energy of \SI{2.8}{TeV/A} with a peak luminosity of \Ord{27} \si{cm^{-2}s^{-1}}. The collider is the last of a long series of accelerating devices. Indeed, before being accelerated by the LHC, the particles need to pass through different acceleration stages. All these acceleration stages are visible on Figure~\ref{fig:CERNComplex} and pictures of the accelerators are shown in Figure~\ref{fig:CERNAccelerators}.
+	The different aspects of physics beyond the Standard Model of particle physics and the Standard Model itself can be tested through the use of very energetic and intense hadron and ion colliders. Powerful hadron colliders are suited for searching for strongly interacting particles. The LHC at CERN is a perfect tool to seek answers to these open questions and the experiments build along its beam lines already started investigating further into the SM and BSM physics.
+	
+\begingroup\setlength{\intextsep}{-15pt}\setlength{\columnsep}{15pt}
 
-	\begin{figure}[H]
+	\begin{wrapfigure}{r}{.47\linewidth}
 		\centering
-		\includegraphics[width=0.45\linewidth]{fig/chapt2/CERN-accelerators.jpg}
+		\vspace{15pt}
+		\includegraphics[width=\linewidth]{fig/chapt2/CERN-accelerators.jpg}
 		\caption{\label{fig:CERNAccelerators} Pictures of the different accelerators. From top to bottom: first the LINAC 2 and the $Pb$ source of LINAC 3. Then the Booster and the LEIR. Finally, the PS, the SPS and the LHC.}
-	\end{figure}
+	\end{wrapfigure}
+	
+	The LHC has always been considered as an option for the future of CERN. At the moment of the construction of the LEP beneath the border between France and Switzerland, the tunnel was built in order to accommodate what would be a \acl{LHC} with a dipole field of \SI{10}{T} and a beam energy in between 8 and \SI{9}{TeV}~\cite{ANNUALREPORT1984}. In 1985, the creation of a 'Working Group on the Scientific and Technological Future of CERN' took place to investigate such a collider~\cite{ANNUALREPORT1985}. The decision was finally taken almost ten years later, in 1994, to construct the LHC in the LEP tunnel~\cite{ANNUALREPORT1994} and the approval of the 4 main experiments that would take place at the four interaction points came in 1997~\cite{ANNUALREPORT1997} and 1998~\cite{ANNUALREPORT1998}:
+		
+	\begin{itemize}
+		\item[•] ALICE~\cite{ALICELOI} has been designed for the purpose of studying the confinement of quarks through exploration of the quark-gluon plasma that is believed to have been a state of matter that existed in the very first moment of the universe.
+		\item[•] ATLAS~\cite{ATLASLOI} and CMS~\cite{CMSLOI} are general purpose experiments that have been designed with the goal of continuing the exploration of the Standard Model and the investigation of new physics.
+		\item[•] LHCb~\cite{LHCBLOI} has been designed to investigate the preference of matter over antimatter in the universe through CP violation.
+	\end{itemize}
+	
+	These large-scale experiments, as well as the full CERN accelerator complex, are displayed in Figure~\ref{fig:CERNComplex}. The LHC is a \SI{27}{km} long hadron collider and the most powerful accelerator used for particle physics since 2008~\cite{LHC2008}. The LHC is designed to collide protons at a center-of-mass energy of \SI{14}{TeV} and luminosity of \Ord{34} \si{cm^{-2}s^{-1}}, as well as $Pb$ ions at a center-of-mass energy of \SI{2.8}{TeV/A} with a peak luminosity of \Ord{27} \si{cm^{-2}s^{-1}}. The collider is the last of a long series of accelerating devices. Indeed, before being accelerated by the LHC, the particles need to pass through different acceleration stages. All these acceleration stages are visible on Figure~\ref{fig:CERNComplex} and pictures of the accelerators are shown in Figure~\ref{fig:CERNAccelerators}.
+	
+\endgroup
+\begingroup\setlength{\intextsep}{5pt}\setlength{\columnsep}{15pt}
+	
+	\begin{wrapfigure}{l}{.45\linewidth}
+		\begin{minipage}{\linewidth}
+			\centering\captionsetup[subfigure]{justification=centering}
+			\includegraphics[width = \linewidth]{fig/chapt2/LHC-dipole.png}
+			\subcaption{\label{fig:LHCDipole:A}}
+			\includegraphics[width = \linewidth]{fig/chapt2/LHC-dipole-field.jpg}
+			\subcaption{\label{fig:LHCDipole:B}}
+		\end{minipage}
+		\caption{\label{fig:LHCDipole} Figure~\ref{fig:LHCDipole:A}: schematics of the LHC cryodipoles. 1: Superconducting Coils, 2: Beam pipe, 3: Heat exchanger Pipe, 4: Helium-II Vessel, 5: Superconducting Bus-bar, 6: Iron Yoke, 7: Non-Magnetic Collars, 8: Vacuum Vessel, 9: Radiation Screen, 10: Thermal Shield, 11: Auxiliary Bus-bar Tube, 12: Instrumentation Feed Throughs, 13: Protection Diode, 14: Quadrupole Bus-bars, 15: Spool Piece Bus-bars. Figure~\ref{fig:LHCDipole:B}: magnetic field and resulting motion force applied on the beam particles.}
+	\end{wrapfigure}
 	
 	The story of accelerated protons at CERN starts with a bottle of hydrogen gas injected into the source chamber of the linear particle accelerator \textit{LINAC 2} in which a strong electric field strips the electron off the hydrogen molecules only to keep their nuclei, the protons. The cylindrical conductors then accelerate the protons to an energy of \SI{50}{MeV}.
 	When exiting the LINAC 2, the protons are divided into four bunches and injected into the four superimposed synchrotron rings of the \textit{Booster} where they are then accelerated to reach an energy of \SI{1.4}{GeV} before being injected into the \textit{PS}.
 	The four proton bunches are hence sent as one to the PS where their energy eventually reaches \SI{26}{GeV}. The PS not only accelerates protons. It also accelerates heavy ions from the \textit{\acf{LEIR}}. Lead is first injected into the dedicated linear collider \textit{LINAC 3}, that accelerates the ions. Electrons are striped off the lead ions all along the acceleration process and eventually, only bare nuclei are injected in the LEIR whose goal is to transform the long ion pulses received into short dense bunches for LHC. Ions injected and stored in the PS were accelerated by the LEIR from \SI{4.2}{MeV} to \SI{72}{MeV}.
 	Directly following the PS, is finally the last acceleration stage before the LHC, the \SI{7}{km} long \textit{SPS}. The SPS accelerates the protons to \SI{450}{GeV} and inject them in both LHC accelerator rings that will increase their energy up to \SI{7}{TeV}. When the LHC runs with heavy lead ions for ALICE and LHCb, ions are injected and accelerated to reach the energy of \SI{2.8}{TeV/A}.
 	
-	\begin{figure}[H]
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[height = 4cm]{fig/chapt2/LHC-dipole.png}
-			\caption{\label{fig:LHCDipole:A}}
-		\end{subfigure}
-		\begin{subfigure}{0.5\linewidth}
-			\centering
-			\includegraphics[height = 4cm]{fig/chapt2/LHC-dipole-field.jpg}
-			\caption{\label{fig:LHCDipole:B}}
-		\end{subfigure}
-		\caption{\label{fig:LHCDipole} Figure~\ref{fig:LHCDipole:A}: schematics of the LHC cryodipoles. 1: Superconducting Coils, 2: Beam pipe, 3: Heat exchanger Pipe, 4: Helium-II Vessel, 5: Superconducting Bus-bar, 6: Iron Yoke, 7: Non-Magnetic Collars, 8: Vacuum Vessel, 9: Radiation Screen, 10: Thermal Shield, 11: Auxiliary Bus-bar Tube, 12: Instrumentation Feed Throughs, 13: Protection Diode, 14: Quadrupole Bus-bars, 15: Spool Piece Bus-bars. Figure~\ref{fig:LHCDipole:B}: magnetic field and resulting motion force applied on the beam particles.}
-	\end{figure}
+	The LHC beams are not continuous but are rather organised in bunches of particles. When in $pp$-collision mode, the beams are composed of 2808 bunches of \Sci{1.15}{11} protons separated by \SI{25}{ns}. When in $Pb$-collision mode, the 592 $Pb$ bunches are on the contrary composed of \Sci{2.2}{8} ions separated by \SI{100}{ns}. The two parallel proton beams of the LHC are contained in a single twin-bore magnet due to the space restriction in the LEP tunnel. Indeed, building two completely separate accelerator rings next to each other was impossible. The dipoles of the 1232 twin-bore magnets are shown in Figure~\ref{fig:LHCDipole} alongside the magnetic field generated along the dipole section to accelerate the particles. The dipoles generate a nominal field of \SI{8.33}{T}, needed to give protons and lead nucleons their nominal energy. Some 392 quadrupoles, presented in Figure~\ref{fig:LHCQuadrupole}, are also used to focus to the beams, as well as other multipoles to correct smaller imperfections.
+	
+\endgroup
 	
 	\begin{figure}[H]
 		\begin{subfigure}{0.5\linewidth}
@@ -432,8 +452,6 @@
 		\end{subfigure}
 		\caption{\label{fig:LHCQuadrupole} The LHC quadrupoles (Figure~\ref{fig:LHCQuadrupole:A}) showed together with the magnetic fields and resulting focussing force applied on the beam by two consecutive quadrupoles (Figure~\ref{fig:LHCQuadrupole:B}).}
 	\end{figure}
-	
-	The LHC beams are not continuous but are rather organised in bunches of particles. When in $pp$-collision mode, the beams are composed of 2808 bunches of \Sci{1.15}{11} protons separated by \SI{25}{ns}. When in $Pb$-collision mode, the 592 $Pb$ bunches are on the contrary composed of \Sci{2.2}{8} ions separated by \SI{100}{ns}. The two parallel proton beams of the LHC are contained in a single twin-bore magnet due to the space restriction in the LEP tunnel. Indeed, building two completely separate accelerator rings next to each other was impossible. The dipoles of the 1232 twin-bore magnets are shown in Figure~\ref{fig:LHCDipole} alongside the magnetic field generated along the dipole section to accelerate the particles. The dipoles generate a nominal field of \SI{8.33}{T}, needed to give protons and lead nucleons their nominal energy. Some 392 quadrupoles, presented in Figure~\ref{fig:LHCQuadrupole}, are also used to focus to the beams, as well as other multipoles to correct smaller imperfections.
 	
 	\subsection{Timeline of operation}
 	\label{chapt2:ssec:timeline}
@@ -456,12 +474,10 @@
 	
 	Run 1 was brought to an end with the start of the \acl{LS1}, an almost two years technical stop aimed at increasing the energy of the center-of-mass collisions to $\sqrt{s} =$ \SI{13}{TeV} as well as the instantaneous luminosity. This maintenance stop was also effectively used by the experiments which upgraded part of their detection systems. Run 2 then started in 2015 and lasted until end of 2018 where the activities ended with a last heavy ion run. During the operation, the instantaneous was successfully brought to a value of \Sci{1.7}{34}\siflux exceeding the design value. Run 2 has been the occasion to acquire more data to study the properties of the Higgs boson with more precision. The boson discovered in the first physics run seems to be consistent with the SM Higgs boson~\cite{HIGGS2015}.
 	
-	From the end of 2018 to early 2021 the \acl{LS2} will take place. This second maintenance stop will be the occasion to boost once again the beam energy to finally reach the design energy of LHC, \SI{14}{TeV}. On the side of the maintenance work, preliminary work for the \acl{HL-LHC} will be performed. The preparations will consist of detector, on the side of the experiments, and beam machine upgrades, on the side of LHC. In 2021, the physics program will be resumed with an instantaneous liminosity fixed at \Sci{2}{34}\siflux. During these 3 years of run, the LHC will deliver as much integrated luminosity as what what brought during the almost 7 years of both Run 1 and 2 of data taking. Phase-I will end with an overall \SI{300}{fb^{-1}} delivered. The timeline so far described is summarized through the evolution of the instantaneous luminosity and of the corresponding integrated luminosity provided in Figure~\ref{fig:HL-LHC-Timeline}.
-	
 	\begin{figure}[H]
 		\begin{subfigure}{\linewidth}
 			\centering
-			\includegraphics[width=\plotwidth]{fig/chapt2/HL-LHC-nominal.png}\\
+			\includegraphics[width=\plotwidth]{fig/chapt2/HL-LHC-nominal.png}
 			\caption{\label{fig:HL-LHC-Timeline:A}}
 		\end{subfigure}
 		\begin{subfigure}{\linewidth}
@@ -469,91 +485,107 @@
 			\includegraphics[width=\plotwidth]{fig/chapt2/HL-LHC-ultimate.png}
 			\caption{\label{fig:HL-LHC-Timeline:B}}
 		\end{subfigure}
-		\caption{\label{fig:HL-LHC-Timeline} Detailed timeline projection of LHC and HL-LHC operation until 2039 showing the evolution of the instantaneous and integrated luminosity as designed (Figure~\ref{fig:HL-LHC-Timeline:A}) and in the ultimate case where the instantaneous luminosity is increased to \Sci{7.5}{34}\siflux thanks to a new increase of instantaneous luminosity during Run 5 (Figure~\ref{fig:HL-LHC-Timeline:B})~\cite{HLLHC2017,HLLHCPDR}.}
+		\caption{\label{fig:HL-LHC-Timeline} Detailed timeline projection of LHC and HL-LHC operation until 2039 showing the evolution of the instantaneous and integrated luminosity as designed (Figure~\ref{fig:HL-LHC-Timeline:A}) and in the ultimate case where the instantaneous luminosity is increased to \Sci{7.5}{34}\siflux thanks to a new increase of instantaneous luminosity during Run 5 (Figure~\ref{fig:HL-LHC-Timeline:B})~\cite{HLLHC2017,HLLHCPDR,PHASEIITP}.}
 	\end{figure}
+	
+	From the end of 2018 to early 2021 the \acl{LS2} will take place. This second maintenance stop will be the occasion to boost once again the beam energy to finally reach the design energy of LHC, \SI{14}{TeV}. On the side of the maintenance work, preliminary work for the \acl{HL-LHC} will be performed. The preparations will consist of detector, on the side of the experiments, and beam machine upgrades, on the side of LHC. In 2021, the physics program will be resumed with an instantaneous liminosity fixed at \Sci{2}{34}\siflux. During these 3 years of run, the LHC will deliver as much integrated luminosity as what what brought during the almost 7 years of both Run 1 and 2 of data taking. Phase-1 will end with an overall \SI{300}{fb^{-1}} delivered. The timeline so far described is summarized through the evolution of the instantaneous luminosity and of the corresponding integrated luminosity provided in Figure~\ref{fig:HL-LHC-Timeline}.
 	
 	After the \acl{LS3} (2024-2026) that will close the activities of Run 3, the accelerator will enter the HL-LHC configuration~\cite{HLLHC2017}, increasing the instantaneous luminosity to an unprecedented level of \Sci{5}{34}\siflux for $pp$-collisions (\Sci{4.5}{27}\siflux for $Pb$-collisions), boosting the discovery potential of the LHC. The HL-LHC phase should last at least another 10 years depending on the breakthrough this machine would lead to. Already a new accelerating device, the FCC, as been proposed and is being investigated to prepare the future of high-energy physics after the LHC.
 	
 	\subsection{\acl{HL-LHC}}
 	\label{chapt2:ssec:HL-LHC}
 		
-	After approximately fifteen years of operation, the LHC will undergo a new series of upgrades during the LS3 in order to boost its discovery potential as previously discussed. The period after LS3 is what is referred to HL-LHC or Phase-II. The goal is to aim for a luminosity 5 to 7 times stronger than the nominal one trying to reach even 10 times this value if possible~\cite{HLLHC2017,HLLHCPDR}. Increasing the luminosity means that the beam size at the collision points needs to be reduced to boost the number of collisions per bunch crossing. For this purpose, new focusing and bending magnets and collimators will be installed at the collision points as well as newly developed \textit{"crab cavities"} that will tilt the particle bunches just prior to the collisions by giving them transverse momentum and thus increasing their meeting area. In addition, the full proton injection line will be upgraded.
+	After approximately fifteen years of operation, the LHC will undergo a new series of upgrades during the LS3 in order to boost its discovery potential as previously discussed. The period after LS3 is what is referred to HL-LHC or Phase-2. The goal is to aim for a luminosity 5 to 7 times stronger than the nominal one trying to reach even 10 times this value if possible~\cite{HLLHC2017,HLLHCPDR}. Increasing the luminosity means that the beam size at the collision points needs to be reduced to boost the number of collisions per bunch crossing. For this purpose, new focusing and bending magnets and collimators will be installed at the collision points as well as newly developed \textit{"crab cavities"} that will tilt the particle bunches just prior to the collisions by giving them transverse momentum and thus increasing their meeting area. In addition, the full proton injection line will be upgraded.
 	
 	On the experiments side, the \acf{PU} will be increased up to 150 to 200 interactions per bunch crossing in ATLAS and CMS, making necessary a strong upgrade of the trigger system and of the inner trackers and of the calorimeters. Both ATLAS and CMS will also need to upgrade the muon trigger at the level of their endcaps mainly focusing on the coverage near the beam line in order to increase the detection acceptance and event selection. Moreover, the increased luminosity will also lead to an increased background rate and a faster ageing of the detectors.
 
-	The end of 2018 marked the beginning of LS2 and the start of Phase-II upgrade activities. From the HL-LHC period onwards, i.e. past LS3, the performance degradation due to integrated radiation as well as the average number of inelastic collisions per bunch crossing, seen as pile-up into the detectors' readout that far exceeds this of the original LHC plans, will rise substantially and become a major challenge for all of the LHC experiments, like CMS, that were forced to address an upgrade program for Phase-II~\cite{PHASEIITP}. Dealing with the data from the muon detectors will force to upgrade the detectors and electronics towards the most recent technologies. Simultaneously, this will push new latency requirements onto the Level-1 trigger and the \acf{DAQ} that will only be fulfilled by upgrading the system with electronics having deeper buffering and faster processing. Simulations of the expected distribution of absorbed dose in the CMS detector under HL-LHC conditions show, in Figure~\ref{fig:Dose}, that detectors placed close to the beam line will have to withstand high irradiation, the radiation dose being of the order of a few tens of \si{Gy}.
+	The end of 2018 marked the beginning of LS2 and the start of Phase-2 upgrade activities. From the HL-LHC period onwards, i.e. past LS3, the performance degradation due to integrated radiation as well as the average number of inelastic collisions per bunch crossing will rise substantially. This has become a major challenge for all of the LHC experiments, like CMS, that were forced to address an upgrade program for Phase-2~\cite{PHASEIITP}. Dealing with the data from the muon detectors will force to upgrade the detectors and electronics towards the most recent technologies.
 
-	\subsection{the \acl{CMS} experiment}
+	\subsection{The \acl{CMS} experiment}
 	\label{chapt2:ssec:CMS}
 	
 	Among the four main LHC experiments is the Compact Muon Solenoid used as a multipurpose tool to investigate the SM and the physics beyond its scope. The CMS apparatus in itself is the heaviest detector ever built starring a \SI{15}{m} diameter and a \SI{29}{m} length for a total weight of \SI{14}{kT}. A thick \SI{4}{T} solenoid magnet located at the beam interaction point hosts trackers and calorimeters. Extending in all directions around the magnet, heavy iron return yokes are installed to extend the magnetic field and support a muon system. The apparatus consists of a barrel, referring to the magnet and the detectors contained in it and the part of the muon system built directly in the cylinder around the magnet, and of two endcaps in the forward and backward region of the detector that closes the apparatus and complete the detection coverage along the beam line. A front view on the barrel is provided in Figure~\ref{fig:CMS} while a detailed view of the apparatus is given in Figure~\ref{fig:CMS-detail}.
 	
-	\begin{figure}[H]
+\begingroup\setlength{\intextsep}{5pt}\setlength{\columnsep}{15pt}
+	
+	\begin{wrapfigure}{r}{.5\linewidth}
 		\centering
-		\includegraphics[width=0.55\textwidth]{fig/chapt2/CMS.jpg}
+		\includegraphics[width=\linewidth]{fig/chapt2/CMS.jpg}
 		\caption{\label{fig:CMS} Picture of the CMS barrel. The red outer layer is the muon system hosted into the red iron return yokes. The calorimeters are the blue cylinder inside in magnet solenoid and the tracker is the inner yellow cylinder built around the beam pipe.}
-	\end{figure}
+	\end{wrapfigure}
+	
+	In order to efficiently detect all long living particles and measure their properties with good precision, the CMS detector uses an onion like layout around of the interaction point in order to maximize the covered solid angle. As detailed in Figure~\ref{fig:CMS-slice}, in the innermost region of the detector, closest to the interaction point, the silicon tracker records the trajectory of charged particles. Around it, the \acf{ECAL} stops and measures the energy deposition of electrons and photons. In the next layer, the \acf{HCAL}, hadrons are stopped are their energy measured. These layers are contained inside of the magnet of CMS, the superconducting solenoid. Outside of the magnet are the muon chambers embedded into iron return yokes used to control the magnetic field and gives muons, the only particles traveling completely through the whole detector, a double bending helping in reconstructing their energy and trajectory. Note that photons and neutral hadrons are differentiated from electrons and charged hadrons in the calorimeters by the fact that they don't interact with the silicon tracker and are not influenced by the magnetic field, as can be seen ni Figure~\ref{fig:CMS-slice}.
+	
+\endgroup
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\textwidth]{fig/chapt2/CMS_detail.pdf}
+		\includegraphics[width=0.75\linewidth]{fig/chapt2/CMS_detail.pdf}
 		\caption{\label{fig:CMS-detail} View of the CMS apparatus and of its different components.}
 	\end{figure}
 	
-	In order to efficiently detect all long living particles and measure their properties with good precision, the CMS detector uses an onion like layout around of the interaction point in order to maximize the covered solid angle. As detailed in Figure~\ref{fig:CMS-slice}, in the innermost region of the detector, closest to the interaction point, the silicon tracker records the trajectory of charged particles. Around it, the \acf{ECAL} stops and measure the energy deposition of electrons and photons. In the next layer, the \acf{HCAL}, hadrons are stopped are their energy measured. These layers are contained inside of the magnet of CMS, the superconducting solenoid. Outside of the magnet are the muon chambers embedded into iron return yokes used to control the magnetic field and gives muons, the only particles traveling completely through the whole detector, a double bending helping in reconstructing their energy and trajectory. Note that photons and neutral hadrons are differentiated from electrons and charged hadrons in the calorimeters by the fact that they don't interact with the silicon tracker and are not influenced by the magnetic field.
-	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.7\textwidth]{fig/chapt2/CMS_slice.png}
+		\includegraphics[width=0.8\linewidth]{fig/chapt2/CMS_slice.png}
 		\caption{\label{fig:CMS-slice} Slice showing CMS sub-detectors and how particles interact with them.}
 	\end{figure}
 	
 		\subsubsection{The silicon tracker}
 		\label{chapt2:sssec:tracker}
 	
-	\begin{figure}[H]
+\begingroup\setlength{\intextsep}{5pt}\setlength{\columnsep}{15pt}
+	
+	\begin{wrapfigure}{r}{.65\linewidth}
 		\centering
-		\includegraphics[height = 6cm]{fig/chapt2/Tracker.jpg}
-		\caption{\label{fig:tracker} the CMS tracker.}
-	\end{figure}
+		\includegraphics[width = \linewidth]{fig/chapt2/Tracker.jpg}
+		\caption{\label{fig:tracker} The CMS tracker.}
+	\end{wrapfigure}
 	
 	The silicon tracker visible in Figure~\ref{fig:tracker} is divided into two different sub-systems: the \textit{pixel detector} at the very core and the \textit{microstrip detector} around it. This system is composed of 75 million individual readout channels with up to 6000 channels per squared centimeter for the pixels making it the world's biggest silicon detector. This density allows for measurements of the particle tracks with a precision of the order of \SI{10}{\mu m}. This is necessary to reconstruct all the different interaction vertices with precision and have a precise measure of the curvature of the charged particles traveling through the magnetic field to estimate their charge and momentum.
+	
+\endgroup
 	
 		\subsubsection{The calorimeters}
 		\label{chapt2:sssec:calo}
 	
+	The ECAL directly surrounding the tracker is composed of crystals of lead tungstate, $PbWO_4$, a very dense but optically transparent material used to stop high-energy electrons and photons. These crystal blocks basically are extremely dense scintillators which scintillate in fast, short light bursts proportionally to the energy deposition. The light is contained at 80\% in the corresponding \SI{25}{ns} lasting bunch crossing. Each crystal is isolated from the other by the carbon fiber matrix they are embedded in.
+	
 	\begin{figure}[H]
-		\begin{subfigure}{0.5\linewidth}
+		\begin{subfigure}{.5\linewidth}
 			\centering
-			\includegraphics[height = 4cm]{fig/chapt2/ECAL_barrel.jpg}
-			\caption{\label{fig:ECAL:A}}
+			\includegraphics[height = 4.5cm]{fig/chapt2/ECAL_barrel.jpg}
+			\subcaption{\label{fig:ECAL:A}}
 		\end{subfigure}
-		\begin{subfigure}{0.5\linewidth}
+		\begin{subfigure}{.5\linewidth}
 			\centering
-			\includegraphics[height = 4cm]{fig/chapt2/ECAL_crystals.jpg}
-			\caption{\label{fig:ECAL:B}}
+			\includegraphics[height = 4.5cm]{fig/chapt2/ECAL_crystals.jpg}
+			\subcaption{\label{fig:ECAL:B}}
 		\end{subfigure}
 		\caption{\label{fig:ECAL} Figure~\ref{fig:ECAL:A}: The \acl{ECAL}. Figure~\ref{fig:ECAL:B}: The lead tungstate crystals composing the ECAL.}
 	\end{figure}
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[height = 6cm]{fig/chapt2/HCAL.jpg}
-		\caption{\label{fig:HCAL} The CMS hadron calorimeter barrel.}
-	\end{figure}
+\begingroup\setlength{\intextsep}{5pt}\setlength{\columnsep}{15pt}
 	
-	The ECAL directly surrounding the tracker is composed of crystals of lead tungstate, $PbWO_4$, a very dense but optically transparent material used to stop high-energy electrons and photons. These crystal blocks basically are extremely dense scintillators which scintillate in fast, short light bursts proportionally to the energy deposition. The light is contained at 80\% in the corresponding \SI{25}{ns} lasting bunch crossing. Each crystal is isolated from the other by the carbon fiber matrix they are embedded in. The ECAL is composed of a barrel containing more than 60,000 crystals and of closing endcaps containing another 15,000 crystals. In front of the ECAL endcap is installed a preshower detector made out of two layers of lead and silicon strip detectors to increase the spatial resolution close to the beam line for pion-photon and single-double photon discrimination purposes. Figure~\ref{fig:ECAL} shows the calorimeter inside of the magnet and the crystals.
+	\begin{wrapfigure}{r}{.5\linewidth}
+		\centering
+		\includegraphics[width = \linewidth]{fig/chapt2/HCAL.jpg}
+		\caption{\label{fig:HCAL} The CMS hadron calorimeter barrel.}
+	\end{wrapfigure}
+	
+	The ECAL is composed of a barrel containing more than 60,000 crystals and of closing endcaps containing another 15,000 crystals. In front of the ECAL endcap is installed a preshower detector made out of two layers of lead and silicon strip detectors to increase the spatial resolution close to the beam line for pion-photon and single-double photon discrimination purposes. Figure~\ref{fig:ECAL} shows the calorimeter inside of the magnet and the crystals.
 	
 	The next layer is the HCAL. The role of these forward calorimeters, made using steel and quartz fibers, is to precisely measure the momentum very energetic hadrons. Several layers of brass or steel are interleaved with plastic scintillators readout by photodiodes using wavelength-shifting fibers. The HCAL is also composed of a barrel, shown in Figure~\ref{fig:HCAL} and of endcaps. It also features forward calorimeters on both sides of CMS in the region very close to the beam line at high pseudorapidity (\psrapr{3.0}{5.0}).
+	
+\endgroup
 	
 		\subsubsection{The muon system}
 		\label{chapt2:sssec:muon}
 	
-	Finally, in the outer region of the apparatus, a muon system is used to trigger on potentially interesting event by identifying muons. Three different subsystems compose the muon system as shown in Figure~\ref{fig:Quadrant} in which a quadrant of the CMS detector focuses on muon system. \acf{DT} are found in the barrel region covering the low pseudorapidity region where particles transverse momentum is lower and \acf{CSC} are found in the endcap region covering higher pseudorapidity region closer to beam line where particles have a stronger momentum. The redundancy of the system is insured by \acl{RPC}s in both the barrel and endcap. Nevertheless, the region closest to the beam line (\psrapg{1.8}) was not equipped with RPCs. This lack of redundancy in the high pseudo rapidity region will be solved during LS2, the following \acf{YETS} in 2021 and 2022, and LS3 where the necessary services, detectors and Link System, that collects the data and synchronizes them, will be installed.
+	Finally, in the outer region of the apparatus, a muon system is used to trigger on potentially interesting event by identifying muons. Three different subsystems compose the muon system as shown in Figure~\ref{fig:Quadrant} in which a quadrant of the CMS detector focuses on muon system. \acl{DT}s (DTs) are found in the barrel region covering the low pseudorapidity region where particles transverse momentum is lower and \acl{CSC}s (CSCs) are found in the endcap region covering higher pseudorapidity region closer to beam line where particles have a stronger momentum. The redundancy of the system is insured by \acl{RPC}s (RPCs) in both the barrel and endcap. Nevertheless, the region closest to the beam line (\psrapg{1.8}) was not equipped with RPCs. This lack of redundancy in the high pseudo rapidity region will be solved during LS2, the following \acf{YETS} in 2021 and 2022, and LS3 where the necessary services, detectors and Link System, that collects the data and synchronizes them, will be installed.
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.7\textwidth]{fig/chapt2/Muon_quadrant.png}
+		\includegraphics[width=0.9\linewidth]{fig/chapt2/Muon_quadrant.png}
 		\caption{\label{fig:Quadrant} A quadrant of the muon system, showing DTs (yellow), RPCs (blue), and CSCs (green).}
 	\end{figure}
 

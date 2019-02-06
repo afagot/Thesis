@@ -19,6 +19,7 @@
 \usepackage{verbatim}   % extra support for verbatim environments
 \usepackage{float}      % you can define 'H' so that floats are forced to be putted 'here'
 \usepackage{multirow}   % multirow{nrows}[bigstruts]{width}[fixup]{text} multirow cells
+\usepackage{wrapfig}    % to wrap text around an image
 \ifx\pdftexversion\undefined
 \usepackage[dvips]{graphicx}
 \else
@@ -116,6 +117,15 @@
 
 % Comand to call the L of luminosity
 \newcommand{\lum}{\mathcal{L}}
+
+% Comand to write GWP
+\newcommand{\GWP}[1]{GWP $=$ #1}
+\newcommand{\GWPsim}[1]{GWP $\sim$ #1}
+\newcommand{\GWPlt}[1]{GWP $<$ #1}
+\newcommand{\GWPgt}[1]{GWP $>$ #1}
+\newcommand{\GWPleq}[1]{GWP $\leq$ #1}
+\newcommand{\GWPgeq}[1]{GWP $\geq$ #1}
+
 
 %%%%%%%%%%%%%%%%%
 %% PAGE LAYOUT %%
