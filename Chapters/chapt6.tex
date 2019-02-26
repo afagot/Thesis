@@ -49,7 +49,7 @@
 	\subsection{INFN preamplifiers}
 	\label{chapt6:ssec:INFN-Prelim}
 	
-	INFN electronics were the first ones to be tested by CMS RPC group in collaboration with colleagues from INFN Roma working in the ATLAS RPC group. Indeed, at first the electronics only consisted in a new low-noise preamplifier produced by the team of Cardarelli with the purpose of equipping the new generation of ATLAS RPCs~\cite{CARDARELLI2013}. The tests with CMS RPCs were performed in February 2013 outside of the old GIF facility presented in Chapter~\ref{chapt5:ssec:GIF}. Four preamplifier channels were lended by Cardarelli to equip four CMS RPC channels as presented in Figure~\ref{fig:INFN-preamp}. They were directly connected to the strips for the signals induced by muons passing through the gas volume of the chamber to be amplified. The output was then sent to a discriminator to digitize the signals and filter out the noise by tuning the threshold level.
+	INFN electronics were the first ones to be tested by CMS RPC group in collaboration with colleagues from INFN Roma working in the ATLAS RPC group. Indeed, at first the electronics only consisted in a new low-noise preamplifier produced by the team of Cardarelli with the purpose of equipping the new generation of ATLAS RPCs~\cite{CARDARELLI2013}. The tests with CMS RPCs were performed in February 2013 outside of the old GIF facility presented in Chapter~\ref{chapt5:ssec:GIF}. Four preamplifier channels were lended by Cardarelli to equip four CMS RPC channels as presented in Figure~\ref{fig:INFN-preamp}. They were directly connected to the strips for the signals induced by muons passing through the gas volume of the chamber to be amplified. The output was then sent to a discriminator to digitize the signals and filter out the noise by tuning the threshold level. The NIM quad discriminator 821 manufactured by LECROY used during this experiment only allows at minimum to set the threshold at a voltage of approximately \SI{30}{mV} on the input signals. Thus, two values of discrimination were used ($\sim$\SI{75}{mV} and $\sim$\SI{30}{mV}).
 	
 	\begin{figure}[H]
 		\centering
@@ -57,7 +57,7 @@
 		\caption{\label{fig:INFN-preamp} The four channels of INFN preamplifiers are mounted directly on a CMS RPC and connected to the four outermost read-out strips of the detector.}
 	\end{figure}
 	
-	The performance of the chamber equipped with these new preamplifiers was compared to the performance of CMS FEEs. The experimental setup used is described in Figure~\ref{Setup-GIF}. PMTs a little less wide than four strips were used to trigger the data tacking. Two pairs were used in coïncidence on both the strips connected to the INFN preamplifiers and to the ones connected to the CMS FEEs. An extra PMT, placed perpendicularly to the rest of the setup at the bottom of the setup was used to detect potential showers and send VETO signals if necessary. A last PMT was used close to the power supplies to measure and discard signals due to electromagnetic noise and is not visible on the pictures. Finally, after discrimination, the output of the INFN preamplifiers together with the signals from the CMS FEEs were sent to scalers to count the detected signals versus the number of trigger coïncidences as no DAQ software was available at the time. The full pulse processing for this experiment is shown in Figure~\ref{fig:Pulse-Processing}.
+	The performance of the chamber equipped with these new preamplifiers was compared to the performance of CMS FEEs. The experimental setup used is described in Figure~\ref{fig:Setup-GIF}. PMTs a little less wide than four strips were used to trigger the data tacking. Two pairs were used in coïncidence on both the strips connected to the INFN preamplifiers and to the ones connected to the CMS FEEs. An extra PMT, placed perpendicularly to the rest of the setup at the bottom of the setup was used to detect potential showers and send VETO signals if necessary. A last PMT was used close to the power supplies to measure and discard signals due to electromagnetic noise and is not visible on the pictures. Finally, after discrimination, the output of the INFN preamplifiers together with the signals from the CMS FEEs were sent to scalers to count the detected signals versus the number of trigger coïncidences as no DAQ software was available at the time. The full pulse processing for this experiment is shown in Figure~\ref{fig:Pulse-Processing}.
 	 
 	\begin{figure}[H]
 		\begin{subfigure}{\linewidth}
@@ -101,7 +101,7 @@
     
     During the data acquisition, in addition to counting the number of signals with respect to the number of triggers, the current or the noise rate per unit area as a function of the increasing voltage, the environmental parameters were monitored. Using the information provided by a humidity and temperature sensor on the gas input line together with the environmental pressure given by a weather station, the applied voltage could be corrected following Formula~\ref{eq:PTCMS}. Moreover, the voltage line was filtered to prevent noise and higher currents in the RPC under test.
     
-    The results of the preliminary tests are presented in Figure~\ref{fig:INFN-preamp}. More details on the performance shift are provided in Table~\ref{tab:INFN-preamp}. Being able to use electronics with a much higher sensitivity allows for a HV shift of up to \SI{475}{V} with a threshold as low as \SI{3}{fC} corresponding to the lowest threshold available on the discriminator modules used in the experiment. Indeed, the NIM quad discriminator 821 manufactured by LECROY only allows at minimum to set the threshold at a voltage of approximately \SI{30}{mV} on the input signals. Thus, two values of discrimination were used ($\sim$\SI{75}{mV} and $\sim$\SI{30}{mV}).
+    The results of the preliminary tests are presented in Figure~\ref{fig:INFN-preamp}. More details on the fit performed on the data are provided in Table~\ref{tab:INFN-preamp}. As can be seen, being able to use electronics with a much higher sensitivity allows for a HV shift of up to \SI{475}{V} with a threshold as low as \SI{3}{fC} corresponding to the lowest threshold available on the discriminator modules. On the other hand, the higher charge sensitivity also brings a higher noise level. After a first series of measurement performed with a bad grounding leading to grounding loops and hence an artificially higher noise, it can be concluded that the noise rate per unit area of such electronics is approximately one of manitude higher than the noise rate measured with the CMS FEB. The noise reaches approximately \SIrate{2} at the level of the working in the case of the INFN preamplifier while it is lower than \SIrate{0.2} for the CMS FEB. It is likely that the higher sensitivity also brings a higher sensitivity to local discharges happening in the gas due to fluctuations of the electric field. The surface of the electrodes not being perfectly smooth, the local electric field may vary quickly. The gas molecules circulating in the gas could then be ionised by the fast variation of the field and trigger an avalanche that can then be detected. Reducing the noise rate per unit area would then come from an improvement of the detector itself rather than from a reduction of the electronic noise of the INFN preamplifier.
 	
 	\begin{figure}[H]
 		\begin{subfigure}{.5\linewidth}
@@ -114,11 +114,11 @@
 			\includegraphics[width = \linewidth]{fig/chapt6/INFN-Preamplifier-Rate-Shift.pdf}
 			\caption{\label{fig:INFN-preamp:B}}
 		\end{subfigure}
-		\caption{\label{fig:INFN-preamp} Efficiency (Figure~\ref{fig:INFN-preamp:A}) and noise rate per unit area (Figure~\ref{fig:INFN-preamp:B}) of the CMS RE2-2 detector tested with the standard CMS FEBs (black) and with the INFN preamplifier at different thresholds (red and blue).}
+		\caption{\label{fig:INFN-preamp} Efficiency (Figure~\ref{fig:INFN-preamp:A}) and noise rate per unit area (Figure~\ref{fig:INFN-preamp:B}) of the CMS RE2-2 detector tested with the standard CMS FEBs (black) and with the INFN preamplifier at different thresholds (red and blue). An extra HV scan was performed with better conditions to measure the noise with a threshold of \SI{3}{fC} on the INFN preamplifiers.}
 	\end{figure}
 	
 	\begin{table}[H]
-		\caption{\label{tab:INFN-preamp} Results of the sigmoid fit (Formula~\ref{eq:Sigmoid}) performed on the data presented in Figure~\ref{fig:INFN-preamp:A}. The working point and its corresponding efficiency are computed using Formula~\ref{eq:KneeWP}.}
+		\caption{\label{tab:INFN-preamp} Results of the sigmoid fit (Formula~\ref{eq:Sigmoid}) performed on the data presented in Figure~\ref{fig:INFN-preamp:A}. The working point and its corresponding efficiency are computed using Formulas~\ref{eq:Sigmoid} and \ref{eq:KneeWP}.}
 		\footnotesize
 		\begin{tabular}{|c|c|c|c|c|c|}
 			\hline
@@ -157,13 +157,23 @@
 		\caption{\label{fig:Setup-INFN-904} Figure~ref{fig:Setup-INFN-904:A}: Shielded \acl{FEB} on which the INFN preamplifiers are to be mounted. Figure~ref{fig:Setup-INFN-904:B}: Three INFN preamplifiers connected onto the test FEB. Figure~ref{fig:Setup-INFN-904:C}: Experimental setup used to test the INFN preamplifier single mounted on a FEB similar to the CMS FEB.}
     \end{figure}
 	
-	At the time of the second experiment, only three channels could be lended by the team of INFN Roma. It was then decided to use the same PMTs than in the first measurements as trigger. This time, they were placed on their side to only cover an area on the detector smaller than three strips. On the data acquisition side, no DAQ software was available yet at the time of experimentation and scalers were once again used. As can be seen from Figure~\ref{Pulse-Processing-904}, the pulse processing has been inspired by the one used in the first experiment. Thanks to the lower number of channels to monitor, the cluster size could be estimated by counting the signals on single channels but also on groups of two and three channels in coincidence with the trigger.
+	At the time of the second experiment, only three channels could be lended by the team of INFN Roma. The impedance of the preamplifiers was set to \SI{100}{\ohm} at delivery. The strips are then connected to the preamplifiers using \SI{50}{\ohm} coaxial cables equipped with SMC connectors, known for their good transmission. To match the impedance of the preamplifier input with the signal cable, a \SI{100}{\ohm} resistor was added in parallel of the input line. In CMS endcap RPCs, the strips are left floating. For the purpose of this test, it was necessary to terminate the strips on both ends to prevent reflections in the transmission line. The impedance of the strips being approximately \SI{25}{\ohm}, the strips were terminated with \SI{50}{\ohm} resistors on the signal cable side, and with \SI{25}{\ohm} resistors on the end side.
+	
+	The threshold of the zero-crossing discriminators used on the FEB is controled via a labview interface similar to the one used to control the threshold of the CMS FEB. Various thresholds were used in a range in between 7 and \SI{5}{fC}. These values are a little higher than the minimal threshold of about \SI{3}{fC} used during the first experiment due to limitations of the FEB itself.
+	
+	Finally, it was decided to use the same PMTs than in the first experiment as trigger. This time, they were placed on their narrow side to only cover an area on the detector smaller than three strips. On the data acquisition side, no DAQ software was available yet at the time of experimentation and scalers were once again used. As can be seen from Figure~\ref{fig:Pulse-Processing-904}, the pulse processing has been inspired by the previous scheme. Thanks to the lower number of channels to monitor, the cluster size could be estimated by counting the signals on single channels (A, B and C on their own) but also on groups of two (A and B, B and C) and three channels (A and B and C) in coincidence with the trigger.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=.8\linewidth]{fig/chapt6/pulse-processing-2014.pdf}
-		\caption{\label{fig:fig:Pulse-Processing-904} Similarly to Figure~\ref{fig:Pulse-Processing:C}, the signals are then counted in coïncidence with the trigger signals provided by PMTs. To estimate the cluster size, the channels are counted by groups of three, two and alone.}
+		\caption{\label{fig:Pulse-Processing-904} Similarly to Figure~\ref{fig:Pulse-Processing:C}, the signals are counted in coïncidence with the trigger signals provided by PMTs. To estimate the cluster size, the channels are counted by groups of three, two but also alone.}
 	\end{figure}
+	
+	The results of the second round of tests with INFN preamplifiers are presented in Figure~\ref{fig:INFN-FEB} and Table~\ref{tab:INFN-FEB}. These results are consistent with what was measured with the first tested prototypes. The efficiency sigmoid has been measured once again with the CMS FEB, using a threshold of \SI{170}{fC} and is in agreement with the data collected in 2013. The performance of the detector with the preamplifiers tuned at 7.2 and \SI{6.4}{fC} falls in the very same values than the setting at \SI{7}{fC} according to the table. A maximum shift of \SI{410}{V} is observed for a threshold of \SI{5}{fC}.
+	
+	With the care placed into having a good grounding of the setup as well as a good impedance matching, the noise rate per unit area is this time lower than what previously measured. Nevertheless, it still is more than one order of magnitude higher than in the case of the CMS FEB with a threshold set at \SI{170}{fC}. The noise rate is measured to be at lowest around \SIrate{0.7} when measured to be approximately \SIrate{0.05} for the CMS FEB. At such high threshold values, the noise rate per unit area is not expected to vary much. The data collected at the RPC assembly laboratory then displays much better data tacking conditions with both electronics.
+	
+	Finally, the cluster size is measured to be similar for both electronics at the level of the working point and is in between 2.2 and 2.4 strips on average. The spatial resolution of both devices would then be the same.
 	
 	\begin{figure}[H]
 		\begin{subfigure}{.5\linewidth}
@@ -181,11 +191,11 @@
 			\includegraphics[width = .5\linewidth]{fig/chapt6/INFN-LVDS-Rate-Shift.pdf}
 			\caption{\label{fig:INFN-FEB:C}}
 		\end{subfigure}
-		\caption{\label{fig:INFN-FEB} Efficiency (Figure~\ref{fig:INFN-FEB:A}), cluster size (Figure~\ref{fig:INFN-FEB:B}) and noise rate per unit area (Figure~\ref{fig:INFN-FEB:C}) of the CMS RE2-2 detector tested with the standard CMS FEBs (black) and with the INFN preamplifier mounted onto the CMS FEB at different thresholds (red, blue, pink, green and purple).}
+		\caption{\label{fig:INFN-FEB} Efficiency (Figure~\ref{fig:INFN-FEB:A}), cluster size (Figure~\ref{fig:INFN-FEB:B}) and noise rate per unit area (Figure~\ref{fig:INFN-FEB:C}) of the CMS RE2-2 detector tested with the standard CMS FEBs (black and red) and with the INFN preamplifier mounted onto the CMS FEB at different thresholds (blue, pink, green and purple).}
 	\end{figure}
 	
 	\begin{table}[H]
-		\caption{\label{tab:INFN-FEB} Results of the sigmoid fit (Formula~\ref{eq:Sigmoid}) performed on the data presented in Figure~\ref{fig:INFN-FEB:A}. The working point and its corresponding efficiency are computed using Formula~\ref{eq:KneeWP}.}
+		\caption{\label{tab:INFN-FEB} Results of the sigmoid fit (Formula~\ref{eq:Sigmoid}) performed on the data presented in Figure~\ref{fig:INFN-FEB:A}. The working point and its corresponding efficiency are computed using Formulas~\ref{eq:Sigmoid} and \ref{eq:KneeWP}.}
 		\footnotesize
 		\begin{tabular}{|c|c|c|c|c|c|}
 			\hline
@@ -205,9 +215,243 @@
 			\hline
 		\end{tabular}
 	\end{table}
+	
+	In addition to the tests performed on the electronics with the CMS RPC, the electronics also have been tested on a gRPC designed in Ghent. The gRPC used for this experiment is described in Figure~\ref{fig:UGent-gRPC-design}. The detector, showed on Figure~\ref{fig:UGent-gRPC-pictures}, uses a double-gap layout with float glass electrodes of \SI{1.1}{mm} and a gas gap of \SI{1.2}{mm}. The electrodes themselves are made out of four pieces of glass glued together. Such a design was studied for high-rate detection purposes and aimed to serve as a proof of concept for RPCs built using small pieces assembled together to produce a larger detection area. Indeed, in the context of R\&D in the field of high-rate RPCs, most low resistivity materials are custom made dopped glass or ceramics plates. These materials can't be produced in large areas as they are not manufactured on a large enough scale. Thus, building large detectors requires using such methods.
+	 
+	\begin{figure}[H]
+		\begin{subfigure}{\linewidth}
+		    \centering
+			\includegraphics[width = .8\linewidth]{fig/chapt6/gRPC-design.pdf}
+			\caption{\label{fig:UGent-gRPC-design:A}}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+		    \centering
+			\includegraphics[width = .4\linewidth]{fig/chapt6/gRPC-assembly.pdf}
+			\caption{\label{fig:UGent-gRPC-design:B}}
+		\end{subfigure}
+		\caption{\label{fig:UGent-gRPC-design} The glass RPC developped by Ghent uses a double-gap design (Figure~\ref{fig:UGent-gRPC-design:A}). The electrodes are made of four pieces of float glass glued into a single plate (Figure~\ref{fig:UGent-gRPC-design:B}). Indeed a gluing technique has been investigated as most new low resistivity materials foreseen for RPCs of the new generation are not available in large areas.}
+    \end{figure}
+	 
+	\begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/gRPC-gap.JPG}
+			\caption{\label{fig:UGent-gRPC-pictures:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/gRPC-faraday.JPG}
+			\caption{\label{fig:UGent-gRPC-pictures:B}}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+		    \centering
+			\includegraphics[width = .5\linewidth]{fig/chapt6/gRPC-case.JPG}
+			\caption{\label{fig:UGent-gRPC-pictures:C}}
+		\end{subfigure}
+		\caption{\label{fig:UGent-gRPC-pictures} Figure~\ref{fig:UGent-gRPC-pictures:A}: A gap used to concieve the gRPC tested at CERN. Figure~\ref{fig:UGent-gRPC-pictures:B}: Both gaps with their read-out panel are placed into a faraday made out of copper. Figure~\ref{fig:UGent-gRPC-pictures:C}: The faraday cage containing the double-gap gRPC is finally placed into its aluminium case.}
+    \end{figure}
+    
+    The tests involving this detector were conducted in 2015 with the setup described by Figure~\ref{fig:Setup-INFN-gRPC}. The photomultipliers used to trigger the data taking were a little larger than the detector and the strips themselves. Similarly to the case of the GIF experiment described in Section~\ref{chapt5:ssec:GeoAcc} of Chapter~\ref{chapt5}, it has been necessary to evaluate the geometrical acceptance of the setup to detect cosmic muons. This way, a C++ Monte Carlo simulation has been written using the dimensions of the experimental setup. By running 1000 simulations in which a million muons were generated in a source plane much larger than the experimental setup itself to reach high wenith angles, the geometrical acceptance was measured to be \numerror{0.9835}{0.0014}. This factor has then been used to correct the measured efficiency of the detector.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=.7\linewidth]{fig/chapt6/Setup_ATLAS_gRPC.JPG}
+		\caption{\label{fig:Setup-INFN-gRPC} Experimental setup used to test the INFN preamplifier mounted on the CMS like FEB with the glass RPC build by Ghent.}
+	\end{figure}
+    
+    Thanks to the activities ongoing for the preparation of the CMS RPC experiment taking place at GIF++ and detailed in Chapter~\ref{chapt5}, a first prototype of DAQ software was available to automate the data tacking process. Thanks to this early version of the software, the pulse processing was made more simple. The three channels connected to the preamplifiers were sent directly into a V1190A TDC manufactured by CAEN. The trigger was provided by the same trigger pulse processing described in Figure~\ref{fig:Pulse-Processing-904}. The output of the coincidence of both scintillators was sent into the \textit{TRIGGER} input of the TDC. The communication with the computer was done thanks to a V1718 module. More details on the DAQ can be found in Appendix~\ref{app1}. Contrary to the data now collected at GIF++, the output of the first DAQ script consisted in a simple text file using a format described in Source Code~\ref{text:data}. The analysis is then performed using a loop through the data file.
+    
+    \begin{code}
+    \vspace{5mm}
+    \begin{textcode}
+Evt0	nHits
+ChHit1	THit1
+ChHit2	THit2
+ChHit3	THit3
+ChHit4	THit4
+ChHit5	THit5
+...
+Evt1	nHits
+ChHit1	THit1
+ChHit2	THit2
+ChHit3	THit3
+...
+    \end{textcode}
+	\captionof{listing}{Description of the format used to store the data collected during the experiment aiming at testing the INFN electronics with a gRPC built by Ghent. For each trigger recieved in the TDC module, an event is created. A first line containing two columns is written in the output file with the event number \textinline{EvtX} and the recorded number of hits  \textinline{nHits}. This line is directly followed by the list of hits in each channel \textinline{ChHitX} and their corresponding time stamp \textinline{THitX} organized into two columns.}
+	\label{text:data}
+	\vspace{5mm}
+    \end{code}
+    
+    The results of the experiment with the gRPC are provided in Figure~\ref{fig:INFN-gRPC} and Table~\ref{tab:INFN-gRPC}. The efficiency of the detector reaches 95\% at working voltage, indicating that such a detector using electrodes composed of several glued pieces can be an option for the future of RPC technologies. The benefits of the preamplifiers is once again visible through the huge efficiency shift towards lower voltages. The shift reaches almost \SI{470}{V} for thresholds lower than \SI{6}{fC}.
+    
+    \begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/gRPC-INFN-LVDS-Eff-Shift.pdf}
+			\caption{\label{fig:INFN-gRPC:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/gRPC-INFN-LVDS-ClS-Shift.pdf}
+			\caption{\label{fig:INFN-gRPC:B}}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+		    \centering
+			\includegraphics[width = .5\linewidth]{fig/chapt6/gRPC-INFN-LVDS-Rate-Shift.pdf}
+			\caption{\label{fig:INFN-gRPC:C}}
+		\end{subfigure}
+		\caption{\label{fig:INFN-gRPC} Efficiency (Figure~\ref{fig:INFN-gRPC:A}), cluster size (Figure~\ref{fig:INFN-gRPC:B}) and noise rate per unit area (Figure~\ref{fig:INFN-gRPC:C}) of the Ghent gRPC detector tested with the standard CMS FEBs (red) and with the INFN preamplifier mounted onto the CMS FEB at different thresholds (blue, pink, green and purple).}
+	\end{figure}
+	
+	\begin{table}[H]
+		\caption{\label{tab:INFN-gRPC} Results of the sigmoid fit (Formula~\ref{eq:Sigmoid}) performed on the data presented in Figure~\ref{fig:INFN-gRPC:A}. The working point and its corresponding efficiency are computed using Formulas~\ref{eq:Sigmoid} and \ref{eq:KneeWP}.}
+		\footnotesize
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			Data & $\epsilon_{max}$ & $\lambda$ ($\cdot$\Ord{-2} \si{V^{-1}}) & $HV_{50}$ (\si{V}) & $\epsilon_{WP}$ & $HV_{WP}$ (\si{V}) \\ 
+			\hline
+			CMS FEB, 156fC (2015) & \numerror{0.956}{0.007} & \numerror{0.86}{0.04} & \numerror{5349}{8} & \numerror{0.94}{0.01} & \numerror{5839}{23}\\ 
+			\hline
+			INFN/CMS FEB, 7.2fC (2015) & \numerror{0.972}{0.006} & \numerror{1.09}{0.06} & \numerror{4983}{8} & \numerror{0.96}{0.01} & \numerror{5403}{22}\\ 
+			\hline
+			INFN/CMS FEB, 6.4fC (2015) & \numerror{0.971}{0.005} & \numerror{1.13}{0.06} & \numerror{4981}{8} & \numerror{0.96}{0.01} & \numerror{5391}{22}\\ 
+			\hline
+			INFN/CMS FEB, 5.5fC (2015) & \numerror{0.959}{0.006} & \numerror{1.13}{0.11} & \numerror{4960}{11} & \numerror{0.95}{0.02} & \numerror{5371}{37}\\ 
+			\hline
+			INFN/CMS FEB, 5fC (2015) & \numerror{0.967}{0.006} & \numerror{1.12}{0.11} & \numerror{4959}{11} & \numerror{0.96}{0.02} & \numerror{5371}{38}\\ 
+			\hline
+		\end{tabular}
+	\end{table}
+    
+    The cluster size also shows a shift but its value suddenly dicreases after \SI{5.4}{kV}. After a rise above 2, the cluster size drops when the detector reaches the plateau. A first idea to explain this phenomenon would be to check the cluster algorithm to make sure that it is not biased and does not introduce a fake split of the clusters due to arbitrarily strict selection rules. Clusters are always made of neighbour strips getting a hit within a certain time window. In the algorithm written to analyse the data, it is required for the maximum time difference between the earliest hit and the latest hit in a cluster to be smaller than \SI{10}{ns}. Physically, assuming of drift velocity of the electrons in the gas of the order of \SI{0.1}{mm/ns}~\cite{DEURQUIJO2009}, the growth of an avalanche only takes a few \si{ns}. This effect is visible in Figure~\ref{fig:avalanche-growth:A} in which the maximum time difference has been artificially increased to \SI{300}{ns}. The peak reaveals that the avalanches are not expected to grow over a time period longer than \SI{10}{ns}. No peak emerges at time differences longer than \SI{10}{ns} indicating that the choice of a short time development within the algorithm was justified. This conclusion is supported by Figure~\ref{fig:avalanche-growth:B} in which the evolution of the reconstructed cluster size with increasing maximum time difference shows no effect.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/Muon-Avalanche-Growth-gRPC-INFN.pdf}
+			\caption{\label{fig:avalanche-growth:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/gRPC-INFN-LVDS-ClS-Study.pdf}
+			\caption{\label{fig:avalanche-growth:B}}
+		\end{subfigure}
+		\caption{\label{fig:avalanche-growth} Figure~\ref{fig:avalanche-growth:A}: Time difference between the first and last hit composing a cluster in the gRPC. The maximum time difference is set to \SI{300}{ns}. Figure~\ref{fig:avalanche-growth:B}: Variation of the reconstructed average cluster size as a function of the time constraint used in the algorithm.}
+	\end{figure}
+	
+	Due to the available number of channels, the cluster size is limited to 3. It is reasonable to assume that this only is the cause of the fall of cluster size beyond \SI{5.4}{kV}. Indeed looking closely at both Figure~\ref{fig:cluster-size-1D} and Figure~\ref{fig:cluster-size-2D}, the link between increasing HV and decreasing cluster size can be understood. On the one hand, Figure~\ref{fig:cluster-size-1D} indicates that the cluster size features at first a maximum at 1. The maximum moves then from 1 to 3 over the points at \SI{5120}{V}, \SI{5222}{V} and \SI{5324}{V}. Then over the last three voltage points, the bin at 2 drops to the profit of the bin at 1, the bin at 3 staying more or less stable. On the other hand, Figure~\ref{fig:cluster-size-2D} provides us more information about the localisation of the clusters among the three read-out strips. At the lowest two voltages, most of the data is contained in the central strip. At \SI{5120}{V}, the highest bin is the one corresponding to the central strip with a cluster size of 1. Already at \SI{5222}{V}, the balance changes towards the central strip with 3 strips in the clusters. At \SI{5324}{V}, even more events happen with clusters of all 3 strips while the events with a single hit in the side strips starts to increase. The number of events with cluster made of all 3 strips will not vary much anymore while the number of events with clusters made of 2 strips will dicrease and the single hits in the side strips will continue rising. This information indicates that the avalanches in the gap start to get stronger. Indeed, the increase of the events containing single hits mainly increases on the side strips points to an intensification of the avalanche gain on the strip adjacent to the three channels connected to the read-out setup. Only a single hit is read-out while in reality this was the contribution of bigger avalanches. The events with clusters of size 2 tend to dicrease due to the stronger gain that should normally be triggering wider avalanches. The cluster size distribution of Figure~\ref{fig:cluster-size-1D} gives the impression that the distribution is moving towards higher values but the geometrical limitation of the system due to the very low number of channels makes it impossible to measure.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{.33\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-1D-5000-gRPC-INFN.pdf}
+			\caption{\label{fig:cluster-size-1D:A} \SI{5120}{V}}
+		\end{subfigure}
+		\begin{subfigure}{.33\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-1D-5100-gRPC-INFN.pdf}
+			\caption{\label{fig:cluster-size-1D:B} \SI{5222}{V}}
+		\end{subfigure}
+		\begin{subfigure}{.33\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-1D-5200-gRPC-INFN.pdf}
+			\caption{\label{fig:cluster-size-1D:C} \SI{5324}{V}}
+		\end{subfigure}
+		\begin{subfigure}{.33\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-1D-5300-gRPC-INFN.pdf}
+			\caption{\label{fig:cluster-size-1D:D} \SI{5423}{V}}
+		\end{subfigure}
+		\begin{subfigure}{.33\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-1D-5400-gRPC-INFN.pdf}
+			\caption{\label{fig:cluster-size-1D:E} \SI{5524}{V}}
+		\end{subfigure}
+		\begin{subfigure}{.33\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-1D-5500-gRPC-INFN.pdf}
+			\caption{\label{fig:cluster-size-1D:F} \SI{5630}{V}}
+		\end{subfigure}
+		\caption{\label{fig:cluster-size-1D} Evolution of the cluster size distribution with increasing voltage for the gRPC tested with the INFN preamplifiers using a threshold of \SI{5}{fC}.}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{.33\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-5000-gRPC-INFN.pdf}
+			\caption{\label{fig:cluster-size-2D:A} \SI{5120}{V}}
+		\end{subfigure}
+		\begin{subfigure}{.33\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-5100-gRPC-INFN.pdf}
+			\caption{\label{fig:cluster-size-2D:B} \SI{5222}{V}}
+		\end{subfigure}
+		\begin{subfigure}{.33\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-5200-gRPC-INFN.pdf}
+			\caption{\label{fig:cluster-size-2D:C} \SI{5324}{V}}
+		\end{subfigure}
+		\begin{subfigure}{.33\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-5300-gRPC-INFN.pdf}
+			\caption{\label{fig:cluster-size-2D:D} \SI{5423}{V}}
+		\end{subfigure}
+		\begin{subfigure}{.33\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-5400-gRPC-INFN.pdf}
+			\caption{\label{fig:cluster-size-2D:E} \SI{5524}{V}}
+		\end{subfigure}
+		\begin{subfigure}{.33\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-5500-gRPC-INFN.pdf}
+			\caption{\label{fig:cluster-size-2D:F} \SI{5630}{V}}
+		\end{subfigure}
+		\caption{\label{fig:cluster-size-2D} Map of the cluster size distribution as a function of the cluster position with increasing voltage for the gRPC tested with the INFN preamplifiers using a threshold of \SI{5}{fC}.}
+	\end{figure}
+    
+    Eventhough the performance of the detector are promising, the results concerning the noise rate per unit area seem to indicate that the detector and its combination with the electronics in the case of this experiment produces very high levels of noise, if compared to the noise measured in the RE4 detector. With each type of electronics, the noise doesn't indicate a clear correlation with increasing voltage. The hypothesis at this stage would be that the noise is not created inside of the gas volume by avalanches triggered along the glueing lines, where the electric field could be abruptly pertubated. It would rather come from the read-out channel itself, and from its connection to the electronics. Indeed, looking at the noise profile measured in the detector and presented in Figure~\ref{fig:gRPC-noise:A}, it is clear that the noise is localised in two areas corresponding to the HV connectors in the case of the HV scan performed with the CMS FEB. Moreover, contrary to the very careful work performed on the RE2 chamber to match the impedance of the strips with the read-out cables connected to the board on which the INFN preamplifers are mounted, no matching was done on the gRPC due to a lack of time. The noise measured in the tested three channels is showed in Figure~\ref{fig:gRPC-noise:B}. This region of the detector doesn't correpond to the HV connectors according to Figure~\ref{fig:gRPC-noise:A}. Nevertheless, the number of hits counted in the detector is much higher than in the CMS FEB case. Looking more carefully to Figure~\ref{fig:time-profiles} presenting the hit time profile in both cases together with the time profile of the CMS RE2-2 detector tested with INFN preamplifiers, it is clear that the detector is noisier. Also, the reflections due to the impedance mismatch is clearly visible in Figure~\ref{fig:time-profiles:B}.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/Noise-Profile-gRPC-CMS-FEB.pdf}
+			\caption{\label{fig:gRPC-noise:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/Noise-Profile-gRPC-INFN.pdf}
+			\caption{\label{fig:gRPC-noise:B}}
+		\end{subfigure}
+		\caption{\label{fig:gRPC-noise} Noise profile measured in the glass RPC built by Ghent tested with the standard CMS FEB (Figure~\ref{fig:gRPC-noise:A}) and the INFN preamplifiers mounted on a CMS-like FEB (Figure~\ref{fig:gRPC-noise:B}).}
+	\end{figure}
+    
+    \begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/Muon-Time-Profile-gRPC-CMS-FEB.pdf}
+			\caption{\label{fig:time-profiles:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/Muon-Time-Profile-gRPC-INFN.pdf}
+			\caption{\label{fig:time-profiles:B}}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+		    \centering
+			\includegraphics[width = .5\linewidth]{fig/chapt6/Muon-Time-Profile-RE4-INFN.pdf}
+			\caption{\label{fig:time-profiles:C}}
+		\end{subfigure}
+		\caption{\label{fig:time-profiles} The arrival time of the hits recorded in the gRPC tested with the CMS FEB (Figure~\ref{fig:time-profiles:A}) and with the INFN preamplifiers (Figure~\ref{fig:time-profiles:B}), and recorded in the CMS RE2 RPC tested with the INFN preamplifiers (Figure~\ref{fig:time-profiles:C}).}
+	\end{figure}
 
 	\subsection{HARDROC 2 readout panel}
 	\label{chapt6:ssec:HARDROC2}
+	
+	The \acf{HARDROC} ASIC, as its name suggests, has been developped for RPC applications and in particular for the read-out RPCs of the \acf{SDHCAL} that is being studied in the perspective of the \acf{ILC}. The SDHCAL detectors are required to have a high granularity compared to the CMS RPCs and hence, they use \SI{1}{cm^2} read-out pads instead of strips. This choice results in a huge number of channels. The ASIC is mounted directly on the read-out pannel for compactness as can be seen in Figure~\ref{fig:Setup-HARDROC2-904:A} and feature three thresholds to provide a semi-digital information.
+	
+	The PETIROC that inspired the CMS RPCROC uses a similar technology than the one developed by the HARDROC and is manufactured by the same company. It is safe to conclude that the preliminary results obtained with the HARDROC electronics constitute a strong indication on the potential performance of a FEB developped specifically for CMS detectors. The leading institute in the development of the SDHCAL based on single-gap \acf{gRPCs} is the \acf{IPNL} which also played a great role in developing iRPCs for CMS.
+	
+	A read-out pannel using the HARDROC 2 technology was lended by this institute and was tested onto a CMS RPC. Contrary to the tests with the INFN preamplifiers that were made using an RE2-2 CMS RPC built in 2007 for the second endcap disk of CMS, the choice was made to use an RE4-3 detector built during LS1 to equip the fourth endcap. Indeed, the pannel can't be sandwiched between two RPC gaps due to the embedded electronics and a single CMS RPC gap was used. At the time of this experiment, only RE4-3 gaps were available and the choice was made to change detector with respect to the previous series of tests conducted on the INFN preamplifiers. As for the INFN preamplifiers, the pannel has been tested on the gRPC built by UGent. Once again, the experiment was conducted in the CMS RPC assembly laboratory and the setups used are shown in Figures~\ref{fig:Setup-HARDROC2-904} and \ref{fig:Setup-HARDROC2-gRPC}.
 	 
 	\begin{figure}[H]
 		\begin{subfigure}{.5\linewidth}
@@ -248,7 +492,7 @@
 	\end{figure}
 	
 	\begin{table}[H]
-		\caption{\label{tab:HARDROC2} Results of the sigmoid fit (Formula~\ref{eq:Sigmoid}) performed on the data presented in Figure~\ref{fig:HARDROC2:A}. The working point and its corresponding efficiency are computed using Formula~\ref{eq:KneeWP}.}
+		\caption{\label{tab:HARDROC2} Results of the sigmoid fit (Formula~\ref{eq:Sigmoid}) performed on the data presented in Figure~\ref{fig:HARDROC2:A}. The working point and its corresponding efficiency are computed using Formulas~\ref{eq:Sigmoid} and \ref{eq:KneeWP}.}
 		\footnotesize
 		\begin{tabular}{|c|c|c|c|c|c|}
 			\hline
