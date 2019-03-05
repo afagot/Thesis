@@ -32,7 +32,7 @@
 		\caption{\label{fig:PETIROCASIC} PETIROC 2A block diagram.}
 	\end{figure}
 	
-	Nevertheless, in order to adapt this ASIC to CMS, modifications were brought to the PETIROC~\cite{PHASEIITP}. In the new CMS RPCROC, the measurement of the charge will be performed by a TimeOverTechnic, taking profit of the capacity the ASIC has in measuring both the leading and trailing edges of the input signals. The dynamic range will be expanded towards lower values to allow for the detection of charges as low as \SI{10}{fC}. Due to the radiation levels that are foreseen at the level of the iRPCs, the SiGe technology will be replaced by the Taiwan Semiconductor Manufacturing Company (TSMC) \SI{130}{nm} CMOS, to increase its radiation hardness while keeping fast pre-amplification and discrimination with a very low jitter that can reach less than \SI{20}{ps} if no internal clock is used, as can be seen from Figure~\ref{fig:jitter}. The ASIC is associated with an FPGA which purpose is to measure time thanks to a TDC with a time resolution of 50-100 \si{ps} developed by Tsinghua University and that will provide a measurement of the signal position along the strip with a precision of a few \si{cm} by measuring the signal timing on both ends of the strips. In order to read-out all 96 strips, 3 ASICs and 3 TDCs, each having an increased number of 64-channels, are hosted on a FEB attached to the chamber.
+	Nevertheless, in order to adapt this ASIC to CMS, modifications were brought to the PETIROC~\cite{PHASEIITP}. In the new CMS RPCROC, the measurement of the charge will be performed by a \acf{ToT} technic, taking profit of the capacity the ASIC has in measuring both the leading and trailing edges of the input signals. The dynamic range will be expanded towards lower values to allow for the detection of charges as low as \SI{10}{fC}. Due to the radiation levels that are foreseen at the level of the iRPCs, the SiGe technology will be replaced by the Taiwan Semiconductor Manufacturing Company (TSMC) \SI{130}{nm} CMOS, to increase its radiation hardness while keeping fast pre-amplification and discrimination with a very low jitter that can reach less than \SI{20}{ps} if no internal clock is used, as can be seen from Figure~\ref{fig:jitter}. The ASIC is associated with an FPGA which purpose is to measure time thanks to a TDC with a time resolution of 50-100 \si{ps} developed by Tsinghua University and that will provide a measurement of the signal position along the strip with a precision of a few \si{cm} by measuring the signal timing on both ends of the strips. In order to read-out all 96 strips, 3 ASICs and 3 TDCs, each having an increased number of 64-channels, are hosted on a FEB attached to the chamber.
 
 	\begin{figure}[H]
 		\centering
@@ -451,26 +451,29 @@ ChHit3	THit3
 	
 	The PETIROC that inspired the CMS RPCROC uses a similar technology than the one developed by the HARDROC and is manufactured by the same company. It is safe to conclude that the preliminary results obtained with the HARDROC electronics constitute a strong indication on the potential performance of a FEB developped specifically for CMS detectors. The leading institute in the development of the SDHCAL based on single-gap \acf{gRPCs} is the \acf{IPNL} which also played a great role in developing iRPCs for CMS.
 	
-	A read-out pannel using the HARDROC 2 technology was lended by this institute and was tested onto a CMS RPC. Contrary to the tests with the INFN preamplifiers that were made using an RE2-2 CMS RPC built in 2007 for the second endcap disk of CMS, the choice was made to use an RE4-3 detector built during LS1 to equip the fourth endcap. Indeed, the pannel can't be sandwiched between two RPC gaps due to the embedded electronics and a single CMS RPC gap was used. At the time of this experiment, only RE4-3 gaps were available and the choice was made to change detector with respect to the previous series of tests conducted on the INFN preamplifiers. As for the INFN preamplifiers, the pannel has been tested on the gRPC built by UGent. Once again, the experiment was conducted in the CMS RPC assembly laboratory and the setups used are shown in Figures~\ref{fig:Setup-HARDROC2-904} and \ref{fig:Setup-HARDROC2-gRPC}.
+	A read-out pannel using the HARDROC 2 technology was lended by this institute and was tested onto a CMS RPC. Contrary to the tests with the INFN preamplifiers that were made using an RE2-2 CMS RPC built in 2007 for the second endcap disk of CMS, the choice was made to use an RE4-3 detector built during LS1 to equip the fourth endcap. Indeed, the pannel can't be sandwiched between two RPC gaps due to the embedded electronics and a single CMS RPC gap was used. At the time of this experiment, only RE4-3 gaps were available and the choice was made to change detector with respect to the previous series of tests conducted on the INFN preamplifiers. As for the INFN preamplifiers, the pannel has been tested on the gRPC built by UGent. The gRPC being smaller than the HARDROC read-out that was used for the experiment but thanks to the 2D read-out using pads, this was not a problem for the data acquisition.
 	 
 	\begin{figure}[H]
 		\begin{subfigure}{.5\linewidth}
 		    \centering
-			\includegraphics[width = \linewidth]{fig/chapt6/HARDROC_PCB.jpg}
-			\caption{\label{fig:Setup-HARDROC2-904:A}}
+			\includegraphics[width = \linewidth]{fig/chapt6/Setup_HARDROC_PAK.jpg}
+			\caption{\label{fig:Setup-HARDROC2:A}}
 		\end{subfigure}
 		\begin{subfigure}{.5\linewidth}
 		    \centering
-			\includegraphics[width = \linewidth]{fig/chapt6/HARDROC_chip.JPG}
-			\caption{\label{fig:Setup-HARDROC2-904:B}}
+			\includegraphics[width = \linewidth]{fig/chapt6/Setup_HARDROC_gRPC.JPG}
+			\caption{\label{fig:Setup-HARDROC2:B}}
 		\end{subfigure}
-		\begin{subfigure}{\linewidth}
-		    \centering
-			\includegraphics[width = 0.5\linewidth]{fig/chapt6/Setup_HARDROC_PAK.jpg}
-			\caption{\label{fig:Setup-HARDROC2-904:C}}
-		\end{subfigure}
-		\caption{\label{fig:Setup-HARDROC2-904} Figure~ref{fig:Setup-HARDROC2-904:A}: Readout panel with the HARDROC2 ASIC placed on a CMS RPC gap. Figure~ref{fig:Setup-HARDROC2-904:B}: HARDROC2 control chip with its "Mezzanine" used to collect the data from the different HARDROC ASICs and communicate with the computer. Figure~ref{fig:Setup-HARDROC2-904:C}: Experimental setup used to test the HARDROC2 electronics.}
+		\caption{\label{fig:Setup-HARDROC2} Experimental setups used to test the HARDROC2 electronics with a CMS RE4-3 gap (Figure~\ref{fig:Setup-HARDROC2:A}) and a gRPC gap built in Ghent (Figure~\ref{fig:Setup-HARDROC2:B}).}
     \end{figure}
+	 
+	\begin{figure}[H]
+	    \centering
+		\includegraphics[width = 0.7\linewidth]{fig/chapt6/HARDROC_chip.JPG}
+		\caption{\label{fig:HARDROC2-chip} HARDROC2 control chip with its "Mezzanine" used to collect the data from the different HARDROC ASICs and communicate with the computer. On top of the picture, the trigger is brought by a coaxial cable. The connection with the computer is assured by both the USB cables.}
+    \end{figure}
+	
+	Once again, the experiment was conducted in the CMS RPC assembly laboratory at CERN and the setups are shown in Figure~\ref{fig:Setup-HARDROC2}. The read-out panel is placed directly on top of the gapsand pressed against the detector surface thanks to weights. The same PMTs are used to provide a trigger to the data acquisition. In the particular case of the HARDROC 2 electronics, the output signal does not correspond to the LVDS signals provided by the CMS FEB. Moreover, there would be more than 1500 channels to constently monitor and unfortunately, there would not be enough VME TDC modules to use with the DAQ software designed for the experiment involving the INFN preamplifiers. Nevertheless, a custom-made DAQ software was designed by the members of IPNL's team to read-out the electronics through the chip presented in Figure~\ref{fig:HARDROC2-chip}. The data is stored in the buffer of the ASIC continously and dumped into the computer when a trigger is signal is received.
 	
 	\begin{figure}[H]
 		\begin{subfigure}{.5\linewidth}
@@ -488,7 +491,7 @@ ChHit3	THit3
 			\includegraphics[width = .5\linewidth]{fig/chapt6/HARDROC2-Rate-Shift.pdf}
 			\caption{\label{fig:HARDROC2:C}}
 		\end{subfigure}
-		\caption{\label{fig:HARDROC2} Efficiency (Figure~\ref{fig:HARDROC2:A}), cluster size (Figure~\ref{fig:HARDROC2:B}) and noise rate per unit area (Figure~\ref{fig:HARDROC2:C}) of the CMS RE4-3 detector tested with the standard CMS FEBs (black) and with the HARDROC 2 readout panel at different thresholds (red, blue and pink).}
+		\caption{\label{fig:HARDROC2} Efficiency (Figure~\ref{fig:HARDROC2:A}), cluster size (Figure~\ref{fig:HARDROC2:B}) and noise rate per unit area (Figure~\ref{fig:HARDROC2:C}) of the CMS RE4-3 detector tested in single gap mode with the standard CMS FEBs (black) and with the HARDROC 2 readout panel at different thresholds (red, blue and pink).}
 	\end{figure}
 	
 	\begin{table}[H]
@@ -508,5 +511,78 @@ ChHit3	THit3
 			\hline
 		\end{tabular}
 	\end{table}
+	
+	The results of the tests conducted with the HARDROC 2 on a CMS gap are presented in Figure~\ref{fig:HARDROC2} and Table~\ref{tab:HARDROC2}. These results can hardly be compared to what was measured with the INFN preamplifiers as the detector was not tested using the single-gap mode. The tested thresholds are high compared to the ones displayed by the INFN preamplifiers and are of the order of magnitude of the current CMS FEB. Nevertheless, the performance of the detector equipped with this read-out pannel is measured to be better. Indeed, a shift of 400 to \SI{500}{V} is observed at thresholds ranging from 230 to \SI{121.4}{fC}. \textbf{[Here it could be nice to bring an explaination to this observation.]}
+	
+	The cluster size is provided for information as a direct comparison of the cluster size measured with \SI{1}{cm^2} pads and long copper strips with width of a few \si{cm} is not possible. The measured cluster size at working voltage with the CMS FEB is consistent with what would be expected of a single-gap RPC. Indeed, the usage of two gaps in an OR system allows for a stronger overall gain and hence, the cluster size is greater. A more precise estimation of the charge spread inside of the gap is obtained using pads instead of strips. At working voltage, an avalanche is detected within less than two pads on average. An extra information could be used to further improve the spatial resolution of the detector. Indeed, as stated in the introduction  of the Section, the HARDROC 2 is a semi-digital electronics and features three threshold levels. Tuning these thresholds would lead to an approximation of the induced charge profile over the neighbouring pads. A gaussian fit over the digitized distribution would give an estimation of the position of the avalanche center.
+	
+	Finally, the noise measured in the electronics is of the same order of what had been measured in Figure~\ref{fig:INFN-FEB:C}. It is safe to assume that the noise level in the case of a single-gap RPC is expected to be of the same order of magnitude than its double-gap counterpart as the noise mainly is electromagnetic. Figure~\ref{fig:HARDROC2-profiles} provides a clearer understanding of the position of the trigger PMTs and of the noise measured with the HARDROC. The noise of the electronics itself is very small and the read-out pannel is sensitive enough to measure the noise in the RPC gap. Indeed, except for a few visible hot spots, the observed noise profile corresponds perfectly to the spacer positions inside of the gap volume. The PET buttons used to maintain the uniformity of the gas volume cause noise at their proximity as they modify the local electric field.
+	 
+	\begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/Muon-Profile-RE4-HARDROC.pdf}
+			\caption{\label{fig:HARDROC2-profiles:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/Noise-Profile-RE4-HARDROC.pdf}
+			\caption{\label{fig:HARDROC2-profiles:B}}
+		\end{subfigure}
+		\caption{\label{fig:HARDROC2-profiles} Measured muon (Figure~\ref{fig:HARDROC2-profiles:A}) and noise (Figure~\ref{fig:HARDROC2-profiles:A}) profiles in the read-out pads of the HARDROC 2 over a CMS RE4-3 gap. The inner structure of the gap and the presence of the spacers in the volume is visible.}
+    \end{figure}
+	
+	The results of the experiment with the gRPC are provided in Figure~\ref{fig:HARDROC2-gRPC} and Table~\ref{tab:HARDROC2-gRPC}. Unfortunately the gRPC had not been tested in single gap mode with the CMS FEB. Thus, a direct comparison is not possible as the data were not collected in similar conditions. The detector could only be tested with a single HARDROC 2 threshold setting (\SI{143}{fC}). As for the double-gap, the efficiency of the single-gap reaches 95\% at working voltage. The working voltage is consistent with the double-gap detector operated with the CMS FEB indicating that the HARDROC is more sensitive to lower charges. The difference in efficiency rising is consistent with the use of one gap versus two in the case of the CMS FEB.
+	
+	As discussed in the case of the CMS RE4-3 gap, the direct comparison of the cluster sizes is not possible. In this sense, the proximity of both results only is fortuitous. The cluster size of approximately 1.6 measured with the HARDROC 2 at working voltage is of the same order than what had previously been measured for the CMS gap indicating that at equivalent performance, the gain and hence, the induced charge could be comparable.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width=\linewidth]{fig/chapt6/gRPC-HARDROC2-Eff-Shift.pdf}
+			\caption{\label{fig:HARDROC2-gRPC:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/gRPC-HARDROC2-ClS-Shift.pdf}
+			\caption{\label{fig:HARDROC2-gRPC:B}}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+		    \centering
+			\includegraphics[width = .5\linewidth]{fig/chapt6/gRPC-HARDROC2-Rate-Shift.pdf}
+			\caption{\label{fig:HARDROC2-gRPC:C}}
+		\end{subfigure}
+		\caption{\label{fig:HARDROC2-gRPC} Efficiency (Figure~\ref{fig:HARDROC2:A}), cluster size (Figure~\ref{fig:HARDROC2:B}) and noise rate per unit area (Figure~\ref{fig:HARDROC2:C}) of the UGent gRPC tested in double-gap mode with the standard CMS FEBs (black) and in single-gap with the HARDROC 2 readout panel at a threshold of \SI{143}{fC} (red).}
+	\end{figure}
+	
+	\begin{table}[H]
+		\caption{\label{tab:HARDROC2-gRPC} Results of the sigmoid fit (Formula~\ref{eq:Sigmoid}) performed on the data presented in Figure~\ref{fig:HARDROC2-gRPC:A}. The working point and its corresponding efficiency are computed using Formulas~\ref{eq:Sigmoid} and \ref{eq:KneeWP}.}
+		\footnotesize
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			Data & $\epsilon_{max}$ & $\lambda$ ($\cdot$\Ord{-2} \si{V^{-1}}) & $HV_{50}$ (\si{V}) & $\epsilon_{WP}$ & $HV_{WP}$ (\si{V}) \\ 
+			\hline
+			CMS FEB, 156fC (2015) & \numerror{0.956}{0.007} & \numerror{0.86}{0.04} & \numerror{5349}{8} & \numerror{0.94}{0.01} & \numerror{5839}{23}\\ 
+			\hline
+			HARDROC 2, 143fC (2015) & \numerror{0.966}{0.004} & \numerror{0.64}{0.02} & \numerror{5179}{7} & \numerror{0.95}{0.01} & \numerror{5790}{25}\\ 
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	Finally, the noise measured in the electronics seemed higher than in the case of the CMS gap. Looking closer to the noise profile provided in Figure~\ref{fig:HARDROC2-gRPC-profiles}, it can be seen that the noise measurement was affected by the HV connector. Indeed, the high noise measured in pads 41 and 42 along X and 22 to 25 along Y, corresponds exactly to the position of the HV connector on the cathode side. Contrary to the case of the CMS gap were the HV connector was far from the read-out area, the gRPC is smaller than the read-out and due to the poor grounding of the setup the electric field created by the HV connector could affect the read-out. Exclusing the corresponding pads gives a much more reliable noise measurement as can be seen in Figure~\ref{fig:HARDROC2-gRPC:C}. Through the noise profile, a better understanding of the gRPC uniformity can be obtained. First of all, the row corresponding to Y=16 seem consistently noisier than the neighbouring pads an could correspond to the glueing line that lies along this pad row. The noise increase along this line is not very clear though and no corresponding behaviour can be observed along the other glueing line along column X=30. But the gas volume corresponding to the largest glass plate, spreading from columns 31 to 47 along X and rows 1 to 15 clearly shows a stronger noise in it's center. The detection area being small, only a few ceramic ball spacers were used to maintain the distance in between the electrodes. It not impossible that the ball spacer located in the center of this very volume popped out. Due to the absence of a spacer, the force applied by electric field onto the electrodes could have made the distance in between the electrodes smaller and artificially increased the observed electric field, also increasing the measured noise.
+	 
+	\begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/Muon-Profile-gRPC-HARDROC.pdf}
+			\caption{\label{fig:HARDROC2-gRPC-profiles:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/Noise-Profile-gRPC-HARDROC.pdf}
+			\caption{\label{fig:HARDROC2-gRPC-profiles:B}}
+		\end{subfigure}
+		\caption{\label{fig:HARDROC2-gRPC-profiles} Measured muon (Figure~\ref{fig:HARDROC2-gRPC-profiles:A}) and noise (Figure~\ref{fig:HARDROC2-gRPC-profiles:A}) profiles in the read-out pads of the HARDROC 2 over a gRPC gap built by Ghent.}
+    \end{figure}
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
