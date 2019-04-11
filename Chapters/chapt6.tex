@@ -32,24 +32,66 @@
 		\caption{\label{fig:PETIROCASIC} PETIROC 2A block diagram.}
 	\end{figure}
 	
-	Nevertheless, in order to adapt this ASIC to CMS, modifications were brought to the PETIROC~\cite{PHASEIITP}. In the new CMS RPCROC, the measurement of the charge will be performed by a \acf{ToT} technic, taking profit of the capacity the ASIC has in measuring both the leading and trailing edges of the input signals. The dynamic range will be expanded towards lower values to allow for the detection of charges as low as \SI{10}{fC}. Due to the radiation levels that are foreseen at the level of the iRPCs, the SiGe technology will be replaced by the Taiwan Semiconductor Manufacturing Company (TSMC) \SI{130}{nm} CMOS, to increase its radiation hardness while keeping fast pre-amplification and discrimination with a very low jitter that can reach less than \SI{20}{ps} if no internal clock is used, as can be seen from Figure~\ref{fig:jitter}. The ASIC is associated with an FPGA which purpose is to measure time thanks to a TDC with a time resolution of 50-100 \si{ps} developed by Tsinghua University and that will provide a measurement of the signal position along the strip with a precision of a few \si{cm} by measuring the signal timing on both ends of the strips. In order to read-out all 96 strips, 3 ASICs and 3 TDCs, each having an increased number of 64-channels, are hosted on a FEB attached to the chamber.
+	Nevertheless, in order to adapt this ASIC to CMS, modifications were brought to the PETIROC~\cite{PHASEIITP} and not all its functions will be used~\cite{COMBARET2018}. In the new CMS RPCROC, showed in Figure~\ref{fig:RPCROC}, the measurement of the charge will be performed by a \acf{ToT} technic, taking profit of the capacity the ASIC has in measuring both the leading and trailing edges of the input signals. The dynamic range will be expanded towards lower values to allow for the detection of charges as low as \SI{10}{fC}. Due to the radiation levels that are foreseen at the level of the iRPCs, the SiGe technology will be replaced by the Taiwan Semiconductor Manufacturing Company (TSMC) \SI{130}{nm} CMOS, to increase its radiation hardness while keeping fast pre-amplification and discrimination with a very low jitter that can reach less than \SI{20}{ps} if no internal clock is used, as can be seen from Figure~\ref{fig:jitter}. The ASIC is associated with an FPGA which purpose is to measure time of the signals. The FPGA is equipped with a TDC with a time resolution of 50-100 \si{ps} developed by Tsinghua University. The full system will provide a measurement of the signal position along the strip with a precision of a few \si{cm} by measuring the signal timing on both ends of the strips.
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\plotwidth]{fig/chapt6/jitter-PETIROC.png}
-		\caption{\label{fig:jitter} The PETIROC time jitter as a function of the input signal amplitude, measured with and without internal clocks.}
+		\includegraphics[width=0.5\linewidth]{fig/chapt6/RPCROC_FEE.png}
+		\caption{\label{fig:RPCROC} View of the RPCROC \acl{FEE} in which the PETIROC 2A ASIC is visible as well as the FPGA on which the TDC is hosted.}
 	\end{figure}
 
-	\subsection{INFN \acl{FEE}: a robust back-up solution}
-	\label{chapt6:ssec:INFN}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\linewidth]{fig/chapt6/jitter-PETIROC.png}
+		\caption{\label{fig:jitter} The PETIROC time jitter as a function of the input signal amplitude, measured with and without internal clocks.}
+	\end{figure}
+	
+	In order to read-out all 96 strips, 3 ASICs and 3 TDCs, each having an increased number of 64-channels, are hosted on a FEB attached to the chamber. Two scenarios are being studied to connect the ASICs to the read-out strips~\cite{COMBARET2018}. The correspponding read-out panels are showed in Figure~\ref{fig:iRPC-readout}. On the one hand there is the possibility to design a standard trapezoidal strip panel and to directly connect the strips to the ASICs using coaxial cables of similar impedance than the strips. On the other hand, the return lines could be embeded directly in extra layers of the strip panel to offer the possibility to minimize the amount of on-detector cables by using a single connector to send the signals to the FEB's inputs. The first version of the panel is refered to as \textit{coaxial design} while the second as \textit{return design}. In the case of the return design panel, the read-out area is a little smaller than in the case of the coaxial panel. This was motivated by the need to shield the return strips beneath the copper ground plane visible on the side of the PCB.
+	
+	\begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[height=7cm]{fig/chapt6/RPCROC_Coaxial_PCB.png}
+			\caption{\label{fig:iRPC-readout:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[height=7cm]{fig/chapt6/RPCROC_Return_PCB.png}
+			\caption{\label{fig:iRPC-readout:B}}
+		\end{subfigure}
+		\caption{\label{fig:iRPC-readout} View of the coaxial design (Figure~\ref{fig:iRPC-readout:A}) and of the return design (Figure~\ref{fig:iRPC-readout:B}) of read-out panels used in the iRPC prototypes. Only half PCBs with 48 strips are showed.}
+	\end{figure}
 
-\section{Preliminary tests at CERN}
+	\subsection{INFN \acl{FEB}: a robust back-up solution}
+	\label{chapt6:ssec:INFN}
+	
+	Even though the baseline for the electronics that will equip the iRPCs will be the CMS RPCROC, a back-up solution needs to be certified. The back-up has been found in a \acl{FEE} featuring a fast and low-noise (1000 $e^-$ rms) Silicon (Si) preamplifier and a Silicon-Germanium (SiGe) discriminator~\cite{PIZZIMENTO2018} associated with an optimized read-out panel~\cite{ALUNNOCAMELIA2018}. The low-noise preamplifier is a new version of a preliminary production of a SiGe preamplifier by the team of Cardarelli working with INFN Roma with the purpose of equipping the new generation of ATLAS RPCs~\cite{CARDARELLI2013}.
+	
+	The FEB is equipped with eight channels of preamplifiers using a \acf{BJT} technology and two discriminator ASICs of four channels using \acf{HJT} technology. The input signals are amplified at an amplification factor of 0.2 to \SI{0.4}{mV/fC} and are then discriminated with a threshold of \SI{0.5}{mV} at minimum. For each channel, the LVDS output is proportional in width to the \acl{ToT} in the discriminator of the amplified signal with a minimum width of \SI{3}{ns}. This method allows for an estimation of the avalanche charge as the width of the signals usually is consistent and proportionnal to the amount of charge released in the gas volume.
+	
+	The read-out panel feautures 96 trapezoidal copper strips and has a similar design to the read-out panels used for the CMS RPCROC. As for now, the strips are only read-out from one end.
+	 
+	\begin{figure}[H]
+		\begin{subfigure}{\linewidth}
+		    \centering
+			\includegraphics[width = 0.8\linewidth]{fig/chapt6/INFN-FEB-on-readout.png}
+			\caption{\label{fig:INFN-FEBv2:A}}
+		\end{subfigure}
+		\begin{subfigure}{\linewidth}
+		    \centering
+			\includegraphics[width = 0.8\linewidth]{fig/chapt6/INFN-FEB-readout-panel.png}
+			\caption{\label{fig:INFN-FEBv2:B}}
+		\end{subfigure}
+		\caption{\label{fig:INFN-FEBv2} Experimental setup used to test the INFN preamplifier with respect to the CMS FEEs.}
+    \end{figure}
+
+\section{Preliminary electronics tests at CERN}
 \label{chapt6:sec:Preliminary}
 
-	\subsection{INFN preamplifiers}
+	\subsection{INFN preamplifiers as upgrade candidates}
 	\label{chapt6:ssec:INFN-Prelim}
 	
-	INFN electronics were the first ones to be tested by CMS RPC group in collaboration with colleagues from INFN Roma working in the ATLAS RPC group. Indeed, at first the electronics only consisted in a new low-noise preamplifier produced by the team of Cardarelli with the purpose of equipping the new generation of ATLAS RPCs~\cite{CARDARELLI2013}. The tests with CMS RPCs were performed in February 2013 outside of the old GIF facility presented in Chapter~\ref{chapt5:ssec:GIF}. Four preamplifier channels were lended by Cardarelli to equip four CMS RPC channels as presented in Figure~\ref{fig:INFN-preamp}. They were directly connected to the strips for the signals induced by muons passing through the gas volume of the chamber to be amplified. The output was then sent to a discriminator to digitize the signals and filter out the noise by tuning the threshold level. The NIM quad discriminator 821 manufactured by LECROY used during this experiment only allows at minimum to set the threshold at a voltage of approximately \SI{30}{mV} on the input signals. Thus, two values of discrimination were used ($\sim$\SI{75}{mV} and $\sim$\SI{30}{mV}).
+	INFN electronics were the first ones to be tested by CMS RPC group in collaboration with colleagues from INFN Roma working in the ATLAS RPC group. The tests with CMS RPCs were performed in February 2013 outside of the old GIF facility presented in Chapter~\ref{chapt5:ssec:GIF}. Four preamplifier channels were lended by Cardarelli to equip four CMS RPC channels as presented in Figure~\ref{fig:INFN-preamp}. They were directly connected to the strips for the signals induced by muons passing through the gas volume of the chamber to be amplified. The output was then sent to a discriminator to digitize the signals and filter out the noise by tuning the threshold level. The NIM quad discriminator 821 manufactured by LECROY used during this experiment only allows at minimum to set the threshold at a voltage of approximately \SI{30}{mV} on the input signals. Thus, two values of discrimination were used ($\sim$\SI{75}{mV} and $\sim$\SI{30}{mV}).
 	
 	\begin{figure}[H]
 		\centering
@@ -444,12 +486,12 @@ ChHit3	THit3
 		\caption{\label{fig:time-profiles} The arrival time of the hits recorded in the gRPC tested with the CMS FEB (Figure~\ref{fig:time-profiles:A}) and with the INFN preamplifiers (Figure~\ref{fig:time-profiles:B}), and recorded in the CMS RE2 RPC tested with the INFN preamplifiers (Figure~\ref{fig:time-profiles:C}).}
 	\end{figure}
 
-	\subsection{HARDROC 2 readout panel}
+	\subsection{HARDROC 2 based RPC read-out}
 	\label{chapt6:ssec:HARDROC2}
 	
 	The \acf{HARDROC} ASIC, as its name suggests, has been developped for RPC applications and in particular for the read-out RPCs of the \acf{SDHCAL} that is being studied in the perspective of the \acf{ILC}. The SDHCAL detectors are required to have a high granularity compared to the CMS RPCs and hence, they use \SI{1}{cm^2} read-out pads instead of strips. This choice results in a huge number of channels. The ASIC is mounted directly on the read-out pannel for compactness as can be seen in Figure~\ref{fig:Setup-HARDROC2-904:A} and feature three thresholds to provide a semi-digital information.
 	
-	The PETIROC that inspired the CMS RPCROC uses a similar technology than the one developed by the HARDROC and is manufactured by the same company. It is safe to conclude that the preliminary results obtained with the HARDROC electronics constitute a strong indication on the potential performance of a FEB developped specifically for CMS detectors. The leading institute in the development of the SDHCAL based on single-gap \acf{gRPCs} is the \acf{IPNL} which also played a great role in developing iRPCs for CMS.
+	The PETIROC that inspired the CMS RPCROC uses a similar technology than the one developed for the HARDROC and is manufactured by the same company. It is safe to conclude that the preliminary results obtained with the HARDROC electronics constitute a strong indication on the potential performance of a FEB developped specifically for CMS detectors. The leading institute in the development of the SDHCAL based on single-gap \acf{gRPCs} is the \acf{IPNL} which also played a great role in developing iRPCs for CMS.
 	
 	A read-out pannel using the HARDROC 2 technology was lended by this institute and was tested onto a CMS RPC. Contrary to the tests with the INFN preamplifiers that were made using an RE2-2 CMS RPC built in 2007 for the second endcap disk of CMS, the choice was made to use an RE4-3 detector built during LS1 to equip the fourth endcap. Indeed, the pannel can't be sandwiched between two RPC gaps due to the embedded electronics and a single CMS RPC gap was used. At the time of this experiment, only RE4-3 gaps were available and the choice was made to change detector with respect to the previous series of tests conducted on the INFN preamplifiers. As for the INFN preamplifiers, the pannel has been tested on the gRPC built by UGent. The gRPC being smaller than the HARDROC read-out that was used for the experiment but thanks to the 2D read-out using pads, this was not a problem for the data acquisition.
 	 
@@ -584,5 +626,12 @@ ChHit3	THit3
 		\end{subfigure}
 		\caption{\label{fig:HARDROC2-gRPC-profiles} Measured muon (Figure~\ref{fig:HARDROC2-gRPC-profiles:A}) and noise (Figure~\ref{fig:HARDROC2-gRPC-profiles:A}) profiles in the read-out pads of the HARDROC 2 over a gRPC gap built by Ghent.}
     \end{figure}
+    
+\section{Certification of the CMS RPCROC prototype}
+\label{chapt6:sec:Certification}
+	
+	\subsection{Preliminary tests with cosmic muons}
+	
+	\subsection{Certification campaign at the \acl{GIF++}}
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
