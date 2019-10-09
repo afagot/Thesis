@@ -919,7 +919,13 @@ The \acf{RPC} has been developed in 1981 by Santonico and Cardarelli~\cite{SANTO
 	
 \endgroup
 	
-\begingroup\setlength{\intextsep}{10pt}\setlength{\columnsep}{15pt}
+	CMS RPC also define two points on this sigmoid that called \textit{knee} and \textit{working point}. $HV_{knee}$ is defined as the voltage at 95\% of the maximum efficiency, and $HV_{WP}$ is defined as in Formula~\ref{eq:KneeWP}.
+	\begin{equation}
+	\label{eq:KneeWP}
+	HV_{WP} = HV_{knee} + \left\{\begin{array}{l l}100\mathrm{V} & \begin{array}{l}\mathrm{barrel}\end{array}\\ 150\mathrm{V} & \begin{array}{l}\mathrm{endcap}\\ \mathrm{before\,LS1}\end{array}\\ 120\mathrm{V} & \begin{array}{l}\mathrm{endcap}\\ \mathrm{after\,LS1}\end{array}\\ \end{array}\right.
+	\end{equation}
+	
+\begingroup\setlength{\intextsep}{0pt}\setlength{\columnsep}{15pt}
 	
 	\begin{wrapfigure}{O}{0.55\linewidth}
 		\centering
@@ -927,23 +933,11 @@ The \acf{RPC} has been developed in 1981 by Santonico and Cardarelli~\cite{SANTO
 		\caption{\label{fig:Sigmoid} Typical efficiency sigmoid of a CMS RPC detector. The black dots correspond to the data, the blue line to the sigmoid fit and the open cross to the knee and working point extracted from the fit.}
 	\end{wrapfigure}
 	
-	CMS RPC also define two points on this sigmoid that called \textit{knee} and \textit{working point}. $HV_{knee}$ is defined as the voltage at 95\% of the maximum efficiency, and $HV_{WP}$ is defined as in Formula~\ref{eq:KneeWP}.
-	
-	\begin{equation}
-	\label{eq:KneeWP}
-	HV_{WP} = HV_{knee} + \left\{\begin{array}{l l}100\mathrm{V} & \mathrm{(barrel)}\\ 150\mathrm{V} & \mathrm{(endcap)}\\ \end{array}\right.
-	\end{equation}
-	
 	Nevertheless, the voltage applied on a detector may vary due to a change in environmental conditions. Indeed, the variation of temperature and/or pressure will have effect on the gas density and the electrode resistivity. This can be compensated by changing the electric field accordingly. The influence of variation in temperature and pressure are depicted respectively in Figure~\ref{fig:TCorr} and Figure~\ref{fig:PCorr}. A standard procedure to correct for temperature and pressure variations is to keep the factor $HV\cdot T/P$ constant using Formula~\ref{eq:PTSimple}~\cite{ABBRESCIA1995,ABBRESCIA1997PRES} with reference values for $T_0$ and $P_0$. For example, CMS uses $T_0=$ \SI{293.15}{K} and $P_0=$ \SI{965}{hPa}.
-	
-	\begin{equation}
-	\label{eq:PTSimple}
-	HV_{app} = HV_{eff}\frac{P_0}{P}\frac{T}{T_0}
-	\end{equation}
 	
 \endgroup
 	
-\begingroup\setlength{\intextsep}{10pt}\setlength{\columnsep}{15pt}
+\begingroup\setlength{\intextsep}{10pt}\setlength{\columnsep}{10pt}
 	
 	\begin{wrapfigure}{O}{0.55\linewidth}
 		\begin{subfigure}{\linewidth}
@@ -959,7 +953,12 @@ The \acf{RPC} has been developed in 1981 by Santonico and Cardarelli~\cite{SANTO
 		\caption{\label{fig:TCorr} Effect of the temperature variation on the rate~\subref{fig:TCorr:A} and the efficiency~\subref{fig:TCorr:B} of an RPC~\cite{ABBRESCIA1995}.}
 	\end{wrapfigure}
 	
-	It was actually found that such a simple procedure overcorrects the applied voltage in case the variations of temperature or pressure become significant~\cite{ABBRESCIA2013,FILIP2014,BIANCO2007,BIANCO2009}. CMS, considering that the temperature variations in the detector cavern were very small, decided only to improve the pressure correction, giving rise to Formula~\ref{eq:PTCMS}~\cite{ABBRESCIA2013} while on the other hand, ATLAS decided to have a more robust correction for both parameters and uses Formula~\ref{eq:PTATLAS} instead~\cite{BIANCO2009}. The coefficients $\alpha$, in the case of CMS, and $\alpha,\beta$, in the case of ATLAS, are extracted from a fit to data obtained during the operation of the detectors.
+	\begin{equation}
+	\label{eq:PTSimple}
+	HV_{app} = HV_{eff}\frac{P_0}{P}\frac{T}{T_0}
+	\end{equation}
+	
+	It was actually found that such a simple procedure overcorrects the applied voltage in case the variations of temperature or pressure become significant~\cite{ABBRESCIA2013,FILIP2014,BIANCO2007,BIANCO2009}. CMS, considering that the temperature variations in the detector cavern were very small, decided only to improve the pressure correction, giving rise to Formula~\ref{eq:PTCMS} \cite{ABBRESCIA2013} while on the other hand, ATLAS decided to have a more robust correction for both parameters and uses Formula~\ref{eq:PTATLAS} instead \cite{BIANCO2009}. The coefficients $\alpha$, in the case of CMS, and $\alpha,\beta$, in the case of ATLAS, are extracted from a fit to data obtained during the operation of the detectors.
 	
 	\begin{equation}
 	\label{eq:PTCMS}
