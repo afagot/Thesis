@@ -1099,9 +1099,7 @@
 		\caption{\label{fig:GIFpp-Dark-rate-mon} Monitoring of the physics component of the dark current and of the noise rate per unit area with increasing integrated charge at a voltage of \SI{9600}{V} for the RE2-2 detectors~\subref{fig:GIFpp-Dark-rate-mon:A} and~\subref{fig:GIFpp-Dark-rate-mon:C} and at a voltage of \SI{9500}{V} for the RE4-2 detectors~\subref{fig:GIFpp-Dark-rate-mon:B} and~\subref{fig:GIFpp-Dark-rate-mon:D} installed at the GIF++.}
 	\end{figure}
 	
-	The same exercise is done using the data collected during the weekly source scans. The monitoring of the current densities and of the gamma rate per unit area is showed in Figure~\ref{fig:GIFpp-Source-mon}. The reported measurements are always performed with the same source conditions corresponding to an irradiation attenuated by a factor 6.9. The increase in dark current of the irradiated RE4 chamber don't have any visible effect when the source irradiates the detectors. No signs of ageing due to irradiation is yet to be seen for both the RE2 and RE4 detectors. The current densities and gamma rates of all four detectors evolve following the same phases of increase and decrease.
-	
-\newpage
+	The same exercise is done using the data collected during the weekly source scans. The monitoring of the current densities and of the gamma rate per unit area is showed in Figure~\ref{fig:GIFpp-Source-mon}. The reported measurements are always performed with the same source conditions corresponding to an irradiation attenuated by a factor 6.9. The increase in dark current of the irradiated RE4 chamber don't have any visible effect when the source irradiates the detectors. No signs of ageing due to irradiation is yet to be seen for both the RE2 and RE4 detectors. The current densities and gamma rates of all four detectors evolve following the same phases of increase and decrease, as confirmed by Figure~\ref{fig:GIFpp-J_R_correlation}.
 
 	\begin{figure}[H]
     	\begin{subfigure}{0.5\linewidth}
@@ -1127,8 +1125,25 @@
 		\caption{\label{fig:GIFpp-Source-mon} Monitoring of the current density and of the gamma rate per unit area under irradiation with increasing integrated charge at a voltage of \SI{9600}{V} for the RE2-2 detectors~\subref{fig:GIFpp-Source-mon:A} and~\subref{fig:GIFpp-Source-mon:C} and at a voltage of \SI{9500}{V} for the RE4-2 detectors~\subref{fig:GIFpp-Source-mon:B} and~\subref{fig:GIFpp-Source-mon:D} installed at the GIF++. The source irradiation is attenuated by a factor 6.9.}
 	\end{figure}
 	
-	These fluctuations may arise due to different factors such as the distance from the source, the environmental conditions (gas and bunker temperature, gas relative humidity, environmental pressure), the presence or not of other experiments between the source and the trolley or the gamma current at which the detectors are irradiated during the ageing procedure. In order to have a better understanding, the monitoring of the environmental parameters, i.e. the gas relative humity and temperature both at the supply and at the exhaust of the trolley together with the humidity and temperature inside of the bunker and the environmental pressure, is showed in Figures~\ref{fig:GIFpp-Humidity}, \ref{fig:GIFpp-Temperature} and \ref{fig:GIFpp-Pressure}. In these Figures, the data are displayed with increasing integrated charge in the case of the RE2 and of the RE4 detectors for comparison purposes. Indeed, each value of integrated charge corresponds to a unique date.\\
-	Comparing the trends visible in Figure~\ref{fig:GIFpp-Source-mon} to the monitoring of the different environmental parameters, it would seem that the temperature variations may be able to explain most of the fluctuations.
+	The use of \acf{PCA}~\cite{PCA} reveals that the study of the correlations between the current densities and the gamma rates can be reduced to a single dimension. To perform the PCA, the algorithm used normalises each variable to get a mean value of 0 and a variance of 1 resulting in the study of the variance. The associated \textit{Scree} plot~\cite{SCREE} showed in Figure~\ref{fig:GIFpp-J_R_correlation:B} indicates for each of the components of the PCA, the eigen values of the covariance matrix. In this case, the eigen values have been normalised to express the percentage of variance explained by each component. More than 93\% of the data variation can be explained using a simple linear composition of the current density and of the gamma rate. It is expected as the current density and gamma rate are two side of the same physical process. Any deviation would mean that other processes than the convertion of photons in the electrode material take place.
+
+	\begin{figure}[H]
+    	\begin{subfigure}{0.5\linewidth}
+    		\centering
+			\includegraphics[width = \linewidth]{fig/chapt5/Gamma_rate-vs-Current_density.pdf}
+        	\caption{\label{fig:GIFpp-J_R_correlation:A}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/Scree_plot_J-vs-R.pdf}
+        	\caption{\label{fig:GIFpp-J_R_correlation:B}}
+    	\end{subfigure}
+		\caption{\label{fig:GIFpp-J_R_correlation} \subref{fig:GIFpp-J_R_correlation:A} Gamma rates as a function of the corresponding current densities. \subref{fig:GIFpp-J_R_correlation:B} Scree plot obtained at the output of PCAs performed on each set of current densities and corresponding gamma rates.}
+	\end{figure}
+	
+	The fluctuations observed on Figure~\ref{fig:GIFpp-Source-mon} may arise due to different factors such as the environmental conditions (gas temperature, gas relative humidity, environmental pressure) or the presence of other experiments between the source. The distance from the source and the trolley, and the gamma current at which the detectors are irradiated during the ageing procedure are kept as consistent as possible and should not contribute to the fluctuations in current density and gamma rate. In order to have a better understanding, the monitoring of the environmental parameters, i.e. the gas relative humity and temperature both at the supply and at the exhaust of the trolley together with the humidity and temperature inside of the bunker and the environmental pressure, is showed in Figures~\ref{fig:GIFpp-Humidity}, \ref{fig:GIFpp-Temperature} and \ref{fig:GIFpp-Pressure}. In these Figures, the data are displayed with increasing integrated charge in the case of the RE2 and of the RE4 detectors for comparison purposes. Each value of integrated charge corresponds to a unique date.
+	
+	Comparing the trends visible in Figure~\ref{fig:GIFpp-Source-mon} to the monitoring of the different environmental parameters, it would seem that the temperature variations may be able to explain most of the fluctuations. This assumption is confirmed by a PCA performed on data sets composed for each detector of the monitored environmental parameters, except the temperature and the relative humidity of the air in the bunker, and of the its current density and gamma rate data. The corresponding Scree plot is showed in Figure~\ref{fig:GIFpp-Scree_FullData}. The dimension reduction for this data set is less trivial. Nevertheless, most of the variation in current densities and gamma rates is held by the first principal component of the PCA basis for all four detectors, as can be understood from the \textit{Score} plots presented in Figure~\ref{fig:GIFpp-Score_FullData}. The Score plots show for each principal component the decomposition of its correponding eigen vector in terms of the variables of the original data set normalised to the eigen value associated to the eigen vector. The eigen vectors represent the directions of maximum variance. Hence, the \textit{strength} of each original variable leads to its variability along this direction. The first principal component can be interpreted as the variations directly linked to the fluctuations in current density and gamma rate. The linearity between these two variables is again visible as both variables cary the same amount of variability. Looking at the other variables along the first principal component, the temperature seems to always be a positive source of variation for the current density and the gamma rate. The contribution of the atmospherical pressure is always small. The relative humidity of the gas doesn't provide a consistent feedback.
 
 	\begin{figure}[H]
     	\begin{subfigure}{0.5\linewidth}
@@ -1172,7 +1187,28 @@
 		\caption{\label{fig:GIFpp-Pressure} Monitoring of the environmental pressure at the GIF++ during the source scans.}
 	\end{figure}
 	
-	Aside of the fluctuations due to the bad temperature correction, it seems that both the current densities and gamma rate tend to decrease with time. This decrease affects both the RE2 detectors and the irradiated RE4 detector. The current densities went from 12, 16 and \SI{9}{nA/cm^2} to 9, 10 and \SI{7}{nA/cm^2} respectivelly for the reference RE2, the irradiated RE2 and the irradiated RE4. The monitored gamma rates decreased from 650, 900 and \SIrate{500} to 500, 600 and \SIrate{400}. The rate of decrease is nevertheless faster for the irradiated detectors. The reference RE4 detector features a more stable operation through time if not a light increase of the two variables. Its current density varies from 11 to \SI{13}{nA/cm^2} and its gamma rate from 500 to \SIrate{700}.
+\begingroup\setlength{\intextsep}{0pt}\setlength{\columnsep}{15pt}
+
+	\begin{wrapfigure}{O}{0.5\linewidth}
+    	\centering
+		\includegraphics[width = \linewidth]{fig/chapt5/Scree_plot_Full-Data.pdf}
+        \caption{\label{fig:GIFpp-Scree_FullData} Scree plot corresponding to the PCAs perfomed on the seven dimensions of each RPC data set to study the influence of the environmental parameters in the fluctuation of the current densities and gamma rates.}
+	\end{wrapfigure}
+	
+	The other principal components are more difficult to interpret. The second component seems to always link the variabilities of the relative humidities. The relative humidity of the exhaust could be interpreted as a negative contribution of the relative humidity of the input gas. The third principal component likely represents the fluctuations of atmospherical pressure. The next principal components are not consistent from one detector to the other.\\
+	It is safe to conclude that the voltage correction performed at the GIF++ is not abble to account for the high variability of the temperature in the bunker and, hence, of the gas mixture the detectors are operated with. The pressure on the other hand does not play a great role in affecting the RPC operation as the voltage correction was improved to efficiently take into account this parameter~\cite{ABBRESCIA2013}. The environmental conditions in the CMS cavern are much more stable in terms of temperature providing an explanation for the less refined temperature correction on the applied voltage.
+	
+	Aside of the fluctuations due to the insufficient temperature correction, it seems that both the current densities and gamma rate tend to decrease with time. This decrease affects both the RE2 detectors and the irradiated RE4 detector. The current densities went from 12, 16 and \SI{9}{nA/cm^2} to 9, 10 and \SI{7}{nA/cm^2} respectivelly for the reference RE2, the irradiated RE2 and the irradiated RE4. The monitored gamma rates decreased from 650, 900 and \SIrate{500} to 500, 600 and \SIrate{400}. The rate of decrease is nevertheless faster for the irradiated detectors. The reference RE4 detector features a more stable operation through time if not a light increase of the two variables. Its current density varies from 11 to \SI{13}{nA/cm^2} and its gamma rate from 500 to \SIrate{700}.
+	
+\endgroup
+	
+	\begin{figure}[H]
+    	\centering
+		\includegraphics[width = \linewidth]{fig/chapt5/Full-Data-variation-Scores.pdf}
+        \caption{\label{fig:GIFpp-Score_FullData} Score plots corresponding to the PCAs perfomed on the seven dimensions of each RPC data set to study the variations in current density and gamma rate.}
+	\end{figure}
+	
+	Comparing the evolution of the current densities and of the gamma rates to the monitored resistivity showed in Figure~\ref{fig:Resistivity-time} may explain the decrease observed for three of the four chambers and the more stable behaviour of the reference RE4. Indeed, both the RE2 detectors and the irradiated RE4 show an increase in resistivity. The strongest increase of resistivity is observed for both the irradiated detectors whose average resistivity went from 2.27 to \Sci{4.83}{10} \si{\Omega .cm} for the RE2 and from \Sci{7.17}{10} to \Sci{1.96}{11} \si{\Omega .cm} for the RE4. The increase of average resistivity of the reference RE2 chamber from 1.88 to \Sci{2.40}{10}\si{\Omega .cm} is much smaller. On the contrary, the average resistivity of the reference RE4 is more or less at the same level at the time of writing (\Sci{9.22}{10} \si{\Omega .cm}) than it was at the start of the longevity program (\Sci{8.36}{10} \si{\Omega .cm}). The differences in increase rate of the irradiated chambers with respect to the reference ones can be seen in Figure~\ref{fig:GIFpp-Ratios-mon}. It is clear that both the current density and the gamma rate of the irradiated detectors decreases relatively to the reference ones. This is consistent with the relative increase in average resistivity of the irradiated chambers with respect to the reference ones.
 	
 	\begin{figure}[H]
     	\begin{subfigure}{0.5\linewidth}
@@ -1198,7 +1234,7 @@
 		\caption{\label{fig:Resistivity-time} Monitoring through argon scans of the resistivity with increasing integrated charge for the RE2-2 detectors~\subref{fig:Resistivity-time:A} and~\subref{fig:Resistivity-time:C} and the RE4-2 detectors~\subref{fig:Resistivity-time:B} and~\subref{fig:Resistivity-time:D} installed at the GIF++.}
 	\end{figure}
 	
-	Comparing the evolution of the current densities and of the gamma rates to the monitored resistivity showed in Figure~\ref{fig:Resistivity-time} may explain the decrease observed for three of the four chambers and the more stable behaviour of the reference RE4. Indeed, both the RE2 detectors and the irradiated RE4 show an increase in resistivity. The strongest increase of resistivity is observed for both the irradiated detectors whose average resistivity went from 2.27 to \Sci{4.83}{10} \si{\Omega .cm} for the RE2 and from \Sci{7.17}{10} to \Sci{1.96}{11} \si{\Omega .cm} for the RE4. The increase of average resistivity of the reference RE2 chamber from 1.88 to \Sci{2.40}{10}\si{\Omega .cm} is much smaller. On the contrary, the average resistivity of the reference RE4 is more or less at the same level at the time of writing (\Sci{9.22}{10} \si{\Omega .cm}) than it was at the start of the longevity program (\Sci{8.36}{10} \si{\Omega .cm}). The differences in increase rate of the irradiated chambers with respect to the reference ones can be seen in Figure~\ref{fig:GIFpp-Ratios-mon}. It is clear that both the current density and the gamma rate of the irradiated detectors decreases relatively to the reference ones. This is consistent with the relative increase in average resistivity of the irradiated chambers with respect to the reference ones.
+	In addition to the dicrease of the irradiated detectors current densities and gamma rates with respect to the reference RPCs, the fluctuation that can be observed in the ratios could be related to the fluctuations of gas humidity observed in Figure~\ref{fig:GIFpp-Humidity}. The results of the PCA performed on the same data set than previously but focussing on the ratios reveal that the humidity of the gas could indeed play a role in the evolution of the ratios and by extension of the resistivity of the detectors. The Scree plot in Figure~\ref{fig:GIFpp-Scree_Ratios} shows that approximately 75\% of the variability in the data set is explained by the first three principal components.
 
 	\begin{figure}[H]
     	\begin{subfigure}{0.5\linewidth}
@@ -1212,6 +1248,24 @@
         	\caption{\label{fig:GIFpp-Ratios-mon:B}}
     	\end{subfigure}
 		\caption{\label{fig:GIFpp-Ratios-mon} "Irradiated over Reference" parameter ratios (current densities, gamma rates and resistivities) as a function of the integrated charge for the RE2~\ref{fig:GIFpp-Ratios-mon:A} and the RE4~\ref{fig:GIFpp-Ratios-mon:B} detectors installed at the GIF++.}
+	\end{figure}
+	
+\begingroup\setlength{\intextsep}{0pt}\setlength{\columnsep}{15pt}
+
+	\begin{wrapfigure}{O}{0.5\linewidth}
+    	\centering
+		\includegraphics[width = \linewidth]{fig/chapt5/Scree_plot_Irr-Ref-Ratio.pdf}
+        \caption{\label{fig:GIFpp-Scree_Ratios} Scree plot corresponding to the PCAs perfomed on the seven dimensions of each RPC data set to study the influence of the environmental parameters in the fluctuation of the current densities and gamma rates.}
+	\end{wrapfigure}
+	
+	The Score plots in Figure~\ref{fig:GIFpp-Score_Ratios} give us more information about the variability along these three directions. It would seem that the first principal component mainly helds the variations of the current density and gamma rate ratios. Their fluctuation is negatively linked to the relative humidity of the gas in the supply and positively to the relative humidity of the gas in the exhaust. The contributions of the temperature are not consistent and the pressure seems not to affect the data. The variability of the temperature is completely described by the second principal component alone and the variability of the atmospherical pressure is explained by the third principal component. The fourth one, which explains less variability, could be, as before, a link between the atmospherical pressure and the gas relative humidity but this is not clear.
+	
+\endgroup
+	
+	\begin{figure}[H]
+    	\centering
+		\includegraphics[width = \linewidth]{fig/chapt5/Irr-Ref-Ratio-variation-Scores.pdf}
+        \caption{\label{fig:GIFpp-Score_Ratios} Score plots corresponding to the PCAs perfomed on the seven dimensions of each RPC data set to study the variations in current density and gamma rate ratios of the irradiated chambers with respect to the reference ones.}
 	\end{figure}
 	
 	\begin{figure}[H]
