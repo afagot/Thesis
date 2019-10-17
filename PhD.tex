@@ -20,16 +20,12 @@
 \usepackage{float}      % you can define 'H' so that floats are forced to be putted 'here'
 \usepackage{multirow}   % multirow{nrows}[bigstruts]{width}[fixup]{text} multirow cells
 \usepackage{wrapfig}    % to wrap text around an image
+\usepackage{array}
 \ifx\pdftexversion\undefined
 \usepackage[dvips]{graphicx}
 \else
 \usepackage[pdftex]{graphicx}
 \fi
-
-\usepackage{tabularx}
-\newcolumntype{L}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}%
-\newcolumntype{R}[1]{>{\hsize=#1\hsize\raggedleft\arraybackslash}X}%
-\newcolumntype{C}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}%
 
 \usepackage{lineno}		%to get the line number in the document
 \linenumbers
@@ -144,11 +140,41 @@
 %%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
+% definition of some useful variables
 \latintext
 \graphicspath{{fig/}}
 \restylefloat{figure}
 \restylefloat{table}
 \newfloat{algorithm}{ht}{alg}
+
+% definition of equal column spaning under a multicolumn
+\makeatletter
+
+
+\def\x@multispan#1{%
+  \global\let\@tempa\@empty
+  \@multicnt#1\relax
+  \loop\ifnum\@multicnt>\@ne
+  \xdef\@tempa{\@tempa\kern\dimen@i\hfill&\omit}%
+   \advance\@multicnt\m@ne
+  \repeat
+  \@tempa\kern\dimen@i\hfill}
+
+
+\long\def\xmulticolumn#1#2#3{%
+ \omit
+ \begingroup
+   \def\@addamp{\if@firstamp \@firstampfalse \else
+                \@preamerr 5\fi}%
+  \@mkpream{#2}\@addtopreamble\@empty
+  \endgroup
+  \def\@sharp{#3}%
+  \setbox\z@\hbox{{\@preamble}}%
+\global\dimen@i\wd\z@
+\global\divide\dimen@i#1\relax
+ \ignorespaces
+\x@multispan{#1}}
+\makeatother
 
 %%   FRONT PAGE       %%
 %%%%%%%%%%%%%%%%%%%%%%%%
