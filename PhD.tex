@@ -77,7 +77,7 @@
 
 % My own implementation of errors to provide compatibility between
 % siunitx v1 and v2
-\newcommand{\numerror}[2]{\ensuremath{(\num{#1}\pm\num{#2}})} % e.g. 1000 ± 10
+\newcommand{\numerror}[2]{$(#1 \pm #2)$} % e.g. 1000 ± 10
 \newcommand{\SIerror}[3]{\numerror{#1}{#2}\,\si{#3}} % e.g. (100 ± 5) nA
 \newcommand{\SIsurface}[3]{\mbox{\num{#1 x #2}\,\si{#3^2}}}
 \newcommand{\SIflux}[1]{\num{#1}\,\si{cm^{-2}.s^{-1}}}
@@ -94,6 +94,7 @@
 % Function to write scientific numbers
 \newcommand{\Sci}[2]{$#1 \times 10^{#2}$}
 \newcommand{\SciErr}[3]{$(#1\pm#2) \times 10^{#3}$}
+\newcommand{\SciErrP}[3]{\Sci{#1}{#2} $\pm #3$\%}
 \newcommand{\Ord}[1]{$10^{#1}$}
 
 % Function to refer to sigma in statistics

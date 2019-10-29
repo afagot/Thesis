@@ -123,11 +123,11 @@
 		\centering
 		\begin{tabular}{c|c|c|c|}
 		\cline{2-4}
-		 & 1 & 2 & 3 \\
+		                        & 1 & 2     & 3    \\
 		\hline
-		\multicolumn{1}{|c|}{A} & 1 & 10 & 100\\
+		\multicolumn{1}{|c|}{A} & 1 & 10    & 100  \\
 		\hline
-		\multicolumn{1}{|c|}{B} & 1 & 1.468 & 100\\
+		\multicolumn{1}{|c|}{B} & 1 & 1.468 & 100  \\
 		\hline
 		\multicolumn{1}{|c|}{C} & 1 & 2.154 & 4.642\\
 		\hline
@@ -350,15 +350,15 @@
 		\centering
 		\begin{tabular}{|*{5}{c|}}
 			\hline
-			Nominal & \multicolumn{4}{c|}{Photon flux $F$ [\siflux]} \\
+			Nominal & \multicolumn{4}{c|}{Photon flux $F$ [\siflux]}                                                    \\
 			\cline{2-5}
-			ABS & at $D=$ \SI{50}{cm} & at $D=$ \SI{155}{cm} & at $D=$ \SI{300}{cm} & at $D=$ \SI{400}{cm} \\
+			ABS     & at $D=$ \SI{50}{cm}    & at $D=$ \SI{155}{cm}   & at $D=$ \SI{300}{cm}   & at $D=$ \SI{400}{cm}   \\
 			\hline
-			1 & \Sci{0.12}{8} $\pm$ 0.2\% & \Sci{0.14}{7} $\pm$ 0.5\% & \Sci{0.45}{6} $\pm$ 0.5\% & \Sci{0.28}{6} $\pm$ 0.5\% \\
+			1       & \SciErrP{0.12}{8}{0.2} & \SciErrP{0.14}{7}{0.5} & \SciErrP{0.45}{6}{0.5} & \SciErrP{0.28}{6}{0.5} \\
 			\hline
-			2 & \Sci{0.68}{7} $\pm$ 0.3\% & \Sci{0.80}{6} $\pm$ 0.8\% & \Sci{0.25}{6} $\pm$ 0.8\% & \Sci{0.16}{6} $\pm$ 0.6\% \\
+			2       & \SciErrP{0.68}{7}{0.3} & \SciErrP{0.80}{6}{0.8} & \SciErrP{0.25}{6}{0.8} & \SciErrP{0.16}{6}{0.6} \\
 			\hline
-			5 & \Sci{0.31}{7} $\pm$ 0.4\% & \Sci{0.36}{6} $\pm$ 1.2\% & \Sci{0.11}{6} $\pm$ 1.2\% & \Sci{0.70}{5} $\pm$ 0.9\% \\
+			5       & \SciErrP{0.31}{7}{0.4} & \SciErrP{0.36}{6}{1.2} & \SciErrP{0.11}{6}{1.2} & \SciErrP{0.70}{5}{0.9} \\
 			\hline
 		\end{tabular}
 		\caption{\label{tab:Sim1997} Total photon flux ($E\gamma \leq$ \SI{662}{keV}) with statistical error predicted considering a $^{137}$Cs activity of \SI{740}{GBq} at different values of the distance $D$ to the source along the x-axis of irradiation field~\cite{AGOSTEO1999}.}
@@ -372,14 +372,14 @@
 		\centering
 		\begin{tabular}{|*{4}{c|}}
 			\hline
-			Nominal & \multicolumn{3}{c|}{Correction factor $c$} \\
-			ABS & at $D=$ \SI{155}{cm} & at $D=$ \SI{300}{cm} & at $D=$ \SI{400}{cm} \\
+			Nominal & \multicolumn{3}{c|}{Correction factor $c$}                         \\
+			ABS     & at $D=$ \SI{155}{cm} & at $D=$ \SI{300}{cm} & at $D=$ \SI{400}{cm} \\
 			\hline
-			1 & $1.059 \pm 0.70\%$ & $1.162 \pm 0.70\%$ & $1.222 \pm 0.70\%$ \\
+			1       & $1.059 \pm 0.70\%$   & $1.162 \pm 0.70\%$   & $1.222 \pm 0.70\%$   \\
 			\hline
-			2 & $1.063 \pm 1.10\%$ & $1.150 \pm 1.10\%$ & $1.227 \pm 0.90\%$ \\
+			2       & $1.063 \pm 1.10\%$   & $1.150 \pm 1.10\%$   & $1.227 \pm 0.90\%$   \\
 			\hline
-			5 & $1.056 \pm 1.60\%$ & $1.130 \pm 1.60\%$ & $1.202 \pm 1.30\%$ \\
+			5       & $1.056 \pm 1.60\%$   & $1.130 \pm 1.60\%$   & $1.202 \pm 1.30\%$   \\
 			\hline
 		\end{tabular}
 		\caption{\label{tab:CorrFactor} Correction factor c is computed with Formula~\ref{eq:Factor} taking as reference $D_0 =$ \SI{50}{cm} and the associated flux $F_0^{ABS}$ for each absorption factor available in table~\ref{tab:Sim1997}.}
@@ -432,16 +432,16 @@
 	
 	\begin{table}[H]
 		\begin{tabular}{|*{5}{c|}}
-			\hline
-			Nominal & \multicolumn{3}{c|}{Photon flux $F$ [\siflux]} & Rate [\sirate] \\
-			ABS & at $D_0^{97}=$ \SI{50}{cm} & at $D^{97}=$ \SI{206}{cm} & at $D^{2014}=$ \SI{206}{cm} & at $D^{2014}=$ \SI{206}{cm} \\
-			\hline
-			1 & \Sci{0.12}{8} $\pm$ 0.2\% & \Sci{0.84}{6} $\pm$ 1.2\% & \Sci{0.56}{6} $\pm$ 1.2\% & $1129 \pm 14$ \\
-			\hline
-			2 & \Sci{0.68}{7} $\pm$ 0.3\% & \Sci{0.48}{6} $\pm$ 1.2\% & \Sci{0.32}{6} $\pm$ 1.2\% & $640 \pm 8$ \\
-			\hline
-			5 & \Sci{0.31}{7} $\pm$ 0.4\% & \Sci{0.22}{6} $\pm$ 1.2\% & \Sci{0.15}{6} $\pm$ 1.2\% & $292 \pm 4$ \\
-			\hline
+	\hline
+	Nominal & \multicolumn{3}{c|}{Photon flux $F$ [\siflux]}                                       & Rate [\sirate]              \\
+	ABS     & at $D_0^{97}=$ \SI{50}{cm} & at $D^{97}=$ \SI{206}{cm} & at $D^{2014}=$ \SI{206}{cm} & at $D^{2014}=$ \SI{206}{cm} \\
+	\hline
+	1       & \SciErrP{0.12}{8}{0.2}     & \SciErrP{0.84}{6}{1.2}    & \SciErrP{0.56}{6}{1.2}      & $1129 \pm 14$               \\
+	\hline
+	2       & \SciErrP{0.68}{7}{0.3}     & \SciErrP{0.48}{6}{1.2}    & \SciErrP{0.32}{6}{1.2}      & $640 \pm 8$                 \\
+	\hline
+	5       & \SciErrP{0.31}{7}{0.4}     & \SciErrP{0.22}{6}{1.2}    & \SciErrP{0.15}{6}{1.2}      & $292 \pm 4$                 \\
+	\hline
 		\end{tabular}
 		\caption{\label{tab:extra2014} The data at $D_0$ in 1997 is taken from~\cite{AGOSTEO1999}. Using Formula~\ref{eq:FluxLinearAp}, the flux at $D$, including an error of \SI{1}{cm}, can be estimated in 1997. Then, taking into account the attenuation of the source activity, the flux at $D$ can be estimated at the time of the tests in GIF in 2014. Assuming a sensitivity of the RPC to gammas, $s =$ \SciErr{2}{0.2}{-3}~\cite{PUGLIESE2003}, an estimation of the hit rate per unit area is obtained.}
 	\end{table}
@@ -573,23 +573,25 @@
     The performance of the chambers prior to the start of the longevity campaign was characterized in Ghent before their transportation to CERN for installation in the GIF++. The results of the characterization are showed in Figure~\ref{fig:consolidation} and summarized in Table~\ref{tab:consolidation}. A clear difference in performance for both types of chambers is observed as the working voltages of the newest chambers, of type RE4, are 300 to \SI{400}{V} lower to the older chambers indicating that the gap thickness of RE4 detectors could be thinner. This conclusion could as well be supported by the lower cluster size at working voltages that are also smaller in RE4 chambers. Even though the measured currents are low, RE4 detectors draw less current without irradiation than RE2 detectors pointing to a difference in electrode resistivity that were produced at different moments. Efficiency and noise rate levels are of the same order of magnitude for both type of RPCs.
 	
 	\begin{table}[H]
-		\hspace*{-1cm}
+		%\hspace*{-1cm}
+		\footnotesize
+		\centering
 		\begin{tabular}{|*{5}{c|}}
-			\hline
-			RPC & \footnotesize{\texttt{RE2-2-NPD-BARC-08}} & \footnotesize{\texttt{RE2-2-NPD-BARC-09}} & \footnotesize{\texttt{RE4-2-CERN-165}} & \footnotesize{\texttt{RE4-2-CERN-166}} \\
-			\hline
-			Used as & Reference & Irradiation & Reference & Irradiation \\
-			\hline
-			$HV_{WP}$ (\si{V}) & \numerror{9732}{6} & \numerror{9803}{6} & \numerror{9419}{5} & \numerror{9434}{5} \\
-			\hline
-			Efficiency at WP & \numerror{96.2}{0.3} & \numerror{96.6}{0.3} & \numerror{95.9}{0.3} & \numerror{95.5}{0.3} \\
-			\hline
-			Cluster size at WP & \numerror{2.19}{0.04} & \numerror{2.27}{0.05} & \numerror{1.88}{0.04} & \numerror{1.80}{0.04} \\
-			\hline
-			Noise at WP (\sirate) & \numerror{0.51}{0.01} & \numerror{0.39}{0.01} & \numerror{0.44}{0.00} & \numerror{0.15}{0.01} \\
-			\hline
-			$J^{WP}$ (\si{pA/cm^2}) & \numerror{30.1}{0.1} & \numerror{22.2}{0.1} & \numerror{3.8}{0.0} & \numerror{10.2}{0.0} \\
-			\hline
+\hline
+RPC                     & \texttt{RE2-2-BARC-08} & \texttt{RE2-2-BARC-09} & \texttt{RE4-2-CERN-165} & \texttt{RE4-2-CERN-166}  \\
+\hline
+Used as                 & Reference              & Irradiation            & Reference               & Irradiation              \\
+\hline
+$HV_{WP}$ (\si{V})      & $9732 \pm 6$           & $9803 \pm 6$           & $9419 \pm 5$            & $9434 \pm 5$             \\
+\hline
+Efficiency at WP        & $96.2 \pm 0.3$         & $96.6 \pm 0.3$         & $95.9 \pm 0.3$          & $95.5 \pm 0.3$           \\
+\hline
+Cluster size at WP      & $2.19 \pm 0.04$        & $2.27 \pm 0.05$        & $1.88 \pm 0.04$         & $1.80 \pm 0.04$          \\
+\hline
+Noise at WP (\sirate)   & $0.51 \pm 0.01$        & $0.39 \pm 0.01$        & $0.44 \pm 0.00$         & $0.15 \pm 0.01$          \\
+\hline
+$J^{WP}$ (\si{pA/cm^2}) & $30.1 \pm 0.1$         & $22.2 \pm 0.1$         & $3.8 \pm 0.0$           & $10.2 \pm 0.0$           \\
+\hline
 		\end{tabular}
 		\caption{\label{tab:consolidation} Summary of the characterization measurement performed in Ghent on CMS RPC detectors foreseen to be used at GIF++ for longevity studies of the present system. For each detector, the working voltage, defined as in Formula~\ref{eq:KneeWP}, was extracted from sigmoid fits performed in Figure~\ref{fig:consolidation:A}. The values of efficiency, cluster size, noise rate and current density at this voltage are reported.}
 	\end{table}
@@ -731,7 +733,7 @@
     		\includegraphics[width = .9\linewidth]{fig/chapt5/GIFpp-DQM-DAQ.png}
         	\caption{\label{fig:DQM-DAQ:B}}
     	\end{subfigure}
-		\caption{\label{fig:DQM-DAQ} Example of DQM page available on CMS RPC WebDCS at the GIF++: the histogram of the rate measured in one of the tracking chambers, namely \texttt{GT1\_20\_20-BKL\_JUL16\_4}, is selected and displayed above the page.}
+		\caption{\label{fig:DQM-DAQ} Example of DQM page available on CMS RPC WebDCS at the GIF++: the histogram of the rate measured in one of the tracking chambers is selected and displayed above the page.}
 	\end{figure}
 		
 	The data recorded during efficiency and rate scans always consists of two ROOT files per run, where each run corresponds to a certain HV point. One of the files contains the TDC data, a collection of hits and time stamps per active channel on the read-out of the RPCs, while the second is the CAEN main frame data, i.e. the detector currents and high voltages. The data are systematically analysed at the end of each scan using the Offline Analysis tool of GIF++, detailed in Appendix~\ref{app2}, that produces histograms such as hit, rate and time profiles, hit multiplicities, gamma cluster sizes or multiplicities for the DQM display of the WebDCS, as shown in Figure~\ref{fig:DQM-DAQ}. More histograms can be accessed through the ROOT browser included in the WebDCS, as shown in Figure~\ref{fig:DQM-ROOT}. Moreover, the analysis performed with the Offline tool provides final results for the rate scans. On the contrary, the algorithm for efficiency calculation is kept simple and approximative in the tool. Including tracking into the analysis requires manual adjustment for each individual scan as the positions of the trolleys with respect to each other may vary.
@@ -739,7 +741,7 @@
 	\begin{figure}[H]
         \centering
 		\includegraphics[width = \linewidth]{fig/chapt5/GIFpp-ROOT-browser.png}
-		\caption{\label{fig:DQM-ROOT} Example of DQM ROOT Browser page available on CMS RPC WebDCS at the GIF++: the strip activity profile, defined as the rate profile normalized to the mean rate, in one of the tracking chambers, namely \texttt{GT1\_20\_20-BKL\_JUL16\_4}. Available ROOT files and histograms can be browsed thanks to the left panel showing the directory and files structures.}
+		\caption{\label{fig:DQM-ROOT} Example of DQM ROOT Browser page available on CMS RPC WebDCS at the GIF++: the strip activity profile, defined as the rate profile normalized to the mean rate, in one of the tracking chambers. Available ROOT files and histograms can be browsed thanks to the left panel showing the directory and files structures.}
 	\end{figure}
 
 	\subsection{Measurements performed during irradiation periods}
@@ -754,26 +756,26 @@
 	\begin{figure}[H]
         \centering
 		\includegraphics[width = \linewidth]{fig/chapt5/GIFpp-irradiation-statistics.png}
-		\caption{\label{fig:Irr-stat} Longevity data for chamber \texttt{RE2-2-NPD-BARC-9} in GIF++. For each month since July 2017, the integrated charge (in blue) as well as the time efficiency of irradiation (in gray) is reported.}
+		\caption{\label{fig:Irr-stat} Longevity data for the irradiated RE2 chamber in GIF++. For each month since July 2017, the integrated charge (in blue) as well as the time efficiency of irradiation (in gray) is reported.}
 	\end{figure}
 	
 		\subsubsection{Longevity scans}
 		\label{chapt5:sssec:longscan}
 	
-	The main activity of irradiation periods consists of the \textit{longevity scans} during which the currents of the irradiated chambers are continuously monitored. The two irradiated chambers, \texttt{RE2-2-NPD-BARC-09} and \texttt{RE4-2-CERN-166}, are both brought to a voltage of \SI{9.8}{kV} while the source flux can vary depending on the needs of the groups using the facility. The currents are monitored for each active gas volume as can be seen in Figure~\ref{fig:DQM-Longevity-Monitoring}. The integrated charge for each individual gas volume is computed by integrating through time the current density, current normalised to the surface area, flowing through each gap, as shown in Figure~\ref{fig:DQM-Longevity-Qint}.
+	The main activity of irradiation periods consists of the \textit{longevity scans} during which the currents of the irradiated chambers are continuously monitored. The two irradiated chambers are both brought to a voltage of \SI{9.8}{kV} while the source flux can vary depending on the needs of the groups using the facility. The currents are monitored for each active gas volume as can be seen in Figure~\ref{fig:DQM-Longevity-Monitoring}. The integrated charge for each individual gas volume is computed by integrating through time the current density, current normalised to the surface area, flowing through each gap, as shown in Figure~\ref{fig:DQM-Longevity-Qint}.
 	
 \newpage
 	
 	\begin{figure}[H]
         \centering
 		\includegraphics[width = \linewidth]{fig/chapt5/Longevity-scan-I-HVeff-vs-Time.png}
-		\caption{\label{fig:DQM-Longevity-Monitoring} Example of a longevity scan monitoring page available on CMS RPC WebDCS at the GIF++: the current and effective voltage, as well as environmental parameters, are monitored for the bottom gap of chamber \texttt{RE2-2-NPD-BARC-9}. The decrease of current is related to a decrease of the voltage due to the daily rate scan procedure or to periods during which the source was turned OFF.}
+		\caption{\label{fig:DQM-Longevity-Monitoring} Example of a longevity scan monitoring page available on CMS RPC WebDCS at the GIF++: the current and effective voltage, as well as environmental parameters, are monitored for the bottom gap of the irradiated RE2 chamber. The decrease of current is related to a decrease of the voltage due to the daily rate scan procedure or to periods during which the source was turned OFF.}
 	\end{figure}
 	
 	\begin{figure}[H]
         \centering
 		\includegraphics[width = \linewidth]{fig/chapt5/Longevity-scan-Qint-vs-Time.png}
-		\caption{\label{fig:DQM-Longevity-Qint} Example of a longevity scan summary page available on CMS RPC WebDCS at the GIF++: the integrated charge is computed for the bottom gap of chamber \texttt{RE2-2-NPD-BARC-9}.}
+		\caption{\label{fig:DQM-Longevity-Qint} Example of a longevity scan summary page available on CMS RPC WebDCS at the GIF++: the integrated charge is computed for the bottom gap of the irradiated RE2 chamber.}
 	\end{figure}
 	
 	Finally, at the end of each longevity scan each gap contribution is translated into the mean chamber integrated charge. The integrated charge accumulated in each chamber is used to update the summary plots providing the collaboration with official results to be spread as can be seen from Figure~\ref{fig:Longevity}. The translation from individual gap currents to total integrated charge in the chamber is done using Equation~\ref{eq:Qint}, where the equation to compute the monitored current density already mentioned in Section~\ref{chapt5:ssec:resultsGIF} is recalled.
@@ -807,7 +809,7 @@
     		\includegraphics[width = \linewidth]{fig/chapt5/GIFpp-Longevity-int-charge.pdf}
         	\caption{\label{fig:Longevity:D}}
     	\end{subfigure}
-		\caption{\label{fig:Longevity} Example of current monitoring summary (top wide~\subref{fig:Longevity:A}, top narrow~\subref{fig:Longevity:B} and bottom~\subref{fig:Longevity:C} gap currents) and of corresponding integrated charge~\subref{fig:Longevity:D} of chamber \texttt{RE2-2-NPD-BARC-09}.}
+		\caption{\label{fig:Longevity} Example of current monitoring summary (top wide~\subref{fig:Longevity:A}, top narrow~\subref{fig:Longevity:B} and bottom~\subref{fig:Longevity:C} gap currents) and of corresponding integrated charge~\subref{fig:Longevity:D} of the irradiated RE2 chamber.}
 	\end{figure}
 \vfill
 	
@@ -847,7 +849,7 @@
     		\includegraphics[width = .9\linewidth]{fig/chapt5/Daily-rate-scan-TW.png}
         	\caption{\label{fig:Daily-Scan-Proc:C} Top wide gap}
     	\end{subfigure}
-		\caption{\label{fig:Daily-Scan-Proc} Example of daily scan procedure of chamber \texttt{RE2-2-NPD-BARC-09} with highlighted runs on the CMS RPC WebDCS at the GIF++.}
+		\caption{\label{fig:Daily-Scan-Proc} Example of daily scan procedure of the irradiated RE2 chamber with highlighted runs on the CMS RPC WebDCS at the GIF++.}
 	\end{figure}
 	
 	\begin{figure}[H]
@@ -861,13 +863,13 @@
     		\includegraphics[width = 0.5\plotwidth]{fig/chapt5/GIFpp-I-vs-Q.pdf}
         	\caption{\label{fig:rate-I-monitor:B}}
     	\end{subfigure}
-		\caption{\label{fig:rate-I-monitor} Example of rate~\subref{fig:rate-I-monitor:A} and current~\subref{fig:rate-I-monitor:B} monitoring of chamber \texttt{RE2-2-NPD-BARC-09} at working voltage in double gap mode (step 1) with increasing integrated charge.}
+		\caption{\label{fig:rate-I-monitor} Example of rate~\subref{fig:rate-I-monitor:A} and current~\subref{fig:rate-I-monitor:B} monitoring of the irradiated RE2 chamber at working voltage in double gap mode (step 1) with increasing integrated charge.}
 	\end{figure}
 
 	\begin{figure}[H]
         \centering
 		\includegraphics[width = \linewidth]{fig/chapt5/GIFpp-Strip-Activity.pdf}
-		\caption{\label{fig:stripactivity} Example of strip activity of chamber \texttt{RE2-2-NPD-BARC-09} monitored over time.}
+		\caption{\label{fig:stripactivity} Example of strip activity of the irradiated RE2 chamber monitored over time.}
 	\end{figure}
 	
 		\subsubsection{Weekly noise monitoring scans}
@@ -886,7 +888,7 @@
     		\includegraphics[width = \linewidth]{fig/chapt5/Weekly-noise-Scan-Rates.pdf}
         	\caption{\label{fig:weekly-noise:B}}
     	\end{subfigure}
-		\caption{\label{fig:weekly-noise} Example of rates~\subref{fig:rate-I-monitor:A} and currents~\subref{fig:rate-I-monitor:B} of irradiated chamber \texttt{RE4-2-CERN-166} and reference chamber \texttt{RE4-2-CERN-165} measured during a weekly noise scan.}
+		\caption{\label{fig:weekly-noise} Example of rates~\subref{fig:rate-I-monitor:A} and currents~\subref{fig:rate-I-monitor:B} of the irradiated and reference RE4 chambers measured during a weekly noise scan.}
 	\end{figure}
 	
 		\subsubsection{Weekly source scans}
@@ -905,7 +907,7 @@
     		\includegraphics[width = \linewidth]{fig/chapt5/Weekly-source-Scan-Rates.pdf}
         	\caption{\label{fig:weekly-source:B}}
     	\end{subfigure}
-		\caption{\label{fig:weekly-source} Example of rates~\subref{fig:rate-I-monitor:A} and currents~\subref{fig:rate-I-monitor:B} of irradiated chamber \texttt{RE4-2-CERN-166} and reference chamber \texttt{RE4-2-CERN-165} measured during a weekly source scan. The data were measured with ABS 123 (6.9).}
+		\caption{\label{fig:weekly-source} Example of rates~\subref{fig:rate-I-monitor:A} and currents~\subref{fig:rate-I-monitor:B} of irradiated and reference RE4 chambers measured during a weekly source scan. The data were measured with ABS 123 (6.9).}
 	\end{figure}
 	
 		\subsubsection{Weekly current scans}
@@ -916,7 +918,7 @@
 	\begin{wrapfigure}{O}{0.55\linewidth}
 		\centering
     	\includegraphics[width = \linewidth]{fig/chapt5/Weekly-current-Scan.pdf}
-		\caption{\label{fig:weekly-current} Example of currents of irradiated chamber \texttt{RE4-2-CERN-166} and reference chamber \texttt{RE4-2-CERN-165} measured during a weekly current scan.}
+		\caption{\label{fig:weekly-current} Example of currents of irradiated and reference RE4 chambers measured during a weekly current scan.}
 	\end{wrapfigure}
 		
 	The previously detailed daily rate scans, but also the weekly noise and source scans are interesting tools to look at an increase of noise rates and dark currents or at a loss of rate capability. They could point to an increase of surface resistivity of the electrodes through the absorption of hydrofluoric acid. Nevertheless, periodically measuring the currents on wider high voltage ranges allows to have access to the ohmic part of the current driven by the detectors related to the electrodes resistance. This is why precise current scans, consisting only in measuring the current driven through the four detectors, are performed each week. The scan procedure includes measurements at 131 high voltage points in between \SI{500}{V} and \SI{10}{kV}, in steps of \SI{100}{V} until the standby voltage of \SI{6.5}{kV} is reached and then in steps of \SI{50}{V}. At low voltage, the current rise is slow and is only driven by the resistance of the detector electrode and thus increases linearly. It is referred to as the \textit{ohmic current} as opposed to the \textit{physics current} corresponding to the voltage region where charge multiplication starts to occur . A fit on the ohmic current range gives access to the resistance of the \textit{'electrodes/gas'} system. If any variation of the electrode resistance occurs, the global resistance will increase and so will the current. Technically, these scans will record a ROOT file per HV step that will have the same format as the CAEN ROOT file saved during other HV scans. The data is also analysed using the Offline Analysis tool to provide with DQM histograms as well as standardized $I/V$ tables.
@@ -931,10 +933,10 @@
 	\begin{wrapfigure}{O}{0.5\linewidth}
 		\centering
     	\includegraphics[width = \linewidth]{fig/chapt5/Argon-Scan.pdf}
-		\caption{\label{fig:argon-scan} Example of currents of irradiated chamber \texttt{RE2-2-NPD-BARC-09} measured during an argon scan. The resistance is extracted from the linear fit and the resistivity is computed using Equation~\ref{eq:resistivity}.}
+		\caption{\label{fig:argon-scan} Example of currents of the irradiated RE2 chamber measured during an argon scan. The resistance is extracted from the linear fit and the resistivity is computed using Equation~\ref{eq:resistivity}.}
 	\end{wrapfigure}
 	
-	A critical parameter to monitor is the resistivity of the electrodes. Its variation would impact the rate capability of the RPC. An increase of the resistivity with increased irradiation is expected. In the first place, the measurement of the resistivity of the electrodes is done using the so called \textit{Argon scans}. Such tests are performed regularly before or after test beam periods through high voltage scans of the detectors operated with pure Argon. The electric field strength at which Argon breaks down being well known, the current beyond the breakdown voltage is monitored. Assuming a relation $I_{mon} = HV_{eff}/R_{elec}$ beyond the breakdown voltage,  the resistance of the couple of electrodes $R_{elec}$ is extracted as can be seen from Figure~\ref{fig:argon-scan}. The resistivity is then deduced by using Formula~\ref{eq:resistivity} where $S$ is the surface area of the gap and $l$ the thickness of a single electrode.
+	A critical parameter to monitor is the resistivity of the electrodes. Its variation would impact the rate capability of the RPC. An increase of the resistivity with increased irradiation is expected. In the first place, the measurement of the resistivity of the electrodes is done using the so called \textit{Argon scans}. Such tests are performed regularly before or after test beam periods through high voltage scans of the detectors operated with pure Argon. The electric field strength at which Argon breaks down being well known, the current beyond the breakdown voltage is monitored. Assuming a relation $I_{mon} = HV_{eff}/R_{elec}$ beyond the breakdown voltage, the resistance of the couple of electrodes $R_{elec}$ is extracted as can be seen from Figure~\ref{fig:argon-scan}. The resistivity is then deduced by using Formula~\ref{eq:resistivity} where $S$ is the surface area of the gap and $l$ the thickness of a single electrode.
 	
 \endgroup
 	
@@ -943,7 +945,7 @@
 	\rho = R \times \frac{S}{2 \times l}
 	\end{equation}
 	
-	There exist other ways to access a quantity directly related to the resistivity. During the testbeam periods, the efficiency of the detectors is measured with both source OFF and source ON with high irradiation. The shift of voltage introduced by an irradiation is directly linked to the rate capability of the detector and hence to the resistivity of the electrodes. By comparing the efficiency curves observed with source ON and OFF during a single testbeam, it is possible to access the local mean resistance of the detector during a testbeam period. This value can be compared to the resistivity directly measured using the argon scans. It also provides a tool to compare different testbeam results by getting rid of the bias introduced by the fluctuation of the resistivity through time. The mean resistance is computed as in Formula~\ref{eq:resistance-shift}.
+	There exist other ways to access a quantity directly related to the resistivity. During the testbeam periods, the efficiency of the detectors is measured with both source OFF and source ON with high irradiation. The shift of voltage introduced by an irradiation is directly linked to the rate capability of the detector and hence to the resistivity of the electrodes. By comparing the efficiency curves observed with source ON and OFF during a single testbeam, it is possible to access the local mean resistance of the detector during a testbeam period. Knowing the dimensions of the electrodes, this value can be compared to the resistivity directly measured using the argon scans. It also provides a tool to compare different testbeam results by getting rid of the bias introduced by the fluctuation of the resistivity through time. The mean resistance is computed as in Formula~\ref{eq:resistance-shift}.
 	
 	\begin{equation}
 	\label{eq:resistance-shift}
@@ -966,7 +968,7 @@
     		\includegraphics[width = \linewidth]{fig/chapt5/Imon-Graph-BARC-9-TN.pdf}
         	\caption{\label{fig:october-sig:C} $I_{mon}^{TN}(HV_{eff})$}
     	\end{subfigure}
-		\caption{\label{fig:october-sig} Efficiency~\subref{fig:october-sig:A} and monitored currents of the bottom~\subref{fig:october-sig:B} and top narrow~\subref{fig:october-sig:C} gaps as a function of the effective voltage of chamber \texttt{RE2-2-NPD-BARC-09} during October 2018 testbeam period.}
+		\caption{\label{fig:october-sig} Efficiency~\subref{fig:october-sig:A} and monitored currents of the bottom~\subref{fig:october-sig:B} and top narrow~\subref{fig:october-sig:C} gaps as a function of the effective voltage of the irradiated RE2 chamber during October 2018 testbeam period.}
 	\end{figure}
 	
 	It is important to note that the result provided by using this method will only concern the resistance of the detector under the beam, including the little contribution of the resistance of the gas volume itself. The translation to the resistivity of the electrodes is not straight forward even though the result falls in the same order of magnitude. Also, the quality of the resistance extraction depends on which level of irradiation is available in the data. During October 2018 testbeam period, HV scans were done on partition C of the RPCs (bottom and top narrow gas gaps) with source OFF and with eight diffent ABS values: ABS 313 (464), ABS 311 (100), ABS 213 (46.4), ABS 212 (21.5), ABS 211 (10), ABS 123 (6.9), ABS 113 (4.6) and ABS 122 (3.2). T1 was placed close to the bunker upstream wall at a distace of \SI{5.6}{m} from the source. This position corresponds to a gamma current of the order of \Sci{5}{5}\siflux with source fully open.
@@ -1038,7 +1040,7 @@
 	\begin{wrapfigure}{O}{0.6\linewidth}
         \centering
 		\includegraphics[width = \linewidth]{fig/chapt5/GIFpp-Qint.pdf}
-		\caption{\label{fig:GIFppQint} Total integrated charge in the irradiated RPCs, \texttt{RE2-2-NPD-BARC-9} and \texttt{RE4-2-CERN-165}, in July 2019. The irradiation of the RE2 chamber started early July 2016 while the RE4 chamber couldn't be irradiated before end of November 2016.}
+		\caption{\label{fig:GIFppQint} Total integrated charge in both the irradiated RPCs in July 2019. The irradiation of the RE2 chamber started early July 2016 while the RE4 chamber couldn't be irradiated before end of November 2016.}
 	\end{wrapfigure}
     
     Since 2015, CMS RPCs have been irradiated at the GIF++ with the goal to reach a total integrated charge per irradiated detector of \SI{0.84}{C/cm^2} while certifying the detectors to a single hit rate capability of \SIrate{600}. At the time of writing, the RE2 and RE4 chambers were exposed to 74 and 40\% of their total irradiation program respectively, as shown in Figure~\ref{fig:GIFppQint}. According to Figure~\ref{fig:GIFppQint-Extrapol}, a few years of irradiation are expected before reaching the end of the longevity study for both types of detectors and before reaching a final answer on whether the present CMS RPC system will be able to live through HL-LHC or not. The charge accumulation of the RE2 detector is faster than which of the RE4 and is expected to end within a year. In the case of the RE4 RPC, the irradiation would go on for more than two years at the current charge accumulation rate. This time would be reduced after the end of the logevity study of the RE2 by placing the trolley hosting the detectors closer to the source.
@@ -1069,7 +1071,7 @@
     		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2-Dark-Current-vs-Time-6500.png}
         	\caption{\label{fig:GIFpp-Ohmic-mon:B}}
     	\end{subfigure}
-		\caption{\label{fig:GIFpp-Ohmic-mon} Monitoring of the ohmic component of the dark current with increasing integrated charge at a voltage of \SI{6500}{V} of the RE2-2~\subref{fig:GIFpp-Ohmic-mon:A} and RE4-2~\subref{fig:GIFpp-Ohmic-mon:B} detectors installed at the GIF++.}
+		\caption{\label{fig:GIFpp-Ohmic-mon} Monitoring of the ohmic component of the dark current with increasing integrated charge at a voltage of \SI{6500}{V} of the RE2~\subref{fig:GIFpp-Ohmic-mon:A} and RE4~\subref{fig:GIFpp-Ohmic-mon:B} detectors installed at the GIF++.}
 	\end{figure}
 	
 	The second value of interest is located in the gain region near the working point at a voltage of \SI{9600}{V} for the RE2 detectors and of \SI{9500}{V} for the RE4 ones. Monitoring the multiplication region allows to spot the appearance of hot spots accross the detectors' areas. A local damage to the electrode could result in an increase of local discharges and an overal increase of the current drawn by the detector which would show in the monitored values. Near the working voltage, in addition to the current densities, the noise rate per unit are monitored as can be seen in Figure~\ref{fig:GIFpp-Dark-rate-mon}. In the case of the RE2 detectors, the dark currents and noise rate stay stable since the begining of the irradiation program. The variability of the dark current of the irradiated chamber is higher than the one of the reference chamber but seem to always come back between 0.1 and \SI{0.15}{nA/cm^2}. Concerning the RE4 detectors, both chambers are very stable up to an irradiation of \SI{150}{mC/cm^2}.
@@ -1095,7 +1097,7 @@
     		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2-Noise-rate-vs-Time-9500.png}
         	\caption{\label{fig:GIFpp-Dark-rate-mon:D}}
     	\end{subfigure}
-		\caption{\label{fig:GIFpp-Dark-rate-mon} Monitoring of the physics component of the dark current and of the noise rate per unit area with increasing integrated charge at a voltage of \SI{9600}{V} for the RE2-2 detectors~\subref{fig:GIFpp-Dark-rate-mon:A} and~\subref{fig:GIFpp-Dark-rate-mon:C} and at a voltage of \SI{9500}{V} for the RE4-2 detectors~\subref{fig:GIFpp-Dark-rate-mon:B} and~\subref{fig:GIFpp-Dark-rate-mon:D} installed at the GIF++.}
+		\caption{\label{fig:GIFpp-Dark-rate-mon} Monitoring of the physics component of the dark current and of the noise rate per unit area with increasing integrated charge at a voltage of \SI{9600}{V} for the RE2 detectors~\subref{fig:GIFpp-Dark-rate-mon:A} and~\subref{fig:GIFpp-Dark-rate-mon:C} and at a voltage of \SI{9500}{V} for the RE4 detectors~\subref{fig:GIFpp-Dark-rate-mon:B} and~\subref{fig:GIFpp-Dark-rate-mon:D} installed at the GIF++.}
 	\end{figure}
 	
 	Even though the noise rate of the reference chamber seem to fluctuate a lot between 0.5 and \SI{3.5}{Hz/cm^2} before this value, the monitoring of the noise rate per unit area following this early range as well as the very stable dark current would suggest that the chamber was in fact suffering from a bad grounding. Indeed, beyond \SI{150}{mC/cm^2}, the noise rate suddenly stabilizes between 0.1 and \SI{0.2}{Hz/cm^2} while the dark current increases very slightly to \SI{50}{pA/cm^2}. On the contrary, the irradiated chamber which was very stable under \SI{150}{mC/cm^2}, sees its dark current and its noise rate increase and fluctuate with a similar shape. The noise rate is still within the requirements of CMS. Indeed, an upper threshold of \SI{1}{Hz/cm^2} was considered to be good enough to prevent fake events due to noise. Reguarding the dark current, so far the highest peak, reached a little higher than \SI{0.4}{nA/cm^2} and have since droped to \SI{0.2}{nA/cm^2}. During \textit{source scans} at gamma rates per unit area usually above \SI{400}{Hz/cm^2}, the current densities are of the order of \SI{10}{nA/cm^2}, almost two orders of magnitude larger than the dark current. Nevertheless, both the noise rate and dark current have almost gained an order of magnitude at their highest monitored values and will need to be carefully followed at higher values of integrated charge.
@@ -1121,7 +1123,7 @@
     		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2-Source-Rate-vs-Time-9500.png}
         	\caption{\label{fig:GIFpp-Source-mon:D}}
     	\end{subfigure}
-		\caption{\label{fig:GIFpp-Source-mon} Monitoring of the current density and of the gamma rate per unit area under irradiation with increasing integrated charge at a voltage of \SI{9600}{V} for the RE2-2 detectors~\subref{fig:GIFpp-Source-mon:A} and~\subref{fig:GIFpp-Source-mon:C} and at a voltage of \SI{9500}{V} for the RE4-2 detectors~\subref{fig:GIFpp-Source-mon:B} and~\subref{fig:GIFpp-Source-mon:D} installed at the GIF++. The source irradiation is attenuated by a factor 6.9.}
+		\caption{\label{fig:GIFpp-Source-mon} Monitoring of the current density and of the gamma rate per unit area under irradiation with increasing integrated charge at a voltage of \SI{9600}{V} for the RE2 detectors~\subref{fig:GIFpp-Source-mon:A} and~\subref{fig:GIFpp-Source-mon:C} and at a voltage of \SI{9500}{V} for the RE4 detectors~\subref{fig:GIFpp-Source-mon:B} and~\subref{fig:GIFpp-Source-mon:D} installed at the GIF++. The source irradiation is attenuated by a factor 6.9.}
 	\end{figure}
 	
 	The same exercise is done using the data collected during the weekly source scans. The monitoring of the current densities and of the gamma rate per unit area is showed in Figure~\ref{fig:GIFpp-Source-mon}. The reported measurements are always performed with the same source conditions corresponding to an irradiation attenuated by a factor 6.9. The increase in dark current of the irradiated RE4 chamber don't have any visible effect when the source irradiates the detectors. No signs of ageing due to irradiation is yet to be seen for both the RE2 and RE4 detectors. The current densities and gamma rates of all four detectors evolve following the same phases of increase and decrease, as confirmed by Figure~\ref{fig:GIFpp-J_R_correlation}.
@@ -1208,30 +1210,30 @@
 	\end{figure}
 
 	\begin{table}[H]
-\centering
-\scriptsize
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-\cline{2-9}
-\multicolumn{1}{c|}{} & \multicolumn{4}{c|}{Current density} & \multicolumn{4}{c|}{Gamma rate}\\
-\hline
-Variables & RE2 REF & RE2 IRR & RE4 REF & RE4 IRR & RE2 REF & RE2 IRR & RE4 REF & RE4 IRR\\
-\hline
-Env. Pres. &  0.21 &  0.38 &  0.21 &  0.19 &  0.20 &  0.40 &  0.16 &  0.16\\
-\hline
-Bunker Temp. &  1.83 &  2.01 &  2.69 &  2.66 &  1.93 &  2.03 &  2.76 &  2.75\\
-\hline
-Bunker air R.H. & -0.83 & -0.31 & -0.38 &  0.26 & -0.82 & -0.23 & -0.26 &  0.35\\
-\hline
-Supply gas Temp. &  1.91 &  2.42 &  2.31 &  2.64 &  2.00 &  2.48 &  2.30 &  2.73\\
-\hline
-Exhaust gas Temp. &  2.03 &  2.26 &  2.81 &  2.76 &  2.13 &  2.28 &  2.86 &  2.85\\
-\hline
-Supply gas R.H. &  0.45 & -0.33 &  1.18 & -0.39 &  0.56 & -0.42 &  1.40 & -0.40\\
-\hline
-Exhaust gas R.H. & -0.23 &  0.43 & -0.29 &  0.40 & -0.25 &  0.57 & -0.34 &  0.46\\
-\hline
-\end{tabular}
-\caption{\label{tab:Scalar-FullData} Summary of the scalar product between the current density and gamma rate vectors, and the environmental parameters vectors in the principal component eigen vector space.}
+		\centering
+		\scriptsize
+		\begin{tabular}{|*{9}{c|}}
+			\cline{2-9}
+			\multicolumn{1}{c|}{} & \multicolumn{4}{c|}{Current density}  & \multicolumn{4}{c|}{Gamma rate}      \\
+			\hline
+			Variables             & RE2 REF & RE2 IRR & RE4 REF & RE4 IRR & RE2 REF & RE2 IRR & RE4 REF & RE4 IRR\\
+			\hline
+			Env. Pres.            &  0.21   &  0.38   &  0.21   &  0.19   &  0.20   &  0.40   &  0.16   &  0.16  \\
+			\hline
+			Bunker Temp.          &  1.83   &  2.01   &  2.69   &  2.66   &  1.93   &  2.03   &  2.76   &  2.75  \\
+			\hline
+			Bunker air R.H.       & -0.83   & -0.31   & -0.38   &  0.26   & -0.82   & -0.23   & -0.26   &  0.35  \\
+			\hline
+			Supply gas Temp.      &  1.91   &  2.42   &  2.31   &  2.64   &  2.00   &  2.48   &  2.30   &  2.73  \\
+			\hline
+			Exhaust gas Temp.     &  2.03   &  2.26   &  2.81   &  2.76   &  2.13   &  2.28   &  2.86   &  2.85  \\
+			\hline
+			Supply gas R.H.       &  0.45   & -0.33   &  1.18   & -0.39   &  0.56   & -0.42   &  1.40   & -0.40  \\
+			\hline
+			Exhaust gas R.H.      & -0.23   &  0.43   & -0.29   &  0.40   & -0.25   &  0.57   & -0.34   &  0.46  \\
+			\hline
+		\end{tabular}
+		\caption{\label{tab:Scalar-FullData} Summary of the scalar product between the current density and gamma rate vectors, and the environmental parameters vectors in the principal component eigen vector space.}
 	\end{table}
 
 \normalsize
@@ -1260,7 +1262,7 @@ Exhaust gas R.H. & -0.23 &  0.43 & -0.29 &  0.40 & -0.25 &  0.57 & -0.34 &  0.46
     		\includegraphics[width = \linewidth]{fig/chapt5/Resistivity_vs_time_RE4-2-REF.pdf}
         	\caption{\label{fig:Resistivity-time:D}}
     	\end{subfigure}
-		\caption{\label{fig:Resistivity-time} Monitoring through argon scans of the resistivity with increasing integrated charge for the RE2-2 detectors~\subref{fig:Resistivity-time:A} and~\subref{fig:Resistivity-time:C} and the RE4-2 detectors~\subref{fig:Resistivity-time:B} and~\subref{fig:Resistivity-time:D} installed at the GIF++.}
+		\caption{\label{fig:Resistivity-time} Monitoring through argon scans of the resistivity with increasing integrated charge for the RE2 detectors~\subref{fig:Resistivity-time:A} and~\subref{fig:Resistivity-time:C} and the RE4 detectors~\subref{fig:Resistivity-time:B} and~\subref{fig:Resistivity-time:D} installed at the GIF++.}
 	\end{figure}
 	
 	Aside of the fluctuations due to the insufficient temperature correction, it seems that both the current densities and gamma rate of the irradiated detectors tend to decrease with time. The reference detectors features a more stable operation through time. Comparing the evolution of the current densities and of the gamma rates to the monitored resistivity showed in Figure~\ref{fig:Resistivity-time} may explain the decrease observed for the irradiated chambers and the more stable behaviour of the reference ones. An increase of resistivity is observed for both the irradiated detectors whose average resistivity went from 2.27 to \Sci{4.83}{10} \si{\Omega .cm} for the RE2 and from \Sci{7.17}{10} to \Sci{1.96}{11} \si{\Omega .cm} for the RE4. The average resistivity of the reference RE2 chamber from 1.88 to \Sci{2.40}{10}\si{\Omega .cm} but is still compatible with a stable  resistivity due to the wide error bars. On the contrary, the average resistivity of the reference RE4 is more or less at the same level at the time of writing (\Sci{9.22}{10} \si{\Omega .cm}) than it was at the start of the longevity program (\Sci{8.36}{10} \si{\Omega .cm}). The differences in increase rate of the irradiated chambers with respect to the reference ones can be seen in Figure~\ref{fig:GIFpp-Ratios-mon}. It is clear that both the current density and the gamma rate of the irradiated detectors decreases relatively to the reference ones. This is consistent with the relative increase in average resistivity of the irradiated chambers with respect to the reference ones.
@@ -1297,6 +1299,8 @@ Exhaust gas R.H. & -0.23 &  0.43 & -0.29 &  0.40 & -0.25 &  0.57 & -0.34 &  0.46
 	
 	In conclusion, once the fluctuations of the current densities and gamma rate have been understood as a consequence of the imperfect temperature correction, it remains that the resistivity of the irradiated detectors is decreasing with respect to the reference ones. A better control of the relative humidity in the bunker or an investigation for gas leaks on the detectors could help to mitigate the observed decrease of resistivity of the irradiated eletrodes.
 	
+\newpage
+	
 	\begin{figure}[H]
     	\centering
 		\includegraphics[width = \linewidth]{fig/chapt5/Irr-Ref-Ratio-variation-Scores.pdf}
@@ -1304,31 +1308,31 @@ Exhaust gas R.H. & -0.23 &  0.43 & -0.29 &  0.40 & -0.25 &  0.57 & -0.34 &  0.46
 	\end{figure}
 
 	\begin{table}[H]
-\centering
-\footnotesize
-\begin{tabular}{|c|c|c|c|c|}
-\cline{2-5}
-\multicolumn{1}{c|}{} & \multicolumn{2}{c|}{Current density ratio} & \multicolumn{2}{c|}{Gamma rate ratio}\\
-\xmulticolumn{1}{c|}{} & \xmulticolumn{2}{c|}{Current density ratio} & \xmulticolumn{2}{c|}{Gamma rate ratio}\\
-\hline
-Variables & RE2 & RE4 & RE2 & RE4\\
-\hline
-Env. Pres. & -0.09 & -0.57 & -0.17 & -0.61\\
-\hline
-Bunker Temp. &  0.33 & -0.93 & -0.03 & -1.15\\
-\hline
-Bunker air R.H. &  2.65 &  1.17 &  2.56 &  0.77\\
-\hline
-Supply gas Temp. & -0.07 & -1.08 & -0.42 & -1.28\\
-\hline
-Exhaust gas Temp. &  0.02 & -1.14 & -0.34 & -1.34\\
-\hline
-Supply gas R.H. &  0.29 & -1.25 & -0.17 & -1.67\\
-\hline
-Exhaust gas R.H. &  2.45 &  0.45 &  2.31 &  0.04\\
-\hline
-\end{tabular}
-\caption{\label{tab:Scalar-Ratio} Summary of the scalar product between the current density ratio and gamma rate ratio vectors, and the environmental parameters vectors in the principal component eigen vector space.}
+		\centering
+		\footnotesize
+		\begin{tabular}{|*{5}{c|}}
+			\cline{2-5}
+			\multicolumn{1}{c|}{}  & \multicolumn{2}{c|}{Current density ratio}  & \multicolumn{2}{c|}{Gamma rate ratio} \\
+			\xmulticolumn{1}{c|}{} & \xmulticolumn{2}{c|}{Current density ratio} & \xmulticolumn{2}{c|}{Gamma rate ratio}\\
+			\hline
+			Variables              & RE2   & RE4                                 & RE2   & RE4                           \\
+			\hline
+			Env. Pres.             & -0.09 & -0.57                               & -0.17 & -0.61                         \\
+			\hline
+			Bunker Temp.           &  0.33 & -0.93                               & -0.03 & -1.15                         \\
+			\hline
+			Bunker air R.H.        &  2.65 &  1.17                               &  2.56 &  0.77                         \\
+			\hline
+			Supply gas Temp.       & -0.07 & -1.08                               & -0.42 & -1.28                         \\
+			\hline
+			Exhaust gas Temp.      &  0.02 & -1.14                               & -0.34 & -1.34                         \\
+			\hline
+			Supply gas R.H.        &  0.29 & -1.25                               & -0.17 & -1.67                         \\
+			\hline
+			Exhaust gas R.H.       &  2.45 &  0.45                               &  2.31 &  0.04                         \\
+			\hline
+		\end{tabular}
+		\caption{\label{tab:Scalar-Ratio} Summary of the scalar product between the current density ratio and gamma rate ratio vectors, and the environmental parameters vectors in the principal component eigen vector space.}
 	\end{table}
 	
 \normalsize
@@ -1336,129 +1340,317 @@ Exhaust gas R.H. &  2.45 &  0.45 &  2.31 &  0.04\\
 	\subsubsection{Evolution of the detectors performance}
 	\label{chapt5:sssec:perfevol}
 	
-	\begin{figure}[H]
-    	\begin{subfigure}{0.5\linewidth}
-			\centering
-    		\includegraphics[width = \linewidth]{fig/chapt5/OFF-efficiency_vs_HV_RE2_2.pdf}
-        	\caption{\label{fig:GIFpp_eff_vs_HV_OFF:A} \texttt{RE2-2-NPD-BARC-09}}
-    	\end{subfigure}
-    	\begin{subfigure}{0.5\linewidth}
-			\centering
-    		\includegraphics[width = \linewidth]{fig/chapt5/OFF-efficiency_vs_HV_RE4_2.pdf}
-        	\caption{\label{fig:GIFpp_eff_vs_HV_OFF:B} \texttt{RE4-2-CERN-166}}
-    	\end{subfigure}
-    	\begin{subfigure}{0.5\linewidth}
-			\centering
-    		\includegraphics[width = \linewidth]{fig/chapt5/OFF-efficiency_vs_HV_RE2_2-REF.pdf}
-        	\caption{\label{fig:GIFpp_eff_vs_HV_OFF:C} \texttt{RE2-2-NPD-BARC-08}}
-    	\end{subfigure}
-    	\begin{subfigure}{0.5\linewidth}
-			\centering
-    		\includegraphics[width = \linewidth]{fig/chapt5/OFF-efficiency_vs_HV_RE4_2-REF.pdf}
-        	\caption{\label{fig:GIFpp_eff_vs_HV_OFF:D} \texttt{RE4-2-CERN-165}}
-    	\end{subfigure}
-		\caption{\label{fig:GIFpp_eff_vs_HV_OFF} }
-	\end{figure}
+	Throughout the longevity study performed at the GIF++, the muon beam has been used eight times to measure the detector performances. The first test beam period happened before the start of the irradiation program in October 2015. The remaining test beam period all happened at different until end of 2018 and the start of LS2. Due to the fact that no irradiation was possible on the RE4 detector before end of 2016, the data of the two test beam periods of 2016 will not be showed nor discussed along the following paragraphs. The discussion will revolve around the data taken during the five remaining test beam periods at which the RE2 and RE4 detectors had respectively reached 18, 31, 45, 51, and 57\%, and 5, 11, 21, 26 and 30\% of the required \SI{0.84}{C/cm^2}.\\
+	The test beam periods are the occasion to monitor the efficiency, mean muon cluster size and gamma rate at working voltage. This way, the evolution of the efficiency and of the mean muon cluster size at working voltage as a function of the gamma hit rate can be studied with increasing integrated charge. Ageing effects will be expected to bring changes in the behaviour of the detector such as higher working voltage, lower efficiency at working voltage, lower rate capability or lower mean muon cluster size at working voltage.\\
+	From the efficiency scans, the first parameter to be extracted from the sigmoid fits is the working voltage. Then only the efficiency is computed using the sigmoid fit and the mean muon cluster size is interpolated from the closest voltage values. The working voltage is also used as a reference to interpolate the gamma rate, gama cluster size, gamma multiplicity and charge deposition per gamma with better accuracy from the rate scans. The choice for the interpolation method is mainly motivated by the fact that these quantities have a close to linear behaviour with increasing voltage in the region of interest, as can for example be seen in Figures~\ref{fig:efficiency-scan:B} and \ref{fig:rate-scan:D}.
 	
 	\begin{figure}[H]
     	\begin{subfigure}{0.5\linewidth}
 			\centering
-    		\includegraphics[width = \linewidth]{fig/chapt5/600-efficiency_vs_HV_RE2_2.pdf}
-        	\caption{\label{fig:GIFpp_eff_vs_HV_600:A} \texttt{RE2-2-NPD-BARC-09}}
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE2-2_IRR_WorkingPoint_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_wp_vs_rate:A}}
     	\end{subfigure}
     	\begin{subfigure}{0.5\linewidth}
 			\centering
-    		\includegraphics[width = \linewidth]{fig/chapt5/600-efficiency_vs_HV_RE4_2.pdf}
-        	\caption{\label{fig:GIFpp_eff_vs_HV_600:B} \texttt{RE4-2-CERN-166}}
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_IRR_WorkingPoint_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_wp_vs_rate:B}}
     	\end{subfigure}
     	\begin{subfigure}{0.5\linewidth}
 			\centering
-    		\includegraphics[width = \linewidth]{fig/chapt5/600-efficiency_vs_HV_RE2_2-REF.pdf}
-        	\caption{\label{fig:GIFpp_eff_vs_HV_600:C} \texttt{RE2-2-NPD-BARC-08}}
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE2-2_REF_WorkingPoint_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_wp_vs_rate:C}}
     	\end{subfigure}
     	\begin{subfigure}{0.5\linewidth}
 			\centering
-    		\includegraphics[width = \linewidth]{fig/chapt5/600-efficiency_vs_HV_RE4_2-REF.pdf}
-        	\caption{\label{fig:GIFpp_eff_vs_HV_600:D} \texttt{RE4-2-CERN-165}}
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_REF_WorkingPoint_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_wp_vs_rate:D}}
     	\end{subfigure}
-		\caption{\label{fig:GIFpp_eff_vs_HV_600} }
+		\caption{\label{fig:GIFpp_wp_vs_rate} Superposition of the working voltage as a function of the gamma rate measured in each of the CMS RPCs installed at the GIF++ during the six test beam periods.}
 	\end{figure}
+	
+	The values of working voltage as a function of the gamma rate in the different testbeam periods are showed in Figure~\ref{fig:GIFpp_wp_vs_rate}. It is important to note that the working voltage shift of the RE4 with increasing gamma rate (\SIrange{400}{600}{V} per \SI{1}{kHz/cm^2}) is bigger than in the case of the RE2 detectors (\SIrange{150}{250}{V} per \SI{1}{kHz/cm^2}). Depending on the testbeam, the working voltage can vary up to approximately \SI{100}{V}. Both the difference in behaviour of the RE2 and RE4, and the working voltage variation from one period to another could be related to the RPC resistivity. Indeed, as already showed in Figure~\ref{fig:Resistivity-time}, the resistivity of the RE4 detectors is several times higher than that of the RE2. It is then likely that the rate capability of the RE4 chambers is lower than that of the RE2 causing a stronger voltage shift with increasing background rate. The difference in effective voltage shift between the RE2 and RE4 chambers is showed in Figure~\ref{fig:GIFpp_eff_vs_HVeff}. For each testbeam period, the sigmoid obtained without irradiation is compared with the sigmoid at a gamma rate as close as possible from the certification value of \SIrate{600}. The shift is clearly bigger in the case of RE4 RPCs.\\
 	
 	\begin{figure}[H]
     	\begin{subfigure}{0.5\linewidth}
 			\centering
     		\includegraphics[width = \linewidth]{fig/chapt5/efficiency_vs_HVeff_RE2_2-IRR.pdf}
-        	\caption{\label{fig:GIFpp_eff_vs_HVeff:A} \texttt{RE2-2-NPD-BARC-09}}
+        	\caption{\label{fig:GIFpp_eff_vs_HVeff:A}}
     	\end{subfigure}
     	\begin{subfigure}{0.5\linewidth}
 			\centering
     		\includegraphics[width = \linewidth]{fig/chapt5/efficiency_vs_HVeff_RE4_2-IRR.pdf}
-        	\caption{\label{fig:GIFpp_eff_vs_HVeff:B} \texttt{RE4-2-CERN-166}}
+        	\caption{\label{fig:GIFpp_eff_vs_HVeff:B}}
     	\end{subfigure}
     	\begin{subfigure}{0.5\linewidth}
 			\centering
     		\includegraphics[width = \linewidth]{fig/chapt5/efficiency_vs_HVeff_RE2_2-REF.pdf}
-        	\caption{\label{fig:GIFpp_eff_vs_HVeff:C} \texttt{RE2-2-NPD-BARC-08}}
+        	\caption{\label{fig:GIFpp_eff_vs_HVeff:C}}
     	\end{subfigure}
     	\begin{subfigure}{0.5\linewidth}
 			\centering
     		\includegraphics[width = \linewidth]{fig/chapt5/efficiency_vs_HVeff_RE4_2-REF.pdf}
-        	\caption{\label{fig:GIFpp_eff_vs_HVeff:D} \texttt{RE4-2-CERN-165}}
+        	\caption{\label{fig:GIFpp_eff_vs_HVeff:D}}
     	\end{subfigure}
-		\caption{\label{fig:GIFpp_eff_vs_HVeff} }
+		\caption{\label{fig:GIFpp_eff_vs_HVeff} Superposition of the efficiency sigmoids as a function of the effective voltage measured with the CMS RPCs installed at the GIF++ during the six test beam periods with and without irration. The data without irradiation is showed with full symbols whereas the data with irradiation is showed with open symbols.}
 	\end{figure}
+	
+	The approximate resistivity of the electrodes, presented in Figure~\ref{fig:Resistivity-extract}, has been extracted from the efficiency scans using the procedure described in Section~\ref{chapt5:ssec:resistivity} of this chapter. The extracted value is compared to the mean resistivity of the partition C of the detectors installed at the GIF++, where the beam passes. Except for the reference RE2 chamber for which the results are a factor 2 bellow what would be expected, the extraction indeed provides a value comparable to the mean value obtained in this partition using the argon scans.
 	
 	\begin{figure}[H]
     	\begin{subfigure}{0.5\linewidth}
 			\centering
     		\includegraphics[width = \linewidth]{fig/chapt5/Extract-Res_vs_time_RE2-2-IRR.pdf}
-        	\caption{\label{fig:Resistivity-extract:A} \texttt{RE2-2-NPD-BARC-09}}
+        	\caption{\label{fig:Resistivity-extract:A}}
     	\end{subfigure}
     	\begin{subfigure}{0.5\linewidth}
 			\centering
     		\includegraphics[width = \linewidth]{fig/chapt5/Extract-Res_vs_time_RE4-2-IRR.pdf}
-        	\caption{\label{fig:Resistivity-extract:B} \texttt{RE4-2-CERN-166}}
+        	\caption{\label{fig:Resistivity-extract:B}}
     	\end{subfigure}
     	\begin{subfigure}{0.5\linewidth}
 			\centering
     		\includegraphics[width = \linewidth]{fig/chapt5/Extract-Res_vs_time_RE2-2-REF.pdf}
-        	\caption{\label{fig:Resistivity-extract:C} \texttt{RE2-2-NPD-BARC-08}}
+        	\caption{\label{fig:Resistivity-extract:C}}
     	\end{subfigure}
     	\begin{subfigure}{0.5\linewidth}
 			\centering
     		\includegraphics[width = \linewidth]{fig/chapt5/Extract-Res_vs_time_RE4-2-REF.pdf}
-        	\caption{\label{fig:Resistivity-extract:D} \texttt{RE4-2-CERN-165}}
+        	\caption{\label{fig:Resistivity-extract:D}}
     	\end{subfigure}
-		\caption{\label{fig:Resistivity-extract} }
+		\caption{\label{fig:Resistivity-extract} Comparison of the mean resistivity of measured in partition C with Argon Scans (blue) and of the values extracted from the efficiency sigmoids taken during the test beam periods (green).}
 	\end{figure}
+	
+	The resistance of the detectors obtained with this method are used as in Equation~\ref{eq:HVgas} to compare the behaviour of the RPCs without the bias brought by the resistivity variation. The results are showed in Figure~\ref{fig:GIFpp_eff_vs_HVgas}. Comparing the results using the voltage drop over the gas volume only, the detectors so far seem not to display any loss of performance with increasing integrated charge at a background rate near the certification value of \SIrate{600}.
 	
 	\begin{figure}[H]
     	\begin{subfigure}{0.5\linewidth}
 			\centering
     		\includegraphics[width = \linewidth]{fig/chapt5/efficiency_vs_HVgas_RE2_2-IRR.pdf}
-        	\caption{\label{fig:GIFpp_eff_vs_HVgas:A} \texttt{RE2-2-NPD-BARC-09}}
+        	\caption{\label{fig:GIFpp_eff_vs_HVgas:A}}
     	\end{subfigure}
     	\begin{subfigure}{0.5\linewidth}
 			\centering
     		\includegraphics[width = \linewidth]{fig/chapt5/efficiency_vs_HVgas_RE4_2-IRR.pdf}
-        	\caption{\label{fig:GIFpp_eff_vs_HVgas:B} \texttt{RE4-2-CERN-166}}
+        	\caption{\label{fig:GIFpp_eff_vs_HVgas:B}}
     	\end{subfigure}
     	\begin{subfigure}{0.5\linewidth}
 			\centering
     		\includegraphics[width = \linewidth]{fig/chapt5/efficiency_vs_HVgas_RE2_2-REF.pdf}
-        	\caption{\label{fig:GIFpp_eff_vs_HVgas:C} \texttt{RE2-2-NPD-BARC-08}}
+        	\caption{\label{fig:GIFpp_eff_vs_HVgas:C}}
     	\end{subfigure}
     	\begin{subfigure}{0.5\linewidth}
 			\centering
     		\includegraphics[width = \linewidth]{fig/chapt5/efficiency_vs_HVgas_RE4_2-REF.pdf}
-        	\caption{\label{fig:GIFpp_eff_vs_HVgas:D} \texttt{RE4-2-CERN-165}}
+        	\caption{\label{fig:GIFpp_eff_vs_HVgas:D}}
     	\end{subfigure}
-		\caption{\label{fig:GIFpp_eff_vs_HVgas} }
+		\caption{\label{fig:GIFpp_eff_vs_HVgas} Superposition of the efficiency sigmoids as a function of the voltage drop over the gas volume measured with the CMS RPCs installed at the GIF++ during the six test beam periods. The data without irradiation is showed with full symbols whereas the data with irradiation is showed with open symbols.}
 	\end{figure}
 	
-%	Ageing signs can be understood through an increase of the detector noise correlated with an increased dark current. 
-%	Another way to highlight ageing is through the loss of rate capability of the detectors. The loss in rate capability could be understood by a saturation of the measured gamma rate at higher gamma flux. This effect could be correlated with an increase of the electrodes resistivity.
+	Nevertheless, extracting the resistivity by the means of the estimated voltage shift due to the loss of charge in the electrode is not a robust enough method as it tends to overcorrect the voltage drop in the gas as can be seen from Figure~\ref{fig:GIFpp_hvgas_vs_rate}. The Figure, together with Figure~\ref{fig:GIFpp_wp_vs_rate}, still suggests that the behaviour of the detectors didn't evolve yet due to irradiation. The overcorrection is mainly visible for the RE4 detectors and can be due to an overestimation of the detectors resistance though Figure~\ref{fig:Resistivity-extract} does not support this interpretation. Other than an overestimated resistance, it is possible that the current in the detectors is larger than what would be expected from simply using Ohm's law.
+	
+	\begin{figure}[H]
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE2-2_IRR_HVgas_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_hvgas_vs_rate:A}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_IRR_HVgas_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_hvgas_vs_rate:B}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE2-2_REF_HVgas_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_hvgas_vs_rate:C}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_REF_HVgas_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_hvgas_vs_rate:D}}
+    	\end{subfigure}
+		\caption{\label{fig:GIFpp_hvgas_vs_rate} Superposition of the gas voltage drop corresponding to the computed working voltage as a function of the gamma rate measured in each of the CMS RPCs installed at the GIF++ during the six test beam periods.}
+	\end{figure}
+	
+	Figures~\ref{fig:GIFpp_eff_vs_rate} and \ref{fig:GIFpp_cls_vs_rate} show the evolution of the efficiency and of the mean muon cluster size at working voltage with increasing background hit rate. There is no loss of rate capability to be observed. The efficiencies at working voltage show the same behaviour during the last testbeam period than during the previous ones as long as the background rate is below \SIrate{1000}. The efficiency of all four detectors does not decrease beneath 95\%. Beyond this value, too few points were taken to be able to discuss the data. \textbf{Should I even show the data beyond \SIrate{1000}? I could simply stop all the plots at \SIrate{1000} as this is the only range that was consistently measured.}
+	
+	\begin{figure}[H]
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE2-2_IRR_Efficiency_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_eff_vs_rate:A}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_IRR_Efficiency_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_eff_vs_rate:B}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE2-2_REF_Efficiency_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_eff_vs_rate:C}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_REF_Efficiency_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_eff_vs_rate:D}}
+    	\end{subfigure}
+		\caption{\label{fig:GIFpp_eff_vs_rate} Superposition of the efficiency at working voltage as a function of the gamma rate measured in each of the CMS RPCs installed at the GIF++ during the six test beam periods.}
+	\end{figure}
+	
+	The same conclusion can be made looking at the mean muon cluster size. There is no difference between the irradiated detectors and the reference ones for these parameters. The mean cluster size is consistent from one testbeam period to the other except for the data gathered in October 2018 corresponding to 57\% of integrated charge for the RE2 detector and 30\% for the RE4. The mean muon cluster size is consistently bigger during this period for all four detectors. To understand the phenomena, a study of the beam hit profile in the detectors and of the event cluster size and cluster multiplicity for each recorded trigger was performed with the source OFF data. The usage of data without irradiation allows to study the potential effects that are not correlated with the background radiation while focusing on the data corresponding to the time arrival of the muon beam provides with information regarding the beam quality. Table~\ref{tab:clusters} reveals that during the last testbeam the detectors were subjected to higher fraction of beam events with a cluster size greater than 3 and with a greater number of reconstructed clusters per beam event. The only possible explanation is then that the beam contained hadrons. Some of the hadrons or their products are likely to decay before the chambers or while passing through the setup and produce multiple clusters per event or simultaneous detections in neighbour channels artificially increasing the reconstructed cluster size.
+	
+	\begin{figure}[H]
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE2-2_IRR_muon_cluster_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_cls_vs_rate:A}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_IRR_muon_cluster_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_cls_vs_rate:B}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE2-2_REF_muon_cluster_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_cls_vs_rate:C}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_REF_muon_cluster_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_cls_vs_rate:D}}
+    	\end{subfigure}
+		\caption{\label{fig:GIFpp_cls_vs_rate} Superposition of the cluster size at working voltage as a function of the gamma rate measured in each of the CMS RPCs installed at the GIF++ during the six test beam periods.}
+	\end{figure}
 
-% A negative answer to this question would probably lead to solutions to replace the detectors before HL-LHC or to improve the shielding of these detectors against background radiation in the experimental cavern, which could be a more sustainable solution.
+	\begin{table}[H]
+		\centering
+		\footnotesize
+		\begin{tabular}{|l|*{5}{c|}}
+			\hline
+			Integrated charge in RE2      & 18\% & 31\% & 45\% & 51\% & 57\% \\
+			\hline
+			\multicolumn{6}{c}{}                                             \\
+			\hline
+			\multicolumn{6}{|c|}{Reference RE2}                              \\
+			\hline
+			Effective voltage (V)         & 9900 & 9800 & 9800 & 9800 & 9800 \\
+			\hline
+			Mean cluster size             & 2.28 & 2.12 & 1.96 & 2.30 & 3.24 \\
+			\hline
+			Mean cluster multiplicity     & 1.17 & 1.20 & 1.15 & 1.26 & 1.47 \\
+			\hline
+			\multicolumn{6}{|c|}{Percentage of events with...}               \\
+			\hline
+			... cluster size $>3$         & 6.5  & 5.7  & 5.7  & 8.6  & 21.4 \\
+			\hline
+			... cluster multiplicity $>2$ & 2.3  & 2.1  & 2.2  & 3.7  & 11.5 \\
+			\hline
+			\multicolumn{6}{c}{}                                             \\
+			\hline
+			\multicolumn{6}{|c|}{Irradiated RE2}                             \\
+			\hline
+			Effective voltage (V)         & 9900 & 9800 & 9900 & 9800 & 9800 \\
+			\hline
+			Mean cluster size             & 2.80 & 2.73 & 2.70 & 2.67 & 3.55 \\
+			\hline
+			Mean cluster multiplicity     & 1.06 & 1.04 & 1.05 & 1.10 & 1.29 \\
+			\hline
+			\multicolumn{6}{|c|}{Percentage of events with...}               \\
+			\hline
+			... cluster size $>3$         & 12.6 & 11.3 & 11.7 & 11.7 & 24.4 \\
+			\hline
+			... cluster multiplicity $>2$ & 1.2  & 1.1  & 0.8  & 2.1  & 7.0  \\
+			\hline
+			\multicolumn{6}{c}{}                                             \\
+			\hline
+			Integrated charge in RE4      & 5\%  & 11\% & 21\% & 26\% & 30\% \\
+			\hline
+			\multicolumn{6}{c}{}                                             \\
+			\hline
+			\multicolumn{6}{|c|}{Reference RE4}                              \\
+			\hline
+			Effective voltage (V)         & 9700 & 9500 & 9600 & 9500 & 9500 \\
+			\hline
+			Mean cluster size             & 2.13 & 2.00 & 2.48 & 2.32 & 2.82 \\
+			\hline
+			Mean cluster multiplicity     & 1.07 & 1.04 & 1.07 & 1.11 & 1.37 \\
+			\hline
+			\multicolumn{6}{|c|}{Percentage of events with...}               \\
+			\hline
+			... cluster size $>3$         & 8.0  & 6.4  & 9.1  & 9.9  & 19.7 \\
+			\hline
+			... cluster multiplicity $>2$ & 2.0  & 1.6  & 1.7  & 2.5  & 10.8 \\
+			\hline
+			\multicolumn{6}{c}{}                                             \\
+			\hline
+			\multicolumn{6}{|c|}{Irradiated RE4}                             \\
+			\hline
+			Effective voltage (V)         & 9500 & 9400 & 9600 & 9500 & 9400 \\
+			\hline
+			Mean cluster size             & 2.34 & 2.27 & 1.86 & 2.18 & 3.03 \\
+			\hline
+			Mean cluster multiplicity     & 1.15 & 1.06 & 1.06 & 1.11 & 1.38 \\
+			\hline
+			\multicolumn{6}{|c|}{Percentage of events with...}               \\
+			\hline
+			... cluster size $>3$         & 8.0  & 6.7  & 5.3  & 7.7  & 20.4 \\
+			\hline
+			... cluster multiplicity $>2$ & 2.9  & 1.8  & 1.8  & 2.5  & 10.4 \\
+			\hline
+		\end{tabular}
+		\caption{\label{tab:clusters} Summary of the percentage of large reconstructed clusters and of events with more than two reconstructed clusters of the CMS RPCs installed at the GIF++ during the five test beam periods after the start of irradiation. The HV points closest to the working voltage are used.}
+	\end{table}
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
+
+% BONUS Figures with superposition of the efficiency sigmoids first without irradiation and then with irradiation - it could be too much so I am not showing them at the moment.
+	
+%	\begin{figure}[H]
+%    	\begin{subfigure}{0.5\linewidth}
+%			\centering
+%    		\includegraphics[width = \linewidth]{fig/chapt5/OFF-efficiency_vs_HV_RE2_2.pdf}
+%        	\caption{\label{fig:GIFpp_eff_vs_HV_OFF:A} \texttt{RE2-2-NPD-BARC-09}}
+%    	\end{subfigure}
+%    	\begin{subfigure}{0.5\linewidth}
+%			\centering
+%    		\includegraphics[width = \linewidth]{fig/chapt5/OFF-efficiency_vs_HV_RE4_2.pdf}
+%        	\caption{\label{fig:GIFpp_eff_vs_HV_OFF:B} \texttt{RE4-2-CERN-166}}
+%    	\end{subfigure}
+%    	\begin{subfigure}{0.5\linewidth}
+%			\centering
+%    		\includegraphics[width = \linewidth]{fig/chapt5/OFF-efficiency_vs_HV_RE2_2-REF.pdf}
+%        	\caption{\label{fig:GIFpp_eff_vs_HV_OFF:C} \texttt{RE2-2-NPD-BARC-08}}
+%    	\end{subfigure}
+%    	\begin{subfigure}{0.5\linewidth}
+%			\centering
+%    		\includegraphics[width = \linewidth]{fig/chapt5/OFF-efficiency_vs_HV_RE4_2-REF.pdf}
+%        	\caption{\label{fig:GIFpp_eff_vs_HV_OFF:D} \texttt{RE4-2-CERN-165}}
+%    	\end{subfigure}
+%		\caption{\label{fig:GIFpp_eff_vs_HV_OFF} Summary of the efficiency sigmoids as a function of the effective voltage measured without irradiation with the CMS RPCs installed at the GIF++ during the six test beam periods.}
+%	\end{figure}
+%	
+%	\begin{figure}[H]
+%    	\begin{subfigure}{0.5\linewidth}
+%			\centering
+%    		\includegraphics[width = \linewidth]{fig/chapt5/600-efficiency_vs_HV_RE2_2.pdf}
+%        	\caption{\label{fig:GIFpp_eff_vs_HV_600:A} \texttt{RE2-2-NPD-BARC-09}}
+%    	\end{subfigure}
+%    	\begin{subfigure}{0.5\linewidth}
+%			\centering
+%    		\includegraphics[width = \linewidth]{fig/chapt5/600-efficiency_vs_HV_RE4_2.pdf}
+%        	\caption{\label{fig:GIFpp_eff_vs_HV_600:B} \texttt{RE4-2-CERN-166}}
+%    	\end{subfigure}
+%    	\begin{subfigure}{0.5\linewidth}
+%			\centering
+%    		\includegraphics[width = \linewidth]{fig/chapt5/600-efficiency_vs_HV_RE2_2-REF.pdf}
+%        	\caption{\label{fig:GIFpp_eff_vs_HV_600:C} \texttt{RE2-2-NPD-BARC-08}}
+%    	\end{subfigure}
+%    	\begin{subfigure}{0.5\linewidth}
+%			\centering
+%    		\includegraphics[width = \linewidth]{fig/chapt5/600-efficiency_vs_HV_RE4_2-REF.pdf}
+%        	\caption{\label{fig:GIFpp_eff_vs_HV_600:D} \texttt{RE4-2-CERN-165}}
+%    	\end{subfigure}
+%		\caption{\label{fig:GIFpp_eff_vs_HV_600} Summary of the efficiency sigmoids as a function of the effective voltage measured with an irradiation close to \SIrate{600} with the CMS RPCs installed at the GIF++ during the six test beam periods.}
+%	\end{figure}
