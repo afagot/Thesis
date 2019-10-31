@@ -1365,7 +1365,7 @@ $J^{WP}$ (\si{pA/cm^2}) & $30.1 \pm 0.1$         & $22.2 \pm 0.1$         & $3.8
     		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_REF_WorkingPoint_vs_Rate.pdf}
         	\caption{\label{fig:GIFpp_wp_vs_rate:D}}
     	\end{subfigure}
-		\caption{\label{fig:GIFpp_wp_vs_rate} Superposition of the working voltage as a function of the gamma rate measured in each of the CMS RPCs installed at the GIF++ during the six test beam periods.}
+		\caption{\label{fig:GIFpp_wp_vs_rate} Superposition of the working voltage as a function of the gamma hit rate measured in each of the CMS RPCs installed at the GIF++ during the six test beam periods.}
 	\end{figure}
 	
 	The values of working voltage as a function of the gamma rate in the different testbeam periods are showed in Figure~\ref{fig:GIFpp_wp_vs_rate}. It is important to note that the working voltage shift of the RE4 with increasing gamma rate (\SIrange{400}{600}{V} per \SI{1}{kHz/cm^2}) is bigger than in the case of the RE2 detectors (\SIrange{150}{250}{V} per \SI{1}{kHz/cm^2}). Depending on the testbeam, the working voltage can vary up to approximately \SI{100}{V}. Both the difference in behaviour of the RE2 and RE4, and the working voltage variation from one period to another could be related to the RPC resistivity. Indeed, as already showed in Figure~\ref{fig:Resistivity-time}, the resistivity of the RE4 detectors is several times higher than that of the RE2. It is then likely that the rate capability of the RE4 chambers is lower than that of the RE2 causing a stronger voltage shift with increasing background rate. The difference in effective voltage shift between the RE2 and RE4 chambers is showed in Figure~\ref{fig:GIFpp_eff_vs_HVeff}. For each testbeam period, the sigmoid obtained without irradiation is compared with the sigmoid at a gamma rate as close as possible from the certification value of \SIrate{600}. The shift is clearly bigger in the case of RE4 RPCs.\\
@@ -1469,7 +1469,7 @@ $J^{WP}$ (\si{pA/cm^2}) & $30.1 \pm 0.1$         & $22.2 \pm 0.1$         & $3.8
     		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_REF_HVgas_vs_Rate.pdf}
         	\caption{\label{fig:GIFpp_hvgas_vs_rate:D}}
     	\end{subfigure}
-		\caption{\label{fig:GIFpp_hvgas_vs_rate} Superposition of the gas voltage drop corresponding to the computed working voltage as a function of the gamma rate measured in each of the CMS RPCs installed at the GIF++ during the six test beam periods.}
+		\caption{\label{fig:GIFpp_hvgas_vs_rate} Superposition of the gas voltage drop corresponding to the computed working voltage as a function of the gamma hit rate measured in each of the CMS RPCs installed at the GIF++ during the six test beam periods.}
 	\end{figure}
 	
 	Figures~\ref{fig:GIFpp_eff_vs_rate} and \ref{fig:GIFpp_cls_vs_rate} show the evolution of the efficiency and of the mean muon cluster size at working voltage with increasing background hit rate. There is no loss of rate capability to be observed. The efficiencies at working voltage show the same behaviour during the last testbeam period than during the previous ones as long as the background rate is below \SIrate{1000}. The efficiency of all four detectors does not decrease beneath 95\%. Beyond this value, too few points were taken to be able to discuss the data. \textbf{Should I even show the data beyond \SIrate{1000}? I could simply stop all the plots at \SIrate{1000} as this is the only range that was consistently measured.}
@@ -1495,10 +1495,10 @@ $J^{WP}$ (\si{pA/cm^2}) & $30.1 \pm 0.1$         & $22.2 \pm 0.1$         & $3.8
     		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_REF_Efficiency_vs_Rate.pdf}
         	\caption{\label{fig:GIFpp_eff_vs_rate:D}}
     	\end{subfigure}
-		\caption{\label{fig:GIFpp_eff_vs_rate} Superposition of the efficiency at working voltage as a function of the gamma rate measured in each of the CMS RPCs installed at the GIF++ during the six test beam periods.}
+		\caption{\label{fig:GIFpp_eff_vs_rate} Superposition of the efficiency at working voltage as a function of the gamma hit rate measured in each of the CMS RPCs installed at the GIF++ during the six test beam periods.}
 	\end{figure}
 	
-	The same conclusion can be made looking at the mean muon cluster size. There is no difference between the irradiated detectors and the reference ones for these parameters. The mean cluster size is consistent from one testbeam period to the other except for the data gathered in October 2018 corresponding to 57\% of integrated charge for the RE2 detector and 30\% for the RE4. The mean muon cluster size is consistently bigger during this period for all four detectors. To understand the phenomena, a study of the beam hit profile in the detectors and of the event cluster size and cluster multiplicity for each recorded trigger was performed with the source OFF data. The usage of data without irradiation allows to study the potential effects that are not correlated with the background radiation while focusing on the data corresponding to the time arrival of the muon beam provides with information regarding the beam quality. Table~\ref{tab:clusters} reveals that during the last testbeam the detectors were subjected to higher fraction of beam events with a cluster size greater than 3 and with a greater number of reconstructed clusters per beam event. The only possible explanation is then that the beam contained hadrons. Some of the hadrons or their products are likely to decay before the chambers or while passing through the setup and produce multiple clusters per event or simultaneous detections in neighbour channels artificially increasing the reconstructed cluster size.
+	The same conclusion can be made looking at the mean muon cluster size. There is no difference between the irradiated detectors and the reference ones for these parameters. The mean cluster size is consistent from one testbeam period to the other except for the data gathered in October 2018 corresponding to 57\% of integrated charge for the RE2 detector and 30\% for the RE4. The mean muon cluster size is consistently bigger during this period for all four detectors. To understand the phenomena, a study of the beam hit profile in the detectors and of the event cluster size and cluster multiplicity for each recorded trigger was performed with the source OFF data. The usage of data without irradiation allows to study the potential effects that are not correlated with the background radiation while focusing on the data corresponding to the time arrival of the muon beam provides with information regarding the beam quality. Table~\ref{tab:clusters} reveals that during the last testbeam the detectors were subjected to higher fraction of beam events with a cluster size greater than 3 and with a greater number of reconstructed clusters per beam event. The only possible explanation is then that the beam contained hadrons. Some of the hadrons or their products are likely to decay before the chambers or while passing through the setup and produce multiple clusters per event or simultaneous detections in neighbour channels artificially increasing the reconstructed cluster size. A limitation of the analysis algorithm used on the CMS RPC data is that it is not capable of identifying particles. Thanks to the particle tracking, only particles traveling along the beam line are kept while any hits that can't be associated to a track is discarded. If the decay products travel close to each other while passing through the setup, it will not be possible identify them.
 	
 	\begin{figure}[H]
     	\begin{subfigure}{0.5\linewidth}
@@ -1521,12 +1521,11 @@ $J^{WP}$ (\si{pA/cm^2}) & $30.1 \pm 0.1$         & $22.2 \pm 0.1$         & $3.8
     		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_REF_muon_cluster_vs_Rate.pdf}
         	\caption{\label{fig:GIFpp_cls_vs_rate:D}}
     	\end{subfigure}
-		\caption{\label{fig:GIFpp_cls_vs_rate} Superposition of the cluster size at working voltage as a function of the gamma rate measured in each of the CMS RPCs installed at the GIF++ during the six test beam periods.}
+		\caption{\label{fig:GIFpp_cls_vs_rate} Superposition of the mean muon cluster size at working voltage as a function of the gamma hit rate measured in each of the CMS RPCs installed at the GIF++ during the six test beam periods.}
 	\end{figure}
 
 	\begin{table}[H]
 		\centering
-		\footnotesize
 		\begin{tabular}{|l|*{5}{c|}}
 			\hline
 			Integrated charge in RE2      & 18\% & 31\% & 45\% & 51\% & 57\% \\
@@ -1602,55 +1601,88 @@ $J^{WP}$ (\si{pA/cm^2}) & $30.1 \pm 0.1$         & $22.2 \pm 0.1$         & $3.8
 		\end{tabular}
 		\caption{\label{tab:clusters} Summary of the percentage of large reconstructed clusters and of events with more than two reconstructed clusters of the CMS RPCs installed at the GIF++ during the five test beam periods after the start of irradiation. The HV points closest to the working voltage are used.}
 	\end{table}
+	
+	Signs of ageing of the detectors are also begin sought in the evolution of the behaviour of the current density with increasing background hit rate. The current densities recorded during each testbeam period are showed in Figure~\ref{fig:GIFpp_j_vs_rate}. This quantity is expected to increase linearly with the background hit rate. A significant change of slope could be linked to a change of behaviour of the detectors. Nevertheless, no such hint of increase of the current density is to be seen from the irradiated detectors. Their current density is so far very stable during this longevity study campaign. This is consistent with the weekly irradiation scans discussed in the previous section. Maybe that the current is less stable in the case of the reference detectors.
+	
+	\begin{figure}[H]
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE2-2_IRR_Current_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_j_vs_rate:A}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_IRR_Current_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_j_vs_rate:B}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE2-2_REF_Current_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_j_vs_rate:C}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_REF_Current_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_j_vs_rate:D}}
+    	\end{subfigure}
+		\caption{\label{fig:GIFpp_j_vs_rate} Superposition of the current density at working voltage as a function of the gamma hit rate measured in each of the CMS RPCs installed at the GIF++ during the six test beam periods.}
+	\end{figure}
+	
+	In the same way that the muon hits are grouped in clusters, the data from the rate scans can be used to study the gamma hits and group them into clusters. As the current density of the detectors is stable, it is expected that the mean gamma cluster size will be stable as well. Figure~\ref{fig:GIFpp_gcls_vs_rate} confirms this assumption. As a consequence, the mean charge deposition per gamma cluster in the irradiated detectors, provided in Figure~\ref{fig:GIFpp_gcharge} and computed as the ratio between the current density and the gamma hit rate, is stable with increasing integrated charge. Due to the less stable current density recorded in the reference detectors, the mean charge deposition per gamma cluster is also found to be less stable. Note that no gamma cluster information is available for the testbeam performed before the irradiation campaign started. The data structure used at the time of measurement does not allow for the use of a clustering algorithm resulting in a loss of valuable reference information.
+	
+	\begin{figure}[H]
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE2-2_IRR_Cluster_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_gcls_vs_rate:A}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_IRR_Cluster_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_gcls_vs_rate:B}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE2-2_REF_Cluster_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_gcls_vs_rate:C}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_REF_Cluster_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_gcls_vs_rate:D}}
+    	\end{subfigure}
+		\caption{\label{fig:GIFpp_gcls_vs_rate} Superposition of the mean gamma cluster size at working voltage as a function of the gamma hit rate measured in each of the CMS RPCs installed at the GIF++ during the six test beam periods.}
+	\end{figure}
+	
+	\begin{figure}[H]
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE2-2_IRR_ClusterCharge_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_gcharge:A}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_IRR_ClusterCharge_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_gcharge:B}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE2-2_REF_ClusterCharge_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_gcharge:C}}
+    	\end{subfigure}
+    	\begin{subfigure}{0.5\linewidth}
+			\centering
+    		\includegraphics[width = \linewidth]{fig/chapt5/RE4-2_REF_ClusterCharge_vs_Rate.pdf}
+        	\caption{\label{fig:GIFpp_gcharge:D}}
+    	\end{subfigure}
+		\caption{\label{fig:GIFpp_gcharge} Superposition of the mean charge deposition per gamma cluster at working voltage as a function of the gamma hit rate measured in each of the CMS RPCs installed at the GIF++ during the six test beam periods.}
+	\end{figure}
+	
+		\subsubsection{Conclusion}
+		\label{chapt5:sssec:conclusion}
+	
+	At the time of writing, no clear ageing effect was found to affect the irradiated detectors. The weekly monitoring of the current densities and background hit rates of all four detectors has showed that the only parameter that seemed to have varied in different ways for the irradiated detectors with respect to the reference ones is the electrodes' resistivity. On the one hand, a better control the environmental temperature would help improving the search for ageing effects. On the other hand, a better control of the gas relative humidity and an investigation for gas leaks at the level of the detectors would probably help stabilizing the resistivity variations due to the fluctuation of this parameter. This way, a better understanding of a possible link between irradiation and electrode resistivity change could be achieved.
+	
+	The monitoring of the performance of the detectors also seem to show that the irradiated detectors didn't suffer any visible ageing. In order to aim at a proper data quality during future testbeam periods, it is strongly advised to systematically study the possible beam contamination by hadrons before the data tacking program is started. This effort could be performed with the collaboration of the other systems studying the longevity of their detectors at the GIF++. It is believed that a better control of the beam quality is in the greatest interest of all of the facility users.
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
-
-% BONUS Figures with superposition of the efficiency sigmoids first without irradiation and then with irradiation - it could be too much so I am not showing them at the moment.
-	
-%	\begin{figure}[H]
-%    	\begin{subfigure}{0.5\linewidth}
-%			\centering
-%    		\includegraphics[width = \linewidth]{fig/chapt5/OFF-efficiency_vs_HV_RE2_2.pdf}
-%        	\caption{\label{fig:GIFpp_eff_vs_HV_OFF:A} \texttt{RE2-2-NPD-BARC-09}}
-%    	\end{subfigure}
-%    	\begin{subfigure}{0.5\linewidth}
-%			\centering
-%    		\includegraphics[width = \linewidth]{fig/chapt5/OFF-efficiency_vs_HV_RE4_2.pdf}
-%        	\caption{\label{fig:GIFpp_eff_vs_HV_OFF:B} \texttt{RE4-2-CERN-166}}
-%    	\end{subfigure}
-%    	\begin{subfigure}{0.5\linewidth}
-%			\centering
-%    		\includegraphics[width = \linewidth]{fig/chapt5/OFF-efficiency_vs_HV_RE2_2-REF.pdf}
-%        	\caption{\label{fig:GIFpp_eff_vs_HV_OFF:C} \texttt{RE2-2-NPD-BARC-08}}
-%    	\end{subfigure}
-%    	\begin{subfigure}{0.5\linewidth}
-%			\centering
-%    		\includegraphics[width = \linewidth]{fig/chapt5/OFF-efficiency_vs_HV_RE4_2-REF.pdf}
-%        	\caption{\label{fig:GIFpp_eff_vs_HV_OFF:D} \texttt{RE4-2-CERN-165}}
-%    	\end{subfigure}
-%		\caption{\label{fig:GIFpp_eff_vs_HV_OFF} Summary of the efficiency sigmoids as a function of the effective voltage measured without irradiation with the CMS RPCs installed at the GIF++ during the six test beam periods.}
-%	\end{figure}
-%	
-%	\begin{figure}[H]
-%    	\begin{subfigure}{0.5\linewidth}
-%			\centering
-%    		\includegraphics[width = \linewidth]{fig/chapt5/600-efficiency_vs_HV_RE2_2.pdf}
-%        	\caption{\label{fig:GIFpp_eff_vs_HV_600:A} \texttt{RE2-2-NPD-BARC-09}}
-%    	\end{subfigure}
-%    	\begin{subfigure}{0.5\linewidth}
-%			\centering
-%    		\includegraphics[width = \linewidth]{fig/chapt5/600-efficiency_vs_HV_RE4_2.pdf}
-%        	\caption{\label{fig:GIFpp_eff_vs_HV_600:B} \texttt{RE4-2-CERN-166}}
-%    	\end{subfigure}
-%    	\begin{subfigure}{0.5\linewidth}
-%			\centering
-%    		\includegraphics[width = \linewidth]{fig/chapt5/600-efficiency_vs_HV_RE2_2-REF.pdf}
-%        	\caption{\label{fig:GIFpp_eff_vs_HV_600:C} \texttt{RE2-2-NPD-BARC-08}}
-%    	\end{subfigure}
-%    	\begin{subfigure}{0.5\linewidth}
-%			\centering
-%    		\includegraphics[width = \linewidth]{fig/chapt5/600-efficiency_vs_HV_RE4_2-REF.pdf}
-%        	\caption{\label{fig:GIFpp_eff_vs_HV_600:D} \texttt{RE4-2-CERN-165}}
-%    	\end{subfigure}
-%		\caption{\label{fig:GIFpp_eff_vs_HV_600} Summary of the efficiency sigmoids as a function of the effective voltage measured with an irradiation close to \SIrate{600} with the CMS RPCs installed at the GIF++ during the six test beam periods.}
-%	\end{figure}
