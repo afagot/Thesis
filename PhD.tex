@@ -1,7 +1,8 @@
-\documentclass[10pt,a4paper,twoside,dutch,english,openright,leqno]{book}                % options used for 'Hoofdstuk' or 'Chapter'
+% options used for 'Hoofdstuk' or 'Chapter'
+\documentclass[10pt,a4paper,twoside,dutch,english,openright,leqno]{book}                
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% PACKAGE LOADING TIME %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PACKAGE LOADING      %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{pseudocode}
@@ -75,6 +76,10 @@
 ]{biblatex}
 \bibliography{bib/PhD}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CUSTOM TOOLS    %%
+%%%%%%%%%%%%%%%%%%%%%
+
 % My own implementation of errors to provide compatibility between
 % siunitx v1 and v2
 \newcommand{\numerror}[2]{$(#1 \pm #2)$} % e.g. 1000 ± 10
@@ -82,6 +87,7 @@
 \newcommand{\SIsurface}[3]{\mbox{\num{#1 x #2}\,\si{#3^2}}}
 \newcommand{\SIflux}[1]{\num{#1}\,\si{cm^{-2}.s^{-1}}}
 \newcommand{\SIrate}[1]{\num{#1}\,\si{Hz/cm^2}}
+\newcommand{\SIkrate}[1]{\num{#1}\,\si{kHz/cm^2}}
 \newcommand{\siflux}{\si{cm^{-2}.s^{-1}}}
 \newcommand{\sirate}{\si{Hz/cm^2}}
 
@@ -124,19 +130,19 @@
 \newcommand{\GWPleq}[1]{GWP $\leq$ #1}
 \newcommand{\GWPgeq}[1]{GWP $\geq$ #1}
 
-%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% PAGE LAYOUT %%
 %%%%%%%%%%%%%%%%%
 
 \input{page_layout_definition.tex}
 
-%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% HYPHENATION %%
 %%%%%%%%%%%%%%%%%
 
 \input{hyphenation.tex} % to have a separate file with hyphenations
 
-%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  START BOOK    %%
 %%%%%%%%%%%%%%%%%%%%
 
@@ -177,6 +183,7 @@
 \x@multispan{#1}}
 \makeatother
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%   FRONT PAGE       %%
 %%%%%%%%%%%%%%%%%%%%%%%%
 % 
@@ -216,13 +223,14 @@
  \vspace{5mm}
  \normalsize\textsf{Thesis to obtain the degree of\\
  Doctor of Philosophy in Physics\\
- Academic year 2018-2019}
+ Academic year 2019-2020}
  \end{minipage}\hfill
  \begin{minipage}{2.0cm}%
      \href{https://home.cern/}{\includegraphics*[width=2.0cm]{CERN.pdf}}
  \end{minipage}\hfill
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% INFORMATION PAGE     %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -271,69 +279,37 @@ Promotors: & Dr.\ Michael Tytgat\\
  \vspace{5mm}
  \normalsize\textsf{Thesis to obtain the degree of\\
  Doctor of Philosophy in Physics\\
- Academic year 2018-2019}
+ Academic year 2019-2020}
  \end{minipage}\hfill
  \begin{minipage}{2.0cm}%
      \href{https://home.cern/}{\includegraphics*[width=2.0cm]{CERN.pdf}}
  \end{minipage}\hfill
 \clearpage{\pagestyle{empty}\cleardoublepage}
 
-%% ACKNOWLEDGMENT   %%
-%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%   TABLE OF CONTENT   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\selectlanguage{english}
 \hyphenation{bu-reau-ge-no-ten}
 \frontmatter
-\chapter{Acknowledgements}
-\vspace{0.35in}
-
-
-
-\begin{flushright}{\emph{XX/XX/2018\\
-Alexis Fagot}}
-\end{flushright}
-\selectlanguage{english}
-
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
-%%   TOC, LIST OF FIGURES, LIST OF TABLES, ACRONYMS     %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \renewcommand{\contentsname}{Table of Contents}
 \tableofcontents
 
 \renewcommand{\bibname}{References}
 
-	%% SUMMARY IN DUTCH       %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SUMMARY IN DUTCH     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 \selectlanguage{dutch}
 \include{Chapters/chapt_dutch}
 
-	%% SUMMARY IN ENGLISH     %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SUMMARY IN ENGLISH   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 \selectlanguage{english}
 \include{Chapters/chapt_english}
 
-	%% CONTENT FOR THE READER %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newpage
-\renewcommand\evenpagerightmark{{\scshape\small List of Figures}}
-\renewcommand\oddpageleftmark{{\scshape\small List of Figures}}
-\listoffigures
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
-\newpage
-\renewcommand\evenpagerightmark{{\scshape\small List of Tables}}
-\renewcommand\oddpageleftmark{{\scshape\small List of Tables}}
-\listoftables
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
-\newpage
-\renewcommand\evenpagerightmark{{\scshape\small List of Acronyms}}
-\renewcommand\oddpageleftmark{{\scshape\small List of Acronyms}}
-\include{phdacronyms}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% THE BOOK ITSELF   %%
 %%%%%%%%%%%%%%%%%%%%%%%
 \mainmatter     % related to chappg numbering
@@ -358,15 +334,62 @@ Alexis Fagot}}
 \include{Chapters/chapt7}
 
 \newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ACKNOWLEDGMENT    %%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand\evenpagerightmark{{\scshape\small Acknowledgements}}
+\renewcommand\oddpageleftmark{{\scshape\small Acknowledgements}}
+\chapter{Acknowledgements}
+\vspace{0.35in}
+
+
+
+\begin{flushright}{\emph{XX/XX/2019\\
+Alexis Fagot}}
+\end{flushright}
+
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APPENDICES        %%
+%%%%%%%%%%%%%%%%%%%%%%%
+
 \appendix
 \include{Chapters/app1}
 \include{Chapters/app2}
 
-\pagenumbering{gobble}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CONTENT FOR THE READER %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newpage
+\frontmatter
+\cleardoublepage
+\renewcommand\evenpagerightmark{{\scshape\small List of Figures}}
+\renewcommand\oddpageleftmark{{\scshape\small List of Figures}}
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\cleardoublepage
+\renewcommand\evenpagerightmark{{\scshape\small List of Tables}}
+\renewcommand\oddpageleftmark{{\scshape\small List of Tables}}
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\include{phdacronyms}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BIBLIOGRAPHY           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagenumbering{gobble}
+\cleardoublepage
 \renewcommand\evenpagerightmark{{\scshape\small Bibliography}}
 \renewcommand\oddpageleftmark{{\scshape\small Bibliography}}
+\addcontentsline{toc}{chapter}{References}
 \printbibliography
 
 \end{document}

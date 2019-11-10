@@ -1,13 +1,11 @@
 % List of Acronyms
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter*{List of Acronyms}
-     %\@mkboth{\MakeUppercase List of Acronyms}%
-      %        {\MakeUppercase List of Acronyms}%
+\newpage
+\renewcommand\evenpagerightmark{{\scshape\small List of Acronyms}}
+\renewcommand\oddpageleftmark{{\scshape\small List of Acronyms}}
 
-\begin{center}
-	\textbf{\Large List of Acronyms}
-\end{center}
+\chapter{List of Acronyms}
 
 \begin{acronym_expdlist}
 	\acro{ABS}{Absorption factor}
@@ -115,6 +113,7 @@
 	\acro{YETS}{Year End Technical Stop}
 \end{acronym_expdlist}
 
+\clearpage{\pagestyle{empty}\cleardoublepage}
 % End of list of Acronyms
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
