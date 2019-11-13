@@ -10,12 +10,12 @@
 {Improved RPC investigation and preliminary electronics studies}
 \label{chapt6}
 
-	The extension in the endcap of the RPC sub-system towards higher pseudo-rapidity will bring the new detectors to be exposed to much more intense background radiations due to the proximity of the detectors with the beam line (Figure~\ref{fig:Dose}). The challenge will be to produce high counting rate detectors with limited ageing rate to ensure a stable operation of the detector over a period longer than ten years. In Chapter~\ref{chapt4} was discussed the influence of the detector design (number and thickness of gas volumes, OR system, etc...) on the charge deposition and rate capability. Nevertheless, this question can also be addressed from the electronics point of view as a better signal-to-noise ratio would also mean the possibility to greatly lower the charge threshold on the signals to be detected, allowing to use the detector at lower gain, hence lowering the charge deposition per avalanche in the gas volume. Cardarelli showed that the production of low-noise fast FEEs could help decreasing the charge deposition per avalanche at working voltage by an order of magnitude, virtually increasing the life expectancy of such a detector in the same way~\cite{CARDARELLI2012}.
+	The extension in the endcap of the RPC sub-system towards higher pseudo-rapidity will bring the new detectors to be exposed to much more intense background radiations due to the proximity of the detectors with the beam line (Figure~\ref{fig:Dose}). The challenge will be to produce high counting rate detectors with limited ageing rate to ensure a stable operation of the detector over a period longer than ten years. In Chapter~\ref{chapt3} was discussed the influence of the detector design (number and thickness of gas volumes, OR system, etc...) on the charge deposition and rate capability. Nevertheless, this question can also be addressed from the electronics point of view as a better signal-to-noise ratio would also mean the possibility to greatly lower the charge threshold on the signals to be detected, allowing to use the detector at lower gain, hence lowering the charge deposition per avalanche in the gas volume. Cardarelli showed that the production of low-noise fast FEEs could help decreasing the charge deposition per avalanche at working voltage by an order of magnitude, virtually increasing the life expectancy of such a detector in the same way~\cite{CARDARELLI2012}.
 
 \section{FEE candidates for the production of iRPCs}
 \label{chapt6:sec:candidates}
 
-	The extension of the third of fourth endcap disks with \acl{iRPC}s has been presentated in Chapter~\ref{chapt:3} together with the expected background levels (Figure~\ref{fig:iRPC-Rate}). An important piece of these iRPCs will be the \acl{FEE} that will equip the chambers. A fast, low-jitter and low-charge sensitive electronics will help reducing further the charge deposition in the detector by making it possible to operate at lower gain.
+	The extension of the third of fourth endcap disks with \acl{iRPC}s has been presentated in Chapter~\ref{chapt:4} together with the expected background levels (Figure~\ref{fig:iRPC-Rate}). An important piece of these iRPCs will be the \acl{FEE} that will equip the chambers. A fast, low-jitter and low-charge sensitive electronics will help reducing further the charge deposition in the detector by making it possible to operate at lower gain.
 	
 	In the context of the CMS Muon Upgrade, two FEE solutions have been considered to equip the iRPCs. The baseline for the RPC upgrade is based on the PETIROC ASIC, initially for \acf{ToF} applications. A back-up solution is also under study and focusses on a new low-noise preamplifier designed in INFN laboratories in Rome to replace the preamplification stage of the already existing CMS RPC \acl{FEB}.
 
@@ -62,7 +62,7 @@
 		\caption{\label{fig:iRPC-readout} View of the coaxial design (Figure~\ref{fig:iRPC-readout:A}) and of the return design (Figure~\ref{fig:iRPC-readout:B}) of read-out panels used in the iRPC prototypes. Only half PCBs with 48 strips are showed.}
 	\end{figure}
 
-	\subsection{INFN \acl{FEB}: a robust back-up solution}
+	\subsection{INFN FEB: a robust back-up solution}
 	\label{chapt6:ssec:INFN}
 	
 	Even though the baseline for the electronics that will equip the iRPCs will be the CMS RPCROC, a back-up solution needs to be certified. The back-up has been found in a \acl{FEE} featuring a fast and low-noise (1000 $e^-$ rms) Silicon (Si) preamplifier and a Silicon-Germanium (SiGe) discriminator~\cite{PIZZIMENTO2018} associated with an optimized read-out panel~\cite{ALUNNOCAMELIA2018}. The low-noise preamplifier is a new version of a preliminary production of a SiGe preamplifier by the team of Cardarelli working with INFN Roma with the purpose of equipping the new generation of ATLAS RPCs~\cite{CARDARELLI2013}.
@@ -166,7 +166,7 @@
 			\hline
 			Data & $\epsilon_{max}$ & $\lambda$ ($\times$\Ord{-2} \si{V^{-1}}) & $HV_{50}$ (\si{V}) & $\epsilon_{WP}$ & $HV_{WP}$ (\si{V}) \\ 
 			\hline
-			CMS FEB, 156fC (2013) & \numerror{0.978}{0.004} & \numerror{1.12}{0.07} & \numerror{9339}{11} & \numerror{0.97}{0.01} & \numerror{9752}{27}\\ 
+			CMS FEB, 143fC (2013) & \numerror{0.978}{0.004} & \numerror{1.12}{0.07} & \numerror{9339}{11} & \numerror{0.97}{0.01} & \numerror{9752}{27}\\ 
 			\hline
 			INFN preamp., 7fC (2013) & \numerror{0.987}{0.003} & \numerror{0.93}{0.05} & \numerror{8907}{11} & \numerror{0.97}{0.01} & \numerror{9374}{27}\\ 
 			\hline
@@ -211,9 +211,9 @@
 		\caption{\label{fig:Pulse-Processing-904} Similarly to Figure~\ref{fig:Pulse-Processing:C}, the signals are counted in coïncidence with the trigger signals provided by PMTs. To estimate the cluster size, the channels are counted by groups of three, two but also alone.}
 	\end{figure}
 	
-	The results of the second round of tests with INFN preamplifiers are presented in Figure~\ref{fig:INFN-FEB} and Table~\ref{tab:INFN-FEB}. These results are consistent with what was measured with the first tested prototypes. The efficiency sigmoid has been measured once again with the CMS FEB, using a threshold of \SI{170}{fC} and is in agreement with the data collected in 2013. The performance of the detector with the preamplifiers tuned at 7.2 and \SI{6.4}{fC} falls in the very same values than the setting at \SI{7}{fC} according to the table. A maximum shift of \SI{410}{V} is observed for a threshold of \SI{5}{fC}.
+	The results of the second round of tests with INFN preamplifiers are presented in Figure~\ref{fig:INFN-FEB} and Table~\ref{tab:INFN-FEB}. These results are consistent with what was measured with the first tested prototypes. The efficiency sigmoid has been measured once again with the CMS FEB, using a threshold of \SI{146}{fC} and is in agreement with the data collected in 2013. The performance of the detector with the preamplifiers tuned at 7.2 and \SI{6.4}{fC} falls in the very same values than the setting at \SI{7}{fC} according to the table. A maximum shift of \SI{410}{V} is observed for a threshold of \SI{5}{fC}.
 	
-	With the care placed into having a good grounding of the setup as well as a good impedance matching, the noise rate per unit area is this time lower than what previously measured. Nevertheless, it still is more than one order of magnitude higher than in the case of the CMS FEB with a threshold set at \SI{170}{fC}. The noise rate is measured to be at lowest around \SIrate{0.7} when measured to be approximately \SIrate{0.05} for the CMS FEB. At such high threshold values, the noise rate per unit area is not expected to vary much. The data collected at the RPC assembly laboratory then displays much better data tacking conditions with both electronics.
+	With the care placed into having a good grounding of the setup as well as a good impedance matching, the noise rate per unit area is this time lower than what previously measured. Nevertheless, it still is more than one order of magnitude higher than in the case of the CMS FEB with a threshold set at \SI{146}{fC}. The noise rate is measured to be at lowest around \SIrate{0.7} when measured to be approximately \SIrate{0.05} for the CMS FEB. At such high threshold values, the noise rate per unit area is not expected to vary much. The data collected at the RPC assembly laboratory then displays much better data tacking conditions with both electronics.
 	
 	Finally, the cluster size is measured to be similar for both electronics at the level of the working point and is in between 2.2 and 2.4 strips on average. The spatial resolution of both devices would then be the same.
 	
@@ -243,9 +243,9 @@
 			\hline
 			Data & $\epsilon_{max}$ & $\lambda$ ($\cdot$\Ord{-2} \si{V^{-1}}) & $HV_{50}$ (\si{V}) & $\epsilon_{WP}$ & $HV_{WP}$ (\si{V}) \\ 
 			\hline
-			CMS FEB, 156fC (2013) & \numerror{0.978}{0.004} & \numerror{1.12}{0.07} & \numerror{9339}{11} & \numerror{0.97}{0.01} & \numerror{9752}{27}\\ 
+			CMS FEB, 143fC (2013) & \numerror{0.978}{0.004} & \numerror{1.12}{0.07} & \numerror{9339}{11} & \numerror{0.97}{0.01} & \numerror{9752}{27}\\ 
 			\hline
-			CMS FEB, 170fC (2014) & \numerror{0.978}{0.003} & \numerror{1.30}{0.06} & \numerror{9364}{9} & \numerror{0.97}{0.01} & \numerror{9740}{19}\\ 
+			CMS FEB, 146fC (2014) & \numerror{0.978}{0.003} & \numerror{1.30}{0.06} & \numerror{9364}{9} & \numerror{0.97}{0.01} & \numerror{9740}{19}\\ 
 			\hline
 			INFN/CMS FEB, 7.2fC (2014) & \numerror{0.973}{0.006} & \numerror{1.26}{0.09} & \numerror{8985}{10} & \numerror{0.97}{0.01} & \numerror{9368}{26}\\ 
 			\hline
@@ -352,7 +352,7 @@ ChHit3	THit3
 			\hline
 			Data & $\epsilon_{max}$ & $\lambda$ ($\cdot$\Ord{-2} \si{V^{-1}}) & $HV_{50}$ (\si{V}) & $\epsilon_{WP}$ & $HV_{WP}$ (\si{V}) \\ 
 			\hline
-			CMS FEB, 156fC (2015) & \numerror{0.956}{0.007} & \numerror{0.86}{0.04} & \numerror{5349}{8} & \numerror{0.94}{0.01} & \numerror{5839}{23}\\ 
+			CMS FEB, 143fC (2015) & \numerror{0.956}{0.007} & \numerror{0.86}{0.04} & \numerror{5349}{8} & \numerror{0.94}{0.01} & \numerror{5839}{23}\\ 
 			\hline
 			INFN/CMS FEB, 7.2fC (2015) & \numerror{0.972}{0.006} & \numerror{1.09}{0.06} & \numerror{4983}{8} & \numerror{0.96}{0.01} & \numerror{5403}{22}\\ 
 			\hline
@@ -489,7 +489,7 @@ ChHit3	THit3
 	\subsection{HARDROC 2 based RPC read-out}
 	\label{chapt6:ssec:HARDROC2}
 	
-	The \acf{HARDROC} ASIC, as its name suggests, has been developped for RPC applications and in particular for the read-out RPCs of the \acf{SDHCAL} that is being studied in the perspective of the \acf{ILC}. The SDHCAL detectors are required to have a high granularity compared to the CMS RPCs and hence, they use \SI{1}{cm^2} read-out pads instead of strips. This choice results in a huge number of channels. The ASIC is mounted directly on the read-out pannel for compactness as can be seen in Figure~\ref{fig:Setup-HARDROC2-904:A} and feature three thresholds to provide a semi-digital information.
+	The \acf{HARDROC} ASIC, as its name suggests, has been developped for RPC applications and in particular for the read-out RPCs of the \acf{SDHCAL} that is being studied in the perspective of the \acf{ILC}. The SDHCAL detectors are required to have a high granularity compared to the CMS RPCs and hence, they use \SI{1}{cm^2} read-out pads instead of strips. This choice results in a huge number of channels. The ASIC is mounted directly on the read-out pannel for compactness as can be seen in Figure~\ref{fig:Setup-HARDROC2:A} and feature three thresholds to provide a semi-digital information.
 	
 	The PETIROC that inspired the CMS RPCROC uses a similar technology than the one developed for the HARDROC and is manufactured by the same company. It is safe to conclude that the preliminary results obtained with the HARDROC electronics constitute a strong indication on the potential performance of a FEB developped specifically for CMS detectors. The leading institute in the development of the SDHCAL based on single-gap \acf{gRPCs} is the \acf{IPNL} which also played a great role in developing iRPCs for CMS.
 	
@@ -543,7 +543,7 @@ ChHit3	THit3
 			\hline
 			Data & $\epsilon_{max}$ & $\lambda$ ($\cdot$\Ord{-2} \si{V^{-1}}) & $HV_{50}$ (\si{V}) & $\epsilon_{WP}$ & $HV_{WP}$ (\si{V}) \\ 
 			\hline
-			CMS FEB, 156fC (2014) & $0.958 \pm 0.000$ & $0.75 \pm 0.00$ & $9174 \pm 1$ & $0.94 \pm 0.00$ & $9716 \pm 2$\\ 
+			CMS FEB, 143fC (2014) & $0.958 \pm 0.000$ & $0.75 \pm 0.00$ & $9174 \pm 1$ & $0.94 \pm 0.00$ & $9716 \pm 2$\\ 
 			\hline
 			HARDROC 2, 230fC (2015) & $0.987 \pm 0.002$ & $1.06 \pm 0.04$ & $8905 \pm 8$ & $0.98 \pm 0.01$ & $9333 \pm 17$\\ 
 			\hline
@@ -604,7 +604,7 @@ ChHit3	THit3
 \hline
 Data & $\epsilon_{max}$ & $\lambda$ ($\cdot$\Ord{-2} \si{V^{-1}}) & $HV_{50}$ (\si{V}) & $\epsilon_{WP}$ & $HV_{WP}$ (\si{V}) \\ 
 \hline
-CMS FEB, 156fC (2015)   & $0.956 \pm 0.007$ & $0.86 \pm 0.04$ & $5349 \pm 8$ & $0.94 \pm 0.01$ & $5839 \pm 23$\\ 
+CMS FEB, 143fC (2015)   & $0.956 \pm 0.007$ & $0.86 \pm 0.04$ & $5349 \pm 8$ & $0.94 \pm 0.01$ & $5839 \pm 23$\\ 
 \hline
 HARDROC 2, 143fC (2015) & $0.966 \pm 0.004$ & $0.64 \pm 0.02$ & $5179 \pm 7$ & $0.95 \pm 0.01$ & $5790 \pm 25$\\ 
 \hline
@@ -627,7 +627,15 @@ HARDROC 2, 143fC (2015) & $0.966 \pm 0.004$ & $0.64 \pm 0.02$ & $5179 \pm 7$ & $
 		\caption{\label{fig:HARDROC2-gRPC-profiles} Measured muon (Figure~\ref{fig:HARDROC2-gRPC-profiles:A}) and noise (Figure~\ref{fig:HARDROC2-gRPC-profiles:A}) profiles in the read-out pads of the HARDROC 2 over a gRPC gap built by Ghent.}
     \end{figure}
     
-	\subsection{Outlooks and current FEE certification status}
-	\label{chapt6:ssec:outlooks}
+	\section{Outlook and current FEE certification status}
+	\label{chapt6:sec:outlooks}
+	
+		\subsection{CMS RPCROC}
+		\label{chapt6:ssec:RPCROCcert}
+	
+		\subsection{INFN FEE}
+		\label{chapt6:ssec:RPCROCcert}
+		
+		
 
 \clearpage{\pagestyle{empty}\cleardoublepage}

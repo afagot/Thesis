@@ -9,7 +9,7 @@
 \usepackage{times}      % use Times New Roman Type 1 fonts  (redefines sfdefault,rmdefault,ttdefault)
 \usepackage[times]{quotchap}   % fancy chapter beginning
 \usepackage{fancyhdr}
-\usepackage[dutch,english,greek]{babel}
+\usepackage[dutch,english]{babel}
 \usepackage{cmap}
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper,verbose, asymmetric, centering]{geometry}  % better control over margins
@@ -298,29 +298,22 @@ Promotors: & Dr.\ Michael Tytgat\\
 \renewcommand{\bibname}{References}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% SUMMARY IN DUTCH     %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-\selectlanguage{dutch}
-\include{Chapters/chapt_dutch}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% SUMMARY IN ENGLISH   %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\selectlanguage{english}
-\include{Chapters/chapt_english}
+%\include{Chapters/chapt_english}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% THE BOOK ITSELF   %%
 %%%%%%%%%%%%%%%%%%%%%%%
 \mainmatter     % related to chappg numbering
-\selectlanguage{english}
 \renewcommand*{\thesection}{\thechapter.\arabic{section}}
 
 \newcommand\fdtsvrightmarktmp{{\scshape\small Chapter }}
 \renewcommand\evenpagerightmark{{\scshape\small\chaptername\ \thechapter}}
 \renewcommand\oddpageleftmark{{\scshape\small\leftmark}}
 
-\newlength{\plotwidth} % To get my plot widths consistent
+% To get my plot widths consistent
+\newlength{\plotwidth}
 \setlength{\plotwidth}{.8\textwidth}
 
 \baselineskip 13.0pt
@@ -336,9 +329,17 @@ Promotors: & Dr.\ Michael Tytgat\\
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SUMMARY IN DUTCH     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\selectlanguage{dutch}
+\include{Chapters/chapt_dutch}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% ACKNOWLEDGMENT    %%
 %%%%%%%%%%%%%%%%%%%%%%%
 
+\selectlanguage{english}
+\renewcommand{\thesection}{\arabic{section}}
 \renewcommand\evenpagerightmark{{\scshape\small Acknowledgements}}
 \renewcommand\oddpageleftmark{{\scshape\small Acknowledgements}}
 \chapter{Acknowledgements}
