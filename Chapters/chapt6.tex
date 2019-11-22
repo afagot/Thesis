@@ -11,15 +11,32 @@
 \label{chapt6}
 
 	The extension in the endcap of the RPC sub-system towards higher pseudo-rapidity will bring the new detectors to be exposed to much more intense background radiations due to the proximity of the detectors with the beam line (Figure~\ref{fig:Dose}). The challenge will be to produce high counting rate detectors with limited ageing rate to ensure a stable operation of the detector over a period longer than ten years. In Chapter~\ref{chapt3} was discussed the influence of the detector design (number and thickness of gas volumes, OR system, etc...) on the charge deposition and rate capability. Nevertheless, this question can also be addressed from the electronics point of view as a better signal-to-noise ratio would also mean the possibility to greatly lower the charge threshold on the signals to be detected, allowing to use the detector at lower gain, hence lowering the charge deposition per avalanche in the gas volume. Cardarelli showed that the production of low-noise fast FEEs could help decreasing the charge deposition per avalanche at working voltage by an order of magnitude, virtually increasing the life expectancy of such a detector in the same way~\cite{CARDARELLI2012}.
+	
+	In this Chapter will be presented the electronics that were chosen to equip the iRPCs that will installed on the CMS endcaps at the positions RE3/1 and RE4/1. These electronics are the CMS RPCROC. A similar technoloy has been previously used with RPCs in the context of the R\&D of a \acf{SDHCAL} for the \acf{ILD}. As back-up to the CMS RPCROC, a FEB developed by the INFN Tor Vergata in Rome as also been studied for the CMS iRPCs.\\
+	These two solutions for the iRPCs are the results of a longer selection process in which I took a great part. Thus, after an introduction of both technologies, the tests performed on CMS RPCs operated with preliminary versions of INFN Tor Vergata preamplifiers as well as with the HARDROC 2 read-out panel of the SDHCAL will be discussed in details. Finally, the current status of the R\&D certification will be presented. Nonetheless, it is important to keep in mind that I did not personally participate in the development of the CMS RPCROC nor of the INFN Tor Vergata FEB as designed for the iRPCs. My role was limited to the selection and to the test of potential candidates. After this preliminary study was conducted, the development of the actual FEEs for the CMS iRPCs was conducted by other researchers. Therefore, I will only report the status of the ongoing research.
 
 \section{FEE candidates for the production of iRPCs}
 \label{chapt6:sec:candidates}
 
-	The extension of the third of fourth endcap disks with \acl{iRPC}s has been presentated in Chapter~\ref{chapt:4} together with the expected background levels (Figure~\ref{fig:iRPC-Rate}). An important piece of these iRPCs will be the \acl{FEE} that will equip the chambers. A fast, low-jitter and low-charge sensitive electronics will help reducing further the charge deposition in the detector by making it possible to operate at lower gain.
-	
-	In the context of the CMS Muon Upgrade, two FEE solutions have been considered to equip the iRPCs. The baseline for the RPC upgrade is based on the PETIROC ASIC, initially for \acf{ToF} applications. A back-up solution is also under study and focusses on a new low-noise preamplifier designed in INFN laboratories in Rome to replace the preamplification stage of the already existing CMS RPC \acl{FEB}.
+	The extension of the third and fourth endcap disks with \acl{iRPC}s has been presentated in Chapter~\ref{chapt:4} together with the expected background levels (Figure~\ref{fig:iRPC-Rate}). The iRPCs will complete the muon endcap as described in Figure~\ref{fig:iRPC-Wheel}. The key features of these iRPCs are:
 
-	The FEEs that are foreseen to equip the new RPCs need to be able to detect charges as small as \SI{10}{fC}. Not only the new electronics need to be fast and reliable, they also should be able to sustain the high radiation the detectors will be subjected to in the region closest to the beam.
+	\begin{itemize}
+		\item double-gap design,
+		\item \SI{1.4}{mm} thick HPL electrodes,
+		\item \SI{1.4}{mm} thick gas gap,
+		\item trapezoidal chambers spanning \SI{20}{\degree} in $\varphi$ around the beam axis,
+		\item read-out panel consisting of 96 trapezoidal strips
+		\item strip pitch ranges from \SI{6.0}{mm} (\SI{5.9}{mm}) on the high pseudo-rapidity end to \SI{12.3}{mm} (\SI{10.9}{mm}) on the low one on position RE3/1 (RE4/1)
+		\item spatial resolution in the direction perpendicular to the strips $\sim$\SI{3}{mm}
+	\end{itemize}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = .8\linewidth]{fig/chapt6/iRPC-Wheel.png}\\
+		\caption{\label{fig:iRPC-Wheel} Location of the RE3/1 or RE4/1 iRPCs on a muon endcap disk.}
+	\end{figure}
+
+	An important piece of these iRPCs will be the \acl{FEE} that will equip the chambers. A fast, low-jitter and low-charge sensitive electronics will help reducing further the charge deposition in the detector by making it possible to operate at lower gain. The FEEs that are foreseen to equip the new RPCs need to be able to detect charges as small as \SI{10}{fC}. Not only the new electronics need to be fast and reliable, they also should be able to sustain the high radiation the detectors will be subjected to in the region closest to the beam.
 	
 	\subsection{CMS RPCROC: the RPC upgrade baseline}
 	\label{chapt6:ssec:RPCROC}
@@ -32,57 +49,114 @@
 		\caption{\label{fig:PETIROCASIC} PETIROC 2A block diagram.}
 	\end{figure}
 	
-	Nevertheless, in order to adapt this ASIC to CMS, modifications were brought to the PETIROC~\cite{PHASEIITP} and not all its functions will be used~\cite{COMBARET2018}. In the new CMS RPCROC, showed in Figure~\ref{fig:RPCROC}, the measurement of the charge will be performed by a \acf{ToT} technic, taking profit of the capacity the ASIC has in measuring both the leading and trailing edges of the input signals. The dynamic range will be expanded towards lower values to allow for the detection of charges as low as \SI{10}{fC}. Due to the radiation levels that are foreseen at the level of the iRPCs, the SiGe technology will be replaced by the Taiwan Semiconductor Manufacturing Company (TSMC) \SI{130}{nm} CMOS, to increase its radiation hardness while keeping fast pre-amplification and discrimination with a very low jitter that can reach less than \SI{20}{ps} if no internal clock is used, as can be seen from Figure~\ref{fig:jitter}. The ASIC is associated with an FPGA which purpose is to measure time of the signals. The FPGA is equipped with a TDC with a time resolution of 50-100 \si{ps} developed by Tsinghua University. The full system will provide a measurement of the signal position along the strip with a precision of a few \si{cm} by measuring the signal timing on both ends of the strips.
+	Nevertheless, in order to adapt this ASIC to CMS, modifications were brought to the PETIROC~\cite{PHASEIITP} and not all its functions will be used~\cite{COMBARET2018}. Due to the radiation levels that are foreseen at the level of the iRPCs, the SiGe technology will be replaced by the Taiwan Semiconductor Manufacturing Company (TSMC) \SI{130}{nm} CMOS, to increase its radiation hardness while keeping fast pre-amplification and discrimination. On the \acl{FEB}, the ASIC is associated with an FPGA which purpose is to measure the arrival time of the signals. The FPGA is equipped with a TDC with a time resolution of 50-100 \si{ps} developed by Tsinghua University. The full system will provide a measurement of the signal position along the strip with a precision of a few \si{cm} by reading the signal on both strip ends. Finally, the measurement of the charge will be performed by a \acf{ToT} technic, taking profit of the capacity the ASIC in measuring both the leading and trailing edges of the input signals. The dynamic range will be expanded towards lower values to allow for the detection of charges as low as \SI{50}{fC} in a the version PETIROC 2B, ultimately reaching for \SI{10}{fC}.\\
+	Two consecutive versions of the RPCROC are showed in Figure~\ref{RPCROC_FEB}. FEBv0 was equipped with a single PETIROC 2A associated to a Cyclone II FPGA and the FEBv1 with two PETIROC 2A associated to a Cyclone V FPGA.
 
 	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.5\linewidth]{fig/chapt6/RPCROC_FEE.png}
-		\caption{\label{fig:RPCROC} View of the RPCROC \acl{FEE} in which the PETIROC 2A ASIC is visible as well as the FPGA on which the TDC is hosted.}
+		\begin{subfigure}{0.5\linewidth}
+		    \centering
+			\includegraphics[width = 0.8\linewidth]{fig/chapt6/iRPC-RPCROCv0.png}
+			\caption{\label{fig:RPCROC_FEB:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+		    \centering
+			\includegraphics[width = 0.8\linewidth]{fig/chapt6/iRPC-RPCROCv1.png}
+			\caption{\label{fig:RPCROC_FEB:B}}
+		\end{subfigure}
+		\caption{\label{fig:RPCROC_FEB} \subref{fig:RPCROC_FEB:A} View of the RPCROC FEBv0 in which the PETIROC 2A ASIC is visible as well as the FPGA on which the TDC is hosted. \subref{fig:RPCROC_FEB:B} View of the RPCROC FEBv1 with its two PETIROC 2A ASICs. The FPGA with the TDC is this time embeded in the FEB.}
 	\end{figure}
 
 	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.6\linewidth]{fig/chapt6/jitter-PETIROC.png}
-		\caption{\label{fig:jitter} The PETIROC time jitter as a function of the input signal amplitude, measured with and without internal clocks.}
+		\begin{subfigure}{0.4\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-RPCROC-PCB.png}
+			\caption{\label{fig:RPCROC_FEB:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.6\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-RPCROC-Final.png}
+			\caption{\label{fig:RPCROC_FEB:B}}
+		\end{subfigure}
+		\caption{\label{fig:RPCROC_FEB} \subref{fig:RPCROC_FEB:A} Picture of half the read-out PCB used with FEBv1. The RPCROC is connected directly onto the return connectors on the wide end of the panel. \subref{fig:RPCROC_FEB:B} Design of the foreseen final read-out of the iRPC showing the 2 RPCROC FEBs and the read-out PCB.}
 	\end{figure}
 	
-	In order to read-out all 96 strips, 3 ASICs and 3 TDCs, each having an increased number of 64-channels, are hosted on a FEB attached to the chamber. Two scenarios are being studied to connect the ASICs to the read-out strips~\cite{COMBARET2018}. The correspponding read-out panels are showed in Figure~\ref{fig:iRPC-readout}. On the one hand there is the possibility to design a standard trapezoidal strip panel and to directly connect the strips to the ASICs using coaxial cables of similar impedance than the strips. On the other hand, the return lines could be embeded directly in extra layers of the strip panel to offer the possibility to minimize the amount of on-detector cables by using a single connector to send the signals to the FEB's inputs. The first version of the panel is refered to as \textit{coaxial design} while the second as \textit{return design}. In the case of the return design panel, the read-out area is a little smaller than in the case of the coaxial panel. This was motivated by the need to shield the return strips beneath the copper ground plane visible on the side of the PCB.
-	
-	\begin{figure}[H]
-		\begin{subfigure}{.5\linewidth}
-		    \centering
-			\includegraphics[height=7cm]{fig/chapt6/RPCROC_Coaxial_PCB.png}
-			\caption{\label{fig:iRPC-readout:A}}
-		\end{subfigure}
-		\begin{subfigure}{.5\linewidth}
-		    \centering
-			\includegraphics[height=7cm]{fig/chapt6/RPCROC_Return_PCB.png}
-			\caption{\label{fig:iRPC-readout:B}}
-		\end{subfigure}
-		\caption{\label{fig:iRPC-readout} View of the coaxial design (Figure~\ref{fig:iRPC-readout:A}) and of the return design (Figure~\ref{fig:iRPC-readout:B}) of read-out panels used in the iRPC prototypes. Only half PCBs with 48 strips are showed.}
-	\end{figure}
+	In order to read-out all 96 strips off the read-out panel, 3 ASICs and 3 TDCs, each having an increased number of 64-channels, are hosted on a FEB attached to the chamber. The FEB is connected to the read-out panel via connectors embeded into the PCB as demonstrated in Figure~\ref{}. This solution offers the possibility to minimize the amount of on-detector cables by embeding the return lines into a PCB layer and using a single connector to send the signals to the FEB's inputs.
 
 	\subsection{INFN FEB: a robust back-up solution}
 	\label{chapt6:ssec:INFN}
 	
-	Even though the baseline for the electronics that will equip the iRPCs will be the CMS RPCROC, a back-up solution needs to be certified. The back-up has been found in a \acl{FEE} featuring a fast and low-noise (1000 $e^-$ rms) Silicon (Si) preamplifier and a Silicon-Germanium (SiGe) discriminator~\cite{PIZZIMENTO2018} associated with an optimized read-out panel~\cite{ALUNNOCAMELIA2018}. The low-noise preamplifier is a new version of a preliminary production of a SiGe preamplifier by the team of Cardarelli working with INFN Roma with the purpose of equipping the new generation of ATLAS RPCs~\cite{CARDARELLI2013}.
+	Even though the baseline for the electronics that will equip the iRPCs will be the CMS RPCROC, a back-up solution needs to be certified. The back-up has been found in a \acl{FEE} featuring a fast and low-noise (1000 $e^-$ rms) Silicon (Si) preamplifier and a Silicon-Germanium (SiGe) discriminator~\cite{PIZZIMENTO2018} associated with an optimized read-out panel~\cite{ALUNNOCAMELIA2018}. The low-noise preamplifier is a new version of a preliminary production of a SiGe preamplifier by the team of Cardarelli working with INFN Roma with the purpose of equipping the new generation of ATLAS RPCs~\cite{CARDARELLI2013}. The study of the early version of the preamplifier by is discussed in Section~\ref{chapt6:sec:Preliminary} of this Chapter.
 	
-	The FEB is equipped with eight channels of preamplifiers using a \acf{BJT} technology and two discriminator ASICs of four channels using \acf{HJT} technology. The input signals are amplified at an amplification factor of 0.2 to \SI{0.4}{mV/fC} and are then discriminated with a threshold of \SI{0.5}{mV} at minimum. For each channel, the LVDS output is proportional in width to the \acl{ToT} in the discriminator of the amplified signal with a minimum width of \SI{3}{ns}. This method allows for an estimation of the avalanche charge as the width of the signals usually is consistent and proportionnal to the amount of charge released in the gas volume.
+	Contrary to the CMS RPCROC, the back-up electronics only offer the possibility to read-out the 96 strips from one end. Group of eight strips are connected to FEBs directly soldered to the PCB as showed in Figure~\ref{fig:INFN-FEBv2} to reduce the pick-up noise in the electronics. A FEB is equipped with eight channels of preamplifiers using a \acf{BJT} technology and two discriminator ASICs of four channels using \acf{HJT} technology. The input signals are amplified at an amplification factor of 0.2 to \SI{0.4}{mV/fC} and are then discriminated with a threshold of \SI{0.5}{mV} at minimum. For each channel, the LVDS output is proportional in width to the \acl{ToT} in the discriminator of the amplified signal with a minimum width of \SI{3}{ns}. This method allows for an estimation of the avalanche charge as the width of the signals usually is consistent and proportionnal to the amount of charge released in the gas volume.
 	
-	The read-out panel feautures 96 trapezoidal copper strips and has a similar design to the read-out panels used for the CMS RPCROC. As for now, the strips are only read-out from one end.
+	The spatial resolution along the strips is brought by two transverse strip planes. These two additional panels sandwich the \textit{gaps+strip} ensemble and feature \SI{5}{cm} wide copper strips for a spatial resolution of a few centimeters along the longitudinal strips.
+	 
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.8\linewidth]{fig/chapt6/iRPC-INFN-Design.pdf}
+		\caption{\label{fig:INFN-Design} Design of the iRPC in the back-up scenario. The detector includes an additional two layers of transversal strips to gain in spatial resolution.}
+    \end{figure}
+	 
+	\begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/INFN-FEB.png}
+			\caption{\label{fig:INFN_FEBv2:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/INFN-FEB-on-readout.png}
+			\caption{\label{fig:INFN_FEBv2:B}}
+		\end{subfigure}
+		\caption{\label{fig:INFN_FEBv2} Version 2 of the INFN Tor Vergata FEB as designed for the CMS iRPC. The FEBs are directly soldered onto the read-out PCB to reduce pick-up noise as much as possible. Copper lines embeded into the PCB are used to propagate the power and slow control lines.}
+    \end{figure}
 	 
 	\begin{figure}[H]
 		\begin{subfigure}{\linewidth}
 		    \centering
-			\includegraphics[width = 0.8\linewidth]{fig/chapt6/INFN-FEB-on-readout.png}
-			\caption{\label{fig:INFN-FEBv2:A}}
+			\includegraphics[width = .8\linewidth]{fig/chapt6/INFN-FEB-Transverse.png}
+			\caption{\label{fig:INFN_FEB_Trans:A}}
 		\end{subfigure}
 		\begin{subfigure}{\linewidth}
 		    \centering
-			\includegraphics[width = 0.8\linewidth]{fig/chapt6/INFN-FEB-readout-panel.png}
-			\caption{\label{fig:INFN-FEBv2:B}}
+			\includegraphics[width = .8\linewidth]{fig/chapt6/INFN-FEB-Transverse-on-readout.png}
+			\caption{\label{fig:INFN_FEB_Trans:B}}
 		\end{subfigure}
-		\caption{\label{fig:INFN-FEBv2} Experimental setup used to test the INFN preamplifier with respect to the CMS FEEs.}
+		\caption{\label{fig:INFN_FEB_Trans} Version of the INFN Tor Vergata FEB as designed for the transversal readout panels of the CMS iRPC. The FEBs are directly soldered onto the read-out PCB to reduce pick-up noise as much as possible. The propagation of the power and slow control lines is done via coaxial cables.}
+    \end{figure}
+	 
+	\begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/INFN-FEB-Longitudinal-Drawing.png}
+			\caption{\label{fig:INFN_Readout:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/INFN-FEB-Transversal-Drawing.png}
+			\caption{\label{fig:INFN_Readout:B}}
+		\end{subfigure}
+		\caption{\label{fig:INFN_Readout} Design of the longitudinal \subref{fig:INFN_Readout:A} and transversal \subref{fig:INFN_Readout:B} strip panels. The transversal design is here shown on top of the longitudinal one.}
+    \end{figure}
+    
+    \begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/INFN-FEB-Longitudinal.png}
+			\caption{\label{fig:INFN_StripPic:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/INFN-FEB-Transversal.png}
+			\caption{\label{fig:INFN_StripPic:B}}
+		\end{subfigure}
+		\caption{\label{fig:INFN_StripPic} Picture of half the longitudinal \subref{fig:INFN_Readout:A} and of the top part of the transversal \subref{fig:INFN_Readout:B} strip panels. A INFN Tor Vergata FEB with disconnected coaxial cables is placed on the transversal plane to illustrate its final position.}
+    \end{figure}
+	 
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.8\linewidth]{fig/chapt6/INFN-FEB-iRPC.png}
+		\caption{\label{fig:INFN-iRPC} iRPC prototype equipped with INFN Tor Vergata FEBs. The iRPC is enclosed in a spare RE1/3 case. The dimensions of the RE3/1 and RE4/1 iRPCs is in fact much smaller.}
     \end{figure}
 
 \section{Preliminary electronics tests at CERN}
@@ -258,7 +332,7 @@
 		\end{tabular}
 	\end{table}
 	
-	In addition to the tests performed on the electronics with the CMS RPC, the electronics also have been tested on a gRPC designed in Ghent. The gRPC used for this experiment is described in Figure~\ref{fig:UGent-gRPC-design}. The detector, showed on Figure~\ref{fig:UGent-gRPC-pictures}, uses a double-gap layout with float glass electrodes of \SI{1.1}{mm} and a gas gap of \SI{1.2}{mm}. The electrodes themselves are made out of four pieces of glass glued together. Such a design was studied for high-rate detection purposes and aimed to serve as a proof of concept for RPCs built using small pieces assembled together to produce a larger detection area. Indeed, in the context of R\&D in the field of high-rate RPCs, most low resistivity materials are custom made dopped glass or ceramics plates. These materials can't be produced in large areas as they are not manufactured on a large enough scale. Thus, building large detectors requires using such methods.
+	In addition to the tests performed on the electronics with the CMS RPC, the electronics also have been tested on a gRPC designed in Ghent. The gRPC used for this experiment is described in Figure~\ref{fig:UGent-gRPC-design}. The detector, showed on Figure~\ref{fig:UGent-gRPC-pictures}, uses a double-gap layout with float glass electrodes of \SI{1.1}{mm} and a gas gap of \SI{1.2}{mm}. The electrodes themselves are made out of four pieces of glass glued together. Such a design was studied for high-rate detection purposes and aimed to serve as a proof of concept for RPCs built using small pieces assembled together to produce a larger detection area. Indeed, in the context of R\&D in the field of high-rate RPCs, most low resistivity materials are custom made dopped glass or ceramics plates. These materials can't be produced in large areas as they are not manufactured on a large enough scale. Thus, building large detectors can imply using such methods.
 	 
 	\begin{figure}[H]
 		\begin{subfigure}{\linewidth}
@@ -386,32 +460,32 @@ ChHit3	THit3
 	\begin{figure}[H]
 		\begin{subfigure}{.33\linewidth}
 		    \centering
-			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-1D-5000-gRPC-INFN.pdf}
+			\includegraphics[width=1.1\linewidth]{fig/chapt6/Muon-ClS-1D-5000-gRPC-INFN.pdf}
 			\caption{\label{fig:cluster-size-1D:A} \SI{5120}{V}}
 		\end{subfigure}
 		\begin{subfigure}{.33\linewidth}
 		    \centering
-			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-1D-5100-gRPC-INFN.pdf}
+			\includegraphics[width=1.1\linewidth]{fig/chapt6/Muon-ClS-1D-5100-gRPC-INFN.pdf}
 			\caption{\label{fig:cluster-size-1D:B} \SI{5222}{V}}
 		\end{subfigure}
 		\begin{subfigure}{.33\linewidth}
 		    \centering
-			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-1D-5200-gRPC-INFN.pdf}
+			\includegraphics[width=1.1\linewidth]{fig/chapt6/Muon-ClS-1D-5200-gRPC-INFN.pdf}
 			\caption{\label{fig:cluster-size-1D:C} \SI{5324}{V}}
 		\end{subfigure}
 		\begin{subfigure}{.33\linewidth}
 		    \centering
-			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-1D-5300-gRPC-INFN.pdf}
+			\includegraphics[width=1.1\linewidth]{fig/chapt6/Muon-ClS-1D-5300-gRPC-INFN.pdf}
 			\caption{\label{fig:cluster-size-1D:D} \SI{5423}{V}}
 		\end{subfigure}
 		\begin{subfigure}{.33\linewidth}
 		    \centering
-			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-1D-5400-gRPC-INFN.pdf}
+			\includegraphics[width=1.1\linewidth]{fig/chapt6/Muon-ClS-1D-5400-gRPC-INFN.pdf}
 			\caption{\label{fig:cluster-size-1D:E} \SI{5524}{V}}
 		\end{subfigure}
 		\begin{subfigure}{.33\linewidth}
 		    \centering
-			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-1D-5500-gRPC-INFN.pdf}
+			\includegraphics[width=1.1\linewidth]{fig/chapt6/Muon-ClS-1D-5500-gRPC-INFN.pdf}
 			\caption{\label{fig:cluster-size-1D:F} \SI{5630}{V}}
 		\end{subfigure}
 		\caption{\label{fig:cluster-size-1D} Evolution of the cluster size distribution with increasing voltage for the gRPC tested with the INFN preamplifiers using a threshold of \SI{5}{fC}.}
@@ -420,32 +494,32 @@ ChHit3	THit3
 	\begin{figure}[H]
 		\begin{subfigure}{.33\linewidth}
 		    \centering
-			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-5000-gRPC-INFN.pdf}
+			\includegraphics[width=1.1\linewidth]{fig/chapt6/Muon-ClS-5000-gRPC-INFN.pdf}
 			\caption{\label{fig:cluster-size-2D:A} \SI{5120}{V}}
 		\end{subfigure}
 		\begin{subfigure}{.33\linewidth}
 		    \centering
-			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-5100-gRPC-INFN.pdf}
+			\includegraphics[width=1.1\linewidth]{fig/chapt6/Muon-ClS-5100-gRPC-INFN.pdf}
 			\caption{\label{fig:cluster-size-2D:B} \SI{5222}{V}}
 		\end{subfigure}
 		\begin{subfigure}{.33\linewidth}
 		    \centering
-			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-5200-gRPC-INFN.pdf}
+			\includegraphics[width=1.1\linewidth]{fig/chapt6/Muon-ClS-5200-gRPC-INFN.pdf}
 			\caption{\label{fig:cluster-size-2D:C} \SI{5324}{V}}
 		\end{subfigure}
 		\begin{subfigure}{.33\linewidth}
 		    \centering
-			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-5300-gRPC-INFN.pdf}
+			\includegraphics[width=1.1\linewidth]{fig/chapt6/Muon-ClS-5300-gRPC-INFN.pdf}
 			\caption{\label{fig:cluster-size-2D:D} \SI{5423}{V}}
 		\end{subfigure}
 		\begin{subfigure}{.33\linewidth}
 		    \centering
-			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-5400-gRPC-INFN.pdf}
+			\includegraphics[width=1.1\linewidth]{fig/chapt6/Muon-ClS-5400-gRPC-INFN.pdf}
 			\caption{\label{fig:cluster-size-2D:E} \SI{5524}{V}}
 		\end{subfigure}
 		\begin{subfigure}{.33\linewidth}
 		    \centering
-			\includegraphics[width=\linewidth]{fig/chapt6/Muon-ClS-5500-gRPC-INFN.pdf}
+			\includegraphics[width=1.1\linewidth]{fig/chapt6/Muon-ClS-5500-gRPC-INFN.pdf}
 			\caption{\label{fig:cluster-size-2D:F} \SI{5630}{V}}
 		\end{subfigure}
 		\caption{\label{fig:cluster-size-2D} Map of the cluster size distribution as a function of the cluster position with increasing voltage for the gRPC tested with the INFN preamplifiers using a threshold of \SI{5}{fC}.}
@@ -470,17 +544,17 @@ ChHit3	THit3
     \begin{figure}[H]
 		\begin{subfigure}{.5\linewidth}
 		    \centering
-			\includegraphics[width=\linewidth]{fig/chapt6/Muon-Time-Profile-gRPC-CMS-FEB.pdf}
+			\includegraphics[width = .9\linewidth]{fig/chapt6/Muon-Time-Profile-gRPC-CMS-FEB.pdf}
 			\caption{\label{fig:time-profiles:A}}
 		\end{subfigure}
 		\begin{subfigure}{.5\linewidth}
 		    \centering
-			\includegraphics[width = \linewidth]{fig/chapt6/Muon-Time-Profile-gRPC-INFN.pdf}
+			\includegraphics[width = .9\linewidth]{fig/chapt6/Muon-Time-Profile-gRPC-INFN.pdf}
 			\caption{\label{fig:time-profiles:B}}
 		\end{subfigure}
 		\begin{subfigure}{\linewidth}
 		    \centering
-			\includegraphics[width = .5\linewidth]{fig/chapt6/Muon-Time-Profile-RE4-INFN.pdf}
+			\includegraphics[width = .45\linewidth]{fig/chapt6/Muon-Time-Profile-RE2-INFN.pdf}
 			\caption{\label{fig:time-profiles:C}}
 		\end{subfigure}
 		\caption{\label{fig:time-profiles} The arrival time of the hits recorded in the gRPC tested with the CMS FEB (Figure~\ref{fig:time-profiles:A}) and with the INFN preamplifiers (Figure~\ref{fig:time-profiles:B}), and recorded in the CMS RE2 RPC tested with the INFN preamplifiers (Figure~\ref{fig:time-profiles:C}).}
@@ -489,7 +563,7 @@ ChHit3	THit3
 	\subsection{HARDROC 2 based RPC read-out}
 	\label{chapt6:ssec:HARDROC2}
 	
-	The \acf{HARDROC} ASIC, as its name suggests, has been developped for RPC applications and in particular for the read-out RPCs of the \acf{SDHCAL} that is being studied in the perspective of the \acf{ILC}. The SDHCAL detectors are required to have a high granularity compared to the CMS RPCs and hence, they use \SI{1}{cm^2} read-out pads instead of strips. This choice results in a huge number of channels. The ASIC is mounted directly on the read-out pannel for compactness as can be seen in Figure~\ref{fig:Setup-HARDROC2:A} and feature three thresholds to provide a semi-digital information.
+	The \acf{HARDROC} ASIC, as its name suggests, has been developped for RPC applications and in particular for the read-out RPCs of the SDHCAL that is being studied in the perspective of the \acf{ILC}. The SDHCAL detectors are required to have a high granularity compared to the CMS RPCs and hence, they use \SI{1}{cm^2} read-out pads instead of strips. This choice results in a huge number of channels. The ASIC is mounted directly on the read-out pannel for compactness as can be seen in Figure~\ref{fig:Setup-HARDROC2:A} and feature three thresholds to provide a semi-digital information.
 	
 	The PETIROC that inspired the CMS RPCROC uses a similar technology than the one developed for the HARDROC and is manufactured by the same company. It is safe to conclude that the preliminary results obtained with the HARDROC electronics constitute a strong indication on the potential performance of a FEB developped specifically for CMS detectors. The leading institute in the development of the SDHCAL based on single-gap \acf{gRPCs} is the \acf{IPNL} which also played a great role in developing iRPCs for CMS.
 	
@@ -554,7 +628,7 @@ ChHit3	THit3
 		\end{tabular}
 	\end{table}
 	
-	The results of the tests conducted with the HARDROC 2 on a CMS gap are presented in Figure~\ref{fig:HARDROC2} and Table~\ref{tab:HARDROC2}. These results can hardly be compared to what was measured with the INFN preamplifiers as the detector was not tested using the single-gap mode. The tested thresholds are high compared to the ones displayed by the INFN preamplifiers and are of the order of magnitude of the current CMS FEB. Nevertheless, the performance of the detector equipped with this read-out pannel is measured to be better. Indeed, a shift of 400 to \SI{500}{V} is observed at thresholds ranging from 230 to \SI{121.4}{fC}. \textbf{[Here it could be nice to bring an explaination to this observation.]}
+	The results of the tests conducted with the HARDROC 2 on a CMS gap are presented in Figure~\ref{fig:HARDROC2} and Table~\ref{tab:HARDROC2}. These results can hardly be compared to what was measured with the INFN preamplifiers as the detector was not tested using the single-gap mode. The tested thresholds are high compared to the ones displayed by the INFN preamplifiers and are of the order of magnitude of the current CMS FEB. Nevertheless, the performance of the detector equipped with this read-out pannel is measured to be better. Indeed, a shift of 400 to \SI{500}{V} is observed at thresholds ranging from 230 to \SI{121.4}{fC}. \textit{This could be explained by the difference in read-out channel areas of both read-out panels. Indeed, in the case of the standard CMS RPC, the read-out panel consists in relatively large trapezoidal strips when the read-out of the HARDROC 2 is composed of \SI{1}{cm^2} pads. Due to the cross-talk between adjacent channels, the charge produced by a growing avalanche is spread over a larger surface in the case of the standard CMS RPC, leading to a smaller signal relative to the pads.} \textbf{[This is only I idea to explain this phenomenon for now. It needs croos check. If approved, I would need to quantify the expected difference.]}
 	
 	The cluster size is provided for information as a direct comparison of the cluster size measured with \SI{1}{cm^2} pads and long copper strips with width of a few \si{cm} is not possible. The measured cluster size at working voltage with the CMS FEB is consistent with what would be expected of a single-gap RPC. Indeed, the usage of two gaps in an OR system allows for a stronger overall gain and hence, the cluster size is greater. A more precise estimation of the charge spread inside of the gap is obtained using pads instead of strips. At working voltage, an avalanche is detected within less than two pads on average. An extra information could be used to further improve the spatial resolution of the detector. Indeed, as stated in the introduction  of the Section, the HARDROC 2 is a semi-digital electronics and features three threshold levels. Tuning these thresholds would lead to an approximation of the induced charge profile over the neighbouring pads. A gaussian fit over the digitized distribution would give an estimation of the position of the avalanche center.
 	
@@ -611,7 +685,7 @@ HARDROC 2, 143fC (2015) & $0.966 \pm 0.004$ & $0.64 \pm 0.02$ & $5179 \pm 7$ & $
 		\end{tabular}
 	\end{table}
 	
-	Finally, the noise measured in the electronics seemed higher than in the case of the CMS gap. Looking closer to the noise profile provided in Figure~\ref{fig:HARDROC2-gRPC-profiles}, it can be seen that the noise measurement was affected by the HV connector. Indeed, the high noise measured in pads 41 and 42 along X and 22 to 25 along Y, corresponds exactly to the position of the HV connector on the cathode side. Contrary to the case of the CMS gap were the HV connector was far from the read-out area, the gRPC is smaller than the read-out and due to the poor grounding of the setup the electric field created by the HV connector could affect the read-out. Exclusing the corresponding pads gives a much more reliable noise measurement as can be seen in Figure~\ref{fig:HARDROC2-gRPC:C}. Through the noise profile, a better understanding of the gRPC uniformity can be obtained. First of all, the row corresponding to Y=16 seem consistently noisier than the neighbouring pads an could correspond to the glueing line that lies along this pad row. The noise increase along this line is not very clear though and no corresponding behaviour can be observed along the other glueing line along column X=30. But the gas volume corresponding to the largest glass plate, spreading from columns 31 to 47 along X and rows 1 to 15 clearly shows a stronger noise in it's center. The detection area being small, only a few ceramic ball spacers were used to maintain the distance in between the electrodes. It not impossible that the ball spacer located in the center of this very volume popped out. Due to the absence of a spacer, the force applied by electric field onto the electrodes could have made the distance in between the electrodes smaller and artificially increased the observed electric field, also increasing the measured noise.
+	Finally, the noise measured in the electronics seemed higher than in the case of the CMS gap. Looking closer to the noise profile provided in Figure~\ref{fig:HARDROC2-gRPC-profiles}, it can be seen that the noise measurement was affected by the HV connector. Indeed, the high noise measured in pads 41 and 42 along X and 22 to 25 along Y, corresponds exactly to the position of the HV connector on the cathode side. Contrary to the case of the CMS gap were the HV connector was far from the read-out area, the gRPC is smaller than the read-out and due to the poor grounding of the setup the electric field created by the HV connector could affect the read-out. Excluding the corresponding pads gives a much more reliable noise measurement as can be seen in Figure~\ref{fig:HARDROC2-gRPC:C}. Through the noise profile, a better understanding of the gRPC uniformity can be obtained. First of all, the row corresponding to Y=16 seem consistently noisier than the neighbouring pads an could correspond to the glueing line that lies along this pad row. The noise increase along this line is not very clear though and no corresponding behaviour can be observed along the other glueing line along column X=30. But the gas volume corresponding to the largest glass plate, spreading from columns 31 to 47 along X and rows 1 to 15 clearly shows a stronger noise in it's center. The detection area being small, only a few ceramic ball spacers were used to maintain the distance in between the electrodes. It not impossible that the ball spacer located in the center of this very volume popped out. Due to the absence of a spacer, the force applied by electric field onto the electrodes could have made the distance in between the electrodes smaller and artificially increased the observed electric field, also increasing the measured noise.
 	 
 	\begin{figure}[H]
 		\begin{subfigure}{.5\linewidth}
@@ -627,15 +701,129 @@ HARDROC 2, 143fC (2015) & $0.966 \pm 0.004$ & $0.64 \pm 0.02$ & $5179 \pm 7$ & $
 		\caption{\label{fig:HARDROC2-gRPC-profiles} Measured muon (Figure~\ref{fig:HARDROC2-gRPC-profiles:A}) and noise (Figure~\ref{fig:HARDROC2-gRPC-profiles:A}) profiles in the read-out pads of the HARDROC 2 over a gRPC gap built by Ghent.}
     \end{figure}
     
-	\section{Outlook and current FEE certification status}
+	\section{Outlook on the current FEE certification status}
 	\label{chapt6:sec:outlooks}
+	
+	In this Section will be presnted the ongoing certification of the CMS RPCROC and of the INFN Tor Vergata FEBs chosen as back-up solution. For reference, an iRPC has been operated without irradiation with the standard CMS FEB. It is reminded that the iRPCs that will complete the redundancy of the muon system of CMS close to the beam line are expected to suffer a background hit rate per unit area of \SIrate{600}. Including a safety factor of 3, it is then necessary for the detectors to be certified at a minimal background hit rate of \SIkrate{2}.
+	
+		\subsection{CMS \acl{FEB} reference}
+		\label{chapt6:ssec:CMSFEBref}
+		
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.9\linewidth]{fig/chapt6/iRPC-CMS_FEB-Setup.png}
+		\caption{\label{fig:iRPC_CMS_Setup} Experimental setup used to test the iRPC equipped with the standard CMS FEEs. Seven of the 96 strips are connected to the read-out channels.}
+    \end{figure}
+    
+    The iRPCs that will be installed at CMS will be equipped with new \acl{FEE}. Nevertheless, in order to compare the performance of the new electronics with the standard CMS FEBs, a series of short characterization tests was carried out with an iRPC prototype. Seven strips of a read-out panel designed for a back-up scenario detector were connected to a CMS FEB. The remaining strips were connected to the ground to avoid noise. The tests were done without irradiation and using cosmic muons. Two narrow scintillators were placed on each side of the prototype to provide a trigger signal as can be seen from Figure~\ref{fig:iRPC_CMS_Setup}. The tests were performed with three detection thresholds of \SI{200}{mV} ($\approx$\SI{133}{fC}), \SI{210}{mV} ($\approx$\SI{140}{fC}) and \SI{220}{mV} ($\approx$\SI{146}{fC}) on the FEB discriminators. The LVDS output of the FEB was then read-out with a CAEN TDC.\\
+    The HV scans consisted of seven effective voltage steps (6800, 7000, 7100, 7200, 7300, 7400 and \SI{7500}{V}) at which 100 muon triggers were requested as minimal statistics. The hit profile over the connected strips as well as the time profile of the events in each channel is provided in Figure~\ref{fig:iRPC_CMS_Profiles} for the fifth HV step (\SI{7300}{HV}). The area covered by the trigger is seen to be comparable than the width of the seven strips. The time arrival of the hits is well confined within less than \SI{50}{ns}.
+    
+    \begin{table}[H]
+		\caption{\label{tab:iRPC-FEB} Summary results of the iRPC operated with a standard CMS RPC FEB.}
+		\footnotesize
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Threshold (\si{fC}) & Working Voltage (\si{V}) & Efficiency (\%) & Cluster Size    & Multiplicity    & Noise (\sirate)\\ 
+\hline
+146                 & $7552 \pm 57$            & $96.6 \pm 1.8$  & $2.34 \pm 0.11$ & $1.02 \pm 0.03$ & $0.21$         \\ 
+\hline
+140                 & $7473 \pm 49$            & $97.0 \pm 2.5$  & $2.52 \pm 0.18$ & $0.99 \pm 0.07$ & $0.38$         \\ 
+\hline
+133                 & $7393 \pm 45$            & $96.9 \pm 3.0$  & $2.34 \pm 0.15$ & $0.97 \pm 0.07$ & $0.30$         \\ 
+\hline
+		\end{tabular}
+	\end{table}
+    
+    The results for this kind of electronics are to be found in Figure~\ref{fig:iRPC_CMS_Result}. First of all, the efficiency at working voltage of the detector reaches 96.9\% at a threshold of \SI{146}{fC}, 97.0\% at \SI{140}{fC} and finally 96.6\% at \SI{133}{fC}. The efficiency does not seem to be affected by a change of threshold. The working voltage, on the other hand, is shifted towards lower effective voltage values with decreasing threshold. The values of working voltages respectively are 7552, 7473 and \SI{7393}{V}. This is expected by the lower gain necessary to produce large enough avalanches. No other differences can be observed at the level of the mean muon cluster sizes, mean muon cluster multiplicity per event and noise rate per unit area. The mean muon cluster size stays of the order of 2.4 strips per cluster and the muon cluster multiplicity, which is the number of reconstructed muon clusters per event, is consistent with 1 as expected. Finally, the noise rate per unit area is below \SIrate{1}. The results are summarized in Table~\ref{tab:iRPC-FEB}.
+
+	\begin{figure}[H]
+		\begin{subfigure}{0.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-CMS_FEB-HitProfile.png}
+			\caption{\label{fig:iRPC_CMS_Profiles:A}}
+		\end{subfigure}
+		\begin{subfigure}{0.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-CMS_FEB-TimeProfile.png}
+			\caption{\label{fig:iRPC_CMS_Profiles:B}}
+		\end{subfigure}
+		\caption{\label{fig:iRPC_CMS_Profiles} \subref{fig:iRPC_CMS_Profiles:A} Distribution of the muon hits on the seven strips connected to the standard CMS FEB. Strip 8 is connected to the ground. \subref{fig:iRPC_CMS_Profiles:B} Time distribution of the hits in the seven channels. The color scale corresponds to the number of hits per bin.}
+    \end{figure}
+	 
+	\begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-CMS_FEB-muonEfficiency.pdf}
+			\caption{\label{fig:iRPC_CMS_Result:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-CMS_FEB-thrs_CLS.pdf}
+			\caption{\label{fig:iRPC_CMS_Result:B}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-CMS_FEB-thrs_CMP.pdf}
+			\caption{\label{fig:iRPC_CMS_Result:C}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-CMS_FEB-thrs_noiseRate.pdf}
+			\caption{\label{fig:iRPC_CMS_Result:D}}
+		\end{subfigure}
+		\caption{\label{fig:iRPC_CMS_Result} Summary of the HV scans performed on the iRPC prototype equipped with a standard CMS FEB at three detection thresholds. \subref{fig:iRPC_CMS_Result:A} Efficiency sigmoids. \subref{fig:iRPC_CMS_Result:B} Mean muon cluster size at working voltage. \subref{fig:iRPC_CMS_Result:C} Mean muon cluster multiplicity at working voltage. \subref{fig:iRPC_CMS_Result:D} Noise hit rate per unit area at working voltage.}
+    \end{figure}
 	
 		\subsection{CMS RPCROC}
 		\label{chapt6:ssec:RPCROCcert}
 	
 		\subsection{INFN FEE}
-		\label{chapt6:ssec:RPCROCcert}
+		\label{chapt6:ssec:INFNcert}
 		
-		
+	An iRPC prototype equipped with the INFN Tor Vergata FEBs and a longitudinal read-out panel alone was placed at the GIF++ for certification purposes. The chamber was tested for different irradiation values.
+	 
+	\begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/CMS-iRPC-INFN-Current_vs_Rate.pdf}
+			\caption{\label{fig:iRPC_INFN_perf:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/CMS-iRPC-INFN-WorkingPoint_vs_Rate.pdf}
+			\caption{\label{fig:iRPC_INFN_perf:B}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/CMS-iRPC-INFN-MuonEfficiency_vs_Rate.pdf}
+			\caption{\label{fig:iRPC_INFN_perf:C}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/CMS-iRPC-INFN-FakeEfficiency_vs_Rate.pdf}
+			\caption{\label{fig:iRPC_INFN_perf:D}}
+		\end{subfigure}
+		\caption{\label{fig:iRPC_INFN_perf} }
+    \end{figure}
+	 
+	\begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/CMS-iRPC-INFN-ClusterSize_vs_Rate.pdf}
+			\caption{\label{fig:iRPC_INFN_clust:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/CMS-iRPC-INFN-ClusterMultiplicity_vs_Rate.pdf}
+			\caption{\label{fig:iRPC_INFN_clust:B}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/CMS-iRPC-INFN-GammaCharge_vs_Rate.pdf}
+			\caption{\label{fig:iRPC_INFN_clust:C}}
+		\end{subfigure}
+		\caption{\label{fig:iRPC_INFN_clust} }
+    \end{figure}
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
