@@ -50,7 +50,7 @@
 	\end{figure}
 	
 	Nevertheless, to adapt this ASIC to CMS, modifications were brought to the PETIROC~\cite{PHASEIITP} and not all its functions will be used~\cite{COMBARET2018}. Due to the radiation levels that are foreseen at the level of the iRPCs, the SiGe technology will be replaced by the Taiwan Semiconductor Manufacturing Company (TSMC) \SI{130}{nm} CMOS, to increase its radiation hardness while keeping fast pre-amplification and discrimination. On the \acl{FEB}, the ASIC is associated with an FPGA which purpose is to measure the arrival time of the signals. The FPGA is equipped with a TDC with a time resolution of 50-100 \si{ps} developed by Tsinghua University. The full system will provide a measurement of the signal position along the strip with a precision of a few \si{cm} by reading the signal on both strip ends. Finally, the measurement of the charge will be performed by a \acf{ToT} technic, taking profit of the capacity the ASIC in measuring both the leading and trailing edges of the input signals.\\
-	Two consecutive versions of the RPCROC are showed in Figure~\ref{fig:RPCROC_FEB}. FEBv0 was equipped with a single PETIROC 2A associated to a Cyclone II FPGA and the FEBv1 with two PETIROC 2A associated to a Cyclone V FPGA. The next version, the FEBv2 is expected to be equipped with three PETIROC 2C, the new generation of the ASIC, associated to three Cyclone V FPGAs hosting the 32-channel TDCs and a master Cyclone V FPGA for the communications of the TDCs with the Link-Board system. The PETIROC 2B was a version of the ASIC with less cross-talk than the 2A. The dynamic range could then be expanded towards lower values to allow for the detection of charges as low as \SI{50}{fC}. The version 2C will focus on reducing the dead-time of \SI{10}{ns} of the ASIC. Also, the Cyclone V FPGAs of the FEBv2 will use a different technology than the one used for FEBv1. The choice has been made to use a radiation tolerant PolarFire FPGA which uses data scrubbing to detect and correct errors before they accumulate. This technology is for example used for space applications. The FEB will be tested at the \acf{LLN} neutron beam. The goal is to irradiate the electronics up to a fluence of \Ord{14}\,\si{pC/cm^2}, five times more than what is expected at CMS, to certify its radiation hardness.\\
+	Two consecutive versions of the RPCROC are showed in Figure~\ref{fig:RPCROC_FEB}. FEBv0 was equipped with a single PETIROC 2A associated to a Cyclone II FPGA. FEBv1 was in turn equipped with two PETIROC 2A and then, in a later version, with two PETIROC 2B. In both cases, the ASICs were associated to a Cyclone V FPGA. The next version, the FEBv2 is expected to be equipped with three PETIROC 2C, the new generation of the ASIC, associated to three Cyclone V FPGAs hosting the 32-channel TDCs and a master Cyclone V FPGA for the communications of the TDCs with the Link-Board system. The PETIROC 2B was a version of the ASIC with less cross-talk than the 2A. The dynamic range could then be expanded towards lower values to allow for the detection of charges as low as \SI{50}{fC}. The version 2C will focus on reducing the dead-time of \SI{10}{ns} of the ASIC. Also, the Cyclone V FPGAs of the FEBv2 will use a different technology than the one used for FEBv1. The choice has been made to use a radiation tolerant PolarFire FPGA which uses data scrubbing to detect and correct errors before they accumulate. This technology is for example used for space applications. The FEB will be tested at the \acf{LLN} neutron beam. The goal is to irradiate the electronics up to a fluence of \Ord{14}\,\si{pC/cm^2}, five times more than what is expected at CMS, to certify its radiation hardness.\\
 
 	\begin{figure}[H]
 		\begin{subfigure}{0.5\linewidth}
@@ -783,6 +783,51 @@ Threshold (\si{fC}) & Working Voltage (\si{V}) & Efficiency (\%) & Cluster Size 
 	
 		\subsection{CMS RPCROC}
 		\label{chapt6:ssec:RPCROCcert}
+		
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.9\linewidth]{fig/chapt6/iRPC-RPCROC-H2.png}
+		\caption{\label{fig:RPCROCv0_H2} Experimental setup used along the H2 muon beam at CERN to measure the linearity between beam position along the strip length and the time difference measured between both strip ends with the version 0 of the RPCROC.}
+    \end{figure}
+	 
+	\begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-RPCROC-TimeResolution.png}
+			\caption{\label{fig:RPCROCv0_Res:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-RPCROC-Linearity.png}
+			\caption{\label{fig:RPCROCv0_Res:B}}
+		\end{subfigure}
+		\caption{\label{fig:RPCROCv0_Res} \subref{fig:RPCROCv0_Res:A} Average time resolution of the iRPC equipped with an RPCROC FEBv0. \subref{fig:RPCROCv0_Res:B} Linearity between reconstructed beam position along the strip length and the time difference measured between both strip ends.}
+    \end{figure}
+		
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 0.9\linewidth]{fig/chapt6/iRPC-RPCROC-GIFpp.png}
+		\caption{\label{fig:RPCROCv1_GIFpp} Experimental setup used at the GIF++ to certify the iRPC equipped with the RPCROC version 1. The chamber is placed along the beam line in front the Cesium source.}
+    \end{figure}
+	 
+	\begin{figure}[H]
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-RPCROC-GIFpp-SourceOFF.png}
+			\caption{\label{fig:RPCROCv1_Res:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-RPCROC-GIFpp-SourceON-2kHz.png}
+			\caption{\label{fig:RPCROCv1_Res:B}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+		    \centering
+			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-RPCROC-GIFpp-SourceON-3kHz.png}
+			\caption{\label{fig:RPCROCv1_Res:C}}
+		\end{subfigure}
+		\caption{\label{fig:RPCROCv1_Res} }
+    \end{figure}
 	
 		\subsection{INFN FEE}
 		\label{chapt6:ssec:INFNcert}
@@ -790,9 +835,17 @@ Threshold (\si{fC}) & Working Voltage (\si{V}) & Efficiency (\%) & Cluster Size 
 	An iRPC prototype equipped with the INFN Tor Vergata FEBs and a longitudinal read-out panel alone was placed at the GIF++ for certification purposes. The chamber was tested for different irradiation values.
 	 
 	\begin{figure}[H]
-		\centering
-		\includegraphics[width = 0.8\linewidth]{fig/chapt6/INFN-FEB-iRPC.png}
-		\caption{\label{fig:INFN-iRPC} iRPC prototype equipped with INFN Tor Vergata FEBs. The iRPC is enclosed in a spare RE1/3 case. The dimensions of the RE3/1 and RE4/1 iRPCs is in fact much smaller.}
+		\begin{subfigure}{.5\linewidth}
+			\centering
+			\includegraphics[width = 0.8\linewidth]{fig/chapt6/INFN-FEB-iRPC.png}
+			\caption{\label{fig:INFN-iRPC:A}}
+		\end{subfigure}
+		\begin{subfigure}{.5\linewidth}
+			\centering
+			\includegraphics[width = 0.8\linewidth]{fig/chapt6/INFN-FEB-iRPC-GIFpp.png}
+			\caption{\label{fig:INFN-iRPC:B}}
+		\end{subfigure}
+		\caption{\label{fig:INFN-iRPC} \subref{fig:INFN-iRPC:A} iRPC prototype equipped with INFN Tor Vergata FEBs. The iRPC is enclosed in a spare RE1/3 case. The dimensions of the RE3/1 and RE4/1 iRPCs is in fact much smaller. \subref{fig:INFN-iRPC:B} Experimental setup used at the GIF++ to certify the iRPC equipped with the INFN Tor Vergata FEB. The detector is in the beam line in front of the Cesium source.}
     \end{figure}
 	 
 	\begin{figure}[H]
