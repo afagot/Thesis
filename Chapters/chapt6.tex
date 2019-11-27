@@ -50,7 +50,7 @@
 	\end{figure}
 	
 	Nevertheless, to adapt this ASIC to CMS, modifications were brought to the PETIROC~\cite{PHASEIITP} and not all its functions will be used~\cite{COMBARET2018}. Due to the radiation levels that are foreseen at the level of the iRPCs, the SiGe technology will be replaced by the Taiwan Semiconductor Manufacturing Company (TSMC) \SI{130}{nm} CMOS, to increase its radiation hardness while keeping fast pre-amplification and discrimination. On the \acl{FEB}, the ASIC is associated with an FPGA which purpose is to measure the arrival time of the signals. The FPGA is equipped with a TDC with a time resolution of 50-100 \si{ps} developed by Tsinghua University. The full system will provide a measurement of the signal position along the strip with a precision of a few \si{cm} by reading the signal on both strip ends. Finally, the measurement of the charge will be performed by a \acf{ToT} technic, taking profit of the capacity the ASIC in measuring both the leading and trailing edges of the input signals.\\
-	Two consecutive versions of the RPCROC are showed in Figure~\ref{fig:RPCROC_FEB}. FEBv0 was equipped with a single PETIROC 2A associated to a Cyclone II FPGA. FEBv1 was in turn equipped with two PETIROC 2A and then, in a later version, with two PETIROC 2B. In both cases, the ASICs were associated to a Cyclone V FPGA. The next version, the FEBv2 is expected to be equipped with three PETIROC 2C, the new generation of the ASIC, associated to three Cyclone V FPGAs hosting the 32-channel TDCs and a master Cyclone V FPGA for the communications of the TDCs with the Link-Board system. The PETIROC 2B was a version of the ASIC with less cross-talk than the 2A. The dynamic range could then be expanded towards lower values to allow for the detection of charges as low as \SI{50}{fC}. The version 2C will focus on reducing the dead-time of \SI{10}{ns} of the ASIC. Also, the Cyclone V FPGAs of the FEBv2 will use a different technology than the one used for FEBv1. The choice has been made to use a radiation tolerant PolarFire FPGA which uses data scrubbing to detect and correct errors before they accumulate. This technology is for example used for space applications. The FEB will be tested at the \acf{LLN} neutron beam. The goal is to irradiate the electronics up to a fluence of \Ord{14}\,\si{pC/cm^2}, five times more than what is expected at CMS, to certify its radiation hardness.\\
+	Two consecutive versions of the RPCROC are showed in Figure~\ref{fig:RPCROC_FEB}. FEBv0 was equipped with a single PETIROC 2A associated to a Cyclone II FPGA. FEBv1 was in turn equipped with two PETIROC 2A and then, in a later version, with two PETIROC 2B. In both cases, the ASICs were associated to a Cyclone V FPGA. The PETIROC 2B was a version of the ASIC with less cross-talk than the 2A. The dynamic range could then be expanded towards lower values to allow for the detection of charges as low as \SI{50}{fC}. The next version, the FEBv2 is expected to be equipped with three PETIROC 2C, the new generation of the ASIC, associated to three Cyclone V FPGAs hosting the 32-channel TDCs and a master Cyclone V FPGA for the communications of the TDCs with the Link-Board system. The version 2C will focus on reducing the dead-time of \SI{10}{ns} of the ASIC. Also, the Cyclone V FPGAs of the FEBv2 will use a different technology than the one used for FEBv1. The choice has been made to use a radiation tolerant PolarFire FPGA which uses data scrubbing to detect and correct errors before they accumulate. This technology is for example used for space applications. The FEB will be tested at the \acf{LLN} neutron beam. The goal is to irradiate the electronics up to a fluence of \Ord{14}\,\si{pC/cm^2}, five times more than what is expected at CMS, to certify its radiation hardness.\\
 
 	\begin{figure}[H]
 		\begin{subfigure}{0.5\linewidth}
@@ -709,7 +709,7 @@ HARDROC 2, 143fC (2015) & $0.966 \pm 0.004$ & $0.64 \pm 0.02$ & $5179 \pm 7$ & $
 	\section{Outlook on the current FEE certification status}
 	\label{chapt6:sec:outlooks}
 	
-	In this Section will be presnted the ongoing certification of the CMS RPCROC and of the INFN Tor Vergata FEBs chosen as back-up solution. For reference, an iRPC has been operated without irradiation with the standard CMS FEB. It is reminded that the iRPCs that will complete the redundancy of the muon system of CMS close to the beam line are expected to suffer a background hit rate per unit area of \SIrate{600}. Including a safety factor of 3, it is then necessary for the detectors to be certified at a minimal background hit rate of \SIkrate{2}.
+	In this Section will be presented the ongoing certification of the CMS RPCROC and of the INFN Tor Vergata FEBs chosen as back-up solution. For reference, an iRPC has been operated without irradiation with the standard CMS FEB. It is reminded that the iRPCs that will complete the redundancy of the muon system of CMS close to the beam line are expected to suffer a background hit rate per unit area of \SIrate{600}. Including a safety factor of 3, it is then necessary for the detectors to be certified at a minimal background hit rate of \SIkrate{2}.
 	
 		\subsection{CMS \acl{FEB} reference}
 		\label{chapt6:ssec:CMSFEBref}
@@ -783,12 +783,19 @@ Threshold (\si{fC}) & Working Voltage (\si{V}) & Efficiency (\%) & Cluster Size 
 	
 		\subsection{CMS RPCROC}
 		\label{chapt6:ssec:RPCROCcert}
-		
-	\begin{figure}[H]
+
+\begingroup\setlength{\intextsep}{0pt}\setlength{\columnsep}{15pt}
+	
+	\begin{wrapfigure}{O}{0.5\linewidth}
 		\centering
 		\includegraphics[width = 0.9\linewidth]{fig/chapt6/iRPC-RPCROC-H2.png}
 		\caption{\label{fig:RPCROCv0_H2} Experimental setup used along the H2 muon beam at CERN to measure the linearity between beam position along the strip length and the time difference measured between both strip ends with the version 0 of the RPCROC.}
-    \end{figure}
+    \end{wrapfigure}
+		
+	Several iRPCs equipped with different versions of RPCROCs have been assembled and tested. This process helped identifying the weaknesses of the FEEs and propose new improved versions. The last piece of the R\&D process will be the FEBv2 equipped with three PETIROC 2C ASICs, three Cyclone V FPGAs hosting the TDCs, and a fourth FPGA to communicate with the back-end electronics.\\
+	In a first series of tests performed along the muon beam line H2 at CERN, the FEBv0 was certified for time resolution performances and linearity between the time difference of recorded muon signals measured at both strip ends and the beam position along the strip length. The experimental setup is shown in Figure~\ref{fig:RPCROCv0_H2} on which two iRPCs are placed between two narrow scintillators for a precise knowledge of the position of the beam.
+	
+\endgroup
 	 
 	\begin{figure}[H]
 		\begin{subfigure}{.5\linewidth}
@@ -803,6 +810,21 @@ Threshold (\si{fC}) & Working Voltage (\si{V}) & Efficiency (\%) & Cluster Size 
 		\end{subfigure}
 		\caption{\label{fig:RPCROCv0_Res} \subref{fig:RPCROCv0_Res:A} Average time resolution of the iRPC equipped with an RPCROC FEBv0. \subref{fig:RPCROCv0_Res:B} Linearity between reconstructed beam position along the strip length and the time difference measured between both strip ends.}
     \end{figure}
+	
+    \begin{equation}
+		\label{eq:Y-determ}
+		\begin{aligned}
+			Y &= \frac{L}{2} - \frac{v}{2} \times (T_{HR}-T_{LR})\\
+			\Delta Y &= \frac{v}{2} \times \Delta(T_{HR}-T_{LR})
+		\end{aligned}
+    \end{equation}
+		
+	The mean time difference between the signals measured at the high-radius (HR) and low-radius (LR) is given in Figure~\ref{fig:RPCROCv0_Res:A}. The time resolution of the measurement is of \SIerror{252}{4}{ps}. The velocity of propagation $v$ of the signals along the strips was reported to be of \SI{1}{m} per \SI{5.25}{ns}. According to Equation~\ref{eq:Y-determ}, in which $L$ is the length of the strip, $Y$ the position along the strip, and $T_{HR}$ and $T_{LR}$ the measured arrival time at the high-radius and low-radius ends of the strip, the spatial resolution $\Delta Y$ along the strip is then of the order of \SI{2}{cm}. The linearity between the time difference and the position of a hit along the strip length could then be studied with a good precision as can be seen in Figure~\ref{fig:RPCROCv0_Res:B}.
+    
+    Later on, a new iRPC was assembled with FEBv1 using first PETIROC 2A. This version is referred to as FEBv1.1a. Due to a large cross-talk limiting the detection to \SI{100}{fC}, the PETIROC 2A was replaced by the PETIROC 2B. The lower threshold for stable operation of the FEBv1.1b could be decreased to \SIerror{50}{10}{fC}. However, operation of the detector with lower thresholds ($\approx$ \SI{26}{10}{fC}) showed that part of the cross-talk could not be supressed.\\
+    The iRPC with FEBv1.1b was installed at the GIF++ as can be seen in Figure~\ref{fig:RPCROCv1_GIFpp}. The detector is placed along the muon beam line and irradiated by the Cesium source. The results are displayed in Figure~\ref{fig:RPCROCv1_Res}. In each plot, the detectors was respectively \subref{fig:RPCROCv1_Res:A} not irradiated, \subref{fig:RPCROCv1_Res:B} irradiated to a background rate per unit area of \SIerror{1.94}{0.25}{kHz/cm^2}, and \subref{fig:RPCROCv1_Res:C} irradiated to a background rate per unit area of \SIerror{3.0}{0.5}{kHz/cm^2}.\\
+    Without irradiation, the detector operated with detection threshold of \SIerror{50}{10}{fC} reached its working voltage approximatively \SI{140}{V} before the iRPC operated with the standard CMS FEB set to a threshold of \SI{133}{fC}. The efficiency at working voltage was of 97.4\%, comparable to the efficiency with the standard electronics.\\
+    Near the certification background rate of \SIkrate{2}, the detector's working voltage was shifted of almost \SI{100}{V} and its efficiency decreased to 95.2\%, demonstrating the good performance of the detector. When irradiated at \SIkrate{3}, the detectors working voltage was not shifted any further but its working efficiency had dropped to 92.5\%.
 		
 	\begin{figure}[H]
 		\centering
@@ -821,13 +843,30 @@ Threshold (\si{fC}) & Working Voltage (\si{V}) & Efficiency (\%) & Cluster Size 
 			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-RPCROC-GIFpp-SourceON-2kHz.png}
 			\caption{\label{fig:RPCROCv1_Res:B}}
 		\end{subfigure}
-		\begin{subfigure}{.5\linewidth}
+		\begin{subfigure}{\linewidth}
 		    \centering
-			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-RPCROC-GIFpp-SourceON-3kHz.png}
+			\includegraphics[width = .5\linewidth]{fig/chapt6/iRPC-RPCROC-GIFpp-SourceON-3kHz.png}
 			\caption{\label{fig:RPCROCv1_Res:C}}
 		\end{subfigure}
-		\caption{\label{fig:RPCROCv1_Res} }
+		\caption{\label{fig:RPCROCv1_Res} Efficiency scans obtained with the iRPC equipped with FEBv1.1b at the GIF++ \subref{fig:RPCROCv1_Res:A} without irradiation, \subref{fig:RPCROCv1_Res:B} for an irradiation of \SIerror{1.94}{0.25}{kHz/cm^2}, and \subref{fig:RPCROCv1_Res:C} for an irradiation of \SIerror{3.0}{0.5}{kHz/cm^2}.}
     \end{figure}
+    
+    \begin{table}[H]
+		\caption{\label{tab:RPCROCv1b} Summary results of the iRPC operated with a RPCROC FEBv1.1b set at a threshold of \SIerror{50}{10}{fC}.}
+		\footnotesize
+		\centering
+		\begin{tabular}{|c|c|c|}
+\hline
+Hit Rate (\sikrate) & Working Voltage (\si{kV}) & Efficiency (\%)\\ 
+\hline
+0                   & $7.25 \pm 0.07$           & $97.4 \pm 0.4$ \\
+\hline
+$1.94 \pm 0.25$     & $7.34 \pm 0.07$           & $95.2 \pm 0.8$ \\
+\hline
+$3.0 \pm 0.5$       & $7.34 \pm 0.07$           & $92.5 \pm 0.9$ \\ 
+\hline
+		\end{tabular}
+    \end{table}
 	
 		\subsection{INFN FEE}
 		\label{chapt6:ssec:INFNcert}
@@ -883,9 +922,9 @@ Threshold (\si{fC}) & Working Voltage (\si{V}) & Efficiency (\%) & Cluster Size 
 			\includegraphics[width = \linewidth]{fig/chapt6/CMS-iRPC-INFN-ClusterMultiplicity_vs_Rate.pdf}
 			\caption{\label{fig:iRPC_INFN_clust:B}}
 		\end{subfigure}
-		\begin{subfigure}{.5\linewidth}
+		\begin{subfigure}{\linewidth}
 		    \centering
-			\includegraphics[width = \linewidth]{fig/chapt6/CMS-iRPC-INFN-GammaCharge_vs_Rate.pdf}
+			\includegraphics[width = .5\linewidth]{fig/chapt6/CMS-iRPC-INFN-GammaCharge_vs_Rate.pdf}
 			\caption{\label{fig:iRPC_INFN_clust:C}}
 		\end{subfigure}
 		\caption{\label{fig:iRPC_INFN_clust} }
