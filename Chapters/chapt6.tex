@@ -12,8 +12,8 @@
 
 	The extension in the endcap of the RPC sub-system towards higher pseudo-rapidity will bring the new detectors to be exposed to much more intense background radiations due to the proximity of the detectors with the beam line (Figure~\ref{fig:Dose}). The challenge will be to produce high counting rate detectors with limited ageing rate to ensure a stable operation of the detector over a period longer than ten years. In Chapter~\ref{chapt3} was discussed the influence of the detector design (the number and the thickness of the gas volumes, double-gap design, etc...) on the charge deposition and rate capability. Nevertheless, this question can also be addressed from the electronics point of view as a better signal-to-noise ratio would also mean the possibility to greatly lower the charge threshold on the signals to be detected, allowing to use the detector at lower gain, hence lowering the charge deposition per avalanche in the gas volume. Cardarelli showed that the production of low-noise fast FEEs could help decreasing the charge deposition per avalanche at working voltage by an order of magnitude, virtually increasing the life expectancy of such a detector in the same way~\cite{CARDARELLI2012}.
 	
-	In this Chapter, the electronics that were chosen to equip the \acl{iRPCs} will be presented. These electronics are the CMS RPCROC. A similar technology has been previously used with RPCs in the context of the R\&D of a \acf{SDHCAL} for the \acf{ILD}. As back-up to the CMS RPCROC, a FEB developed by the INFN Tor Vergata in Rome as also been studied for the CMS iRPCs.\\
-	These two solutions for the iRPCs are the results of a longer selection process in which I took a great part. Thus, after an introduction of both technologies, the tests performed on CMS RPCs operated with preliminary versions of INFN Tor Vergata preamplifiers as well as with the HARDROC 2 read-out panel of the SDHCAL will be discussed in details. Finally, the current status of the R\&D certification will be presented. Nonetheless, it is important to keep in mind that I did not personally participate in the development of the CMS RPCROC nor of the INFN Tor Vergata FEB as designed for the iRPCs. My role was limited to the selection and to the test of potential candidates. After this preliminary study was conducted, the development of the actual FEEs for the CMS iRPCs was conducted by other researchers. Therefore, I will only report the status of the ongoing research.
+	In this Chapter, the electronics that were chosen to equip the improved RPCs (iRPCs) will be presented. These electronics are the based on the PETIROC ASIC. A similar technology has been previously used with RPCs in the context of the R\&D of a \acf{SDHCAL} for the \acf{ILD}. As back-up to the PETIROC, a FEB developed by the INFN Tor Vergata in Rome as also been studied for the CMS iRPCs.\\
+	These two solutions for the iRPCs are the results of a longer selection process in which I took a great part. Thus, after an introduction of both technologies, the tests performed on CMS RPCs operated with preliminary versions of INFN Tor Vergata preamplifiers as well as with the HARDROC 2 read-out panel of the SDHCAL will be discussed in details. Finally, the current status of the R\&D certification will be presented. Nonetheless, it is important to keep in mind that I did not personally participate in the development of the PETIROC FEB nor of the INFN Tor Vergata FEB as designed for the iRPCs. My role was limited to the selection and to the test of potential candidates. After this preliminary study was conducted, the development of the actual FEEs for the CMS iRPCs was conducted by other researchers. Therefore, I will only report the status of the ongoing research.
 
 \section{FEE candidates for the production of iRPCs}
 \label{chapt6:sec:candidates}
@@ -39,7 +39,7 @@
 
 	An important piece of these iRPCs will be the \acl{FEE} that will equip the chambers. A fast, low-jitter and low-charge sensitive electronics will help reducing further the charge deposition in the detector by making it possible to operate at lower gain. The FEEs that are foreseen to equip the new RPCs need to be able to detect charges as small as \SI{10}{fC}. Not only the new electronics need to be fast and reliable, they also should be able to sustain the high radiation the detectors will be subjected to in the region closest to the beam.
 	
-	\subsection{CMS RPCROC: the RPC upgrade baseline}
+	\subsection{PETIROC: the RPC upgrade baseline}
 	\label{chapt6:ssec:RPCROC}
 	
 	Designed by Weeroc, a spin-off company from the OMEGA Collaboration, the PETIROC 2A consits in a fast and low jitter 32-channel ASIC originally developed to read-out \acf{SiPM} in ToF applications and that allows for precise time measurements~\cite{PETIROCIEEE,PETIROCTWEPP}. The ASIC uses an AMS \SI{350}{ns} \acf{SiGe} technology. The block diagram of the ASIC is shown on Figure~\ref{fig:PETIROCASIC}. A 10-bit DAC allows to adjust the trigger level in a dynamical range spanning from 0.5 to a few tens of photoelectrons and a 6-bit DAC to adjust the response of each individual channel to similar a level.
@@ -65,7 +65,7 @@
 			\includegraphics[width = 0.7\linewidth]{fig/chapt6/iRPC-RPCROCv1.png}
 			\caption{\label{fig:RPCROC_FEB:B}}
 		\end{subfigure}
-		\caption{\label{fig:RPCROC_FEB} \subref{fig:RPCROC_FEB:A} View of the RPCROC FEBv0 in which the PETIROC 2A ASIC is visible as well as the FPGA on which the TDC is hosted. \subref{fig:RPCROC_FEB:B} View of the RPCROC FEBv1 with its two PETIROC 2A ASICs. The FPGA with the TDC is this time embedded in the FEB.}
+		\caption{\label{fig:RPCROC_FEB} \subref{fig:RPCROC_FEB:A} View of the FEBv0 in which the PETIROC 2A ASIC is visible as well as the FPGA on which the TDC is hosted. \subref{fig:RPCROC_FEB:B} View of the FEBv1 with its two PETIROC 2A ASICs. The FPGA with the TDC is this time embedded in the FEB.}
 	\end{figure}
 
 	\begin{figure}[H]
@@ -79,16 +79,16 @@
 			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-RPCROC-Final.png}
 			\caption{\label{fig:RPCROC_FEB:B}}
 		\end{subfigure}
-		\caption{\label{fig:RPCROC_FEB} \subref{fig:RPCROC_FEB:A} Picture of half the read-out PCB used with FEBv1. The RPCROC is connected directly onto the return connectors on the wide end of the panel. \subref{fig:RPCROC_FEB:B} Design of the foreseen final read-out of the iRPC showing the 2 RPCROC FEBs and the read-out PCB.}
+		\caption{\label{fig:RPCROC_FEB} \subref{fig:RPCROC_FEB:A} Picture of half the read-out PCB used with FEBv1. The FEB is connected directly onto the return connectors on the wide end of the panel. \subref{fig:RPCROC_FEB:B} Design of the foreseen final read-out of the iRPC showing the 2 FEBs and the read-out PCB.}
 	\end{figure}
 	
-	Two consecutive versions of the RPCROC are shown in Figure~\ref{fig:RPCROC_FEB}. FEBv0 was equipped with a single PETIROC 2A associated to a Cyclone II FPGA. FEBv1 was in turn equipped with two PETIROC 2A and then, in a later version, with two PETIROC 2B. In both cases, the ASICs were associated to a Cyclone V FPGA. The PETIROC 2B was a version of the ASIC with less cross-talk than the 2A. The dynamic range could then be expanded towards lower values to allow for the detection of charges as low as \SI{50}{fC}. The next version, the FEBv2 is expected to be equipped with three PETIROC 2C, the new generation of the ASIC, associated to three Cyclone V FPGAs hosting the 32-channel TDCs and a master Cyclone V FPGA for the communications of the TDCs with the Link-Board system. The version 2C will focus on reducing the dead-time of \SI{10}{ns} of the ASIC. Also, the Cyclone V FPGAs of the FEBv2 will use a different technology than the one used for FEBv1. The choice has been made to use a radiation tolerant PolarFire FPGA which uses data scrubbing to detect and correct errors before they accumulate. This technology is for example used for space applications. The FEB will be tested at the \acf{LLN} neutron beam. The goal is to irradiate the electronics up to a fluence of \Ord{14}\,\si{pC/cm^2}, five times more than what is expected at CMS, to certify its radiation hardness.\\
-	Each FEBv2 will be able to read 96 channels out thanks to three 32-channel PETIROC 2C ASICs. Two FEBv2 would be mounted on the iRPC to read the 96 strips out from both ends. The read-out panel that was used for the v1 of the RPCROC is shown in Figure~\ref{fig:RPCROC_FEB:A} and the final design with the FEBv2 mounted on the read-out plane is shown in Figure~\ref{fig:RPCROC_FEB:B}.
+	Two consecutive versions of the PETIROC FEB are shown in Figure~\ref{fig:RPCROC_FEB}. FEBv0 was equipped with a single PETIROC 2A associated to a Cyclone II FPGA. FEBv1 was in turn equipped with two PETIROC 2A and then, in a later version, with two PETIROC 2B. In both cases, the ASICs were associated to a Cyclone V FPGA. The PETIROC 2B was a version of the ASIC with less cross-talk than the 2A. The dynamic range could then be expanded towards lower values to allow for the detection of charges as low as \SI{50}{fC}. The next version, the FEBv2 is expected to be equipped with three PETIROC 2C, the new generation of the ASIC, associated to three Cyclone V FPGAs hosting the 32-channel TDCs and a master Cyclone V FPGA for the communications of the TDCs with the Link-Board system. The version 2C will focus on reducing the dead-time of \SI{10}{ns} of the ASIC. Also, the Cyclone V FPGAs of the FEBv2 will use a different technology than the one used for FEBv1. The choice has been made to use a radiation tolerant PolarFire FPGA which uses data scrubbing to detect and correct errors before they accumulate. This technology is for example used for space applications. The FEB will be tested at the \acf{LLN} neutron beam. The goal is to irradiate the electronics up to a fluence of \Ord{14}\,\si{pC/cm^2}, five times more than what is expected at CMS, to certify its radiation hardness.\\
+	Each FEBv2 will be able to read 96 channels out thanks to three 32-channel PETIROC 2C ASICs. Two FEBv2 would be mounted on the iRPC to read the 96 strips out from both ends. The read-out panel that was used for the first version of the FEB is shown in Figure~\ref{fig:RPCROC_FEB:A} and the final design with the FEBv2 mounted on the read-out plane is shown in Figure~\ref{fig:RPCROC_FEB:B}.
 
 	\subsection{INFN FEB: a robust back-up solution}
 	\label{chapt6:ssec:INFN}
 	
-	Even though the baseline for the electronics that will equip the iRPCs will be the CMS RPCROC, a back-up solution needs to be certified. The back-up has been found in \acl{FEE} featuring a fast and low-noise (1000 $e^-$ rms) Silicon (Si) preamplifier and a SiGe discriminator~\cite{PIZZIMENTO2018} associated with an optimized read-out panel~\cite{ALUNNOCAMELIA2018}. The low-noise preamplifier is a new version of a preliminary production of a SiGe preamplifier by the team of Cardarelli working with INFN Tor Vergata in Rome with the purpose of equipping the new generation of ATLAS RPCs~\cite{CARDARELLI2013}. The study of the early version of the preamplifier by is discussed in Section~\ref{chapt6:sec:Preliminary}.
+	Even though the baseline for the electronics that will equip the iRPCs will be the PETIROC, a back-up solution needs to be certified. The back-up has been found in \acl{FEE} featuring a fast and low-noise (1000 $e^-$ rms) Silicon (Si) preamplifier and a SiGe discriminator~\cite{PIZZIMENTO2018} associated with an optimized read-out panel~\cite{ALUNNOCAMELIA2018}. The low-noise preamplifier is a new version of a preliminary production of a SiGe preamplifier by the team of Cardarelli working with INFN Tor Vergata in Rome with the purpose of equipping the new generation of ATLAS RPCs~\cite{CARDARELLI2013}. The study of the early version of the preamplifier by is discussed in Section~\ref{chapt6:sec:Preliminary}.
 	 
 	\begin{figure}[H]
 		\centering
@@ -96,7 +96,7 @@
 		\caption{\label{fig:INFN-Design} Design of the iRPC in the back-up scenario. The detector includes an additional two layers of transversal strips to gain in spatial resolution.}
     \end{figure}
 	
-	Contrary to the CMS RPCROC, the back-up electronics only offer the possibility to read the 96 strips out from one end. The spatial resolution along the strips is then brought by two transverse strip planes. These two additional panels sandwich the double-gap ensemble as shown is Figure~\ref{fig:INFN-Design}. They feature \SI{5}{cm} wide copper strips for a spatial resolution of a few centimeters along the longitudinal strips. A top quarter of the longitudinal and transversal read-out panels is shown in Figure~\ref{fig:INFN_Readout} and pictures are available in Figure~\ref{fig:INFN_StripPic}.
+	Contrary to the PETIROC FEB, the back-up electronics only offer the possibility to read the 96 strips out from one end. The spatial resolution along the strips is then brought by two transverse strip planes. These two additional panels sandwich the double-gap ensemble as shown is Figure~\ref{fig:INFN-Design}. They feature \SI{5}{cm} wide copper strips for a spatial resolution of a few centimeters along the longitudinal strips. A top quarter of the longitudinal and transversal read-out panels is shown in Figure~\ref{fig:INFN_Readout} and pictures are available in Figure~\ref{fig:INFN_StripPic}.
 	 
 	\begin{figure}[H]
 		\begin{subfigure}{.5\linewidth}
@@ -586,7 +586,7 @@ INFN/CMS FEB, 5fC (2015)   & $0.967 \pm 0.006$ & $1.12 \pm 0.11$ & $4959 \pm 11$
 		\caption{\label{fig:Setup-HARDROC2} Experimental setups used to test the HARDROC2 electronics with a CMS RE4-3 gap~\subref{fig:Setup-HARDROC2:A} and a gRPC gap built in Ghent~\subref{fig:Setup-HARDROC2:B}.}
     \end{figure}
 	
-	The PETIROC on which is based the CMS RPCROC uses a similar technology than the one developed for the HARDROC and is manufactured by the same company. It is safe to conclude that the preliminary results obtained with the HARDROC electronics constitute a strong indication on the potential performance of a FEB developed specifically for CMS detectors. The leading institute in the development of the SDHCAL based on single-gap \acf{gRPCs} is the IPNL which also played a great role in developing iRPCs for CMS.
+	The PETIROC uses a similar technology than the one developed for the HARDROC and is manufactured by the same company. It is safe to conclude that the preliminary results obtained with the HARDROC electronics constitute a strong indication on the potential performance of a FEB developed specifically for CMS detectors. The leading institute in the development of the SDHCAL based on single-gap \acf{gRPCs} is the IPNL which also played a great role in developing iRPCs for CMS.
 	
 \begingroup\setlength{\intextsep}{5pt}\setlength{\columnsep}{15pt}
 
@@ -715,7 +715,7 @@ HARDROC 2, 143fC (2015) & $0.966 \pm 0.004$ & $0.64 \pm 0.02$ & $5179 \pm 7$ & $
 	\section{Outlook on the current FEE certification status}
 	\label{chapt6:sec:outlooks}
 	
-	In this Section the ongoing certification of the CMS RPCROC and of the INFN Tor Vergata FEBs, chosen as back-up solution, will be presented. For reference, an iRPC has been operated without irradiation with the standard CMS FEB. It is reminded that the iRPCs that will complete the redundancy of the muon system of CMS close to the beam line are expected to suffer a background hit rate per unit area of \SIrate{600}. Including a safety factor of 3, it is then necessary for the detectors to be certified at a minimal background hit rate of \SIkrate{2}.
+	In this Section the ongoing certification of the PETIROC FEB and of the INFN Tor Vergata FEBs, chosen as back-up solution, will be presented. For reference, an iRPC has been operated without irradiation with the standard CMS FEB. It is reminded that the iRPCs that will complete the redundancy of the muon system of CMS close to the beam line are expected to suffer a background hit rate per unit area of \SIrate{600}. Including a safety factor of 3, it is then necessary for the detectors to be certified at a minimal background hit rate of \SIkrate{2}.
 	
 		\subsection{CMS \acl{FEB} reference}
 		\label{chapt6:ssec:CMSFEBref}
@@ -786,7 +786,7 @@ Threshold (\si{fC}) & Working Voltage (\si{V}) & Efficiency (\%) & Cluster Size 
     
     The results for this kind of electronics are to be found in Figure~\ref{fig:iRPC_CMS_Result}. First of all, the efficiency at working voltage of the detector reaches 96.9\% at a threshold of \SI{146}{fC}, 97.0\% at \SI{140}{fC} and finally 96.6\% at \SI{133}{fC}. The efficiency does not seem to be affected by a change of threshold. The working voltage, on the other hand, is shifted towards lower effective voltage values with decreasing threshold. The values of working voltages respectively are 7552, 7473 and \SI{7393}{V}. This is expected by the lower gain necessary to produce large enough avalanches. No other differences can be observed at the level of the mean muon cluster sizes, mean muon cluster multiplicity per event and noise rate per unit area. The mean muon cluster size stays of the order of 2.4 strips per cluster and the muon cluster multiplicity, which is the number of reconstructed muon clusters per event, is consistent with 1 as expected. Finally, the noise rate per unit area is below \SIrate{1}. The results are summarized in Table~\ref{tab:iRPC-FEB}.
 	
-		\subsection{CMS RPCROC}
+		\subsection{PETIROC FEE}
 		\label{chapt6:ssec:RPCROCcert}
 
 \begingroup\setlength{\intextsep}{0pt}\setlength{\columnsep}{15pt}
@@ -794,10 +794,10 @@ Threshold (\si{fC}) & Working Voltage (\si{V}) & Efficiency (\%) & Cluster Size 
 	\begin{wrapfigure}{O}{0.6\linewidth}
 		\centering
 		\includegraphics[width = 0.9\linewidth]{fig/chapt6/iRPC-RPCROC-H2.png}
-		\caption{\label{fig:RPCROCv0_H2} Experimental setup used along the H2 muon beam at CERN to measure the linearity between beam position along the strip length and the time difference measured between both strip ends with the version 0 of the RPCROC.}
+		\caption{\label{fig:RPCROCv0_H2} Experimental setup used along the H2 muon beam at CERN to measure the linearity between beam position along the strip length and the time difference measured between both strip ends with the version 0 of the PETIROC FEB.}
     \end{wrapfigure}
 		
-	Several iRPCs equipped with different versions of RPCROCs have been assembled and tested. This process helped identifying the weaknesses of the FEEs and propose new improved versions. The last piece of the R\&D process will be the FEBv2 equipped with three PETIROC 2C ASICs, three Cyclone V FPGAs hosting the TDCs, and a fourth FPGA to communicate with the back-end electronics.\\
+	Several iRPCs equipped with different versions of PETIROC FEBs have been assembled and tested. This process helped identifying the weaknesses of the FEEs and propose new improved versions. The last piece of the R\&D process will be the FEBv2 equipped with three PETIROC 2C ASICs, three Cyclone V FPGAs hosting the TDCs, and a fourth FPGA to communicate with the back-end electronics.\\
 	In a first series of tests performed along the muon beam line H2 at CERN, the FEBv0 was certified for time resolution performances and linearity between the time difference of recorded muon signals measured at both strip ends and the beam position along the strip length. The experimental setup is shown in Figure~\ref{fig:RPCROCv0_H2} on which two iRPCs are placed between two narrow scintillators for a precise knowledge of the position of the beam.\\
 	The mean time difference between the signals measured at the high-radius (HR) and low-radius (LR) is given in Figure~\ref{fig:RPCROCv0_Res:A}. The time resolution of the measurement is of \SIerror{252}{4}{ps}. The velocity of propagation $v$ of the signals along the strips was reported to be of \SI{1}{m} per \SI{5.25}{ns}. According to Equation~\ref{eq:Y-determ}, in which $L$ is the length of the strip, $Y$ the position along the strip, and $T_{HR}$ and $T_{LR}$ the measured arrival time at the high-radius and low-radius ends of the strip, the spatial resolution $\Delta Y$ along the strip is then of the order of \SI{2}{cm}. The linearity between the time difference and the position of a hit along the strip length could then be studied with a good precision as can be seen in Figure~\ref{fig:RPCROCv0_Res:B}.
 	
@@ -824,7 +824,7 @@ Threshold (\si{fC}) & Working Voltage (\si{V}) & Efficiency (\%) & Cluster Size 
 			\includegraphics[width = \linewidth]{fig/chapt6/iRPC-RPCROC-Linearity.png}
 			\caption{\label{fig:RPCROCv0_Res:B}}
 		\end{subfigure}
-		\caption{\label{fig:RPCROCv0_Res} \subref{fig:RPCROCv0_Res:A} Average time resolution of the iRPC equipped with an RPCROC FEBv0. \subref{fig:RPCROCv0_Res:B} Linearity between reconstructed beam position along the strip length and the time difference measured between both strip ends.}
+		\caption{\label{fig:RPCROCv0_Res} \subref{fig:RPCROCv0_Res:A} Average time resolution of the iRPC equipped with the FEBv0. \subref{fig:RPCROCv0_Res:B} Linearity between reconstructed beam position along the strip length and the time difference measured between both strip ends.}
     \end{figure}
 
 \begingroup\setlength{\intextsep}{5pt}\setlength{\columnsep}{15pt}
@@ -832,7 +832,7 @@ Threshold (\si{fC}) & Working Voltage (\si{V}) & Efficiency (\%) & Cluster Size 
 	\begin{wrapfigure}{O}{0.6\linewidth}
 		\centering
 		\includegraphics[width = 0.9\linewidth]{fig/chapt6/iRPC-RPCROC-GIFpp.png}
-		\caption{\label{fig:RPCROCv1_GIFpp} Experimental setup used at the GIF++ to certify the iRPC equipped with the RPCROC version 1. The chamber is placed along the beam line in front the Cesium source.}
+		\caption{\label{fig:RPCROCv1_GIFpp} Experimental setup used at the GIF++ to certify the iRPC equipped with the version 1 of the PETIROC FEB. The chamber is placed along the beam line in front the Cesium source.}
     \end{wrapfigure}
     
     Later on, a new iRPC was assembled with FEBv1 using first PETIROC 2A. This version is referred to as FEBv1.1a. Due to a large cross-talk limiting the detection to \SI{100}{fC}, the PETIROC 2A was replaced by the PETIROC 2B. The lower threshold for stable operation of the FEBv1.1b could be decreased to \SIerror{50}{10}{fC}. However, operation of the detector with lower thresholds ($\approx$ \SIerror{26}{10}{fC}) showed that part of the cross-talk could not be suppressed. The cross-talk is monitored via the hit multiplicity. If the cross-talk is high, so is multiplicity and it affects the quality of the clusterization and spatial resolution.\\
@@ -862,7 +862,7 @@ Threshold (\si{fC}) & Working Voltage (\si{V}) & Efficiency (\%) & Cluster Size 
     \end{figure}
     
     \begin{table}[H]
-		\caption{\label{tab:RPCROCv1b} Summary results of the iRPC operated with a RPCROC FEBv1.1b set at a threshold of \SIerror{50}{10}{fC}.}
+		\caption{\label{tab:RPCROCv1b} Summary results of the iRPC operated with the FEBv1.1b set at a threshold of \SIerror{50}{10}{fC}.}
 		\footnotesize
 		\centering
 		\begin{tabular}{|c|c|c|c|}

@@ -96,7 +96,7 @@ Certifying detectors in the perspective of HL-LHC required to develop tools for 
 			\includegraphics[width = \plotwidth]{fig/app1/Wiener-front.png}
 			\caption{\label{fig:DAQSetup:C}}
 		\end{subfigure}
-		\caption{\label{fig:DAQSetup} (\ref{fig:DAQSetup:A}) View of the front panel of a V1190A TDC module~\cite{V1190AMUT}. (\ref{fig:DAQSetup:B}) View of the front panel of a V1718 Bridge module~\cite{V1718MUT}. (\ref{fig:DAQSetup:C}) View of the front panel of a 6U 6021 VME crate~\cite{6U6000MUT}.}
+		\caption{\label{fig:DAQSetup} \subref{fig:DAQSetup:A} View of the front panel of a V1190A TDC module~\cite{V1190AMUT}. \subref{fig:DAQSetup:B} View of the front panel of a V1718 Bridge module~\cite{V1718MUT}. \subref{fig:DAQSetup:C} View of the front panel of a 6U 6021 VME crate~\cite{6U6000MUT}.}
 	\end{figure}
 
 \section{Data read-out}
@@ -351,7 +351,7 @@ each digit being 1 or 0. Bellow is given an example with a 4 TDCs setup.
 			\includegraphics[width = \linewidth]{fig/app1/With_Qflag_nhits_DAQ.pdf}
 			\caption{\label{fig:qflag-daq:B}}
 		\end{subfigure}
-		\caption{\label{fig:qflag-daq} The effect of the quality flag is explained by presenting the content of \cppinline{TBranch number_of_hits} of a data file without \cppinline{Quality_flag} in Figure~\ref{fig:qflag-daq:A} and the content of the same \cppinline{TBranch} for data corresponding to a \cppinline{Quality_flag} where all TDCs were labelled as \cppinline{GOOD} in Figure~\ref{fig:qflag-daq:B} taken with similar conditions. It can be noted that the number of entries in Figure~\ref{fig:qflag-daq:B} is slightly lower than in Figure~\ref{fig:qflag-daq:A} due to the excluded events.}
+		\caption{\label{fig:qflag-daq} The effect of the quality flag is explained by presenting the content of \cppinline{TBranch number_of_hits} of a data file without \cppinline{Quality_flag}~\subref{fig:qflag-daq:A} and the content of the same \cppinline{TBranch} for data corresponding to a \cppinline{Quality_flag} where all TDCs were labelled as \cppinline{GOOD}~\subref{fig:qflag-daq:B} taken with similar conditions. It can be noted that the number of entries in Figure~\subref{fig:qflag-daq:B} is slightly lower than in Figure~\subref{fig:qflag-daq:A} due to the excluded events.}
 	\end{figure}
 	
 	\begin{figure}[H]
@@ -365,7 +365,7 @@ each digit being 1 or 0. Bellow is given an example with a 4 TDCs setup.
 			\includegraphics[width = \linewidth]{fig/app1/With_Qflag_nhits_KODEL.pdf}
 			\caption{\label{fig:qflag-kodel:B}}
 		\end{subfigure}
-		\caption{\label{fig:qflag-kodel} Using the same data as previously showed in Figure~\ref{fig:qflag-daq}, the effect of the quality flag is explained by presenting the reconstructed hit multiplicity of a data file without \cppinline{Quality_flag} in Figure~\ref{fig:qflag-kodel:A} and the reconstructed content of the same RPC partition for data corresponding to a \cppinline{Quality_flag} where all TDCs were labelled as \cppinline{GOOD} in Figure~\ref{fig:qflag-kodel:B} taken with similar conditions. The artificial high content of bin 0 is completely suppressed.}
+		\caption{\label{fig:qflag-kodel} Using the same data as previously showed in Figure~\ref{fig:qflag-daq}, the effect of the quality flag is explained by presenting the reconstructed hit multiplicity of a data file without \cppinline{Quality_flag}~\subref{fig:qflag-kodel:A} and the reconstructed content of the same RPC partition for data corresponding to a \cppinline{Quality_flag} where all TDCs were labelled as \cppinline{GOOD}~\subref{fig:qflag-kodel:B} taken with similar conditions. The artificial high content of bin 0 is completely suppressed.}
 	\end{figure}
 	
 \section{Communications}
