@@ -6,14 +6,14 @@
 
 \hyphenation{}
 
-\chapter[Improved RPC investigation and preliminary electronics studies]%
-{Improved RPC investigation and preliminary electronics studies}
+\chapter[Improved RPC investigation and preliminary electronics studies of the CMS RPC subsytem]%
+{Improved RPC investigation and preliminary electronics studies of the CMS RPC subsytem}
 \label{chapt6}
 
-	The extension in the endcap of the RPC sub-system towards higher pseudo-rapidity will bring the new detectors to be exposed to much more intense background radiations due to the proximity of the detectors with the beam line (Figure~\ref{fig:Dose}). The challenge will be to produce high counting rate detectors with limited ageing rate to ensure a stable operation of the detector over a period longer than ten years. In Chapter~\ref{chapt3} was discussed the influence of the detector design (the number and the thickness of the gas volumes, double-gap design, etc...) on the charge deposition and rate capability. Nevertheless, this question can also be addressed from the electronics point of view as a better signal-to-noise ratio would also mean the possibility to greatly lower the charge threshold on the signals to be detected, allowing to use the detector at lower gain, hence lowering the charge deposition per avalanche in the gas volume. Cardarelli showed that the production of low-noise fast FEEs could help decreasing the charge deposition per avalanche at working voltage by an order of magnitude, virtually increasing the life expectancy of such a detector in the same way~\cite{CARDARELLI2012}.
+	The extension towards higher pseudo-rapidity with the installation of new RPCs in the endcap disks of the RPC subsystem will expose these new chambers to much more intense background radiations given their proximity to the LHC beam line (see Figure~\ref{fig:Dose}). The challenge will be to produce high counting rate detectors with limited ageing rate to ensure a stable operation of the detector over a period longer than ten years. In Chapter~\ref{chapt3}, the influence of the detector design (the number and the thickness of the gas volumes, double-gap design, etc...) on the charge deposition and rate capability was discussed. Next to that, this question can also be addressed from the electronics point of view as a better signal-to-noise ratio would also mean the possibility to reduce the charge threshold for the signals to be detected. This would in turn allow to use the detector at lower a gain, decreasing the charge deposition per avalanche in the gas volume. Cardarelli \textit{et al.} showed that the production of low-noise fast FEEs could help to decrease the charge deposition per avalanche at the working voltage by an order of magnitude, possibly increasing the life expectancy of such a detector in the same way~\cite{CARDARELLI2012}.
 	
-	In this Chapter, the electronics that were chosen to equip the improved RPCs (iRPCs) will be presented. These electronics are the based on the PETIROC ASIC. A similar technology has been previously used with RPCs in the context of the R\&D of a \acf{SDHCAL} for the \acf{ILD}. As back-up to the PETIROC, a FEB developed by the INFN Tor Vergata in Rome as also been studied for the CMS iRPCs.\\
-	These two solutions for the iRPCs are the results of a longer selection process in which I took a great part. Thus, after an introduction of both technologies, the tests performed on CMS RPCs operated with preliminary versions of INFN Tor Vergata preamplifiers as well as with the HARDROC 2 read-out panel of the SDHCAL will be discussed in details. Finally, the current status of the R\&D certification will be presented. Nonetheless, it is important to keep in mind that I did not personally participate in the development of the PETIROC FEB nor of the INFN Tor Vergata FEB as designed for the iRPCs. My role was limited to the selection and to the test of potential candidates. After this preliminary study was conducted, the development of the actual FEEs for the CMS iRPCs was conducted by other researchers. Therefore, I will only report the status of the ongoing research.
+	In this Chapter, the electronics that were chosen to equip the improved RPCs (iRPCs) will be presented. These electronics are the based on the PETIROC ASIC. A similar technology has been previously used with RPCs in the context of the R\&D within the CALICE Collaboration of a \acf{SDHCAL}~\cite{CALICE2016,ARNAUD2015,STEEN2016} for the \acf{ILD}~\cite{ILDLOI}. As a backup solution to the PETIROC, a FEB developed by the INFN Tor Vergata in Rome is also considered for the CMS iRPCs.\\
+	These two solutions for the iRPCs are the results of a longer selection process in which I took a major part. After an introduction of both technologies, the tests performed on CMS RPCs operated with preliminary versions of INFN Tor Vergata preamplifiers as well as with the HARDROC2 read-out panel of the SDHCAL will be discussed in details. Finally, the current status of the R\&D certification will be presented. During my PhD work, I participated in the selection and testing of the candidate technologies. This study provided input for the development of the final FEE for the CMS iRPCs. At the end of this Chapter, I will also report on the currently still ongoing FEE developments.
 
 \section{FEE candidates for the production of iRPCs}
 \label{chapt6:sec:candidates}
@@ -21,13 +21,13 @@
 	The extension of the third and fourth endcap disks with \acl{iRPC}s has been presented in Chapter~\ref{chapt:4} together with the expected background levels (Figure~\ref{fig:iRPC-Rate}). The iRPCs will complete the muon endcap as described in Figure~\ref{fig:iRPC-Wheel}. The key features of these iRPCs are:
 
 	\begin{itemize}
-		\item double-gap design,
-		\item \SI{1.4}{mm} thick HPL electrodes,
-		\item 0.9 to \Sci{3}{10}\,\si{\ohm\cdot cm} HPL resistivity,
-		\item \SI{1.4}{mm} thick gas gap,
-		\item trapezoidal chambers spanning \SI{20}{\degree} in $\varphi$ around the beam axis,
+		\item double-gap design
+		\item \SI{1.4}{mm} thick HPL electrodes
+		\item 0.9 to \Sci{3}{10}\,\si{\ohm\cdot cm} HPL resistivity
+		\item \SI{1.4}{mm} thick gas gap
+		\item trapezoidal chambers spanning \SI{20}{\degree} in $\varphi$ around the beam axis
 		\item read-out panel consisting of 96 trapezoidal strips
-		\item strip pitch ranges from \SI{6.0}{mm} (\SI{5.9}{mm}) on the high pseudo-rapidity end to \SI{12.3}{mm} (\SI{10.9}{mm}) on the low one on position RE3/1 (RE4/1)
+		\item strip pitch ranging from \SI{6.0}{mm} (\SI{5.9}{mm}) on the high pseudo-rapidity side of the chamber to \SI{12.3}{mm} (\SI{10.9}{mm}) on the low side for the RE3/1 (RE4/1) station
 		\item spatial resolution in the direction perpendicular to the strips $\sim$\SI{3}{mm}
 	\end{itemize}
 	
@@ -37,12 +37,12 @@
 		\caption{\label{fig:iRPC-Wheel} Location of the RE3/1 or RE4/1 iRPCs on a muon endcap disk.}
 	\end{figure}
 
-	An important piece of these iRPCs will be the \acl{FEE} that will equip the chambers. A fast, low-jitter and low-charge sensitive electronics will help reducing further the charge deposition in the detector by making it possible to operate at lower gain. The FEEs that are foreseen to equip the new RPCs need to be able to detect charges as small as \SI{10}{fC}. Not only the new electronics need to be fast and reliable, they also should be able to sustain the high radiation the detectors will be subjected to in the region closest to the beam.
+	An important piece of these iRPCs will be the \acl{FEE} that will equip the chambers. A fast, low-jitter and low-charge sensitive electronics will help reducing further the charge deposition in the detector by enabling operation at lower gain. The FEEs that are foreseen to equip the new RPCs need to be able to detect charges as small as \SI{10}{fC}. The new electronics need not only to be fast and reliable, they also should be able to sustain the high radiation the detectors will be subjected to in the region closest to the beam.
 	
 	\subsection{PETIROC: the RPC upgrade baseline}
 	\label{chapt6:ssec:RPCROC}
 	
-	Designed by Weeroc, a spin-off company from the OMEGA Collaboration, the PETIROC 2A consits in a fast and low jitter 32-channel ASIC originally developed to read-out \acf{SiPM} in ToF applications and that allows for precise time measurements~\cite{PETIROCIEEE,PETIROCTWEPP}. The ASIC uses an AMS \SI{350}{ns} \acf{SiGe} technology. The block diagram of the ASIC is shown on Figure~\ref{fig:PETIROCASIC}. A 10-bit DAC allows to adjust the trigger level in a dynamical range spanning from 0.5 to a few tens of photoelectrons and a 6-bit DAC to adjust the response of each individual channel to similar a level.
+	Designed by Weeroc~\cite{WEEROC}, a spin-off company from the OMEGA Collaboration~\cite{OMEGA}, the PETIROC 2A consits in a fast and low jitter 32-channel ASIC originally developed to read-out \acf{SiPM} in \acl{ToF} applications and that allows for precise time measurements~\cite{PETIROCIEEE,PETIROCTWEPP}. The ASIC uses an AMS \SI{350}{ns} \acf{SiGe} technology. The block diagram of the ASIC is shown on Figure~\ref{fig:PETIROCASIC}. A 10-bit DAC allows to adjust the trigger level in a dynamical range spanning from 0.5 to a few tens of photoelectrons and a 6-bit DAC to adjust the response of each individual channel to similar a level.
 	
 	\begin{figure}[H]
 		\centering
@@ -50,7 +50,7 @@
 		\caption{\label{fig:PETIROCASIC} PETIROC 2A block diagram.}
 	\end{figure}
 	
-	Nevertheless, to adapt this ASIC to CMS, modifications were brought to the PETIROC~\cite{PHASEIITP} and not all its functions will be used~\cite{COMBARET2018}. Due to the radiation levels that are foreseen at the level of the iRPCs, the SiGe technology will be replaced by the Taiwan Semiconductor Manufacturing Company (TSMC) \SI{130}{nm} CMOS, to increase its radiation hardness while keeping fast pre-amplification and discrimination. On the \acl{FEB}, the ASIC is associated with an FPGA which purpose is to measure the arrival time of the signals. The FPGA is equipped with a TDC with a time resolution of 50-100 \si{ps} developed by Tsinghua University. The full system will provide a measurement of the signal position along the strip with a precision of a few \si{cm} by reading the signal on both strip ends. Finally, the measurement of the charge will be performed by a \acf{ToT} technic, taking profit of the capacity the ASIC in measuring both the leading and trailing edges of the input signals.
+	To adapt this ASIC to CMS, modifications were brought to the PETIROC~\cite{PHASEIITP} and not all its functions will be used~\cite{COMBARET2018}. Due to the radiation levels that are foreseen at the position of the iRPCs, the SiGe technology will be replaced by the Taiwan Semiconductor Manufacturing Company (TSMC) \SI{130}{nm} CMOS, to increase its radiation hardness while keeping fast pre-amplification and discrimination. On the \acl{FEB}, the ASIC is associated with an FPGA which purpose is to measure the arrival time of the signals. The FPGA is equipped with a TDC with a time resolution of 50-100 \si{ps} developed by Tsinghua University. The full system will provide a measurement of the signal position along the strip with a precision of a few \si{cm} by reading the signal on both strip ends. Finally, the measurement of the charge will be performed by a \acf{ToT} technic, taking profit of the capacity the ASIC in measuring both the leading and trailing edges of the input signals.
 	
 	\newpage
 
@@ -162,7 +162,7 @@
 \section{Preliminary electronics tests at CERN}
 \label{chapt6:sec:Preliminary}
 
-	The quest for more sensitive and low noise electronics for iRPCs started with the test of two technologies. Facing the same issue, the ATLAS collaboration at INFN Tor Vergata started developing low-noise sensitive preamplifiers to be used with RPCs. The test of these electronics was carried out by both the ATLAS and the CMS collaborations. At the same time, the \acf{IPNL} had been working on the development of an RPC based \acl{SDHCAL} for the ILD, the multi-purpose detector that is foreseen to be built at the \acf{ILC}. The RPCs they used were operated with low-noise electronics that had previously been used for timing applications with silicon photomultipliers.\\
+	The quest for more sensitive and low noise electronics for iRPCs started with the test of two technologies. Facing the same issue, the ATLAS collaboration at INFN Tor Vergata started developing low-noise sensitive preamplifiers to be used with RPCs. The test of these electronics was carried out by both the ATLAS and the CMS collaborations. At the same time, the CALICE Collaboration had been working on the development of an RPC based \acl{SDHCAL} for the ILD, the multi-purpose detector that is foreseen to be built at the \acf{ILC}. The RPCs they used were operated with low-noise electronics that had previously been used for timing applications with silicon photomultipliers.\\
 	Both FEEs have been tested with spare CMS RPCs and \acl{gRPCs} designed and assembled in Ghent. The design of the gRPCs was derived from the gRPCs used for the SDHCAL. The were used to test the feasibility of achieving large detection areas by gluing together smaller electrodes.
 
 	\subsection{INFN preamplifiers as upgrade candidates}
@@ -567,10 +567,10 @@ INFN/CMS FEB, 5fC (2015)   & $0.967 \pm 0.006$ & $1.12 \pm 0.11$ & $4959 \pm 11$
     
     Even though the performance of the detector are promising, the results concerning the noise rate per unit area seem to indicate that the detector operated with the INFN Tor Vergata electronics produces very high levels of noise, if compared to the noise measured in the RE4 detector. With each type of electronics, the noise doesn't indicate a clear correlation with increasing voltage. The hypothesis at this stage would be that the noise is not created inside of the gas volume by avalanches triggered along the glueing lines, where the electric field could be abruptly perturbated. It would rather come from the read-out channel itself, and from its connection to the electronics. Indeed, looking at the noise profile measured in the detector and presented in Figure~\ref{fig:gRPC-noise:A}, it is clear that the noise is localised in two areas corresponding to the HV connectors in the case of the HV scan performed with the CMS FEB. Moreover, contrary to the very careful work performed on the RE2 chamber to match the impedance of the strips with the read-out cables connected to the board on which the INFN preamplifiers are mounted, no matching was done on the gRPC due to a lack of time. The noise measured in the tested three channels is shown in Figure~\ref{fig:gRPC-noise:B}. This region of the detector doesn't correspond to the HV connectors according to Figure~\ref{fig:gRPC-noise:A}. Nevertheless, the number of hits counted in the detector is much higher than in the CMS FEB case. Looking more carefully to Figure~\ref{fig:time-profiles} presenting the hit time profile in both cases together with the time profile of the CMS RE2-2 detector tested with INFN preamplifiers, it is clear that the detector is noisier. Also, the reflections due to the impedance mismatch is clearly visible in Figure~\ref{fig:time-profiles:B}.
 
-	\subsection{HARDROC 2 based RPC read-out}
+	\subsection{HARDROC2 based RPC read-out}
 	\label{chapt6:ssec:HARDROC2}
 	
-	The \acf{HARDROC} ASIC, as its name suggests, has been developed for RPC applications and in particular for the read-out RPCs of the SDHCAL that is being studied in the perspective of the ILC. The SDHCAL detectors are required to have a high granularity compared to the CMS RPCs and hence, they use \SI{1}{cm^2} read-out pads instead of strips. This choice results in a huge number of channels. The ASIC is mounted directly on the read-out pannel for compactness as can be seen in Figure~\ref{fig:Setup-HARDROC2:A} and feature three thresholds to provide a semi-digital information.
+	The \acf{HARDROC} ASIC, as its name suggests, has been developed for RPC applications and in particular for the read-out RPCs of the CALICE SDHCAL prototype that is being developed for the \acf{ILC}. The SDHCAL RPCs are equipped with \SI{1}{cm^2} read-out pads instead of strips giving a total of 9216 channels per chamber. The ASIC is mounted directly on the read-out pannel for compactness as can be seen in Figure~\ref{fig:Setup-HARDROC2:A} and feature three thresholds to provide a semi-digital information.
 	 
 	\begin{figure}[H]
 		\begin{subfigure}{.5\linewidth}
@@ -586,7 +586,7 @@ INFN/CMS FEB, 5fC (2015)   & $0.967 \pm 0.006$ & $1.12 \pm 0.11$ & $4959 \pm 11$
 		\caption{\label{fig:Setup-HARDROC2} Experimental setups used to test the HARDROC2 electronics with a CMS RE4-3 gap~\subref{fig:Setup-HARDROC2:A} and a gRPC gap built in Ghent~\subref{fig:Setup-HARDROC2:B}.}
     \end{figure}
 	
-	The PETIROC uses a similar technology than the one developed for the HARDROC and is manufactured by the same company. It is safe to conclude that the preliminary results obtained with the HARDROC electronics constitute a strong indication on the potential performance of a FEB developed specifically for CMS detectors. The leading institute in the development of the SDHCAL based on single-gap \acf{gRPCs} is the IPNL which also played a great role in developing iRPCs for CMS.
+	The PETIROC uses a similar technology than the one developed for the HARDROC and is manufactured by the same company. It is safe to conclude that the preliminary results obtained with the HARDROC electronics constitute a strong indication of the potential performance of a FEB developed specifically for CMS detectors.
 	
 \begingroup\setlength{\intextsep}{5pt}\setlength{\columnsep}{15pt}
 
@@ -596,14 +596,14 @@ INFN/CMS FEB, 5fC (2015)   & $0.967 \pm 0.006$ & $1.12 \pm 0.11$ & $4959 \pm 11$
 		\caption{\label{fig:HARDROC2-chip} HARDROC2 control chip with its "Mezzanine" used to collect the data from the different HARDROC ASICs and communicate with the computer. On top of the picture, the trigger is brought by a coaxial cable. The connection with the computer is assured by both the USB cables.}
     \end{wrapfigure}
 	
-	A read-out pannel using the HARDROC 2 technology was lent by this institute and was tested onto a CMS RPC. Contrary to the tests with the INFN preamplifiers that were made using an RE2-2 CMS RPC built in 2007 for the second endcap disk of CMS, the choice was made to use an RE4-3 detector built during LS1 to equip the fourth endcap. Indeed, the pannel can't be sandwiched between two RPC gaps due to the embedded electronics and a single CMS RPC gap was used. At the time of this experiment, only spare RE4-3 gaps were available. The choice was then made to change detector with respect to the previous series of tests conducted on the INFN preamplifiers. As for the INFN preamplifiers, the pannel has been tested on the gRPC built by UGent. The gRPC being smaller than the HARDROC read-out that was used for the experiment but thanks to the 2D read-out using pads, this was not a problem for the data acquisition.
+	A read-out pannel using the HARDROC2 technology was lent by this institute and was tested onto a CMS RPC. Contrary to the tests with the INFN preamplifiers that were made using an RE2-2 CMS RPC built in 2007 for the second endcap disk of CMS, the choice was made to use an RE4-3 detector built during LS1 to equip the fourth endcap. Indeed, the pannel can't be sandwiched between two RPC gaps due to the embedded electronics and a single CMS RPC gap was used. At the time of this experiment, only spare RE4-3 gaps were available. The choice was then made to change detector with respect to the previous series of tests conducted on the INFN preamplifiers. As for the INFN preamplifiers, the pannel has been tested on the gRPC built by UGent. The gRPC being smaller than the HARDROC read-out that was used for the experiment but thanks to the 2D read-out using pads, this was not a problem for the data acquisition.
 	
-	Once again, the experiment was conducted in the CMS RPC assembly laboratory at CERN. The two different setups are shown in Figure~\ref{fig:Setup-HARDROC2}. The read-out panel is placed directly on top of the gaps and pressed against the detector surface thanks to weights. The same PMT telescope is used to provide a trigger to the data acquisition. In the particular case of the HARDROC 2 electronics, the output signal does not correspond to the LVDS signals provided by the CMS FEB. Moreover, there would be more than 1500 channels to constantly monitor and unfortunately, there would not be enough VME TDC modules to use with the DAQ software designed for the experiment involving the INFN preamplifiers. Nevertheless, a custom-made DAQ software was designed by the members of IPNL's team to read-out the electronics through the chip presented in Figure~\ref{fig:HARDROC2-chip}. The data are continuously stored in the buffer of the ASIC and dumped into the computer when a trigger signal is received.
+	Once again, the experiment was conducted in the CMS RPC assembly laboratory at CERN. The two different setups are shown in Figure~\ref{fig:Setup-HARDROC2}. The read-out panel is placed directly on top of the gaps and pressed against the detector surface thanks to weights. The same PMT telescope is used to provide a trigger to the data acquisition. In the particular case of the HARDROC2 electronics, the output signal does not correspond to the LVDS signals provided by the CMS FEB. Moreover, there would be more than 1500 channels to constantly monitor and unfortunately, there would not be enough VME TDC modules to use with the DAQ software designed for the experiment involving the INFN preamplifiers. Nevertheless, a custom-made DAQ software was designed by the members of IPNL's team to read-out the electronics through the chip presented in Figure~\ref{fig:HARDROC2-chip}. The data are continuously stored in the buffer of the ASIC and dumped into the computer when a trigger signal is received.
 	
 \endgroup
 	
-	The results of the tests conducted with the HARDROC 2 on a CMS gap are presented in Figure~\ref{fig:HARDROC2} and Table~\ref{tab:HARDROC2}. These results can hardly be compared to what was measured with the INFN preamplifiers as the detector was not tested using the single-gap mode. The tested thresholds are high compared to the ones displayed by the INFN preamplifiers and are of the order of magnitude of the current CMS FEB. Nevertheless, the performance of the detector equipped with this read-out pannel is measured to be better. Indeed, a shift of 400 to \SI{500}{V} is observed at thresholds ranging from 230 to \SI{121.4}{fC}. This could be explained by the difference in read-out channel areas of both read-out panels. Indeed, in the case of the standard CMS RPC, the read-out panel consists in relatively large trapezoidal strips with a surface of almost \SI{200}{cm^2} when the read-out of the HARDROC 2 is composed of \SI{1}{cm^2} pads. Also taking into account the cross-talk between adjacent channels, the charge produced by a growing avalanche is spread over a larger surface in the case of the standard CMS RPC. Finally, the signals having to travel a longer distance to reach the electronics, the signal loss leads to a smaller signal relative to the pads.\\
-	The cluster size is provided for information as a direct comparison of the cluster size measured with \SI{1}{cm^2} pads and long copper strips with width of a few \si{cm} is not possible. The measured cluster size at working voltage with the CMS FEB is consistent with what would be expected of a single-gap RPC. Indeed, the usage of two gaps in an OR system allows for a stronger overall gain and hence, the cluster size is greater. A more precise estimation of the charge spread inside of the gap is obtained using pads instead of strips. At working voltage, an avalanche is detected within less than two pads on average. An extra information could be used to further improve the spatial resolution of the detector. Indeed, the HARDROC 2 are semi-digital electronics and feature three threshold levels. Tuning these thresholds would lead to an approximation of the induced charge profile over the neighbouring pads. A gaussian fit over the digitized distribution would give an estimation of the position of the avalanche center.
+	The results of the tests conducted with the HARDROC2 on a CMS gap are presented in Figure~\ref{fig:HARDROC2} and Table~\ref{tab:HARDROC2}. These results can hardly be compared to what was measured with the INFN preamplifiers as the detector was not tested using the single-gap mode. The tested thresholds are high compared to the ones displayed by the INFN preamplifiers and are of the order of magnitude of the current CMS FEB. Nevertheless, the performance of the detector equipped with this read-out pannel is measured to be better. Indeed, a shift of 400 to \SI{500}{V} is observed at thresholds ranging from 230 to \SI{121.4}{fC}. This could be explained by the difference in read-out channel areas of both read-out panels. Indeed, in the case of the standard CMS RPC, the read-out panel consists in relatively large trapezoidal strips with a surface of almost \SI{200}{cm^2} when the read-out of the HARDROC2 is composed of \SI{1}{cm^2} pads. Also taking into account the cross-talk between adjacent channels, the charge produced by a growing avalanche is spread over a larger surface in the case of the standard CMS RPC. Finally, the signals having to travel a longer distance to reach the electronics, the signal loss leads to a smaller signal relative to the pads.\\
+	The cluster size is provided for information as a direct comparison of the cluster size measured with \SI{1}{cm^2} pads and long copper strips with width of a few \si{cm} is not possible. The measured cluster size at working voltage with the CMS FEB is consistent with what would be expected of a single-gap RPC. Indeed, the usage of two gaps in an OR system allows for a stronger overall gain and hence, the cluster size is greater. A more precise estimation of the charge spread inside of the gap is obtained using pads instead of strips. At working voltage, an avalanche is detected within less than two pads on average. An extra information could be used to further improve the spatial resolution of the detector. Indeed, the HARDROC2 are semi-digital electronics and feature three threshold levels. Tuning these thresholds would lead to an approximation of the induced charge profile over the neighbouring pads. A gaussian fit over the digitized distribution would give an estimation of the position of the avalanche center.
 	
 	\begin{figure}[H]
 		\begin{subfigure}{.5\linewidth}
@@ -621,7 +621,7 @@ INFN/CMS FEB, 5fC (2015)   & $0.967 \pm 0.006$ & $1.12 \pm 0.11$ & $4959 \pm 11$
 			\includegraphics[width = .5\linewidth]{fig/chapt6/HARDROC2-Rate-Shift.pdf}
 			\caption{\label{fig:HARDROC2:C}}
 		\end{subfigure}
-		\caption{\label{fig:HARDROC2} Efficiency~\subref{fig:HARDROC2:A}, cluster size~\subref{fig:HARDROC2:B} and noise rate per unit area~\ref{fig:HARDROC2:C} of the CMS RE4-3 detector tested in single gap mode with the standard CMS FEBs (black) and with the HARDROC 2 readout panel at different thresholds (red, blue and pink).}
+		\caption{\label{fig:HARDROC2} Efficiency~\subref{fig:HARDROC2:A}, cluster size~\subref{fig:HARDROC2:B} and noise rate per unit area~\ref{fig:HARDROC2:C} of the CMS RE4-3 detector tested in single gap mode with the standard CMS FEBs (black) and with the HARDROC2 readout panel at different thresholds (red, blue and pink).}
 	\end{figure}
 	
 \newpage
@@ -635,11 +635,11 @@ INFN/CMS FEB, 5fC (2015)   & $0.967 \pm 0.006$ & $1.12 \pm 0.11$ & $4959 \pm 11$
 			\hline
 			CMS FEB, 143fC (2014) & $0.958 \pm 0.000$ & $0.75 \pm 0.00$ & $9174 \pm 1$ & $0.94 \pm 0.00$ & $9716 \pm 2$\\ 
 			\hline
-			HARDROC 2, 230fC (2015) & $0.987 \pm 0.002$ & $1.06 \pm 0.04$ & $8905 \pm 8$ & $0.98 \pm 0.01$ & $9333 \pm 17$\\ 
+			HARDROC2, 230fC (2015) & $0.987 \pm 0.002$ & $1.06 \pm 0.04$ & $8905 \pm 8$ & $0.98 \pm 0.01$ & $9333 \pm 17$\\ 
 			\hline
-			HARDROC 2, 143fC (2015) & $0.988 \pm 0.001$ & $1.10 \pm 0.04$ & $8826 \pm 8$ & $0.98 \pm 0.01$ & $9243 \pm 17$\\ 
+			HARDROC2, 143fC (2015) & $0.988 \pm 0.001$ & $1.10 \pm 0.04$ & $8826 \pm 8$ & $0.98 \pm 0.01$ & $9243 \pm 17$\\ 
 			\hline
-			HARDROC 2, 121.4fC (2015) & $0.987 \pm 0.001$ & $1.07 \pm 0.04$ & $8795 \pm 8$ & $0.98 \pm 0.01$ & $9220 \pm 17$\\ 
+			HARDROC2, 121.4fC (2015) & $0.987 \pm 0.001$ & $1.07 \pm 0.04$ & $8795 \pm 8$ & $0.98 \pm 0.01$ & $9220 \pm 17$\\ 
 			\hline
 		\end{tabular}
 	\end{table}
@@ -657,11 +657,11 @@ INFN/CMS FEB, 5fC (2015)   & $0.967 \pm 0.006$ & $1.12 \pm 0.11$ & $4959 \pm 11$
 			\includegraphics[width = \linewidth]{fig/chapt6/Noise-Profile-RE4-HARDROC.pdf}
 			\caption{\label{fig:HARDROC2-profiles:B}}
 		\end{subfigure}
-		\caption{\label{fig:HARDROC2-profiles} Measured muon~\subref{fig:HARDROC2-profiles:A} and noise~\subref{fig:HARDROC2-profiles:B} profiles in the read-out pads of the HARDROC 2 over a CMS RE4-3 gap. The inner structure of the gap and the presence of the spacers in the volume is visible.}
+		\caption{\label{fig:HARDROC2-profiles} Measured muon~\subref{fig:HARDROC2-profiles:A} and noise~\subref{fig:HARDROC2-profiles:B} profiles in the read-out pads of the HARDROC2 over a CMS RE4-3 gap. The inner structure of the gap and the presence of the spacers in the volume is visible.}
     \end{figure}
 	
-	The results of the experiment with the gRPC are provided in Figure~\ref{fig:HARDROC2-gRPC} and Table~\ref{tab:HARDROC2-gRPC}. Unfortunately the gRPC had not been tested in single gap mode with the CMS FEB. Thus, a direct comparison is not possible as the data were not collected in similar conditions. The detector could only be tested with a single HARDROC 2 threshold setting (\SI{143}{fC}). As for the double-gap, the efficiency of the single-gap reaches 95\% at working voltage. The working voltage is consistent with the double-gap detector operated with the CMS FEB indicating that the HARDROC is more sensitive to lower charges. The difference in efficiency rising is consistent with the use of one gap versus two in the case of the CMS FEB. The working voltage in the case of the HARDROC 2 in single gap mode is comparable to the one obtained with the standard CMS FEB in double gap mode even though both electronics were operated at the same detection threshold. This confirms that the HARDROC 2 is more sensitive than the CMS FEB in the same conditions. Again, the explanation could be found in the different read-out panels. When operated with the CMS FEB, the gRPC is read out by copper strips with a surface of \SI{45}{cm^2} to be compared with the \SI{1}{cm^2} of the HARDROC 2 read-out.\\
-	As discussed in the case of the CMS RE4-3 gap, the direct comparison of the cluster sizes is not possible. In this sense, the proximity of both results only is fortuitous. The cluster size of approximately 1.6 measured with the HARDROC 2 at working voltage is of the same order than what had previously been measured for the CMS gap indicating that at equivalent performance, the gain and hence, the induced charge could be comparable.
+	The results of the experiment with the gRPC are provided in Figure~\ref{fig:HARDROC2-gRPC} and Table~\ref{tab:HARDROC2-gRPC}. Unfortunately the gRPC had not been tested in single gap mode with the CMS FEB. Thus, a direct comparison is not possible as the data were not collected in similar conditions. The detector could only be tested with a single HARDROC2 threshold setting (\SI{143}{fC}). As for the double-gap, the efficiency of the single-gap reaches 95\% at working voltage. The working voltage is consistent with the double-gap detector operated with the CMS FEB indicating that the HARDROC is more sensitive to lower charges. The difference in efficiency rising is consistent with the use of one gap versus two in the case of the CMS FEB. The working voltage in the case of the HARDROC2 in single gap mode is comparable to the one obtained with the standard CMS FEB in double gap mode even though both electronics were operated at the same detection threshold. This confirms that the HARDROC2 is more sensitive than the CMS FEB in the same conditions. Again, the explanation could be found in the different read-out panels. When operated with the CMS FEB, the gRPC is read out by copper strips with a surface of \SI{45}{cm^2} to be compared with the \SI{1}{cm^2} of the HARDROC2 read-out.\\
+	As discussed in the case of the CMS RE4-3 gap, the direct comparison of the cluster sizes is not possible. In this sense, the proximity of both results only is fortuitous. The cluster size of approximately 1.6 measured with the HARDROC2 at working voltage is of the same order than what had previously been measured for the CMS gap indicating that at equivalent performance, the gain and hence, the induced charge could be comparable.
 	
 	\begin{figure}[H]
 		\begin{subfigure}{.5\linewidth}
@@ -679,7 +679,7 @@ INFN/CMS FEB, 5fC (2015)   & $0.967 \pm 0.006$ & $1.12 \pm 0.11$ & $4959 \pm 11$
 			\includegraphics[width = .5\linewidth]{fig/chapt6/gRPC-HARDROC2-Rate-Shift.pdf}
 			\caption{\label{fig:HARDROC2-gRPC:C}}
 		\end{subfigure}
-		\caption{\label{fig:HARDROC2-gRPC} Efficiency~\subref{fig:HARDROC2:A}, cluster size~\subref{fig:HARDROC2:B} and noise rate per unit area~\subref{fig:HARDROC2:C} of the UGent gRPC tested in double-gap mode with the standard CMS FEBs (black) and in single-gap with the HARDROC 2 readout panel at a threshold of \SI{143}{fC} (red).}
+		\caption{\label{fig:HARDROC2-gRPC} Efficiency~\subref{fig:HARDROC2:A}, cluster size~\subref{fig:HARDROC2:B} and noise rate per unit area~\subref{fig:HARDROC2:C} of the UGent gRPC tested in double-gap mode with the standard CMS FEBs (black) and in single-gap with the HARDROC2 readout panel at a threshold of \SI{143}{fC} (red).}
 	\end{figure}
 	
 	\begin{table}[H]
@@ -691,7 +691,7 @@ Data & $\epsilon_{max}$ & $\lambda$ ($\cdot$\Ord{-2} \si{V^{-1}}) & $HV_{50}$ (\
 \hline
 CMS FEB, 143fC (2015)   & $0.956 \pm 0.007$ & $0.86 \pm 0.04$ & $5349 \pm 8$ & $0.94 \pm 0.01$ & $5839 \pm 23$\\ 
 \hline
-HARDROC 2, 143fC (2015) & $0.966 \pm 0.004$ & $0.64 \pm 0.02$ & $5179 \pm 7$ & $0.95 \pm 0.01$ & $5790 \pm 25$\\ 
+HARDROC2, 143fC (2015) & $0.966 \pm 0.004$ & $0.64 \pm 0.02$ & $5179 \pm 7$ & $0.95 \pm 0.01$ & $5790 \pm 25$\\ 
 \hline
 		\end{tabular}
 	\end{table}
@@ -709,10 +709,10 @@ HARDROC 2, 143fC (2015) & $0.966 \pm 0.004$ & $0.64 \pm 0.02$ & $5179 \pm 7$ & $
 			\includegraphics[width = \linewidth]{fig/chapt6/Noise-Profile-gRPC-HARDROC.pdf}
 			\caption{\label{fig:HARDROC2-gRPC-profiles:B}}
 		\end{subfigure}
-		\caption{\label{fig:HARDROC2-gRPC-profiles} Measured muon~\subref{fig:HARDROC2-gRPC-profiles:A} and noise~\subref{fig:HARDROC2-gRPC-profiles:B} profiles in the read-out pads of the HARDROC 2 over a gRPC gap built by Ghent.}
+		\caption{\label{fig:HARDROC2-gRPC-profiles} Measured muon~\subref{fig:HARDROC2-gRPC-profiles:A} and noise~\subref{fig:HARDROC2-gRPC-profiles:B} profiles in the read-out pads of the HARDROC2 over a gRPC gap built by Ghent.}
     \end{figure}
     
-	\section{Outlook on the current FEE certification status}
+	\section{Outlook on the current FEE certification study}
 	\label{chapt6:sec:outlooks}
 	
 	In this Section the ongoing certification of the PETIROC FEB and of the INFN Tor Vergata FEBs, chosen as back-up solution, will be presented. For reference, an iRPC has been operated without irradiation with the standard CMS FEB. It is reminded that the iRPCs that will complete the redundancy of the muon system of CMS close to the beam line are expected to suffer a background hit rate per unit area of \SIrate{600}. Including a safety factor of 3, it is then necessary for the detectors to be certified at a minimal background hit rate of \SIkrate{2}.
@@ -720,7 +720,7 @@ HARDROC 2, 143fC (2015) & $0.966 \pm 0.004$ & $0.64 \pm 0.02$ & $5179 \pm 7$ & $
 		\subsection{CMS \acl{FEB} reference}
 		\label{chapt6:ssec:CMSFEBref}
     
-    The iRPCs that will be installed at CMS will be equipped with new \acl{FEE}. Nevertheless, in order to compare the performance of the new electronics with the standard CMS FEBs, a series of short characterization tests was carried out with an iRPC prototype. Seven strips of a read-out panel designed for a back-up scenario detector were connected to a CMS FEB. The remaining strips were connected to the ground to avoid noise. The tests were done without irradiation and using cosmic muons. Two narrow scintillators were placed on each side of the prototype to provide a trigger signal as can be seen from Figure~\ref{fig:iRPC_CMS_Setup}. The tests were performed with three detection thresholds of \SI{200}{mV} ($\approx$\SI{133}{fC}), \SI{210}{mV} ($\approx$\SI{140}{fC}) and \SI{220}{mV} ($\approx$\SI{146}{fC}) on the FEB discriminators. The LVDS output of the FEB was then read-out with a CAEN TDC.\\
+    In order to compare the performance of the new electronics with the standard CMS FEBs, a series of short characterization tests was carried out with an iRPC prototype. Seven strips of a read-out panel designed for a back-up scenario detector were connected to a CMS FEB. The remaining strips were connected to the ground to avoid noise. The tests were done without irradiation and using cosmic muons. Two narrow scintillators were placed on each side of the prototype to provide a trigger signal as can be seen from Figure~\ref{fig:iRPC_CMS_Setup}. The tests were performed with three detection thresholds of \SI{200}{mV} ($\approx$\SI{133}{fC}), \SI{210}{mV} ($\approx$\SI{140}{fC}) and \SI{220}{mV} ($\approx$\SI{146}{fC}) on the FEB discriminators. The LVDS output of the FEB was then read-out with a CAEN TDC.\\
     The HV scans consisted of seven effective voltage steps (6800, 7000, 7100, 7200, 7300, 7400 and \SI{7500}{V}) at which 100 muon triggers were requested as minimal statistics. The hit profile over the connected strips as well as the time profile of the events in each channel is provided in Figure~\ref{fig:iRPC_CMS_Profiles} for the fifth HV step (\SI{7300}{HV}). The area covered by the trigger is seen to be comparable than the width of the seven strips. The time arrival of the hits is well confined within less than \SI{50}{ns}.
 		
 	\begin{figure}[H]
@@ -947,7 +947,7 @@ Efficiency (\%)           & $97.4 \pm 0.4$  & $95.2 \pm 0.8$  & $92.5 \pm 0.9$ \
 \begin{landscape}
 	\vspace*{4cm}
     \begin{table}[H]
-		\caption{\label{tab:INFNFEBv1} Summary results of the iRPC operated with INFN Tor Vergata electronics set at a threshold of \SIrange{10}{15}{fC}.}
+		\caption{\label{tab:INFNFEBv1} Summary results of the iRPC operated with INFN Tor Vergata electronics operating at a threshold of \SIrange{10}{15}{fC}.}
 		\footnotesize
 		\centering
 		\begin{tabular}{|*{8}{c|}}
@@ -973,5 +973,13 @@ Charge per Gamma Cluster & - & $6.00 \pm 0.14$ & $7.07 \pm 0.16$ & $7.64 \pm 0.1
 		\end{tabular}
     \end{table}
 \end{landscape}
+    
+	\section{Conclusion}
+	\label{chapt6:sec:concl}
+    
+    The \acl{FEE} candidates for the production of the \acl{iRPC}s that will be installed in the RE3/1 and RE4/1 stations have been clearly identified. The certification of the PETIROC and of the INFN Tor Vergata FEBs is ongoing. At the time of writing, both the electronics have showed a performance above 95\% at the background rate per unit area of \SIkrate{2}.\\
+	In the near future, a new version of the PETIROC FEB with a more suitable radiation hardness will be available and a 2D read-out for the INFN Tor Vergata will have been tested.
+
+	The development of both front-end electronics was made possible thanks to the study I personally conducted on the INFN Tor Vergata preamplifiers and on the HARDROC2 electronics derived from the PETIROC ASIC. The study of noth electronics have been performed on spare RE2 and spare RE4 detectors and have showed that an operation at lower threshold was possible with low-noise sensitive electronics. The results indicated that a shift of the working voltage by several hundred of volts towards lower voltages was possible, resulting in a safer operation of the detectors at higher luminosity during the HL-LHC phase.
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
